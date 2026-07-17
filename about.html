@@ -1,0 +1,601 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="theme-color" content="#F7F4EA" />
+
+<meta name="description" content="We are a bilingual travel agency based in Kamakura, Fujisawa and Yokohama, founded in 2024 to discover and share the hidden gems of Japan — the quiet, beautiful places travellers usually miss." />
+<link rel="canonical" href="https://zenrise.jp/about.html" />
+<meta property="og:site_name" content="Zenrise" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="About — Zenrise" />
+<meta property="og:description" content="We are a bilingual travel agency based in Kamakura, Fujisawa and Yokohama, founded in 2024 to discover and share the hidden gems of Japan — the quiet, beautiful places travellers usually miss." />
+<meta property="og:url" content="https://zenrise.jp/about.html" />
+<meta property="og:image" content="https://zenrise.jp/assets/shrines/temple-gate-pine.jpg" />
+<meta name="twitter:card" content="summary_large_image" />
+
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png" />
+<link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png" />
+<link rel="apple-touch-icon" href="apple-touch-icon.png" />
+<title data-i18n-title="about_title">About — Zenrise</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+<script>
+  (function(d) {
+    var config = {
+      kitId: 'srn7uwt',
+      scriptTimeout: 3000,
+      async: true
+    },
+    h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
+  })(document);
+</script>
+
+<style>
+  :root {
+    --bg:      #F7F4EA;
+    --bg-2:    #EDE9E5;
+    --bg-3:    #E4DFD5;
+    --ink:     #294138;
+    --ink-60:  rgba(41,65,56,0.62);
+    --ink-30:  rgba(41,65,56,0.28);
+    --ink-12:  rgba(41,65,56,0.14);
+    --rule:    rgba(0,0,0,0.10);
+
+    --display: "optima-nova-lt-pro", "Optima", serif;
+    --sans:    "gill-sans-nova", "Gill Sans", "Gill Sans MT", sans-serif;
+    --mono:    "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+    --jp:      "yu-gothic-pr6n", "Yu Gothic", "Hiragino Kaku Gothic ProN", sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html { overflow-x: hidden; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    /* Never synthesize bold/oblique — prevents faux-bold flash while the
+       async Typekit JP fonts load (esp. before :lang(ja) takes effect). */
+    font-synthesis: none;
+  }
+  :lang(ja) {
+    --display: "toppan-bunkyu-mincho-pr6n", "Hiragino Mincho ProN", serif;
+    --sans:    "yu-gothic-pr6n", "Yu Gothic UI", "Hiragino Kaku Gothic ProN", sans-serif;
+  }
+  .stage { width: 1920px; transform-origin: top left; visibility: hidden; }
+  .stage.fitted { visibility: visible; }
+  html.wf-loading .stage { visibility: hidden; }
+  a { color: inherit; text-decoration: none; }
+
+  /* ───── Nav (shared with home) ───── */
+  .nav {
+    height: 96px;
+    padding: 0 36px;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+  }
+  .logo {
+    font-family: "optima-nova-lt-pro", "Optima", serif;
+    font-size: 32px;
+    letter-spacing: 0.05em;
+    color: var(--ink);
+    line-height: 1;
+  }
+  .navlinks { display: flex; gap: 78px; font-size: 22px; }
+  :lang(ja) .navlinks { font-size: 18px; }
+  .navlinks a { position: relative; padding: 6px 0; white-space: nowrap; }
+  .navlinks a.active::after {
+    content: ""; position: absolute; left: 0; right: 0; bottom: 0;
+    height: 1px; background: var(--ink);
+  }
+  .navlinks a:hover { opacity: 0.7; }
+  .lang {
+    justify-self: end; font-size: 22px;
+    display: inline-flex; align-items: center; gap: 6px;
+    white-space: nowrap;
+  }
+  .lang::after { content: "↓"; }
+
+  /* ───── Page header ───── */
+  .ph {
+    padding: 80px 36px 96px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 96px;
+    align-items: end;
+    border-bottom: 1px solid var(--ink-12);
+  }
+  .ph .eyebrow {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.28em;
+    color: var(--ink-60);
+    text-transform: uppercase;
+    margin-bottom: 36px;
+    display: block;
+  }
+  .ph h1 {
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: 140px;
+    line-height: 0.92;
+    margin: 0;
+    letter-spacing: -0.015em;
+  }
+  .ph h1 .jp {
+    display: block;
+    font-family: var(--jp);
+    font-weight: 400;
+    font-size: 64px;
+    color: var(--ink-60);
+    margin-top: 22px;
+    letter-spacing: 0.08em;
+  }
+  .ph .intro p {
+    font-family: var(--display);
+    font-size: 28px;
+    line-height: 1.45;
+    color: var(--ink);
+    margin: 0 0 22px;
+    max-width: 640px;
+    text-wrap: pretty;
+  }
+  .ph .intro p.muted {
+    font-size: 20px;
+    color: var(--ink-60);
+    font-family: var(--sans);
+    line-height: 1.6;
+  }
+
+  /* ───── Hero image ───── */
+  .about-hero {
+    width: 100%;
+    margin-top: 0;
+    position: relative;
+  }
+  .about-hero .frame {
+    width: 100%;
+    height: 820px;
+    background: url("assets/shrines/temple-gate-pine.jpg") center 40% / cover no-repeat;
+    position: relative;
+  }
+  .about-hero .frame::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.0) 60%, rgba(0,0,0,0.25) 100%);
+    pointer-events: none;
+  }
+  /* photo credit — required on all photography */
+  .about-hero .frame::before {
+    content: "© Zenrise";
+    position: absolute;
+    right: 36px;
+    bottom: 24px;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.65);
+    pointer-events: none;
+    z-index: 2;
+  }
+  .about-hero .credit {
+    position: absolute;
+    left: 36px;
+    bottom: 24px;
+    color: #fff;
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    opacity: 0.95;
+    z-index: 2;
+  }
+  .about-hero .credit .n {
+    opacity: 0.7;
+    margin-right: 18px;
+  }
+
+  /* ───── Section frame ───── */
+  .section { padding: 0 36px; }
+  .section-head {
+    padding: 96px 0 56px;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    column-gap: 96px;
+    align-items: start;
+  }
+  .section-head .label {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.28em;
+    color: var(--ink-60);
+    text-transform: uppercase;
+    /* top of the slug ≈ cap-top of the display h2 beside it */
+    padding-top: 10px;
+  }
+  :lang(ja) .section-head .label { padding-top: 8px; }
+  .section-head .label .num { color: var(--ink); margin-right: 18px; }
+  .section-head h2 {
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: 72px;
+    line-height: 0.98;
+    margin: 0;
+    letter-spacing: -0.005em;
+  }
+  .section-head h2 .jp {
+    display: block;
+    font-family: var(--jp);
+    font-size: 32px;
+    color: var(--ink-60);
+    margin-top: 14px;
+    letter-spacing: 0.06em;
+  }
+
+  /* ───── 会社概要 table ───── */
+  .gaiyo {
+    padding-bottom: 120px;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    column-gap: 96px;
+    align-items: start;
+  }
+  .gaiyo .note {
+    position: sticky;
+    top: 40px;
+    font-family: var(--display);
+    font-size: 22px;
+    line-height: 1.5;
+    color: var(--ink-60);
+    max-width: 380px;
+    text-wrap: pretty;
+  }
+  .gaiyo table {
+    grid-column: 2;
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 18px;
+  }
+  .gaiyo tr {
+    border-top: 1px solid var(--ink-12);
+  }
+  .gaiyo tr:last-child { border-bottom: 1px solid var(--ink-12); }
+  .gaiyo th, .gaiyo td {
+    text-align: left;
+    vertical-align: top;
+    padding: 28px 24px 28px 0;
+    font-weight: 400;
+  }
+  .gaiyo th {
+    width: 280px;
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 20px;
+    letter-spacing: 0.04em;
+  }
+  .gaiyo th .en {
+    display: block;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.24em;
+    color: var(--ink-60);
+    text-transform: uppercase;
+    margin-top: 8px;
+    font-weight: 500;
+  }
+  .gaiyo td {
+    color: var(--ink);
+    line-height: 1.55;
+    font-size: 19px;
+    padding-right: 0;
+  }
+  .gaiyo td .sub {
+    display: block;
+    color: var(--ink-60);
+    font-size: 15px;
+    margin-top: 6px;
+  }
+
+  /* ───── Footer ───── */
+  .foot-brand .brk { display: none; }
+  .rule { height: 1px; background: var(--rule); width: 100%; }
+  footer.foot-v2 { padding: 0 36px; margin-top: 40px; }
+  .foot-v2-top {
+    padding: 96px 0 72px;
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr 1fr;
+    gap: 64px;
+  }
+  .foot-brand .mark {
+    font-family: "optima-nova-lt-pro", "Optima", serif;
+    font-size: 40px;
+    letter-spacing: 0.05em;
+    line-height: 1;
+    margin-bottom: 26px;
+    display: block;
+  }
+  .foot-brand p {
+    font-family: var(--display);
+    font-size: 24px;
+    line-height: 1.4;
+    color: var(--ink-60);
+    margin: 0;
+    max-width: 380px;
+    text-wrap: pretty;
+  }
+  .foot-col h4 {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    color: var(--ink-60);
+    text-transform: uppercase;
+    margin: 0 0 22px;
+    font-weight: 500;
+  }
+  .foot-col ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 14px; }
+  .foot-col li { font-size: 18px; line-height: 1.45; color: var(--ink); }
+  .foot-col li a:hover { opacity: 0.6; }
+  .foot-col .soc > span:first-child { position: relative; padding-bottom: 3px; }
+  .foot-col .soc > span:first-child::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 1.5px; background: var(--ink); opacity: 0; transition: opacity 0.25s ease; }
+  .foot-col .soc:hover > span:first-child::after { opacity: 1; }
+  .foot-col .soc .ar { position: relative; right: 0; transition: right 0.3s ease; font-weight: 300; }
+  .foot-col .soc:hover .ar { right: -6px; }
+  .foot-v2-bottom {
+    border-top: 1px solid var(--ink-12);
+    padding: 28px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    color: var(--ink-60);
+    text-transform: uppercase;
+  }
+  .foot-v2-bottom .legal { display: flex; gap: 32px; }
+
+  /* ───── Responsive ───── */
+  @media (max-width: 1023px) {
+    .stage { width: 100% !important; }
+
+    /* Image-first (home-style): the stage becomes a column so the hero
+       can be reordered above the page header purely in CSS — the DOM
+       order stays as-is because it drives the client-approved desktop. */
+    .stage { display: flex; flex-direction: column; }
+    .nav { order: -3; }
+    .about-hero { order: -2; }
+    .ph { order: -1; }
+
+    /* Nav */
+    .nav { height: 64px; padding: 0 20px; }
+    .logo { font-size: 22px; }
+    .navlinks { gap: 28px; font-size: 16px; }
+    .lang { font-size: 16px; }
+
+    /* Page header */
+    .ph { padding: 48px 20px 56px; grid-template-columns: 1fr; row-gap: 36px; }
+    .ph h1 { font-size: 72px; }
+    .ph h1 .jp { font-size: 32px; }
+    .ph .intro p { font-size: 20px; max-width: 100%; }
+    .ph .intro p.muted { font-size: 16px; }
+
+    /* Hero image — roomier now that it leads the page. vw (not vh/svh):
+       width-relative units hold still when Firefox iOS collapses its
+       toolbar; max-height keeps tablets sane. */
+    .about-hero .frame { height: 120vw; min-height: 320px; max-height: 560px; }
+    /* no attribution over the mobile hero — matches home */
+    .about-hero .frame::before { display: none; }
+    /* caption steps down to match the home hero (EN uppercase mono
+       runs louder than JP at the same size, so EN drops further) */
+    .about-hero .credit { font-size: 10px; }
+    .about-hero .credit:lang(ja) { font-size: 13px; }
+
+    /* Section frame — bottom rule mirrors the .ph border above the
+       section, delineating the company profile from the footer */
+    .section { padding: 0 20px 56px; border-bottom: 1px solid var(--ink-12); }
+    .section-head { padding: 56px 0 36px; grid-template-columns: 1fr; row-gap: 16px; }
+    .section-head h2 { font-size: 48px; }
+
+    /* Company profile table — stack label/value */
+    /* kill the desktop 120px tail — the .section bottom padding (56px)
+       now owns the gap to the closing rule */
+    .gaiyo { grid-template-columns: 1fr; row-gap: 24px; padding-bottom: 0; }
+    .gaiyo .note { position: static; font-size: 18px; }
+    .gaiyo table { grid-column: 1; }
+    .gaiyo tr { display: block; padding: 16px 0; }
+    .gaiyo th { display: block; width: auto; padding: 0 0 4px; font-size: 17px; }
+    .gaiyo td { display: block; padding: 0; font-size: 16px; }
+
+    /* Footer */
+    /* footer.foot-v2, not .foot-v2 — must outrank the desktop
+       `footer.foot-v2 { padding: 0 36px }` or the 20px never applies */
+    footer.foot-v2 { padding: 0 20px; }
+    /* no divider at the top of the footer on mobile */
+    .foot-v2 > .rule { display: none; }
+    .foot-v2-top { padding: 16px 0 40px; grid-template-columns: 1fr; gap: 32px; }
+    .foot-brand .mark { font-size: 26px; margin-bottom: 16px; }
+    .foot-brand p { font-size: 15px; max-width: 100%; }
+    .foot-brand .brk { display: inline; }
+    .foot-col h4 { font-size: 10px; margin-bottom: 14px; }
+    .foot-col ul { gap: 10px; }
+    .foot-col li { font-size: 15px; }
+    .foot-v2-bottom { font-size: 10px; letter-spacing: 0.16em; padding: 20px 0; }
+    .foot-v2-bottom .legal { gap: 20px; }
+  }
+
+  @media (max-width: 599px) {
+    .navlinks { display: none; }
+    .ph h1 { font-size: 52px; }
+    .section-head h2 { font-size: 36px; }
+  }
+</style>
+</head>
+
+<body>
+<div class="stage" id="stage">
+
+  <!-- ───── Header ───── -->
+  <header class="nav">
+    <a class="logo" href="index.html">ZENRISE</a>
+    <nav class="navlinks">
+      <a href="index.html" data-i18n="nav_home">home</a>
+      <a href="about.html" class="active" data-i18n="nav_about">about us</a>
+      <a href="news.html" data-i18n="nav_news">news</a>
+      <a href="contact.html" data-i18n="nav_contact">contact</a>
+    </nav>
+    <a class="lang" href="#">english</a>
+  </header>
+
+  <!-- ───── Page header ───── -->
+  <section class="ph" data-screen-label="02 About — Header">
+    <div>
+      <h1 data-i18n-html="about_h1">About<br/>Zenrise.</h1>
+    </div>
+    <div class="intro">
+      <p data-i18n="about_intro_1">We are a travel agency based in Kamakura, Fujisawa, and Yokohama. We design thoughtful, locally-led journeys through the lesser-known corners of the Kamakura area.</p>
+      <p class="muted" data-i18n="about_intro_2">Founded in 2024, we're on a journey to discover and share the hidden gems of Japan — the quiet, beautiful places that travellers usually miss.</p>
+    </div>
+  </section>
+
+  <!-- ───── About hero image ───── -->
+  <section class="about-hero" data-screen-label="02 About — Hero photo">
+    <div class="frame">
+      <div class="credit"><span data-i18n="about_hero_credit">Hase-dera Gate, Kamakura</span></div>
+    </div>
+  </section>
+
+  <!-- ───── 会社概要 ───── -->
+  <section class="section" data-screen-label="02 About — 会社概要">
+    <div class="section-head">
+      <div class="label"><span class="num">02</span><span data-i18n="about_cp_label">Company Profile</span></div>
+      <h2 data-i18n="about_cp_h2">Company Profile.</h2>
+    </div>
+
+    <div class="gaiyo">
+      <table>
+        <tr>
+          <th data-i18n="about_cp_name">Company Name</th>
+          <td data-i18n="about_cp_name_v">Intercommunicate K. K.</td>
+        </tr>
+        <tr>
+          <th data-i18n="about_cp_founded">Founded</th>
+          <td data-i18n="about_cp_founded_v">April 2024</td>
+        </tr>
+        <tr>
+          <th data-i18n="about_cp_reps">Representatives</th>
+          <td><span data-i18n-html="about_cp_reps_v">Akari Usuda</span></td>
+        </tr>
+        <tr>
+          <th data-i18n="about_cp_address">Address</th>
+          <td data-i18n-html="about_cp_address_v">me-labo4, Sophiale Minamifujisawa #101<br/>10-11 Minamifujisawa, Fujisawa<br/>Kanagawa, 251-0055, Japan</td>
+        </tr>
+        <tr>
+          <th data-i18n="about_cp_business">Business</th>
+          <td data-i18n-html="about_cp_business_v">Curation &amp; operation of original tours across the Kamakura, Fujisawa &amp; Yokohama areas.<br/>Curation &amp; operation of bespoke, private tours.</td>
+        </tr>
+        <tr>
+          <th data-i18n="about_cp_contact">Contact</th>
+          <td data-i18n-html="about_cp_contact_v">hello@zenrise.jp</td>
+        </tr>
+        <tr>
+          <th data-i18n="about_cp_license">Travel Agency License</th>
+          <td data-i18n="about_cp_license_v">Registered Travel Agent, Kanagawa Prefecture No. 1314</td>
+        </tr>
+        <tr>
+          <th data-i18n="about_cp_bank">Certified Domestic Travel Services Manager</th>
+          <td data-i18n="about_cp_bank_v">Kentaro Usuda</td>
+        </tr>
+      </table>
+    </div>
+  </section>
+
+  <!-- ───── Footer ───── -->
+  <footer class="foot-v2" data-screen-label="02 About — Footer">
+    <div class="rule"></div>
+    <div class="foot-v2-top">
+      <div class="foot-brand">
+        <span class="mark">ZENRISE</span>
+        <p data-i18n-html="footer_tagline">Quiet, locally-led journeys through the <br class="brk"/>lesser-known corners of Japan.</p>
+      </div>
+
+      <div class="foot-col">
+        <h4 data-i18n="footer_visit">Office</h4>
+        <ul>
+          <li><span data-i18n-html="footer_address">me-labo4, Sophiale Minamifujisawa #101<br/>10-11 Minamifujisawa, Fujisawa<br/>Kanagawa, 251-0055, Japan</span></li>
+        </ul>
+      </div>
+
+      <div class="foot-col">
+        <h4 data-i18n="footer_contact">Contact</h4>
+        <ul>
+          <li><a href="mailto:hello@zenrise.jp">hello@zenrise.jp</a></li>
+        </ul>
+      </div>
+
+      <div class="foot-col">
+        <h4 data-i18n="footer_follow">Follow</h4>
+        <ul>
+          <li><a class="soc" href="https://www.instagram.com/zenrise_tours/"><span data-i18n="footer_instagram">Instagram</span><span class="ar">&nbsp;→</span></a></li>
+          <li><a class="soc" href="https://www.youtube.com/@zenrisejapan"><span data-i18n="footer_youtube">YouTube</span><span class="ar">&nbsp;→</span></a></li>
+          <li><a class="soc" href="https://www.tiktok.com/@zenrise_tours"><span data-i18n="footer_tiktok">TikTok</span><span class="ar">&nbsp;→</span></a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="foot-v2-bottom">
+      <span data-i18n="footer_copyright">© 2026 Intercommunicate K. K.</span>
+      <div class="legal">
+        <a href="terms.html" data-i18n="footer_terms">Terms</a>
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+  // Scale the 1920px stage to fit the viewer's window width.
+  (function () {
+    var stage = document.getElementById('stage');
+    function fit() {
+      var vw = document.documentElement.clientWidth;
+      if (vw < 1024) {
+        stage.style.zoom = '';
+        stage.style.width = '';
+        stage.style.margin = '';
+        stage.classList.add('fitted');
+        return;
+      }
+      var vh = document.documentElement.clientHeight;
+      var HERO_DESIGN_HEIGHT = 1100;
+      var scale = Math.min(1, vw / 1920, vh / HERO_DESIGN_HEIGHT);
+      // 'zoom' (unlike transform:scale) scales BOTH layout and visual, so
+      // the document's scroll area tracks the visible content exactly.
+      stage.style.zoom = scale;
+      // With zoom shrinking layout width, margin auto centers horizontally.
+      stage.style.margin = '0 auto';
+      // Clear anything left over from earlier transform-based versions.
+      stage.style.transform = '';
+      stage.style.width = '1920px';
+      stage.style.height = '';
+      document.body.style.height = '';
+      stage.classList.add('fitted');
+    }
+    fit();
+    window.addEventListener('resize', fit);
+    window.addEventListener('load', fit);
+    setTimeout(fit, 200);
+    setTimeout(fit, 600);
+  })();
+</script>
+<script src="lang.js"></script>
+</body>
+</html>

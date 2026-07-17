@@ -1,0 +1,1550 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="theme-color" content="#F7F4EA" />
+
+<meta name="description" content="Zenrise designs quiet, locally-led private tours through Kamakura, Enoshima, Fujisawa and Yokohama — the lesser-known corners of Japan. Bilingual guides, small groups, thoughtful pace." />
+<link rel="canonical" href="https://zenrise.jp/" />
+<meta property="og:site_name" content="Zenrise" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Zenrise — Quiet journeys through Japan" />
+<meta property="og:description" content="Zenrise designs quiet, locally-led private tours through Kamakura, Enoshima, Fujisawa and Yokohama — the lesser-known corners of Japan. Bilingual guides, small groups, thoughtful pace." />
+<meta property="og:url" content="https://zenrise.jp/" />
+<meta property="og:image" content="https://zenrise.jp/assets/shrines/temple-gate-pine.jpg" />
+<meta name="twitter:card" content="summary_large_image" />
+
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png" />
+<link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png" />
+<link rel="apple-touch-icon" href="apple-touch-icon.png" />
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TravelAgency",
+  "name": "Zenrise",
+  "legalName": "Intercommunicate K.K.",
+  "url": "https://zenrise.jp/",
+  "email": "hello@zenrise.jp",
+  "image": "https://zenrise.jp/assets/shrines/temple-gate-pine.jpg",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "me-labo4, Sophiale Minamifujisawa #101, 10-11 Minamifujisawa",
+    "addressLocality": "Fujisawa",
+    "addressRegion": "Kanagawa",
+    "postalCode": "251-0055",
+    "addressCountry": "JP"
+  },
+  "areaServed": ["Kamakura", "Enoshima", "Fujisawa", "Yokohama"]
+}
+</script>
+<title data-i18n-title="home_title">Zenrise — Quiet journeys through Japan</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+<script>
+  (function(d) {
+    var config = {
+      kitId: 'srn7uwt',
+      scriptTimeout: 3000,
+      async: true
+    },
+    h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
+  })(document);
+</script>
+
+<style>
+  :root {
+    --bg:      #F7F4EA;
+    --bg-2:    #EDE9E5;
+    --bg-3:    #E4DFD5;
+    --ink:     #294138;
+    --ink-60:  rgba(41,65,56,0.62);
+    --ink-30:  rgba(41,65,56,0.28);
+    --ink-12:  rgba(41,65,56,0.14);
+    --rule:    rgba(0,0,0,0.10);
+    --paper:   #ffffff;
+
+    --display: "optima-nova-lt-pro", "Optima", serif;
+    --sans:    "gill-sans-nova", "Gill Sans", "Gill Sans MT", sans-serif;
+    --mono:    "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  }
+
+  * { box-sizing: border-box; }
+</style>
+<script>
+  /* --vh-px: the viewport height FROZEN at load, in pixels. Mobile browsers
+     change every CSS viewport unit when their toolbar hides (Firefox iOS
+     resizes the whole webview, so even svh/lvh move) — anything sized with
+     those units jumps mid-scroll. Layout that must hold still (pinned hero,
+     expanded-view photo/panel geometry) sizes from this instead. Re-measured
+     only when the width changes (rotation), never on height-only jitter. */
+  (function () {
+    var docEl = document.documentElement;
+    function set() { docEl.style.setProperty('--vh-px', window.innerHeight + 'px'); }
+    set();
+    var w = window.innerWidth;
+    window.addEventListener('resize', function () {
+      if (window.innerWidth !== w) { w = window.innerWidth; set(); }
+    });
+    /* When the toolbar hides, the viewport grows and the browser can be
+       left scrolled past the (now relatively shorter) document — showing
+       the canvas past the footer. Clamp back inside. Firefox iOS resizes
+       the webview itself (plain window resize, visualViewport may not
+       fire), and the resize animates — so listen to both events and
+       re-check while it settles. */
+    function clamp() {
+      var max = document.documentElement.scrollHeight - window.innerHeight;
+      if (window.scrollY > max)
+        window.scrollTo({ top: Math.max(0, max), behavior: 'instant' });
+    }
+    function clampSoon() {
+      clamp();
+      setTimeout(clamp, 120);
+      setTimeout(clamp, 360);
+    }
+    window.addEventListener('resize', clampSoon);
+    if (window.visualViewport)
+      window.visualViewport.addEventListener('resize', clampSoon);
+  })();
+</script>
+<style>
+  /* background on the ROOT: browsers paint the root's background across
+     any canvas beyond the document (overscroll, toolbar-resize races) —
+     unset it defaults to browser grey, which read as a strip past the
+     footer on mobile. Cream makes those areas invisible. */
+  html { overflow-x: hidden; scroll-behavior: smooth; background: var(--bg); }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    /* Never synthesize bold/oblique — prevents faux-bold flash while the
+       async Typekit JP fonts load (esp. before :lang(ja) takes effect). */
+    font-synthesis: none;
+  }
+  :lang(ja) {
+    --display: "toppan-bunkyu-mincho-pr6n", "Hiragino Mincho ProN", serif;
+    --sans:    "yu-gothic-pr6n", "Yu Gothic UI", "Hiragino Kaku Gothic ProN", sans-serif;
+  }
+
+  /* Stage: keep the 1920 design width, scale to fit viewer's window. */
+  .stage {
+    width: 1920px;
+    transform-origin: top left;
+    visibility: hidden;
+  }
+  .stage.fitted { visibility: visible; }
+  html.wf-loading .stage { visibility: hidden; }
+
+  @keyframes hero-fade {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: none; }
+  }
+  .hero-photo { opacity: 0; }
+  .hero-card  { opacity: 0; }
+  .stage.hero-in .hero-photo {
+    animation: hero-fade 0.9s ease forwards;
+  }
+  .stage.hero-in .hero-card {
+    animation: hero-fade 0.9s ease 0.35s forwards;
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  /* ───── Header ───── */
+  .nav {
+    height: 96px;
+    padding: 0 36px;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+  }
+  .logo {
+    font-family: "optima-nova-lt-pro", "Optima", serif;
+    font-size: 32px;
+    letter-spacing: 0.05em;
+    color: var(--ink);
+    line-height: 1;
+  }
+  .navlinks {
+    display: flex;
+    gap: 78px;
+    font-size: 22px;
+    font-weight: 400;
+    letter-spacing: 0.01em;
+  }
+  :lang(ja) .navlinks { font-size: 18px; }
+  .navlinks a { position: relative; padding: 6px 0; white-space: nowrap; }
+  .navlinks a.active::after {
+    content: "";
+    position: absolute;
+    left: 0; right: 0; bottom: 0;
+    height: 1px;
+    background: var(--ink);
+  }
+  .navlinks a:hover { opacity: 0.7; }
+  .lang {
+    justify-self: end;
+    font-size: 22px;
+    letter-spacing: 0.01em;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+  }
+  .lang::after { content: "↓"; }
+
+  /* ───── Hero ───── */
+  .hero {
+    position: relative;
+    padding: 26px 36px 120px;
+  }
+  .hero-grid {
+    position: relative;
+  }
+  .hero-photo {
+    width: 1450px;
+    height: 823px;
+    position: relative;
+    overflow: hidden;
+  }
+  .slide-bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 1s ease;
+  }
+  .slide-bg.active { opacity: 1; }
+  .hero-photo .photo-meta {
+    position: absolute;
+    left: 24px;
+    bottom: 22px;
+    color: #fff;
+    font-family: var(--mono);
+    font-size: 13px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    opacity: 0.92;
+  }
+  .hero-side {
+    position: absolute;
+    left: 1088px;
+    top: 480px;
+    width: 760px;
+    z-index: 2;
+  }
+  .hero-card {
+    width: 760px;
+    max-width: none;
+    background: var(--bg-2);
+    padding: 40px 56px 56px;
+    position: relative;
+  }
+  .hero-card .num {
+    font-family: var(--display);
+    font-size: 40px;
+    line-height: 1;
+    letter-spacing: 0.005em;
+    color: var(--ink);
+    margin: 0 0 32px;
+  }
+  .hero-card .ttl {
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: 58px;
+    line-height: 1.04;
+    color: var(--ink);
+    margin: 0 0 24px;
+    letter-spacing: -0.005em;
+  }
+  .hero-card .copy {
+    font-size: 18px;
+    line-height: 1.55;
+    color: var(--ink-60);
+    margin: 0 0 36px;
+    max-width: 460px;
+    text-wrap: pretty;
+  }
+  .hero-card .more {
+    display: inline-block;
+    font-size: 22px;
+    color: var(--ink);
+    padding-bottom: 4px;
+    letter-spacing: 0.01em;
+    position: relative;
+  }
+  .hero-card .more > span:first-child { position: relative; padding-bottom: 4px; }
+  .hero-card .more > span:first-child::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1.5px;
+    background: var(--ink);
+    opacity: 0;
+    transition: opacity 0.25s ease;
+  }
+  .hero-card .more:hover > span:first-child::after { opacity: 1; }
+  .hero-card .more .dir { position: relative; right: 0; transition: right 0.3s ease; font-weight: 300; }
+  .hero-card .more:hover .dir-r { right: -8px; }
+  .hero-card .tag {
+    position: absolute;
+    left: 56px; top: 28px;
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.22em;
+    color: var(--ink-60);
+    text-transform: uppercase;
+  }
+  /* → on desktop, ↓ on the pinned mobile hero */
+  .hero-card .more .dir-d { display: none; }
+
+  /* ───── Find your perfect place ───── */
+  .find {
+    margin-top: 120px;
+    padding: 0 36px;
+  }
+  .rule {
+    height: 1px;
+    background: var(--rule);
+    width: 100%;
+  }
+  .find-head {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    padding: 88px 0 96px;
+  }
+  .find-head .eyebrow {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.28em;
+    color: var(--ink-60);
+    text-transform: uppercase;
+    justify-self: start;
+  }
+  .find-head h2 {
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: 56px;
+    line-height: 1;
+    color: var(--ink);
+    margin: 0;
+    letter-spacing: -0.005em;
+    white-space: nowrap;
+  }
+  .find-head .count {
+    justify-self: end;
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.28em;
+    color: var(--ink-60);
+  }
+
+  .dest-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    position: relative;
+  }
+  .dest-expanded {
+    position: absolute;
+    inset: 0;
+    z-index: 20;
+    background: var(--bg-3);
+    overflow: hidden;
+  }
+  .dest-expanded .exp-bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+  }
+  .dest-expanded .exp-scrim {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.52) 0%, rgba(0,0,0,0) 50%);
+    pointer-events: none;
+  }
+  .dest-expanded .exp-meta {
+    position: absolute;
+    bottom: 64px;
+    left: 64px;
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.4s ease 0.45s, transform 0.4s ease 0.45s;
+  }
+  .dest-expanded.open .exp-meta { opacity: 1; transform: none; }
+  .dest-expanded .exp-num {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.65);
+    margin-bottom: 16px;
+  }
+  .dest-expanded.is-placeholder .exp-num { color: var(--ink-60); }
+  .dest-expanded .exp-name {
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: 80px;
+    line-height: 0.95;
+    letter-spacing: -0.01em;
+    color: #fff;
+    max-width: 1400px;
+  }
+  .dest-expanded.is-placeholder .exp-name { color: var(--ink); }
+  .dest-close {
+    position: absolute;
+    top: 32px;
+    right: 32px;
+    width: 52px;
+    height: 52px;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.3);
+    color: #fff;
+    font-size: 18px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease 0.5s, background 0.2s ease;
+  }
+  .dest-expanded.is-placeholder .dest-close {
+    background: rgba(41,65,56,0.06);
+    border-color: var(--ink-30);
+    color: var(--ink);
+  }
+  .dest-expanded.open .dest-close { opacity: 1; }
+  .dest-close:hover { background: rgba(255,255,255,0.22); }
+  .dest-expanded.is-placeholder .dest-close:hover { background: rgba(41,65,56,0.1); }
+
+  /* ─ Expanded split layout (image + offerings) ─ */
+  .dest-expanded { --exp-panel-w: 42%; }
+  /* Photo fills the whole overlay; the cream panel is layered on top at the right.
+     This keeps the photo behind the panel, so closing reveals photo (not white)
+     no matter which column the card sits in. */
+  .dest-expanded .exp-bg { transition: opacity 0.35s ease; }
+  .dest-expanded.is-placeholder .exp-bg {
+    background:
+      repeating-linear-gradient(135deg, rgba(41,65,56,0.05) 0 1px, transparent 1px 14px),
+      var(--bg-3);
+  }
+
+  .dest-expanded .exp-panel {
+    position: absolute;
+    top: 0; right: 0; bottom: 0;
+    width: var(--exp-panel-w);
+    background: var(--bg);
+    color: var(--ink);
+    padding: 72px 64px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow-y: auto;
+    transition: opacity 0.32s ease;
+  }
+  .dest-expanded.closing .exp-panel { opacity: 0; }
+  /* the ✕'s 0.5s reveal delay would hold it visible through the whole
+     close animation — vanish promptly instead */
+  .dest-expanded.closing .dest-close { opacity: 0; transition: opacity 0.15s ease; }
+  .dest-expanded .exp-panel > * {
+    opacity: 0;
+    transform: translateY(14px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  .dest-expanded.open .exp-panel > * { opacity: 1; transform: none; }
+  .dest-expanded.open .exp-panel > *:nth-child(1) { transition-delay: 0.40s; }
+  .dest-expanded.open .exp-panel > *:nth-child(2) { transition-delay: 0.46s; }
+  .dest-expanded.open .exp-panel > *:nth-child(3) { transition-delay: 0.52s; }
+  .dest-expanded.open .exp-panel > *:nth-child(4) { transition-delay: 0.58s; }
+
+  .dest-expanded .exp-panel .exp-num { color: var(--ink-60); margin-bottom: 20px; }
+  .dest-expanded .exp-panel .exp-name {
+    color: var(--ink);
+    font-size: clamp(40px, 4.2vw, 68px);
+    line-height: 0.98;
+    margin: 0 0 22px;
+  }
+  .dest-expanded .exp-lead {
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--ink-60);
+    margin: 0 0 36px;
+    max-width: 46ch;
+  }
+  .dest-expanded .exp-items { list-style: none; margin: 0; padding: 0; }
+  .dest-expanded .exp-items li {
+    font-family: var(--display);
+    font-size: 26px;
+    color: var(--ink);
+    padding: 18px 0;
+    border-top: 1px solid var(--rule);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .dest-expanded .exp-items li:last-child { border-bottom: 1px solid var(--rule); }
+  .dest-expanded .exp-items li .it-arrow {
+    font-family: var(--mono);
+    font-size: 14px;
+    color: var(--ink-30);
+  }
+  .dest-expanded .exp-cta {
+    align-self: flex-start;
+    margin-top: 40px;
+    background: var(--ink);
+    color: var(--bg);
+    font-family: var(--sans);
+    font-size: 17px;
+    letter-spacing: 0.02em;
+    padding: 20px 34px;
+    text-decoration: none;
+    opacity: 0;
+    transform: translateY(14px);
+    /* reveal (opacity/transform) is delayed to follow the list; background stays instant for hover */
+    transition: opacity 0.5s ease 0.70s, transform 0.5s ease 0.70s, background 0.18s ease;
+  }
+  .dest-expanded.open .exp-cta { opacity: 1; transform: none; }
+  .dest-expanded .exp-cta:hover { background: #1f3129; }
+
+  /* Slideshow controls on the image side */
+  .dest-expanded .exp-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 52px; height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.35);
+    color: #fff;
+    font-size: 18px;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.3s ease 0.5s, background 0.2s ease;
+  }
+  .dest-expanded.open .exp-arrow { opacity: 1; }
+  .dest-expanded .exp-arrow:hover { background: rgba(255,255,255,0.26); }
+  .dest-expanded .exp-arrow.prev { left: 24px; }
+  .dest-expanded .exp-arrow.next { right: calc(var(--exp-panel-w) + 24px); }
+  .dest-expanded .exp-counter {
+    position: absolute;
+    left: 28px; bottom: 28px;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.24em;
+    color: rgba(255,255,255,0.9);
+    opacity: 0;
+    transition: opacity 0.3s ease 0.55s;
+  }
+  .dest-expanded.open .exp-counter { opacity: 1; }
+
+  /* Close button now sits over the cream panel — keep it ink-on-cream always */
+  .dest-expanded .dest-close {
+    background: rgba(41,65,56,0.06);
+    border-color: var(--ink-30);
+    color: var(--ink);
+  }
+  .dest-expanded .dest-close:hover { background: rgba(41,65,56,0.12); }
+
+  @media (max-width: 860px) {
+    /* Pinned-photo parallax, same logic as the home hero: the photo is
+       fixed full-screen behind, and the cream panel sits in the overlay's
+       scroll flow, riding up OVER the pinned image as you scroll. */
+    .dest-expanded { --exp-panel-w: 100%; overflow-y: auto; -webkit-overflow-scrolling: touch; overscroll-behavior: contain; }
+    /* Photo + scrim pin via sticky INSIDE the overlay's own scroll (position:
+       fixed would hand the touch gesture to the page behind instead). Each
+       spans one viewport but contributes zero flow height (negative bottom
+       margin), so the panel's 62vh offset works out the same as before and
+       the panel rides over the pinned photo in ONE scroll. */
+    .dest-expanded .exp-bg,
+    .dest-expanded .exp-scrim {
+      position: sticky;
+      inset: auto; /* drop the base rule's bottom:0 — a second sticky
+                      constraint fights top:0 in Safari */
+      top: 0;
+      /* frozen pixel height for the same reason as the hero: the photo
+         must never resize when the toolbar collapses. The overlay's
+         measured --exp-vvh keeps the visible area COVERED; any strip
+         below the photo is overlay cream, and in practice the panel
+         (min 46% of the frozen height, starting at 62%) overlaps it. */
+      height: 100vh;
+      height: var(--vh-px, 100svh);
+      margin-bottom: -100vh;
+      margin-bottom: calc(0px - var(--vh-px, 100svh));
+    }
+    .dest-expanded .exp-panel {
+      position: relative;
+      top: auto;
+      width: 100%;
+      height: auto;
+      min-height: 46vh;
+      min-height: calc(var(--vh-px, 100vh) * 0.46);
+      margin-top: 62vh;
+      margin-top: calc(var(--vh-px, 100vh) * 0.62);
+      padding: 36px 28px 48px;
+      /* breathing room for the collapsible browser toolbar: lvh−svh is
+         exactly its height, so the CTA can always scroll clear of it even
+         while it's expanded (resolves to the plain 48px where there is no
+         dynamic toolbar). */
+      padding-bottom: calc(48px + (100lvh - 100svh));
+      justify-content: flex-start;
+      overflow: visible;
+      z-index: 1;
+    }
+    .dest-expanded .exp-panel .exp-name { font-size: 40px; }
+    .dest-expanded .exp-lead { font-size: 15px; margin-bottom: 28px; }
+    .dest-expanded .exp-items li { font-size: 20px; padding: 14px 0; }
+    .dest-expanded .exp-cta { margin-top: 28px; padding: 16px 26px; font-size: 15px; }
+    /* no arrow buttons on small screens — the photo is swipeable instead */
+    .dest-expanded .exp-arrow { display: none; }
+    /* counter and close stay pinned with the photo; close floats above
+       the panel so the view is always dismissable */
+    .dest-expanded .exp-counter { position: fixed; bottom: auto; top: 24px; }
+    .dest-expanded .dest-close {
+      position: fixed;
+      width: 38px; height: 38px;
+      top: 16px; right: 24px;
+      font-size: 14px;
+      background: rgba(255,255,255,0.16);
+      border-color: rgba(255,255,255,0.55);
+      color: #fff;
+      z-index: 3;
+    }
+    .dest-expanded .dest-close:hover { background: rgba(255,255,255,0.28); }
+  }
+  .dest {
+    position: relative;
+    aspect-ratio: 446 / 558;
+    overflow: hidden;
+    cursor: pointer;
+    background: var(--bg-3);
+  }
+  .dest .pic {
+    position: absolute; inset: 0;
+    transition: transform 700ms cubic-bezier(.2,.6,.2,1);
+  }
+  .dest:hover .pic { transform: scale(1.04); }
+  .dest .pic.photo {
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+  .dest .pic.placeholder {
+    background:
+      repeating-linear-gradient(135deg, rgba(41,65,56,0.05) 0 1px, transparent 1px 14px),
+      var(--bg-3);
+  }
+  .dest .ph-label {
+    position: absolute;
+    left: 24px; top: 24px;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.24em;
+    color: var(--ink-60);
+    text-transform: uppercase;
+  }
+  .dest .scrim {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.05) 38%, transparent 62%);
+  }
+  .dest .meta {
+    position: absolute;
+    left: 28px; right: 28px; bottom: 28px;
+    color: #fff;
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 12px;
+  }
+  .dest .meta .name {
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: 39px;
+    line-height: 0.95;
+    letter-spacing: -0.005em;
+  }
+  .dest .meta .kanji {
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: 16px;
+    opacity: 0.85;
+    letter-spacing: 0.1em;
+    margin-top: 6px;
+    display: block;
+  }
+  .dest .meta .arrow { display: none; }
+  .dest .num-tag {
+    position: absolute;
+    right: 24px; top: 22px;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.24em;
+    color: #fff;
+    opacity: 0.9;
+  }
+  .dest.placeholder .num-tag { color: var(--ink-60); }
+
+  /* photo credits — required on all photography */
+  .hero-photo::after,
+  .dest .scrim::after,
+  .dest-expanded:not(.is-placeholder) .exp-scrim::after {
+    content: "© Zenrise";
+    position: absolute;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.65);
+    pointer-events: none;
+    z-index: 2;
+  }
+  .hero-photo::after { right: 24px; top: 22px; color: #fff; }
+  .dest .scrim::after { left: 24px; top: 22px; }
+  .dest-expanded:not(.is-placeholder) .exp-scrim::after {
+    right: calc(var(--exp-panel-w) + 28px);
+    bottom: 28px;
+  }
+  @media (max-width: 860px) {
+    /* no attribution in the full-screen expanded view — too cramped */
+    .dest-expanded:not(.is-placeholder) .exp-scrim::after { display: none; }
+  }
+
+  /* Subtle entrance */
+  .reveal { opacity: 0; transform: translateY(12px); transition: opacity 700ms ease, transform 700ms ease; }
+  .reveal.in { opacity: 1; transform: none; }
+
+  /* ─ Footer ─ */
+  .foot-brand .brk { display: none; }
+  /* footer clone inside the expanded overlay is a mobile-only device */
+  footer.foot-v2 {
+    background: transparent;
+    color: var(--ink);
+    margin-top: 80px;
+    padding: 0 36px;
+  }
+  .foot-v2 .foot-v2-top {
+    padding: 96px 0 72px;
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr 1fr;
+    gap: 64px;
+  }
+  .foot-v2 .foot-brand .mark {
+    /* Latin wordmark — pin to the display face so :lang(ja) doesn't swap it to Mincho */
+    font-family: "optima-nova-lt-pro", "Optima", serif;
+    font-size: 40px;
+    letter-spacing: 0.05em;
+    color: var(--ink);
+    line-height: 1;
+    margin-bottom: 26px;
+    display: block;
+  }
+  .foot-v2 .foot-brand p {
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 1.4;
+    color: var(--ink-60);
+    margin: 0;
+    max-width: 380px;
+    text-wrap: pretty;
+  }
+  .foot-v2 .foot-col h4 {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    color: var(--ink-60);
+    text-transform: uppercase;
+    margin: 0 0 22px;
+    font-weight: 500;
+  }
+  .foot-v2 .foot-col ul {
+    list-style: none;
+    padding: 0; margin: 0;
+    display: flex; flex-direction: column;
+    gap: 14px;
+  }
+  .foot-v2 .foot-col li {
+    font-size: 18px;
+    line-height: 1.45;
+    color: var(--ink);
+  }
+  .foot-v2 .foot-col li a:hover { opacity: 0.6; }
+  .foot-col .soc > span:first-child { position: relative; padding-bottom: 3px; }
+  .foot-col .soc > span:first-child::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 1.5px; background: var(--ink); opacity: 0; transition: opacity 0.25s ease; }
+  .foot-col .soc:hover > span:first-child::after { opacity: 1; }
+  .foot-col .soc .ar { position: relative; right: 0; transition: right 0.3s ease; font-weight: 300; }
+  .foot-col .soc:hover .ar { right: -6px; }
+  .foot-v2 .foot-v2-bottom {
+    border-top: 1px solid var(--ink-12);
+    padding: 28px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    color: var(--ink-60);
+    text-transform: uppercase;
+  }
+  .foot-v2 .foot-v2-bottom .legal { display: flex; gap: 32px; }
+  .foot-v2 .foot-v2-bottom a:hover { color: var(--ink); }
+
+  /* ───────────────────────────────────────────────────────────── */
+  /* Responsive — below 1024px the stage zoom is disabled and     */
+  /* these rules take over layout.                                 */
+  /* ───────────────────────────────────────────────────────────── */
+  @media (max-width: 1023px) {
+    .stage { width: 100% !important; }
+
+    /* Nav — pinned like the hero, so the whole first screen holds still
+       as one unit and the content below scrolls over all of it. Without
+       this the nav is the only moving thing at scroll start, which reads
+       as an abrupt vanish. header.nav (not .nav) so the shared hamburger
+       styles injected later by lang.js (.nav { position: relative }) can't
+       clobber the stickiness at ≤599px. */
+    .nav { height: 64px; padding: 0 20px; }
+    header.nav { position: sticky; top: 0; z-index: 0; background: var(--bg); }
+    .logo { font-size: 22px; }
+    .navlinks { gap: 28px; font-size: 16px; }
+    .lang { font-size: 16px; }
+
+    /* Hero — full-bleed, pinned to the viewport: image flexes to fill,
+       card keeps its natural height so the text is never clipped. The
+       section is sticky (below the pinned nav) so the content below
+       scrolls OVER it. */
+    .hero {
+      padding: 0;
+      position: sticky;
+      top: 64px;
+      z-index: 0;
+    }
+    .hero-grid {
+      display: flex;
+      flex-direction: column;
+      /* frozen pixel height (see --vh-px in head), NOT viewport units:
+         Firefox iOS resizes the webview when its toolbar hides, so even
+         svh/lvh jump mid-scroll — which grew the hero ~77px on first
+         scroll, jarring the layout and racing the document height (the
+         grey band past the footer). Frozen px = first screen never
+         re-lays-out; a hidden toolbar just reveals the content below. */
+      height: calc(100vh - 64px);
+      height: calc(var(--vh-px, 100svh) - 64px);
+    }
+    .hero-photo { width: 100%; height: auto; flex: 1; min-height: 180px; }
+    /* no attribution over the full-bleed mobile hero */
+    .hero-photo::after { display: none; }
+    /* EN caption runs uppercase wide-tracked mono — louder than the JP
+       equivalent at the same size, so EN steps down on small screens */
+    .hero-photo .photo-meta { font-size: 10px; }
+    .hero-photo .photo-meta:lang(ja) { font-size: 13px; }
+    .hero-side { position: static; width: 100%; }
+    .hero-card { width: 100%; max-width: 100%; padding: 32px 20px; }
+    .hero-card .ttl { font-size: 46px; }
+    /* slide number adds little at phone size and crowds the JP headline */
+    .hero-card .num { display: none; }
+    .hero-card .copy { font-size: 16px; max-width: 100%; }
+    .hero-card .more { font-size: 18px; }
+    .hero-card .more .dir-r { display: none; }
+    .hero-card .more .dir-d { display: inline; }
+
+    /* Find / destinations — opaque and above the pinned hero so it
+       slides over it on scroll. Above the footer's z-index:1 too: the
+       expanded overlay lives inside this stacking context, and the real
+       footer must never paint over it. */
+    .find {
+      margin-top: 0;
+      padding: 28px 20px 0;
+      position: relative;
+      z-index: 2;
+      background: var(--bg);
+    }
+    /* the divider reads as clutter right under the full-screen hero */
+    .find > .rule { display: none; }
+    footer.foot-v2 { position: relative; z-index: 1; background: var(--bg); }
+    .find-head { grid-template-columns: 1fr; padding: 0 0 40px; }
+    .find-head h2 { font-size: 36px; white-space: normal; margin-top: 10px; }
+    .find-head .count { display: none; }
+    /* full-bleed grid: pull out of the section's side padding so tiles
+       run edge-to-edge, with gaps only between tiles */
+    .dest-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; margin: 0 -20px; }
+    .dest .meta { left: 18px; right: 18px; bottom: 18px; gap: 8px; }
+    .dest .meta .name { font-size: 24px; }
+    .dest .num-tag { right: 12px; top: 12px; font-size: 10px; letter-spacing: 0.18em; }
+    /* no attribution on the small mobile tiles — too cramped */
+    .dest .scrim::after { display: none; }
+    /* Expanded card becomes a true full-screen modal (not grid-boxed) and
+       fades in — the desktop clip-path morph is grid-relative, so it's
+       overridden here in favour of a simple opacity fade. */
+    .dest-expanded {
+      /* NOT position: fixed — iOS re-clips fixed layers a beat behind the
+         collapsing toolbar, leaving an unpaintable strip where the page
+         shows through. Instead the overlay is ordinary page content:
+         absolute at the locked scroll offset (JS sets top on open, page
+         scroll is exp-lock'd) and a full LARGE viewport tall, so the strip
+         the collapsing toolbar reveals is already-painted overlay. While
+         the toolbar is expanded the overlay's bottom edge simply hangs
+         behind it. */
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: auto;
+      left: 0;
+      /* --exp-vvh is the MEASURED visible height (visualViewport, set and
+         live-updated by openCard) — CSS viewport units are exactly what
+         misbehaves around the collapsing iOS toolbar, so we don't rely on
+         them beyond the no-JS fallback. +2px with a -1px JS top: subpixel
+         scroll offsets make the JS-set top fractional, which can leave a
+         hairline of page peeking out at either edge — overshoot both. */
+      height: calc(100vh + 2px);
+      height: calc(var(--exp-vvh, 100vh) + 2px);
+      z-index: 1000;
+      clip-path: none !important;
+      transition: opacity 0.3s ease !important;
+      opacity: 0;
+    }
+    .dest-expanded.open { opacity: 1; }
+    /* while the full-screen overlay is open it is the ONLY scroller — the
+       page behind must not move under a stray touch. The body is PINNED
+       (position:fixed at the recorded scroll offset, set as an inline top
+       by openCard) rather than relying on overflow:hidden alone: WebKit
+       resets the root scroll position to 0 the moment the root stops
+       being scrollable, which teleported the page to the top behind the
+       overlay. The body must also stay unclipped — the overlay legally
+       extends past the document's end when a tile near the page bottom
+       is opened. */
+    html.exp-lock { overflow: hidden; }
+    html.exp-lock body { position: fixed; left: 0; right: 0; overflow: visible; }
+
+    /* Footer (inline/cream — active variant). Top gap is PADDING, not
+       margin — margins are transparent and would let the pinned hero
+       show through between the tile grid and the footer. */
+    footer.foot-v2 { padding: 40px 20px 0; margin-top: 0; }
+    /* no divider at the top of the footer on mobile */
+    .foot-v2 > .rule { display: none; }
+    .foot-v2 .foot-v2-top { padding: 16px 0 40px; grid-template-columns: 1fr; gap: 32px; }
+    .foot-v2 .foot-brand .mark { font-size: 26px; margin-bottom: 16px; }
+    .foot-v2 .foot-brand p { font-size: 15px; max-width: 100%; }
+    .foot-v2 .foot-brand .brk { display: inline; }
+    .foot-v2 .foot-col h4 { font-size: 10px; margin-bottom: 14px; }
+    .foot-v2 .foot-col ul { gap: 10px; }
+    .foot-v2 .foot-col li { font-size: 15px; }
+    .foot-v2 .foot-v2-bottom { font-size: 10px; letter-spacing: 0.16em; padding: 20px 0; }
+    .foot-v2 .foot-v2-bottom .legal { gap: 20px; }
+  }
+
+  /* Very small screens — hide nav links, tighten further */
+  @media (max-width: 599px) {
+    .navlinks { display: none; }
+    .hero-card .ttl { font-size: 38px; }
+    .dest-grid { gap: 8px; }
+    .dest .meta { left: 14px; right: 14px; bottom: 14px; }
+    .dest .meta .name { font-size: 18px; }
+  }
+</style>
+</head>
+
+<body>
+  <div class="stage" id="stage">
+
+    <!-- ───── Header ───── -->
+    <header class="nav" data-screen-label="01 Home — Header">
+      <a class="logo" href="#">ZENRISE</a>
+      <nav class="navlinks">
+        <a href="index.html" class="active" data-i18n="nav_home">home</a>
+        <a href="about.html" data-i18n="nav_about">about us</a>
+        <a href="news.html" data-i18n="nav_news">news</a>
+        <a href="contact.html" data-i18n="nav_contact">contact</a>
+      </nav>
+      <a class="lang" href="#">english</a>
+    </header>
+
+    <!-- ───── Hero ───── -->
+    <section class="hero" data-screen-label="01 Home — Hero">
+      <div class="hero-grid">
+        <div class="hero-photo">
+          <span class="photo-meta">Meigetsuin, Hydrangea Season</span>
+        </div>
+
+        <div class="hero-side">
+          <article class="hero-card">
+            <p class="num">01</p>
+            <h1 class="ttl" data-i18n-html="home_hero_title">Discover the<br/>hidden Japan.</h1>
+            <p class="copy" data-i18n="home_hero_copy">From iconic highlights to the secret spots the guidebooks leave behind — personalized tours through local eyes, crafted just for you.</p>
+            <a class="more" href="#find"><span data-i18n="home_hero_more_label">Read more</span><span class="dir dir-r">&nbsp;→</span><span class="dir dir-d">&nbsp;↓</span></a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ───── Find your perfect place ───── -->
+    <section class="find" id="find" data-screen-label="01 Home — Destinations">
+      <div class="rule"></div>
+      <div class="find-head">
+        <h2 data-i18n="home_find_title">Find your travel inspiration</h2>
+      </div>
+
+      <div class="dest-grid">
+
+        <a class="dest" href="#">
+          <div class="pic photo" style="background-image: url('assets/shrines/kamakura-tsurugaoka-hachimangu.jpg')"></div>
+          <div class="scrim"></div>
+          <span class="num-tag">01 / 08</span>
+          <div class="meta">
+            <div><div class="name" data-i18n="home_dest_1_name">Shrines & Temples</div></div>
+            <div class="arrow">→</div>
+          </div>
+        </a>
+
+        <a class="dest" href="#">
+          <div class="pic photo" style="background-image: url('assets/cultural/zazen-meditation-hall.jpg')"></div>
+          <div class="scrim"></div>
+          <span class="num-tag">02 / 08</span>
+          <div class="meta">
+            <div><div class="name" data-i18n="home_dest_2_name">Cultural Experiences</div></div>
+            <div class="arrow">→</div>
+          </div>
+        </a>
+
+        <a class="dest" href="#">
+          <div class="pic photo" style="background-image: url('assets/food/ramen.jpg')"></div>
+          <div class="scrim"></div>
+          <span class="num-tag">03 / 08</span>
+          <div class="meta">
+            <div><div class="name" data-i18n="home_dest_3_name">Local Food</div></div>
+            <div class="arrow">→</div>
+          </div>
+        </a>
+
+        <a class="dest" href="#">
+          <div class="pic photo" style="background-image: url('assets/views/mount-fuji-ocean.jpg')"></div>
+          <div class="scrim"></div>
+          <span class="num-tag">04 / 08</span>
+          <div class="meta">
+            <div><div class="name" data-i18n="home_dest_4_name">Hidden Views</div></div>
+            <div class="arrow">→</div>
+          </div>
+        </a>
+
+        <a class="dest" href="#">
+          <div class="pic photo" style="background-image: url('assets/everyday/noren-shopfront.jpg')"></div>
+          <div class="scrim"></div>
+          <span class="num-tag">05 / 08</span>
+          <div class="meta">
+            <div><div class="name" data-i18n="home_dest_5_name">Everyday Local Life</div></div>
+            <div class="arrow">→</div>
+          </div>
+        </a>
+
+        <a class="dest" href="#">
+          <div class="pic photo" style="background-image: url('assets/japan/sutra-copying-sheet.jpg')"></div>
+          <div class="scrim"></div>
+          <span class="num-tag">06 / 08</span>
+          <div class="meta">
+            <div><div class="name" data-i18n="home_dest_6_name">Get to Know Japan</div></div>
+            <div class="arrow">→</div>
+          </div>
+        </a>
+
+        <a class="dest" href="#">
+          <div class="pic photo" style="background-image: url('assets/support/railway-crossing-hills.jpg')"></div>
+          <div class="scrim"></div>
+          <span class="num-tag">07 / 08</span>
+          <div class="meta">
+            <div><div class="name" data-i18n="home_dest_7_name">Travel Support</div></div>
+            <div class="arrow">→</div>
+          </div>
+        </a>
+
+        <a class="dest" href="#">
+          <div class="pic photo" style="background-image: url('assets/concierge/coastal-town-view.jpg')"></div>
+          <div class="scrim"></div>
+          <span class="num-tag">08 / 08</span>
+          <div class="meta">
+            <div><div class="name" data-i18n="home_dest_8_name">Travel Concierge</div></div>
+            <div class="arrow">→</div>
+          </div>
+        </a>
+
+      </div>
+    </section>
+
+    <!-- ───── Footer ───── -->
+    <footer class="foot-v2" data-screen-label="01 Home — Footer">
+      <div class="rule"></div>
+      <div class="foot-v2-top">
+        <div class="foot-brand">
+          <span class="mark">ZENRISE</span>
+          <p data-i18n-html="footer_tagline">Quiet, locally-led journeys through the <br class="brk"/>lesser-known corners of Japan.</p>
+        </div>
+
+        <div class="foot-col">
+          <h4 data-i18n="footer_visit">Office</h4>
+          <ul>
+            <li><span data-i18n-html="footer_address">me-labo4, Sophiale Minamifujisawa #101<br/>10-11 Minamifujisawa, Fujisawa<br/>Kanagawa, 251-0055, Japan</span></li>
+          </ul>
+        </div>
+
+        <div class="foot-col">
+          <h4 data-i18n="footer_contact">Contact</h4>
+          <ul>
+            <li><a href="mailto:hello@zenrise.jp">hello@zenrise.jp</a></li>
+          </ul>
+        </div>
+
+        <div class="foot-col">
+          <h4 data-i18n="footer_follow">Follow</h4>
+          <ul>
+            <li><a class="soc" href="https://www.instagram.com/zenrise_tours/"><span data-i18n="footer_instagram">Instagram</span><span class="ar">&nbsp;→</span></a></li>
+            <li><a class="soc" href="https://www.youtube.com/@zenrisejapan"><span data-i18n="footer_youtube">YouTube</span><span class="ar">&nbsp;→</span></a></li>
+            <li><a class="soc" href="https://www.tiktok.com/@zenrise_tours"><span data-i18n="footer_tiktok">TikTok</span><span class="ar">&nbsp;→</span></a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="foot-v2-bottom">
+        <span data-i18n="footer_copyright">© 2026 Intercommunicate K. K.</span>
+        <div class="legal">
+          <a href="terms.html" data-i18n="footer_terms">Terms</a>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <script src="image-slot.js"></script>
+
+<script>
+  // Scale the 1920px stage down to fit the viewer's window width.
+  (function () {
+    var stage = document.getElementById('stage');
+    function fit() {
+      var vw = document.documentElement.clientWidth;
+      if (vw < 1024) {
+        stage.style.zoom = '';
+        stage.style.width = '';
+        stage.style.margin = '';
+        stage.classList.add('fitted');
+        return;
+      }
+      var vh = document.documentElement.clientHeight;
+      var HERO_DESIGN_HEIGHT = 1100;
+      var scale = Math.min(1, vw / 1920, vh / HERO_DESIGN_HEIGHT);
+      // 'zoom' (unlike transform:scale) scales BOTH layout and visual, so
+      // the document's scroll area tracks the visible content exactly.
+      stage.style.zoom = scale;
+      // With zoom shrinking layout width, margin auto centers horizontally.
+      stage.style.margin = '0 auto';
+      // Clear anything left over from earlier transform-based versions.
+      stage.style.transform = '';
+      stage.style.width = '1920px';
+      stage.style.height = '';
+      document.body.style.height = '';
+      stage.classList.add('fitted');
+    }
+    fit();
+    window.__fitStage = fit;
+    window.addEventListener('resize', fit);
+    // re-fit after fonts / images settle
+    window.addEventListener('load', fit);
+    setTimeout(fit, 200);
+    setTimeout(fit, 600);
+  })();
+
+  // Hero slideshow.
+  (function () {
+    // Hero slides — add/remove entries here and the backgrounds, dots and number
+    // all follow. Captions are i18n keys (defined in lang.js).
+    var slides = [
+      { img: 'assets/shrines/kamakura-meigetsuin-hydrangea-steps.jpg', metaKey: 'home_hero_slide_1_meta' },
+      { img: 'assets/views/coastal-hillside-view.jpg',                 metaKey: 'home_hero_slide_2_meta' },
+      { img: 'assets/views/train-tracks-dusk.jpg',                     metaKey: 'home_hero_slide_3_meta' },
+      { img: 'assets/shrines/kamakura-tsurugaoka-hachimangu.jpg',      metaKey: 'home_hero_slide_4_meta' },
+      { img: 'assets/shrines/kamakura-daibutsu-great-buddha.jpg',      metaKey: 'home_hero_slide_5_meta' }
+    ];
+    var photo = document.querySelector('.hero-photo');
+    if (!photo || !slides.length) return;
+    var metaEl   = photo.querySelector('.photo-meta');
+    var numEl    = document.querySelector('.hero-card .num');
+    var current  = 0;
+    var bgEls = [];
+
+    function t(key) {
+      return (window.ZenriseI18n && ZenriseI18n.t) ? ZenriseI18n.t(key) : key;
+    }
+    function pad(n) { return (n < 10 ? '0' : '') + n; }
+
+    // Build a background layer for each slide.
+    slides.forEach(function (s) {
+      var bg = document.createElement('div');
+      bg.className = 'slide-bg';
+      bg.style.backgroundImage = "url('" + s.img + "')";
+      photo.insertBefore(bg, metaEl);
+      bgEls.push(bg);
+    });
+
+    // Don't write a raw key if the dictionary isn't loaded yet — keep the
+    // HTML fallback caption instead of flashing "home_hero_slide_1_meta".
+    function renderMeta() {
+      var m = t(slides[current].metaKey);
+      if (m !== slides[current].metaKey) metaEl.textContent = m;
+    }
+
+    function goTo(n) {
+      bgEls[current].classList.remove('active');
+      current = (n + slides.length) % slides.length;
+      bgEls[current].classList.add('active');
+      numEl.textContent = pad(current + 1);
+      renderMeta();
+    }
+
+    goTo(0);
+
+    // lang.js loads after this inline script, so hook the caption up once the
+    // dictionary exists: render the current slide and follow language switches.
+    function hookI18n() {
+      if (!(window.ZenriseI18n && ZenriseI18n.onChange)) return;
+      renderMeta();
+      ZenriseI18n.onChange(renderMeta);
+    }
+    if (window.ZenriseI18n) hookI18n();
+    else document.addEventListener('DOMContentLoaded', hookI18n);
+
+    var timer = setInterval(function () { goTo(current + 1); }, 5000);
+  })();
+
+  // Hero intro animation — fires once fonts are active (wf-loading removed).
+  (function () {
+    var stage = document.getElementById('stage');
+    function startHero() {
+      requestAnimationFrame(function () { stage.classList.add('hero-in'); });
+    }
+    if (!document.documentElement.classList.contains('wf-loading')) {
+      startHero();
+    } else {
+      var obs = new MutationObserver(function () {
+        if (!document.documentElement.classList.contains('wf-loading')) {
+          obs.disconnect();
+          startHero();
+        }
+      });
+      obs.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+    }
+  })();
+
+  // gentle reveal on scroll
+  (function () {
+    var els = document.querySelectorAll('.dest');
+    els.forEach(function (el) { el.classList.add('reveal'); });
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+        });
+      }, { threshold: 0.08 });
+      els.forEach(function (el) { io.observe(el); });
+    } else {
+      els.forEach(function (el) { el.classList.add('in'); });
+    }
+  })();
+
+  // Destination card expand + per-category slideshow.
+  (function () {
+    var grid = document.querySelector('.dest-grid');
+    if (!grid) return;
+    var expanded = null;
+
+    // Per-category image sets (PLACEHOLDER — swap with client photo sets).
+    // Categories 5 & 8 are intentionally photo-less; they stay as placeholders.
+    var DEST = {
+      1: { images: [
+        'assets/shrines/kamakura-tsurugaoka-hachimangu.jpg',
+        'assets/shrines/kamakura-daibutsu-great-buddha.jpg',
+        'assets/shrines/kamakura-meigetsuin-hydrangea-steps.jpg',
+        'assets/shrines/kamakura-meigetsuin-round-window.jpg',
+        'assets/shrines/kamakura-toshoji-bridge.jpg',
+        'assets/shrines/cherry-blossom-temple-approach.jpg',
+        'assets/shrines/temple-moss-garden.jpg',
+        'assets/shrines/hidden-shrine-komainu.jpg'
+      ] },
+      2: { images: [
+        'assets/cultural/zazen-meditation-hall.jpg',
+        'assets/cultural/matcha-tea-bowl.jpg',
+        'assets/cultural/sutra-copying-hand.jpg',
+        'assets/cultural/temple-garden-suikinkutsu.jpg'
+      ] },
+      3: { images: [
+        'assets/food/ramen.jpg',
+        'assets/food/zaru-soba.jpg',
+        'assets/food/tempura-soba-set.jpg',
+        'assets/food/teishoku-set.jpg',
+        'assets/food/curry-plate.jpg',
+        'assets/food/izakaya-table.jpg',
+        'assets/food/cafe-lunch.jpg',
+        'assets/food/parfait-dessert.jpg'
+      ] },
+      4: { images: [
+        'assets/views/mount-fuji-ocean.jpg',
+        'assets/views/mount-fuji-sunset.jpg',
+        'assets/views/coastal-hillside-view.jpg',
+        'assets/views/ocean-headland-view.jpg',
+        'assets/views/coastal-road-ocean.jpg',
+        'assets/views/town-bay-view.jpg',
+        'assets/views/train-tracks-dusk.jpg',
+        'assets/views/monorail-street.jpg'
+      ] },
+      5: { images: [
+        'assets/everyday/noren-shopfront.jpg',
+        'assets/everyday/retro-street-corner.jpg',
+        'assets/everyday/seaside-alley.jpg',
+        'assets/everyday/tatami-room-garden-view.jpg'
+      ] },
+      6: { images: ['assets/japan/sutra-copying-sheet.jpg'] },
+      7: { images: ['assets/support/railway-crossing-hills.jpg'] },
+      8: { images: ['assets/concierge/coastal-town-view.jpg'] }
+    };
+
+    function t(key) {
+      return (window.ZenriseI18n && ZenriseI18n.t) ? ZenriseI18n.t(key) : key;
+    }
+    function pad(n) { return (n < 10 ? '0' : '') + n; }
+    function catOf(card) { return parseInt(card.querySelector('.num-tag').textContent, 10); }
+
+    // On each page load, give every photo category a random starting image.
+    Array.prototype.forEach.call(grid.querySelectorAll('.dest'), function (card) {
+      var cfg = DEST[catOf(card)];
+      if (!cfg || !cfg.images.length) return;
+      var idx = Math.floor(Math.random() * cfg.images.length);
+      card._imgIdx = idx;
+      var pic = card.querySelector('.pic');
+      if (pic) {
+        pic.classList.add('photo');
+        pic.classList.remove('placeholder');
+        pic.style.backgroundImage = "url('" + cfg.images[idx] + "')";
+      }
+    });
+
+    function clip(cardRect, gridRect) {
+      var t = (cardRect.top    - gridRect.top)    / gridRect.height * 100;
+      var r = (gridRect.right  - cardRect.right)  / gridRect.width  * 100;
+      var b = (gridRect.bottom - cardRect.bottom) / gridRect.height * 100;
+      var l = (cardRect.left   - gridRect.left)   / gridRect.width  * 100;
+      return 'inset(' + t.toFixed(3) + '% ' + r.toFixed(3) + '% ' + b.toFixed(3) + '% ' + l.toFixed(3) + '%)';
+    }
+
+    // Fill the cream panel's text from the dictionary (reused on language change).
+    function render(overlay) {
+      var cat = overlay._cat;
+      overlay.querySelector('.exp-name').textContent = t('home_dest_' + cat + '_name');
+      var leadEl = overlay.querySelector('.exp-lead');
+      if (leadEl) {
+        var leadKey = 'home_dest_' + cat + '_lead';
+        var leadVal = t(leadKey);
+        leadEl.textContent = leadVal === leadKey ? '' : leadVal;
+        leadEl.style.display = leadVal === leadKey ? 'none' : '';
+      }
+      overlay.querySelector('.exp-cta').innerHTML = t('home_dest_cta');
+      var ul = overlay.querySelector('.exp-items');
+      ul.innerHTML = '';
+      for (var i = 1; i <= 8; i++) {
+        var key = 'home_dest_' + cat + '_item_' + i;
+        var val = t(key);
+        if (val === key) break;            // missing key → end of list
+        var li = document.createElement('li');
+        var label = document.createElement('span');
+        label.textContent = val;
+        var arr = document.createElement('span');
+        arr.className = 'it-arrow';
+        arr.textContent = '→';
+        li.appendChild(label);
+        li.appendChild(arr);
+        ul.appendChild(li);
+      }
+    }
+
+    function showSlide(overlay, animate) {
+      var imgs = overlay._slides;
+      if (!imgs || !imgs.length) return;
+      var bg = overlay.querySelector('.exp-bg');
+      var counter = overlay.querySelector('.exp-counter');
+      if (counter) counter.textContent = pad(overlay._idx + 1) + ' / ' + pad(imgs.length);
+      var url = "url('" + imgs[overlay._idx] + "')";
+      if (animate) {
+        bg.style.opacity = '0';
+        setTimeout(function () { bg.style.backgroundImage = url; bg.style.opacity = '1'; }, 180);
+      } else {
+        bg.style.backgroundImage = url;
+      }
+    }
+
+    function step(overlay, dir) {
+      var n = overlay._slides.length;
+      if (n < 2) return;
+      overlay._idx = (overlay._idx + dir + n) % n;
+      showSlide(overlay, true);
+    }
+
+    function openCard(card) {
+      if (expanded) return;
+      var gridRect = grid.getBoundingClientRect();
+      var cardRect = card.getBoundingClientRect();
+      var cat = catOf(card);
+      var images = (DEST[cat] && DEST[cat].images) || [];
+      var hasImages = images.length > 0;
+      var num = card.querySelector('.num-tag').textContent;
+      var multi = images.length > 1;
+
+      var overlay = document.createElement('div');
+      overlay.className = 'dest-expanded' + (hasImages ? '' : ' is-placeholder');
+      overlay.innerHTML =
+        '<div class="exp-bg"></div>' +
+        '<div class="exp-scrim"></div>' +
+        (multi
+          ? '<button class="exp-arrow prev" aria-label="Previous image">&#8592;</button>' +
+            '<button class="exp-arrow next" aria-label="Next image">&#8594;</button>' +
+            '<div class="exp-counter"></div>'
+          : '') +
+        '<div class="exp-panel">' +
+          '<div class="exp-num">' + num + '</div>' +
+          '<div class="exp-name"></div>' +
+          '<p class="exp-lead"></p>' +
+          '<ul class="exp-items"></ul>' +
+          '<a class="exp-cta" href="contact.html#booking"></a>' +
+        '</div>' +
+        '<button class="dest-close" aria-label="Close">&#x2715;</button>';
+
+      overlay._origCard = card;
+      overlay._cat = cat;
+      overlay._slides = images;
+      overlay._idx = card._imgIdx || 0;
+      render(overlay);
+      if (hasImages) showSlide(overlay, false);
+
+      overlay.style.clipPath = clip(cardRect, gridRect);
+      // Mobile overlay is absolute page content, not fixed (see the ≤1023
+      // CSS) — align its top with the viewport at the locked scroll offset.
+      if (window.matchMedia('(max-width: 1023px)').matches) {
+        overlay.style.top = (-gridRect.top - 1) + 'px';
+        // pin the page at its current offset (see html.exp-lock body CSS)
+        overlay._lockY = window.scrollY;
+        document.body.style.top = -overlay._lockY + 'px';
+        // Measure the real visible height and keep it current while the
+        // toolbar collapses/expands — the overlay and pinned photo size
+        // from --exp-vvh instead of CSS viewport units.
+        var vv = window.visualViewport;
+        var size = function () {
+          var h = vv ? vv.height : window.innerHeight;
+          overlay.style.setProperty('--exp-vvh', h + 'px');
+        };
+        size();
+        if (vv) {
+          vv.addEventListener('resize', size);
+          overlay._unsize = function () { vv.removeEventListener('resize', size); };
+        }
+      }
+      grid.appendChild(overlay);
+      expanded = overlay;
+      document.documentElement.classList.add('exp-lock');
+
+      // Force the browser to commit the initial clip-path before animating.
+      overlay.getBoundingClientRect();
+      overlay.style.transition = 'clip-path 0.55s cubic-bezier(0.4, 0, 0.2, 1)';
+      overlay.style.clipPath = 'inset(0%)';
+      setTimeout(function () { overlay.classList.add('open'); }, 10);
+
+      var prev = overlay.querySelector('.exp-arrow.prev');
+      var next = overlay.querySelector('.exp-arrow.next');
+      if (prev) prev.addEventListener('click', function (e) { e.stopPropagation(); step(overlay, -1); });
+      if (next) next.addEventListener('click', function (e) { e.stopPropagation(); step(overlay, 1); });
+
+      // Touch swipe on the photo cycles slides (the arrows are hidden on
+      // small screens). Horizontal-dominant moves over 40px only, so vertical
+      // scrolling and simple taps (tap = close) are unaffected.
+      var bgEl = overlay.querySelector('.exp-bg');
+      var tX = null, tY = null;
+      bgEl.addEventListener('touchstart', function (e) {
+        if (e.touches.length !== 1) return;
+        tX = e.touches[0].clientX; tY = e.touches[0].clientY;
+      }, { passive: true });
+      bgEl.addEventListener('touchend', function (e) {
+        if (tX === null) return;
+        var dx = e.changedTouches[0].clientX - tX;
+        var dy = e.changedTouches[0].clientY - tY;
+        tX = tY = null;
+        if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) step(overlay, dx < 0 ? 1 : -1);
+      }, { passive: true });
+    }
+
+    function closeCard() {
+      if (!expanded) return;
+      var overlay = expanded;
+      expanded = null;
+      document.documentElement.classList.remove('exp-lock');
+      if (overlay._lockY !== undefined) {
+        document.body.style.top = '';
+        window.scrollTo({ top: overlay._lockY, behavior: 'instant' });
+      }
+      if (overlay._unsize) overlay._unsize();
+      overlay.classList.remove('open');
+      // Fade the cream panel away so the full-bleed photo is revealed before the
+      // clip-path shrinks back — otherwise right-column cards close over the panel.
+      overlay.classList.add('closing');
+
+      requestAnimationFrame(function () {
+        var gridRect = grid.getBoundingClientRect();
+        var cardRect = overlay._origCard.getBoundingClientRect();
+        overlay.style.transition = 'clip-path 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
+        overlay.style.clipPath = clip(cardRect, gridRect);
+        setTimeout(function () {
+          if (overlay.parentNode) overlay.parentNode.removeChild(overlay);
+        }, 550);
+      });
+    }
+
+    grid.addEventListener('click', function (e) {
+      if (expanded) {
+        if (e.target.closest('.exp-cta')) return;      // let the CTA navigate
+        e.preventDefault();
+        if (e.target.closest('.exp-arrow')) return;    // cycling, not closing
+        if (e.target.closest('.exp-panel')) return;    // reading the offerings
+        closeCard();                                   // × button or image area
+        return;
+      }
+      e.preventDefault();
+      var card = e.target.closest('.dest');
+      if (card) openCard(card);
+    });
+
+    // Keyboard: Esc closes, ←/→ cycle the slideshow while open.
+    document.addEventListener('keydown', function (e) {
+      if (!expanded) return;
+      if (e.key === 'Escape') closeCard();
+      else if (e.key === 'ArrowLeft') step(expanded, -1);
+      else if (e.key === 'ArrowRight') step(expanded, 1);
+    });
+
+    // Re-render the open panel if the visitor switches language.
+    document.addEventListener('DOMContentLoaded', function () {
+      if (window.ZenriseI18n && ZenriseI18n.onChange) {
+        ZenriseI18n.onChange(function () { if (expanded) render(expanded); });
+      }
+    });
+  })();
+</script>
+<script src="lang.js"></script>
+</body>
+</html>

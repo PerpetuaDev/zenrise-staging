@@ -1,0 +1,1809 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="theme-color" content="#F7F4EA" />
+
+<meta name="description" content="Plan your trip: tell us where you would like to go, your dates and your group, and we will reply within two working days with itinerary sketches that fit." />
+<link rel="canonical" href="https://zenrise.jp/contact.html" />
+<meta property="og:site_name" content="Zenrise" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Contact — Zenrise" />
+<meta property="og:description" content="Plan your trip: tell us where you would like to go, your dates and your group, and we will reply within two working days with itinerary sketches that fit." />
+<meta property="og:url" content="https://zenrise.jp/contact.html" />
+<meta property="og:image" content="https://zenrise.jp/assets/shrines/temple-gate-pine.jpg" />
+<meta name="twitter:card" content="summary_large_image" />
+
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png" />
+<link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png" />
+<link rel="apple-touch-icon" href="apple-touch-icon.png" />
+<title data-i18n-title="contact_title">Contact — Zenrise</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+<script>
+  (function(d) {
+    var config = {
+      kitId: 'srn7uwt',
+      scriptTimeout: 3000,
+      async: true
+    },
+    h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
+  })(document);
+</script>
+
+<style>
+  :root {
+    --bg:      #F7F4EA;
+    --bg-2:    #EDE9E5;
+    --bg-3:    #E4DFD5;
+    --ink:     #294138;
+    --ink-80:  rgba(41,65,56,0.82);
+    --ink-60:  rgba(41,65,56,0.62);
+    --ink-40:  rgba(41,65,56,0.40);
+    --ink-30:  rgba(41,65,56,0.28);
+    --ink-12:  rgba(41,65,56,0.14);
+    --rule:    rgba(0,0,0,0.10);
+
+    --display: "optima-nova-lt-pro", "Optima", serif;
+    --sans:    "gill-sans-nova", "Gill Sans", "Gill Sans MT", sans-serif;
+    --mono:    "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  }
+  * { box-sizing: border-box; }
+  html { overflow-x: hidden; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    /* Never synthesize bold/oblique — prevents faux-bold flash while the
+       async Typekit JP fonts load (esp. before :lang(ja) takes effect). */
+    font-synthesis: none;
+  }
+  :lang(ja) {
+    --display: "toppan-bunkyu-mincho-pr6n", "Hiragino Mincho ProN", serif;
+    --sans:    "yu-gothic-pr6n", "Yu Gothic UI", "Hiragino Kaku Gothic ProN", sans-serif;
+  }
+  .stage { width: 1920px; transform-origin: top left; visibility: hidden; }
+  .stage.fitted { visibility: visible; }
+  html.wf-loading .stage { visibility: hidden; }
+  a { color: inherit; text-decoration: none; }
+  button { font-family: inherit; cursor: pointer; }
+
+  /* ───── Nav (shared) ───── */
+  .nav {
+    height: 96px;
+    padding: 0 36px;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+  }
+  .logo { font-family: "optima-nova-lt-pro", "Optima", serif; font-size: 32px; letter-spacing: 0.05em; line-height: 1; }
+  .navlinks { display: flex; gap: 78px; font-size: 22px; }
+  :lang(ja) .navlinks { font-size: 18px; }
+  .navlinks a { position: relative; padding: 6px 0; white-space: nowrap; }
+  .navlinks a.active::after {
+    content: ""; position: absolute; left: 0; right: 0; bottom: 0;
+    height: 1px; background: var(--ink);
+  }
+  .navlinks a:hover { opacity: 0.7; }
+  .lang {
+    justify-self: end; font-size: 22px;
+    display: inline-flex; align-items: center; gap: 6px;
+    white-space: nowrap;
+  }
+  .lang::after { content: "↓"; }
+  .rule { height: 1px; background: var(--rule); width: 100%; }
+
+  /* ───── Contact hero ───── */
+  .hero-v2 {
+    padding: 60px 36px 80px;
+  }
+  .hero-v2 .body {
+    display: grid;
+    grid-template-columns: 560px 1fr;
+    column-gap: 96px;
+    align-items: stretch;
+  }
+  .hero-v2 .right {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-self: stretch;
+  }
+  .hero-v2 .top {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.28em;
+    color: var(--ink-60);
+    text-transform: uppercase;
+    margin-bottom: 0;
+  }
+  .hero-v2 .photo {
+    width: 560px;
+    height: 646px;
+    background: url("assets/views/mount-fuji-ocean.jpg") center 40% / cover no-repeat;
+    position: relative;
+  }
+  /* photo credit — hero only; the booking-flow region thumbnails are too
+     small to carry an attribution */
+  .hero-v2 .photo::after {
+    content: "© Zenrise";
+    position: absolute;
+    right: 20px;
+    bottom: 18px;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.65);
+    pointer-events: none;
+    z-index: 2;
+  }
+  .hero-v2 .photo .credit {
+    position: absolute;
+    left: 20px; bottom: 18px;
+    color: #fff;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    opacity: 0.95;
+  }
+  .hero-v2 .lh {
+    display: flex;
+    flex-direction: column;
+  }
+  .hero-v2 .lh .row {
+    display: flex;
+    align-items: flex-start;
+    gap: 80px;
+    padding: 30px 0;
+    border-top: 1px solid var(--ink-12);
+  }
+  .hero-v2 .lh .row:last-child {
+    border-bottom: 1px solid var(--ink-12);
+  }
+  .hero-v2 .lh .lbl {
+    width: 180px;
+    flex-shrink: 0;
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.28em;
+    color: var(--ink-60);
+    text-transform: uppercase;
+    padding-top: 12px;
+  }
+  .hero-v2 .lh .v {
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: 48px;
+    line-height: 1.2;
+    color: var(--ink);
+    letter-spacing: -0.005em;
+    text-wrap: pretty;
+    margin: 0;
+  }
+  .hero-v2 .lh a.v { display: inline-block; }
+  .hero-v2 .lh a.v:hover { opacity: 0.65; }
+
+  /* ───── Booking-flow intro ───── */
+  .booking-intro {
+    padding: 96px 36px 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 96px;
+    align-items: end;
+  }
+  .booking-intro .eyebrow {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.28em;
+    color: var(--ink-60);
+    text-transform: uppercase;
+    margin-bottom: 28px;
+    display: block;
+  }
+  .booking-intro h2 {
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: 96px;
+    line-height: 0.96;
+    margin: 0;
+    letter-spacing: -0.01em;
+  }
+  .booking-intro p {
+    font-family: var(--display);
+    font-size: 24px;
+    line-height: 1.45;
+    color: var(--ink-60);
+    margin: 0;
+    max-width: 600px;
+    text-wrap: pretty;
+  }
+
+  /* ───── Booking layout ───── */
+  .booking {
+    padding: 80px 36px 120px;
+    display: grid;
+    grid-template-columns: 380px 1fr;
+    column-gap: 96px;
+    align-items: start;
+  }
+
+  /* progress sidebar */
+  .progress {
+    position: sticky;
+    top: 40px;
+  }
+  .progress .ttl {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.28em;
+    color: var(--ink-60);
+    text-transform: uppercase;
+    margin-bottom: 28px;
+    display: block;
+  }
+  .progress ol {
+    list-style: none;
+    padding: 0; margin: 0 0 56px;
+    display: flex; flex-direction: column;
+  }
+  .progress li {
+    display: grid;
+    grid-template-columns: 56px 1fr;
+    align-items: center;
+    padding: 14px 0;
+    border-top: 1px solid var(--ink-12);
+    cursor: pointer;
+    transition: opacity 200ms ease;
+  }
+  .progress li:last-child { border-bottom: 1px solid var(--ink-12); }
+  .progress li .n {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.22em;
+    color: var(--ink-40);
+  }
+  .progress li .lbl {
+    font-family: var(--display);
+    font-size: 22px;
+    color: var(--ink-40);
+    letter-spacing: -0.005em;
+  }
+  .progress li.done .n,
+  .progress li.done .lbl { color: var(--ink-60); }
+  .progress li.done .n::after { content: "  ✓"; }
+  .progress li.cur .n,
+  .progress li.cur .lbl { color: var(--ink); }
+  .progress li.cur { position: relative; }
+  .progress li.cur::before {
+    content: "";
+    position: absolute;
+    left: -36px; top: 50%;
+    width: 18px; height: 1px;
+    background: var(--ink);
+  }
+  .progress li:hover .lbl:not(:disabled) { opacity: 0.7; }
+
+  /* talk to us card */
+  .quick {
+    background: var(--bg-2);
+    padding: 32px 32px 36px;
+    margin-top: 8px;
+  }
+  .quick h4 {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.28em;
+    color: var(--ink-60);
+    text-transform: uppercase;
+    margin: 0 0 18px;
+    font-weight: 500;
+  }
+  .quick p {
+    font-family: var(--display);
+    font-size: 20px;
+    line-height: 1.45;
+    color: var(--ink);
+    margin: 0 0 22px;
+    text-wrap: pretty;
+  }
+  .quick a.tel, .quick a.eml {
+    display: block;
+    font-family: var(--display);
+    font-size: 22px;
+    color: var(--ink);
+    padding: 6px 0;
+    border-bottom: 1px solid var(--ink-12);
+  }
+  .quick a.tel:last-child, .quick a.eml:last-child { border-bottom: none; }
+  .quick a:hover { opacity: 0.65; }
+  .quick .sub {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    color: var(--ink-60);
+    text-transform: uppercase;
+    margin-right: 12px;
+  }
+
+  /* form panel */
+  .panel { min-height: 720px; position: relative; }
+  .step {
+    display: none;
+    animation: fadein 360ms cubic-bezier(.2,.6,.2,1);
+  }
+  .step.cur { display: block; }
+  @keyframes fadein {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: none; }
+  }
+
+  .step .meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 28px;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.26em;
+    color: var(--ink-60);
+    text-transform: uppercase;
+  }
+  .step h2 {
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: 72px;
+    line-height: 0.98;
+    margin: 0 0 24px;
+    letter-spacing: -0.005em;
+    max-width: 980px;
+  }
+  .step .lede {
+    font-family: var(--display);
+    font-size: 24px;
+    line-height: 1.45;
+    color: var(--ink-60);
+    margin: 0 0 56px;
+    max-width: 720px;
+    text-wrap: pretty;
+  }
+
+  /* card grids */
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; }
+  .grid-4 { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 20px; }
+
+  /* selection card (used for radios + multi-select) */
+  .card {
+    position: relative;
+    background: var(--bg-2);
+    padding: 32px 28px 28px;
+    cursor: pointer;
+    transition: background 180ms ease, transform 180ms ease;
+    user-select: none;
+    overflow: hidden;
+  }
+  .card:hover { background: var(--bg-3); }
+  .card.on {
+    background: var(--ink);
+    color: var(--bg);
+  }
+  .card .tick {
+    position: absolute;
+    right: 18px; top: 18px;
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    border: 1px solid var(--ink-30);
+    display: grid; place-items: center;
+    font-size: 13px;
+    transition: all 180ms ease;
+  }
+  .card.on .tick {
+    background: var(--bg);
+    border-color: var(--bg);
+    color: var(--ink);
+  }
+  .card.on .tick::after { content: "✓"; }
+  .card .num {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.24em;
+    color: var(--ink-60);
+    text-transform: uppercase;
+    margin-bottom: 18px;
+    display: block;
+  }
+  .card.on .num { color: rgba(247,244,234,0.55); }
+  .card h3 {
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: 38px;
+    line-height: 1;
+    margin: 0 0 12px;
+    letter-spacing: -0.005em;
+  }
+  .card p {
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--ink-60);
+    margin: 0;
+    max-width: 360px;
+    text-wrap: pretty;
+  }
+  .card.on p { color: rgba(247,244,234,0.72); }
+  .card.region {
+    padding: 0;
+    min-height: 240px;
+  }
+  .card.region .pic {
+    position: relative;
+    height: 140px;
+    background:
+      repeating-linear-gradient(135deg, rgba(41,65,56,0.06) 0 1px, transparent 1px 14px),
+      var(--bg-3);
+  }
+  .card.region.kamakura .pic {
+    background: url("assets/shrines/kamakura-tsurugaoka-hachimangu.jpg") center / cover no-repeat;
+  }
+  .card.region.enoshima .pic {
+    background: url("assets/views/coastal-road-ocean.jpg") center / cover no-repeat;
+  }
+  .card.region.yokohama .pic {
+    background: url("assets/everyday/retro-street-corner.jpg") center / cover no-repeat;
+  }
+  .card.region.other .pic {
+    background: url("assets/views/mount-fuji-ocean.jpg") center / cover no-repeat;
+  }
+  .card.region .body {
+    padding: 22px 24px 24px;
+  }
+  .card.region.on .body { background: var(--ink); }
+  .card.region h3 { font-size: 30px; margin: 0 0 6px; }
+  .card.region .sub {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.24em;
+    color: var(--ink-60);
+    text-transform: uppercase;
+  }
+  .card.region.on .sub { color: rgba(247,244,234,0.55); }
+
+  /* Format cards (wider) */
+  .card.format { padding: 36px 36px 36px; min-height: 240px; }
+  .card.format h3 { font-size: 52px; }
+  .card.format .price {
+    margin-top: 18px;
+    display: flex;
+    gap: 24px;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    color: var(--ink-60);
+    text-transform: uppercase;
+  }
+  .card.format.on .price { color: rgba(247,244,234,0.65); }
+
+  /* base-price + additional-fees notes under the format cards.
+     A <details> so mobile can collapse them behind a "Terms" row;
+     ships open, and the summary only surfaces at ≤1023px. */
+  .price-notes {
+    margin-top: 22px;
+    max-width: 720px;
+  }
+  .price-notes summary { display: none; }
+  .price-notes p {
+    margin: 0 0 8px;
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--ink-60);
+  }
+
+  /* steppers + inputs */
+  .field {
+    margin: 0 0 36px;
+  }
+  .field .lbl {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.24em;
+    color: var(--ink-60);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    display: block;
+  }
+  .field .hint {
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--ink-60);
+    margin-top: 8px;
+  }
+  input[type="text"], input[type="email"], input[type="date"], input[type="number"], textarea, select {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid var(--ink-30);
+    padding: 10px 0 14px;
+    font-family: var(--display);
+    font-size: 28px;
+    color: var(--ink);
+    outline: none;
+    transition: border-color 180ms ease;
+    font-weight: 400;
+  }
+  input::placeholder, textarea::placeholder { color: var(--ink-40); }
+  input:focus, textarea:focus, select:focus { border-bottom-color: var(--ink); }
+  /* overflow hidden: JS auto-grows it, so it should never scroll inside */
+  textarea { resize: vertical; min-height: 120px; font-size: 22px; line-height: 1.5; overflow-y: hidden; }
+
+  .row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+
+  /* stepper */
+  .stepper {
+    display: inline-flex;
+    align-items: center;
+    gap: 0;
+    border: 1px solid var(--ink-30);
+  }
+  .stepper button {
+    width: 56px; height: 56px;
+    background: transparent;
+    border: none;
+    font-size: 22px;
+    color: var(--ink);
+    transition: background 160ms ease;
+  }
+  .stepper button:hover { background: var(--bg-2); }
+  .stepper button:disabled { color: var(--ink-30); cursor: not-allowed; }
+  .stepper .val {
+    width: 88px;
+    text-align: center;
+    font-family: var(--display);
+    font-size: 26px;
+    line-height: 1;
+    padding: 0 4px;
+    border-left: 1px solid var(--ink-30);
+    border-right: 1px solid var(--ink-30);
+    height: 56px;
+    display: grid; place-items: center;
+  }
+  /* the numeral rides down with the label (relative nudges — the
+     centered stack itself stays put) */
+  .stepper .val > div { position: relative; top: 6px; }
+  .stepper .val .lbl {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    color: var(--ink-60);
+    text-transform: uppercase;
+    margin-top: 2px;
+    /* nudged toward the box's bottom edge without moving the number */
+    position: relative;
+    top: 6px;
+  }
+
+  /* checkbox chips */
+  .chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .chip {
+    background: transparent;
+    border: 1px solid var(--ink-30);
+    padding: 12px 20px;
+    font-family: var(--sans);
+    font-size: 16px;
+    color: var(--ink);
+    transition: all 180ms ease;
+    user-select: none;
+  }
+  .chip:hover { background: var(--bg-2); }
+  .chip.on {
+    background: var(--ink);
+    color: var(--bg);
+    border-color: var(--ink);
+  }
+
+  /* nav row */
+  .step-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 56px;
+    margin-top: 56px;
+    border-top: 1px solid var(--ink-12);
+  }
+  .btn-back {
+    background: transparent;
+    border: none;
+    font-family: var(--sans);
+    font-size: 18px;
+    color: var(--ink-60);
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .btn-back:hover { color: var(--ink); }
+  .btn-back .arrow { display: inline-block; transition: transform 180ms ease; }
+  .btn-back:hover .arrow { transform: translateX(-3px); }
+  .btn-back[disabled] { opacity: 0; pointer-events: none; }
+
+  .btn-next {
+    background: var(--ink);
+    color: var(--bg);
+    border: none;
+    padding: 22px 36px;
+    font-family: var(--sans);
+    font-size: 18px;
+    letter-spacing: 0.04em;
+    display: inline-flex;
+    align-items: center;
+    gap: 18px;
+    transition: background 180ms ease, transform 180ms ease;
+  }
+  .btn-next:hover { background: #1f3328; }
+  .btn-next .arrow { display: inline-block; transition: transform 180ms ease; }
+  .btn-next:hover .arrow { transform: translateX(4px); }
+  .btn-next[disabled] {
+    background: var(--ink-30);
+    cursor: not-allowed;
+  }
+  .btn-next[disabled]:hover { background: var(--ink-30); }
+  .btn-next.send { background: var(--ink); padding: 26px 48px; font-size: 20px; }
+
+  /* Review summary */
+  .summary {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    row-gap: 0;
+  }
+  .summary .row {
+    display: contents;
+  }
+  .summary dt, .summary dd {
+    padding: 24px 0;
+    border-top: 1px solid var(--ink-12);
+    margin: 0;
+  }
+  .summary .row:last-of-type dt, .summary .row:last-of-type dd {
+    border-bottom: 1px solid var(--ink-12);
+  }
+  .summary dt {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.24em;
+    color: var(--ink-60);
+    text-transform: uppercase;
+    padding-right: 24px;
+  }
+  .summary dd {
+    font-family: var(--display);
+    font-size: 22px;
+    line-height: 1.45;
+    color: var(--ink);
+    text-wrap: pretty;
+  }
+  .summary dd .muted { color: var(--ink-60); font-size: 17px; display: block; margin-top: 4px; }
+  .summary dd .edit {
+    font-family: var(--sans);
+    font-size: 13px;
+    color: var(--ink-60);
+    margin-left: 16px;
+    border-bottom: 1px solid var(--ink-12);
+    padding-bottom: 1px;
+    cursor: pointer;
+    background: none;
+    border-top: none; border-left: none; border-right: none;
+    border-radius: 0;
+    vertical-align: 3px;
+  }
+  .summary dd .edit:hover { color: var(--ink); border-bottom-color: var(--ink); }
+
+  .consent {
+    margin: 48px 0 0;
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    cursor: pointer;
+    color: var(--ink-60);
+    font-size: 14px;
+    line-height: 1.6;
+    max-width: 720px;
+  }
+  .consent input { display: none; }
+  .consent .box {
+    width: 20px; height: 20px;
+    border: 1px solid var(--ink-30);
+    flex-shrink: 0;
+    margin-top: 2px;
+    display: grid; place-items: center;
+    font-size: 13px;
+    color: transparent;
+    transition: all 160ms ease;
+  }
+  .consent input:checked + .box {
+    background: var(--ink);
+    border-color: var(--ink);
+    color: var(--bg);
+  }
+  .consent input:checked + .box::after { content: "✓"; }
+
+  /* Sent state */
+  .sent { text-align: left; padding: 40px 0 0; }
+  .sent .num {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.28em;
+    color: var(--ink-60);
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    display: block;
+  }
+  .sent h2 {
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: 96px;
+    line-height: 0.96;
+    margin: 0 0 36px;
+    letter-spacing: -0.01em;
+  }
+  .sent p {
+    font-family: var(--display);
+    font-size: 24px;
+    line-height: 1.45;
+    color: var(--ink);
+    margin: 0 0 18px;
+    max-width: 680px;
+    text-wrap: pretty;
+  }
+  .sent .ref {
+    margin-top: 48px;
+    display: inline-block;
+    padding: 24px 32px;
+    border: 1px solid var(--ink-30);
+    font-family: var(--mono);
+    font-size: 14px;
+    letter-spacing: 0.18em;
+    color: var(--ink);
+  }
+  .sent .ref .lbl {
+    color: var(--ink-60);
+    font-size: 11px;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 8px;
+  }
+  .sent .actions {
+    margin-top: 48px;
+    display: flex;
+    gap: 28px;
+  }
+  .sent .actions a {
+    font-size: 18px;
+    color: var(--ink);
+    padding-bottom: 4px;
+    border-bottom: 1px solid var(--ink);
+  }
+  .sent .actions a:hover { opacity: 0.7; }
+
+  /* ───── Contact reiteration block ───── */
+  .contact-block {
+    padding: 0 36px;
+    border-top: 1px solid var(--ink-12);
+  }
+  .contact-inner {
+    padding: 96px 0 96px;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    column-gap: 96px;
+    align-items: start;
+  }
+  .contact-inner h2 {
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: 64px;
+    line-height: 0.98;
+    margin: 0;
+    letter-spacing: -0.005em;
+  }
+  .contact-inner .eyebrow {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.28em;
+    color: var(--ink-60);
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    display: block;
+  }
+  .contact-cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 56px;
+  }
+  .contact-cols h4 {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    color: var(--ink-60);
+    text-transform: uppercase;
+    margin: 0 0 20px;
+    font-weight: 500;
+  }
+  .contact-cols .lbl {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.24em;
+    color: var(--ink-60);
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 4px;
+    margin-top: 18px;
+  }
+  .contact-cols .lbl:first-child { margin-top: 0; }
+  .contact-cols .v {
+    font-family: var(--display);
+    font-size: 24px;
+    line-height: 1.4;
+    color: var(--ink);
+    text-wrap: pretty;
+  }
+  .contact-cols .v.sm { font-size: 18px; }
+  .contact-cols a.v:hover { opacity: 0.65; }
+
+  /* ───── Footer (cream / inline) ───── */
+  footer.foot-v2 { padding: 0 36px; margin-top: 0; }
+  .foot-v2-top {
+    padding: 96px 0 72px;
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr 1fr;
+    gap: 64px;
+  }
+  .foot-brand .mark {
+    font-family: "optima-nova-lt-pro", "Optima", serif; font-size: 40px;
+    letter-spacing: 0.05em; line-height: 1;
+    margin-bottom: 26px; display: block;
+  }
+  .foot-brand p {
+    font-family: var(--display); font-size: 24px; line-height: 1.4;
+    color: var(--ink-60); margin: 0; max-width: 380px; text-wrap: pretty;
+  }
+  .foot-col h4 {
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.3em;
+    color: var(--ink-60); text-transform: uppercase;
+    margin: 0 0 22px; font-weight: 500;
+  }
+  .foot-col ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 14px; }
+  .foot-col li { font-size: 18px; line-height: 1.45; color: var(--ink); }
+  .foot-col li a:hover { opacity: 0.6; }
+  .foot-col .soc > span:first-child { position: relative; padding-bottom: 3px; }
+  .foot-col .soc > span:first-child::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 1.5px; background: var(--ink); opacity: 0; transition: opacity 0.25s ease; }
+  .foot-col .soc:hover > span:first-child::after { opacity: 1; }
+  .foot-col .soc .ar { position: relative; right: 0; transition: right 0.3s ease; font-weight: 300; }
+  .foot-col .soc:hover .ar { right: -6px; }
+  .foot-v2-bottom {
+    border-top: 1px solid var(--ink-12);
+    padding: 28px 0;
+    display: flex; justify-content: space-between; align-items: center;
+    font-family: var(--mono); font-size: 12px; letter-spacing: 0.2em;
+    color: var(--ink-60); text-transform: uppercase;
+  }
+  .foot-v2-bottom .legal { display: flex; gap: 32px; }
+
+  /* ───── Responsive ───── */
+  @media (max-width: 1023px) {
+    .stage { width: 100% !important; }
+
+    /* Nav */
+    .nav { height: 64px; padding: 0 20px; }
+    .logo { font-size: 22px; }
+    .navlinks { gap: 28px; font-size: 16px; }
+    .lang { font-size: 16px; }
+
+    /* Contact hero — same treatment as home/about: full-bleed photo
+       leading the page flush under the nav, roomier height. vw (not
+       vh/svh): width-relative units hold still when Firefox iOS
+       collapses its toolbar; max-height keeps tablets sane. */
+    .hero-v2 { padding: 0 20px 56px; }
+    .hero-v2 .body { grid-template-columns: 1fr; row-gap: 36px; }
+    .hero-v2 .photo {
+      width: auto; margin: 0 -20px;
+      height: 120vw; min-height: 320px; max-height: 560px;
+    }
+    /* no attribution over the mobile hero — matches home/about */
+    .hero-v2 .photo::after { display: none; }
+    /* caption steps down to match the other heroes (EN uppercase mono
+       runs louder than JP at the same size, so EN drops further) */
+    .hero-v2 .photo .credit { font-size: 10px; }
+    .hero-v2 .photo .credit:lang(ja) { font-size: 13px; }
+    /* the eyebrow sits right on the first row's border once the column
+       stacks — desktop spacing came from the stretched flex column */
+    .hero-v2 .top { margin-bottom: 20px; }
+    .hero-v2 .lh .row { gap: 24px; padding: 20px 0; }
+    .hero-v2 .lh .lbl { width: 72px; font-size: 11px; padding-top: 6px; }
+    /* email and address at the same size — the label column carries the
+       hierarchy; the address just takes a taller line for its 3 lines */
+    .hero-v2 .lh .v { font-size: 20px; }
+    .hero-v2 .lh .row:last-child .v { line-height: 1.55; }
+
+    /* Booking layout — stack sidebar above form. Light top padding on
+       top of the hero's 56px tail to breathe from the contact rows. */
+    .booking { padding: 32px 20px 80px; grid-template-columns: 1fr; row-gap: 48px; }
+    /* the desktop min-height guards step-to-step jumps, but on mobile
+       it leaves a void under short views (the sent confirmation) */
+    .panel { min-height: 0; }
+    .progress { position: static; margin: 0 0 40px; }
+    .progress li.cur::before { display: none; }
+    /* the BOOKING label reads as clutter once the row sits inside the step */
+    .progress .ttl { display: none; }
+    /* only the current step shows — the 5-row list is a desktop sidebar
+       device; setStep()'s .cur swap refreshes this as steps advance.
+       The visible row needs its own bottom border since it's usually
+       not :last-child. JS relocates the whole aside under the current
+       step's heading at this breakpoint (see placeProgress). */
+    .progress li { display: none; }
+    .progress li.cur { display: grid; border-bottom: 1px solid var(--ink-12); }
+    /* the bare number becomes "01 / 05" — each row's own 01/02/…
+       supplies the front, so it tracks the current step for free.
+       The desktop 56px number column is too narrow for the long form. */
+    .progress li { grid-template-columns: auto 1fr; column-gap: 20px; }
+    .progress li .n::after { content: " / 05"; }
+    /* the desktop 56px tail under the list doubles up with the grid's
+       48px row-gap once stacked */
+    .progress ol { margin-bottom: 0; }
+
+    /* Booking intro — heading hidden on mobile (the step heading leads
+       instead), but the section stays in flow: it's the #booking anchor
+       target for the home page's CTA */
+    .booking-intro { padding: 0 20px; grid-template-columns: 1fr; row-gap: 0; }
+    .booking-intro h2 { display: none; }
+    .booking-intro p { font-size: 18px; max-width: 100%; }
+
+    /* The meta row becomes the BOOKING label: step numbering lives in
+       the progress row below the heading, and the live selected-count
+       is noise at phone size. ::before inherits .meta's mono styling. */
+    .step .meta > span { display: none; }
+    .step .meta::before { content: "Booking"; }
+    html:lang(ja) .step .meta::before { content: "ご予約"; }
+
+    /* Form step headings */
+    .step h2 { font-size: 48px; }
+    .step .lede { font-size: 18px; max-width: 100%; }
+    /* steps 1–4: headings + controls speak for themselves; the ledes
+       just push the content down the screen. The relocated progress
+       row now provides the separation below the heading. */
+    .step[data-step="0"] .lede,
+    .step[data-step="1"] .lede,
+    .step[data-step="2"] .lede,
+    .step[data-step="3"] .lede { display: none; }
+
+    /* tighter field rhythm across the form steps */
+    .field { margin: 0 0 26px; }
+    .field .lbl { margin-bottom: 10px; }
+    input[type="text"], input[type="email"], textarea, select { font-size: 22px; padding: 8px 0 10px; }
+    /* notes read (and get typed) at reading size, not display size —
+       the wrapping placeholder was clipping the bottom rule */
+    textarea { min-height: 100px; font-size: 17px; line-height: 1.55; }
+    /* summary rows whose values run long (interests, notes) match it */
+    .summary dd.wordy { font-size: 17px; line-height: 1.55; }
+
+    /* step 2: format cards trimmed to match the tighter mobile rhythm */
+    .card.format { padding: 24px 24px 26px; min-height: 0; }
+    .card.format h3 { font-size: 32px; }
+    .card.format p { font-size: 14px; }
+    .card.format .price { margin-top: 14px; flex-wrap: wrap; gap: 8px 20px; }
+
+    /* the wordy price notes collapse behind a tap-to-open Terms row
+       (JS closes it at this breakpoint; see syncNotes) */
+    .price-notes { margin-top: 16px; border-top: 1px solid var(--ink-12); border-bottom: 1px solid var(--ink-12); }
+    .price-notes[open] { padding-bottom: 8px; }
+    .price-notes summary {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      list-style: none;
+      cursor: pointer;
+      user-select: none;
+      padding: 14px 0;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.26em;
+      color: var(--ink-60);
+      text-transform: uppercase;
+    }
+    .price-notes summary::-webkit-details-marker { display: none; }
+    .price-notes summary::after { content: "+"; font-size: 14px; }
+    .price-notes[open] summary::after { content: "−"; }
+    /* confirmation: tightened to the mobile rhythm */
+    .sent { padding: 8px 0 0; }
+    .sent .num { margin-bottom: 16px; }
+    .sent h2 { font-size: 48px; margin: 0 0 20px; }
+    .sent p { font-size: 18px; margin: 0 0 14px; }
+    .sent .ref { margin-top: 28px; padding: 18px 24px; }
+    .sent .actions { margin-top: 32px; flex-wrap: wrap; gap: 16px 28px; }
+
+    /* Card grids */
+    .grid-3 { grid-template-columns: 1fr 1fr; }
+    .grid-4 { grid-template-columns: 1fr 1fr; }
+
+    /* Step nav: smaller Continue, and the rule sits BELOW the buttons
+       so they read as part of the step rather than the footer zone */
+    .step-nav {
+      border-top: none;
+      border-bottom: 1px solid var(--ink-12);
+      margin-top: 40px;
+      padding: 0 0 40px;
+    }
+    .btn-next { padding: 14px 24px; font-size: 16px; gap: 12px; }
+    .btn-next.send { padding: 16px 28px; font-size: 17px; }
+
+    /* Footer */
+  .foot-brand .brk { display: none; }
+    /* footer.foot-v2, not .foot-v2 — must outrank the desktop 36px rule */
+    footer.foot-v2 { padding: 0 20px; }
+    /* no divider at the top of the footer on mobile */
+    .foot-v2 > .rule { display: none; }
+    .foot-v2-top { padding: 16px 0 40px; grid-template-columns: 1fr; gap: 32px; }
+    .foot-brand .mark { font-size: 26px; margin-bottom: 16px; }
+    .foot-brand p { font-size: 15px; max-width: 100%; }
+    .foot-brand .brk { display: inline; }
+    .foot-col h4 { font-size: 10px; margin-bottom: 14px; }
+    .foot-col ul { gap: 10px; }
+    .foot-col li { font-size: 15px; }
+    .foot-v2-bottom { font-size: 10px; letter-spacing: 0.16em; padding: 20px 0; }
+    .foot-v2-bottom .legal { gap: 20px; }
+  }
+
+  @media (max-width: 599px) {
+    .navlinks { display: none; }
+    .booking-intro h2 { font-size: 40px; }
+    .step h2 { font-size: 36px; }
+    .sent h2 { font-size: 40px; }
+    .grid-2, .grid-3 { grid-template-columns: 1fr; }
+    /* regions run full-bleed 2-up at the home tiles' portrait ratio,
+       but keep the standard card style (cream body, ink flip when
+       selected): photo fills whatever the body doesn't need */
+    /* -21px, not -20px: one extra pixel each side so the tiles sit truly
+       flush at the screen edges (html is overflow-x: hidden) */
+    .grid-4 { gap: 8px; margin: 0 -21px; }
+    .card.region {
+      min-height: 0;
+      aspect-ratio: 446 / 558;
+      display: flex; flex-direction: column;
+    }
+    .card.region .pic { height: auto; flex: 1; }
+    .card.region .body { padding: 16px 18px 18px; }
+    /* numbering is noise on the compact tiles */
+    .card.region .num { display: none; }
+    .card.region h3 { font-size: 20px; margin: 0 0 6px; }
+    /* two examples only so the sub holds one line; span.s3 marks any
+       copy trimmed on the tiles (incl. "Other Destinations") */
+    .card.region .sub { font-size: 10px; letter-spacing: 0.16em; }
+    .card.region .s3 { display: none; }
+    .card.region .tick { width: 20px; height: 20px; right: 12px; top: 12px; font-size: 12px; }
+    /* Paired fields (date range, contact details) stack */
+    .row-2 { grid-template-columns: 1fr; gap: 24px; }
+    /* Review summary: stack label above value, single separator per row */
+    .summary { grid-template-columns: 1fr; }
+    .summary dt { padding: 16px 0 6px; }
+    .summary dd { padding: 0 0 16px; border-top: none; }
+    /* stacked rows: the last row's dt border-bottom (the desktop
+       table-closing line) would paint between the NOTES label and its
+       value — the closing line belongs on the dd only */
+    .summary .row:last-of-type dt { border-bottom: none; }
+  }
+</style>
+</head>
+
+<body>
+<div class="stage" id="stage">
+
+  <!-- ───── Header ───── -->
+  <header class="nav">
+    <a class="logo" href="index.html">ZENRISE</a>
+    <nav class="navlinks">
+      <a href="index.html" data-i18n="nav_home">home</a>
+      <a href="about.html" data-i18n="nav_about">about us</a>
+      <a href="news.html" data-i18n="nav_news">news</a>
+      <a href="contact.html" class="active" data-i18n="nav_contact">contact</a>
+    </nav>
+    <a class="lang" href="#">english</a>
+  </header>
+
+  <!-- ───── Contact hero ───── -->
+  <section class="hero-v2" data-screen-label="03 Contact — Hero">
+    <div class="body">
+      <div class="photo">
+        <span class="credit" data-i18n="contact_hero_credit">Komachi-dori &middot; Kamakura</span>
+      </div>
+      <div class="right">
+        <div class="top">
+          <span data-i18n="contact_hero_eyebrow">Contact</span>
+          <span data-i18n="contact_hero_no">04</span>
+        </div>
+        <div class="lh">
+          <div class="row">
+            <span class="lbl" data-i18n="contact_hero_email">Email</span>
+            <a class="v" href="mailto:hello@zenrise.jp">hello@zenrise.jp</a>
+          </div>
+          <div class="row">
+            <span class="lbl" data-i18n="contact_hero_visit">Office</span>
+            <span class="v" data-i18n-html="contact_hero_visit_v">me-labo4, Sophiale Minamifujisawa #101<br/>10-11 Minamifujisawa, Fujisawa<br/>Kanagawa, 251-0055, Japan</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ───── Booking-flow intro ───── -->
+  <section class="booking-intro" id="booking" data-screen-label="03 Contact — Booking intro">
+    <div>
+      <h2 data-i18n-html="contact_bi_title">Plan <br/>your trip.</h2>
+    </div>
+  </section>
+
+  <!-- ───── Booking flow ───── -->
+  <section class="booking" data-screen-label="03 Contact — Booking flow">
+
+    <aside class="progress">
+      <span class="ttl" data-i18n="booking_progress_title">Booking</span>
+      <ol id="steps-nav">
+        <li data-go="0" class="cur"><span class="n">01</span><span class="lbl" data-i18n="booking_step1_lbl">Where</span></li>
+        <li data-go="1"><span class="n">02</span><span class="lbl" data-i18n="booking_step2_lbl">How long</span></li>
+        <li data-go="2"><span class="n">03</span><span class="lbl" data-i18n-html="booking_step3_lbl">When &amp; who</span></li>
+        <li data-go="3"><span class="n">04</span><span class="lbl" data-i18n="booking_step4_lbl">About you</span></li>
+        <li data-go="4"><span class="n">05</span><span class="lbl" data-i18n-html="booking_step5_lbl">Review &amp; send</span></li>
+      </ol>
+    </aside>
+
+    <div class="panel" id="panel">
+
+      <!-- Step 1: Region (multi-select) -->
+      <div class="step cur" data-step="0">
+        <div class="meta"><span data-i18n="booking_s1_meta">Step 01 / 05</span><span id="m-count-1">0 selected</span></div>
+        <h2 data-i18n-html="booking_s1_h">Where would you<br/>like to go?</h2>
+        <p class="lede" data-i18n="booking_s1_lede">Pick one or more. We can string two towns together on a full-day route, or stay in one all morning.</p>
+
+        <div class="grid-4">
+          <div class="card region kamakura" data-multi="region" data-val="Kamakura">
+            <div class="pic"></div>
+            <div class="body">
+              <span class="num">01 / 04</span>
+              <h3 data-i18n="home_dest_kamakura_name">Kamakura</h3>
+              <span class="sub" data-i18n-html="booking_s1_kamakura_sub">Temples · Tea<span class="s3"> · Kilns</span></span>
+            </div>
+            <span class="tick"></span>
+          </div>
+          <div class="card region enoshima" data-multi="region" data-val="Enoshima">
+            <div class="pic"></div>
+            <div class="body">
+              <span class="num">02 / 04</span>
+              <h3 data-i18n="home_dest_enoshima_name">Enoshima</h3>
+              <span class="sub" data-i18n-html="booking_s1_enoshima_sub">Coast · Caves<span class="s3"> · Seafood</span></span>
+            </div>
+            <span class="tick"></span>
+          </div>
+          <div class="card region yokohama" data-multi="region" data-val="Yokohama">
+            <div class="pic"></div>
+            <div class="body">
+              <span class="num">03 / 04</span>
+              <h3 data-i18n="home_dest_yokohama_name">Yokohama</h3>
+              <span class="sub" data-i18n-html="booking_s1_yokohama_sub">Port · Chinatown<span class="s3"> · Lights</span></span>
+            </div>
+            <span class="tick"></span>
+          </div>
+          <div class="card region other" data-multi="region" data-val="Other Destinations">
+            <div class="pic"></div>
+            <div class="body">
+              <span class="num">04 / 04</span>
+              <h3 data-i18n="home_dest_fujisawa_name">Other<span class="s3"> Destinations</span></h3>
+              <span class="sub" data-i18n-html="booking_s1_fujisawa_sub">Tokyo<span class="s3"> · Mt. Fuji</span> · Hakone</span>
+            </div>
+            <span class="tick"></span>
+          </div>
+        </div>
+
+        <div class="step-nav">
+          <button class="btn-back" disabled><span class="arrow">←</span> <span data-i18n="booking_btn_back">Back</span></button>
+          <button class="btn-next" data-next><span data-i18n="booking_btn_continue">Continue</span> <span class="arrow">→</span></button>
+        </div>
+      </div>
+
+      <!-- Step 2: Format -->
+      <div class="step" data-step="1">
+        <div class="meta"><span data-i18n="booking_s2_meta">Step 02 / 05</span><span data-i18n="booking_s2_sub">Tour length</span></div>
+        <h2 data-i18n="booking_s2_h">Half day or full?</h2>
+        <p class="lede" data-i18n="booking_s2_lede">Half-days run roughly 09:00–13:00. Full-days end with a late lunch or a harbourside visit around 17:00.</p>
+
+        <div class="grid-2">
+          <div class="card format" data-radio="length" data-val="Half day">
+            <span class="num" data-i18n="booking_s2_opt1">Option 01</span>
+            <h3 data-i18n="booking_s2_half">Half day</h3>
+            <p data-i18n="booking_s2_half_p">One town, one neighbourhood. A long morning of exploring, one workshop or tea stop, and a quiet lunch.</p>
+            <div class="price"><span data-i18n="booking_s2_half_t">≈ 4 hrs</span><span data-i18n="booking_s2_half_price">¥65,000 / group</span></div>
+            <span class="tick"></span>
+          </div>
+          <div class="card format" data-radio="length" data-val="Full day">
+            <span class="num" data-i18n="booking_s2_opt2">Option 02</span>
+            <h3 data-i18n="booking_s2_full">Full day</h3>
+            <p data-i18n="booking_s2_full_p">Two towns linked by local train. A morning exploring, lunch with the day's host, an afternoon stop.</p>
+            <div class="price"><span data-i18n="booking_s2_full_t">≈ 8 hrs</span><span data-i18n="booking_s2_full_price">¥95,000 / group</span></div>
+            <span class="tick"></span>
+          </div>
+        </div>
+
+        <details class="price-notes" open>
+          <summary data-i18n="booking_s2_notes_ttl">Terms</summary>
+          <p data-i18n="booking_s2_note_base">※ Base prices, tax included, per group of 1–6 people. Bookings start from one group.</p>
+          <p data-i18n="booking_s2_note_fees">+ Additional fees apply for what the base price doesn’t cover: hotel pick-up &amp; drop-off transport, taxi or private-hire arrangements, hotel &amp; ryokan bookings, activities and experiences, admission to attractions, and food &amp; drink.</p>
+        </details>
+
+        <div class="step-nav">
+          <button class="btn-back" data-back><span class="arrow">←</span> <span data-i18n="booking_btn_back">Back</span></button>
+          <button class="btn-next" data-next><span data-i18n="booking_btn_continue">Continue</span> <span class="arrow">→</span></button>
+        </div>
+      </div>
+
+      <!-- Step 3: When + group size -->
+      <div class="step" data-step="2">
+        <div class="meta"><span data-i18n="booking_s3_meta">Step 03 / 05</span><span data-i18n-html="booking_s3_sub">Dates &amp; party</span></div>
+        <h2 data-i18n-html="booking_s3_h">When, and how<br/>many of you?</h2>
+        <p class="lede" data-i18n-html="booking_s3_lede">A rough window is fine &mdash; we'll come back with two or three open dates near it.</p>
+
+        <!-- one range calendar drives both hidden inputs; booking state
+             (dateFrom/dateTo), validation and the summary are untouched -->
+        <div class="field" data-zp-range>
+          <span class="lbl" data-i18n="booking_s3_dates">Dates</span>
+          <input type="date" id="date-from" />
+          <input type="date" id="date-to" />
+        </div>
+
+        <div class="field">
+          <span class="lbl" data-i18n="booking_s3_party">Group size</span>
+          <div class="stepper" id="party-stepper">
+            <button type="button" data-step-act="dec" aria-label="Fewer">−</button>
+            <div class="val">
+              <div><span id="party-val">2</span></div>
+              <span class="lbl" data-i18n="booking_s3_party_unit">travelers</span>
+            </div>
+            <button type="button" data-step-act="inc" aria-label="More">+</button>
+          </div>
+          <p class="hint" data-i18n="booking_s3_party_hint">Groups are 1 to 6 people at most. For 7 or more we can plan a custom tour for an additional surcharge — just mention it in your notes.</p>
+        </div>
+
+        <div class="field">
+          <span class="lbl" data-i18n="booking_s3_exp">Is this your first visit to Japan?</span>
+          <div class="chips">
+            <button type="button" class="chip" data-radio="experience" data-val="First time" data-i18n="booking_s3_exp_first">First time</button>
+            <button type="button" class="chip" data-radio="experience" data-val="Been a few times" data-i18n="booking_s3_exp_few">Been a few times</button>
+            <button type="button" class="chip" data-radio="experience" data-val="Many times" data-i18n="booking_s3_exp_many">Many times</button>
+            <button type="button" class="chip" data-radio="experience" data-val="I live in Japan" data-i18n="booking_s3_exp_local">I live in Japan</button>
+          </div>
+        </div>
+
+        <div class="step-nav">
+          <button class="btn-back" data-back><span class="arrow">←</span> <span data-i18n="booking_btn_back">Back</span></button>
+          <button class="btn-next" data-next><span data-i18n="booking_btn_continue">Continue</span> <span class="arrow">→</span></button>
+        </div>
+      </div>
+
+      <!-- Step 4: About you -->
+      <div class="step" data-step="3">
+        <div class="meta"><span data-i18n="booking_s4_meta">Step 04 / 05</span><span data-i18n="booking_s4_sub">Just the basics</span></div>
+        <h2 data-i18n-html="booking_s4_h">And a little<br/>about you.</h2>
+        <p class="lede" data-i18n-html="booking_s4_lede">Just enough so we can reply &mdash; and so we know how to plan around dietary needs or mobility.</p>
+
+        <div class="row-2">
+          <div class="field">
+            <span class="lbl" data-i18n="booking_s4_name">Your name</span>
+            <input type="text" id="name" placeholder="First &amp; last" data-i18n-placeholder="booking_s4_name_p" />
+          </div>
+          <div class="field">
+            <span class="lbl" data-i18n="booking_s4_email">Email</span>
+            <input type="email" id="email" placeholder="name@example.com" data-i18n-placeholder="booking_s4_email_p" />
+          </div>
+        </div>
+
+        <div class="row-2">
+          <div class="field">
+            <span class="lbl" data-i18n="booking_s4_from">Where you're traveling from</span>
+            <input type="text" id="from" placeholder="City, country" data-i18n-placeholder="booking_s4_from_p" />
+          </div>
+          <div class="field">
+            <span class="lbl" data-i18n="booking_s4_interests">What pulls you in</span>
+            <div class="chips" id="interest-chips">
+              <button type="button" class="chip" data-multi="interests" data-val="Tea ceremony" data-i18n="booking_s4_int_tea">Tea ceremony</button>
+              <button type="button" class="chip" data-multi="interests" data-val="Ceramics" data-i18n="booking_s4_int_ceramics">Ceramics</button>
+              <button type="button" class="chip" data-multi="interests" data-val="Food" data-i18n="booking_s4_int_food">Food</button>
+              <button type="button" class="chip" data-multi="interests" data-val="History" data-i18n="booking_s4_int_history">History</button>
+              <button type="button" class="chip" data-multi="interests" data-val="Photography" data-i18n="booking_s4_int_photo">Photography</button>
+              <button type="button" class="chip" data-multi="interests" data-val="Coastline" data-i18n="booking_s4_int_coast">Coastline</button>
+              <button type="button" class="chip" data-multi="interests" data-val="Quiet temples" data-i18n="booking_s4_int_temples">Quiet temples</button>
+              <button type="button" class="chip" data-multi="interests" data-val="Crafts" data-i18n="booking_s4_int_crafts">Crafts</button>
+              <button type="button" class="chip" data-multi="interests" data-val="Zen meditation" data-i18n="booking_s4_int_zen">Zen meditation</button>
+              <button type="button" class="chip" data-multi="interests" data-val="Nature" data-i18n="booking_s4_int_nature">Nature</button>
+              <button type="button" class="chip" data-multi="interests" data-val="Local life" data-i18n="booking_s4_int_local">Local life</button>
+              <button type="button" class="chip" data-multi="interests" data-val="Cafés" data-i18n="booking_s4_int_cafes">Cafés</button>
+              <button type="button" class="chip" data-multi="interests" data-val="Gardens" data-i18n="booking_s4_int_gardens">Gardens</button>
+              <button type="button" class="chip" data-multi="interests" data-val="Markets" data-i18n="booking_s4_int_markets">Markets</button>
+              <button type="button" class="chip" data-multi="interests" data-val="Calligraphy" data-i18n="booking_s4_int_calligraphy">Calligraphy</button>            </div>
+          </div>
+        </div>
+
+        <div class="field">
+          <span class="lbl" data-i18n="booking_s4_notes">Anything else we should know?</span>
+          <textarea id="notes" placeholder="Dietary needs, mobility, a specific date or experience you have in mind, who you're traveling with…" data-i18n-placeholder="booking_s4_notes_p"></textarea>
+        </div>
+
+        <div class="step-nav">
+          <button class="btn-back" data-back><span class="arrow">←</span> <span data-i18n="booking_btn_back">Back</span></button>
+          <button class="btn-next" data-next><span data-i18n="booking_btn_continue">Continue</span> <span class="arrow">→</span></button>
+        </div>
+      </div>
+
+      <!-- Step 5: Review -->
+      <div class="step" data-step="4">
+        <div class="meta"><span data-i18n="booking_s5_meta">Step 05 / 05</span><span data-i18n="booking_s5_sub">Last look</span></div>
+        <h2 data-i18n="booking_s5_h">Sound right?</h2>
+        <p class="lede" data-i18n-html="booking_s5_lede">A quick look over what you'll send us. You can still go back and change anything &mdash; or we'll figure it out in the reply.</p>
+
+        <dl class="summary" id="summary"></dl>
+
+        <label class="consent">
+          <input type="checkbox" id="consent" />
+          <span class="box"></span>
+          <span data-i18n-html="booking_s5_consent">I'm happy for Zenrise to email me about the trip and any follow-up, and I've read and understood the <a href="terms.html" target="_blank" style="text-decoration: underline">booking terms &amp; conditions</a>, including the cancellation and privacy policies.</span>
+        </label>
+
+        <div class="step-nav">
+          <button class="btn-back" data-back><span class="arrow">←</span> <span data-i18n="booking_btn_back">Back</span></button>
+          <button class="btn-next send" id="send-btn" disabled><span data-i18n-html="booking_btn_send">Send to Zenrise</span> <span class="arrow">→</span></button>
+        </div>
+      </div>
+
+      <!-- Sent confirmation -->
+      <div class="step" data-step="5">
+        <div class="sent">
+          <span class="num" data-i18n="booking_sent_n">Sent, thank you</span>
+          <h2 data-i18n="booking_sent_h">That's with us.</h2>
+          <p data-i18n-html="booking_sent_p1">One of us &mdash; usually whoever's not on a tour that morning &mdash; will write back within two working days with two or three itinerary sketches that fit your dates.</p>
+          <p data-i18n="booking_sent_p2">If you don't hear from us by the third day, it almost certainly means an email got lost. Just call.</p>
+
+          <div class="ref">
+            <span class="lbl" data-i18n="booking_sent_ref">Your reference</span>
+            <span id="ref-code">ZNR-—————</span>
+          </div>
+
+          <div class="actions">
+            <a href="index.html" data-i18n="booking_sent_back_home">Back to homepage&nbsp;&nbsp;→</a>
+            <a href="about.html" data-i18n="booking_sent_back_about">Read more about us&nbsp;&nbsp;→</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ───── Footer ───── -->
+  <footer class="foot-v2" data-screen-label="03 Contact — Footer">
+    <div class="rule"></div>
+    <div class="foot-v2-top">
+      <div class="foot-brand">
+        <span class="mark">ZENRISE</span>
+        <p data-i18n-html="footer_tagline">Quiet, locally-led journeys through the <br class="brk"/>lesser-known corners of Japan.</p>
+      </div>
+      <div class="foot-col">
+        <h4 data-i18n="footer_visit">Office</h4>
+        <ul>
+          <li><span data-i18n-html="footer_address">me-labo4, Sophiale Minamifujisawa #101<br/>10-11 Minamifujisawa, Fujisawa<br/>Kanagawa, 251-0055, Japan</span></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4 data-i18n="footer_contact">Contact</h4>
+        <ul>
+          <li><a href="mailto:hello@zenrise.jp">hello@zenrise.jp</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4 data-i18n="footer_follow">Follow</h4>
+        <ul>
+          <li><a class="soc" href="https://www.instagram.com/zenrise_tours/"><span data-i18n="footer_instagram">Instagram</span><span class="ar">&nbsp;→</span></a></li>
+          <li><a class="soc" href="https://www.youtube.com/@zenrisejapan"><span data-i18n="footer_youtube">YouTube</span><span class="ar">&nbsp;→</span></a></li>
+          <li><a class="soc" href="https://www.tiktok.com/@zenrise_tours"><span data-i18n="footer_tiktok">TikTok</span><span class="ar">&nbsp;→</span></a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-v2-bottom">
+      <span data-i18n="footer_copyright">© 2026 Intercommunicate K. K.</span>
+      <div class="legal">
+        <a href="terms.html" data-i18n="footer_terms">Terms</a>
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+<script src="lang.js"></script>
+<script src="datepicker.js"></script>
+
+
+<script>
+  // ───── Stage scale (shared pattern) ─────
+  (function () {
+    var stage = document.getElementById('stage');
+    function fit() {
+      var vw = document.documentElement.clientWidth;
+      if (vw < 1024) {
+        stage.style.zoom = '';
+        stage.style.width = '';
+        stage.style.margin = '';
+        stage.classList.add('fitted');
+        return;
+      }
+      var vh = document.documentElement.clientHeight;
+      var HERO_DESIGN_HEIGHT = 1100;
+      var scale = Math.min(1, vw / 1920, vh / HERO_DESIGN_HEIGHT);
+      // 'zoom' (unlike transform:scale) scales BOTH layout and visual, so
+      // the document's scroll area tracks the visible content exactly.
+      stage.style.zoom = scale;
+      // With zoom shrinking layout width, margin auto centers horizontally.
+      stage.style.margin = '0 auto';
+      // Clear anything left over from earlier transform-based versions.
+      stage.style.transform = '';
+      stage.style.width = '1920px';
+      stage.style.height = '';
+      document.body.style.height = '';
+      stage.classList.add('fitted');
+    }
+    fit();
+    window.__fit = fit;
+    window.addEventListener('resize', fit);
+    window.addEventListener('load', fit);
+    setTimeout(fit, 200);
+    setTimeout(fit, 600);
+  })();
+
+  // ───── Booking flow ─────
+  (function () {
+    var KEY = 'zenrise-booking-v1';
+    var state = {
+      step: 0,
+      region: [],
+      length: '',
+      dateFrom: '',
+      dateTo: '',
+      party: 2,
+      experience: '',
+      name: '',
+      email: '',
+      from: '',
+      interests: [],
+      notes: '',
+      consent: false,
+      ref: ''
+    };
+
+    try { var saved = JSON.parse(localStorage.getItem(KEY) || 'null'); if (saved) Object.assign(state, saved); } catch (e) {}
+
+    function save() {
+      try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {}
+    }
+
+    // ─── Render selection state ───
+    function renderCards() {
+      document.querySelectorAll('[data-multi]').forEach(function (el) {
+        var key = el.dataset.multi;
+        var val = el.dataset.val;
+        el.classList.toggle('on', (state[key] || []).indexOf(val) !== -1);
+      });
+      document.querySelectorAll('[data-radio]').forEach(function (el) {
+        var key = el.dataset.radio;
+        var val = el.dataset.val;
+        el.classList.toggle('on', state[key] === val);
+      });
+      var c = (state.region || []).length;
+      document.getElementById('m-count-1').textContent = c + ' ' + (window.ZenriseI18n ? window.ZenriseI18n.t('booking_s1_count_suffix') : 'selected');
+    }
+    function updateMCount() {
+      var c = (state.region || []).length;
+      document.getElementById('m-count-1').textContent = c + ' ' + (window.ZenriseI18n ? window.ZenriseI18n.t('booking_s1_count_suffix') : 'selected');
+    }
+    function renderInputs() {
+      document.getElementById('date-from').value = state.dateFrom;
+      document.getElementById('date-to').value = state.dateTo;
+      document.getElementById('party-val').textContent = state.party;
+      document.getElementById('name').value = state.name;
+      document.getElementById('email').value = state.email;
+      document.getElementById('from').value = state.from;
+      document.getElementById('notes').value = state.notes;
+      document.getElementById('consent').checked = state.consent;
+      var sendBtn = document.getElementById('send-btn');
+      sendBtn.disabled = !state.consent;
+    }
+    // Mobile: the progress row lives under the current step's heading;
+    // desktop keeps it as the booking grid's sidebar. The aside is moved,
+    // not cloned, so setStep's class toggling keeps working either way.
+    var progressAside = document.querySelector('.progress');
+    var bookingGrid = document.querySelector('.booking');
+    var progressMq = window.matchMedia('(max-width: 1023px)');
+    // true only during the load-time setStep restore — suppresses its scroll
+    var restoringStep = false;
+    function placeProgress() {
+      if (progressMq.matches) {
+        var h2 = document.querySelector('.step.cur h2');
+        if (h2) h2.insertAdjacentElement('afterend', progressAside);
+      } else if (bookingGrid.firstElementChild !== progressAside) {
+        bookingGrid.insertBefore(progressAside, bookingGrid.firstElementChild);
+      }
+    }
+    if (progressMq.addEventListener) progressMq.addEventListener('change', placeProgress);
+
+    // Mobile: the step-2 price notes collapse behind their "Terms" row;
+    // desktop always shows them (the markup ships open for no-JS safety).
+    var priceNotes = document.querySelector('details.price-notes');
+    function syncNotes() { if (priceNotes) priceNotes.open = !progressMq.matches; }
+    syncNotes();
+    if (progressMq.addEventListener) progressMq.addEventListener('change', syncNotes);
+
+    // The notes box grows with its content (scrollHeight re-measure).
+    // Runs on input, and again when step 4 opens — a display:none
+    // textarea measures 0, so sizing restored text must wait for that.
+    var notesBox = document.getElementById('notes');
+    function growNotes() {
+      if (!notesBox || notesBox.offsetParent === null) return;
+      notesBox.style.height = 'auto';
+      notesBox.style.height = notesBox.scrollHeight + 'px';
+    }
+    notesBox.addEventListener('input', growNotes);
+
+    function setStep(n) {
+      state.step = n;
+      document.querySelectorAll('.step').forEach(function (el) {
+        el.classList.toggle('cur', Number(el.dataset.step) === n);
+      });
+      document.querySelectorAll('#steps-nav li').forEach(function (li) {
+        var i = Number(li.dataset.go);
+        li.classList.toggle('cur', i === n);
+        li.classList.toggle('done', i < n && n < 5);
+      });
+      placeProgress();
+      if (n === 3) growNotes();
+      // always render the summary on entering review — covers landing
+      // there on a cold reload, where no nav click has rendered it yet
+      if (n === 4) renderSummary();
+      save();
+      if (window.__fit) window.__fit();
+      // Mobile: the steps are tall and Continue sits at their bottom — the
+      // swapped-in step appears ABOVE the viewport, so tapping Continue
+      // looks like nothing happened. Bring the new step's top into view.
+      // Desktop keeps its position (booking area is one screen there).
+      // NOT on the load-time restore call: arriving on the page must show
+      // the top (hero/contact rows), not auto-jump to the booking form.
+      if (!restoringStep && window.matchMedia('(max-width: 1023px)').matches) {
+        var cur = document.querySelector('.step.cur');
+        if (cur) {
+          var y = cur.getBoundingClientRect().top + window.scrollY - 20;
+          window.scrollTo({ top: Math.max(0, y), behavior: 'smooth' });
+        }
+      }
+    }
+    function canAdvance() {
+      if (state.step === 0) return state.region.length > 0;
+      if (state.step === 1) return !!state.length;
+      if (state.step === 2) return !!state.experience; // dates optional, party always set
+      if (state.step === 3) return state.name.trim() && /.+@.+/.test(state.email);
+      if (state.step === 4) return state.consent;
+      return true;
+    }
+    function updateNext() {
+      document.querySelectorAll('.step.cur [data-next]').forEach(function (b) {
+        b.disabled = !canAdvance();
+      });
+    }
+
+    // ─── Listeners ───
+    document.querySelectorAll('[data-multi]').forEach(function (el) {
+      el.addEventListener('click', function () {
+        var key = el.dataset.multi;
+        var val = el.dataset.val;
+        var arr = state[key] || [];
+        var i = arr.indexOf(val);
+        if (i === -1) arr.push(val); else arr.splice(i, 1);
+        state[key] = arr;
+        renderCards();
+        updateNext();
+        save();
+      });
+    });
+    document.querySelectorAll('[data-radio]').forEach(function (el) {
+      el.addEventListener('click', function () {
+        state[el.dataset.radio] = el.dataset.val;
+        renderCards();
+        updateNext();
+        save();
+      });
+    });
+
+    // text inputs
+    ['name', 'email', 'from', 'notes'].forEach(function (id) {
+      var el = document.getElementById(id);
+      el.addEventListener('input', function () {
+        state[id] = el.value;
+        updateNext();
+        save();
+      });
+    });
+    ['date-from', 'date-to'].forEach(function (id) {
+      var el = document.getElementById(id);
+      el.addEventListener('change', function () {
+        var key = id === 'date-from' ? 'dateFrom' : 'dateTo';
+        state[key] = el.value;
+        save();
+      });
+    });
+
+    // party stepper
+    document.querySelectorAll('#party-stepper [data-step-act]').forEach(function (b) {
+      b.addEventListener('click', function () {
+        var n = state.party;
+        if (b.dataset.stepAct === 'inc' && n < 6) n++;
+        if (b.dataset.stepAct === 'dec' && n > 1) n--;
+        state.party = n;
+        document.getElementById('party-val').textContent = n;
+        // disable at edges
+        document.querySelector('#party-stepper [data-step-act="dec"]').disabled = n <= 1;
+        document.querySelector('#party-stepper [data-step-act="inc"]').disabled = n >= 6;
+        save();
+      });
+    });
+
+    // consent
+    document.getElementById('consent').addEventListener('change', function (e) {
+      state.consent = e.target.checked;
+      document.getElementById('send-btn').disabled = !state.consent;
+      save();
+    });
+
+    // step nav
+    document.querySelectorAll('[data-next]').forEach(function (b) {
+      b.addEventListener('click', function () {
+        if (!canAdvance()) return;
+        if (state.step < 4) { setStep(state.step + 1); }
+        if (state.step === 4) renderSummary();
+        updateNext();
+      });
+    });
+    document.querySelectorAll('[data-back]').forEach(function (b) {
+      b.addEventListener('click', function () {
+        if (state.step > 0) setStep(state.step - 1);
+        updateNext();
+      });
+    });
+    document.querySelectorAll('#steps-nav li').forEach(function (li) {
+      li.addEventListener('click', function () {
+        var go = Number(li.dataset.go);
+        if (state.step >= 5) return; // can't jump from sent state
+        if (go <= state.step || (go === state.step + 1 && canAdvance())) {
+          setStep(go);
+          if (go === 4) renderSummary();
+        }
+      });
+    });
+
+    // ─── Summary ───
+    function t(k) {
+      return (window.ZenriseI18n && window.ZenriseI18n.t) ? window.ZenriseI18n.t(k) : k;
+    }
+    function renderSummary() {
+      var em = t('booking_summary_em');
+      var rows = [
+        { key: 'booking_summary_town',      val: state.region.join(', ') || em, go: 0 },
+        { key: 'booking_summary_length',    val: state.length || em,            go: 1 },
+        { key: 'booking_summary_dates',     val: formatDates(),                 go: 2 },
+        { key: 'booking_summary_party',     val: state.party + ' ' + t(state.party > 1 ? 'booking_summary_travelers' : 'booking_summary_traveler'), go: 2 },
+        { key: 'booking_summary_exp',       val: state.experience || em,        go: 2 },
+        { key: 'booking_summary_name',      val: state.name || em,              go: 3 },
+        { key: 'booking_summary_email',     val: state.email || em,             go: 3 },
+        { key: 'booking_summary_from',      val: state.from || em,              go: 3 },
+        { key: 'booking_summary_interests', val: (state.interests || []).join(', ') || em, go: 3 },
+        { key: 'booking_summary_notes',     val: state.notes || em,             go: 3 }
+      ];
+      var s = document.getElementById('summary');
+      s.innerHTML = rows.map(function (r) {
+        // long values (interests, notes, several towns…) drop to reading
+        // size on mobile — the class is content-based, not per-field
+        var wordy = String(r.val).length > 32 ? ' class="wordy"' : '';
+        return '<div class="row"><dt data-i18n="' + r.key + '">' + t(r.key) + '</dt>' +
+               '<dd' + wordy + '>' + escapeHtml(r.val) +
+               ' <button class="edit" data-edit="' + r.go + '" data-i18n="booking_summary_edit">' + t('booking_summary_edit') + '</button></dd></div>';
+      }).join('');
+      s.querySelectorAll('.edit').forEach(function (btn) {
+        btn.addEventListener('click', function () { setStep(Number(btn.dataset.edit)); updateNext(); });
+      });
+    }
+    function escapeHtml(s) {
+      return String(s).replace(/[&<>"']/g, function (c) {
+        return ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c];
+      });
+    }
+    function formatDates() {
+      if (!state.dateFrom && !state.dateTo) return t('booking_summary_dates_flex');
+      var em = t('booking_summary_em');
+      var a = state.dateFrom || em;
+      var b = state.dateTo || em;
+      if (a === b) return a;
+      return a + '  →  ' + b;
+    }
+
+    // re-render dynamic chunks on language change
+    if (window.ZenriseI18n) {
+      window.ZenriseI18n.onChange(function () {
+        if (state.step === 4) renderSummary();
+        updateMCount();
+      });
+    }
+
+    // ─── Send ───
+    // Booking relay endpoint (DigitalOcean Function). Empty string =
+    // front-end-only mode: no network call, straight to the sent view.
+    var RELAY_URL = 'https://faas-sgp1-18bc02ac.doserverless.co/api/v1/web/fn-a4fd4d35-da69-44b6-9770-10dbeca95109/zenrise/booking';
+    document.getElementById('send-btn').addEventListener('click', function () {
+      if (!state.consent) return;
+      var btn = this;
+      state.ref = 'ZNR-' + Math.random().toString(36).slice(2, 6).toUpperCase() + '-' + Math.random().toString(36).slice(2, 6).toUpperCase();
+      document.getElementById('ref-code').textContent = state.ref;
+      if (!RELAY_URL) { setStep(5); return; }
+
+      btn.disabled = true;
+      var label = btn.querySelector('span'); // first span is the label, second the arrow
+      label.textContent = t('booking_btn_sending');
+
+      var payload = {
+        ref: state.ref, lang: (window.ZenriseI18n && window.ZenriseI18n.get()) || 'en',
+        region: state.region, length: state.length,
+        dateFrom: state.dateFrom, dateTo: state.dateTo,
+        party: state.party, experience: state.experience,
+        name: state.name, email: state.email, from: state.from,
+        interests: state.interests, notes: state.notes,
+      };
+      fetch(RELAY_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      }).then(function (r) {
+        if (!r.ok) throw new Error('relay ' + r.status);
+        setStep(5);
+      }).catch(function () {
+        alert(t('booking_send_err'));
+      }).finally(function () {
+        btn.disabled = !state.consent;
+        label.textContent = t('booking_btn_send');
+      });
+    });
+
+    // ─── Init ───
+    renderCards();
+    renderInputs();
+    document.querySelector('#party-stepper [data-step-act="dec"]').disabled = state.party <= 1;
+    document.querySelector('#party-stepper [data-step-act="inc"]').disabled = state.party >= 6;
+    // Resume at saved step but cap at 4 (don't auto-return to the sent state on reload)
+    restoringStep = true;
+    setStep(Math.min(state.step, 4));
+    restoringStep = false;
+    updateNext();
+  })();
+</script>
+</body>
+</html>
