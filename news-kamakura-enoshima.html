@@ -155,6 +155,17 @@
     .foot-v2-bottom { font-size: 10px; padding: 20px 0; flex-wrap: wrap; gap: 12px; }
   }
   @media (max-width: 599px) { .navlinks { display: none; } }
+
+  /* ───── Entrance animations (site convention, from home) ───── */
+  @keyframes page-fade {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: none; }
+  }
+  .intro-a, .intro-b { opacity: 0; }
+  .stage.page-in .intro-a { animation: page-fade 0.9s ease forwards; }
+  .stage.page-in .intro-b { animation: page-fade 0.9s ease 0.35s forwards; }
+  .reveal { opacity: 0; transform: translateY(12px); transition: opacity 700ms ease, transform 700ms ease; }
+  .reveal.in { opacity: 1; transform: none; }
 </style>
 </head>
 <body>
@@ -173,7 +184,7 @@
 
     <main class="art-wrap" data-screen-label="06 Article — Body">
       <div class="rule"></div>
-      <header class="art-head">
+      <header class="art-head intro-a">
         <div class="meta">
           <a class="back" href="news.html"><span class="ar">←</span><span class="lbl" data-i18n="art_back">All News</span></a>
           <span>2026.07.17</span>
@@ -182,7 +193,7 @@
         <p class="sub" data-i18n="news_a1_subtitle">A bus tour through Kamakura &amp; Enoshima</p>
       </header>
 
-      <div class="art-hero"><span class="ph-label" data-i18n="news_photo_soon">Photo — coming soon</span></div>
+      <div class="art-hero intro-b"><span class="ph-label" data-i18n="news_photo_soon">Photo — coming soon</span></div>
 
       <article class="art-body">
         <p class="lead" data-i18n="art1_lead">Tokyo's energy pulls you in fast — but after a few days, a moment comes when you want a little distance. An hour or so south, time moves gently in Kamakura: the old samurai capital held between green hills and the Pacific, and the birthplace of Zen in Japan. Piecing the trip together yourself by train, bus and foot takes more effort than it looks. The Kamakura &amp; Enoshima one-day bus tour, offered through Viator, arranges the way there for you.</p>
@@ -302,6 +313,41 @@
     window.addEventListener('load', fit);
     setTimeout(fit, 200);
     setTimeout(fit, 600);
+  })();
+</script>
+<script>
+  // Entrance animations — intro beats fire once fonts are active (wf-loading
+  // removed), then sections reveal on scroll. Same system as the home page;
+  // reveal setup waits for fonts so above-fold sections animate on load too
+  // (the stage is hidden until then).
+  (function () {
+    var stage = document.getElementById('stage');
+    function start() {
+      requestAnimationFrame(function () { stage.classList.add('page-in'); });
+      var els = document.querySelectorAll('.art-body > *');
+      els.forEach(function (el) { el.classList.add('reveal'); });
+      if ('IntersectionObserver' in window) {
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) {
+            if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+          });
+        }, { threshold: 0.08 });
+        els.forEach(function (el) { io.observe(el); });
+      } else {
+        els.forEach(function (el) { el.classList.add('in'); });
+      }
+    }
+    if (!document.documentElement.classList.contains('wf-loading')) {
+      start();
+    } else {
+      var obs = new MutationObserver(function () {
+        if (!document.documentElement.classList.contains('wf-loading')) {
+          obs.disconnect();
+          start();
+        }
+      });
+      obs.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+    }
   })();
 </script>
 <script src="lang.js"></script>

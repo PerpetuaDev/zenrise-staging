@@ -437,6 +437,17 @@
     .ph h1 { font-size: 52px; }
     .section-head h2 { font-size: 36px; }
   }
+
+  /* ───── Entrance animations (site convention, from home) ───── */
+  @keyframes page-fade {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: none; }
+  }
+  .intro-a, .intro-b { opacity: 0; }
+  .stage.page-in .intro-a { animation: page-fade 0.9s ease forwards; }
+  .stage.page-in .intro-b { animation: page-fade 0.9s ease 0.35s forwards; }
+  .reveal { opacity: 0; transform: translateY(12px); transition: opacity 700ms ease, transform 700ms ease; }
+  .reveal.in { opacity: 1; transform: none; }
 </style>
 </head>
 
@@ -457,10 +468,10 @@
 
   <!-- ───── Page header ───── -->
   <section class="ph" data-screen-label="02 About — Header">
-    <div>
+    <div class="intro-a">
       <h1 data-i18n-html="about_h1">About<br/>Zenrise.</h1>
     </div>
-    <div class="intro">
+    <div class="intro intro-b">
       <p data-i18n="about_intro_1">We are a travel agency based in Kamakura, Fujisawa, and Yokohama. We design thoughtful, locally-led journeys through the lesser-known corners of the Kamakura area.</p>
       <p class="muted" data-i18n="about_intro_2">Founded in 2024, we're on a journey to discover and share the hidden gems of Japan — the quiet, beautiful places that travellers usually miss.</p>
     </div>
@@ -594,6 +605,41 @@
     window.addEventListener('load', fit);
     setTimeout(fit, 200);
     setTimeout(fit, 600);
+  })();
+</script>
+<script>
+  // Entrance animations — intro beats fire once fonts are active (wf-loading
+  // removed), then sections reveal on scroll. Same system as the home page;
+  // reveal setup waits for fonts so above-fold sections animate on load too
+  // (the stage is hidden until then).
+  (function () {
+    var stage = document.getElementById('stage');
+    function start() {
+      requestAnimationFrame(function () { stage.classList.add('page-in'); });
+      var els = document.querySelectorAll('section.about-hero, section.section');
+      els.forEach(function (el) { el.classList.add('reveal'); });
+      if ('IntersectionObserver' in window) {
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) {
+            if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+          });
+        }, { threshold: 0.08 });
+        els.forEach(function (el) { io.observe(el); });
+      } else {
+        els.forEach(function (el) { el.classList.add('in'); });
+      }
+    }
+    if (!document.documentElement.classList.contains('wf-loading')) {
+      start();
+    } else {
+      var obs = new MutationObserver(function () {
+        if (!document.documentElement.classList.contains('wf-loading')) {
+          obs.disconnect();
+          start();
+        }
+      });
+      obs.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+    }
   })();
 </script>
 <script src="lang.js"></script>

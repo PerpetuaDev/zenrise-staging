@@ -146,6 +146,17 @@
     .foot-v2-bottom { font-size: 10px; padding: 20px 0; flex-wrap: wrap; gap: 12px; }
   }
   @media (max-width: 599px) { .navlinks { display: none; } }
+
+  /* ───── Entrance animations (site convention, from home) ───── */
+  @keyframes page-fade {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: none; }
+  }
+  .intro-a, .intro-b { opacity: 0; }
+  .stage.page-in .intro-a { animation: page-fade 0.9s ease forwards; }
+  .stage.page-in .intro-b { animation: page-fade 0.9s ease 0.35s forwards; }
+  .reveal { opacity: 0; transform: translateY(12px); transition: opacity 700ms ease, transform 700ms ease; }
+  .reveal.in { opacity: 1; transform: none; }
 </style>
 </head>
 <body>
@@ -164,13 +175,13 @@
 
     <main class="news-wrap" data-screen-label="05 News — Index">
       <div class="rule"></div>
-      <div class="news-head">
+      <div class="news-head intro-a">
         <span class="eyebrow" data-i18n="news_eyebrow">News</span>
         <h1 data-i18n="news_h1">News &amp; stories</h1>
         <span class="count" data-i18n="news_count">03</span>
       </div>
 
-      <a class="featured" href="news-kamakura-enoshima.html">
+      <a class="featured intro-b" href="news-kamakura-enoshima.html">
         <div class="f-photo">
           <span class="ph-label" data-i18n="news_photo_soon">Photo — coming soon</span>
         </div>
@@ -269,6 +280,41 @@
     window.addEventListener('load', fit);
     setTimeout(fit, 200);
     setTimeout(fit, 600);
+  })();
+</script>
+<script>
+  // Entrance animations — intro beats fire once fonts are active (wf-loading
+  // removed), then sections reveal on scroll. Same system as the home page;
+  // reveal setup waits for fonts so above-fold sections animate on load too
+  // (the stage is hidden until then).
+  (function () {
+    var stage = document.getElementById('stage');
+    function start() {
+      requestAnimationFrame(function () { stage.classList.add('page-in'); });
+      var els = document.querySelectorAll('.news-grid .card');
+      els.forEach(function (el) { el.classList.add('reveal'); });
+      if ('IntersectionObserver' in window) {
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) {
+            if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+          });
+        }, { threshold: 0.08 });
+        els.forEach(function (el) { io.observe(el); });
+      } else {
+        els.forEach(function (el) { el.classList.add('in'); });
+      }
+    }
+    if (!document.documentElement.classList.contains('wf-loading')) {
+      start();
+    } else {
+      var obs = new MutationObserver(function () {
+        if (!document.documentElement.classList.contains('wf-loading')) {
+          obs.disconnect();
+          start();
+        }
+      });
+      obs.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+    }
   })();
 </script>
 <script src="lang.js"></script>
