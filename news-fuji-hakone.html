@@ -291,15 +291,26 @@
         stage.classList.add('fitted');
         return;
       }
-      stage.style.zoom = Math.min(1, vw / 1920);
+      var vh = document.documentElement.clientHeight;
+      var HERO_DESIGN_HEIGHT = 1100;
+      var scale = Math.min(1, vw / 1920, vh / HERO_DESIGN_HEIGHT);
+      // 'zoom' (unlike transform:scale) scales BOTH layout and visual, so
+      // the document's scroll area tracks the visible content exactly.
+      stage.style.zoom = scale;
+      // With zoom shrinking layout width, margin auto centers horizontally.
       stage.style.margin = '0 auto';
+      // Clear anything left over from earlier transform-based versions.
+      stage.style.transform = '';
       stage.style.width = '1920px';
+      stage.style.height = '';
+      document.body.style.height = '';
       stage.classList.add('fitted');
     }
     fit();
     window.addEventListener('resize', fit);
     window.addEventListener('load', fit);
     setTimeout(fit, 200);
+    setTimeout(fit, 600);
   })();
 </script>
 <script src="lang.js"></script>
