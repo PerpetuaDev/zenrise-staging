@@ -1105,21 +1105,11 @@
     .summary .row:last-of-type dt { border-bottom: none; }
   }
 
-  /* ───── Entrance animations (site convention, from home) ───── */
-  @keyframes page-fade {
-    from { opacity: 0; transform: translateY(10px); }
-    to   { opacity: 1; transform: none; }
-  }
-  .intro-a, .intro-b { opacity: 0; }
-  .stage.page-in .intro-a { animation: page-fade 0.9s ease forwards; }
-  .stage.page-in .intro-b { animation: page-fade 0.9s ease 0.35s forwards; }
-  .reveal { opacity: 0; transform: translateY(12px); transition: opacity 700ms ease, transform 700ms ease; }
-  .reveal.in { opacity: 1; transform: none; }
 </style>
 </head>
 
 <body>
-<div class="stage" id="stage">
+<div class="stage" id="stage" data-entrance="section.booking-intro, section.booking">
 
   <!-- ───── Header ───── -->
   <header class="nav">
@@ -1134,7 +1124,7 @@
   </header>
 
   <!-- ───── Contact hero ───── -->
-  <section class="hero-v2" data-screen-label="03 Contact — Hero">
+  <section class="hero-v2" data-screen-label="04 Contact — Hero">
     <div class="body">
       <div class="photo intro-a">
         <span class="credit" data-i18n="contact_hero_credit">Komachi-dori &middot; Kamakura</span>
@@ -1159,14 +1149,14 @@
   </section>
 
   <!-- ───── Booking-flow intro ───── -->
-  <section class="booking-intro" id="booking" data-screen-label="03 Contact — Booking intro">
+  <section class="booking-intro" id="booking" data-screen-label="04 Contact — Booking intro">
     <div>
       <h2 data-i18n-html="contact_bi_title">Plan <br/>your trip.</h2>
     </div>
   </section>
 
   <!-- ───── Booking flow ───── -->
-  <section class="booking" data-screen-label="03 Contact — Booking flow">
+  <section class="booking" data-screen-label="04 Contact — Booking flow">
 
     <aside class="progress">
       <span class="ttl" data-i18n="booking_progress_title">Booking</span>
@@ -1408,7 +1398,7 @@
   </section>
 
   <!-- ───── Footer ───── -->
-  <footer class="foot-v2" data-screen-label="03 Contact — Footer">
+  <footer class="foot-v2" data-screen-label="04 Contact — Footer">
     <div class="rule"></div>
     <div class="foot-v2-top">
       <div class="foot-brand">
@@ -1446,41 +1436,6 @@
 
 </div>
 
-<script>
-  // Entrance animations — intro beats fire once fonts are active (wf-loading
-  // removed), then sections reveal on scroll. Same system as the home page;
-  // reveal setup waits for fonts so above-fold sections animate on load too
-  // (the stage is hidden until then).
-  (function () {
-    var stage = document.getElementById('stage');
-    function start() {
-      requestAnimationFrame(function () { stage.classList.add('page-in'); });
-      var els = document.querySelectorAll('section.booking-intro, section.booking');
-      els.forEach(function (el) { el.classList.add('reveal'); });
-      if ('IntersectionObserver' in window) {
-        var io = new IntersectionObserver(function (entries) {
-          entries.forEach(function (e) {
-            if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
-          });
-        }, { threshold: 0.08 });
-        els.forEach(function (el) { io.observe(el); });
-      } else {
-        els.forEach(function (el) { el.classList.add('in'); });
-      }
-    }
-    if (!document.documentElement.classList.contains('wf-loading')) {
-      start();
-    } else {
-      var obs = new MutationObserver(function () {
-        if (!document.documentElement.classList.contains('wf-loading')) {
-          obs.disconnect();
-          start();
-        }
-      });
-      obs.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
-    }
-  })();
-</script>
 <script src="lang.js"></script>
 <script src="datepicker.js"></script>
 

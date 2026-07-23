@@ -367,21 +367,11 @@
     .section-head h2 { font-size: 36px; }
   }
 
-  /* ───── Entrance animations (site convention, from home) ───── */
-  @keyframes page-fade {
-    from { opacity: 0; transform: translateY(10px); }
-    to   { opacity: 1; transform: none; }
-  }
-  .intro-a, .intro-b { opacity: 0; }
-  .stage.page-in .intro-a { animation: page-fade 0.9s ease forwards; }
-  .stage.page-in .intro-b { animation: page-fade 0.9s ease 0.35s forwards; }
-  .reveal { opacity: 0; transform: translateY(12px); transition: opacity 700ms ease, transform 700ms ease; }
-  .reveal.in { opacity: 1; transform: none; }
 </style>
 </head>
 
 <body>
-<div class="stage" id="stage">
+<div class="stage" id="stage" data-entrance="section.section">
 
   <!-- ───── Header ───── -->
   <header class="nav">
@@ -396,14 +386,14 @@
   </header>
 
   <!-- ───── Page header ───── -->
-  <section class="ph" data-screen-label="04 Terms — Header">
+  <section class="ph" data-screen-label="05 Terms — Header">
     <div class="intro-a">
       <h1 data-i18n-html="terms_h1">Terms &amp;<br/>conditions.</h1>
     </div>
   </section>
 
   <!-- ───── 01 Legal notice ───── -->
-  <section class="section" data-screen-label="04 Terms — Legal notice">
+  <section class="section" data-screen-label="05 Terms — Legal notice">
     <div class="section-head">
       <div class="label"><span class="num">01</span><span data-i18n="terms_legal_label">Disclosure</span></div>
       <h2 data-i18n="terms_legal_h2">Legal Notice.</h2>
@@ -458,7 +448,7 @@
   </section>
 
   <!-- ───── 02 Cancellation policy ───── -->
-  <section class="section" data-screen-label="04 Terms — Cancellation">
+  <section class="section" data-screen-label="05 Terms — Cancellation">
     <div class="section-head">
       <div class="label"><span class="num">02</span><span data-i18n="terms_cancel_label">Cancellation</span></div>
       <h2 data-i18n="terms_cancel_h2">Cancellation &amp; Changes.</h2>
@@ -482,7 +472,7 @@
   </section>
 
   <!-- ───── 03 Tour insurance ───── -->
-  <section class="section" data-screen-label="04 Terms — Insurance">
+  <section class="section" data-screen-label="05 Terms — Insurance">
     <div class="section-head">
       <div class="label"><span class="num">03</span><span data-i18n="terms_ins_label">Insurance</span></div>
       <h2 data-i18n="terms_ins_h2">Tour Insurance.</h2>
@@ -506,7 +496,7 @@
   </section>
 
   <!-- ───── 04 Privacy policy ───── -->
-  <section class="section" data-screen-label="04 Terms — Privacy">
+  <section class="section" data-screen-label="05 Terms — Privacy">
     <div class="section-head">
       <div class="label"><span class="num">04</span><span data-i18n="terms_priv_label">Privacy</span></div>
       <h2 data-i18n="terms_priv_h2">Privacy Policy.</h2>
@@ -537,7 +527,7 @@
   </section>
 
   <!-- ───── Footer ───── -->
-  <footer class="foot-v2" data-screen-label="04 Terms — Footer">
+  <footer class="foot-v2" data-screen-label="05 Terms — Footer">
     <div class="rule"></div>
     <div class="foot-v2-top">
       <div class="foot-brand">
@@ -612,41 +602,6 @@
     window.addEventListener('load', fit);
     setTimeout(fit, 200);
     setTimeout(fit, 600);
-  })();
-</script>
-<script>
-  // Entrance animations — intro beats fire once fonts are active (wf-loading
-  // removed), then sections reveal on scroll. Same system as the home page;
-  // reveal setup waits for fonts so above-fold sections animate on load too
-  // (the stage is hidden until then).
-  (function () {
-    var stage = document.getElementById('stage');
-    function start() {
-      requestAnimationFrame(function () { stage.classList.add('page-in'); });
-      var els = document.querySelectorAll('section.section');
-      els.forEach(function (el) { el.classList.add('reveal'); });
-      if ('IntersectionObserver' in window) {
-        var io = new IntersectionObserver(function (entries) {
-          entries.forEach(function (e) {
-            if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
-          });
-        }, { threshold: 0.08 });
-        els.forEach(function (el) { io.observe(el); });
-      } else {
-        els.forEach(function (el) { el.classList.add('in'); });
-      }
-    }
-    if (!document.documentElement.classList.contains('wf-loading')) {
-      start();
-    } else {
-      var obs = new MutationObserver(function () {
-        if (!document.documentElement.classList.contains('wf-loading')) {
-          obs.disconnect();
-          start();
-        }
-      });
-      obs.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
-    }
   })();
 </script>
 <script src="lang.js"></script>

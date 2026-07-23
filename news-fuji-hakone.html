@@ -80,6 +80,7 @@
   .art-body p { font-size: 19px; line-height: 1.75; color: var(--ink); margin: 0 0 28px; text-wrap: pretty; }
   :lang(ja) .art-body p { line-height: 1.95; font-size: 18px; }
   .sec { margin-bottom: 88px; }
+  .sec:last-of-type { margin-bottom: 0; }
   .sec .sec-label { font-family: var(--mono); font-size: 12px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--ink-60); display: block; margin-bottom: 18px; }
   .sec h2 { font-family: var(--display); font-weight: 400; font-size: 44px; line-height: 1.15; letter-spacing: -0.005em; margin: 0 0 36px; text-wrap: pretty; }
   .fig { margin: 0 0 36px; }
@@ -126,7 +127,6 @@
     .stage { width: auto; }
     .nav { height: 72px; padding: 0 20px; }
     .logo { font-size: 24px; }
-    .lang { display: none; }
     .art-wrap { padding: 8px 20px 0; }
     .art-head { padding: 40px 0 36px; }
     .art-head .meta { margin-bottom: 24px; flex-wrap: wrap; gap: 14px; }
@@ -161,20 +161,10 @@
   }
   @media (max-width: 599px) { .navlinks { display: none; } }
 
-  /* ───── Entrance animations (site convention, from home) ───── */
-  @keyframes page-fade {
-    from { opacity: 0; transform: translateY(10px); }
-    to   { opacity: 1; transform: none; }
-  }
-  .intro-a, .intro-b { opacity: 0; }
-  .stage.page-in .intro-a { animation: page-fade 0.9s ease forwards; }
-  .stage.page-in .intro-b { animation: page-fade 0.9s ease 0.35s forwards; }
-  .reveal { opacity: 0; transform: translateY(12px); transition: opacity 700ms ease, transform 700ms ease; }
-  .reveal.in { opacity: 1; transform: none; }
 </style>
 </head>
 <body>
-  <div class="stage" id="stage">
+  <div class="stage" id="stage" data-entrance=".art-body > *">
 
     <header class="nav" data-screen-label="08 Article — Header">
       <a class="logo" href="index.html">ZENRISE</a>
@@ -243,7 +233,7 @@
           <p data-i18n="art3_s4_p">Rather than closing the day in evening traffic, the tour boards the Shinkansen at Odawara Station for the return to Tokyo — a stretch of track where speeds reach 320 km/h, and a fitting way to end a day that has already covered so much ground.</p>
         </section>
 
-        <section class="sec" style="margin-bottom: 0;">
+        <section class="sec">
           <h2 data-i18n="art3_wh_h">What the tour handles for you</h2>
           <p data-i18n="art3_wh_p">Tickets for the boat, the ropeway, and the Shinkansen are arranged as part of the itinerary, and the return by rail avoids Tokyo’s evening traffic altogether. Over roughly ten hours, the route brings together Japan’s nature, its history, and one of its more modern engineering achievements.</p>
         </section>
@@ -327,41 +317,6 @@
     window.addEventListener('load', fit);
     setTimeout(fit, 200);
     setTimeout(fit, 600);
-  })();
-</script>
-<script>
-  // Entrance animations — intro beats fire once fonts are active (wf-loading
-  // removed), then sections reveal on scroll. Same system as the home page;
-  // reveal setup waits for fonts so above-fold sections animate on load too
-  // (the stage is hidden until then).
-  (function () {
-    var stage = document.getElementById('stage');
-    function start() {
-      requestAnimationFrame(function () { stage.classList.add('page-in'); });
-      var els = document.querySelectorAll('.art-body > *');
-      els.forEach(function (el) { el.classList.add('reveal'); });
-      if ('IntersectionObserver' in window) {
-        var io = new IntersectionObserver(function (entries) {
-          entries.forEach(function (e) {
-            if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
-          });
-        }, { threshold: 0.08 });
-        els.forEach(function (el) { io.observe(el); });
-      } else {
-        els.forEach(function (el) { el.classList.add('in'); });
-      }
-    }
-    if (!document.documentElement.classList.contains('wf-loading')) {
-      start();
-    } else {
-      var obs = new MutationObserver(function () {
-        if (!document.documentElement.classList.contains('wf-loading')) {
-          obs.disconnect();
-          start();
-        }
-      });
-      obs.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
-    }
   })();
 </script>
 <script src="lang.js"></script>
