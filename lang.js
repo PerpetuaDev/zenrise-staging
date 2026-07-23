@@ -5,7 +5,7 @@
  *   data-i18n="key"             — replaces textContent
  *   data-i18n-html="key"        — replaces innerHTML (for strings with markup)
  *   data-i18n-placeholder="key" — replaces an input's placeholder
- *   data-i18n-title="key"       — replaces document.title (on a meta element)
+ *   data-i18n-title="key"       — replaces document.title (on the <title> element)
  *
  * Then add the matching key under each language in DICT below.
  *
@@ -120,30 +120,30 @@
       news_a1_subtitle: 'A bus tour through Kamakura & Enoshima',
       news_a1_excerpt: 'An hour south of the capital, time slows down. The Great Buddha, Hasedera\u2019s sea views and the little Enoden railway in a single day — with the logistics handled for you.',
 
-      // article: Kamakura & Enoshima bus tour  (EN draft — replace with final translation)
+      // article: Kamakura & Enoshima bus tour
       art_back: 'All News',
       art_cta_book: 'Booking',
       art_cta_ours: 'Our own tours',
       art1_page_title: 'A day away from Tokyo — Zenrise News',
       art1_h1: 'A day away from Tokyo —<br/>the Kamakura & Enoshima bus tour',
-      art1_lead: "Tokyo’s energy is easy to love and, after a few days, just as easy to want a rest from. Half an hour south, Kamakura keeps a slower pace — a former samurai capital set between green hills and the Pacific, and the birthplace of Zen Buddhism in Japan. Reaching it independently means piecing together trains, local buses, and walking routes; the Kamakura and Enoshima One-Day Bus Tour, offered through Viator, does that piecing together for you.",
+      art1_lead: "Tokyo's energy pulls you in fast — but after a few days, a moment comes when you want a little distance. An hour or so south, time moves gently in Kamakura: the old samurai capital held between green hills and the Pacific, and the birthplace of Zen in Japan. Piecing the trip together yourself by train, bus and foot takes more effort than it looks. The Kamakura & Enoshima one-day bus tour, offered through Viator, arranges the way there for you.",
       art1_s1_label: '01',
-      art1_s1_h: "Kotoku-in and the Great Buddha",
+      art1_s1_h: "Kotoku-in and the Great Buddha of Kamakura",
       art1_s1_cap: 'Kotoku-in, Kamakura',
-      art1_s1_p: "The tour’s first stop is the bronze Great Buddha of Kotoku-in, seated in the open air since the 13th century. At over eleven metres, it has weathered earthquakes and tsunamis and still holds a stillness that is easy to feel standing beneath it, sea wind moving past.",
+      art1_s1_p: "The first stop is the Great Buddha of Kotoku-in, seated in the open air since the thirteenth century. Rising more than eleven metres, it has come through earthquakes and tsunami and still holds its quiet. In the sea breeze, simply looking up is enough to stop you where you stand.",
       art1_s2_label: '02',
-      art1_s2_h: "Hasedera Temple and the view over Sagami Bay",
-      art1_s2_cap: "Hasedera Temple gate",
-      art1_s2_p: "Next comes Hasedera, known for its gardens and for the view of Sagami Bay from its terraces. The paths here move slowly by design — past a hall of Kannon statues, out toward water once sailed by samurai fleets.",
+      art1_s2_h: "Hasedera and the view over Sagami Bay",
+      art1_s2_cap: "The temple gate at Hasedera",
+      art1_s2_p: "Next comes Hasedera, known for its gardens and for the view over Sagami Bay from its grounds. The temple paths were laid for walking slowly; past the hall of Kannon statues, your gaze slips out to the sea where the ships of the samurai once crossed.",
       art1_s3_label: '03',
-      art1_s3_h: "The Enoden line to Enoshima",
+      art1_s3_h: "Riding the Enoden to Enoshima",
       art1_s3_cap: 'Along the Enoden line',
-      art1_s3_p: "The Enoden, a small coastal train that has run this route for over a century, carries the tour on to Enoshima. It passes close enough to houses and beaches that the ride itself becomes part of the sightseeing — a slow, rattling introduction to an island of shrines and sea cliffs.",
-      art1_s4_h: "What the tour handles for you",
-      art1_s4_p: "Transport between all three stops is arranged in an air-conditioned bus, with an English-speaking guide able to explain the Zen and samurai history behind what you’re seeing along the way. Covering the same route independently by train would mean a good deal more walking and considerably more planning.",
-      art1_note: "This tour departs from central Tokyo and runs on a regular schedule. Reservations are handled through Viator, our booking partner for routes we don’t operate ourselves.",
-      art1_note_cta: "View dates on Viator",
-      art1_outro: "If the quieter side of Kamakura and Enoshima stays with you, our own walking tours move through the same towns at an even slower pace — worth keeping in mind for another day of your trip.",
+      art1_s3_p: "A small railway that has run this coastline for over a century, the Enoden carries the tour on to Enoshima. It threads so close to houses and beaches that the window itself becomes part of the sightseeing. Rocking gently along, you draw slowly nearer to the island of shrines and sea cliffs.",
+      art1_s4_h: "What the tour takes care of",
+      art1_s4_p: "All the travel between the three stops is left to an air-conditioned bus, with an English-speaking guide who fills in the background of the Zen and samurai culture along the way. Tracing the same route on your own by train means far more walking — and far more planning.",
+      art1_note: "This tour departs from central Tokyo and runs regularly. Bookings are handled through Viator, our partner for routes we do not operate ourselves.",
+      art1_note_cta: "See dates on Viator",
+      art1_outro: "If the quiet of Kamakura and Enoshima stays with you, our own walking tours move through this landscape at an even gentler pace. Keep us in mind for another day of your trip.",
       art1_outro_cta: 'About our tours',
 
       // home page
@@ -929,7 +929,7 @@
       if (v != null) el.setAttribute('placeholder', v);
     });
     // title
-    var t = document.querySelector('meta[data-i18n-title]');
+    var t = document.querySelector('title[data-i18n-title]');
     if (t) {
       var key = t.getAttribute('data-i18n-title');
       var v = d[key] != null ? d[key] : fb[key];
@@ -1000,6 +1000,7 @@
       '  html.menu-open .mobile-nav-links a:nth-child(1) { transition-delay: 120ms; }',
       '  html.menu-open .mobile-nav-links a:nth-child(2) { transition-delay: 200ms; }',
       '  html.menu-open .mobile-nav-links a:nth-child(3) { transition-delay: 280ms; }',
+      '  html.menu-open .mobile-nav-links a:nth-child(4) { transition-delay: 360ms; }',
       '  .mobile-nav-lang { opacity: 0; transition: opacity 500ms ease; }',
       '  html.menu-open .mobile-nav-lang { opacity: 1; transition-delay: 380ms; }',
       '  .mobile-nav-lang { margin-top: auto; border-top: 1px solid rgba(41,65,56,0.14); padding-top: 22px; }',
