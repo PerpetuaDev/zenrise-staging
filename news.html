@@ -67,8 +67,7 @@
   .news-head .count { justify-self: end; font-family: var(--mono); font-size: 12px; letter-spacing: 0.28em; color: var(--ink-60); }
   /* ── featured ── */
   .featured { display: grid; grid-template-columns: 1088px 1fr; gap: 0; align-items: stretch; }
-  .featured .f-photo { position: relative; height: 612px; background: var(--bg-3); overflow: hidden; }
-  .f-photo .ph-label, .card .ph-label { position: absolute; inset: 0; display: grid; place-items: center; font-family: var(--mono); font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--ink-30); }
+  .featured .f-photo { position: relative; height: 612px; background: var(--bg-3) center / cover no-repeat; overflow: hidden; }
   .featured .f-body { background: var(--bg-2); padding: 56px 64px; display: flex; flex-direction: column; }
   .f-meta { display: flex; gap: 28px; font-family: var(--mono); font-size: 12px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink-60); margin-bottom: 40px; }
   .f-body h2 { font-family: var(--display); font-weight: 400; font-size: 56px; line-height: 1.18; letter-spacing: -0.005em; margin: auto 0 22px; text-wrap: pretty; }
@@ -89,7 +88,7 @@
   /* ── grid ── */
   .news-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 20px; padding-bottom: 140px; }
   .card { display: block; }
-  .card .pic { position: relative; height: 380px; background: var(--bg-3); margin-bottom: 22px; overflow: hidden; }
+  .card .pic { position: relative; height: 380px; background: var(--bg-3) center / cover no-repeat; margin-bottom: 22px; overflow: hidden; }
   .card .num-tag { position: absolute; top: 16px; left: 18px; font-family: var(--mono); font-size: 11px; letter-spacing: 0.24em; color: var(--ink-30); }
   .card .c-meta { display: flex; gap: 22px; font-family: var(--mono); font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink-60); margin-bottom: 14px; }
   .card h3 { font-family: var(--display); font-weight: 400; font-size: 30px; line-height: 1.25; margin: 0 0 12px; letter-spacing: -0.005em; text-wrap: pretty; }
@@ -173,9 +172,7 @@
       </div>
 
       <a class="featured intro-b" href="news-kamakura-enoshima.html">
-        <div class="f-photo">
-          <span class="ph-label" data-i18n="news_photo_soon">Photo — coming soon</span>
-        </div>
+        <div class="f-photo" style="background-image: url('assets/news/kamakura-enoshima-hero-enoden-dusk.webp')"></div>
         <div class="f-body">
           <div class="f-meta">
             <span>2026.07.17</span>
@@ -189,19 +186,19 @@
 
       <div class="news-grid">
         <a class="card" href="news-sumo-shinjuku.html">
-          <div class="pic"><span class="num-tag">02 / 04</span><span class="ph-label" data-i18n="news_photo_soon">Photo — coming soon</span></div>
+          <div class="pic" style="background-image: url('assets/news/sumo-hero-ukiyoe.webp')"><span class="num-tag">02 / 04</span></div>
           <div class="c-meta"><span>2026.07.10</span></div>
           <h3 data-i18n="news_a2_title">Inside the sumo ring</h3>
           <p class="c-sub" data-i18n="news_a2_subtitle">A show &amp; experience in Shinjuku</p>
         </a>
         <a class="card" href="news-fuji-hakone.html">
-          <div class="pic"><span class="num-tag">03 / 04</span><span class="ph-label" data-i18n="news_photo_soon">Photo — coming soon</span></div>
+          <div class="pic" style="background-image: url('assets/news/fuji-hakone-hero-sunset.webp')"><span class="num-tag">03 / 04</span></div>
           <div class="c-meta"><span>2026.07.03</span></div>
           <h3 data-i18n="news_a3_title">Fuji to Hakone</h3>
           <p class="c-sub" data-i18n="news_a3_subtitle">And the ride home by Shinkansen</p>
         </a>
         <a class="card" href="news-tokyo-private.html">
-          <div class="pic"><span class="num-tag">04 / 04</span><span class="ph-label" data-i18n="news_photo_soon">Photo — coming soon</span></div>
+          <div class="pic" style="background-image: url('assets/news/tokyo-hero-meijijingu.webp')"><span class="num-tag">04 / 04</span></div>
           <div class="c-meta"><span>2026.06.26</span></div>
           <h3 data-i18n="news_a4_title">Tokyo, on your terms</h3>
           <p class="c-sub" data-i18n="news_a4_subtitle">A private full-day walking tour</p>

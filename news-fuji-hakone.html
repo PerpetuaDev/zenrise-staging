@@ -70,8 +70,7 @@
   .art-head .meta .back:hover .lbl::after { opacity: 1; }
   .art-head h1 { font-family: var(--display); font-weight: 400; font-size: 76px; line-height: 1.18; letter-spacing: -0.005em; margin: 0; text-wrap: pretty; }
   .art-head .sub { font-family: var(--display); font-size: 30px; line-height: 1.45; color: var(--ink-60); margin: 24px 0 0; text-wrap: pretty; }
-  .art-hero { position: relative; height: 700px; background: var(--bg-3); }
-  .ph-label { position: absolute; inset: 0; display: grid; place-items: center; font-family: var(--mono); font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--ink-30); }
+  .art-hero { position: relative; height: 700px; background: var(--bg-3) center / cover no-repeat; }
   .art-body { max-width: 880px; margin: 0 auto; padding: 96px 0 140px; }
   .art-body .lead { font-family: var(--display); font-size: 30px; line-height: 1.5; margin: 0 0 88px; text-wrap: pretty; }
   :lang(ja) .art-body .lead { font-size: 26px; line-height: 1.9; }
@@ -84,7 +83,7 @@
   .sec .sec-label { font-family: var(--mono); font-size: 12px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--ink-60); display: block; margin-bottom: 18px; }
   .sec h2 { font-family: var(--display); font-weight: 400; font-size: 44px; line-height: 1.15; letter-spacing: -0.005em; margin: 0 0 36px; text-wrap: pretty; }
   .fig { margin: 0 0 36px; }
-  .fig .ph { position: relative; height: 520px; background: var(--bg-3); }
+  .fig .ph { position: relative; height: 520px; background: var(--bg-3) center / cover no-repeat; }
   .fig .ph.tall { height: 720px; }
   .fig figcaption { font-family: var(--mono); font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink-60); padding-top: 14px; }
   .cta-duo { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; width: 1848px; margin: 96px 0 0 calc((880px - 1848px) / 2); border-top: 1px solid var(--rule); padding-top: 96px; }
@@ -188,7 +187,7 @@
         <p class="sub" data-i18n="news_a3_subtitle">And the ride home by Shinkansen</p>
       </header>
 
-      <div class="art-hero intro-b"><span class="ph-label" data-i18n="news_photo_soon">Photo — coming soon</span></div>
+      <div class="art-hero intro-b" style="background-image: url('assets/news/fuji-hakone-hero-sunset.webp')"></div>
 
       <article class="art-body">
         <p class="lead" data-i18n="art3_lead">Mount Fuji tends to sit near the top of most Japan itineraries, but reaching it — and the hot-spring valleys of Hakone beyond it — independently means coordinating trains, local buses, ropeways, and a boat, all in one day. The Mt. Fuji and Hakone One-Day Bus Tour, offered through Viator, handles that coordination and ends, unusually, with a Shinkansen ride back to Tokyo.</p>
@@ -197,7 +196,7 @@
           <span class="sec-label" data-i18n="art3_s1_label">01</span>
           <h2 data-i18n="art3_s1_h">Mt. Fuji’s 5th Station</h2>
           <figure class="fig">
-            <div class="ph"><span class="ph-label" data-i18n="news_photo_soon">Photo — coming soon</span></div>
+            <div class="ph" style="background-image: url('assets/news/fuji-hakone-peak-detail.webp')"></div>
             <figcaption data-i18n="art3_s1_cap">Mt. Fuji, seen from the lake shore</figcaption>
           </figure>
           <p data-i18n="art3_s1_p">The tour bus climbs from Tokyo to Mt. Fuji’s 5th Station, 2,300 metres above sea level. The air here is noticeably thinner and cooler; a small shrine sits partway up the mountainside, and the surrounding lakes appear far below, laid out like a map.</p>
@@ -207,7 +206,7 @@
           <span class="sec-label" data-i18n="art3_s2_label">02</span>
           <h2 data-i18n="art3_s2_h">Lake Ashi by boat</h2>
           <figure class="fig">
-            <div class="ph"><span class="ph-label" data-i18n="news_photo_soon">Photo — coming soon</span></div>
+            <div class="ph" style="background-image: url('assets/news/fuji-hakone-lake-ashi.webp')"></div>
             <figcaption data-i18n="art3_s2_cap">Lake Ashi, with Hakone Shrine’s torii at the water’s edge</figcaption>
           </figure>
           <p data-i18n="art3_s2_p">From Fuji, the route descends into Hakone’s volcanic valley for a crossing of Lake Ashi aboard a wooden-hulled sightseeing boat. The vermillion torii gate of Hakone Shrine stands in the water near the far shore, framed by forested slopes — one of the more photographed, and more genuinely quiet, views in the region.</p>
@@ -217,7 +216,7 @@
           <span class="sec-label" data-i18n="art3_s3_label">03</span>
           <h2 data-i18n="art3_s3_h">Above the valley on the Hakone Ropeway</h2>
           <figure class="fig">
-            <div class="ph tall"><span class="ph-label" data-i18n="news_photo_soon">Photo — coming soon</span></div>
+            <div class="ph tall" style="background-image: url('assets/news/fuji-hakone-ropeway.webp')"></div>
             <figcaption data-i18n="art3_s3_cap">The Hakone Ropeway, moving through cloud</figcaption>
           </figure>
           <p data-i18n="art3_s3_p">The Hakone Ropeway lifts the tour above the valley for a wide view of its volcanic terrain. On a clear day, Mt. Fuji reappears here from an entirely different angle, standing over the ridgeline.</p>
@@ -227,7 +226,7 @@
           <span class="sec-label" data-i18n="art3_s4_label">04</span>
           <h2 data-i18n="art3_s4_h">The ride home by Shinkansen</h2>
           <figure class="fig">
-            <div class="ph"><span class="ph-label" data-i18n="news_photo_soon">Photo — coming soon</span></div>
+            <div class="ph" style="background-image: url('assets/news/fuji-hakone-shinkansen.webp')"></div>
             <figcaption data-i18n="art3_s4_cap">Nozomi Shinkansen, Odawara</figcaption>
           </figure>
           <p data-i18n="art3_s4_p">Rather than closing the day in evening traffic, the tour boards the Shinkansen at Odawara Station for the return to Tokyo — a stretch of track where speeds reach 320 km/h, and a fitting way to end a day that has already covered so much ground.</p>

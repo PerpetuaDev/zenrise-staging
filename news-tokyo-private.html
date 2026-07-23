@@ -70,8 +70,7 @@
   .art-head .meta .back:hover .lbl::after { opacity: 1; }
   .art-head h1 { font-family: var(--display); font-weight: 400; font-size: 76px; line-height: 1.18; letter-spacing: -0.005em; margin: 0; text-wrap: pretty; }
   .art-head .sub { font-family: var(--display); font-size: 30px; line-height: 1.45; color: var(--ink-60); margin: 24px 0 0; text-wrap: pretty; }
-  .art-hero { position: relative; height: 700px; background: var(--bg-3); }
-  .ph-label { position: absolute; inset: 0; display: grid; place-items: center; font-family: var(--mono); font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--ink-30); }
+  .art-hero { position: relative; height: 700px; background: var(--bg-3) center / cover no-repeat; }
   .art-body { max-width: 880px; margin: 0 auto; padding: 96px 0 140px; }
   .art-body .lead { font-family: var(--display); font-size: 30px; line-height: 1.5; margin: 0 0 88px; text-wrap: pretty; }
   :lang(ja) .art-body .lead { font-size: 26px; line-height: 1.9; }
@@ -84,7 +83,7 @@
   .sec .sec-label { font-family: var(--mono); font-size: 12px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--ink-60); display: block; margin-bottom: 18px; }
   .sec h2 { font-family: var(--display); font-weight: 400; font-size: 44px; line-height: 1.15; letter-spacing: -0.005em; margin: 0 0 36px; text-wrap: pretty; }
   .fig { margin: 0 0 36px; }
-  .fig .ph { position: relative; height: 520px; background: var(--bg-3); }
+  .fig .ph { position: relative; height: 520px; background: var(--bg-3) center / cover no-repeat; }
   .fig .ph.tall { height: 720px; }
   .fig figcaption { font-family: var(--mono); font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink-60); padding-top: 14px; }
   .cta-duo { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; width: 1848px; margin: 96px 0 0 calc((880px - 1848px) / 2); border-top: 1px solid var(--rule); padding-top: 96px; }
@@ -188,7 +187,7 @@
         <p class="sub" data-i18n="news_a4_subtitle">A private full-day walking tour</p>
       </header>
 
-      <div class="art-hero intro-b"><span class="ph-label" data-i18n="news_photo_soon">Photo — coming soon</span></div>
+      <div class="art-hero intro-b" style="background-image: url('assets/news/tokyo-hero-meijijingu.webp')"></div>
 
       <article class="art-body">
         <p class="lead" data-i18n="art4_lead">Tokyo’s transit map can look, to a first-time visitor, like a diagram with no obvious entry point, and a group of people with different interests rarely agrees on how to spend a single day inside it. The Tokyo Private Custom Full-Day Walking Tour, offered through Viator, starts from a different premise: a conversation first, then a route built only around what you want to see.</p>
@@ -197,7 +196,7 @@
           <span class="sec-label" data-i18n="art4_s1_label">01</span>
           <h2 data-i18n="art4_s1_h">Built around your interests</h2>
           <figure class="fig">
-            <div class="ph"><span class="ph-label" data-i18n="news_photo_soon">Photo — coming soon</span></div>
+            <div class="ph" style="background-image: url('assets/news/tokyo-sensoji.webp')"></div>
             <figcaption data-i18n="art4_s1_cap">Sensoji, Asakusa</figcaption>
           </figure>
           <p data-i18n="art4_s1_p">Rather than following a fixed itinerary, the guide asks first — the history behind Asakusa and Meiji Shrine, the vintage shops tucked into Shimokitazawa, or a handful of quiet gardens away from the main crowds. The route is drawn from that conversation, rather than the other way around.</p>
@@ -207,7 +206,7 @@
           <span class="sec-label" data-i18n="art4_s2_label">02</span>
           <h2 data-i18n="art4_s2_h">A local reading of the trains and the city</h2>
           <figure class="fig">
-            <div class="ph"><span class="ph-label" data-i18n="news_photo_soon">Photo — coming soon</span></div>
+            <div class="ph" style="background-image: url('assets/news/tokyo-ochanomizu.webp')"></div>
             <figcaption data-i18n="art4_s2_cap">Ochanomizu, where the Marunouchi Line surfaces over the Kanda River</figcaption>
           </figure>
           <p data-i18n="art4_s2_p">Tokyo’s transit system, one of the busiest in the world, becomes considerably easier to move through with someone who already knows it. Along the way, the guide’s commentary tends to move past landmarks and into the smaller details of custom, etiquette, and daily life.</p>
@@ -217,7 +216,7 @@
           <span class="sec-label" data-i18n="art4_s3_label">03</span>
           <h2 data-i18n="art4_s3_h">A pace set by you</h2>
           <figure class="fig">
-            <div class="ph"><span class="ph-label" data-i18n="news_photo_soon">Photo — coming soon</span></div>
+            <div class="ph" style="background-image: url('assets/news/tokyo-shibuya-bluehour.webp')"></div>
             <figcaption data-i18n="art4_s3_cap">Shibuya, toward evening</figcaption>
           </figure>
           <p data-i18n="art4_s3_p">Group tours generally move on a fixed clock. A private guide can pause for an unplanned matcha, allow extra time for photographs, or slow down for a tired child — adjustments that are, in practice, hard to build into a shared schedule.</p>
