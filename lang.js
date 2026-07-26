@@ -121,6 +121,8 @@
       art_back: 'All News',
       art_cta_book: 'Booking',
       art_cta_ours: 'Our own tours',
+      art_note_cta: 'See dates on Viator',
+      art_outro_cta: 'About our tours',
       art1_page_title: 'A day away from Tokyo — Zenrise News',
       art1_lead: "Tokyo's energy pulls you in fast — but after a few days, a moment comes when you want a little distance. An hour or so south, time moves gently in Kamakura: the old samurai capital held between green hills and the Pacific, and the birthplace of Zen in Japan. Piecing the trip together yourself by train, bus and foot takes more effort than it looks. The Kamakura & Enoshima one-day bus tour, offered through Viator, arranges the way there for you.",
       art1_s1_label: '01',
@@ -556,6 +558,8 @@
       art_back: 'ニュース一覧',
       art_cta_book: 'ご予約',
       art_cta_ours: '私たちのツアー',
+      art_note_cta: 'Viatorで日程を見る',
+      art_outro_cta: '弊社のツアーについて',
       art1_page_title: '東京を離れて過ごす一日 — Zenrise ニュース',
       art1_lead: '東京の賑わいには、すぐに惹きつけられるものがある。けれど数日も過ごせば、少し離れたくなる瞬間も訪れる。南へ小一時間、鎌倉にはゆるやかな時間が流れている。緑の丘と太平洋に挟まれたかつての武家の都であり、日本における禅の発祥の地でもある。電車やバス、徒歩を自分で組み合わせて向かうのは意外と骨が折れる道のりだが、Viator提供の「鎌倉・江ノ島日帰りバスツアー」が、その道のりをかわりに整えてくれる。',
       art1_s1_label: '01',
@@ -882,6 +886,15 @@
       booking_sent_back_about: '私たちについてもっと読む  →'
     }
   };
+
+  // CMS-generated pages (news) define their copy inline as window.ZENRISE_CMS_DICT
+  // before this script loads; fold it into the shared dictionaries.
+  if (window.ZENRISE_CMS_DICT) {
+    ['en', 'ja'].forEach(function (l) {
+      var extra = window.ZENRISE_CMS_DICT[l];
+      if (extra) for (var k in extra) DICT[l][k] = extra[k];
+    });
+  }
 
   // expose for use by page scripts (e.g. dynamically rendered text)
   window.ZenriseI18n = {
