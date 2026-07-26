@@ -1,0 +1,43 @@
+[
+  {
+    "id": "sample-zen-day",
+    "date": "2026-07-24T00:00:00.000Z",
+    "titleEn": "New Tour: A Morning of Zen in Kita-Kamakura",
+    "titleJa": "新ツアー:北鎌倉で過ごす禅の朝",
+    "subtitleEn": "Zazen, temple gardens, and a bowl of matcha — autumn bookings now open",
+    "subtitleJa": "坐禅と庭園、そして一服の抹茶 — 秋のご予約受付を開始",
+    "excerptEn": "This autumn we are introducing a slower kind of morning: seated meditation at a Kita-Kamakura temple, a quiet walk through its gardens, and matcha prepared in front of you.",
+    "excerptJa": "この秋、新しい朝の過ごし方をご提案します。北鎌倉の寺院での坐禅、庭園の静かな散策、そして目の前で点てられる抹茶の一服です。",
+    "hero": { "url": "assets/shrines/temple-moss-garden.jpg", "width": 2560, "height": 1439 },
+    "leadEn": "Kamakura is at its best before the day-trippers arrive. Our new half-day tour starts early for exactly that reason — you sit, walk, and drink tea while the temples still belong to the morning.",
+    "leadJa": "鎌倉が最も美しいのは、日帰り観光客が訪れる前の時間です。新しい半日ツアーは、その理由からあえて早朝に始まります。寺院がまだ朝のものである時間に、坐り、歩き、お茶をいただきます。",
+    "bodyEn": "<h2 id=\"s1\">Zazen before the city wakes</h2><figure><img src=\"assets/cultural/zazen-meditation-hall.jpg\" alt=\"The meditation hall in early morning light\" width=\"1290\" height=\"2259\"></figure><p>The morning begins in the meditation hall of a working temple in Kita-Kamakura, where a monk guides a short session of zazen — seated meditation. No experience is needed, and instructions are given in English.</p><p>The session lasts about forty minutes, with a short talk afterwards over the temple's own roasted tea.</p><h2 id=\"s2\">Gardens in the quiet hours</h2><figure><img src=\"assets/shrines/kamakura-meigetsuin-hydrangea-steps.jpg\" alt=\"Stone steps lined with hydrangea at Meigetsu-in\" width=\"2560\" height=\"1440\"></figure><p>From the hall we walk the temple grounds and the lanes of Kita-Kamakura while they are still empty. Your guide reads the gardens as you go — why the moss is left to spread, what the stone arrangements are doing, and how the view is composed from the veranda.</p><h2 id=\"s3\">A bowl of matcha to finish</h2><figure><img src=\"assets/cultural/matcha-tea-bowl.jpg\" alt=\"Matcha prepared by hand before serving\" width=\"1920\" height=\"2560\"></figure><p>The morning ends in a tatami room overlooking the garden, where matcha is whisked in front of you and served with a seasonal sweet. It is a small ceremony rather than a formal one — a chance to sit with what the morning gave you before the town fills up.</p>",
+    "bodyJa": "<h2 id=\"s1\">街が目覚める前の坐禅</h2><figure><img src=\"assets/cultural/zazen-meditation-hall.jpg\" alt=\"朝の光に包まれる坐禅堂\" width=\"1290\" height=\"2259\"></figure><p>朝は北鎌倉の現役の寺院の坐禅堂から始まります。僧侶の指導のもと、短い坐禅の時間を体験していただきます。経験は不要で、英語での説明もございます。</p><p>坐禅はおよそ40分。その後、寺院で焙じたお茶をいただきながら、短い法話の時間があります。</p><h2 id=\"s2\">静けさの中の庭園</h2><figure><img src=\"assets/shrines/kamakura-meigetsuin-hydrangea-steps.jpg\" alt=\"明月院、紫陽花の石段\" width=\"2560\" height=\"1440\"></figure><p>坐禅堂を出て、人のいない時間の境内と北鎌倉の小道を歩きます。苔がなぜそのままに残されているのか、石組みが何を表しているのか、縁側からの眺めがどう構成されているのか——ガイドが庭園を読み解きながらご案内します。</p><h2 id=\"s3\">締めくくりの一服</h2><figure><img src=\"assets/cultural/matcha-tea-bowl.jpg\" alt=\"目の前で点てられる抹茶\" width=\"1920\" height=\"2560\"></figure><p>朝の締めくくりは、庭園を望む畳の間で。目の前で点てられた抹茶を、季節の和菓子とともにお楽しみいただきます。形式ばった茶会ではなく、町が賑わい始める前に、朝の余韻とともに座るための小さなひとときです。</p>",
+    "closingHeadingEn": "Dates and booking",
+    "closingHeadingJa": "開催日とご予約",
+    "closingBodyEn": "The tour runs Tuesday to Sunday mornings from late September through November, starting at 7:00 from Kita-Kamakura Station. It finishes around noon, leaving the afternoon free for the rest of Kamakura.",
+    "closingBodyJa": "ツアーは9月下旬から11月まで、火曜から日曜の朝に開催します。北鎌倉駅に朝7時集合、正午頃に解散となりますので、午後は鎌倉観光をゆっくりお楽しみいただけます。",
+    "viatorUrl": "https://www.viator.com/tours/Kamakura/Kamakura-and-Enoshima-One-Day-Bus-Tour/d26734-85581P18?pid=P00302676&uid=U00819549&mcid=58086&currency=JPY",
+    "noteEn": "Autumn sessions are limited to eight guests per morning. Dates and availability are listed on Viator.",
+    "noteJa": "秋の回は各朝8名様限定です。開催日と空き状況はViatorでご確認ください。",
+    "outroEn": "Prefer something fully private? We also design custom itineraries around Kamakura and beyond — the same guides, shaped entirely around you.",
+    "outroJa": "完全プライベートをご希望の方には、鎌倉やその周辺を巡るオーダーメイドの行程もご用意しています。同じガイドが、お客様に合わせて一から旅を組み立てます。"
+  },
+  {
+    "id": "sample-summer-notice",
+    "date": "2026-07-07T00:00:00.000Z",
+    "titleEn": "Summer Schedule and Obon Holiday Notice",
+    "titleJa": "夏季休業のお知らせ",
+    "excerptEn": "Our office will be closed August 13–16 for the Obon holiday. Tours already booked during this period will run as scheduled.",
+    "excerptJa": "誠に勝手ながら、8月13日から16日までお盆休業とさせていただきます。期間中にご予約済みのツアーは通常どおり催行いたします。",
+    "hero": { "url": "assets/views/train-tracks-dusk.jpg", "width": 2560, "height": 1440 },
+    "leadEn": "A short note on our summer schedule before the holiday season begins.",
+    "leadJa": "夏の行楽シーズンを前に、営業スケジュールについてお知らせいたします。",
+    "bodyEn": "<h2 id=\"n1\">Office closure dates</h2><p>Our office will be closed from Wednesday, August 13 to Saturday, August 16 for the Obon holiday. Enquiries received during this period will be answered in order from Monday, August 17.</p><h2 id=\"n2\">Tours during Obon</h2><p>All tours already booked for the holiday period will run as scheduled — your guide's contact details are in your booking confirmation. Please note that trains and popular sights are at their busiest during Obon, so we recommend allowing extra time for travel.</p>",
+    "bodyJa": "<h2 id=\"n1\">休業期間について</h2><p>誠に勝手ながら、8月13日(水)から8月16日(土)まで、お盆休業とさせていただきます。期間中にいただいたお問い合わせには、8月17日(月)より順次ご返信いたします。</p><h2 id=\"n2\">お盆期間中のツアーについて</h2><p>休業期間中にご予約済みのツアーは、すべて通常どおり催行いたします。担当ガイドの連絡先は予約確認メールに記載されています。なお、お盆期間中は電車や観光地が大変混雑しますので、お時間に余裕を持ってご移動ください。</p>",
+    "closingHeadingEn": "Contact",
+    "closingHeadingJa": "お問い合わせ",
+    "closingBodyEn": "For anything urgent relating to a tour during the holiday, please use the phone number in your booking confirmation. For everything else, we look forward to hearing from you from August 17.",
+    "closingBodyJa": "休業期間中のツアーに関する緊急のご連絡は、予約確認メールに記載の電話番号をご利用ください。その他のお問い合わせは、8月17日以降に順次対応させていただきます。"
+  }
+]
