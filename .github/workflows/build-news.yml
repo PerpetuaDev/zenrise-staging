@@ -22,7 +22,7 @@ jobs:
         env:
           MICROCMS_SERVICE_ID: ${{ secrets.MICROCMS_SERVICE_ID }}
           MICROCMS_API_KEY: ${{ secrets.MICROCMS_API_KEY }}
-        run: python3 cms/build-staging.py
+        run: python3 cms/build-news.py
 
       - name: Commit and push if changed
         run: |
