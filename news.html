@@ -86,7 +86,7 @@
   .f-photo::before, .card .pic::before { content: ''; position: absolute; inset: 0; background: inherit; transition: transform 700ms cubic-bezier(.2,.6,.2,1); }
   .featured:hover .f-photo::before, .card:hover .pic::before { transform: scale(1.04); }
   /* ── grid ── */
-  .news-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 20px; padding-bottom: 140px; }
+  .news-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px 20px; margin-top: 20px; padding-bottom: 140px; }
   .card { display: block; }
   .card:hover { opacity: 1; }
   .card .pic { position: relative; height: 380px; background: var(--bg-3) center / cover no-repeat; margin-bottom: 22px; overflow: hidden; }
@@ -95,6 +95,17 @@
   :lang(ja) .card h3 { line-height: 1.4; }
   .card .c-sub { font-family: var(--display); font-size: 19px; line-height: 1.45; color: var(--ink-60); margin: 0; text-wrap: pretty; }
   :lang(ja) .card .c-sub { line-height: 1.6; }
+  /* ── pagination ── */
+  .news-grid.paged { padding-bottom: 0; }
+  .pager { display: flex; justify-content: center; align-items: baseline; gap: 34px; padding: 96px 0 140px; }
+  .pager button { appearance: none; background: none; border: 0; margin: 0; padding: 6px 2px; cursor: pointer; font-family: var(--mono); font-size: 12px; letter-spacing: 0.22em; color: var(--ink-60); transition: color 0.25s ease; }
+  .pager button:hover:not(:disabled) { color: var(--ink); }
+  .pg-num { position: relative; }
+  .pg-num::after { content: ''; position: absolute; left: 2px; right: 4px; bottom: 0; height: 1px; background: var(--ink); opacity: 0; transition: opacity 0.25s ease; }
+  .pg-num.current { color: var(--ink); }
+  .pg-num.current::after { opacity: 1; }
+  .pg-arrow { letter-spacing: 0; font-weight: 300; }
+  .pg-arrow:disabled { color: var(--ink-30); cursor: default; }
   /* ── footer (shared) ── */
   footer.foot-v2 { padding: 0 36px; margin-top: 40px; }
   .foot-v2-top { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 64px; padding: 96px 0 72px; }
@@ -132,6 +143,7 @@
     .f-body .excerpt { display: none; }
     .f-body .more { font-size: 18px; margin-top: 8px; }
     .news-grid { grid-template-columns: 1fr; gap: 40px; padding-bottom: 72px; }
+    .pager { gap: 26px; padding: 48px 0 72px; }
     .card .pic { height: 56vw; margin-bottom: 16px; }
     .card h3 { font-size: 24px; }
     .card .c-sub { font-size: 16px; }
@@ -199,7 +211,7 @@
           <p class="c-sub" data-i18n="cms_sumo-shinjuku_subtitle">A show &amp; experience in Shinjuku</p>
         </a>
         <a class="card" href="news-sample-summer-notice.html">
-          <div class="pic" style="background-image: url('assets/views/train-tracks-dusk.jpg?fm=webp&amp;q=82&amp;w=1200')"></div>
+          <div class="pic" style="background-image: url('assets/views/coastal-road-ocean.jpg?fm=webp&amp;q=82&amp;w=1200')"></div>
           <div class="c-meta"><span>2026.07.07</span></div>
           <h3 data-i18n="cms_sample-summer-notice_title">Summer Schedule and Obon Holiday Notice</h3>
         </a>
@@ -214,6 +226,17 @@
           <div class="c-meta"><span>2026.06.26</span></div>
           <h3 data-i18n="cms_tokyo-private_title">Tokyo, on your terms</h3>
           <p class="c-sub" data-i18n="cms_tokyo-private_subtitle">A private full-day walking tour</p>
+        </a>
+        <a class="card" href="news-sample-media-feature.html">
+          <div class="pic" style="background-image: url('assets/views/monorail-street.jpg?fm=webp&amp;q=82&amp;w=1200')"></div>
+          <div class="c-meta"><span>2026.06.19</span></div>
+          <h3 data-i18n="cms_sample-media-feature_title">Our Kamakura Walk Was Featured on Television</h3>
+        </a>
+        <a class="card" href="news-sample-rainy-season.html">
+          <div class="pic" style="background-image: url('assets/shrines/temple-gate-pine.jpg?fm=webp&amp;q=82&amp;w=1200')"></div>
+          <div class="c-meta"><span>2026.06.12</span></div>
+          <h3 data-i18n="cms_sample-rainy-season_title">Kamakura in the Rain: Five Quiet Places for June</h3>
+          <p class="c-sub" data-i18n="cms_sample-rainy-season_subtitle">The rainy season empties the lanes — and the temples are at their greenest</p>
         </a>
       </div>
     </main>
@@ -282,7 +305,64 @@
     setTimeout(fit, 600);
   })();
 </script>
-<script>window.ZENRISE_CMS_DICT = {"en":{"cms_sample-zen-day_title":"New Tour: A Morning of Zen in Kita-Kamakura","cms_sample-zen-day_subtitle":"Zazen, temple gardens, and a bowl of matcha — autumn bookings now open","cms_sample-zen-day_excerpt":"This autumn we are introducing a slower kind of morning: seated meditation at a Kita-Kamakura temple, a quiet walk through its gardens, and matcha prepared in front of you.","cms_kamakura-enoshima_title":"A day away from Tokyo","cms_kamakura-enoshima_subtitle":"A bus tour through Kamakura & Enoshima","cms_sumo-shinjuku_title":"Inside the sumo ring","cms_sumo-shinjuku_subtitle":"A show & experience in Shinjuku","cms_sample-summer-notice_title":"Summer Schedule and Obon Holiday Notice","cms_fuji-hakone_title":"Fuji to Hakone","cms_fuji-hakone_subtitle":"And the ride home by Shinkansen","cms_tokyo-private_title":"Tokyo, on your terms","cms_tokyo-private_subtitle":"A private full-day walking tour"},"ja":{"cms_sample-zen-day_title":"新ツアー:北鎌倉で過ごす禅の朝","cms_sample-zen-day_subtitle":"坐禅と庭園、そして一服の抹茶 — 秋のご予約受付を開始","cms_sample-zen-day_excerpt":"この秋、新しい朝の過ごし方をご提案します。北鎌倉の寺院での坐禅、庭園の静かな散策、そして目の前で点てられる抹茶の一服です。","cms_kamakura-enoshima_title":"東京を離れて過ごす一日","cms_kamakura-enoshima_subtitle":"鎌倉・江ノ島日帰りバスツアー","cms_sumo-shinjuku_title":"土俵の中を知る午後","cms_sumo-shinjuku_subtitle":"新宿の相撲ショー&体験","cms_sample-summer-notice_title":"夏季休業のお知らせ","cms_fuji-hakone_title":"富士から箱根へ","cms_fuji-hakone_subtitle":"帰り道は新幹線で","cms_tokyo-private_title":"見たいものだけの東京","cms_tokyo-private_subtitle":"プライベート終日ウォーキングツアー"}};</script>
+<script>
+  // Client-side pagination over the card grid (featured stays on every page).
+  // Runs before lang.js so off-page cards are hidden before the entrance
+  // system observes them; they fade in when their page is shown.
+  (function () {
+    var PAGE_SIZE = 6; // two full rows per page on desktop
+    var grid = document.querySelector('.news-grid');
+    if (!grid) return;
+    var cards = Array.prototype.slice.call(grid.children);
+    if (cards.length <= PAGE_SIZE) return;
+    var pages = Math.ceil(cards.length / PAGE_SIZE);
+    var cur = 0;
+
+    function btn(text, cls) {
+      var b = document.createElement('button');
+      b.type = 'button'; b.className = cls; b.textContent = text;
+      return b;
+    }
+    function pad(n) { return (n < 10 ? '0' : '') + n; }
+    function go(p, scroll) {
+      cur = p;
+      cards.forEach(function (c, i) {
+        c.style.display = (i >= p * PAGE_SIZE && i < (p + 1) * PAGE_SIZE) ? '' : 'none';
+      });
+      nums.forEach(function (b, i) { b.classList.toggle('current', i === p); });
+      prev.disabled = p === 0;
+      next.disabled = p === pages - 1;
+      if (scroll) {
+        var y = grid.getBoundingClientRect().top + window.scrollY - 24;
+        window.scrollTo({ top: y, behavior: 'smooth' });
+      }
+    }
+
+    grid.classList.add('paged');
+    var pager = document.createElement('nav');
+    pager.className = 'pager';
+    pager.setAttribute('aria-label', 'Pagination');
+    var prev = btn('←', 'pg-arrow');
+    prev.setAttribute('aria-label', 'Previous page');
+    prev.addEventListener('click', function () { if (cur > 0) go(cur - 1, true); });
+    pager.appendChild(prev);
+    var nums = [];
+    for (var i = 0; i < pages; i++) (function (i) {
+      var b = btn(pad(i + 1), 'pg-num');
+      b.setAttribute('aria-label', 'Page ' + (i + 1));
+      b.addEventListener('click', function () { if (i !== cur) go(i, true); });
+      nums.push(b);
+      pager.appendChild(b);
+    })(i);
+    var next = btn('→', 'pg-arrow');
+    next.setAttribute('aria-label', 'Next page');
+    next.addEventListener('click', function () { if (cur < pages - 1) go(cur + 1, true); });
+    pager.appendChild(next);
+    grid.parentNode.insertBefore(pager, grid.nextSibling);
+    go(0, false);
+  })();
+</script>
+<script>window.ZENRISE_CMS_DICT = {"en":{"cms_sample-zen-day_title":"New Tour: A Morning of Zen in Kita-Kamakura","cms_sample-zen-day_subtitle":"Zazen, temple gardens, and a bowl of matcha — autumn bookings now open","cms_sample-zen-day_excerpt":"This autumn we are introducing a slower kind of morning: seated meditation at a Kita-Kamakura temple, a quiet walk through its gardens, and matcha prepared in front of you.","cms_kamakura-enoshima_title":"A day away from Tokyo","cms_kamakura-enoshima_subtitle":"A bus tour through Kamakura & Enoshima","cms_sumo-shinjuku_title":"Inside the sumo ring","cms_sumo-shinjuku_subtitle":"A show & experience in Shinjuku","cms_sample-summer-notice_title":"Summer Schedule and Obon Holiday Notice","cms_fuji-hakone_title":"Fuji to Hakone","cms_fuji-hakone_subtitle":"And the ride home by Shinkansen","cms_tokyo-private_title":"Tokyo, on your terms","cms_tokyo-private_subtitle":"A private full-day walking tour","cms_sample-media-feature_title":"Our Kamakura Walk Was Featured on Television","cms_sample-rainy-season_title":"Kamakura in the Rain: Five Quiet Places for June","cms_sample-rainy-season_subtitle":"The rainy season empties the lanes — and the temples are at their greenest"},"ja":{"cms_sample-zen-day_title":"新ツアー:北鎌倉で過ごす禅の朝","cms_sample-zen-day_subtitle":"坐禅と庭園、そして一服の抹茶 — 秋のご予約受付を開始","cms_sample-zen-day_excerpt":"この秋、新しい朝の過ごし方をご提案します。北鎌倉の寺院での坐禅、庭園の静かな散策、そして目の前で点てられる抹茶の一服です。","cms_kamakura-enoshima_title":"東京を離れて過ごす一日","cms_kamakura-enoshima_subtitle":"鎌倉・江ノ島日帰りバスツアー","cms_sumo-shinjuku_title":"土俵の中を知る午後","cms_sumo-shinjuku_subtitle":"新宿の相撲ショー&体験","cms_sample-summer-notice_title":"夏季休業のお知らせ","cms_fuji-hakone_title":"富士から箱根へ","cms_fuji-hakone_subtitle":"帰り道は新幹線で","cms_tokyo-private_title":"見たいものだけの東京","cms_tokyo-private_subtitle":"プライベート終日ウォーキングツアー","cms_sample-media-feature_title":"テレビ番組で鎌倉ツアーが紹介されました","cms_sample-rainy-season_title":"雨の鎌倉:六月に訪ねたい静かな場所五選","cms_sample-rainy-season_subtitle":"梅雨は小道から人を消し、寺々はいちばん深い緑に包まれます"}};</script>
 <script src="lang.js"></script>
 </body>
 </html>
