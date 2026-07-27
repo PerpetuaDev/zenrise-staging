@@ -68,6 +68,8 @@
   .art-head .meta .back .lbl { position: relative; padding-bottom: 3px; }
   .art-head .meta .back .lbl::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 1px; background: var(--ink); opacity: 0; transition: opacity 0.25s ease; }
   .art-head .meta .back:hover .lbl::after { opacity: 1; }
+  /* centre the date on the label's glyphs, not glyphs + reserved underline pad */
+  .art-head .meta > span { position: relative; top: -1.5px; }
   .art-head h1 { font-family: var(--display); font-weight: 400; font-size: 76px; line-height: 1.18; letter-spacing: -0.005em; margin: 0; text-wrap: pretty; }
   .art-head .sub { font-family: var(--display); font-size: 30px; line-height: 1.45; color: var(--ink-60); margin: 24px 0 0; text-wrap: pretty; }
   .art-hero { position: relative; height: 700px; background: var(--bg-3) center / cover no-repeat; }
