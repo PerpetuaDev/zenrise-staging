@@ -96,6 +96,7 @@
   .card .c-sub { font-family: var(--display); font-size: 19px; line-height: 1.45; color: var(--ink-60); margin: 0; text-wrap: pretty; }
   :lang(ja) .card .c-sub { line-height: 1.6; }
   /* ── pagination ── */
+  .news-page[hidden] { display: none; }
   .news-grid.paged { padding-bottom: 0; }
   .pager { display: flex; justify-content: center; align-items: baseline; gap: 34px; padding: 96px 0 140px; }
   .pager button { appearance: none; background: none; border: 0; margin: 0; padding: 6px 2px; cursor: pointer; font-family: var(--mono); font-size: 12px; letter-spacing: 0.22em; color: var(--ink-60); transition: color 0.25s ease; }
@@ -104,8 +105,10 @@
   .pg-num::after { content: ''; position: absolute; left: 2px; right: 4px; bottom: 0; height: 1px; background: var(--ink); opacity: 0; transition: opacity 0.25s ease; }
   .pg-num.current { color: var(--ink); }
   .pg-num.current::after { opacity: 1; }
-  .pg-arrow { letter-spacing: 0; font-weight: 300; }
-  .pg-arrow:disabled { color: var(--ink-30); cursor: default; }
+  .pager .pg-arrow { font-family: var(--sans); font-size: 18px; font-weight: 300; letter-spacing: 0; transition: color 0.25s ease, transform 0.3s ease; }
+  .pager .pg-arrow.prev:hover:not(:disabled) { transform: translateX(-5px); }
+  .pager .pg-arrow.next:hover:not(:disabled) { transform: translateX(5px); }
+  .pager .pg-arrow:disabled { color: var(--ink-30); cursor: default; }
   /* ── footer (shared) ── */
   footer.foot-v2 { padding: 0 36px; margin-top: 40px; }
   .foot-v2-top { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 64px; padding: 96px 0 72px; }
@@ -184,9 +187,7 @@
         <span class="count" data-i18n="news_count">03</span>
       </div>
 
-{{FEATURED}}
-      <div class="news-grid">
-{{CARDS}}      </div>
+{{PAGES}}
     </main>
 
     <footer class="foot-v2" data-screen-label="03 News — Footer">
@@ -254,17 +255,18 @@
   })();
 </script>
 <script>
-  // Client-side pagination over the card grid (featured stays on every page).
-  // Runs before lang.js so off-page cards are hidden before the entrance
-  // system observes them; they fade in when their page is shown.
+  // Pagination over the server-rendered .news-page containers, each of which
+  // leads with its own featured article. Runs before lang.js so hidden pages
+  // exist before the entrance system observes them; their featured block and
+  // cards fade in when their page is shown.
   (function () {
-    var PAGE_SIZE = 6; // two full rows per page on desktop
-    var grid = document.querySelector('.news-grid');
-    if (!grid) return;
-    var cards = Array.prototype.slice.call(grid.children);
-    if (cards.length <= PAGE_SIZE) return;
-    var pages = Math.ceil(cards.length / PAGE_SIZE);
+    var pages = Array.prototype.slice.call(document.querySelectorAll('.news-page'));
+    if (pages.length < 2) return;
     var cur = 0;
+    pages.forEach(function (pg) {
+      var g = pg.querySelector('.news-grid');
+      if (g) g.classList.add('paged');
+    });
 
     function btn(text, cls) {
       var b = document.createElement('button');
@@ -274,39 +276,37 @@
     function pad(n) { return (n < 10 ? '0' : '') + n; }
     function go(p, scroll) {
       cur = p;
-      cards.forEach(function (c, i) {
-        c.style.display = (i >= p * PAGE_SIZE && i < (p + 1) * PAGE_SIZE) ? '' : 'none';
-      });
+      pages.forEach(function (pg, i) { pg.hidden = i !== p; });
       nums.forEach(function (b, i) { b.classList.toggle('current', i === p); });
       prev.disabled = p === 0;
-      next.disabled = p === pages - 1;
+      next.disabled = p === pages.length - 1;
       if (scroll) {
-        var y = grid.getBoundingClientRect().top + window.scrollY - 24;
+        var y = pages[p].getBoundingClientRect().top + window.scrollY - 24;
         window.scrollTo({ top: y, behavior: 'smooth' });
       }
     }
 
-    grid.classList.add('paged');
     var pager = document.createElement('nav');
     pager.className = 'pager';
     pager.setAttribute('aria-label', 'Pagination');
-    var prev = btn('←', 'pg-arrow');
+    var prev = btn('←', 'pg-arrow prev');
     prev.setAttribute('aria-label', 'Previous page');
     prev.addEventListener('click', function () { if (cur > 0) go(cur - 1, true); });
     pager.appendChild(prev);
     var nums = [];
-    for (var i = 0; i < pages; i++) (function (i) {
+    for (var i = 0; i < pages.length; i++) (function (i) {
       var b = btn(pad(i + 1), 'pg-num');
       b.setAttribute('aria-label', 'Page ' + (i + 1));
       b.addEventListener('click', function () { if (i !== cur) go(i, true); });
       nums.push(b);
       pager.appendChild(b);
     })(i);
-    var next = btn('→', 'pg-arrow');
+    var next = btn('→', 'pg-arrow next');
     next.setAttribute('aria-label', 'Next page');
-    next.addEventListener('click', function () { if (cur < pages - 1) go(cur + 1, true); });
+    next.addEventListener('click', function () { if (cur < pages.length - 1) go(cur + 1, true); });
     pager.appendChild(next);
-    grid.parentNode.insertBefore(pager, grid.nextSibling);
+    var last = pages[pages.length - 1];
+    last.parentNode.insertBefore(pager, last.nextSibling);
     go(0, false);
   })();
 </script>

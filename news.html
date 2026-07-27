@@ -96,6 +96,7 @@
   .card .c-sub { font-family: var(--display); font-size: 19px; line-height: 1.45; color: var(--ink-60); margin: 0; text-wrap: pretty; }
   :lang(ja) .card .c-sub { line-height: 1.6; }
   /* ── pagination ── */
+  .news-page[hidden] { display: none; }
   .news-grid.paged { padding-bottom: 0; }
   .pager { display: flex; justify-content: center; align-items: baseline; gap: 34px; padding: 96px 0 140px; }
   .pager button { appearance: none; background: none; border: 0; margin: 0; padding: 6px 2px; cursor: pointer; font-family: var(--mono); font-size: 12px; letter-spacing: 0.22em; color: var(--ink-60); transition: color 0.25s ease; }
@@ -104,8 +105,10 @@
   .pg-num::after { content: ''; position: absolute; left: 2px; right: 4px; bottom: 0; height: 1px; background: var(--ink); opacity: 0; transition: opacity 0.25s ease; }
   .pg-num.current { color: var(--ink); }
   .pg-num.current::after { opacity: 1; }
-  .pg-arrow { letter-spacing: 0; font-weight: 300; }
-  .pg-arrow:disabled { color: var(--ink-30); cursor: default; }
+  .pager .pg-arrow { font-family: var(--sans); font-size: 18px; font-weight: 300; letter-spacing: 0; transition: color 0.25s ease, transform 0.3s ease; }
+  .pager .pg-arrow.prev:hover:not(:disabled) { transform: translateX(-5px); }
+  .pager .pg-arrow.next:hover:not(:disabled) { transform: translateX(5px); }
+  .pager .pg-arrow:disabled { color: var(--ink-30); cursor: default; }
   /* ── footer (shared) ── */
   footer.foot-v2 { padding: 0 36px; margin-top: 40px; }
   .foot-v2-top { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 64px; padding: 96px 0 72px; }
@@ -184,6 +187,7 @@
         <span class="count" data-i18n="news_count">03</span>
       </div>
 
+      <div class="news-page">
       <a class="featured intro-b" href="news-sample-zen-day.html">
         <div class="f-photo" style="background-image: url('assets/shrines/temple-moss-garden.jpg?fm=webp&amp;q=82&amp;w=1600')"></div>
         <div class="f-body">
@@ -196,7 +200,6 @@
           <span class="more"><span data-i18n="news_read">Read article</span><span class="ar">&nbsp;→</span></span>
         </div>
       </a>
-
       <div class="news-grid">
         <a class="card" href="news-kamakura-enoshima.html">
           <div class="pic" style="background-image: url('https://images.microcms-assets.io/assets/6678617c772a42aeb9340a4297ce95d3/a7737ac0130d4e5291e9b728121cf033/kamakura-enoshima-hero-enoden-dusk.jpg?fm=webp&amp;q=82&amp;w=1200')"></div>
@@ -232,13 +235,23 @@
           <div class="c-meta"><span>2026.06.19</span></div>
           <h3 data-i18n="cms_sample-media-feature_title">Our Kamakura Walk Was Featured on Television</h3>
         </a>
-        <a class="card" href="news-sample-rainy-season.html">
-          <div class="pic" style="background-image: url('assets/shrines/temple-gate-pine.jpg?fm=webp&amp;q=82&amp;w=1200')"></div>
-          <div class="c-meta"><span>2026.06.12</span></div>
-          <h3 data-i18n="cms_sample-rainy-season_title">Kamakura in the Rain: Five Quiet Places for June</h3>
-          <p class="c-sub" data-i18n="cms_sample-rainy-season_subtitle">The rainy season empties the lanes — and the temples are at their greenest</p>
-        </a>
       </div>
+      </div>
+      <div class="news-page" hidden>
+      <a class="featured intro-b" href="news-sample-rainy-season.html">
+        <div class="f-photo" style="background-image: url('assets/shrines/temple-gate-pine.jpg?fm=webp&amp;q=82&amp;w=1600')"></div>
+        <div class="f-body">
+          <div class="f-meta">
+            <span>2026.06.12</span>
+          </div>
+          <h2 data-i18n="cms_sample-rainy-season_title">Kamakura in the Rain: Five Quiet Places for June</h2>
+          <p class="sub" data-i18n="cms_sample-rainy-season_subtitle">The rainy season empties the lanes — and the temples are at their greenest</p>
+          <p class="excerpt" data-i18n-html="cms_sample-rainy-season_excerpt">June gets an unfair reputation. The rainy season is when Kamakura's gardens are at their deepest green, the hydrangea open, and the crowds stay home.</p>
+          <span class="more"><span data-i18n="news_read">Read article</span><span class="ar">&nbsp;→</span></span>
+        </div>
+      </a>
+      </div>
+
     </main>
 
     <footer class="foot-v2" data-screen-label="03 News — Footer">
@@ -306,17 +319,18 @@
   })();
 </script>
 <script>
-  // Client-side pagination over the card grid (featured stays on every page).
-  // Runs before lang.js so off-page cards are hidden before the entrance
-  // system observes them; they fade in when their page is shown.
+  // Pagination over the server-rendered .news-page containers, each of which
+  // leads with its own featured article. Runs before lang.js so hidden pages
+  // exist before the entrance system observes them; their featured block and
+  // cards fade in when their page is shown.
   (function () {
-    var PAGE_SIZE = 6; // two full rows per page on desktop
-    var grid = document.querySelector('.news-grid');
-    if (!grid) return;
-    var cards = Array.prototype.slice.call(grid.children);
-    if (cards.length <= PAGE_SIZE) return;
-    var pages = Math.ceil(cards.length / PAGE_SIZE);
+    var pages = Array.prototype.slice.call(document.querySelectorAll('.news-page'));
+    if (pages.length < 2) return;
     var cur = 0;
+    pages.forEach(function (pg) {
+      var g = pg.querySelector('.news-grid');
+      if (g) g.classList.add('paged');
+    });
 
     function btn(text, cls) {
       var b = document.createElement('button');
@@ -326,43 +340,41 @@
     function pad(n) { return (n < 10 ? '0' : '') + n; }
     function go(p, scroll) {
       cur = p;
-      cards.forEach(function (c, i) {
-        c.style.display = (i >= p * PAGE_SIZE && i < (p + 1) * PAGE_SIZE) ? '' : 'none';
-      });
+      pages.forEach(function (pg, i) { pg.hidden = i !== p; });
       nums.forEach(function (b, i) { b.classList.toggle('current', i === p); });
       prev.disabled = p === 0;
-      next.disabled = p === pages - 1;
+      next.disabled = p === pages.length - 1;
       if (scroll) {
-        var y = grid.getBoundingClientRect().top + window.scrollY - 24;
+        var y = pages[p].getBoundingClientRect().top + window.scrollY - 24;
         window.scrollTo({ top: y, behavior: 'smooth' });
       }
     }
 
-    grid.classList.add('paged');
     var pager = document.createElement('nav');
     pager.className = 'pager';
     pager.setAttribute('aria-label', 'Pagination');
-    var prev = btn('←', 'pg-arrow');
+    var prev = btn('←', 'pg-arrow prev');
     prev.setAttribute('aria-label', 'Previous page');
     prev.addEventListener('click', function () { if (cur > 0) go(cur - 1, true); });
     pager.appendChild(prev);
     var nums = [];
-    for (var i = 0; i < pages; i++) (function (i) {
+    for (var i = 0; i < pages.length; i++) (function (i) {
       var b = btn(pad(i + 1), 'pg-num');
       b.setAttribute('aria-label', 'Page ' + (i + 1));
       b.addEventListener('click', function () { if (i !== cur) go(i, true); });
       nums.push(b);
       pager.appendChild(b);
     })(i);
-    var next = btn('→', 'pg-arrow');
+    var next = btn('→', 'pg-arrow next');
     next.setAttribute('aria-label', 'Next page');
-    next.addEventListener('click', function () { if (cur < pages - 1) go(cur + 1, true); });
+    next.addEventListener('click', function () { if (cur < pages.length - 1) go(cur + 1, true); });
     pager.appendChild(next);
-    grid.parentNode.insertBefore(pager, grid.nextSibling);
+    var last = pages[pages.length - 1];
+    last.parentNode.insertBefore(pager, last.nextSibling);
     go(0, false);
   })();
 </script>
-<script>window.ZENRISE_CMS_DICT = {"en":{"cms_sample-zen-day_title":"New Tour: A Morning of Zen in Kita-Kamakura","cms_sample-zen-day_subtitle":"Zazen, temple gardens, and a bowl of matcha — autumn bookings now open","cms_sample-zen-day_excerpt":"This autumn we are introducing a slower kind of morning: seated meditation at a Kita-Kamakura temple, a quiet walk through its gardens, and matcha prepared in front of you.","cms_kamakura-enoshima_title":"A day away from Tokyo","cms_kamakura-enoshima_subtitle":"A bus tour through Kamakura & Enoshima","cms_sumo-shinjuku_title":"Inside the sumo ring","cms_sumo-shinjuku_subtitle":"A show & experience in Shinjuku","cms_sample-summer-notice_title":"Summer Schedule and Obon Holiday Notice","cms_fuji-hakone_title":"Fuji to Hakone","cms_fuji-hakone_subtitle":"And the ride home by Shinkansen","cms_tokyo-private_title":"Tokyo, on your terms","cms_tokyo-private_subtitle":"A private full-day walking tour","cms_sample-media-feature_title":"Our Kamakura Walk Was Featured on Television","cms_sample-rainy-season_title":"Kamakura in the Rain: Five Quiet Places for June","cms_sample-rainy-season_subtitle":"The rainy season empties the lanes — and the temples are at their greenest"},"ja":{"cms_sample-zen-day_title":"新ツアー:北鎌倉で過ごす禅の朝","cms_sample-zen-day_subtitle":"坐禅と庭園、そして一服の抹茶 — 秋のご予約受付を開始","cms_sample-zen-day_excerpt":"この秋、新しい朝の過ごし方をご提案します。北鎌倉の寺院での坐禅、庭園の静かな散策、そして目の前で点てられる抹茶の一服です。","cms_kamakura-enoshima_title":"東京を離れて過ごす一日","cms_kamakura-enoshima_subtitle":"鎌倉・江ノ島日帰りバスツアー","cms_sumo-shinjuku_title":"土俵の中を知る午後","cms_sumo-shinjuku_subtitle":"新宿の相撲ショー&体験","cms_sample-summer-notice_title":"夏季休業のお知らせ","cms_fuji-hakone_title":"富士から箱根へ","cms_fuji-hakone_subtitle":"帰り道は新幹線で","cms_tokyo-private_title":"見たいものだけの東京","cms_tokyo-private_subtitle":"プライベート終日ウォーキングツアー","cms_sample-media-feature_title":"テレビ番組で鎌倉ツアーが紹介されました","cms_sample-rainy-season_title":"雨の鎌倉:六月に訪ねたい静かな場所五選","cms_sample-rainy-season_subtitle":"梅雨は小道から人を消し、寺々はいちばん深い緑に包まれます"}};</script>
+<script>window.ZENRISE_CMS_DICT = {"en":{"cms_sample-zen-day_title":"New Tour: A Morning of Zen in Kita-Kamakura","cms_sample-zen-day_subtitle":"Zazen, temple gardens, and a bowl of matcha — autumn bookings now open","cms_kamakura-enoshima_title":"A day away from Tokyo","cms_kamakura-enoshima_subtitle":"A bus tour through Kamakura & Enoshima","cms_sumo-shinjuku_title":"Inside the sumo ring","cms_sumo-shinjuku_subtitle":"A show & experience in Shinjuku","cms_sample-summer-notice_title":"Summer Schedule and Obon Holiday Notice","cms_fuji-hakone_title":"Fuji to Hakone","cms_fuji-hakone_subtitle":"And the ride home by Shinkansen","cms_tokyo-private_title":"Tokyo, on your terms","cms_tokyo-private_subtitle":"A private full-day walking tour","cms_sample-media-feature_title":"Our Kamakura Walk Was Featured on Television","cms_sample-rainy-season_title":"Kamakura in the Rain: Five Quiet Places for June","cms_sample-rainy-season_subtitle":"The rainy season empties the lanes — and the temples are at their greenest","cms_sample-zen-day_excerpt":"This autumn we are introducing a slower kind of morning: seated meditation at a Kita-Kamakura temple, a quiet walk through its gardens, and matcha prepared in front of you.","cms_sample-rainy-season_excerpt":"June gets an unfair reputation. The rainy season is when Kamakura's gardens are at their deepest green, the hydrangea open, and the crowds stay home."},"ja":{"cms_sample-zen-day_title":"新ツアー:北鎌倉で過ごす禅の朝","cms_sample-zen-day_subtitle":"坐禅と庭園、そして一服の抹茶 — 秋のご予約受付を開始","cms_kamakura-enoshima_title":"東京を離れて過ごす一日","cms_kamakura-enoshima_subtitle":"鎌倉・江ノ島日帰りバスツアー","cms_sumo-shinjuku_title":"土俵の中を知る午後","cms_sumo-shinjuku_subtitle":"新宿の相撲ショー&体験","cms_sample-summer-notice_title":"夏季休業のお知らせ","cms_fuji-hakone_title":"富士から箱根へ","cms_fuji-hakone_subtitle":"帰り道は新幹線で","cms_tokyo-private_title":"見たいものだけの東京","cms_tokyo-private_subtitle":"プライベート終日ウォーキングツアー","cms_sample-media-feature_title":"テレビ番組で鎌倉ツアーが紹介されました","cms_sample-rainy-season_title":"雨の鎌倉:六月に訪ねたい静かな場所五選","cms_sample-rainy-season_subtitle":"梅雨は小道から人を消し、寺々はいちばん深い緑に包まれます","cms_sample-zen-day_excerpt":"この秋、新しい朝の過ごし方をご提案します。北鎌倉の寺院での坐禅、庭園の静かな散策、そして目の前で点てられる抹茶の一服です。","cms_sample-rainy-season_excerpt":"六月は損な評判を背負っています。けれど梅雨こそ、鎌倉の庭園が最も深い緑に染まり、紫陽花が開き、人出が落ち着く季節なのです。"}};</script>
 <script src="lang.js"></script>
 </body>
 </html>

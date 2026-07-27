@@ -273,53 +273,72 @@ def render_article(m, num, tpl):
     })
 
 
+INDEX_PAGE_SIZE = 7  # articles per pagination page: 1 featured + 6 cards
+
+
 def render_index(models, tpl):
+    """Render the index as .news-page containers (featured + card grid per
+    page); the template's pager script toggles them, so each page leads with
+    its own featured article. All but the first start hidden."""
     en, ja = {}, {}
 
     def put(key, pair):
         en[key], ja[key] = pair
 
-    featured = ''
-    cards = []
-    for i, m in enumerate(models):
+    for m in models:
+        put(m['key'] + '_title', m['title'])
+        if m['subtitle'][0]:
+            put(m['key'] + '_subtitle', m['subtitle'])
+
+    def featured_html(m):
         K = m['key']
-        put(K + '_title', m['title'])
+        put(K + '_excerpt', (text_html(m['excerpt'][0]), text_html(m['excerpt'][1])))
         sub = ''
         if m['subtitle'][0]:
-            put(K + '_subtitle', m['subtitle'])
-        if i == 0:
-            put(K + '_excerpt', (text_html(m['excerpt'][0]), text_html(m['excerpt'][1])))
-            if m['subtitle'][0]:
-                sub = f'          <p class="sub" data-i18n="{K}_subtitle">{esc(m["subtitle"][0])}</p>\n'
-            photo = f''' style="background-image: url('{esc(m["hero"] + IMG_FIG)}')"''' if m['hero'] else ''
-            featured = (
-                f'      <a class="featured intro-b" href="news-{m["id"]}.html">\n'
-                f'        <div class="f-photo"{photo}></div>\n'
-                '        <div class="f-body">\n'
-                '          <div class="f-meta">\n'
-                f'            <span>{m["date"]}</span>\n'
-                '          </div>\n'
-                f'          <h2 data-i18n="{K}_title">{esc(m["title"][0])}</h2>\n'
-                + sub +
-                f'          <p class="excerpt" data-i18n-html="{K}_excerpt">{en[K + "_excerpt"]}</p>\n'
-                '          <span class="more"><span data-i18n="news_read">Read article</span><span class="ar">&nbsp;→</span></span>\n'
-                '        </div>\n'
-                '      </a>\n')
-        else:
-            if m['subtitle'][0]:
-                sub = f'          <p class="c-sub" data-i18n="{K}_subtitle">{esc(m["subtitle"][0])}</p>\n'
-            pic = f''' style="background-image: url('{esc(m["hero"] + IMG_CARD)}')"''' if m['hero'] else ''
-            cards.append(
-                f'        <a class="card" href="news-{m["id"]}.html">\n'
-                f'          <div class="pic"{pic}></div>\n'
-                f'          <div class="c-meta"><span>{m["date"]}</span></div>\n'
-                f'          <h3 data-i18n="{K}_title">{esc(m["title"][0])}</h3>\n'
-                + sub +
-                '        </a>\n')
+            sub = f'          <p class="sub" data-i18n="{K}_subtitle">{esc(m["subtitle"][0])}</p>\n'
+        photo = f''' style="background-image: url('{esc(m["hero"] + IMG_FIG)}')"''' if m['hero'] else ''
+        return (
+            f'      <a class="featured intro-b" href="news-{m["id"]}.html">\n'
+            f'        <div class="f-photo"{photo}></div>\n'
+            '        <div class="f-body">\n'
+            '          <div class="f-meta">\n'
+            f'            <span>{m["date"]}</span>\n'
+            '          </div>\n'
+            f'          <h2 data-i18n="{K}_title">{esc(m["title"][0])}</h2>\n'
+            + sub +
+            f'          <p class="excerpt" data-i18n-html="{K}_excerpt">{en[K + "_excerpt"]}</p>\n'
+            '          <span class="more"><span data-i18n="news_read">Read article</span><span class="ar">&nbsp;→</span></span>\n'
+            '        </div>\n'
+            '      </a>\n')
+
+    def card_html(m):
+        K = m['key']
+        sub = ''
+        if m['subtitle'][0]:
+            sub = f'          <p class="c-sub" data-i18n="{K}_subtitle">{esc(m["subtitle"][0])}</p>\n'
+        pic = f''' style="background-image: url('{esc(m["hero"] + IMG_CARD)}')"''' if m['hero'] else ''
+        return (
+            f'        <a class="card" href="news-{m["id"]}.html">\n'
+            f'          <div class="pic"{pic}></div>\n'
+            f'          <div class="c-meta"><span>{m["date"]}</span></div>\n'
+            f'          <h3 data-i18n="{K}_title">{esc(m["title"][0])}</h3>\n'
+            + sub +
+            '        </a>\n')
+
+    pages = []
+    for start in range(0, len(models), INDEX_PAGE_SIZE):
+        chunk = models[start:start + INDEX_PAGE_SIZE]
+        block = f'      <div class="news-page"{" hidden" if start else ""}>\n'
+        block += featured_html(chunk[0])
+        if len(chunk) > 1:
+            block += '      <div class="news-grid">\n'
+            block += ''.join(card_html(m) for m in chunk[1:])
+            block += '      </div>\n'
+        block += '      </div>\n'
+        pages.append(block)
 
     return render(tpl, {
-        'FEATURED': featured,
-        'CARDS': ''.join(cards),
+        'PAGES': ''.join(pages),
         'DICT_SCRIPT': dict_script(en, ja),
     })
 
