@@ -357,10 +357,17 @@
     position: relative;
   }
   .dest {
-    position: relative;
+    display: flex;
+    flex-direction: column;
     aspect-ratio: 446 / 558;
-    overflow: hidden;
     cursor: pointer;
+  }
+  .dest:hover { opacity: 1; }
+  /* photo region — top two thirds */
+  .dest .ph {
+    position: relative;
+    height: 66%;
+    overflow: hidden;
     background: var(--bg-3);
   }
   .dest .pic {
@@ -373,51 +380,6 @@
     background-size: cover;
     background-repeat: no-repeat;
   }
-  .dest .pic.placeholder {
-    background:
-      repeating-linear-gradient(135deg, rgba(41,65,56,0.05) 0 1px, transparent 1px 14px),
-      var(--bg-3);
-  }
-  .dest .ph-label {
-    position: absolute;
-    left: 24px; top: 24px;
-    font-family: var(--mono);
-    font-size: 11px;
-    letter-spacing: 0.24em;
-    color: var(--ink-60);
-    text-transform: uppercase;
-  }
-  .dest .scrim {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to top, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.05) 38%, transparent 62%);
-  }
-  .dest .meta {
-    position: absolute;
-    left: 28px; right: 28px; bottom: 28px;
-    color: #fff;
-    display: flex;
-    align-items: end;
-    justify-content: space-between;
-    gap: 12px;
-  }
-  .dest .meta .name {
-    font-family: var(--display);
-    font-weight: 400;
-    font-size: 39px;
-    line-height: 0.95;
-    letter-spacing: -0.005em;
-  }
-  .dest .meta .kanji {
-    font-family: var(--display);
-    font-weight: 400;
-    font-size: 16px;
-    opacity: 0.85;
-    letter-spacing: 0.1em;
-    margin-top: 6px;
-    display: block;
-  }
-  .dest .meta .arrow { display: none; }
   .dest .num-tag {
     position: absolute;
     right: 24px; top: 22px;
@@ -426,13 +388,58 @@
     letter-spacing: 0.24em;
     color: #fff;
     opacity: 0.9;
+    z-index: 2;
   }
-  .dest.placeholder .num-tag { color: var(--ink-60); }
+  /* product panel — booking-system grey, contains the card against the bg */
+  .dest .panel {
+    flex: 1;
+    min-height: 0;
+    background: var(--bg-2);
+    padding: 26px 28px 24px;
+    display: flex;
+    flex-direction: column;
+  }
+  .dest .panel .t-meta {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    font-family: var(--sans);
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-60);
+    margin-bottom: 14px;
+  }
+  .dest .panel .t-meta .dot { color: var(--ink-30); }
+  .dest .panel .name {
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 1.15;
+    letter-spacing: -0.005em;
+    color: var(--ink);
+    text-wrap: pretty;
+  }
+  :lang(ja) .dest .panel .name { line-height: 1.35; }
+  .dest .panel .row {
+    margin-top: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+    padding-top: 14px;
+    font-family: var(--sans);
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-60);
+  }
+  .dest .panel .row .price { color: var(--ink); }
 
   /* photo credits — required on all photography */
   .hero-photo::after,
-  .dest .scrim::after {
-    content: "© Zenrise";
+  .dest .ph::after {
+    content: "\00a9 Zenrise";
     position: absolute;
     font-family: var(--mono);
     font-size: 10px;
@@ -443,10 +450,9 @@
     z-index: 2;
   }
   .hero-photo::after { right: 24px; top: 22px; color: #fff; }
-  .dest .scrim::after { left: 24px; top: 22px; }
+  .dest .ph::after { left: 24px; top: 22px; }
 
   /* Subtle entrance */
-  .dest .meta .sub { font-family: var(--sans); font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.75); margin-bottom: 12px; }
   .find-more { display: flex; justify-content: center; padding: 88px 0 0; }
   .more-link { display: inline-flex; align-items: baseline; font-size: 22px; letter-spacing: 0.01em; color: var(--ink); }
   .more-link:hover { opacity: 1; }
@@ -629,13 +635,19 @@
     /* full-bleed grid: pull out of the section's side padding so tiles
        run edge-to-edge, with gaps only between tiles */
     .dest-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; margin: 0 -20px; }
-    .dest .meta { left: 18px; right: 18px; bottom: 18px; gap: 8px; }
-    .dest .meta .name { font-size: 24px; }
+    /* content-driven card height at phone widths — the fixed portrait
+       ratio leaves too little room for the panel; grid stretch keeps
+       row heights aligned */
+    .dest { aspect-ratio: auto; }
+    .dest .ph { height: auto; aspect-ratio: 4 / 3; }
+    .dest .panel { padding: 14px 14px 13px; }
+    .dest .panel .t-meta { font-size: 9px; letter-spacing: 0.06em; gap: 8px; margin-bottom: 8px; }
+    .dest .panel .name { font-size: 17px; }
+    .dest .panel .row { font-size: 9px; letter-spacing: 0.06em; padding-top: 10px; }
     .dest .num-tag { right: 12px; top: 12px; font-size: 10px; letter-spacing: 0.18em; }
     /* no attribution on the small mobile tiles — too cramped */
-    .dest .scrim::after { display: none; }
+    .dest .ph::after { display: none; }
 
-    .dest .meta .sub { font-size: 10px; margin-bottom: 6px; }
     .find-more { padding: 48px 0 0; }
     .more-link { font-size: 18px; }
     /* news section sits above the pinned hero, like .find */
@@ -670,8 +682,9 @@
     .navlinks { display: none; }
     .hero-card .ttl { font-size: 38px; }
     .dest-grid { gap: 8px; }
-    .dest .meta { left: 14px; right: 14px; bottom: 14px; }
-    .dest .meta .name { font-size: 18px; }
+    /* hours drop out at phone width — price only */
+    .dest .panel .row > span:first-child { display: none; }
+    .dest .panel .name { font-size: 16px; }
   }
 </style>
 </head>
@@ -720,80 +733,74 @@
       <div class="dest-grid">
 
         <a class="dest" href="tour-kita-kamakura-hase.html">
-          <div class="pic photo" style="background-image: url('assets/shrines/temple-moss-garden.jpg')"></div>
-          <div class="scrim"></div>
-          <span class="num-tag">No. 04</span>
-          <div class="meta">
-            <div>
-              <div class="sub"><span data-i18n="tours_area_kamakura">Kamakura</span> ・ <span data-i18n="tours_len_half">Half-day</span></div>
-              <div class="name" data-i18n="tours_c04_name">Kita-Kamakura to Hase</div>
-            </div>
-            <div class="arrow">→</div>
+          <div class="ph">
+            <div class="pic photo" style="background-image: url('assets/shrines/temple-moss-garden.jpg')"></div>
+            <span class="num-tag">No. 04</span>
+          </div>
+          <div class="panel">
+            <div class="t-meta"><span data-i18n="tours_area_kamakura">Kamakura</span><span class="dot">・</span><span data-i18n="tours_len_half">Half-day</span></div>
+            <div class="name" data-i18n="tours_c04_name">Kita-Kamakura to Hase</div>
+            <div class="row"><span data-i18n="tours_hours_c04">≈ 5 hrs · 6.3 km</span><span class="price" data-i18n="booking_s2_half_price">¥65,000 / group</span></div>
           </div>
         </a>
 
         <a class="dest" href="tour-tsurugaoka.html">
-          <div class="pic photo" style="background-image: url('assets/shrines/kamakura-tsurugaoka-hachimangu.jpg')"></div>
-          <div class="scrim"></div>
-          <span class="num-tag">No. 01</span>
-          <div class="meta">
-            <div>
-              <div class="sub"><span data-i18n="tours_area_kamakura">Kamakura</span> ・ <span data-i18n="tours_len_half">Half-day</span></div>
-              <div class="name" data-i18n="tours_c01_name">Tsurugaoka &amp; the Old Town</div>
-            </div>
-            <div class="arrow">→</div>
+          <div class="ph">
+            <div class="pic photo" style="background-image: url('assets/shrines/kamakura-tsurugaoka-hachimangu.jpg')"></div>
+            <span class="num-tag">No. 01</span>
+          </div>
+          <div class="panel">
+            <div class="t-meta"><span data-i18n="tours_area_kamakura">Kamakura</span><span class="dot">・</span><span data-i18n="tours_len_half">Half-day</span></div>
+            <div class="name" data-i18n="tours_c01_name">Tsurugaoka &amp; the Old Town</div>
+            <div class="row"><span data-i18n="tours_hours_4">≈ 4 hrs</span><span class="price" data-i18n="booking_s2_half_price">¥65,000 / group</span></div>
           </div>
         </a>
 
         <a class="dest" href="tour-enoshima.html">
-          <div class="pic photo" style="background-image: url('assets/concierge/coastal-town-view.jpg')"></div>
-          <div class="scrim"></div>
-          <span class="num-tag">No. 02</span>
-          <div class="meta">
-            <div>
-              <div class="sub"><span data-i18n="tours_area_enoshima">Enoshima</span> ・ <span data-i18n="tours_len_full">Full-day</span></div>
-              <div class="name" data-i18n="tours_c02_name">Enoshima: Coast, Caves &amp; Seafood</div>
-            </div>
-            <div class="arrow">→</div>
+          <div class="ph">
+            <div class="pic photo" style="background-image: url('assets/concierge/coastal-town-view.jpg')"></div>
+            <span class="num-tag">No. 02</span>
+          </div>
+          <div class="panel">
+            <div class="t-meta"><span data-i18n="tours_area_enoshima">Enoshima</span><span class="dot">・</span><span data-i18n="tours_len_full">Full-day</span></div>
+            <div class="name" data-i18n="tours_c02_name">Enoshima: Coast, Caves &amp; Seafood</div>
+            <div class="row"><span data-i18n="tours_hours_8">≈ 8 hrs</span><span class="price" data-i18n="booking_s2_full_price">¥95,000 / group</span></div>
           </div>
         </a>
 
         <a class="dest" href="tour-farmers-market.html">
-          <div class="pic photo" style="background-image: url('assets/everyday/noren-shopfront.jpg')"></div>
-          <div class="scrim"></div>
-          <span class="num-tag">No. 03</span>
-          <div class="meta">
-            <div>
-              <div class="sub"><span data-i18n="tours_area_kamakura">Kamakura</span> ・ <span data-i18n="tours_len_half">Half-day</span></div>
-              <div class="name" data-i18n="tours_c03_name">Morning at the Farmers Market</div>
-            </div>
-            <div class="arrow">→</div>
+          <div class="ph">
+            <div class="pic photo" style="background-image: url('assets/everyday/noren-shopfront.jpg')"></div>
+            <span class="num-tag">No. 03</span>
+          </div>
+          <div class="panel">
+            <div class="t-meta"><span data-i18n="tours_area_kamakura">Kamakura</span><span class="dot">・</span><span data-i18n="tours_len_half">Half-day</span></div>
+            <div class="name" data-i18n="tours_c03_name">Morning at the Farmers Market</div>
+            <div class="row"><span data-i18n="tours_hours_4">≈ 4 hrs</span><span class="price" data-i18n="booking_s2_half_price">¥65,000 / group</span></div>
           </div>
         </a>
 
         <a class="dest" href="tour-zen-morning.html">
-          <div class="pic photo" style="background-image: url('assets/cultural/zazen-meditation-hall.jpg')"></div>
-          <div class="scrim"></div>
-          <span class="num-tag">No. 05</span>
-          <div class="meta">
-            <div>
-              <div class="sub"><span data-i18n="tours_area_kamakura">Kamakura</span> ・ <span data-i18n="tours_len_half">Half-day</span></div>
-              <div class="name" data-i18n="tours_c05_name">Zen Morning: Meditation &amp; Tea</div>
-            </div>
-            <div class="arrow">→</div>
+          <div class="ph">
+            <div class="pic photo" style="background-image: url('assets/cultural/zazen-meditation-hall.jpg')"></div>
+            <span class="num-tag">No. 05</span>
+          </div>
+          <div class="panel">
+            <div class="t-meta"><span data-i18n="tours_area_kamakura">Kamakura</span><span class="dot">・</span><span data-i18n="tours_len_half">Half-day</span></div>
+            <div class="name" data-i18n="tours_c05_name">Zen Morning: Meditation &amp; Tea</div>
+            <div class="row"><span data-i18n="tours_hours_4">≈ 4 hrs</span><span class="price" data-i18n="booking_s2_half_price">¥65,000 / group</span></div>
           </div>
         </a>
 
         <a class="dest" href="tour-yokohama.html">
-          <div class="pic photo" style="background-image: url('assets/everyday/retro-street-corner.jpg')"></div>
-          <div class="scrim"></div>
-          <span class="num-tag">No. 06</span>
-          <div class="meta">
-            <div>
-              <div class="sub"><span data-i18n="tours_area_yokohama">Yokohama</span> ・ <span data-i18n="tours_len_full">Full-day</span></div>
-              <div class="name" data-i18n="tours_c06_name">Yokohama: Port, Chinatown &amp; Lights</div>
-            </div>
-            <div class="arrow">→</div>
+          <div class="ph">
+            <div class="pic photo" style="background-image: url('assets/everyday/retro-street-corner.jpg')"></div>
+            <span class="num-tag">No. 06</span>
+          </div>
+          <div class="panel">
+            <div class="t-meta"><span data-i18n="tours_area_yokohama">Yokohama</span><span class="dot">・</span><span data-i18n="tours_len_full">Full-day</span></div>
+            <div class="name" data-i18n="tours_c06_name">Yokohama: Port, Chinatown &amp; Lights</div>
+            <div class="row"><span data-i18n="tours_hours_8">≈ 8 hrs</span><span class="price" data-i18n="booking_s2_full_price">¥95,000 / group</span></div>
           </div>
         </a>
 
