@@ -76,7 +76,7 @@
   .tcard { display: flex; flex-direction: column; cursor: pointer; }
   .tcard[hidden] { display: none; }
   .tcard:hover { opacity: 1; }
-  .tcard .pic { position: relative; aspect-ratio: 606/420; background: #6E7F76 center / cover no-repeat; margin-bottom: 22px; overflow: hidden; }
+  .tcard .pic { position: relative; aspect-ratio: 606/420; background: var(--bg-3) center / cover no-repeat; margin-bottom: 22px; overflow: hidden; }
   .tcard .pic::before { content: ''; position: absolute; inset: 0; background: inherit; transition: transform 700ms cubic-bezier(.2,.6,.2,1); }
   .tcard:hover .pic::before { transform: scale(1.04); }
   .tcard .pic .stripes { position: absolute; inset: 0; background-image: repeating-linear-gradient(135deg, rgba(255,255,255,0.07) 0 1px, transparent 1px 16px); }
@@ -199,9 +199,7 @@
       <section class="tour-grid" data-screen-label="06 Tours — All tours">
 
         <a class="tcard" href="tour-kita-kamakura-hase.html" data-area="kamakura" data-themes="temples food walking">
-          <div class="pic">
-            <div class="stripes"></div>
-            <span class="asset">assets/tours/04-kita-kamakura-hase/cover.jpg</span>
+          <div class="pic" style="background-image: url('assets/shrines/temple-moss-garden.jpg')">
             <span class="num">No. 04</span>
           </div>
           <div class="t-body">
@@ -213,9 +211,7 @@
         </a>
 
         <a class="tcard" href="tour-tsurugaoka.html" data-area="kamakura" data-themes="temples local">
-          <div class="pic">
-            <div class="stripes"></div>
-            <span class="asset">assets/tours/01-tsurugaoka/cover.jpg</span>
+          <div class="pic" style="background-image: url('assets/shrines/kamakura-tsurugaoka-hachimangu.jpg')">
             <span class="num">No. 01</span>
           </div>
           <div class="t-body">
@@ -227,9 +223,7 @@
         </a>
 
         <a class="tcard" href="tour-enoshima.html" data-area="enoshima" data-themes="nature food walking">
-          <div class="pic">
-            <div class="stripes"></div>
-            <span class="asset">assets/tours/02-enoshima/cover.jpg</span>
+          <div class="pic" style="background-image: url('assets/concierge/coastal-town-view.jpg')">
             <span class="num">No. 02</span>
           </div>
           <div class="t-body">
@@ -241,9 +235,7 @@
         </a>
 
         <a class="tcard" href="tour-farmers-market.html" data-area="kamakura" data-themes="local food">
-          <div class="pic">
-            <div class="stripes"></div>
-            <span class="asset">assets/tours/03-farmers-market/cover.jpg</span>
+          <div class="pic" style="background-image: url('assets/everyday/noren-shopfront.jpg')">
             <span class="num">No. 03</span>
           </div>
           <div class="t-body">
@@ -255,9 +247,7 @@
         </a>
 
         <a class="tcard" href="tour-zen-morning.html" data-area="kamakura" data-themes="culture temples">
-          <div class="pic">
-            <div class="stripes"></div>
-            <span class="asset">assets/tours/05-zen-morning/cover.jpg</span>
+          <div class="pic" style="background-image: url('assets/cultural/zazen-meditation-hall.jpg')">
             <span class="num">No. 05</span>
           </div>
           <div class="t-body">
@@ -269,9 +259,7 @@
         </a>
 
         <a class="tcard" href="tour-yokohama.html" data-area="yokohama" data-themes="local food nature">
-          <div class="pic">
-            <div class="stripes"></div>
-            <span class="asset">assets/tours/06-yokohama/cover.jpg</span>
+          <div class="pic" style="background-image: url('assets/everyday/retro-street-corner.jpg')">
             <span class="num">No. 06</span>
           </div>
           <div class="t-body">
