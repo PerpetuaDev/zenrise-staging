@@ -1,0 +1,205 @@
+{
+ "contents": [
+  {
+   "id": "kita-kamakura-hase",
+   "number": "04",
+   "titleEn": "Kita-Kamakura to Hase",
+   "titleJa": "北鎌倉から長谷まで",
+   "subEn": "Down from the hills, into the quiet streets of Hase.",
+   "subJa": "山あいを抜けて、長谷の路地へ。",
+   "area": "Kamakura",
+   "themes": [
+    "Temples & Shrines",
+    "Food",
+    "Walking"
+   ],
+   "length": "Half-day",
+   "hoursEn": "≈ 5 hrs · 6.3 km",
+   "hoursJa": "約5時間 · 6.3 km",
+   "cover": {
+    "url": "assets/shrines/temple-moss-garden.jpg"
+   },
+   "coverCaptionEn": "Kita-Kamakura, morning",
+   "coverCaptionJa": "北鎌倉、朝",
+   "priceEn": "",
+   "priceJa": "",
+   "ledeEn": "A half-day on foot exploring the wooded hills of Kamakura & Hase side-streets, ending with a quiet lunch.",
+   "ledeJa": "鎌倉の緑深い山あいから長谷の路地までを歩いてめぐる半日。締めくくりは、静かな昼食のひとときです。",
+   "includedEn": "English-speaking guide\nEntrance fees\nPrinted tour pamphlet, yours to keep",
+   "includedJa": "英語対応ガイド\n拝観料・入場料\nお持ち帰りいただける冊子（パンフレット）",
+   "notIncludedEn": "Train fares, approx. ¥200 per person\nBreakfast, lunch and souvenirs\nAdditional food and drinks at the chef’s counter\nHotel pick-up and drop-off",
+   "notIncludedJa": "電車賃（お一人あたり約¥200）\n朝食・昼食・お土産代\nカウンターでの追加のお料理・お飲み物\nホテルへの送迎",
+   "notAllowedEn": "Baby strollers\nDrones",
+   "notAllowedJa": "ベビーカー\nドローン",
+   "notSuitableEn": "People with heart problems\nPeople with a low level of fitness\nPeople with pre-existing medical conditions\nPregnant women\nWheelchair users",
+   "notSuitableJa": "心臓に疾患のある方\n体力に不安のある方\n持病のある方\n妊娠中の方\n車椅子をご利用の方"
+  },
+  {
+   "id": "tsurugaoka",
+   "number": "01",
+   "titleEn": "Tsurugaoka & the Old Town",
+   "titleJa": "鶴岡八幡宮と旧市街",
+   "subEn": "The shrine at the city’s spine, then the lanes either side of it.",
+   "subJa": "街の背骨にあたる八幡宮と、その両側に広がる路地へ。",
+   "area": "Kamakura",
+   "themes": [
+    "Temples & Shrines",
+    "Local Life"
+   ],
+   "length": "Half-day",
+   "hoursEn": "≈ 4 hrs",
+   "hoursJa": "約4時間",
+   "cover": {
+    "url": "assets/shrines/kamakura-tsurugaoka-hachimangu.jpg"
+   },
+   "coverCaptionEn": "Tsurugaoka Hachimangu",
+   "coverCaptionJa": "鶴岡八幡宮",
+   "priceEn": "",
+   "priceJa": "",
+   "ledeEn": "",
+   "ledeJa": "",
+   "includedEn": "",
+   "includedJa": "",
+   "notIncludedEn": "",
+   "notIncludedJa": "",
+   "notAllowedEn": "",
+   "notAllowedJa": "",
+   "notSuitableEn": "",
+   "notSuitableJa": ""
+  },
+  {
+   "id": "enoshima",
+   "number": "02",
+   "titleEn": "Enoshima: Coast, Caves & Seafood",
+   "titleJa": "江ノ島：海岸、岩屋、海の幸",
+   "subEn": "Across the causeway to the shrine, the caves, and lunch by the harbour.",
+   "subJa": "橋を渡って神社へ、岩屋へ、そして港のそばで昼食を。",
+   "area": "Enoshima",
+   "themes": [
+    "Views & Nature",
+    "Food",
+    "Walking"
+   ],
+   "length": "Full-day",
+   "hoursEn": "≈ 8 hrs",
+   "hoursJa": "約8時間",
+   "cover": {
+    "url": "assets/concierge/coastal-town-view.jpg"
+   },
+   "coverCaptionEn": "Enoshima, from the coast",
+   "coverCaptionJa": "海岸から望む江ノ島",
+   "priceEn": "",
+   "priceJa": "",
+   "ledeEn": "",
+   "ledeJa": "",
+   "includedEn": "",
+   "includedJa": "",
+   "notIncludedEn": "",
+   "notIncludedJa": "",
+   "notAllowedEn": "",
+   "notAllowedJa": "",
+   "notSuitableEn": "",
+   "notSuitableJa": ""
+  },
+  {
+   "id": "farmers-market",
+   "number": "03",
+   "titleEn": "Morning at the Farmers Market",
+   "titleJa": "朝市をめぐる午前",
+   "subEn": "Rengetsu vegetables, back-alley coffee, and the everyday city at work.",
+   "subJa": "鎌倉野菜、路地裏のコーヒー、働く街の日常の風景。",
+   "area": "Kamakura",
+   "themes": [
+    "Local Life",
+    "Food"
+   ],
+   "length": "Half-day",
+   "hoursEn": "≈ 4 hrs",
+   "hoursJa": "約4時間",
+   "cover": {
+    "url": "assets/everyday/noren-shopfront.jpg"
+   },
+   "coverCaptionEn": "Kamakura, morning market",
+   "coverCaptionJa": "鎌倉、朝の市場",
+   "priceEn": "",
+   "priceJa": "",
+   "ledeEn": "",
+   "ledeJa": "",
+   "includedEn": "",
+   "includedJa": "",
+   "notIncludedEn": "",
+   "notIncludedJa": "",
+   "notAllowedEn": "",
+   "notAllowedJa": "",
+   "notSuitableEn": "",
+   "notSuitableJa": ""
+  },
+  {
+   "id": "zen-morning",
+   "number": "05",
+   "titleEn": "Zen Morning: Meditation & Tea",
+   "titleJa": "禅の朝：坐禅とお茶",
+   "subEn": "Zazen with a priest, then tea in a hillside garden.",
+   "subJa": "僧侶とともに坐禅を組み、山肌の庭で一服のお茶を。",
+   "area": "Kamakura",
+   "themes": [
+    "Culture",
+    "Temples & Shrines"
+   ],
+   "length": "Half-day",
+   "hoursEn": "≈ 4 hrs",
+   "hoursJa": "約4時間",
+   "cover": {
+    "url": "assets/cultural/zazen-meditation-hall.jpg"
+   },
+   "coverCaptionEn": "Morning zazen",
+   "coverCaptionJa": "朝の坐禅",
+   "priceEn": "",
+   "priceJa": "",
+   "ledeEn": "",
+   "ledeJa": "",
+   "includedEn": "",
+   "includedJa": "",
+   "notIncludedEn": "",
+   "notIncludedJa": "",
+   "notAllowedEn": "",
+   "notAllowedJa": "",
+   "notSuitableEn": "",
+   "notSuitableJa": ""
+  },
+  {
+   "id": "yokohama",
+   "number": "06",
+   "titleEn": "Yokohama: Port, Chinatown & Lights",
+   "titleJa": "横浜：港、中華街、夜景",
+   "subEn": "The old port city from warehouse district to evening skyline.",
+   "subJa": "倉庫街から夕暮れのスカイラインまで、古い港町を歩く。",
+   "area": "Yokohama",
+   "themes": [
+    "Local Life",
+    "Food",
+    "Views & Nature"
+   ],
+   "length": "Full-day",
+   "hoursEn": "≈ 8 hrs",
+   "hoursJa": "約8時間",
+   "cover": {
+    "url": "assets/everyday/retro-street-corner.jpg"
+   },
+   "coverCaptionEn": "Yokohama at dusk",
+   "coverCaptionJa": "夕暮れの横浜",
+   "priceEn": "",
+   "priceJa": "",
+   "ledeEn": "",
+   "ledeJa": "",
+   "includedEn": "",
+   "includedJa": "",
+   "notIncludedEn": "",
+   "notIncludedJa": "",
+   "notAllowedEn": "",
+   "notAllowedJa": "",
+   "notSuitableEn": "",
+   "notSuitableJa": ""
+  }
+ ]
+}

@@ -1,0 +1,19 @@
+{
+  "apiFields": [
+    {
+      "fieldId": "featuredTours",
+      "name": "注目ツアー（トップページ）",
+      "kind": "relationList",
+      "description": "選んだ順にトップページへ掲載されます（tours APIを参照）",
+      "required": false
+    },
+    {
+      "fieldId": "heroSlides",
+      "name": "スライドショー画像（トップページ）",
+      "kind": "mediaList",
+      "description": "トップページのスライドショーに表示される画像",
+      "required": false
+    }
+  ],
+  "customFields": []
+}

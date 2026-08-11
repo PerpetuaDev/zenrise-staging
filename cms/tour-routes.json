@@ -1,0 +1,64 @@
+{
+ "kita-kamakura-hase": [
+  {
+   "n": "01",
+   "time": "9:00",
+   "dist": "0.5 km",
+   "asset": "assets/tours/04-kita-kamakura-hase/01-boulangerie.jpg",
+   "nameEn": "La Petite Boulangerie",
+   "nameJa": "北鎌倉の小さなパン屋",
+   "noteEn": "Butter-rich croissants, dense country loaves, and pain de mie that holds its shape.",
+   "noteJa": "バターの香り高いクロワッサン、ずっしりとしたカンパーニュ、形を崩さないパン・ド・ミ。"
+  },
+  {
+   "n": "02",
+   "time": "10:00",
+   "dist": "1.7 km",
+   "asset": "assets/tours/04-kita-kamakura-hase/02-tokeiji.jpg",
+   "nameEn": "Tokei-ji",
+   "nameJa": "東慶寺",
+   "noteEn": "Plums in February, magnolia in March, hydrangea in June — the grounds are planted to flower through the year.",
+   "noteJa": "二月の梅、三月の木蓮、六月の紫陽花——境内は、一年を通して花の絶えない庭として整えられています。"
+  },
+  {
+   "n": "03",
+   "time": "10:45",
+   "dist": "2.0 km",
+   "asset": "assets/tours/04-kita-kamakura-hase/03-jochiji.jpg",
+   "nameEn": "Jochi-ji",
+   "nameJa": "浄智寺",
+   "noteEn": "The temple is smaller now than it once was, and the grounds are quieter for it.",
+   "noteJa": "寺はかつてよりも小さくなり、境内はその分、静かになりました。"
+  },
+  {
+   "n": "04",
+   "time": "11:45",
+   "dist": "3.5 km",
+   "asset": "assets/tours/04-kita-kamakura-hase/04-zeniarai-benten.jpg",
+   "nameEn": "Zeniarai Benten",
+   "nameJa": "銭洗弁財天",
+   "noteEn": "The trickle of running water, and the soft clink of coins shifting in wicker baskets.",
+   "noteJa": "流れる水の音、そして竹籠の中で触れ合う銭の小さな響き。"
+  },
+  {
+   "n": "05",
+   "time": "12:30",
+   "dist": "4.0 km",
+   "asset": "assets/tours/04-kita-kamakura-hase/05-sasuke-inari.jpg",
+   "nameEn": "Sasuke Inari",
+   "nameJa": "佐助稲荷神社",
+   "noteEn": "The approach runs through deep cedar woods, and the path empties out the higher you go.",
+   "noteJa": "参道は杉木立の中を抜け、のぼるにつれて人影がまばらになっていきます。"
+  },
+  {
+   "n": "06",
+   "time": "14:00",
+   "dist": "6.3 km",
+   "asset": "assets/tours/04-kita-kamakura-hase/06-nami-to-kaze.jpg",
+   "nameEn": "Nami to Kaze",
+   "nameJa": "波と風",
+   "noteEn": "Fresh, seasonal ingredients delivered that morning, prepared in front of you.",
+   "noteJa": "その朝に届いた季節の食材を、目の前で仕上げてもらえます。"
+  }
+ ]
+}
