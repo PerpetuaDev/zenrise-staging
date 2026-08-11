@@ -68,6 +68,7 @@
       // home — tours + news sections
       home_tours_title: 'Our tours',
       home_tours_more: 'All tours',
+      home_tours_cta: 'View this tour',
       home_news_title: 'News & stories',
       home_news_more: 'All news',
       home_news_1_title: 'A day away from Tokyo',
@@ -455,6 +456,7 @@
       // home — tours + news sections
       home_tours_title: '私たちのツアー',
       home_tours_more: 'ツアー一覧',
+      home_tours_cta: 'このツアーを見る',
       home_news_title: 'ニュースと読みもの',
       home_news_more: 'ニュース一覧',
       home_news_1_title: '東京を離れて過ごす一日',

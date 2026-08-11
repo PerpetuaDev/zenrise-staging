@@ -421,20 +421,11 @@
     text-wrap: pretty;
   }
   :lang(ja) .dest .panel .name { line-height: 1.35; }
-  .dest .panel .row {
-    margin-top: auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    gap: 12px;
-    padding-top: 14px;
-    font-family: var(--sans);
-    font-size: 13px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--ink-60);
-  }
-  .dest .panel .row .price { color: var(--ink); }
+  .dest .panel .row { margin-top: auto; padding-top: 16px; }
+  .dest .panel .go { display: inline-flex; align-items: baseline; font-size: 18px; letter-spacing: 0.01em; color: var(--ink); }
+  .dest .panel .go .u { padding-bottom: 3px; border-bottom: 1px solid var(--ink); }
+  .dest .panel .go .ar { position: relative; right: 0; transition: right 0.3s ease; font-weight: 300; }
+  .dest:hover .panel .go .ar { right: -6px; }
 
   /* photo credits — required on all photography */
   .hero-photo::after,
@@ -643,7 +634,8 @@
     .dest .panel { padding: 14px 14px 13px; }
     .dest .panel .t-meta { font-size: 9px; letter-spacing: 0.06em; gap: 8px; margin-bottom: 8px; }
     .dest .panel .name { font-size: 17px; }
-    .dest .panel .row { font-size: 9px; letter-spacing: 0.06em; padding-top: 10px; }
+    .dest .panel .row { padding-top: 12px; }
+    .dest .panel .go { font-size: 13px; }
     .dest .num-tag { right: 12px; top: 12px; font-size: 10px; letter-spacing: 0.18em; }
     /* no attribution on the small mobile tiles — too cramped */
     .dest .ph::after { display: none; }
@@ -682,8 +674,6 @@
     .navlinks { display: none; }
     .hero-card .ttl { font-size: 38px; }
     .dest-grid { gap: 8px; }
-    /* hours drop out at phone width — price only */
-    .dest .panel .row > span:first-child { display: none; }
     .dest .panel .name { font-size: 16px; }
   }
 </style>
@@ -740,7 +730,7 @@
           <div class="panel">
             <div class="t-meta"><span data-i18n="tours_area_kamakura">Kamakura</span><span class="dot">・</span><span data-i18n="tours_len_half">Half-day</span></div>
             <div class="name" data-i18n="tours_c04_name">Kita-Kamakura to Hase</div>
-            <div class="row"><span data-i18n="tours_hours_c04">≈ 5 hrs · 6.3 km</span><span class="price" data-i18n="booking_s2_half_price">¥65,000 / group</span></div>
+            <div class="row"><span class="go"><span class="u" data-i18n="home_tours_cta">View this tour</span><span class="ar">&nbsp;→</span></span></div>
           </div>
         </a>
 
@@ -752,7 +742,7 @@
           <div class="panel">
             <div class="t-meta"><span data-i18n="tours_area_kamakura">Kamakura</span><span class="dot">・</span><span data-i18n="tours_len_half">Half-day</span></div>
             <div class="name" data-i18n="tours_c01_name">Tsurugaoka &amp; the Old Town</div>
-            <div class="row"><span data-i18n="tours_hours_4">≈ 4 hrs</span><span class="price" data-i18n="booking_s2_half_price">¥65,000 / group</span></div>
+            <div class="row"><span class="go"><span class="u" data-i18n="home_tours_cta">View this tour</span><span class="ar">&nbsp;→</span></span></div>
           </div>
         </a>
 
@@ -764,7 +754,7 @@
           <div class="panel">
             <div class="t-meta"><span data-i18n="tours_area_enoshima">Enoshima</span><span class="dot">・</span><span data-i18n="tours_len_full">Full-day</span></div>
             <div class="name" data-i18n="tours_c02_name">Enoshima: Coast, Caves &amp; Seafood</div>
-            <div class="row"><span data-i18n="tours_hours_8">≈ 8 hrs</span><span class="price" data-i18n="booking_s2_full_price">¥95,000 / group</span></div>
+            <div class="row"><span class="go"><span class="u" data-i18n="home_tours_cta">View this tour</span><span class="ar">&nbsp;→</span></span></div>
           </div>
         </a>
 
@@ -776,7 +766,7 @@
           <div class="panel">
             <div class="t-meta"><span data-i18n="tours_area_kamakura">Kamakura</span><span class="dot">・</span><span data-i18n="tours_len_half">Half-day</span></div>
             <div class="name" data-i18n="tours_c03_name">Morning at the Farmers Market</div>
-            <div class="row"><span data-i18n="tours_hours_4">≈ 4 hrs</span><span class="price" data-i18n="booking_s2_half_price">¥65,000 / group</span></div>
+            <div class="row"><span class="go"><span class="u" data-i18n="home_tours_cta">View this tour</span><span class="ar">&nbsp;→</span></span></div>
           </div>
         </a>
 
@@ -788,7 +778,7 @@
           <div class="panel">
             <div class="t-meta"><span data-i18n="tours_area_kamakura">Kamakura</span><span class="dot">・</span><span data-i18n="tours_len_half">Half-day</span></div>
             <div class="name" data-i18n="tours_c05_name">Zen Morning: Meditation &amp; Tea</div>
-            <div class="row"><span data-i18n="tours_hours_4">≈ 4 hrs</span><span class="price" data-i18n="booking_s2_half_price">¥65,000 / group</span></div>
+            <div class="row"><span class="go"><span class="u" data-i18n="home_tours_cta">View this tour</span><span class="ar">&nbsp;→</span></span></div>
           </div>
         </a>
 
@@ -800,7 +790,7 @@
           <div class="panel">
             <div class="t-meta"><span data-i18n="tours_area_yokohama">Yokohama</span><span class="dot">・</span><span data-i18n="tours_len_full">Full-day</span></div>
             <div class="name" data-i18n="tours_c06_name">Yokohama: Port, Chinatown &amp; Lights</div>
-            <div class="row"><span data-i18n="tours_hours_8">≈ 8 hrs</span><span class="price" data-i18n="booking_s2_full_price">¥95,000 / group</span></div>
+            <div class="row"><span class="go"><span class="u" data-i18n="home_tours_cta">View this tour</span><span class="ar">&nbsp;→</span></span></div>
           </div>
         </a>
 
