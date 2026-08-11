@@ -301,7 +301,7 @@
       contact_hero_visit_v: 'me-labo4, Sophiale Minamifujisawa #101<br/>10-11 Minamifujisawa, Fujisawa<br/>Kanagawa, 251-0055, Japan',
       // display hero (alt)
       // booking intro
-      contact_bi_title: 'Plan <br/>your trip.',
+      contact_bi_title: 'Plan your trip.',
 
       // booking flow — sidebar
       booking_progress_title: 'Booking',
@@ -333,10 +333,10 @@
       // booking step 2: length
       booking_s2_meta: 'Step 02 / 05',
       booking_s2_sub: 'Tour length',
-      booking_s2_h: 'Half day or full?',
+      booking_s2_h: 'Half-day or full?',
       booking_s2_lede: 'Half-days run roughly 09:00–13:00. Full-days end with a late lunch or a harbourside visit around 17:00.',
-      booking_s2_half: 'Half day',
-      booking_s2_full: 'Full day',
+      booking_s2_half: 'Half-day',
+      booking_s2_full: 'Full-day',
       booking_s2_half_p: 'One town, one neighbourhood. A long morning of exploring, one workshop or tea stop, and a quiet lunch.',
       booking_s2_full_p: 'Two towns linked by local train. A morning exploring, lunch with the day\u2019s host, an afternoon stop.',
       booking_s2_half_t: '≈ 4 hrs',
@@ -711,7 +711,7 @@
       contact_hero_email: 'メール',
       contact_hero_visit: 'オフィス',
       contact_hero_visit_v: '〒251-0055<br/>神奈川県藤沢市南藤沢 10-11<br/>Sophiale Minamifujisawa #101 me-labo4',
-      contact_bi_title: '旅を<br/>計画する。',
+      contact_bi_title: '旅を計画する。',
 
       // booking flow — sidebar
       booking_progress_title: 'ご予約',

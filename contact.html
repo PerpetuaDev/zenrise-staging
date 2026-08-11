@@ -24,7 +24,7 @@
 <script>
   (function(d) {
     var config = {
-      kitId: 'srn7uwt',
+      kitId: 'kty6qoz',
       scriptTimeout: 3000,
       async: true
     },
@@ -225,6 +225,9 @@
     max-width: 600px;
     text-wrap: pretty;
   }
+
+  /* rule between the intro and the form (design handoff, 2026-08) */
+  .bi-rule { height: 1px; background: var(--rule); margin: 88px 36px 0; }
 
   /* ───── Booking layout ───── */
   .booking {
@@ -964,6 +967,7 @@
        instead), but the section stays in flow: it's the #booking anchor
        target for the home page's CTA */
     .booking-intro { padding: 0 20px; grid-template-columns: 1fr; row-gap: 0; }
+    .bi-rule { display: none; }
     .booking-intro h2 { display: none; }
     .booking-intro p { font-size: 18px; max-width: 100%; }
 
@@ -1148,9 +1152,11 @@
   <!-- ───── Booking-flow intro ───── -->
   <section class="booking-intro" id="booking" data-screen-label="04 Contact — Booking intro">
     <div>
-      <h2 data-i18n-html="contact_bi_title">Plan <br/>your trip.</h2>
+      <h2 data-i18n-html="contact_bi_title">Plan your trip.</h2>
     </div>
   </section>
+
+  <div class="bi-rule"></div>
 
   <!-- ───── Booking flow ───── -->
   <section class="booking" data-screen-label="04 Contact — Booking flow">
@@ -1170,7 +1176,7 @@
 
       <!-- Step 1: Region (multi-select) -->
       <div class="step cur" data-step="0">
-        <div class="meta"><span data-i18n="booking_s1_meta">Step 01 / 05</span><span id="m-count-1">0 selected</span></div>
+        <div class="meta"><span id="m-count-1">0 selected</span><span data-i18n="booking_s1_meta">Step 01 / 05</span></div>
         <h2 data-i18n-html="booking_s1_h">Where would you<br/>like to go?</h2>
         <p class="lede" data-i18n="booking_s1_lede">Pick one or more. We can string two towns together on a full-day route, or stay in one all morning.</p>
 
@@ -1221,21 +1227,21 @@
 
       <!-- Step 2: Format -->
       <div class="step" data-step="1">
-        <div class="meta"><span data-i18n="booking_s2_meta">Step 02 / 05</span><span data-i18n="booking_s2_sub">Tour length</span></div>
+        <div class="meta"><span data-i18n="booking_s2_sub">Tour length</span><span data-i18n="booking_s2_meta">Step 02 / 05</span></div>
         <h2 data-i18n="booking_s2_h">Half day or full?</h2>
         <p class="lede" data-i18n="booking_s2_lede">Half-days run roughly 09:00–13:00. Full-days end with a late lunch or a harbourside visit around 17:00.</p>
 
         <div class="grid-2">
-          <div class="card format" data-radio="length" data-val="Half day">
+          <div class="card format" data-radio="length" data-val="Half-day">
             <span class="num" data-i18n="booking_s2_opt1">Option 01</span>
-            <h3 data-i18n="booking_s2_half">Half day</h3>
+            <h3 data-i18n="booking_s2_half">Half-day</h3>
             <p data-i18n="booking_s2_half_p">One town, one neighbourhood. A long morning of exploring, one workshop or tea stop, and a quiet lunch.</p>
             <div class="price"><span data-i18n="booking_s2_half_t">≈ 4 hrs</span><span data-i18n="booking_s2_half_price">¥65,000 / group</span></div>
             <span class="tick"></span>
           </div>
-          <div class="card format" data-radio="length" data-val="Full day">
+          <div class="card format" data-radio="length" data-val="Full-day">
             <span class="num" data-i18n="booking_s2_opt2">Option 02</span>
-            <h3 data-i18n="booking_s2_full">Full day</h3>
+            <h3 data-i18n="booking_s2_full">Full-day</h3>
             <p data-i18n="booking_s2_full_p">Two towns linked by local train. A morning exploring, lunch with the day's host, an afternoon stop.</p>
             <div class="price"><span data-i18n="booking_s2_full_t">≈ 8 hrs</span><span data-i18n="booking_s2_full_price">¥95,000 / group</span></div>
             <span class="tick"></span>
@@ -1256,7 +1262,7 @@
 
       <!-- Step 3: When + group size -->
       <div class="step" data-step="2">
-        <div class="meta"><span data-i18n="booking_s3_meta">Step 03 / 05</span><span data-i18n-html="booking_s3_sub">Dates &amp; party</span></div>
+        <div class="meta"><span data-i18n-html="booking_s3_sub">Dates &amp; party</span><span data-i18n="booking_s3_meta">Step 03 / 05</span></div>
         <h2 data-i18n-html="booking_s3_h">When, and how<br/>many of you?</h2>
         <p class="lede" data-i18n-html="booking_s3_lede">A rough window is fine &mdash; we'll come back with two or three open dates near it.</p>
 
@@ -1299,7 +1305,7 @@
 
       <!-- Step 4: About you -->
       <div class="step" data-step="3">
-        <div class="meta"><span data-i18n="booking_s4_meta">Step 04 / 05</span><span data-i18n="booking_s4_sub">Just the basics</span></div>
+        <div class="meta"><span data-i18n="booking_s4_sub">Just the basics</span><span data-i18n="booking_s4_meta">Step 04 / 05</span></div>
         <h2 data-i18n-html="booking_s4_h">And a little<br/>about you.</h2>
         <p class="lede" data-i18n-html="booking_s4_lede">Just enough so we can reply &mdash; and so we know how to plan around dietary needs or mobility.</p>
 
@@ -1353,7 +1359,7 @@
 
       <!-- Step 5: Review -->
       <div class="step" data-step="4">
-        <div class="meta"><span data-i18n="booking_s5_meta">Step 05 / 05</span><span data-i18n="booking_s5_sub">Last look</span></div>
+        <div class="meta"><span data-i18n="booking_s5_sub">Last look</span><span data-i18n="booking_s5_meta">Step 05 / 05</span></div>
         <h2 data-i18n="booking_s5_h">Sound right?</h2>
         <p class="lede" data-i18n-html="booking_s5_lede">A quick look over what you'll send us. You can still go back and change anything &mdash; or we'll figure it out in the reply.</p>
 
@@ -1494,6 +1500,9 @@
     };
 
     try { var saved = JSON.parse(localStorage.getItem(KEY) || 'null'); if (saved) Object.assign(state, saved); } catch (e) {}
+    // saved states predating the Half-day normalization
+    if (state.length === 'Half day') state.length = 'Half-day';
+    if (state.length === 'Full day') state.length = 'Full-day';
 
     function save() {
       try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {}
