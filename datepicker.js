@@ -76,7 +76,7 @@
       '.zp-trigger { width: 100%; background: transparent; border: none; border-bottom: 1px solid rgba(41,65,56,0.28); padding: 10px 0 14px; font-family: "Optima Nova LT Pro","Optima",serif; font-size: 28px; color: #294138; text-align: left; cursor: pointer; display: flex; justify-content: space-between; align-items: baseline; transition: border-color 180ms ease; font-weight: 400; }',
       '.zp-trigger:hover { border-bottom-color: #294138; }',
       '.zp.open .zp-trigger { border-bottom-color: #294138; }',
-      '.zp-trigger .zp-icon { font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 11px; letter-spacing: 0.2em; color: rgba(41,65,56,0.5); text-transform: uppercase; align-self: center; padding-bottom: 4px; }',
+      '.zp-trigger .zp-icon { font-family: "gill-sans-nova", "Gill Sans", "Gill Sans MT", sans-serif; font-size: 13px; letter-spacing: 0.08em; color: rgba(41,65,56,0.5); text-transform: uppercase; align-self: center; padding-bottom: 4px; }',
       '.zp-trigger.empty { color: rgba(41,65,56,0.35); }',
 
       // popup — cream surface, sharp corners
@@ -91,7 +91,7 @@
       '.zp-nav:focus-visible { outline: none; border-color: #294138; }',
 
       // day-of-week row
-      '.zp-dow { display: grid; grid-template-columns: repeat(7, 1fr); font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(41,65,56,0.5); margin-bottom: 6px; border-bottom: 1px solid rgba(41,65,56,0.08); padding-bottom: 8px; }',
+      '.zp-dow { display: grid; grid-template-columns: repeat(7, 1fr); font-family: "gill-sans-nova", "Gill Sans", "Gill Sans MT", sans-serif; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(41,65,56,0.5); margin-bottom: 6px; border-bottom: 1px solid rgba(41,65,56,0.08); padding-bottom: 8px; }',
       '.zp-dow span { text-align: center; }',
 
       // days grid
@@ -108,11 +108,11 @@
 
       // footer — clear button
       '.zp-foot { display: flex; justify-content: space-between; align-items: center; margin-top: 18px; padding-top: 16px; border-top: 1px solid rgba(41,65,56,0.08); }',
-      '.zp-today, .zp-clear { background: transparent; border: none; font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 10px; letter-spacing: 0.24em; text-transform: uppercase; color: rgba(41,65,56,0.6); cursor: pointer; padding: 4px 0; transition: color 140ms ease; }',
+      '.zp-today, .zp-clear { background: transparent; border: none; font-family: "gill-sans-nova", "Gill Sans", "Gill Sans MT", sans-serif; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(41,65,56,0.6); cursor: pointer; padding: 4px 0; transition: color 140ms ease; }',
       '.zp-today:hover, .zp-clear:hover { color: #294138; }',
 
       // range-mode confirm — filled ink, unmissable next to the quiet Clear
-      '.zp-confirm { background: #294138; color: #F7F4EA; border: none; font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 10px; letter-spacing: 0.24em; text-transform: uppercase; padding: 12px 22px; cursor: pointer; border-radius: 0; transition: background 160ms ease; }',
+      '.zp-confirm { background: #294138; color: #F7F4EA; border: none; font-family: "gill-sans-nova", "Gill Sans", "Gill Sans MT", sans-serif; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; padding: 12px 22px; cursor: pointer; border-radius: 0; transition: background 160ms ease; }',
       '.zp-confirm:hover { background: #1f3328; }',
 
       // range trigger labels run long ("Sep 24 – Oct 2, 2026") — step the

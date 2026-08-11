@@ -1066,9 +1066,9 @@
       '  .mobile-nav-lang { opacity: 0; transition: opacity 500ms ease; }',
       '  html.menu-open .mobile-nav-lang { opacity: 1; transition-delay: 460ms; }',
       '  .mobile-nav-lang { margin-top: auto; border-top: 1px solid rgba(41,65,56,0.14); padding-top: 22px; }',
-      '  .mobile-nav-lang .mnl-h { display: block; font-family: "JetBrains Mono",ui-monospace,monospace; font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; color: rgba(41,65,56,0.55); margin-bottom: 14px; }',
+      '  .mobile-nav-lang .mnl-h { display: block; font-family: "gill-sans-nova", "Gill Sans", "Gill Sans MT", sans-serif; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(41,65,56,0.55); margin-bottom: 14px; }',
       '  .mobile-nav-lang button { display: inline-flex; align-items: baseline; gap: 10px; background: none; border: none; padding: 6px 0; margin-right: 32px; cursor: pointer; }',
-      '  .mobile-nav-lang button .code { font-family: "JetBrains Mono",ui-monospace,monospace; font-size: 10px; letter-spacing: 0.24em; color: rgba(41,65,56,0.5); }',
+      '  .mobile-nav-lang button .code { font-family: "gill-sans-nova", "Gill Sans", "Gill Sans MT", sans-serif; text-transform: uppercase; font-size: 12px; letter-spacing: 0.08em; color: rgba(41,65,56,0.5); }',
       '  .mobile-nav-lang button .name { font-family: "optima-nova-lt-pro","Optima",serif; font-size: 22px; color: #294138; }',
       '  .mobile-nav-lang button.on .name { text-decoration: underline; text-underline-offset: 4px; }',
       '}'

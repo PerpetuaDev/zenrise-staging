@@ -20,9 +20,6 @@
 <link rel="apple-touch-icon" href="apple-touch-icon.png" />
 <title data-i18n-title="contact_title">Contact — Zenrise</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 
 <script>
   (function(d) {
@@ -50,7 +47,6 @@
 
     --display: "optima-nova-lt-pro", "Optima", serif;
     --sans:    "gill-sans-nova", "Gill Sans", "Gill Sans MT", sans-serif;
-    --mono:    "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
   }
   * { box-sizing: border-box; }
   html { overflow-x: hidden; }
@@ -120,9 +116,9 @@
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-    font-family: var(--mono);
-    font-size: 12px;
-    letter-spacing: 0.28em;
+    font-family: var(--sans);
+    font-size: 14px;
+    letter-spacing: 0.08em;
     color: var(--ink-60);
     text-transform: uppercase;
     margin-bottom: 0;
@@ -140,9 +136,9 @@
     position: absolute;
     right: 20px;
     bottom: 18px;
-    font-family: var(--mono);
-    font-size: 10px;
-    letter-spacing: 0.2em;
+    font-family: var(--sans);
+    font-size: 12px;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
     color: rgba(255,255,255,0.65);
     pointer-events: none;
@@ -152,9 +148,9 @@
     position: absolute;
     left: 20px; bottom: 18px;
     color: #fff;
-    font-family: var(--mono);
-    font-size: 11px;
-    letter-spacing: 0.22em;
+    font-family: var(--sans);
+    font-size: 13px;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
     opacity: 0.95;
   }
@@ -175,9 +171,9 @@
   .hero-v2 .lh .lbl {
     width: 180px;
     flex-shrink: 0;
-    font-family: var(--mono);
-    font-size: 12px;
-    letter-spacing: 0.28em;
+    font-family: var(--sans);
+    font-size: 14px;
+    letter-spacing: 0.08em;
     color: var(--ink-60);
     text-transform: uppercase;
     padding-top: 12px;
@@ -204,9 +200,9 @@
     align-items: end;
   }
   .booking-intro .eyebrow {
-    font-family: var(--mono);
-    font-size: 12px;
-    letter-spacing: 0.28em;
+    font-family: var(--sans);
+    font-size: 14px;
+    letter-spacing: 0.08em;
     color: var(--ink-60);
     text-transform: uppercase;
     margin-bottom: 28px;
@@ -245,9 +241,9 @@
     top: 40px;
   }
   .progress .ttl {
-    font-family: var(--mono);
-    font-size: 11px;
-    letter-spacing: 0.28em;
+    font-family: var(--sans);
+    font-size: 13px;
+    letter-spacing: 0.08em;
     color: var(--ink-60);
     text-transform: uppercase;
     margin-bottom: 28px;
@@ -269,9 +265,9 @@
   }
   .progress li:last-child { border-bottom: 1px solid var(--ink-12); }
   .progress li .n {
-    font-family: var(--mono);
-    font-size: 12px;
-    letter-spacing: 0.22em;
+    font-family: var(--sans); text-transform: uppercase;
+    font-size: 14px;
+    letter-spacing: 0.08em;
     color: var(--ink-40);
   }
   .progress li .lbl {
@@ -302,13 +298,13 @@
     margin-top: 8px;
   }
   .quick h4 {
-    font-family: var(--mono);
-    font-size: 11px;
-    letter-spacing: 0.28em;
+    font-family: var(--sans);
+    font-size: 13px;
+    letter-spacing: 0.08em;
     color: var(--ink-60);
     text-transform: uppercase;
     margin: 0 0 18px;
-    font-weight: 500;
+    font-weight: 400;
   }
   .quick p {
     font-family: var(--display);
@@ -329,9 +325,9 @@
   .quick a.tel:last-child, .quick a.eml:last-child { border-bottom: none; }
   .quick a:hover { opacity: 0.65; }
   .quick .sub {
-    font-family: var(--mono);
-    font-size: 10px;
-    letter-spacing: 0.22em;
+    font-family: var(--sans);
+    font-size: 12px;
+    letter-spacing: 0.08em;
     color: var(--ink-60);
     text-transform: uppercase;
     margin-right: 12px;
@@ -354,9 +350,9 @@
     justify-content: space-between;
     align-items: baseline;
     margin-bottom: 28px;
-    font-family: var(--mono);
-    font-size: 11px;
-    letter-spacing: 0.26em;
+    font-family: var(--sans);
+    font-size: 13px;
+    letter-spacing: 0.08em;
     color: var(--ink-60);
     text-transform: uppercase;
   }
@@ -416,9 +412,9 @@
   }
   .card.on .tick::after { content: "✓"; }
   .card .num {
-    font-family: var(--mono);
-    font-size: 10px;
-    letter-spacing: 0.24em;
+    font-family: var(--sans);
+    font-size: 12px;
+    letter-spacing: 0.08em;
     color: var(--ink-60);
     text-transform: uppercase;
     margin-bottom: 18px;
@@ -471,9 +467,9 @@
   .card.region.on .body { background: var(--ink); }
   .card.region h3 { font-size: 30px; margin: 0 0 6px; }
   .card.region .sub {
-    font-family: var(--mono);
-    font-size: 10px;
-    letter-spacing: 0.24em;
+    font-family: var(--sans);
+    font-size: 12px;
+    letter-spacing: 0.08em;
     color: var(--ink-60);
     text-transform: uppercase;
   }
@@ -486,9 +482,9 @@
     margin-top: 18px;
     display: flex;
     gap: 24px;
-    font-family: var(--mono);
-    font-size: 11px;
-    letter-spacing: 0.22em;
+    font-family: var(--sans);
+    font-size: 13px;
+    letter-spacing: 0.08em;
     color: var(--ink-60);
     text-transform: uppercase;
   }
@@ -514,9 +510,9 @@
     margin: 0 0 36px;
   }
   .field .lbl {
-    font-family: var(--mono);
-    font-size: 11px;
-    letter-spacing: 0.24em;
+    font-family: var(--sans);
+    font-size: 13px;
+    letter-spacing: 0.08em;
     color: var(--ink-60);
     text-transform: uppercase;
     margin-bottom: 16px;
@@ -581,9 +577,9 @@
      centered stack itself stays put) */
   .stepper .val > div { position: relative; top: 6px; }
   .stepper .val .lbl {
-    font-family: var(--mono);
-    font-size: 10px;
-    letter-spacing: 0.18em;
+    font-family: var(--sans);
+    font-size: 12px;
+    letter-spacing: 0.08em;
     color: var(--ink-60);
     text-transform: uppercase;
     margin-top: 2px;
@@ -681,9 +677,9 @@
     border-bottom: 1px solid var(--ink-12);
   }
   .summary dt {
-    font-family: var(--mono);
-    font-size: 11px;
-    letter-spacing: 0.24em;
+    font-family: var(--sans);
+    font-size: 13px;
+    letter-spacing: 0.08em;
     color: var(--ink-60);
     text-transform: uppercase;
     padding-right: 24px;
@@ -743,9 +739,9 @@
   /* Sent state */
   .sent { text-align: left; padding: 40px 0 0; }
   .sent .num {
-    font-family: var(--mono);
-    font-size: 11px;
-    letter-spacing: 0.28em;
+    font-family: var(--sans);
+    font-size: 13px;
+    letter-spacing: 0.08em;
     color: var(--ink-60);
     text-transform: uppercase;
     margin-bottom: 24px;
@@ -773,9 +769,9 @@
     display: inline-block;
     padding: 24px 32px;
     border: 1px solid var(--ink-30);
-    font-family: var(--mono);
+    font-family: var(--sans); text-transform: uppercase;
     font-size: 14px;
-    letter-spacing: 0.18em;
+    letter-spacing: 0.08em;
     color: var(--ink);
   }
   .sent .ref .lbl {
@@ -820,9 +816,9 @@
     letter-spacing: -0.005em;
   }
   .contact-inner .eyebrow {
-    font-family: var(--mono);
-    font-size: 12px;
-    letter-spacing: 0.28em;
+    font-family: var(--sans);
+    font-size: 14px;
+    letter-spacing: 0.08em;
     color: var(--ink-60);
     text-transform: uppercase;
     margin-bottom: 24px;
@@ -834,18 +830,18 @@
     gap: 56px;
   }
   .contact-cols h4 {
-    font-family: var(--mono);
-    font-size: 11px;
-    letter-spacing: 0.3em;
+    font-family: var(--sans);
+    font-size: 13px;
+    letter-spacing: 0.08em;
     color: var(--ink-60);
     text-transform: uppercase;
     margin: 0 0 20px;
-    font-weight: 500;
+    font-weight: 400;
   }
   .contact-cols .lbl {
-    font-family: var(--mono);
-    font-size: 10px;
-    letter-spacing: 0.24em;
+    font-family: var(--sans);
+    font-size: 12px;
+    letter-spacing: 0.08em;
     color: var(--ink-60);
     text-transform: uppercase;
     display: block;
@@ -881,9 +877,9 @@
     color: var(--ink-60); margin: 0; max-width: 380px; text-wrap: pretty;
   }
   .foot-col h4 {
-    font-family: var(--mono); font-size: 11px; letter-spacing: 0.3em;
+    font-family: var(--sans); font-size: 13px; letter-spacing: 0.08em;
     color: var(--ink-60); text-transform: uppercase;
-    margin: 0 0 22px; font-weight: 500;
+    margin: 0 0 22px; font-weight: 400;
   }
   .foot-col ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 14px; }
   .foot-col li { font-size: 18px; line-height: 1.45; color: var(--ink); }
@@ -897,7 +893,7 @@
     border-top: 1px solid var(--ink-12);
     padding: 28px 0;
     display: flex; justify-content: space-between; align-items: center;
-    font-family: var(--mono); font-size: 12px; letter-spacing: 0.2em;
+    font-family: var(--sans); font-size: 14px; letter-spacing: 0.08em;
     color: var(--ink-60); text-transform: uppercase;
   }
   .foot-v2-bottom .legal { display: flex; gap: 32px; }
@@ -1017,9 +1013,9 @@
       cursor: pointer;
       user-select: none;
       padding: 14px 0;
-      font-family: var(--mono);
-      font-size: 11px;
-      letter-spacing: 0.26em;
+      font-family: var(--sans);
+      font-size: 13px;
+      letter-spacing: 0.08em;
       color: var(--ink-60);
       text-transform: uppercase;
     }
