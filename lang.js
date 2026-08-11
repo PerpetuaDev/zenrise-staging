@@ -116,9 +116,7 @@
 
       // article pages (shared chrome; per-article copy is CMS-generated)
       art_back: 'All News',
-      art_cta_book: 'Booking',
       art_cta_ours: 'Our own tours',
-      art_note_cta: 'See dates on Viator',
       art_outro_cta: 'About our tours',
 
       // home page
@@ -456,9 +454,7 @@
 
       // article pages (shared chrome; per-article copy is CMS-generated)
       art_back: 'ニュース一覧',
-      art_cta_book: 'ご予約',
       art_cta_ours: '私たちのツアー',
-      art_note_cta: 'Viatorで日程を見る',
       art_outro_cta: '弊社のツアーについて',
 
       // home page

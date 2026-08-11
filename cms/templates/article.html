@@ -13,6 +13,7 @@
 <meta property="og:url" content="{{CANONICAL_URL}}" />
 <meta property="og:image" content="{{OG_IMAGE}}" />
 <meta name="twitter:card" content="summary_large_image" />
+{{JSON_LD}}
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png" />
 <link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png" />
 <link rel="apple-touch-icon" href="apple-touch-icon.png" />
@@ -91,6 +92,7 @@
   .cta-duo { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; width: 1848px; margin: 96px 0 0 calc((880px - 1848px) / 2); border-top: 1px solid var(--rule); padding-top: 96px; }
   .cta-panel { background: var(--bg-2); padding: 52px 56px 48px; display: flex; flex-direction: column; align-items: flex-start; }
   .cta-panel.outline { background: transparent; border: 1px solid var(--ink-30); }
+  .cta-duo .cta-panel:only-child { grid-column: 1 / -1; justify-self: center; width: 914px; max-width: 100%; }
   .cta-panel .cp-label { font-family: var(--mono); font-size: 12px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--ink-60); display: block; margin-bottom: 26px; }
   .cta-panel p { font-size: 18px; line-height: 1.7; color: var(--ink-60); margin: 0 0 40px; text-wrap: pretty; }
   .cta-panel .cta { margin-top: auto; display: inline-flex; align-items: baseline; font-size: 21px; letter-spacing: 0.01em; color: var(--ink); }

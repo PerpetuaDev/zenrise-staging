@@ -139,7 +139,8 @@ def dict_script(en, ja):
 
 def article_model(a):
     """Normalize one API entry into everything the templates need."""
-    m = {'id': a['id'], 'key': 'cms_' + a['id'], 'date': a['date'][:10].replace('-', '.')}
+    m = {'id': a['id'], 'key': 'cms_' + a['id'], 'date': a['date'][:10].replace('-', '.'),
+         'iso': a['date'][:10]}
     for f in ('title', 'subtitle', 'excerpt', 'lead', 'closingHeading',
               'closingBody', 'note', 'outro'):
         m[f] = pick(a, f)
@@ -147,7 +148,6 @@ def article_model(a):
         m['excerpt'] = (first_sentence(m['lead'][0], 'en'),
                         first_sentence(m['lead'][1], 'ja'))
     m['hero'] = (a.get('hero') or {}).get('url', '')
-    m['viator'] = (a.get('viatorUrl') or '').strip()
     body_en = parse_body(a.get('bodyEn') or '')
     body_ja = parse_body(a.get('bodyJa') or '')
     m['sections'] = body_en or body_ja
@@ -220,20 +220,9 @@ def render_article(m, num, tpl):
 
     sections = '\n\n'.join(out)
 
-    # ── CTA panels: booking (Viator) + our own tours ──
+    # ── CTA panel: our own tours (Viator/OTA panel removed 2026-08 — premium
+    # brand split; articles are destination content, booking CTAs stay ours) ──
     panels = []
-    if m['viator']:
-        note_p = ''
-        if m['note'][0]:
-            put('_note', (text_html(m['note'][0]), text_html(m['note'][1])))
-            note_p = f'            <p data-i18n-html="{K}_note">{en[K + "_note"]}</p>\n'
-        panels.append(
-            '          <aside class="cta-panel">\n'
-            '            <span class="cp-label" data-i18n="art_cta_book">Booking</span>\n'
-            + note_p +
-            f'            <a class="cta" href="{esc(m["viator"])}" target="_blank" rel="noopener">'
-            '<span class="u" data-i18n="art_note_cta">See dates on Viator</span><span class="ar">→</span></a>\n'
-            '          </aside>')
     if m['outro'][0]:
         put('_outro', (text_html(m['outro'][0]), text_html(m['outro'][1])))
         panels.append(
@@ -253,12 +242,27 @@ def render_article(m, num, tpl):
     if m['hero']:
         hero_style = f''' style="background-image: url('{esc(m["hero"] + IMG_PAGE)}')"'''
 
+    og_image = m['hero'] + IMG_OG if m['hero'] else f'{SITE}/assets/shrines/temple-gate-pine.jpg'
+    json_ld = '<script type="application/ld+json">\n' + json.dumps({
+        '@context': 'https://schema.org',
+        '@type': 'Article',
+        'headline': m['title'][0],
+        'description': m['excerpt'][0],
+        'datePublished': m['iso'],
+        'image': og_image,
+        'mainEntityOfPage': url,
+        'author': {'@type': 'Organization', 'name': 'Zenrise', 'url': f'{SITE}/'},
+        'publisher': {'@type': 'Organization', 'name': 'Zenrise', 'url': f'{SITE}/',
+                      'logo': {'@type': 'ImageObject', 'url': f'{SITE}/favicon-512.png'}},
+    }, ensure_ascii=False, indent=2).replace('</', '<\\/') + '\n</script>'
+
     return render(tpl, {
         'META_DESC': esc(m['excerpt'][0]),
         'CANONICAL_URL': url,
         'OG_TITLE': esc(og_title),
         'OG_DESC': esc(m['excerpt'][0]),
-        'OG_IMAGE': esc(m['hero'] + IMG_OG) if m['hero'] else f'{SITE}/assets/shrines/temple-gate-pine.jpg',
+        'OG_IMAGE': esc(og_image),
+        'JSON_LD': json_ld,
         'K': K,
         'PAGE_TITLE': esc(en[K + '_page_title']),
         'NUM': f'{num:02d}',
