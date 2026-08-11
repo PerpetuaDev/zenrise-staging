@@ -65,6 +65,18 @@
       tours_cta_p: 'Multi-day itineraries and days built around a single interest — designed around you, not a route.',
       tours_cta_link: 'Plan a bespoke journey',
 
+      // home — tours + news sections
+      home_tours_title: 'Our tours',
+      home_tours_more: 'All tours',
+      home_news_title: 'News & stories',
+      home_news_more: 'All news',
+      home_news_1_title: 'A day away from Tokyo',
+      home_news_1_sub: 'A bus tour through Kamakura & Enoshima',
+      home_news_2_title: 'Inside the sumo ring',
+      home_news_2_sub: 'A show & experience in Shinjuku',
+      home_news_3_title: 'Fuji to Hakone',
+      home_news_3_sub: 'And the ride home by Shinkansen',
+
       // footer (shared across pages)
       footer_tagline: 'Quiet, locally-led journeys through the <br class="brk"/>lesser-known corners of Japan.',
       footer_visit: 'Office',
@@ -439,6 +451,18 @@
       tours_cta_h: 'あなただけの旅を<br/>お探しですか？',
       tours_cta_p: '数日にわたる旅程も、ひとつの興味を深める一日も。決まったルートではなく、あなたに合わせて設計します。',
       tours_cta_link: 'オーダーメイドの旅を相談する',
+
+      // home — tours + news sections
+      home_tours_title: '私たちのツアー',
+      home_tours_more: 'ツアー一覧',
+      home_news_title: 'ニュースと読みもの',
+      home_news_more: 'ニュース一覧',
+      home_news_1_title: '東京を離れて過ごす一日',
+      home_news_1_sub: '鎌倉・江ノ島日帰りバスツアー',
+      home_news_2_title: '土俵の中を知る午後',
+      home_news_2_sub: '新宿の相撲ショー&体験',
+      home_news_3_title: '富士から箱根へ',
+      home_news_3_sub: '帰り道は新幹線で',
 
       // footer
       footer_tagline: '日本の知られざる場所を巡る、<br/>静かな旅。',
