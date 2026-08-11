@@ -73,7 +73,7 @@
       '.zp input[type="date"] { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; pointer-events: none; }',
 
       // trigger — looks like the existing form inputs (underline + display type)
-      '.zp-trigger { width: 100%; background: transparent; border: none; border-bottom: 1px solid rgba(41,65,56,0.28); padding: 10px 0 14px; font-family: "Optima Nova LT Pro","Optima",serif; font-size: 28px; color: #294138; text-align: left; cursor: pointer; display: flex; justify-content: space-between; align-items: baseline; transition: border-color 180ms ease; font-weight: 400; }',
+      '.zp-trigger { width: 100%; background: transparent; border: none; border-bottom: 1px solid rgba(41,65,56,0.28); padding: 10px 0 14px; font-family: "optima-nova-lt-pro", "Optima", serif; font-size: 28px; color: #294138; text-align: left; cursor: pointer; display: flex; justify-content: space-between; align-items: baseline; transition: border-color 180ms ease; font-weight: 400; }',
       '.zp-trigger:hover { border-bottom-color: #294138; }',
       '.zp.open .zp-trigger { border-bottom-color: #294138; }',
       '.zp-trigger .zp-icon { font-family: "gill-sans-nova", "Gill Sans", "Gill Sans MT", sans-serif; font-size: 13px; letter-spacing: 0.08em; color: rgba(41,65,56,0.5); text-transform: uppercase; align-self: center; padding-bottom: 4px; }',
@@ -85,7 +85,7 @@
 
       // header — month label between prev/next nav
       '.zp-head { display: grid; grid-template-columns: 36px 1fr 36px; align-items: center; margin-bottom: 22px; }',
-      '.zp-month { font-family: "Optima Nova LT Pro","Optima",serif; font-size: 22px; color: #294138; text-align: center; letter-spacing: -0.005em; }',
+      '.zp-month { font-family: "optima-nova-lt-pro", "Optima", serif; font-size: 22px; color: #294138; text-align: center; letter-spacing: -0.005em; }',
       '.zp-nav { width: 36px; height: 36px; background: transparent; border: 1px solid transparent; color: #294138; font-size: 14px; cursor: pointer; display: grid; place-items: center; transition: background 160ms ease, border-color 160ms ease; padding: 0; border-radius: 0; }',
       '.zp-nav:hover { background: rgba(41,65,56,0.06); border-color: rgba(41,65,56,0.18); }',
       '.zp-nav:focus-visible { outline: none; border-color: #294138; }',
@@ -96,7 +96,7 @@
 
       // days grid
       '.zp-days { display: grid; grid-template-columns: repeat(7, 1fr); margin-top: 6px; }',
-      '.zp-day { background: transparent; border: none; font-family: "Optima Nova LT Pro","Optima",serif; font-size: 18px; color: #294138; height: 42px; cursor: pointer; transition: background 140ms ease, color 140ms ease; padding: 0; border-radius: 0; position: relative; }',
+      '.zp-day { background: transparent; border: none; font-family: "optima-nova-lt-pro", "Optima", serif; font-size: 18px; color: #294138; height: 42px; cursor: pointer; transition: background 140ms ease, color 140ms ease; padding: 0; border-radius: 0; position: relative; }',
       '.zp-day:hover:not(.other):not(.on) { background: rgba(41,65,56,0.06); }',
       '.zp-day.other { color: rgba(41,65,56,0.2); cursor: pointer; }',
       '.zp-day.other:hover { background: rgba(41,65,56,0.03); }',

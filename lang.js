@@ -926,7 +926,7 @@
       '.lang-menu button { display: flex; align-items: center; justify-content: space-between; width: 100%; text-align: left; background: none; border: none; padding: 16px 22px; cursor: pointer; border-bottom: 1px solid rgba(41,65,56,0.06); transition: background 160ms ease; border-radius: 0; }',
       '.lang-menu button:last-child { border-bottom: none; }',
       '.lang-menu button:hover { background: rgba(41,65,56,0.04); }',
-      '.lang-menu .name { font-family: "Optima Nova LT Pro","Optima",serif; font-size: 22px; color: #294138; letter-spacing: -0.005em; line-height: 1; }',
+      '.lang-menu .name { font-family: "optima-nova-lt-pro", "toppan-bunkyu-mincho-pr6n", "Optima", serif; font-size: 22px; color: #294138; letter-spacing: -0.005em; line-height: 1; }',
       '.lang-menu button.on::after { content: ""; width: 6px; height: 6px; background: #294138; }',
       // ── mobile hamburger nav (shared, phone widths only) ──
       '.nav-burger, .mobile-nav { display: none; }',
