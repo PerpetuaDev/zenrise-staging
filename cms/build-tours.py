@@ -123,6 +123,48 @@ def tour_model(a):
     return m
 
 
+def meta_desc(m):
+    text = m['sub'][0] or m['lede'][0] or f"{m['title'][0]} — a Zenrise private experience."
+    if len(text) <= 160:
+        return text
+    cut = text[:160].rsplit(' ', 1)[0]
+    return cut.rstrip(' ,.;:') + '…'
+
+
+def json_ld(m):
+    data = {
+        '@context': 'https://schema.org',
+        '@type': 'Product',
+        'name': m['title'][0],
+        'description': meta_desc(m),
+        'url': f"{SITE}/tour-{m['id']}.html",
+        'brand': {'@type': 'Brand', 'name': 'Zenrise'},
+    }
+    if m['cover']:
+        data['image'] = m['cover']
+    rows = m.get('price_rows') or []
+    if m['full'] and rows:
+        low = min(rows, key=lambda r: r['amount'])
+        data['offers'] = {
+            '@type': 'Offer',
+            'price': low['amount'],
+            'priceCurrency': low['currency'],
+            'availability': 'https://schema.org/InStock',
+            'url': f"{SITE}/tour-{m['id']}.html#book",
+        }
+    body = json.dumps(data, ensure_ascii=False, indent=1)
+    # A literal </script> inside copy would close the tag early.
+    body = body.replace('</', '<\\/')
+    return f'<script type="application/ld+json">\n{body}\n</script>'
+
+
+def write_tours_index(models):
+    """Slugs for build-news.py's sitemap, which is the single sitemap writer."""
+    path = os.path.join(HERE, 'tours-index.json')
+    with open(path, 'w') as f:
+        json.dump([m['id'] for m in models], f, indent=1)
+
+
 def base_dict(m):
     """Keys shared by every rendering of this tour (cards, tiles, detail head)."""
     K = m['K']
@@ -148,11 +190,11 @@ def og_image(m):
 
 
 def common_slots(m):
-    lede_or_sub = m['lede'][0] or m['sub'][0]
     return {
         'ID': m['id'], 'K': m['K'], 'NUM': m['num'],
         'TITLE_EN': esc(m['title'][0]),
-        'META_DESC': esc(f'{lede_or_sub} Private, 1–6 people, led by Zenrise.'),
+        'META_DESC': esc(meta_desc(m)),
+        'JSON_LD': json_ld(m),
         'OG_IMAGE': esc(og_image(m)),
         'COVER_URL': esc(m['cover']),
         'CAP_EN': esc(m['coverCaption'][0]),
@@ -402,6 +444,8 @@ def main():
         name = f"tour-{m['id']}.html"
         open(os.path.join(ROOT, name), 'w').write(out)
         written.append(name + ('' if m['full'] else ' (prep)'))
+
+    write_tours_index(models)
 
     # tours.html: grid + card dict
     rewrite_region(os.path.join(ROOT, 'tours.html'), 'tours-grid',

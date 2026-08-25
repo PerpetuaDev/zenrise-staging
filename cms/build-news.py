@@ -350,6 +350,12 @@ def render_index(models, tpl):
 def render_sitemap(models):
     urls = [f'{SITE}/{p}' for p in STATIC_PAGES]
     urls += [f'{SITE}/news-{m["id"]}.html' for m in models]
+    tours_index = os.path.join(HERE, 'tours-index.json')
+    if os.path.exists(tours_index):
+        with open(tours_index) as f:
+            slugs = json.load(f)
+        urls.append(f'{SITE}/tours.html')
+        urls += [f'{SITE}/tour-{slug}.html' for slug in slugs]
     lines = ['<?xml version="1.0" encoding="UTF-8"?>',
              '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
     lines += [f'  <url><loc>{u}</loc></url>' for u in urls]
