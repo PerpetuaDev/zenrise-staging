@@ -52,6 +52,28 @@ class TestFromPrice(unittest.TestCase):
         self.assertIsNone(bokun_price.from_price([]))
 
 
+class TestPluralCategories(unittest.TestCase):
+    def test_from_price_with_adults_plural_title(self):
+        """Test that 'Adults' (plural) is recognized as adult category for from-price."""
+        cats_plural = [{'id': 1, 'title': 'Adults'}, {'id': 2, 'title': 'Child'}]
+        r = bokun_price.rows(avail([unit(1, 44000, 1, 2), unit(1, 21000, 3, 6),
+                                    unit(2, 10000, 1, 6)]), cats_plural)
+        self.assertEqual(bokun_price.from_price(r),
+                         {'amount': 21000, 'currency': 'JPY', 'category': 'Adults'})
+
+    def test_format_from_with_adults_plural_title(self):
+        """Test that 'Adults' (plural) still produces 'per adult' wording."""
+        fp = {'amount': 21000, 'currency': 'JPY', 'category': 'Adults'}
+        self.assertEqual(bokun_price.format_from(fp, 'en'), 'from ¥21,000 per adult')
+        self.assertEqual(bokun_price.format_from(fp, 'ja'), '¥21,000〜（大人おひとり）')
+
+    def test_format_full_with_children_plural(self):
+        """Test that 'Children' (plural) translates to 子供 in Japanese."""
+        cats_plural = [{'id': 1, 'title': 'Adult'}, {'id': 2, 'title': 'Children'}]
+        r = bokun_price.rows(avail([unit(2, 8000)]), cats_plural)
+        self.assertEqual(bokun_price.format_full(r, 'ja'), ['子供: ¥8,000'])
+
+
 class TestFormat(unittest.TestCase):
     def test_english_from_price_per_adult(self):
         fp = {'amount': 21000, 'currency': 'JPY', 'category': 'Adult'}
