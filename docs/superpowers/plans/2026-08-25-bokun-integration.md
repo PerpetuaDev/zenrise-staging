@@ -2820,6 +2820,14 @@ class TestNoOrphans(unittest.TestCase):
         for key in ('tours_c1_', 'tours_d1_', 'rt04_'):
             self.assertNotIn(key, lang, key)
 
+    def test_keys_orphaned_by_the_calendar_removal_are_gone(self):
+        # These labelled the hand-built calendar that Task 8 replaced with the
+        # Bokun widget. Nothing references them any more.
+        lang = read('lang.js')
+        for key in ('td_book_label', 'td_cal_note', 'td_travellers',
+                    'td_choose', 'td_request'):
+            self.assertNotIn(key, lang, key)
+
     def test_archive_is_untouched(self):
         self.assertTrue(os.path.exists(os.path.join(ROOT, 'archive/custom-booking/index.html')))
         self.assertIn("var RELAY_URL = ''", read('archive/custom-booking/index.html'))
@@ -2855,7 +2863,7 @@ git rm cms/tours-fixture.json cms/tours-schema.json cms/site-config-schema.json 
        cms/push-tours.py cms/tour-routes.json
 ```
 
-Then remove the superseded draft keys from `lang.js`. Delete only keys matching `tours_c<N>_*`, `tours_d<N>_*` and `rt04_*` in **both** the `en` and `ja` dictionaries. Keep every `tours_*` key that the generator emits (`tours_area_*`, `tours_len_*`, `tours_filter_*`, `nav_tours`, `home_tours_cta`, `td_*`) — the generator writes per-tour keys into each page's `ZENRISE_CMS_DICT`, not into `lang.js`.
+Then remove the superseded draft keys from `lang.js`. Delete keys matching `tours_c<N>_*`, `tours_d<N>_*` and `rt04_*` in **both** the `en` and `ja` dictionaries, and also the five keys orphaned when Task 8 replaced the hand-built calendar with the Bokun widget: `td_book_label`, `td_cal_note`, `td_travellers`, `td_choose`, `td_request` (each appears twice — once per dictionary — and is now referenced nowhere). Keep every `tours_*` key that the generator emits (`tours_area_*`, `tours_len_*`, `tours_filter_*`, `nav_tours`, `home_tours_cta`, `td_*`) — the generator writes per-tour keys into each page's `ZENRISE_CMS_DICT`, not into `lang.js`.
 
 Then rewrite `cms/tours-setup.md` to describe the Bokun pipeline: `--source bokun|cache`, `cms/tours-config.json`, the product list, the scheduled workflow, and the client-side steps that remain open (pricing two products, adding EN language, writing Japanese).
 
