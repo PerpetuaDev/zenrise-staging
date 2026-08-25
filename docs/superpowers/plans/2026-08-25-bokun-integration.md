@@ -2558,11 +2558,14 @@ def json_ld(m):
     rows = m.get('price_rows') or []
     if m['full'] and rows:
         low = min(rows, key=lambda r: r['amount'])
+        # No `availability` key on purpose: this build never queries Bokun's
+        # availability (the widget owns it), so claiming InStock would be an
+        # unbacked assertion in structured data. Price and currency are what
+        # rich results need. See ledger, Task 9 ruling.
         data['offers'] = {
             '@type': 'Offer',
             'price': low['amount'],
             'priceCurrency': low['currency'],
-            'availability': 'https://schema.org/InStock',
             'url': f"{SITE}/tour-{m['id']}.html#book",
         }
     body = json.dumps(data, ensure_ascii=False, indent=1)
