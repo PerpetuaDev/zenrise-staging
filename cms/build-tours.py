@@ -342,6 +342,45 @@ def widget_block(m):
         </aside>'''
 
 
+def go_redirect_html(m):
+    """No-JS and email/social fallback: a bare redirect to the Bokun widget."""
+    if not m.get('full'):
+        return None
+    en = (m.get('widgets') or {}).get('en')
+    if not en:
+        return None
+    url = f'{WIDGET_HOST}/online-sales/{en}'
+    return f'''<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Redirecting to booking…</title>
+  <meta name="robots" content="noindex">
+  <meta http-equiv="refresh" content="0; url={url}">
+  <script>location.replace("{url}");</script>
+</head>
+<body>
+  <p>Redirecting to the booking page… <a href="{url}">Continue here</a> if nothing happens.</p>
+</body>
+</html>
+'''
+
+
+def write_go_redirects(models):
+    written = []
+    for m in models:
+        html = go_redirect_html(m)
+        if not html:
+            continue
+        d = os.path.join(ROOT, 'go', m['id'])
+        os.makedirs(d, exist_ok=True)
+        with open(os.path.join(d, 'index.html'), 'w') as f:
+            f.write(html)
+        written.append(f"go/{m['id']}/")
+    return written
+
+
 def render_detail(m, tpl_full, tpl_prep):
     en, ja = base_dict(m)
     slots = common_slots(m)
@@ -445,6 +484,7 @@ def main():
         written.append(name + ('' if m['full'] else ' (prep)'))
 
     write_tours_index(models)
+    go_written = write_go_redirects(models)
 
     # tours.html: grid + card dict
     rewrite_region(os.path.join(ROOT, 'tours.html'), 'tours-grid',
@@ -469,6 +509,7 @@ def main():
 
     print(f'wrote {len(written)} tour page(s):', ', '.join(written))
     print('rewrote tours.html grid +', len(feats), 'home tiles')
+    print(f'wrote {len(go_written)} go/ redirect(s):', ', '.join(go_written))
 
 
 if __name__ == '__main__':
