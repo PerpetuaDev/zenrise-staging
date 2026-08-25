@@ -130,11 +130,31 @@ Bokun text is dirty. The build must, in this order:
 2. strip tags, preserving paragraph breaks;
 3. collapse runs of whitespace.
 
-The build must **not** attempt to repair mangled prose. Live copy contains
-intra-word spacing damage (`templ e`, `wa l ked`, `S eated fore t`) and a stray
-"PDF" mid-sentence, apparently from a PDF paste. The build **warns** on suspected
-damage — a lone one- or two-letter token between two words — and renders the text
-as-is. Guessing would corrupt content silently. Fixing the source is the client's
+4. repair intra-word spacing damage where the intended word is unambiguous.
+
+Live copy contains spacing damage (`templ e`, `wa l ked`, `S eated fore t`) and a
+stray "PDF" mid-sentence — consistent with machine translation or a PDF paste by
+non-native writers.
+
+The repair rule is deliberately narrow: rejoin a stray one- or two-letter token
+with its neighbour **only when exactly one joining produces a dictionary word**.
+`templ` + `e` → `temple` and `wa` + `l` + `ked` → `walked` both qualify. Where two
+joinings are both valid words, or where no joining produces one, the text is left
+untouched.
+
+Every repair is logged with its before and after, and the log is part of the build
+output — so the change is reviewable rather than invisible, and a wrong repair is
+caught by reading the log rather than by noticing a corrupted page.
+
+Two classes are explicitly **not** repaired, because they need judgement rather
+than a rule:
+
+- missing letters, not just misplaced spaces — `S eated fore t` needs an `s`
+  restored in "forest", which is a rewrite, not a rejoin;
+- factual and naming inconsistencies — the Ikebana title says "Ichigo Ichie"
+  while its body says "Ichika Ichiei", and only the client knows which is right.
+
+These are reported as warnings. Fixing them at source in Bokun stays the client's
 editorial job and does not block this work.
 
 `excerpt` is not reliably a lede: Swordsmithing's is a styled eyebrow
@@ -193,9 +213,18 @@ domains, and `@import` the kit inside Bokun's custom CSS); both are unverified, 
 the design assumes mismatched type and treats matching it as an enhancement.
 
 `/go/<slug>` redirect pages are kept as the no-JS and email/social fallback, one
-per tier product, extending the existing `/go/kamakura`. Note that page currently
-points at channel `e2350ad8-…` while the calendar widget uses `6db7a498-…`;
-implementation must settle on one channel so attribution is consistent.
+per tier product.
+
+The existing `/go/kamakura` is a different matter: it points at product `1272734`,
+which is OTA tier and therefore not a site tour under this design. It predates the
+tier decision. Unless the URL has been shared externally it should be retired
+rather than migrated — it is orphaned on-site, so nothing internal breaks.
+
+A widget instance is inherently per product, so widget count is not a design
+choice. Booking *channel* is the separate axis: `/go/kamakura` uses
+`e2350ad8-…` while the generated calendar widget uses `6db7a498-…`. Standardising
+on one channel matters only so the client's Bokun reporting shows the website as a
+single line rather than split across two. Minor, but free to get right.
 
 **Bilingual booking is unresolved and needs one panel check.** Because language is
 baked per widget, a bilingual site needs either a `lang` option in the widget
@@ -322,11 +351,12 @@ Client-dependent, none blocking implementation on staging:
 Needs one panel check by us: whether the widget builder emits a `lang`
 parameter, and which booking channel the site should use.
 
-Undecided and deferred: what becomes of `contact.html`'s enquiry flow. The relay
-and its bilingual emails still work, and a general enquiry route for bespoke
-requests has obvious value alongside Bokun booking. Recommendation is to keep it
-and revisit once the tour pages are real, rather than fold that decision into this
-one.
+**Deferred by decision (2026-08-25): `contact.html` is not touched by this build.**
+It keeps the five-step wizard, the relay and the bilingual emails exactly as they
+are. The question of what it becomes — bespoke-enquiry route, short form, or plain
+contact page — is revisited once the generated tour pages exist and the two can be
+seen side by side. Implementation must therefore leave `contact.html`,
+`datepicker.js` and the relay untouched.
 
 ## 8. Out of scope
 
