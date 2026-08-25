@@ -136,15 +136,38 @@ Live copy contains spacing damage (`templ e`, `wa l ked`, `S eated fore t`) and 
 stray "PDF" mid-sentence — consistent with machine translation or a PDF paste by
 non-native writers.
 
-The repair rule is deliberately narrow: rejoin a stray one- or two-letter token
-with its neighbour **only when exactly one joining produces a dictionary word**.
-`templ` + `e` → `temple` and `wa` + `l` + `ked` → `walked` both qualify. Where two
-joinings are both valid words, or where no joining produces one, the text is left
-untouched.
+Repair is done by a **reviewed correction map**, not an algorithm. Two findings
+drove this:
 
-Every repair is logged with its before and after, and the log is part of the build
-output — so the change is reviewable rather than invisible, and a wrong repair is
-caught by reading the log rather than by noticing a corrupted page.
+- The whole tier corpus contains only **four** damage sites, so a repair engine
+  would be built to fix four strings.
+- Neither validation strategy is available anyway. There is no system word list,
+  hunspell, aspell or Python spell library on the build machine, so a dictionary
+  rule would mean a new dependency. And validating against the client's own copy
+  fails outright — "temple", "walked" and "passage" each appear **zero** times in
+  undamaged form across the ~800-word corpus, so corpus checking would repair
+  nothing.
+
+So `cms/tours-config.json` carries a `corrections` map of exact source string to
+replacement, applied as literal substring replacements:
+
+```json
+"corrections": {
+  "passag e through": "passage through",
+  "templ e grounds":  "temple grounds",
+  "templ e cuisine":  "temple cuisine",
+  "wa l ked":         "walked"
+}
+```
+
+Every applied correction is logged with its before and after. A correction whose
+source string is no longer present is also logged, so entries that the client has
+fixed at source can be pruned rather than accumulating.
+
+The build additionally **warns** on any suspected damage site not covered by the
+map — a stray one- or two-letter token between two words, excluding real short
+words. That is how new damage surfaces when the client adds tours, without the
+build ever guessing.
 
 Two classes are explicitly **not** repaired, because they need judgement rather
 than a rule:
@@ -264,10 +287,14 @@ only hand-maintained input, and it is small by design.
 {
   "productListName": "Website",
   "allowlist": [1273232, 1273235, 1273194, 1275339],
+  "corrections": { "templ e grounds": "temple grounds" },
   "tours": {
     "1273232": {
       "slug": "ikebana-ichigo-ichie",
+      "number": "01",
       "area": "Kamakura",
+      "length": "Half-day",
+      "themes": ["Arts & Craft"],
       "jaReviewed": false,
       "widgets": { "en": "<channelUUID>/experience-calendar/1273232" }
     }
@@ -279,8 +306,15 @@ only hand-maintained input, and it is small by design.
 - `allowlist` — interim catalogue until that list exists. Never empty; an empty
   allowlist with no product list is a build error, not a licence to render
   everything.
+- `corrections` — the reviewed repair map from 3.3.
 - `slug` — permanent URL segment. Never derived from the title.
-- `area` — overrides `googlePlace.city`, which is absent on some products.
+- `number` — the "Tour No. NN" eyebrow. Bokun has no equivalent.
+- `area` — overrides `googlePlace.city`, which is absent on most tier products.
+- `length` — the Half-day/Full-day filter value. Derived from `durationText` when
+  absent (under 5 hours is Half-day), overridable because the derivation is poor
+  for short experiences: Ikebana is 90 minutes and neither.
+- `themes` — filter values. `activityCategories` exists on only two of the four
+  tier products, so this cannot be derived reliably.
 - `jaReviewed` — the gate in section 4. `false` means the build renders English
   for that product even in Japanese pages. A human sets this to `true` only after
   reading the Japanese in Bokun. The build never sets it.
