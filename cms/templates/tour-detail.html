@@ -121,16 +121,12 @@
   .route-wrap { padding: 115px 36px 0; }
   .route { border: 1px solid var(--ink-30); padding: 56px 56px 24px; }
   .route h2 { font-family: var(--display); font-weight: 400; font-size: 56px; line-height: 0.98; letter-spacing: -0.005em; margin: 0 0 40px; }
-  .r-row { display: grid; grid-template-columns: 200px 110px 1fr 140px; column-gap: 40px; align-items: center; padding: 24px 0; border-top: 1px solid var(--ink-12); }
-  .r-row .r-pic { position: relative; height: 130px; background: var(--bg-3) center / cover no-repeat; overflow: hidden; }
-  .r-row .r-pic .rn { position: absolute; left: 12px; top: 10px; font-family: var(--sans); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.72); }
-  .r-row .r-pic .stripes { position: absolute; inset: 0; background: #6E7F76; }
-  .r-row .r-pic .stripes::after { content: ''; position: absolute; inset: 0; background-image: repeating-linear-gradient(135deg, rgba(255,255,255,0.07) 0 1px, transparent 1px 16px); }
+  .r-row { display: grid; grid-template-columns: auto auto 1fr; column-gap: 40px; align-items: center; padding: 24px 0; border-top: 1px solid var(--ink-12); }
+  .r-row.no-time { grid-template-columns: auto 1fr; }
   .r-row .r-time { font-family: var(--sans); font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-60); }
   .r-row h3 { font-family: var(--display); font-weight: 400; font-size: 32px; line-height: 1.15; letter-spacing: -0.005em; margin: 0 0 8px; }
   :lang(ja) .r-row h3 { line-height: 1.35; }
   .r-row .r-note { font-size: 17px; line-height: 1.5; color: var(--ink-60); margin: 0; max-width: 620px; text-wrap: pretty; }
-  .r-row .r-dist { text-align: right; font-family: var(--sans); font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-40); }
   /* ── booking CTA ── */
   .book-cta { padding: 120px 36px 0; }
   .book-cta .box { border: 1px solid var(--ink-30); padding: 110px 64px; text-align: center; }
@@ -185,13 +181,11 @@
     .route-wrap { padding: 64px 20px 0; }
     .route { padding: 24px 18px 8px; }
     .route h2 { font-size: 34px; margin-bottom: 20px; }
-    .r-row { grid-template-columns: 96px 1fr; grid-template-rows: auto auto; column-gap: 16px; row-gap: 6px; padding: 16px 0; }
-    .r-row .r-pic { height: 72px; grid-row: 1 / 3; }
-    .r-row .r-pic .rn { left: 8px; top: 6px; font-size: 9px; }
+    .r-row { grid-template-columns: auto auto 1fr; column-gap: 16px; padding: 16px 0; }
+    .r-row.no-time { grid-template-columns: auto 1fr; }
     .r-row .r-time { font-size: 11px; }
     .r-row h3 { font-size: 20px; margin-bottom: 4px; }
     .r-row .r-note { font-size: 14px; }
-    .r-row .r-dist { display: none; }
     .book-cta { padding: 64px 20px 0; }
     .book-cta .box { padding: 56px 24px; }
     .book-cta h2 { font-size: 34px; }
@@ -256,71 +250,13 @@
     <main class="body-grid" data-screen-label="07 Tour detail — Lede + Booking">
       <div class="lede-col">
         <p class="lede" data-i18n="{{K}}_lede">{{LEDE_EN}}</p>
-        <div class="chip-groups">
-          <div class="grp">
-            <span class="label" data-i18n="td_included">Included</span>
-            <div class="chips">
-{{CHIPS_INC}}
-            </div>
-          </div>
-          <div class="grp">
-            <span class="label" data-i18n="td_notinc">Not included</span>
-            <div class="chips">
-{{CHIPS_NINC}}
-            </div>
-          </div>
-          <div class="grp">
-            <span class="label" data-i18n="td_notallowed">Not allowed</span>
-            <div class="chips">
-{{CHIPS_NA}}
-            </div>
-          </div>
-          <div class="grp">
-            <span class="label" data-i18n="td_notsuitable">Not suitable for</span>
-            <div class="chips">
-{{CHIPS_NS}}
-            </div>
-          </div>
-        </div>
+{{CHIPS_SECTION}}
       </div>
 
-      <aside class="cal" id="book" data-screen-label="07 Tour detail — Calendar">
-        <div class="c-head">
-          <span class="label" data-i18n="td_book_label">Book this tour</span>
-          <span class="c-price" data-i18n="{{PRICE_KEY}}">{{PRICE_EN}}</span>
-        </div>
-        <div class="c-month">
-          <button type="button" id="cal-prev" aria-label="Previous month">←</button>
-          <span class="m-label" id="cal-label"></span>
-          <button type="button" id="cal-next" aria-label="Next month">→</button>
-        </div>
-        <div class="c-wk" id="cal-wk"></div>
-        <div class="c-days" id="cal-days"></div>
-        <div class="c-note" data-i18n="td_cal_note">Mornings shown are open</div>
-        <div class="c-party">
-          <span class="label" data-i18n="td_travellers">Travelers</span>
-          <div class="stepper">
-            <button type="button" id="party-dec" aria-label="Fewer travelers">−</button>
-            <span class="val" id="party-val">2</span>
-            <button type="button" id="party-inc" aria-label="More travelers">+</button>
-          </div>
-        </div>
-        <div class="c-sum">
-          <span class="s-date" id="sum-date" data-i18n="td_choose">Choose a morning</span>
-          <span class="s-price" id="sum-price">—</span>
-        </div>
-        <button type="button" class="c-go" id="cal-go" disabled><span data-i18n="td_request">Request this date</span>&nbsp;&nbsp;→</button>
-      </aside>
+{{WIDGET_BLOCK}}
     </main>
 
-    <section class="route-wrap" data-screen-label="07 Tour detail — Route">
-      <div class="route">
-        <h2 data-i18n="td_route">The route.</h2>
-
-{{ROUTE_ROWS}}
-
-      </div>
-    </section>
+{{ROUTE_SECTION}}
 
     <section class="book-cta" data-screen-label="07 Tour detail — Booking CTA">
       <div class="box">
@@ -388,119 +324,6 @@
     window.addEventListener('load', fit);
     setTimeout(fit, 200);
     setTimeout(fit, 600);
-  })();
-</script>
-<script>
-  // ── Booking calendar ──
-  // Availability is INTERIM (Tue/Thu/Sat mornings from three days out) until a
-  // real source is wired — see the JTB Bokun thread. Month nav is clamped to
-  // the current month .. +11. "Request this date" hands off into the contact
-  // booking flow at step 3 with region/length/dates/party pre-filled.
-  (function () {
-    var TOUR = { region: '{{AREA_EN}}', length: '{{LEN_EN}}', price: '{{CAL_PRICE}}', priceJa: '{{CAL_PRICE}}' };
-    var offset = 0, pick = '', party = 2;
-    var today = new Date(); today.setHours(0, 0, 0, 0);
-
-    var lbl = document.getElementById('cal-label');
-    var wk = document.getElementById('cal-wk');
-    var days = document.getElementById('cal-days');
-    var prev = document.getElementById('cal-prev');
-    var next = document.getElementById('cal-next');
-    var sumDate = document.getElementById('sum-date');
-    var sumPrice = document.getElementById('sum-price');
-    var go = document.getElementById('cal-go');
-
-    function lang() {
-      try { return localStorage.getItem('zenrise-lang') || 'en'; } catch (e) { return 'en'; }
-    }
-    var WD_EN = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
-    var WD_JA = ['月', '火', '水', '木', '金', '土', '日'];
-    var MO_EN = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-
-    function open(d) {
-      // interim rule: Tue(2)/Thu(4)/Sat(6), at least 3 days out
-      var wd = d.getDay();
-      if (wd !== 2 && wd !== 4 && wd !== 6) return false;
-      return (d - today) / 86400000 >= 3;
-    }
-    function iso(d) {
-      return d.getFullYear() + '-' + ('0' + (d.getMonth() + 1)).slice(-2) + '-' + ('0' + d.getDate()).slice(-2);
-    }
-
-    function render() {
-      var ja = lang() === 'ja';
-      var base = new Date(today.getFullYear(), today.getMonth() + offset, 1);
-      lbl.textContent = ja ? base.getFullYear() + '年' + (base.getMonth() + 1) + '月'
-                           : MO_EN[base.getMonth()] + ' ' + base.getFullYear();
-      prev.disabled = offset === 0;
-      next.disabled = offset === 11;
-
-      wk.innerHTML = '';
-      (ja ? WD_JA : WD_EN).forEach(function (w) {
-        var s = document.createElement('span'); s.textContent = w; wk.appendChild(s);
-      });
-
-      days.innerHTML = '';
-      var lead = (base.getDay() + 6) % 7; // Monday-first offset
-      for (var i = 0; i < lead; i++) days.appendChild(document.createElement('div'));
-      var n = new Date(base.getFullYear(), base.getMonth() + 1, 0).getDate();
-      for (var d = 1; d <= n; d++) {
-        var date = new Date(base.getFullYear(), base.getMonth(), d);
-        var cell = document.createElement('div');
-        cell.textContent = d;
-        var key = iso(date);
-        if (!open(date)) cell.className = 'day off';
-        else {
-          cell.className = 'day open' + (pick === key ? ' sel' : '');
-          if (pick === key) cell.classList.remove('open'), cell.classList.add('day', 'sel');
-          (function (k) {
-            cell.addEventListener('click', function () { pick = k; render(); });
-          })(key);
-        }
-        days.appendChild(cell);
-      }
-
-      document.getElementById('party-val').textContent = party;
-      if (pick) {
-        var pd = new Date(pick + 'T00:00:00');
-        sumDate.removeAttribute('data-i18n');
-        sumDate.textContent = ja
-          ? (pd.getMonth() + 1) + '月' + pd.getDate() + '日（' + WD_JA[(pd.getDay() + 6) % 7] + '）'
-          : WD_EN[(pd.getDay() + 6) % 7] + ' ' + pd.getDate() + ' ' + MO_EN[pd.getMonth()];
-        sumPrice.textContent = ja ? TOUR.priceJa : TOUR.price;
-        go.disabled = false;
-      } else {
-        sumDate.textContent = ja ? '日付をお選びください' : 'Choose a morning';
-        sumPrice.textContent = '—';
-        go.disabled = true;
-      }
-    }
-
-    prev.addEventListener('click', function () { if (offset > 0) { offset--; render(); } });
-    next.addEventListener('click', function () { if (offset < 11) { offset++; render(); } });
-    document.getElementById('party-dec').addEventListener('click', function () { if (party > 1) { party--; render(); } });
-    document.getElementById('party-inc').addEventListener('click', function () { if (party < 6) { party++; render(); } });
-
-    go.addEventListener('click', function () {
-      if (!pick) return;
-      var KEY = 'zenrise-booking-v1';
-      var state = {};
-      try { state = JSON.parse(localStorage.getItem(KEY) || '{}'); } catch (e) {}
-      state.step = 2;
-      state.region = [TOUR.region];
-      state.length = TOUR.length;
-      state.dateFrom = pick;
-      state.dateTo = pick;
-      state.party = party;
-      try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {}
-      window.location.href = 'contact.html#booking';
-    });
-
-    // re-render on language switch
-    document.addEventListener('DOMContentLoaded', function () {
-      if (window.ZenriseI18n && ZenriseI18n.onChange) ZenriseI18n.onChange(render);
-    });
-    render();
   })();
 </script>
 {{DICT_SCRIPT}}

@@ -162,6 +162,7 @@ def common_slots(m):
         'PRICE_KEY': m['price_key'] or (m['K'] + '_price'),
         'PRICE_EN': esc(m['price_en']),
         'CTA_EYEBROW_EN': esc(f"{m['price_en']} ・ 1–6 travelers"),
+        'WIDGET_BLOCK': '', 'CHIPS_SECTION': '', 'ROUTE_SECTION': '',
     }
 
 
@@ -175,6 +176,38 @@ def chips(m, field, prefix, en, ja):
         ja[f'{K}_{prefix}_{i}'] = j
         out.append(f'              <span class="chip" data-i18n="{K}_{prefix}_{i}">{esc(e)}</span>')
     return '\n'.join(out)
+
+
+CHIP_GROUPS = (('included', 'inc', 'td_included', 'Included'),
+               ('notIncluded', 'ninc', 'td_notinc', 'Not included'),
+               ('notAllowed', 'na', 'td_notallowed', 'Not allowed'),
+               ('notSuitable', 'ns', 'td_notsuitable', 'Not suitable for'))
+
+
+def chips_section(m, en, ja):
+    """The whole chip-groups block, or nothing.
+
+    Bokun has no inclusions field. Only tours whose description carries an inline
+    list get chips at all, so the labelled groups must not render empty. See spec
+    3.4 and 3.4.1.
+    """
+    groups = []
+    for field, prefix, key, label in CHIP_GROUPS:
+        body = chips(m, field, prefix, en, ja)
+        if not body.strip():
+            continue
+        groups.append(
+            '          <div class="grp">\n'
+            f'            <span class="label" data-i18n="{key}">{label}</span>\n'
+            '            <div class="chips">\n'
+            f'{body}\n'
+            '            </div>\n'
+            '          </div>')
+    if not groups:
+        return ''
+    return ('        <div class="chip-groups">\n'
+            + '\n'.join(groups)
+            + '\n        </div>')
 
 
 # A stop duration written at the head of the body, e.g. "30min The history of…".
@@ -219,6 +252,55 @@ def route_rows(m, en, ja):
     return '\n'.join(rows)
 
 
+def route_section(m, en, ja):
+    """The whole route block, or nothing.
+
+    Candle-making and Swordsmithing have no agendaItems, so they must not render
+    an empty route heading. See spec 3.4.
+    """
+    rows = route_rows(m, en, ja)
+    if not rows.strip():
+        return ''
+    return f'''    <section class="route-wrap" data-screen-label="07 Tour detail — Route">
+      <div class="route">
+        <h2 data-i18n="td_route">The route.</h2>
+
+{rows}
+
+      </div>
+    </section>'''
+
+
+WIDGET_HOST = 'https://widgets.bokun.io'
+WIDGET_LOADER = (WIDGET_HOST +
+                 '/assets/javascripts/apps/build/BokunWidgetsLoader.js?bookingChannelUUID=')
+
+
+def widget_block(m):
+    """Bokun calendar widget mount for a priced tour.
+
+    The widget is a cross-origin iframe, so it cannot inherit our CSS or the
+    Adobe kit; colour is configured in Bokun's panel. See spec section 3.6.
+    """
+    if not m['full']:
+        return ''
+    widgets = m.get('widgets') or {}
+    en = widgets.get('en')
+    if not en:
+        return (f'        <aside class="cal-missing" data-widget-missing="{m["id"]}">\n'
+                f'          <p>Booking widget not yet configured for this tour.</p>\n'
+                f'        </aside>')
+    channel = en.split('/')[0]
+    src = f'{WIDGET_HOST}/online-sales/{en}'
+    ja = widgets.get('ja')
+    ja_attr = f' data-widget-ja="{WIDGET_HOST}/online-sales/{ja}"' if ja and ja != en else ''
+    return f'''        <aside class="cal" id="book" data-screen-label="07 Tour detail — Booking">
+          <script type="text/javascript" src="{WIDGET_LOADER}{channel}" async></script>
+          <div class="bokunWidget" data-src="{src}"{ja_attr}></div>
+          <noscript><a class="c-go" href="go/{m['id']}/">Book this experience&nbsp;&nbsp;→</a></noscript>
+        </aside>'''
+
+
 def render_detail(m, tpl_full, tpl_prep):
     en, ja = base_dict(m)
     slots = common_slots(m)
@@ -226,14 +308,11 @@ def render_detail(m, tpl_full, tpl_prep):
         K = m['K']
         en[K + '_lede'] = m['lede'][0]; ja[K + '_lede'] = m['lede'][1]
         slots['LEDE_EN'] = esc(m['lede'][0])
-        slots['CHIPS_INC'] = chips(m, 'included', 'inc', en, ja)
-        slots['CHIPS_NINC'] = chips(m, 'notIncluded', 'ninc', en, ja)
-        slots['CHIPS_NA'] = chips(m, 'notAllowed', 'na', en, ja)
-        slots['CHIPS_NS'] = chips(m, 'notSuitable', 'ns', en, ja)
-        slots['CAL_PRICE'] = m['price_en']
+        slots['CHIPS_SECTION'] = chips_section(m, en, ja)
         slots['PRICE_ROWS'] = '\n'.join(
             f'          <li>{esc(r)}</li>' for r in _price_lines(m))
-        slots['ROUTE_ROWS'] = route_rows(m, en, ja)
+        slots['ROUTE_SECTION'] = route_section(m, en, ja)
+        slots['WIDGET_BLOCK'] = widget_block(m)
         tpl = tpl_full
     else:
         tpl = tpl_prep
