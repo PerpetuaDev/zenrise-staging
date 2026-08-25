@@ -34,6 +34,10 @@ class TestJsonLd(unittest.TestCase):
         self.assertEqual(d['offers']['priceCurrency'], 'JPY')
         self.assertEqual(d['offers']['price'], 21000)
 
+    def test_offer_asserts_no_availability_we_have_not_checked(self):
+        d = json.loads(re.search(r'>(.*)</script>', bt.json_ld(model()), re.S).group(1))
+        self.assertNotIn('availability', d['offers'])
+
     def test_unpriced_tour_emits_no_offer(self):
         d = json.loads(re.search(r'>(.*)</script>',
                                  bt.json_ld(model(full=False, price_rows=[])), re.S).group(1))

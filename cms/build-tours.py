@@ -149,7 +149,6 @@ def json_ld(m):
             '@type': 'Offer',
             'price': low['amount'],
             'priceCurrency': low['currency'],
-            'availability': 'https://schema.org/InStock',
             'url': f"{SITE}/tour-{m['id']}.html#book",
         }
     body = json.dumps(data, ensure_ascii=False, indent=1)
