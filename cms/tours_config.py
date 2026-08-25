@@ -50,3 +50,7 @@ def tour_entry(cfg, bokun_id):
 
 def corrections(cfg):
     return cfg.get('corrections') or {}
+
+
+def ota_denylist(cfg):
+    return [int(i) for i in (cfg.get('otaDenylist') or [])]

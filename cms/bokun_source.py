@@ -12,8 +12,21 @@ PAIR_FIELDS = ('title', 'sub', 'lede', 'coverCaption',
                'included', 'notIncluded', 'notAllowed', 'notSuitable')
 
 
+def _reject_ota(ids, denylist):
+    """Defence in depth: never render an OTA-tier product, however its id was
+    resolved. The allowlist/product-list already exclude them by construction;
+    this catches the case where that exclusion was itself a mistake."""
+    for i in ids:
+        if i in denylist:
+            raise tours_config.ConfigError(
+                f'Bokun product {i} is on the OTA denylist and must never be '
+                f'rendered on this site. Remove it from the product list or '
+                f'allowlist before building.')
+
+
 def catalogue(client, cfg):
     """Product list by name if it exists, otherwise the config allowlist."""
+    denylist = set(tours_config.ota_denylist(cfg))
     wanted = (cfg.get('productListName') or '').strip().lower()
     if wanted:
         try:
@@ -25,8 +38,11 @@ def catalogue(client, cfg):
                 ids = [int(it['activityId']) for it in (pl.get('items') or [])
                        if it.get('activityId')]
                 if ids:
+                    _reject_ota(ids, denylist)
                     return ids
-    return tours_config.catalogue_ids(cfg)
+    ids = tours_config.catalogue_ids(cfg)
+    _reject_ota(ids, denylist)
+    return ids
 
 
 def _length_from_duration(duration_text):
@@ -38,14 +54,22 @@ def _length_from_duration(duration_text):
 
 def to_record(activity, activity_ja, availability, entry, corr):
     warnings = []
+    # Every raw string that is actually run through cl() (or, for the
+    # description, through bokun_text.sections() below) is captured here, so
+    # that unused_corrections() reports the truth: a correction that only
+    # fixes damage in a route step or a photo caption must not be reported as
+    # safe to prune.
+    raw_texts = []
 
     def cl(value):
+        raw_texts.append(value or '')
         text, w = bokun_text.clean(value, corr)
         warnings.extend(w)
         return text
 
     title = cl(activity.get('title'))
     sub = cl(activity.get('excerpt'))
+    raw_texts.append(activity.get('description') or '')
     parsed, sw = bokun_text.sections(
         activity.get('description'), corr, entry.get('chipsHeading'))
     warnings.extend(sw)
@@ -94,7 +118,7 @@ def to_record(activity, activity_ja, availability, entry, corr):
             # Bokun holds no Japanese product copy. Mirroring English is the
             # honest fallback; raw machine translation must not reach the site.
             rec[field + 'Ja'] = en_values[field]
-    return rec, warnings
+    return rec, warnings, raw_texts
 
 
 def fetch_records(client, cfg):
@@ -108,11 +132,10 @@ def fetch_records(client, cfg):
         activity_ja = client.get(f'/activity.json/{pid}?lang=ja')
         availability = client.get(
             f'/activity.json/{pid}/availabilities?start={today}&end={end}')
-        raw_texts += [activity.get('title') or '', activity.get('excerpt') or '',
-                      activity.get('description') or '']
-        rec, w = to_record(activity, activity_ja, availability, entry, corr)
+        rec, w, texts = to_record(activity, activity_ja, availability, entry, corr)
         records.append(rec)
         warnings += [f'[{rec["id"]}] {x}' for x in w]
+        raw_texts += texts
     for stale in bokun_text.unused_corrections(raw_texts, corr):
         warnings.append(f'correction no longer matches any source text, safe to '
                         f'prune from tours-config.json: {stale!r}')

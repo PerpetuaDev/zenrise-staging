@@ -1,6 +1,7 @@
 {
   "productListName": "Website",
   "allowlist": [1273232, 1273235, 1273194, 1275339],
+  "otaDenylist": [1272734, 1272756, 1272817, 1272825, 1272835, 1272849, 1273963],
   "corrections": {
     "passag e through": "passage through",
     "templ e grounds": "temple grounds",

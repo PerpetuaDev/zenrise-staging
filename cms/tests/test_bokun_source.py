@@ -3,6 +3,7 @@ from cms import bokun_source, tours_config
 
 DATA = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'data')
 IKEBANA, CANDLE, ZEN, SWORD = 1273232, 1273235, 1273194, 1275339
+OTA_IDS = [1272734, 1272756, 1272817, 1272825, 1272835, 1272849, 1273963]
 
 
 def load(name):
@@ -36,6 +37,7 @@ class FakeClient:
 CFG = {
     'productListName': 'Website',
     'allowlist': [IKEBANA, CANDLE, ZEN, SWORD],
+    'otaDenylist': OTA_IDS,
     'corrections': {'templ e grounds': 'temple grounds', 'wa l ked': 'walked',
                     'passag e through': 'passage through',
                     'templ e cuisine': 'temple cuisine'},
@@ -69,6 +71,22 @@ class TestCatalogue(unittest.TestCase):
     def test_ignores_product_lists_with_a_different_name(self):
         c = FakeClient(product_list=[{'id': 1, 'title': 'OTA', 'items': [{'activityId': 999}]}])
         self.assertEqual(bokun_source.catalogue(c, CFG), [IKEBANA, CANDLE, ZEN, SWORD])
+
+    def test_denylisted_id_from_the_product_list_is_rejected(self):
+        ota_id = OTA_IDS[0]
+        c = FakeClient(product_list=[{'id': 77, 'title': 'Website',
+                                      'items': [{'activityId': IKEBANA},
+                                                {'activityId': ota_id}]}])
+        with self.assertRaises(tours_config.ConfigError) as ctx:
+            bokun_source.catalogue(c, CFG)
+        self.assertIn(str(ota_id), str(ctx.exception))
+
+    def test_denylisted_id_from_the_allowlist_is_rejected(self):
+        ota_id = OTA_IDS[0]
+        cfg = dict(CFG, productListName='', allowlist=[IKEBANA, ota_id])
+        with self.assertRaises(tours_config.ConfigError) as ctx:
+            bokun_source.catalogue(FakeClient(product_list=[]), cfg)
+        self.assertIn(str(ota_id), str(ctx.exception))
 
 
 class TestRecords(unittest.TestCase):
@@ -159,6 +177,41 @@ class TestRecords(unittest.TestCase):
         records, warnings = bokun_source.fetch_records(
             FakeClient(), dict(CFG, corrections={}))
         self.assertTrue(any('spacing damage' in w for w in warnings))
+
+    def test_a_correction_only_used_in_an_agenda_item_is_not_reported_as_prunable(self):
+        # 'templ e cuisine' only occurs in zen-journey's agendaItems[1].body
+        # (a route step), not in any title/excerpt/description. It must still
+        # count as "used" so the warning never tells an editor it is safe to
+        # remove — removing it would let the damage reach the live route text.
+        for w in self.warnings:
+            self.assertNotIn('templ e cuisine', w)
+
+
+class TestJaReviewed(unittest.TestCase):
+    def test_reviewed_fields_are_sourced_from_the_ja_response(self):
+        activity = load(f'activity-{IKEBANA}-EN.json')
+        # Bokun's real ja fixtures happen to hold English text (the client's
+        # actual data-entry state), so a content diff can't prove provenance.
+        # Build a distinguishable synthetic ja response instead, and assert
+        # on where the text came from rather than what language it's in.
+        activity_ja = dict(activity, title='JA-SENTINEL title',
+                            excerpt='JA-SENTINEL excerpt',
+                            description='JA-SENTINEL description')
+        entry = dict(CFG['tours'][str(IKEBANA)], jaReviewed=True)
+        rec, warnings, raw_texts = bokun_source.to_record(
+            activity, activity_ja, [], entry, {})
+
+        self.assertIn('JA-SENTINEL title', rec['titleJa'])
+        self.assertIn('JA-SENTINEL excerpt', rec['subJa'])
+        self.assertIn('JA-SENTINEL description', rec['ledeJa'])
+        self.assertNotEqual(rec['titleJa'], rec['titleEn'])
+        self.assertNotEqual(rec['subJa'], rec['subEn'])
+        self.assertNotEqual(rec['ledeJa'], rec['ledeEn'])
+
+        # Bokun has no data for these at all, reviewed or not.
+        for f in ('notIncludedEn', 'notIncludedJa', 'notAllowedEn', 'notAllowedJa',
+                  'notSuitableEn', 'notSuitableJa'):
+            self.assertEqual(rec[f], '', f)
 
 
 if __name__ == '__main__':
