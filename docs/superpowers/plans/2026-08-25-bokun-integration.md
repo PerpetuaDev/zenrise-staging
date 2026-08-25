@@ -419,15 +419,174 @@ If `test_real_short_words_are_not_flagged_as_damage` fails on a phrase, add the 
 
 - [ ] **Step 5: Commit**
 
+- [ ] **Step 6: Write the failing test for description sectioning**
+
+Append to `cms/tests/test_bokun_text.py`:
+
+```python
+IKEBANA_DESC = (
+    'Experience the Art of Ikebana in Kamakura with Master Koen Yokoi\n'
+    'Immerse yourself in &#34;Ichika Ichiei&#34; a 90-minute private workshop.\n'
+    'PDF\n'
+    'Tour Highlights &amp; Itinerary (90 minutes):\n'
+    'History &amp; Philosophy (30 mins): Learn about the heritage.PDF\n'
+    'Tea &amp; Conversation (30 mins): Relax and reflect.PDF\n'
+    'What is Included:\n'
+    'PDF\n'
+    'Private Ikebana instruction by Master Koen YokoiPDF\n'
+    'All flower materials, tools, and equipmentPDF\n'
+    'Tour insurancePDF\n')
+
+
+class TestPdfArtifact(unittest.TestCase):
+    def test_strips_standalone_pdf_lines(self):
+        text, _ = bokun_text.clean('One.\nPDF\nTwo.')
+        self.assertNotIn('PDF', text)
+
+    def test_strips_trailing_pdf_tokens(self):
+        text, _ = bokun_text.clean('Tour insurancePDF')
+        self.assertEqual(text, 'Tour insurance')
+
+    def test_keeps_pdf_used_as_a_real_word(self):
+        text, _ = bokun_text.clean('Download the PDF guide before arriving.')
+        self.assertIn('PDF guide', text)
+
+
+class TestSections(unittest.TestCase):
+    def setUp(self):
+        self.parsed, self.warnings = bokun_text.sections(IKEBANA_DESC)
+
+    def test_lede_is_everything_before_the_first_heading(self):
+        self.assertEqual(len(self.parsed['lede']), 2)
+        self.assertIn('Master Koen Yokoi', self.parsed['lede'][0])
+        self.assertNotIn('What is Included', ' '.join(self.parsed['lede']))
+
+    def test_inclusions_extracted_from_the_included_heading(self):
+        self.assertEqual(self.parsed['included'], [
+            'Private Ikebana instruction by Master Koen Yokoi',
+            'All flower materials, tools, and equipment',
+            'Tour insurance'])
+
+    def test_itinerary_heading_is_ignored_agenda_items_own_that(self):
+        self.assertNotIn('History & Philosophy (30 mins): Learn about the heritage.',
+                         self.parsed['included'])
+
+    def test_entities_are_decoded_in_sections(self):
+        self.assertNotIn('&#34;', ' '.join(self.parsed['lede']))
+
+    def test_unstructured_description_is_all_lede_and_no_chips(self):
+        parsed, _ = bokun_text.sections(
+            'Zenrise designs slow, considered private experiences around Kamakura.')
+        self.assertEqual(len(parsed['lede']), 1)
+        self.assertEqual(parsed['included'], [])
+
+    def test_prose_inclusions_are_not_parsed_into_chips(self):
+        # The Zen Journey states inclusions as a sentence under a different
+        # heading; that must not become chips.
+        parsed, _ = bokun_text.sections(
+            'A slow pass through three temples.\n'
+            'Practical Notes\n'
+            'The tour is all-inclusive: transport, admission, lunch.')
+        self.assertEqual(parsed['included'], [])
+
+    def test_custom_heading_override_is_honoured(self):
+        parsed, _ = bokun_text.sections(
+            'Lede.\nInclusions:\nGuide\nTea', chips_heading='Inclusions')
+        self.assertEqual(parsed['included'], ['Guide', 'Tea'])
+```
+
+- [ ] **Step 7: Run to verify it fails**
+
+Run: `python3 -m unittest cms.tests.test_bokun_text -v`
+Expected: FAIL — `module 'cms.bokun_text' has no attribute 'sections'`
+
+- [ ] **Step 8: Implement sectioning and the PDF strip**
+
+Add to `cms/bokun_text.py`:
+
+```python
+# Copy pasted into Bokun left a literal "PDF" at the end of every list item and
+# on its own between blocks. It is debris, not content, so it is removed at a
+# line boundary only -- never mid-sentence, where PDF may be a real word.
+_PDF_LINE = re.compile(r'^\s*PDF\s*$')
+_PDF_TAIL = re.compile(r'PDF\s*$')
+
+_INCLUDED_HEADINGS = ('what is included', "what's included", 'inclusions')
+_HEADING = re.compile(r'^(.{2,60}?):\s*$')
+
+
+def _strip_pdf(line):
+    return _PDF_TAIL.sub('', line).strip()
+
+
+def _lines(raw):
+    text = _decode(raw)
+    text = _BLOCK.sub('\n', text)
+    text = _TAG.sub(' ', text)
+    out = []
+    for line in text.split('\n'):
+        line = re.sub(r'\s+', ' ', line).strip()
+        if not line or _PDF_LINE.match(line):
+            continue
+        out.append(_strip_pdf(line))
+    return [l for l in out if l]
+
+
+def sections(raw, corrections=None, chips_heading=None):
+    """Split a Bokun description into a lede and its named sections.
+
+    Bokun has no inclusions field, but some products carry the list inline under
+    a heading. See spec section 3.4.1.
+    """
+    wanted = [chips_heading.strip().lower()] if chips_heading else list(_INCLUDED_HEADINGS)
+    lede, included, warnings = [], [], []
+    current = None
+    for line in _lines(raw):
+        line = _apply_corrections(line, corrections)
+        heading = _HEADING.match(line)
+        if heading:
+            current = heading.group(1).strip().lower()
+            continue
+        if current is None:
+            lede.append(line)
+            warnings.extend(_warn(line))
+        elif current in wanted:
+            included.append(line)
+            warnings.extend(_warn(line))
+        # Any other section (itinerary, practical notes) is dropped: agendaItems
+        # already carries the itinerary, and prose notes are not chips.
+    return {'lede': lede, 'included': included}, warnings
+```
+
+Also apply the PDF strip inside `clean()`: after the corrections step, insert
+
+```python
+    text = '\n'.join(_strip_pdf(l) for l in text.split('\n'))
+```
+
+- [ ] **Step 9: Run to verify it passes**
+
+Run: `python3 -m unittest cms.tests.test_bokun_text -v`
+Expected: 22 tests PASS
+
+- [ ] **Step 10: Commit**
+
 ```bash
 git add cms/bokun_text.py cms/tests/test_bokun_text.py
-git commit -m "Add Bokun text normalisation with a reviewed correction map
+git commit -m "Add Bokun text normalisation, sectioning and a reviewed correction map
 
 Bokun copy carries HTML entities, markup and intra-word spacing damage. Repairs
 come from a reviewed map in tours-config.json rather than an algorithm: the tier
 corpus holds only four damage sites, there is no word list on the build machine
 to validate a rejoin against, and validating against the client's own copy fails
 because the damaged words appear zero times undamaged.
+
+sections() splits a description into a lede and its named sections, so the
+inclusion list some products carry inline becomes chips instead of leaking into
+the lede. Itinerary headings are dropped because agendaItems already owns that,
+and prose inclusions are not forced into chips. A literal "PDF" left on every
+list item by the original paste is stripped at line boundaries only, never
+mid-sentence where it may be a real word.
 
 Uncovered damage sites warn instead of being guessed at, so new damage surfaces
 when the client adds tours.
@@ -919,7 +1078,10 @@ Mapping rules:
 - `hoursEn` ← `durationText` from the EN response; `hoursJa` ← `durationText` from the JA response (this one field really does localise)
 - `cover.url` ← `photos[0].originalUrl`; `coverCaption*` ← `photos[0].alternateText` or empty
 - `area`/`length`/`themes` ← `entry`, falling back to `googlePlace.city` and a duration heuristic
-- `included*` etc. ← newline-joined `agendaItems` titles is **wrong**; leave these empty. Bokun has no inclusions data, and the chips must not be invented. Task 7 hides empty chip groups.
+- `ledeEn` ← the `lede` lines from `bokun_text.sections()`, joined — not the raw description, so an inline inclusions list does not leak into the lede
+- `includedEn` ← the `included` lines from `bokun_text.sections()`, newline-joined for `chips()`. Only Ikebana has an extractable list; the rest come back empty and render no chips.
+- `notIncluded*`, `notAllowed*`, `notSuitable*` ← always empty. Bokun has no such data and it must not be invented.
+- `route` ← `agendaItems` mapped to `{'title': ..., 'body': ...}`, cleaned. Empty for candle-making and Swordsmithing, which have no `agendaItems`.
 - `priceEn`/`priceJa` ← `format_from(...)`; `priceRows` ← `rows(...)`
 
 - [ ] **Step 1: Record real API responses as test fixtures**
@@ -1101,10 +1263,31 @@ class TestRecords(unittest.TestCase):
     def test_cover_comes_from_the_first_photo(self):
         self.assertTrue(self.by_slug['ikebana-ichigo-ichie']['cover']['url'].startswith('http'))
 
-    def test_inclusion_chips_are_empty_because_bokun_has_no_such_data(self):
-        r = self.by_slug['ikebana-ichigo-ichie']
-        for f in ('includedEn', 'notIncludedEn', 'notAllowedEn', 'notSuitableEn'):
-            self.assertEqual(r[f], '')
+    def test_ikebana_inclusions_are_extracted_from_the_description(self):
+        items = self.by_slug['ikebana-ichigo-ichie']['includedEn'].split('\n')
+        self.assertIn('Tour insurance', items)
+        self.assertTrue(any('flower materials' in i for i in items))
+        self.assertFalse(any('PDF' == i.strip() for i in items))
+
+    def test_inclusions_do_not_leak_into_the_lede(self):
+        self.assertNotIn('What is Included',
+                         self.by_slug['ikebana-ichigo-ichie']['ledeEn'])
+        self.assertNotIn('Tour insurance',
+                         self.by_slug['ikebana-ichigo-ichie']['ledeEn'])
+
+    def test_products_without_an_inclusions_list_have_no_chips(self):
+        for slug in ('candle-making', 'zen-journey', 'swordsmithing'):
+            self.assertEqual(self.by_slug[slug]['includedEn'], '', slug)
+
+    def test_fields_bokun_has_no_data_for_stay_empty(self):
+        for r in self.records:
+            for f in ('notIncludedEn', 'notAllowedEn', 'notSuitableEn'):
+                self.assertEqual(r[f], '', f)
+
+    def test_route_comes_from_agenda_items_and_is_empty_where_there_are_none(self):
+        self.assertTrue(len(self.by_slug['ikebana-ichigo-ichie']['route']) >= 3)
+        self.assertEqual(self.by_slug['candle-making']['route'], [])
+        self.assertEqual(self.by_slug['swordsmithing']['route'], [])
 
     def test_widgets_carry_through_from_config(self):
         self.assertEqual(self.by_slug['ikebana-ichigo-ichie']['widgets'],
@@ -1182,8 +1365,16 @@ def to_record(activity, activity_ja, availability, entry, corr):
 
     title = cl(activity.get('title'))
     sub = cl(activity.get('excerpt'))
-    lede = cl(activity.get('description'))
+    parsed, sw = bokun_text.sections(
+        activity.get('description'), corr, entry.get('chipsHeading'))
+    warnings.extend(sw)
+    lede = ' '.join(parsed['lede'])
+    included = '\n'.join(parsed['included'])
     reviewed = bool(entry.get('jaReviewed'))
+
+    route = []
+    for item in activity.get('agendaItems') or []:
+        route.append({'title': cl(item.get('title')), 'body': cl(item.get('body'))})
 
     photos = activity.get('photos') or []
     cover = (photos[0].get('originalUrl') if photos else '') or ''
@@ -1207,10 +1398,12 @@ def to_record(activity, activity_ja, availability, entry, corr):
         'priceRows': rows,
         'widgets': entry.get('widgets') or {},
         'jaReviewed': reviewed,
+        'route': route,
     }
 
     en_values = {'title': title, 'sub': sub, 'lede': lede, 'coverCaption': cover_cap,
-                 'included': '', 'notIncluded': '', 'notAllowed': '', 'notSuitable': ''}
+                 'included': included,
+                 'notIncluded': '', 'notAllowed': '', 'notSuitable': ''}
     for field in PAIR_FIELDS:
         rec[field + 'En'] = en_values[field]
         if reviewed and field in ('title', 'sub', 'lede'):
@@ -1248,7 +1441,7 @@ def fetch_records(client, cfg):
 - [ ] **Step 5: Run test to verify it passes**
 
 Run: `python3 -m unittest cms.tests.test_bokun_source -v`
-Expected: 17 tests PASS
+Expected: 21 tests PASS
 
 If `test_ikebana_from_price_is_the_lowest_adult_tier` fails, print `bokun_price.rows(...)` for that product and check the recorded availability actually contains `pricesByRate` — availability windows shift, so re-run `record_fixtures.py` if the recorded window has gone stale.
 
@@ -1839,6 +2032,25 @@ class TestTemplate(unittest.TestCase):
         for slot in ('{{CAL_PRICE}}',):
             self.assertNotIn(slot, self.tpl, f'{slot} left behind after calendar removal')
 
+    def test_route_is_a_whole_section_slot_not_just_rows(self):
+        # A tour with no agendaItems must render no route heading either.
+        self.assertIn('{{ROUTE_SECTION}}', self.tpl)
+        self.assertNotIn('{{ROUTE_ROWS}}', self.tpl)
+
+
+class TestRouteSection(unittest.TestCase):
+    def test_route_section_is_empty_when_there_are_no_stops(self):
+        m = dict(model({}), route=[], full=True)
+        self.assertEqual(bt.route_section(m, {}, {}), '')
+
+    def test_route_section_renders_heading_and_rows_when_there_are_stops(self):
+        m = dict(model({}), route=[{'title': 'Arriving', 'body': 'Meet at the gate.'}],
+                 full=True)
+        html = bt.route_section(m, {}, {})
+        self.assertIn('Arriving', html)
+        self.assertIn('Meet at the gate.', html)
+        self.assertIn('class="route"', html)
+
 
 if __name__ == '__main__':
     unittest.main()
@@ -1890,6 +2102,35 @@ In `render_detail`, inside the `if m['full']:` branch, replace the `CAL_PRICE` a
 
 and add `slots['WIDGET_BLOCK'] = ''` to `common_slots()` so the prep template never sees an unfilled slot.
 
+Then wrap the route markup in a function so the whole section disappears when a
+tour has no stops. Add to `build-tours.py`:
+
+```python
+def route_section(m, en, ja):
+    """The whole route block, or nothing.
+
+    Candle-making and Swordsmithing have no agendaItems, so they must not render
+    an empty route heading. See spec 3.4.
+    """
+    rows = route_rows(m, en, ja)
+    if not rows.strip():
+        return ''
+    return f'''      <section class="route" data-screen-label="07 Tour detail — Route">
+        <h2 data-i18n="td_route">The route</h2>
+        <div class="r-rows">
+{rows}
+        </div>
+      </section>'''
+```
+
+and in `render_detail` replace `slots['ROUTE_ROWS'] = route_rows(m, en, ja)` with:
+
+```python
+        slots['ROUTE_SECTION'] = route_section(m, en, ja)
+```
+
+adding `slots['ROUTE_SECTION'] = ''` to `common_slots()` alongside `WIDGET_BLOCK`.
+
 - [ ] **Step 4: Edit the template**
 
 In `cms/templates/tour-detail.html`:
@@ -1902,15 +2143,23 @@ In `cms/templates/tour-detail.html`:
 
 2. Delete the script block at lines 393-505 in its entirety (the vanilla calendar, its interim Tue/Thu/Sat availability rule, and the `zenrise-booking-v1` handoff). Keep the script block at 366-392.
 
-3. Confirm no `{{CAL_PRICE}}` reference survives:
+3. Replace the whole `<section class="route">…</section>` block — it contains `{{ROUTE_ROWS}}` at line 320 — with the single line:
 
-Run: `grep -n 'CAL_PRICE\|cal-go\|zenrise-booking-v1\|cal-days' cms/templates/tour-detail.html || echo CLEAN`
+```html
+{{ROUTE_SECTION}}
+```
+
+Copy the section's existing heading and wrapper markup into `route_section()` in Step 3 so the rendered output is byte-identical for tours that do have stops.
+
+4. Confirm no stale slots or calendar remnants survive:
+
+Run: `grep -n 'CAL_PRICE\|ROUTE_ROWS\|cal-go\|zenrise-booking-v1\|cal-days' cms/templates/tour-detail.html || echo CLEAN`
 Expected: `CLEAN`
 
 - [ ] **Step 5: Run tests and rebuild**
 
 Run: `python3 -m unittest cms.tests.test_widget_embed -v`
-Expected: 10 tests PASS
+Expected: 13 tests PASS
 
 Run: `python3 cms/build-tours.py --source cache && grep -c bokunWidget tour-ikebana-ichigo-ichie.html`
 Expected: `1`
@@ -2432,7 +2681,6 @@ Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>"
 
 **Files:**
 - Create: `go/<slug>/index.html` for each tier product with a widget
-- Delete: `go/kamakura/index.html`
 - Modify: `cms/build-tours.py` — add `write_go_redirects(models)`
 - Test: `cms/tests/test_go_redirects.py`
 
@@ -2440,7 +2688,7 @@ Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>"
 - Consumes: `m['widgets']`, `m['id']`.
 - Produces: `write_go_redirects(models) -> list[str]`.
 
-`/go/kamakura` points at product `1272734`, which is OTA tier and not a site tour (spec 3.6). It is orphaned on-site, so it is deleted rather than migrated.
+**`go/kamakura/` must not be touched.** It is a live link to an OTA tour from the Zenrise Instagram profile and has nothing to do with this work. Generated redirects use tier slugs, which cannot collide with it.
 
 - [ ] **Step 1: Write the failing test**
 
@@ -2477,18 +2725,20 @@ class TestRedirectHtml(unittest.TestCase):
             {'id': 's', 'full': False, 'widgets': {'en': f'{CH}/x/1'}}))
 
 
-class TestOtaRedirectRetired(unittest.TestCase):
-    def test_go_kamakura_is_gone(self):
-        self.assertFalse(os.path.exists(os.path.join(ROOT, 'go', 'kamakura', 'index.html')))
+class TestInstagramRedirectPreserved(unittest.TestCase):
+    def test_go_kamakura_survives_untouched(self):
+        # Live link from the Zenrise Instagram profile. Out of scope: must not
+        # be deleted or regenerated by this build.
+        p = os.path.join(ROOT, 'go', 'kamakura', 'index.html')
+        self.assertTrue(os.path.exists(p), 'go/kamakura was removed; it is out of scope')
+        with open(p) as f:
+            self.assertIn('1272734', f.read())
 
-    def test_no_go_page_references_an_ota_product(self):
-        ota = ['1272734', '1272756', '1272817', '1272825', '1272835', '1272849', '1273963']
-        for dirpath, _, files in os.walk(os.path.join(ROOT, 'go')):
-            for name in files:
-                with open(os.path.join(dirpath, name)) as f:
-                    body = f.read()
-                for pid in ota:
-                    self.assertNotIn(pid, body, f'{dirpath}/{name} references OTA product {pid}')
+    def test_generated_slugs_cannot_collide_with_it(self):
+        import json
+        with open(os.path.join(ROOT, 'cms', 'tours-config.json')) as f:
+            cfg = json.load(f)
+        self.assertNotIn('kamakura', {e['slug'] for e in cfg['tours'].values()})
 
 
 if __name__ == '__main__':
@@ -2544,32 +2794,26 @@ def write_go_redirects(models):
 
 Call `write_go_redirects(models)` in `main()` after `write_tours_index(models)` and include the count in the final print.
 
-- [ ] **Step 4: Retire the OTA redirect**
-
-```bash
-git rm -r go/kamakura
-```
-
-- [ ] **Step 5: Run tests and build**
+- [ ] **Step 4: Run tests and build**
 
 Run: `python3 cms/build-tours.py --source cache && ls go/`
-Expected: a directory per priced tour with a configured widget, and no `kamakura`
+Expected: a directory per priced tour with a configured widget, **plus** the
+pre-existing `kamakura` directory, still present and unmodified.
 
 Run: `python3 -m unittest discover -s cms/tests -t . -v`
 Expected: all PASS
 
-- [ ] **Step 6: Commit**
+- [ ] **Step 5: Commit**
 
 ```bash
-git add -A
-git commit -m "Generate /go/<slug> redirects, retire /go/kamakura
+git add go cms/build-tours.py cms/tests/test_go_redirects.py
+git commit -m "Generate /go/<slug> redirects for the tier tours
 
 One redirect per priced tier tour, as the no-JS and email/social fallback.
 
-/go/kamakura is deleted rather than migrated: it points at product 1272734,
-which is OTA tier and therefore not a site tour under this design. It was created
-on 8/19 before the tier decision and is orphaned on-site, so nothing internal
-breaks. Recreate it manually if the URL turns out to have been shared externally.
+go/kamakura is deliberately untouched: it is a live link to an OTA tour from the
+Zenrise Instagram profile and is outside this work. A test asserts it survives,
+and that no generated slug can collide with it.
 
 Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>"
 ```

@@ -192,12 +192,56 @@ editorial job and does not block this work.
 | card + detail title | `title` |
 | card line | `excerpt` |
 | detail lede and body | `description` |
-| route/itinerary table | `agendaItems[].title` + `.body` (duration prefixes like "30min" stay in the body for now) |
+| route/itinerary table | `agendaItems[].title` + `.body` (duration prefixes like "30min" stay in the body for now). A product with no `agendaItems` renders no route section at all — candle-making and Swordsmithing have none. |
+| inclusion chips | extracted from `description` sections, see 3.4.1 |
 | cover and gallery | `photos[].originalUrl` via `imgcdn.bokun.tools` |
 | duration chip | `durationText` |
 | group size | rate `minPerBooking`/`maxPerBooking` |
 | price | see 3.5 |
 | area | `googlePlace.city`, falling back to `area` in `cms/tours-config.json` (3.9) |
+
+### 3.4.1 Description sections and inclusion chips
+
+Bokun has no inclusions field, but the copy sometimes carries the list inline. The
+Ikebana description is genuinely structured:
+
+```
+Experience the Art of Ikebana in Kamakura with Master Koen Yokoi
+Immerse yourself in "Ichika Ichiei" … 90-minute private floral workshop …
+Tour Highlights & Itinerary (90 minutes):
+  History & Philosophy (30 mins): …
+  Hands-on Ikebana Workshop (30 mins): …
+  Tea & Conversation (30 mins): …
+What is Included:
+  Private Ikebana instruction and demonstration by Master Koen Yokoi
+  English & Japanese bilingual guide support
+  All flower materials, tools, and equipment
+  Matcha/Japanese tea and seasonal sweets
+  Free round-trip transfer within Kamakura & Fujisawa cities
+  Tour insurance
+```
+
+So the description is parsed into a lede plus named sections, split on trailing-colon
+heading lines:
+
+- **lede** — everything before the first heading. This is what the detail page's
+  lede renders, so the inclusions no longer leak into it.
+- **inclusion chips** — the lines under a heading matching `What is Included`,
+  `What's Included` or `Inclusions`, case-insensitively. A `chipsHeading` override
+  in `cms/tours-config.json` handles wording this misses.
+- **itinerary headings are ignored** — `agendaItems` already carries that, and
+  rendering both would duplicate it.
+
+Only one of the four tier products has an extractable list. Zen Journey states its
+inclusions as prose ("The tour is all-inclusive: transport, admission, lunch…"),
+and the other two have none. Prose is not parsed into chips — a product with no
+matching heading simply renders no chips, which 3.4 already allows.
+
+**The `PDF` artifact.** Every list item in the Ikebana description ends with a
+literal `PDF`, and `PDF` also appears as standalone lines between blocks — debris
+from however the copy was pasted, not content. It is stripped when it is a whole
+line or a token at end of line, and each strip is logged. It is *not* stripped
+mid-sentence, where it could be a genuine word.
 
 ### 3.5 Price display
 
@@ -235,19 +279,15 @@ Two prerequisites could fix it (add `widgets.bokun.io` to the kit's allowed
 domains, and `@import` the kit inside Bokun's custom CSS); both are unverified, so
 the design assumes mismatched type and treats matching it as an enhancement.
 
-`/go/<slug>` redirect pages are kept as the no-JS and email/social fallback, one
-per tier product.
+`/go/<slug>` redirect pages are generated as the no-JS and email/social fallback,
+one per priced tier product.
 
-The existing `/go/kamakura` is a different matter: it points at product `1272734`,
-which is OTA tier and therefore not a site tour under this design. It predates the
-tier decision. Unless the URL has been shared externally it should be retired
-rather than migrated — it is orphaned on-site, so nothing internal breaks.
+**`/go/kamakura` is out of scope and must not be touched.** It is a live link to
+an OTA tour from the Zenrise Instagram profile, unrelated to the site's tier
+catalogue. Generated redirects use tier slugs, which cannot collide with it.
 
 A widget instance is inherently per product, so widget count is not a design
-choice. Booking *channel* is the separate axis: `/go/kamakura` uses
-`e2350ad8-…` while the generated calendar widget uses `6db7a498-…`. Standardising
-on one channel matters only so the client's Bokun reporting shows the website as a
-single line rather than split across two. Minor, but free to get right.
+choice.
 
 **Bilingual booking is unresolved and needs one panel check.** Because language is
 baked per widget, a bilingual site needs either a `lang` option in the widget
