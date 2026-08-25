@@ -22,15 +22,39 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
 SITE = 'https://zenrise.jp'
 
-PRICE = {
-    'Half-day': {'key': 'booking_s2_half_price', 'en': '¥65,000 / group', 'ja': '¥65,000 ／ 1組'},
-    'Full-day': {'key': 'booking_s2_full_price', 'en': '¥95,000 / group', 'ja': '¥95,000 ／ 1組'},
-}
+class BuildError(Exception):
+    pass
+
+
 AREA_KEY = {'Kamakura': 'tours_area_kamakura', 'Enoshima': 'tours_area_enoshima', 'Yokohama': 'tours_area_yokohama'}
 AREA_JA = {'Kamakura': '鎌倉', 'Enoshima': '江ノ島', 'Yokohama': '横浜'}
 LEN_KEY = {'Half-day': 'tours_len_half', 'Full-day': 'tours_len_full'}
 THEME_SLUG = {'Temples & Shrines': 'temples', 'Food': 'food', 'Walking': 'walking',
-              'Views & Nature': 'nature', 'Local Life': 'local', 'Culture': 'culture'}
+              'Views & Nature': 'nature', 'Local Life': 'local', 'Culture': 'culture',
+              'Arts & Craft': 'arts'}
+
+
+def theme_slugs(themes):
+    out = []
+    for t in themes:
+        try:
+            out.append(THEME_SLUG[t])
+        except KeyError:
+            raise BuildError(
+                f'theme {t!r} has no slug. Add it to THEME_SLUG in build-tours.py '
+                f'and to the filter buttons in tours.html, or correct the themes '
+                f'value in cms/tours-config.json.')
+    return out
+
+
+def area_key(area):
+    try:
+        return AREA_KEY[area]
+    except KeyError:
+        raise BuildError(
+            f'area {area!r} has no i18n key. Add it to AREA_KEY and AREA_JA in '
+            f'build-tours.py and to the filter buttons in tours.html, or correct '
+            f'the area value in cms/tours-config.json.')
 
 
 def esc(s):
@@ -77,21 +101,25 @@ def fetch_tours(source):
     return records, cfg
 
 
-def tour_model(a, routes):
-    m = {'id': a['id'], 'K': 'tours_' + a['id'], 'num': a['number']}
+def tour_model(a):
+    m = {'id': a['id'], 'K': 'tours_' + a['id'], 'num': a['number'],
+         'bokun_id': a.get('bokunId'), 'widgets': a.get('widgets') or {},
+         'price_rows': a.get('priceRows') or []}
     for f in ('title', 'sub', 'hours', 'coverCaption', 'price', 'lede',
               'included', 'notIncluded', 'notAllowed', 'notSuitable'):
         m[f] = ((a.get(f + 'En') or '').strip(), (a.get(f + 'Ja') or '').strip())
-    m['area'] = sel(a['area'])
-    m['length'] = sel(a['length'])
+    m['area'] = a['area']
+    m['length'] = a['length']
     m['themes'] = a.get('themes') or []
     m['cover'] = (a.get('cover') or {}).get('url', '')
-    p = PRICE[m['length']]
-    m['price_key'] = None if m['price'][0] else p['key']
-    m['price_en'] = m['price'][0] or p['en']
-    m['price_ja'] = m['price'][1] or p['ja']
-    m['route'] = routes.get(a['id'], [])
-    m['full'] = bool(m['lede'][0])
+    # Price is per tour and comes from Bokun, so there is no shared length key.
+    m['price_key'] = None
+    m['price_en'] = m['price'][0]
+    m['price_ja'] = m['price'][1]
+    m['route'] = a.get('route') or []
+    # A tour is "full" when it has a price. Unpriced products get the
+    # in-preparation layout (spec 3.5).
+    m['full'] = bool(m['price'][0])
     return m
 
 
@@ -108,9 +136,8 @@ def base_dict(m):
           K + '_eyebrow': f"ツアー No. {m['num']}",
           K + '_cap': m['coverCaption'][1],
           K + '_cta_eyebrow': f"{m['price_ja']} ・ 1〜6名"}
-    if m['price_key'] is None:
-        en[K + '_price'] = m['price_en']
-        ja[K + '_price'] = m['price_ja']
+    en[K + '_price'] = m['price_en']
+    ja[K + '_price'] = m['price_ja']
     return en, ja
 
 
@@ -129,7 +156,7 @@ def common_slots(m):
         'OG_IMAGE': esc(og_image(m)),
         'COVER_URL': esc(m['cover']),
         'CAP_EN': esc(m['coverCaption'][0]),
-        'AREA_KEY': AREA_KEY[m['area']], 'AREA_EN': m['area'],
+        'AREA_KEY': area_key(m['area']), 'AREA_EN': m['area'],
         'LEN_KEY': LEN_KEY[m['length']], 'LEN_EN': m['length'],
         'HOURS_EN': esc(m['hours'][0]),
         'PRICE_KEY': m['price_key'] or (m['K'] + '_price'),
@@ -139,6 +166,8 @@ def common_slots(m):
 
 
 def chips(m, field, prefix, en, ja):
+    if not m[field][0]:
+        return ''
     K = m['K']
     out = []
     for i, (e, j) in enumerate(zip(lines(m[field][0]), lines(m[field][1])), 1):
@@ -148,20 +177,44 @@ def chips(m, field, prefix, en, ja):
     return '\n'.join(out)
 
 
+# A stop duration written at the head of the body, e.g. "30min The history of…".
+# Only some products carry these, so the time cell is optional per row.
+_STOP_TIME = re.compile(
+    r'^\s*(\d+\s*(?:min|mins|minute|minutes|hr|hrs|hour|hours))\b[\s:·\-–—]*',
+    re.I)
+
+
+def split_stop_time(body):
+    """('30min', 'The history of the art…') or (None, body) when there is none."""
+    m = _STOP_TIME.match(body or '')
+    if not m:
+        return None, (body or '').strip()
+    return m.group(1).strip(), body[m.end():].strip()
+
+
 def route_rows(m, en, ja):
+    """Route rows from Bokun agendaItems.
+
+    Replaces the tour-routes.json version. Bokun has no structured per-stop
+    time, distance, thumbnail or Japanese variant. Distance and thumbnail are
+    gone. A duration is rendered when the copy carries one at the head of the
+    body, and the cell is omitted when it does not, so a tour without timings
+    shows no empty column. See ledger Ruling B (amended by Ruling D).
+    """
     K = m['K']
     rows = []
-    for st in m['route']:
-        n = st['n']
-        en[f'{K}_rt_{n}_name'] = st['nameEn']; ja[f'{K}_rt_{n}_name'] = st['nameJa']
-        en[f'{K}_rt_{n}_note'] = st['noteEn']; ja[f'{K}_rt_{n}_note'] = st['noteJa']
+    for i, st in enumerate(m['route'], 1):
+        n = f'{i:02d}'
+        time, body = split_stop_time(st['body'])
+        en[f'{K}_rt_{n}_name'] = st['title']; ja[f'{K}_rt_{n}_name'] = st['title']
+        en[f'{K}_rt_{n}_note'] = body;        ja[f'{K}_rt_{n}_note'] = body
+        time_cell = f'<div class="r-time">{esc(time)}</div>' if time else ''
         rows.append(
-            '        <div class="r-row">\n'
-            f'          <div class="r-pic"><div class="stripes"></div><span class="rn">{n} · {esc(st["asset"])}</span></div>\n'
-            f'          <div class="r-time">{st["time"]}</div>\n'
-            f'          <div><h3 data-i18n="{K}_rt_{n}_name">{esc(st["nameEn"])}</h3>'
-            f'<p class="r-note" data-i18n="{K}_rt_{n}_note">{esc(st["noteEn"])}</p></div>\n'
-            f'          <div class="r-dist">{st["dist"]}</div>\n'
+            f'        <div class="r-row{"" if time else " no-time"}">\n'
+            f'          <div class="r-num">{n}</div>\n'
+            f'          {time_cell}\n'
+            f'          <div><h3 data-i18n="{K}_rt_{n}_name">{esc(st["title"])}</h3>'
+            f'<p class="r-note" data-i18n="{K}_rt_{n}_note">{esc(body)}</p></div>\n'
             '        </div>')
     return '\n'.join(rows)
 
@@ -177,7 +230,9 @@ def render_detail(m, tpl_full, tpl_prep):
         slots['CHIPS_NINC'] = chips(m, 'notIncluded', 'ninc', en, ja)
         slots['CHIPS_NA'] = chips(m, 'notAllowed', 'na', en, ja)
         slots['CHIPS_NS'] = chips(m, 'notSuitable', 'ns', en, ja)
-        slots['CAL_PRICE'] = m['price_en'].split(' / ')[0].split(' ／ ')[0]
+        slots['CAL_PRICE'] = m['price_en']
+        slots['PRICE_ROWS'] = '\n'.join(
+            f'          <li>{esc(r)}</li>' for r in _price_lines(m))
         slots['ROUTE_ROWS'] = route_rows(m, en, ja)
         tpl = tpl_full
     else:
@@ -186,18 +241,26 @@ def render_detail(m, tpl_full, tpl_prep):
     return render(tpl, slots)
 
 
+def _price_lines(m):
+    sys.path.insert(0, os.path.dirname(HERE))
+    from cms import bokun_price
+    return bokun_price.format_full(m['price_rows'], 'en')
+
+
 def card(m):
     """tours.html grid card."""
     K = m['K']
-    return f'''        <a class="tcard" href="tour-{m['id']}.html" data-area="{m['area'].lower()}" data-themes="{' '.join(THEME_SLUG[t] for t in m['themes'])}">
+    price_html = ('' if not m['price_en'] else
+                  f'<span class="price" data-i18n="{K}_price">{esc(m["price_en"])}</span>')
+    return f'''        <a class="tcard" href="tour-{m['id']}.html" data-area="{m['area'].lower()}" data-themes="{' '.join(theme_slugs(m['themes']))}">
           <div class="pic" style="background-image: url('{esc(m['cover'])}')">
             <span class="num">No. {m['num']}</span>
           </div>
           <div class="t-body">
-            <div class="t-meta"><span data-i18n="{AREA_KEY[m['area']]}">{m['area']}</span><span class="dot">・</span><span data-i18n="{LEN_KEY[m['length']]}">{m['length']}</span></div>
+            <div class="t-meta"><span data-i18n="{area_key(m['area'])}">{m['area']}</span><span class="dot">・</span><span data-i18n="{LEN_KEY[m['length']]}">{m['length']}</span></div>
             <h3 data-i18n="{K}_name">{esc(m['title'][0])}</h3>
             <p class="t-sub" data-i18n="{K}_sub">{esc(m['sub'][0])}</p>
-            <div class="t-foot"><span data-i18n="{K}_hours">{esc(m['hours'][0])}</span><span class="price" data-i18n="{m['price_key'] or K + '_price'}">{esc(m['price_en'])}</span></div>
+            <div class="t-foot"><span data-i18n="{K}_hours">{esc(m['hours'][0])}</span>{price_html}</div>
           </div>
         </a>'''
 
@@ -211,7 +274,7 @@ def tile(m):
             <span class="num-tag">No. {m['num']}</span>
           </div>
           <div class="panel">
-            <div class="t-meta"><span data-i18n="{AREA_KEY[m['area']]}">{m['area']}</span><span class="dot">・</span><span data-i18n="{LEN_KEY[m['length']]}">{m['length']}</span></div>
+            <div class="t-meta"><span data-i18n="{area_key(m['area'])}">{m['area']}</span><span class="dot">・</span><span data-i18n="{LEN_KEY[m['length']]}">{m['length']}</span></div>
             <div class="name" data-i18n="{K}_name">{esc(m['title'][0])}</div>
             <p class="sub" data-i18n="{K}_sub">{esc(m['sub'][0])}</p>
             <div class="row"><span class="go"><span class="u" data-i18n="home_tours_cta">View this tour</span><span class="ar">&nbsp;→</span></span></div>
