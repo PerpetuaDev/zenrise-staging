@@ -62,6 +62,15 @@ class TestWidgetBlock(unittest.TestCase):
     def test_unpriced_tour_gets_no_widget(self):
         self.assertEqual(bt.widget_block(model({'en': 'x/y/1'}, full=False)), '')
 
+    def test_book_anchor_resolves_in_both_the_widget_and_placeholder_branches(self):
+        # The bottom CTA links to #book in every rendering of the full template,
+        # so both branches of widget_block must expose id="book" or the anchor
+        # target does not exist wherever a tour has no widget configured yet.
+        configured = bt.widget_block(model({'en': f'{CH}/experience-calendar/1273232'}))
+        placeholder = bt.widget_block(model({}))
+        self.assertIn('id="book"', configured)
+        self.assertIn('id="book"', placeholder)
+
 
 class TestTemplate(unittest.TestCase):
     def setUp(self):

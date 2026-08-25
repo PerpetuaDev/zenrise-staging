@@ -287,7 +287,7 @@ def widget_block(m):
     widgets = m.get('widgets') or {}
     en = widgets.get('en')
     if not en:
-        return (f'        <aside class="cal-missing" data-widget-missing="{m["id"]}">\n'
+        return (f'        <aside class="cal-missing" id="book" data-widget-missing="{m["id"]}">\n'
                 f'          <p>Booking widget not yet configured for this tour.</p>\n'
                 f'        </aside>')
     channel = en.split('/')[0]

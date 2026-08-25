@@ -91,32 +91,9 @@
   .chip { font-family: var(--sans); font-size: 16px; letter-spacing: 0.01em; padding: 12px 20px; border: 1px solid var(--ink-30); color: var(--ink); }
   /* ── calendar ── */
   .cal { position: sticky; top: 40px; border: 1px solid var(--ink-30); padding: 40px 40px 36px; }
-  .cal .c-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 32px; }
-  .cal .c-head .c-price { font-family: var(--sans); font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink); }
-  .cal .c-month { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; }
-  .cal .c-month .m-label { font-family: var(--display); font-size: 26px; }
-  .cal .c-month button { width: 44px; height: 44px; background: none; border: 1px solid var(--ink-30); color: var(--ink); font-family: var(--sans); font-size: 17px; font-weight: 300; cursor: pointer; }
-  .cal .c-month button:disabled { color: var(--ink-30); border-color: var(--ink-12); cursor: default; }
-  .cal .c-month button:hover:not(:disabled) { background: rgba(41,65,56,0.06); }
-  .cal .c-wk, .cal .c-days { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; }
-  .cal .c-wk span { text-align: center; font-family: var(--sans); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-40); padding-bottom: 8px; }
-  .cal .c-days .day { height: 52px; display: grid; place-items: center; font-size: 17px; user-select: none; }
-  .cal .c-days .day.off { color: var(--ink-30); }
-  .cal .c-days .day.open { border: 1px solid var(--ink-30); cursor: pointer; }
-  .cal .c-days .day.open:hover { background: rgba(41,65,56,0.06); }
-  .cal .c-days .day.sel { background: var(--ink); color: var(--bg); border: none; }
-  .cal .c-note { font-family: var(--sans); font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-40); margin-top: 16px; }
-  .cal .c-party { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--ink-12); margin-top: 28px; padding-top: 28px; }
-  .cal .stepper { display: flex; border: 1px solid var(--ink-30); }
-  .cal .stepper button { width: 44px; height: 44px; background: none; border: none; color: var(--ink); font-size: 18px; cursor: pointer; }
-  .cal .stepper button:disabled { color: var(--ink-30); cursor: default; }
-  .cal .stepper button:hover:not(:disabled) { background: rgba(41,65,56,0.06); }
-  .cal .stepper .val { width: 56px; display: grid; place-items: center; font-family: var(--display); font-size: 22px; border-left: 1px solid var(--ink-30); border-right: 1px solid var(--ink-30); }
-  .cal .c-sum { display: flex; justify-content: space-between; align-items: baseline; padding: 22px 0 28px; }
-  .cal .c-sum .s-date { font-family: var(--display); font-size: 22px; }
-  .cal .c-sum .s-price { font-family: var(--display); font-size: 26px; }
   .cal .c-go { width: 100%; border: none; padding: 22px 28px; font-family: inherit; font-size: 18px; letter-spacing: 0.02em; color: var(--bg); background: var(--ink); cursor: pointer; }
   .cal .c-go:disabled { background: var(--ink-30); cursor: not-allowed; }
+  .cal-missing { border: 1px solid var(--ink-12); background: var(--bg-2); padding: 40px; font-family: var(--sans); font-size: 15px; line-height: 1.5; color: var(--ink-60); }
   /* ── route ── */
   .route-wrap { padding: 115px 36px 0; }
   .route { border: 1px solid var(--ink-30); padding: 56px 56px 24px; }
@@ -177,7 +154,6 @@
     .chip-groups { grid-template-columns: 1fr; row-gap: 36px; }
     .chip { font-size: 14px; padding: 10px 16px; }
     .cal { position: static; padding: 24px 20px 22px; order: -1; }
-    .cal .c-days .day { height: 44px; font-size: 15px; }
     .route-wrap { padding: 64px 20px 0; }
     .route { padding: 24px 18px 8px; }
     .route h2 { font-size: 34px; margin-bottom: 20px; }
