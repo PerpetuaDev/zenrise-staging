@@ -1,0 +1,893 @@
+{
+ "id": 1273194,
+ "externalId": null,
+ "productGroupId": 0,
+ "productCategory": "ACTIVITIES",
+ "box": false,
+ "inventoryLocal": true,
+ "inventorySupportsPricing": false,
+ "inventorySupportsAvailability": true,
+ "creationDate": "Thu Aug 20 04:29:09 UTC 2026",
+ "lastModified": "Mon Aug 24 06:27:21 UTC 2026",
+ "lastPublished": "2026-08-24T06:27:20.807Z",
+ "published": false,
+ "title": "The Zen Journey-KAMAKURA",
+ "description": "<p style=\"font-size:14px;line-height:1.6;color:#57646f;margin-top:0.5em;margin-bottom:0.5em\">Kamakura has kept its temples for eight hundred and fifty years, and its</p><p style=\"font-size:14px;line-height:1.6;color:#57646f;margin-top:0.5em;margin-bottom:0.5em\">stillness for just as long. This tour is built around that stillness — not a</p><p style=\"font-size:14px;line-height:1.6;color:#57646f;margin-top:0.5em;margin-bottom:0.5em\">checklist of sights, but a slow pass through three of the city’s five great Zen</p><p style=\"font-size:14px;line-height:1.6;color:#57646f;margin-top:0.5em;margin-bottom:0.5em\">temples, with a guide who can explain what you’re looking at, and enough</p><p style=\"font-size:14px;line-height:1.6;color:#57646f;margin-top:0.5em;margin-bottom:0.5em\">quiet, unhurried time to actually look.</p><p style=\"font-size:14px;line-height:1.6;color:#57646f;margin-top:0.5em;margin-bottom:0.5em\">The Five Mountains, or Gozan, are the five preeminent Rinzai Zen temples</p><p style=\"font-size:14px;line-height:1.6;color:#57646f;margin-top:0.5em;margin-bottom:0.5em\">whose foundations were laid under the Kamakura shogunate and which</p><p style=\"font-size:14px;line-height:1.6;color:#57646f;margin-top:0.5em;margin-bottom:0.5em\">were later ranked at the highest tier by the Muromachi shogunate:</p><p style=\"font-size:14px;line-height:1.6;color:#57646f;margin-top:0.5em;margin-bottom:0.5em\">Kencho‑ji, Engaku‑ji, Jufuku‑ji, Jochi‑ji, and Jomyo‑ji.</p><p style=\"font-size:14px;line-height:1.6;color:#57646f;margin-top:0.5em;margin-bottom:0.5em\">You’ll sit for a short zazen at Engaku‑ji, wander the seasonal grounds of</p><p style=\"font-size:14px;line-height:1.6;color:#57646f;margin-top:0.5em;margin-bottom:0.5em\">Jochi‑ji, and take matcha before a dry rock garden at Jomyo‑ji, before lunch</p><p style=\"font-size:14px;line-height:1.6;color:#57646f;margin-top:0.5em;margin-bottom:0.5em\">closes the morning at a place suited to your taste.</p><p style=\"font-size:14px;line-height:1.6;color:#57646f;margin-top:0.5em;margin-bottom:0.5em\">Everything is arranged in advance. All you need to bring is a willingness to slow down.<br /><br /><br /><strong>Practical Notes<br /></strong>Comfortable walking shoes are recommended — the approach to several</p><p style=\"font-size:14px;line-height:1.6;color:#57646f;margin-top:0.5em;margin-bottom:0.5em\">temples includes stone steps. The tour is all‑inclusive: transport, admission,</p><p style=\"font-size:14px;line-height:1.6;color:#57646f;margin-top:0.5em;margin-bottom:0.5em\">lunch, and your guide’s company throughout.</p>",
+ "excerpt": "A private , guided passag e through three meditation, templ e grounds wa l ked be suit, with an English-speaking guide of the Kamakura Five Mountains — Engaku-ji, Jochi-ji and Jomyo-ji. S eated fore the crowds, matcha over a dry l andscape garden, and a l",
+ "cancellationPolicy": {
+  "id": 270402,
+  "title": "The Zen Journey　Cancellation Policy",
+  "penaltyRules": [
+   {
+    "id": 270471,
+    "cutoffHours": 0,
+    "charge": 100.0,
+    "chargeType": "percentage",
+    "percentage": 100.0
+   },
+   {
+    "id": 270474,
+    "cutoffHours": 24,
+    "charge": 50.0,
+    "chargeType": "percentage",
+    "percentage": 50.0
+   },
+   {
+    "id": 270475,
+    "cutoffHours": 48,
+    "charge": 40.0,
+    "chargeType": "percentage",
+    "percentage": 40.0
+   },
+   {
+    "id": 270476,
+    "cutoffHours": 168,
+    "charge": 30.0,
+    "chargeType": "percentage",
+    "percentage": 30.0
+   },
+   {
+    "id": 270477,
+    "cutoffHours": 240,
+    "charge": 20.0,
+    "chargeType": "percentage",
+    "percentage": 20.0
+   }
+  ],
+  "tax": null,
+  "defaultPolicy": false,
+  "policyType": "ADVANCED",
+  "simpleCutoffHours": null,
+  "policyTypeEnum": "ADVANCED"
+ },
+ "overrideBarcodeFormat": false,
+ "barcodeType": "QR_CODE",
+ "timeZone": "Asia/Tokyo",
+ "mainContactFields": [
+  {
+   "field": "FIRST_NAME",
+   "required": true,
+   "requiredBeforeDeparture": false
+  },
+  {
+   "field": "LAST_NAME",
+   "required": true,
+   "requiredBeforeDeparture": false
+  },
+  {
+   "field": "EMAIL",
+   "required": true,
+   "requiredBeforeDeparture": false
+  },
+  {
+   "field": "PHONE_NUMBER",
+   "required": false,
+   "requiredBeforeDeparture": false
+  }
+ ],
+ "requiredCustomerFields": [
+  "firstName",
+  "lastName",
+  "email",
+  "phoneNumber"
+ ],
+ "keywords": [],
+ "flags": [],
+ "slug": null,
+ "baseLanguage": "ja_JP",
+ "languages": [
+  "JA_JP"
+ ],
+ "paymentCurrencies": [],
+ "customFields": [],
+ "tagGroups": [],
+ "categories": [],
+ "keyPhoto": {
+  "id": 11844519,
+  "originalUrl": "https://bokun.s3.amazonaws.com/4277c6b0-2337-43f9-8c40-1ed5578910fd.jpeg",
+  "description": null,
+  "alternateText": null,
+  "height": "2728",
+  "width": "4081",
+  "fileName": "/4277c6b0-2337-43f9-8c40-1ed5578910fd.jpeg",
+  "flags": [],
+  "derived": [
+   {
+    "name": "thumbnail",
+    "url": "https://imgcdn.bokun.tools/4277c6b0-2337-43f9-8c40-1ed5578910fd.jpeg?w=80&h=80&mode=crop",
+    "cleanUrl": "https://imgcdn.bokun.tools/4277c6b0-2337-43f9-8c40-1ed5578910fd.jpeg?w=80&h=80&mode=crop"
+   },
+   {
+    "name": "preview",
+    "url": "https://imgcdn.bokun.tools/4277c6b0-2337-43f9-8c40-1ed5578910fd.jpeg?w=300&h=300",
+    "cleanUrl": "https://imgcdn.bokun.tools/4277c6b0-2337-43f9-8c40-1ed5578910fd.jpeg?w=300&h=300"
+   },
+   {
+    "name": "large",
+    "url": "https://imgcdn.bokun.tools/4277c6b0-2337-43f9-8c40-1ed5578910fd.jpeg?w=660&h=660",
+    "cleanUrl": "https://imgcdn.bokun.tools/4277c6b0-2337-43f9-8c40-1ed5578910fd.jpeg?w=660&h=660"
+   }
+  ]
+ },
+ "photos": [
+  {
+   "id": 11844519,
+   "originalUrl": "https://bokun.s3.amazonaws.com/4277c6b0-2337-43f9-8c40-1ed5578910fd.jpeg",
+   "description": null,
+   "alternateText": null,
+   "height": "2728",
+   "width": "4081",
+   "fileName": "/4277c6b0-2337-43f9-8c40-1ed5578910fd.jpeg",
+   "flags": [],
+   "derived": [
+    {
+     "name": "thumbnail",
+     "url": "https://imgcdn.bokun.tools/4277c6b0-2337-43f9-8c40-1ed5578910fd.jpeg?w=80&h=80&mode=crop",
+     "cleanUrl": "https://imgcdn.bokun.tools/4277c6b0-2337-43f9-8c40-1ed5578910fd.jpeg?w=80&h=80&mode=crop"
+    },
+    {
+     "name": "preview",
+     "url": "https://imgcdn.bokun.tools/4277c6b0-2337-43f9-8c40-1ed5578910fd.jpeg?w=300&h=300",
+     "cleanUrl": "https://imgcdn.bokun.tools/4277c6b0-2337-43f9-8c40-1ed5578910fd.jpeg?w=300&h=300"
+    },
+    {
+     "name": "large",
+     "url": "https://imgcdn.bokun.tools/4277c6b0-2337-43f9-8c40-1ed5578910fd.jpeg?w=660&h=660",
+     "cleanUrl": "https://imgcdn.bokun.tools/4277c6b0-2337-43f9-8c40-1ed5578910fd.jpeg?w=660&h=660"
+    }
+   ]
+  },
+  {
+   "id": 11844520,
+   "originalUrl": "https://bokun.s3.amazonaws.com/81b5099e-10d7-4529-9f80-66feb13b2915.jpeg",
+   "description": null,
+   "alternateText": null,
+   "height": "2856",
+   "width": "4272",
+   "fileName": "/81b5099e-10d7-4529-9f80-66feb13b2915.jpeg",
+   "flags": [],
+   "derived": [
+    {
+     "name": "thumbnail",
+     "url": "https://imgcdn.bokun.tools/81b5099e-10d7-4529-9f80-66feb13b2915.jpeg?w=80&h=80&mode=crop",
+     "cleanUrl": "https://imgcdn.bokun.tools/81b5099e-10d7-4529-9f80-66feb13b2915.jpeg?w=80&h=80&mode=crop"
+    },
+    {
+     "name": "preview",
+     "url": "https://imgcdn.bokun.tools/81b5099e-10d7-4529-9f80-66feb13b2915.jpeg?w=300&h=300",
+     "cleanUrl": "https://imgcdn.bokun.tools/81b5099e-10d7-4529-9f80-66feb13b2915.jpeg?w=300&h=300"
+    },
+    {
+     "name": "large",
+     "url": "https://imgcdn.bokun.tools/81b5099e-10d7-4529-9f80-66feb13b2915.jpeg?w=660&h=660",
+     "cleanUrl": "https://imgcdn.bokun.tools/81b5099e-10d7-4529-9f80-66feb13b2915.jpeg?w=660&h=660"
+    }
+   ]
+  },
+  {
+   "id": 11844521,
+   "originalUrl": "https://bokun.s3.amazonaws.com/4e806600-40c6-4359-bf0b-12302c87b7cd.jpeg",
+   "description": null,
+   "alternateText": null,
+   "height": "2796",
+   "width": "4183",
+   "fileName": "/4e806600-40c6-4359-bf0b-12302c87b7cd.jpeg",
+   "flags": [],
+   "derived": [
+    {
+     "name": "thumbnail",
+     "url": "https://imgcdn.bokun.tools/4e806600-40c6-4359-bf0b-12302c87b7cd.jpeg?w=80&h=80&mode=crop",
+     "cleanUrl": "https://imgcdn.bokun.tools/4e806600-40c6-4359-bf0b-12302c87b7cd.jpeg?w=80&h=80&mode=crop"
+    },
+    {
+     "name": "preview",
+     "url": "https://imgcdn.bokun.tools/4e806600-40c6-4359-bf0b-12302c87b7cd.jpeg?w=300&h=300",
+     "cleanUrl": "https://imgcdn.bokun.tools/4e806600-40c6-4359-bf0b-12302c87b7cd.jpeg?w=300&h=300"
+    },
+    {
+     "name": "large",
+     "url": "https://imgcdn.bokun.tools/4e806600-40c6-4359-bf0b-12302c87b7cd.jpeg?w=660&h=660",
+     "cleanUrl": "https://imgcdn.bokun.tools/4e806600-40c6-4359-bf0b-12302c87b7cd.jpeg?w=660&h=660"
+    }
+   ]
+  },
+  {
+   "id": 11844524,
+   "originalUrl": "https://bokun.s3.amazonaws.com/39eb00df-5ae3-44e5-8f23-f560b048cea0.jpeg",
+   "description": null,
+   "alternateText": null,
+   "height": "2856",
+   "width": "4272",
+   "fileName": "/39eb00df-5ae3-44e5-8f23-f560b048cea0.jpeg",
+   "flags": [],
+   "derived": [
+    {
+     "name": "thumbnail",
+     "url": "https://imgcdn.bokun.tools/39eb00df-5ae3-44e5-8f23-f560b048cea0.jpeg?w=80&h=80&mode=crop",
+     "cleanUrl": "https://imgcdn.bokun.tools/39eb00df-5ae3-44e5-8f23-f560b048cea0.jpeg?w=80&h=80&mode=crop"
+    },
+    {
+     "name": "preview",
+     "url": "https://imgcdn.bokun.tools/39eb00df-5ae3-44e5-8f23-f560b048cea0.jpeg?w=300&h=300",
+     "cleanUrl": "https://imgcdn.bokun.tools/39eb00df-5ae3-44e5-8f23-f560b048cea0.jpeg?w=300&h=300"
+    },
+    {
+     "name": "large",
+     "url": "https://imgcdn.bokun.tools/39eb00df-5ae3-44e5-8f23-f560b048cea0.jpeg?w=660&h=660",
+     "cleanUrl": "https://imgcdn.bokun.tools/39eb00df-5ae3-44e5-8f23-f560b048cea0.jpeg?w=660&h=660"
+    }
+   ]
+  },
+  {
+   "id": 11844525,
+   "originalUrl": "https://bokun.s3.amazonaws.com/2d2ca067-e89d-4118-a857-083386ea60aa.jpeg",
+   "description": null,
+   "alternateText": null,
+   "height": "5712",
+   "width": "4284",
+   "fileName": "/2d2ca067-e89d-4118-a857-083386ea60aa.jpeg",
+   "flags": [],
+   "derived": [
+    {
+     "name": "thumbnail",
+     "url": "https://imgcdn.bokun.tools/2d2ca067-e89d-4118-a857-083386ea60aa.jpeg?w=80&h=80&mode=crop",
+     "cleanUrl": "https://imgcdn.bokun.tools/2d2ca067-e89d-4118-a857-083386ea60aa.jpeg?w=80&h=80&mode=crop"
+    },
+    {
+     "name": "preview",
+     "url": "https://imgcdn.bokun.tools/2d2ca067-e89d-4118-a857-083386ea60aa.jpeg?w=300&h=300",
+     "cleanUrl": "https://imgcdn.bokun.tools/2d2ca067-e89d-4118-a857-083386ea60aa.jpeg?w=300&h=300"
+    },
+    {
+     "name": "large",
+     "url": "https://imgcdn.bokun.tools/2d2ca067-e89d-4118-a857-083386ea60aa.jpeg?w=660&h=660",
+     "cleanUrl": "https://imgcdn.bokun.tools/2d2ca067-e89d-4118-a857-083386ea60aa.jpeg?w=660&h=660"
+    }
+   ]
+  }
+ ],
+ "videos": [],
+ "vendor": {
+  "id": 145344,
+  "title": "ZENRISE",
+  "currencyCode": "JPY",
+  "showInvoiceIdOnTicket": false,
+  "showAgentDetailsOnTicket": false,
+  "showPaymentsOnInvoice": false,
+  "companyEmailIsDefault": false
+ },
+ "boxedVendor": null,
+ "storedExternally": false,
+ "pluginId": null,
+ "reviewRating": 0.0,
+ "reviewCount": 0,
+ "activityType": "DAY_TOUR_OR_ACTIVITY",
+ "bookingType": "DATE",
+ "scheduleType": "RECURRING",
+ "cutoffType": "RELATIVE_TO_ONE_SET_TIME",
+ "cutoffReferenceHour": 0,
+ "cutoffReferenceMinute": 0,
+ "earlyBookingLimitType": "UNLIMITED",
+ "earlyBookingLimitSpecificDateTime": null,
+ "earlyBookingLimitDaysBefore": null,
+ "earlyBookingLimitMonthsBefore": null,
+ "earlyBookingLimitTime": null,
+ "capacityType": "LIMITED",
+ "passExpiryType": null,
+ "fixedPassExpiryDate": null,
+ "meetingType": "MEET_ON_LOCATION_OR_PICK_UP",
+ "privateActivity": true,
+ "passCapacity": 10,
+ "passValidForDays": 0,
+ "passesAvailable": 0,
+ "affiliateHubProduct": false,
+ "dressCode": false,
+ "passportRequired": false,
+ "supportedAccessibilityTypes": [],
+ "startPoints": [
+  {
+   "id": 746560,
+   "type": null,
+   "title": "Kita Kamakura Station",
+   "code": null,
+   "address": {
+    "id": 18897855,
+    "created": [
+     2026,
+     8,
+     23,
+     2,
+     15,
+     50
+    ],
+    "addressLine1": "Japan, Kanagawa, Kamakura, Yamanouchi, 北鎌倉駅",
+    "addressLine2": null,
+    "addressLine3": null,
+    "city": "Kamakura",
+    "state": "Kanagawa",
+    "postalCode": "247-0062",
+    "countryCode": "JP",
+    "mapZoomLevel": 13,
+    "geoPoint": {
+     "latitude": 35.3372266,
+     "longitude": 139.5451937
+    },
+    "unLocode": {
+     "country": "",
+     "city": ""
+    },
+    "origin": "GOOGLE_PLACES",
+    "originId": "ChIJ2_2O8J5FGGARgqne1YiHu2o",
+    "googlePlaceId": null
+   },
+   "pickupTicketDescription": null,
+   "dropoffTicketDescription": null,
+   "labels": []
+  }
+ ],
+ "bookingQuestions": [
+  {
+   "id": 1637944,
+   "personalData": false,
+   "questionCode": "",
+   "label": "Do you or anyone in your group have any food allergies or dietary restrictions?",
+   "help": "",
+   "placeholder": "",
+   "required": false,
+   "defaultValue": "",
+   "dataType": "SHORT_TEXT",
+   "selectFromOptions": false,
+   "selectMultiple": false,
+   "options": [],
+   "flags": [],
+   "context": "BOOKING",
+   "pricingCategoryTriggerSelection": "ANY",
+   "rateTriggerSelection": "ANY",
+   "extraTriggerSelection": "ANY",
+   "requiredBeforeDeparture": false
+  }
+ ],
+ "passengerFields": [],
+ "inclusions": [],
+ "included": null,
+ "exclusions": [],
+ "excluded": null,
+ "requirements": null,
+ "knowBeforeYouGoItems": [],
+ "attention": null,
+ "locationCode": null,
+ "googlePlace": null,
+ "tripadvisorReview": null,
+ "resourceSlots": null,
+ "bookingCutoffMinutes": 0,
+ "bookingCutoffHours": 0,
+ "bookingCutoffDays": 1,
+ "bookingCutoffWeeks": 0,
+ "requestDeadlineMinutes": 0,
+ "requestDeadlineHours": 0,
+ "requestDeadlineDays": 2,
+ "requestDeadlineWeeks": 0,
+ "boxedActivityId": 0,
+ "comboActivity": false,
+ "comboParts": null,
+ "returnProduct": null,
+ "offers": null,
+ "ticketPerComboComponent": false,
+ "ticketComboComponents": null,
+ "pickupActivityId": null,
+ "allowCustomizedBookings": true,
+ "reservationTimeout": null,
+ "vendorReservationTimeout": null,
+ "dayBasedAvailability": true,
+ "selectFromDayOptions": false,
+ "dayOptions": [],
+ "activityCategories": [
+  "WALKING_TOUR",
+  "CULTURAL_AND_THEME_TOURS",
+  "DAY_TRIPS_AND_EXCURSIONS",
+  "HOLIDAY_AND_SEASONAL_TOURS",
+  "LUXURY_AND_SPECIAL_OCCASIONS",
+  "SIGHTSEEING",
+  "SIGHTSEEING_ATTRACTION"
+ ],
+ "activityAttributes": [
+  "TAILOR_MADE",
+  "COUPLES",
+  "GROUP_FRIENDLY",
+  "SENIOR",
+  "PRIVATE_ACTIVITY",
+  "FAMILY_FRIENDLY",
+  "YOUTH",
+  "LUXURY"
+ ],
+ "guidanceTypes": [],
+ "defaultRateId": 2536321,
+ "rates": [
+  {
+   "id": 2536321,
+   "title": "Group(1~6) Harf Day",
+   "description": "",
+   "index": 0,
+   "rateCode": "",
+   "pricedPerPerson": false,
+   "minPerBooking": 1,
+   "maxPerBooking": 6,
+   "cancellationPolicy": {
+    "id": 270402,
+    "title": "The Zen Journey　Cancellation Policy",
+    "penaltyRules": [
+     {
+      "id": 270471,
+      "cutoffHours": 0,
+      "charge": 100.0,
+      "chargeType": "percentage",
+      "percentage": 100.0
+     },
+     {
+      "id": 270474,
+      "cutoffHours": 24,
+      "charge": 50.0,
+      "chargeType": "percentage",
+      "percentage": 50.0
+     },
+     {
+      "id": 270475,
+      "cutoffHours": 48,
+      "charge": 40.0,
+      "chargeType": "percentage",
+      "percentage": 40.0
+     },
+     {
+      "id": 270476,
+      "cutoffHours": 168,
+      "charge": 30.0,
+      "chargeType": "percentage",
+      "percentage": 30.0
+     },
+     {
+      "id": 270477,
+      "cutoffHours": 240,
+      "charge": 20.0,
+      "chargeType": "percentage",
+      "percentage": 20.0
+     }
+    ],
+    "tax": null,
+    "defaultPolicy": false,
+    "policyType": "ADVANCED",
+    "simpleCutoffHours": null,
+    "policyTypeEnum": "ADVANCED"
+   },
+   "fixedPassExpiryDate": null,
+   "passValidForDays": 0,
+   "pickupSelectionType": "UNAVAILABLE",
+   "pickupPricingType": "INCLUDED_IN_PRICE",
+   "pickupPricedPerPerson": false,
+   "dropoffSelectionType": "UNAVAILABLE",
+   "dropoffPricingType": "INCLUDED_IN_PRICE",
+   "dropoffPricedPerPerson": false,
+   "extraConfigs": [
+    {
+     "id": null,
+     "activityExtraId": 300422,
+     "selectionType": "OPTIONAL",
+     "pricingType": "PRICED_SEPARATELY",
+     "pricedPerPerson": true
+    },
+    {
+     "id": null,
+     "activityExtraId": 300423,
+     "selectionType": "OPTIONAL",
+     "pricingType": "PRICED_SEPARATELY",
+     "pricedPerPerson": true
+    }
+   ],
+   "startTimeIds": [
+    5688266
+   ],
+   "allStartTimes": false,
+   "tieredPricingEnabled": false,
+   "tiers": [],
+   "pricingCategoryIds": [
+    1238056
+   ],
+   "allPricingCategories": false,
+   "details": [],
+   "textItems": []
+  },
+  {
+   "id": 2536324,
+   "title": "Group(1~6) Full Day",
+   "description": "",
+   "index": 1,
+   "rateCode": "",
+   "pricedPerPerson": false,
+   "minPerBooking": 1,
+   "maxPerBooking": 6,
+   "cancellationPolicy": {
+    "id": 270402,
+    "title": "The Zen Journey　Cancellation Policy",
+    "penaltyRules": [
+     {
+      "id": 270471,
+      "cutoffHours": 0,
+      "charge": 100.0,
+      "chargeType": "percentage",
+      "percentage": 100.0
+     },
+     {
+      "id": 270474,
+      "cutoffHours": 24,
+      "charge": 50.0,
+      "chargeType": "percentage",
+      "percentage": 50.0
+     },
+     {
+      "id": 270475,
+      "cutoffHours": 48,
+      "charge": 40.0,
+      "chargeType": "percentage",
+      "percentage": 40.0
+     },
+     {
+      "id": 270476,
+      "cutoffHours": 168,
+      "charge": 30.0,
+      "chargeType": "percentage",
+      "percentage": 30.0
+     },
+     {
+      "id": 270477,
+      "cutoffHours": 240,
+      "charge": 20.0,
+      "chargeType": "percentage",
+      "percentage": 20.0
+     }
+    ],
+    "tax": null,
+    "defaultPolicy": false,
+    "policyType": "ADVANCED",
+    "simpleCutoffHours": null,
+    "policyTypeEnum": "ADVANCED"
+   },
+   "fixedPassExpiryDate": null,
+   "passValidForDays": 0,
+   "pickupSelectionType": "UNAVAILABLE",
+   "pickupPricingType": "INCLUDED_IN_PRICE",
+   "pickupPricedPerPerson": false,
+   "dropoffSelectionType": "UNAVAILABLE",
+   "dropoffPricingType": "INCLUDED_IN_PRICE",
+   "dropoffPricedPerPerson": false,
+   "extraConfigs": [
+    {
+     "id": null,
+     "activityExtraId": 300423,
+     "selectionType": "OPTIONAL",
+     "pricingType": "PRICED_SEPARATELY",
+     "pricedPerPerson": true
+    },
+    {
+     "id": null,
+     "activityExtraId": 300424,
+     "selectionType": "OPTIONAL",
+     "pricingType": "PRICED_SEPARATELY",
+     "pricedPerPerson": true
+    }
+   ],
+   "startTimeIds": [
+    5688266
+   ],
+   "allStartTimes": false,
+   "tieredPricingEnabled": false,
+   "tiers": [],
+   "pricingCategoryIds": [
+    1238056
+   ],
+   "allPricingCategories": false,
+   "details": [],
+   "textItems": []
+  }
+ ],
+ "ticketPerPerson": false,
+ "durationType": "HOURS",
+ "duration": 4,
+ "durationMinutes": 0,
+ "durationHours": 4,
+ "durationDays": 0,
+ "durationWeeks": 0,
+ "durationText": "4 hours",
+ "minAge": 0,
+ "originalDefaultPrice": null,
+ "nextDefaultPrice": 40000.0,
+ "nextDefaultPriceMoney": {
+  "amount": 40000.0,
+  "currency": "JPY"
+ },
+ "pickupService": true,
+ "pickupAllotment": false,
+ "pickupAllotmentType": null,
+ "useComponentPickupAllotments": false,
+ "pickupFlags": [],
+ "customPickupAllowed": false,
+ "pickupMinutesBefore": 0,
+ "pickupTimeWindowInMinutes": 0,
+ "pickupTimeLocationBased": false,
+ "pickupTimeByLocations": [],
+ "noPickupMsg": null,
+ "ticketMsg": null,
+ "showGlobalPickupMsg": false,
+ "showNoPickupMsg": false,
+ "pickupPlaceGroups": [],
+ "dropoffService": true,
+ "dropoffFlags": [],
+ "customDropoffAllowed": false,
+ "useSameAsPickUpPlaces": false,
+ "dropoffPlaceGroups": [],
+ "difficultyLevel": "EASY",
+ "pricingCategories": [
+  {
+   "id": 1238056,
+   "title": "Group（1~6）",
+   "ticketCategory": "ADULT",
+   "occupancy": 6,
+   "groupSize": 0,
+   "ageQualified": false,
+   "minAge": 0,
+   "maxAge": 0,
+   "dependent": true,
+   "masterCategoryId": 1237653,
+   "maxPerMaster": 6,
+   "sumDependentCategories": false,
+   "maxDependentSum": 0,
+   "internalUseOnly": false,
+   "flags": [],
+   "defaultCategory": true,
+   "fullTitle": "Group（1~6）"
+  }
+ ],
+ "activityPriceCatalogs": [
+  {
+   "catalog": {
+    "id": 167711,
+    "title": "Default",
+    "defaultCurrency": "JPY",
+    "isVendorDefaultCatalog": true,
+    "currencies": [
+     "JPY"
+    ]
+   },
+   "catalogId": 167711,
+   "currencies": [
+    {
+     "currency": "JPY",
+     "currencyId": 10,
+     "default": true
+    }
+   ]
+  }
+ ],
+ "agendaItems": [
+  {
+   "id": 3785117,
+   "index": 0,
+   "title": "The Zen Journey ",
+   "excerpt": "",
+   "body": "<p style=\"font-size: 14px; line-height: 1.6; color: #57646f; margin-top: 0.5em; margin-bottom: 0.5em\">&nbsp;Meditation, gardens and matcha at Engaku-ji, Jochi-ji and Jomyo-ji. Guiding.</p>",
+   "day": 1,
+   "flags": [],
+   "location": {
+    "address": null,
+    "city": null,
+    "countryCode": null,
+    "postCode": null,
+    "latitude": null,
+    "longitude": null,
+    "zoomLevel": 6,
+    "origin": null,
+    "originId": null,
+    "wholeAddress": ""
+   },
+   "address": null,
+   "keyPhoto": null,
+   "photos": []
+  },
+  {
+   "id": 3785122,
+   "index": 0,
+   "title": "\"ZEN\" Lunch",
+   "excerpt": "",
+   "body": "<p style=\"font-size: 14px; line-height: 1.6; color: #57646f; margin-top: 0.5em; margin-bottom: 0.5em\">Shojin templ e cuisine , or a lunch of choice (covered by the arrangement fee)</p>",
+   "day": 1,
+   "flags": [],
+   "location": {
+    "address": null,
+    "city": null,
+    "countryCode": null,
+    "postCode": null,
+    "latitude": null,
+    "longitude": null,
+    "zoomLevel": 6,
+    "origin": null,
+    "originId": null,
+    "wholeAddress": ""
+   },
+   "address": null,
+   "keyPhoto": null,
+   "photos": []
+  },
+  {
+   "id": 3785124,
+   "index": 0,
+   "title": "Relaxing moments",
+   "excerpt": "",
+   "body": "<p style=\"font-size: 14px; line-height: 1.6; color: #57646f; margin-top: 0.5em; margin-bottom: 0.5em\">Matcha overlooking the dry landscape garden, unhurried</p>",
+   "day": 1,
+   "flags": [],
+   "location": {
+    "address": null,
+    "city": null,
+    "countryCode": null,
+    "postCode": null,
+    "latitude": null,
+    "longitude": null,
+    "zoomLevel": 6,
+    "origin": null,
+    "originId": null,
+    "wholeAddress": ""
+   },
+   "address": null,
+   "keyPhoto": null,
+   "photos": []
+  },
+  {
+   "id": 3785125,
+   "index": 0,
+   "title": "Tour ends",
+   "excerpt": "",
+   "body": "<p style=\"font-size: 14px; line-height: 1.6; color: #57646f; margin-top: 0.5em; margin-bottom: 0.5em\">Complimentary pick-up / drop-off within Kamakura and Fujisawa.</p>",
+   "day": 1,
+   "flags": [],
+   "location": {
+    "address": null,
+    "city": null,
+    "countryCode": null,
+    "postCode": null,
+    "latitude": null,
+    "longitude": null,
+    "zoomLevel": 6,
+    "origin": null,
+    "originId": null,
+    "wholeAddress": ""
+   },
+   "address": null,
+   "keyPhoto": null,
+   "photos": []
+  }
+ ],
+ "startTimes": [
+  {
+   "id": 5688266,
+   "label": null,
+   "externalLabel": null,
+   "hour": 0,
+   "minute": 0,
+   "overrideTimeWhenPickup": false,
+   "pickupHour": 0,
+   "pickupMinute": 0,
+   "durationType": "H",
+   "voucherPickupMsg": null,
+   "externalId": null,
+   "duration": 4,
+   "durationMinutes": 0,
+   "durationHours": 4,
+   "durationDays": 0,
+   "durationWeeks": 0,
+   "flags": []
+  }
+ ],
+ "bookableExtras": [
+  {
+   "id": 300422,
+   "externalId": "",
+   "title": "Arrangement fee · per guest #1",
+   "information": "",
+   "included": false,
+   "free": false,
+   "productGroupId": 0,
+   "pricingType": "PER_PERSON",
+   "pricingTypeLabel": "per person",
+   "price": 10000.0,
+   "increasesCapacity": false,
+   "maxPerBooking": 0,
+   "limitByPax": true,
+   "flags": [],
+   "questions": []
+  },
+  {
+   "id": 300423,
+   "externalId": "",
+   "title": "Arrangement fee · per guest #2",
+   "information": "",
+   "included": false,
+   "free": false,
+   "productGroupId": 0,
+   "pricingType": "PER_PERSON",
+   "pricingTypeLabel": "per person",
+   "price": 20000.0,
+   "increasesCapacity": false,
+   "maxPerBooking": 0,
+   "limitByPax": true,
+   "flags": [],
+   "questions": []
+  },
+  {
+   "id": 300424,
+   "externalId": "",
+   "title": "Arrangement fee · per guest #3",
+   "information": "",
+   "included": false,
+   "free": false,
+   "productGroupId": 0,
+   "pricingType": "PER_PERSON",
+   "pricingTypeLabel": "per person",
+   "increasesCapacity": false,
+   "maxPerBooking": 0,
+   "limitByPax": true,
+   "flags": [],
+   "questions": []
+  }
+ ],
+ "route": null,
+ "widgetSettings": {
+  "selectionType": "PARTICIPANTS",
+  "startTimeDropdown": false,
+  "sellOutWarningThreshold": 0,
+  "allowSkippingOptionalQuestions": true
+ },
+ "hasOpeningHours": false,
+ "defaultOpeningHours": null,
+ "seasonalOpeningHours": [],
+ "displaySettings": {
+  "showPickupPlaces": true,
+  "showRouteMap": false,
+  "selectRateBasedOnStartTime": false,
+  "customFields": []
+ },
+ "hasBoxes": false,
+ "bookingLabels": [],
+ "marketplaceVisibilityType": "PRIVATE",
+ "createMethod": null,
+ "requestDeadline": 172800000,
+ "bookingCutoff": 1440,
+ "actualId": 1273194,
+ "nextDefaultPriceAsText": "JPY 40000",
+ "actualVendor": {
+  "id": 145344,
+  "title": "ZENRISE",
+  "currencyCode": "JPY",
+  "showInvoiceIdOnTicket": false,
+  "showAgentDetailsOnTicket": false,
+  "showPaymentsOnInvoice": false,
+  "companyEmailIsDefault": false
+ }
+}

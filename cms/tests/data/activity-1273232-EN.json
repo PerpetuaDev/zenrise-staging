@@ -1,0 +1,764 @@
+{
+ "id": 1273232,
+ "externalId": null,
+ "productGroupId": 0,
+ "productCategory": "ACTIVITIES",
+ "box": false,
+ "inventoryLocal": true,
+ "inventorySupportsPricing": false,
+ "inventorySupportsAvailability": true,
+ "creationDate": "Thu Aug 20 06:51:47 UTC 2026",
+ "lastModified": "Mon Aug 24 06:38:16 UTC 2026",
+ "lastPublished": "2026-08-24T06:38:16.368Z",
+ "published": false,
+ "title": "Ikebana Experience , “Ichigo Ichie”-KAMAKURA",
+ "description": "<p style=\"font-size:14px;line-height:1.6;color:#57646f;margin-top:0.5em;margin-bottom:0.5em\"><strong>Experience the Art of Ikebana in Kamakura with Master Koen Yokoi</strong></p><p style=\"font-size:14px;line-height:1.6;color:#57646f;margin-top:0.5em;margin-bottom:0.5em\">Immerse yourself in &#34;Ichika Ichiei&#34; (One Flower, One Encounter)—a unique, 90-minute private floral workshop designed for exclusive small groups of 1 to 6 guests in the historic city of Kamakura.</p><p style=\"font-size:14px;line-height:1.6;color:#57646f;margin-top:0.5em;margin-bottom:0.5em\">PDF</p><p style=\"font-size:14px;line-height:1.6;color:#57646f;margin-top:0.5em;margin-bottom:0.5em\">Guided by Master Koen Yokoi, a third-generation Sogetsu Ikebana master with an illustrious career decorating stage productions, international events, and film sets, this private session offers a rare and intimate glimpse into the world of Japanese flower arrangement.</p><p style=\"font-size:14px;line-height:1.6;color:#57646f;margin-top:0.5em;margin-bottom:0.5em\">PDF</p><p style=\"font-size:14px;line-height:1.6;color:#57646f;margin-top:0.5em;margin-bottom:0.5em\"><strong>Tour Highlights &amp; Itinerary (90 minutes):</strong></p><p style=\"font-size:14px;line-height:1.6;color:#57646f;margin-top:0.5em;margin-bottom:0.5em\">PDF</p><ol><li style=\"font-size:14px;line-height:1.6;color:#57646f;margin-top:0.5em;margin-bottom:0.5em\"><strong>History &amp; Philosophy (30 mins):</strong> Learn about the rich heritage of Ikebana and the philosophy of the Sogetsu school, passed down through Master Yokoi’s distinguished family.PDF</li><li style=\"font-size:14px;line-height:1.6;color:#57646f;margin-top:0.5em;margin-bottom:0.5em\"><strong>Hands-on Ikebana Workshop (30 mins):</strong> Watch an exclusive live demonstration by Master Yokoi, followed by your own hands-on session using fresh seasonal flowers and materials. Beginners are welcome with step-by-step personal guidance.PDF他 1 件</li><li style=\"font-size:14px;line-height:1.6;color:#57646f;margin-top:0.5em;margin-bottom:0.5em\"><strong>Tea &amp; Conversation (30 mins):</strong> Relax and reflect over seasonal Japanese sweets and fresh tea while admiring your finished floral creation.PDF</li></ol><p style=\"font-size:14px;line-height:1.6;color:#57646f;margin-top:0.5em;margin-bottom:0.5em\"><strong>What is Included:</strong></p><p style=\"font-size:14px;line-height:1.6;color:#57646f;margin-top:0.5em;margin-bottom:0.5em\">PDF</p><ul><li style=\"font-size:14px;line-height:1.6;color:#57646f;margin-top:0.5em;margin-bottom:0.5em\">Private Ikebana instruction and demonstration by Master Koen YokoiPDF</li><li style=\"font-size:14px;line-height:1.6;color:#57646f;margin-top:0.5em;margin-bottom:0.5em\">English &amp; Japanese bilingual guide supportPDF</li><li style=\"font-size:14px;line-height:1.6;color:#57646f;margin-top:0.5em;margin-bottom:0.5em\">All flower materials, tools, and equipmentPDF</li><li style=\"font-size:14px;line-height:1.6;color:#57646f;margin-top:0.5em;margin-bottom:0.5em\">Matcha/Japanese tea and seasonal sweetsPDF</li><li style=\"font-size:14px;line-height:1.6;color:#57646f;margin-top:0.5em;margin-bottom:0.5em\">Free round-trip transfer within Kamakura &amp; Fujisawa citiesPDF</li><li style=\"font-size:14px;line-height:1.6;color:#57646f;margin-top:0.5em;margin-bottom:0.5em\">Tour insurancePDF</li></ul>",
+ "excerpt": "An exclusive, 90-minute private Ikebana experience in Kamakura guided by master artist Koen Yokoi, featuring hands-on flower arranging, tea, and seasonal sweets.",
+ "cancellationPolicy": {
+  "id": 270404,
+  "title": "Ikebana Experience, “Ichigo Ichie”",
+  "penaltyRules": [
+   {
+    "id": 270478,
+    "cutoffHours": 144,
+    "charge": 100.0,
+    "chargeType": "percentage",
+    "percentage": 100.0
+   },
+   {
+    "id": 270479,
+    "cutoffHours": 312,
+    "charge": 100.0,
+    "chargeType": "percentage",
+    "percentage": 100.0
+   }
+  ],
+  "tax": null,
+  "defaultPolicy": false,
+  "policyType": "ADVANCED",
+  "simpleCutoffHours": null,
+  "policyTypeEnum": "ADVANCED"
+ },
+ "overrideBarcodeFormat": false,
+ "barcodeType": "QR_CODE",
+ "timeZone": "Asia/Tokyo",
+ "mainContactFields": [],
+ "requiredCustomerFields": [],
+ "keywords": [],
+ "flags": [],
+ "slug": null,
+ "baseLanguage": "ja_JP",
+ "languages": [
+  "JA_JP"
+ ],
+ "paymentCurrencies": [],
+ "customFields": [],
+ "tagGroups": [],
+ "categories": [],
+ "keyPhoto": {
+  "id": 11844870,
+  "originalUrl": "https://bokun.s3.amazonaws.com/125107cd-37b0-44d5-8ec7-1071be67f871.jpeg",
+  "description": null,
+  "alternateText": null,
+  "height": "1051",
+  "width": "1558",
+  "fileName": "/125107cd-37b0-44d5-8ec7-1071be67f871.jpeg",
+  "flags": [],
+  "derived": [
+   {
+    "name": "thumbnail",
+    "url": "https://imgcdn.bokun.tools/125107cd-37b0-44d5-8ec7-1071be67f871.jpeg?w=80&h=80&mode=crop",
+    "cleanUrl": "https://imgcdn.bokun.tools/125107cd-37b0-44d5-8ec7-1071be67f871.jpeg?w=80&h=80&mode=crop"
+   },
+   {
+    "name": "preview",
+    "url": "https://imgcdn.bokun.tools/125107cd-37b0-44d5-8ec7-1071be67f871.jpeg?w=300&h=300",
+    "cleanUrl": "https://imgcdn.bokun.tools/125107cd-37b0-44d5-8ec7-1071be67f871.jpeg?w=300&h=300"
+   },
+   {
+    "name": "large",
+    "url": "https://imgcdn.bokun.tools/125107cd-37b0-44d5-8ec7-1071be67f871.jpeg?w=660&h=660",
+    "cleanUrl": "https://imgcdn.bokun.tools/125107cd-37b0-44d5-8ec7-1071be67f871.jpeg?w=660&h=660"
+   }
+  ]
+ },
+ "photos": [
+  {
+   "id": 11844870,
+   "originalUrl": "https://bokun.s3.amazonaws.com/125107cd-37b0-44d5-8ec7-1071be67f871.jpeg",
+   "description": null,
+   "alternateText": null,
+   "height": "1051",
+   "width": "1558",
+   "fileName": "/125107cd-37b0-44d5-8ec7-1071be67f871.jpeg",
+   "flags": [],
+   "derived": [
+    {
+     "name": "thumbnail",
+     "url": "https://imgcdn.bokun.tools/125107cd-37b0-44d5-8ec7-1071be67f871.jpeg?w=80&h=80&mode=crop",
+     "cleanUrl": "https://imgcdn.bokun.tools/125107cd-37b0-44d5-8ec7-1071be67f871.jpeg?w=80&h=80&mode=crop"
+    },
+    {
+     "name": "preview",
+     "url": "https://imgcdn.bokun.tools/125107cd-37b0-44d5-8ec7-1071be67f871.jpeg?w=300&h=300",
+     "cleanUrl": "https://imgcdn.bokun.tools/125107cd-37b0-44d5-8ec7-1071be67f871.jpeg?w=300&h=300"
+    },
+    {
+     "name": "large",
+     "url": "https://imgcdn.bokun.tools/125107cd-37b0-44d5-8ec7-1071be67f871.jpeg?w=660&h=660",
+     "cleanUrl": "https://imgcdn.bokun.tools/125107cd-37b0-44d5-8ec7-1071be67f871.jpeg?w=660&h=660"
+    }
+   ]
+  },
+  {
+   "id": 11844871,
+   "originalUrl": "https://bokun.s3.amazonaws.com/bbb073ec-0649-44cd-bf8a-c7270c036b03.jpeg",
+   "description": null,
+   "alternateText": null,
+   "height": "1477",
+   "width": "1108",
+   "fileName": "/bbb073ec-0649-44cd-bf8a-c7270c036b03.jpeg",
+   "flags": [],
+   "derived": [
+    {
+     "name": "thumbnail",
+     "url": "https://imgcdn.bokun.tools/bbb073ec-0649-44cd-bf8a-c7270c036b03.jpeg?w=80&h=80&mode=crop",
+     "cleanUrl": "https://imgcdn.bokun.tools/bbb073ec-0649-44cd-bf8a-c7270c036b03.jpeg?w=80&h=80&mode=crop"
+    },
+    {
+     "name": "preview",
+     "url": "https://imgcdn.bokun.tools/bbb073ec-0649-44cd-bf8a-c7270c036b03.jpeg?w=300&h=300",
+     "cleanUrl": "https://imgcdn.bokun.tools/bbb073ec-0649-44cd-bf8a-c7270c036b03.jpeg?w=300&h=300"
+    },
+    {
+     "name": "large",
+     "url": "https://imgcdn.bokun.tools/bbb073ec-0649-44cd-bf8a-c7270c036b03.jpeg?w=660&h=660",
+     "cleanUrl": "https://imgcdn.bokun.tools/bbb073ec-0649-44cd-bf8a-c7270c036b03.jpeg?w=660&h=660"
+    }
+   ]
+  },
+  {
+   "id": 11844872,
+   "originalUrl": "https://bokun.s3.amazonaws.com/5497bcc0-7ea7-402b-bdff-6316a685f690.jpeg",
+   "description": null,
+   "alternateText": null,
+   "height": "1108",
+   "width": "1477",
+   "fileName": "/5497bcc0-7ea7-402b-bdff-6316a685f690.jpeg",
+   "flags": [],
+   "derived": [
+    {
+     "name": "thumbnail",
+     "url": "https://imgcdn.bokun.tools/5497bcc0-7ea7-402b-bdff-6316a685f690.jpeg?w=80&h=80&mode=crop",
+     "cleanUrl": "https://imgcdn.bokun.tools/5497bcc0-7ea7-402b-bdff-6316a685f690.jpeg?w=80&h=80&mode=crop"
+    },
+    {
+     "name": "preview",
+     "url": "https://imgcdn.bokun.tools/5497bcc0-7ea7-402b-bdff-6316a685f690.jpeg?w=300&h=300",
+     "cleanUrl": "https://imgcdn.bokun.tools/5497bcc0-7ea7-402b-bdff-6316a685f690.jpeg?w=300&h=300"
+    },
+    {
+     "name": "large",
+     "url": "https://imgcdn.bokun.tools/5497bcc0-7ea7-402b-bdff-6316a685f690.jpeg?w=660&h=660",
+     "cleanUrl": "https://imgcdn.bokun.tools/5497bcc0-7ea7-402b-bdff-6316a685f690.jpeg?w=660&h=660"
+    }
+   ]
+  },
+  {
+   "id": 11844873,
+   "originalUrl": "https://bokun.s3.amazonaws.com/79787c11-1ea6-4882-af8c-2280bd73022b.jpeg",
+   "description": null,
+   "alternateText": null,
+   "height": "1567",
+   "width": "1045",
+   "fileName": "/79787c11-1ea6-4882-af8c-2280bd73022b.jpeg",
+   "flags": [],
+   "derived": [
+    {
+     "name": "thumbnail",
+     "url": "https://imgcdn.bokun.tools/79787c11-1ea6-4882-af8c-2280bd73022b.jpeg?w=80&h=80&mode=crop",
+     "cleanUrl": "https://imgcdn.bokun.tools/79787c11-1ea6-4882-af8c-2280bd73022b.jpeg?w=80&h=80&mode=crop"
+    },
+    {
+     "name": "preview",
+     "url": "https://imgcdn.bokun.tools/79787c11-1ea6-4882-af8c-2280bd73022b.jpeg?w=300&h=300",
+     "cleanUrl": "https://imgcdn.bokun.tools/79787c11-1ea6-4882-af8c-2280bd73022b.jpeg?w=300&h=300"
+    },
+    {
+     "name": "large",
+     "url": "https://imgcdn.bokun.tools/79787c11-1ea6-4882-af8c-2280bd73022b.jpeg?w=660&h=660",
+     "cleanUrl": "https://imgcdn.bokun.tools/79787c11-1ea6-4882-af8c-2280bd73022b.jpeg?w=660&h=660"
+    }
+   ]
+  },
+  {
+   "id": 11844874,
+   "originalUrl": "https://bokun.s3.amazonaws.com/cb9cf486-1431-4059-ab48-29749c64b7e2.jpeg",
+   "description": null,
+   "alternateText": null,
+   "height": "960",
+   "width": "1706",
+   "fileName": "/cb9cf486-1431-4059-ab48-29749c64b7e2.jpeg",
+   "flags": [],
+   "derived": [
+    {
+     "name": "thumbnail",
+     "url": "https://imgcdn.bokun.tools/cb9cf486-1431-4059-ab48-29749c64b7e2.jpeg?w=80&h=80&mode=crop",
+     "cleanUrl": "https://imgcdn.bokun.tools/cb9cf486-1431-4059-ab48-29749c64b7e2.jpeg?w=80&h=80&mode=crop"
+    },
+    {
+     "name": "preview",
+     "url": "https://imgcdn.bokun.tools/cb9cf486-1431-4059-ab48-29749c64b7e2.jpeg?w=300&h=300",
+     "cleanUrl": "https://imgcdn.bokun.tools/cb9cf486-1431-4059-ab48-29749c64b7e2.jpeg?w=300&h=300"
+    },
+    {
+     "name": "large",
+     "url": "https://imgcdn.bokun.tools/cb9cf486-1431-4059-ab48-29749c64b7e2.jpeg?w=660&h=660",
+     "cleanUrl": "https://imgcdn.bokun.tools/cb9cf486-1431-4059-ab48-29749c64b7e2.jpeg?w=660&h=660"
+    }
+   ]
+  },
+  {
+   "id": 11844875,
+   "originalUrl": "https://bokun.s3.amazonaws.com/46f4912a-133a-4611-9ea5-dc1bb3e6ed6b.jpeg",
+   "description": null,
+   "alternateText": null,
+   "height": "1440",
+   "width": "1080",
+   "fileName": "/46f4912a-133a-4611-9ea5-dc1bb3e6ed6b.jpeg",
+   "flags": [],
+   "derived": [
+    {
+     "name": "thumbnail",
+     "url": "https://imgcdn.bokun.tools/46f4912a-133a-4611-9ea5-dc1bb3e6ed6b.jpeg?w=80&h=80&mode=crop",
+     "cleanUrl": "https://imgcdn.bokun.tools/46f4912a-133a-4611-9ea5-dc1bb3e6ed6b.jpeg?w=80&h=80&mode=crop"
+    },
+    {
+     "name": "preview",
+     "url": "https://imgcdn.bokun.tools/46f4912a-133a-4611-9ea5-dc1bb3e6ed6b.jpeg?w=300&h=300",
+     "cleanUrl": "https://imgcdn.bokun.tools/46f4912a-133a-4611-9ea5-dc1bb3e6ed6b.jpeg?w=300&h=300"
+    },
+    {
+     "name": "large",
+     "url": "https://imgcdn.bokun.tools/46f4912a-133a-4611-9ea5-dc1bb3e6ed6b.jpeg?w=660&h=660",
+     "cleanUrl": "https://imgcdn.bokun.tools/46f4912a-133a-4611-9ea5-dc1bb3e6ed6b.jpeg?w=660&h=660"
+    }
+   ]
+  },
+  {
+   "id": 11844876,
+   "originalUrl": "https://bokun.s3.amazonaws.com/053d154a-c1e3-47e2-b85b-1542b7a43bab.jpeg",
+   "description": null,
+   "alternateText": null,
+   "height": "1045",
+   "width": "1567",
+   "fileName": "/053d154a-c1e3-47e2-b85b-1542b7a43bab.jpeg",
+   "flags": [],
+   "derived": [
+    {
+     "name": "thumbnail",
+     "url": "https://imgcdn.bokun.tools/053d154a-c1e3-47e2-b85b-1542b7a43bab.jpeg?w=80&h=80&mode=crop",
+     "cleanUrl": "https://imgcdn.bokun.tools/053d154a-c1e3-47e2-b85b-1542b7a43bab.jpeg?w=80&h=80&mode=crop"
+    },
+    {
+     "name": "preview",
+     "url": "https://imgcdn.bokun.tools/053d154a-c1e3-47e2-b85b-1542b7a43bab.jpeg?w=300&h=300",
+     "cleanUrl": "https://imgcdn.bokun.tools/053d154a-c1e3-47e2-b85b-1542b7a43bab.jpeg?w=300&h=300"
+    },
+    {
+     "name": "large",
+     "url": "https://imgcdn.bokun.tools/053d154a-c1e3-47e2-b85b-1542b7a43bab.jpeg?w=660&h=660",
+     "cleanUrl": "https://imgcdn.bokun.tools/053d154a-c1e3-47e2-b85b-1542b7a43bab.jpeg?w=660&h=660"
+    }
+   ]
+  },
+  {
+   "id": 11844877,
+   "originalUrl": "https://bokun.s3.amazonaws.com/efdd3db6-3637-4f14-9bef-c3df98a3908c.jpeg",
+   "description": null,
+   "alternateText": null,
+   "height": "1440",
+   "width": "1080",
+   "fileName": "/efdd3db6-3637-4f14-9bef-c3df98a3908c.jpeg",
+   "flags": [],
+   "derived": [
+    {
+     "name": "thumbnail",
+     "url": "https://imgcdn.bokun.tools/efdd3db6-3637-4f14-9bef-c3df98a3908c.jpeg?w=80&h=80&mode=crop",
+     "cleanUrl": "https://imgcdn.bokun.tools/efdd3db6-3637-4f14-9bef-c3df98a3908c.jpeg?w=80&h=80&mode=crop"
+    },
+    {
+     "name": "preview",
+     "url": "https://imgcdn.bokun.tools/efdd3db6-3637-4f14-9bef-c3df98a3908c.jpeg?w=300&h=300",
+     "cleanUrl": "https://imgcdn.bokun.tools/efdd3db6-3637-4f14-9bef-c3df98a3908c.jpeg?w=300&h=300"
+    },
+    {
+     "name": "large",
+     "url": "https://imgcdn.bokun.tools/efdd3db6-3637-4f14-9bef-c3df98a3908c.jpeg?w=660&h=660",
+     "cleanUrl": "https://imgcdn.bokun.tools/efdd3db6-3637-4f14-9bef-c3df98a3908c.jpeg?w=660&h=660"
+    }
+   ]
+  }
+ ],
+ "videos": [],
+ "vendor": {
+  "id": 145344,
+  "title": "ZENRISE",
+  "currencyCode": "JPY",
+  "showInvoiceIdOnTicket": false,
+  "showAgentDetailsOnTicket": false,
+  "showPaymentsOnInvoice": false,
+  "companyEmailIsDefault": false
+ },
+ "boxedVendor": null,
+ "storedExternally": false,
+ "pluginId": null,
+ "reviewRating": 0.0,
+ "reviewCount": 0,
+ "activityType": "EVENT",
+ "bookingType": "DATE",
+ "scheduleType": "RECURRING",
+ "cutoffType": "RELATIVE_TO_ONE_SET_TIME",
+ "cutoffReferenceHour": 0,
+ "cutoffReferenceMinute": 0,
+ "earlyBookingLimitType": "UNLIMITED",
+ "earlyBookingLimitSpecificDateTime": null,
+ "earlyBookingLimitDaysBefore": null,
+ "earlyBookingLimitMonthsBefore": null,
+ "earlyBookingLimitTime": null,
+ "capacityType": "ON_REQUEST",
+ "passExpiryType": null,
+ "fixedPassExpiryDate": null,
+ "meetingType": "MEET_ON_LOCATION_OR_PICK_UP",
+ "privateActivity": true,
+ "passCapacity": 10,
+ "passValidForDays": 0,
+ "passesAvailable": 0,
+ "affiliateHubProduct": false,
+ "dressCode": false,
+ "passportRequired": false,
+ "supportedAccessibilityTypes": [],
+ "startPoints": [],
+ "bookingQuestions": [],
+ "passengerFields": [],
+ "inclusions": [],
+ "included": "<p style=\"font-size:14px;line-height:1.6;color:#57646f;margin-top:0.5em;margin-bottom:0.5em\"><strong>Tuition, venue, flowers and sweets with tea are included. <br /></strong></p>",
+ "exclusions": [],
+ "excluded": null,
+ "requirements": null,
+ "knowBeforeYouGoItems": [],
+ "attention": null,
+ "locationCode": null,
+ "googlePlace": null,
+ "tripadvisorReview": null,
+ "resourceSlots": null,
+ "bookingCutoffMinutes": 0,
+ "bookingCutoffHours": 0,
+ "bookingCutoffDays": 30,
+ "bookingCutoffWeeks": 0,
+ "requestDeadlineMinutes": 0,
+ "requestDeadlineHours": 0,
+ "requestDeadlineDays": 3,
+ "requestDeadlineWeeks": 0,
+ "boxedActivityId": 0,
+ "comboActivity": false,
+ "comboParts": null,
+ "returnProduct": null,
+ "offers": null,
+ "ticketPerComboComponent": false,
+ "ticketComboComponents": null,
+ "pickupActivityId": null,
+ "allowCustomizedBookings": false,
+ "reservationTimeout": null,
+ "vendorReservationTimeout": null,
+ "dayBasedAvailability": true,
+ "selectFromDayOptions": false,
+ "dayOptions": [],
+ "activityCategories": [
+  "ARTS_AND_CULTURE",
+  "CULTURAL_AND_THEME_TOURS",
+  "CLASSES_AND_WORKSHOPS",
+  "DAY_TRIPS_AND_EXCURSIONS",
+  "LUXURY_AND_SPECIAL_OCCASIONS"
+ ],
+ "activityAttributes": [
+  "TAILOR_MADE",
+  "COUPLES",
+  "GROUP_FRIENDLY",
+  "SENIOR",
+  "PRIVATE_ACTIVITY",
+  "FAMILY_FRIENDLY",
+  "YOUTH",
+  "LUXURY"
+ ],
+ "guidanceTypes": [
+  {
+   "id": null,
+   "created": [
+    2026,
+    8,
+    25,
+    7,
+    32,
+    20,
+    977525983
+   ],
+   "guidanceType": "GUIDED",
+   "languages": [
+    "en",
+    "ja"
+   ],
+   "displayLanguages": [
+    "English",
+    "Japanese"
+   ]
+  }
+ ],
+ "defaultRateId": 2536435,
+ "rates": [
+  {
+   "id": 2536435,
+   "title": "Standard Private Group ",
+   "description": "",
+   "index": 0,
+   "rateCode": "",
+   "pricedPerPerson": true,
+   "minPerBooking": 2,
+   "maxPerBooking": 6,
+   "cancellationPolicy": {
+    "id": 270404,
+    "title": "Ikebana Experience, “Ichigo Ichie”",
+    "penaltyRules": [
+     {
+      "id": 270478,
+      "cutoffHours": 144,
+      "charge": 100.0,
+      "chargeType": "percentage",
+      "percentage": 100.0
+     },
+     {
+      "id": 270479,
+      "cutoffHours": 312,
+      "charge": 100.0,
+      "chargeType": "percentage",
+      "percentage": 100.0
+     }
+    ],
+    "tax": null,
+    "defaultPolicy": false,
+    "policyType": "ADVANCED",
+    "simpleCutoffHours": null,
+    "policyTypeEnum": "ADVANCED"
+   },
+   "fixedPassExpiryDate": null,
+   "passValidForDays": 0,
+   "pickupSelectionType": "OPTIONAL",
+   "pickupPricingType": "INCLUDED_IN_PRICE",
+   "pickupPricedPerPerson": false,
+   "dropoffSelectionType": "UNAVAILABLE",
+   "dropoffPricingType": "INCLUDED_IN_PRICE",
+   "dropoffPricedPerPerson": false,
+   "extraConfigs": [],
+   "startTimeIds": [
+    5688449
+   ],
+   "allStartTimes": false,
+   "tieredPricingEnabled": true,
+   "tiers": [
+    {
+     "id": 5087047,
+     "created": [
+      2026,
+      8,
+      25,
+      7,
+      32,
+      20,
+      999114212
+     ],
+     "minPassengersRequired": 1,
+     "maxPassengersRequired": 2,
+     "pricingCategoryId": 1237647,
+     "activityRateId": 2536435
+    },
+    {
+     "id": 5087048,
+     "created": [
+      2026,
+      8,
+      25,
+      7,
+      32,
+      20,
+      999115117
+     ],
+     "minPassengersRequired": 3,
+     "maxPassengersRequired": 3,
+     "pricingCategoryId": 1237647,
+     "activityRateId": 2536435
+    },
+    {
+     "id": 5087049,
+     "created": [
+      2026,
+      8,
+      25,
+      7,
+      32,
+      20,
+      999115280
+     ],
+     "minPassengersRequired": 4,
+     "maxPassengersRequired": 4,
+     "pricingCategoryId": 1237647,
+     "activityRateId": 2536435
+    },
+    {
+     "id": 5087050,
+     "created": [
+      2026,
+      8,
+      25,
+      7,
+      32,
+      20,
+      999115415
+     ],
+     "minPassengersRequired": 5,
+     "maxPassengersRequired": 5,
+     "pricingCategoryId": 1237647,
+     "activityRateId": 2536435
+    },
+    {
+     "id": 5087051,
+     "created": [
+      2026,
+      8,
+      25,
+      7,
+      32,
+      20,
+      999115545
+     ],
+     "minPassengersRequired": 6,
+     "maxPassengersRequired": 6,
+     "pricingCategoryId": 1237647,
+     "activityRateId": 2536435
+    }
+   ],
+   "pricingCategoryIds": [
+    1237647
+   ],
+   "allPricingCategories": false,
+   "details": [],
+   "textItems": []
+  }
+ ],
+ "ticketPerPerson": false,
+ "durationType": "HOURS",
+ "duration": 1,
+ "durationMinutes": 30,
+ "durationHours": 1,
+ "durationDays": 0,
+ "durationWeeks": 0,
+ "durationText": "1 hour and 30 minutes",
+ "minAge": 0,
+ "originalDefaultPrice": null,
+ "nextDefaultPrice": 44000.0,
+ "nextDefaultPriceMoney": {
+  "amount": 44000.0,
+  "currency": "JPY"
+ },
+ "pickupService": true,
+ "pickupAllotment": false,
+ "pickupAllotmentType": null,
+ "useComponentPickupAllotments": false,
+ "pickupFlags": [],
+ "customPickupAllowed": false,
+ "pickupMinutesBefore": 0,
+ "pickupTimeWindowInMinutes": 0,
+ "pickupTimeLocationBased": false,
+ "pickupTimeByLocations": [],
+ "noPickupMsg": null,
+ "ticketMsg": null,
+ "showGlobalPickupMsg": false,
+ "showNoPickupMsg": false,
+ "pickupPlaceGroups": [],
+ "dropoffService": false,
+ "dropoffFlags": [],
+ "customDropoffAllowed": false,
+ "useSameAsPickUpPlaces": false,
+ "dropoffPlaceGroups": [],
+ "difficultyLevel": "EASY",
+ "pricingCategories": [
+  {
+   "id": 1237647,
+   "title": "Adults",
+   "ticketCategory": "ADULT",
+   "occupancy": 1,
+   "groupSize": 0,
+   "ageQualified": false,
+   "minAge": 0,
+   "maxAge": 0,
+   "dependent": false,
+   "masterCategoryId": 0,
+   "maxPerMaster": 0,
+   "sumDependentCategories": false,
+   "maxDependentSum": 0,
+   "internalUseOnly": false,
+   "flags": [],
+   "defaultCategory": true,
+   "fullTitle": "Adults"
+  }
+ ],
+ "activityPriceCatalogs": [
+  {
+   "catalog": {
+    "id": 167711,
+    "title": "Default",
+    "defaultCurrency": "JPY",
+    "isVendorDefaultCatalog": true,
+    "currencies": [
+     "JPY"
+    ]
+   },
+   "catalogId": 167711,
+   "currencies": [
+    {
+     "currency": "JPY",
+     "currencyId": 10,
+     "default": true
+    }
+   ]
+  }
+ ],
+ "agendaItems": [
+  {
+   "id": 3785092,
+   "index": 0,
+   "title": "The history and schools of ikebana",
+   "excerpt": "",
+   "body": "<p style=\"font-size: 14px; line-height: 1.6; color: #57646f; margin-top: 0.5em; margin-bottom: 0.5em\"><strong>30min &nbsp;The history of the art, its schools, and the Sogetsu spirit she carries as its third generation.</strong></p>",
+   "day": 1,
+   "flags": [],
+   "location": {
+    "address": null,
+    "city": null,
+    "countryCode": null,
+    "postCode": null,
+    "latitude": null,
+    "longitude": null,
+    "zoomLevel": 6,
+    "origin": null,
+    "originId": null,
+    "wholeAddress": ""
+   },
+   "address": null,
+   "keyPhoto": null,
+   "photos": []
+  },
+  {
+   "id": 3785099,
+   "index": 0,
+   "title": "Arranging",
+   "excerpt": "",
+   "body": "<p style=\"font-size: 14px; line-height: 1.6; color: #57646f; margin-top: 0.5em; margin-bottom: 0.5em\"><strong>30min After the master’s demonstration, guests choose from prepared materials and complete an arrangementunder her guidance. No experience required.</strong></p>",
+   "day": 1,
+   "flags": [],
+   "location": {
+    "address": null,
+    "city": null,
+    "countryCode": null,
+    "postCode": null,
+    "latitude": null,
+    "longitude": null,
+    "zoomLevel": 6,
+    "origin": null,
+    "originId": null,
+    "wholeAddress": ""
+   },
+   "address": null,
+   "keyPhoto": null,
+   "photos": []
+  },
+  {
+   "id": 3785100,
+   "index": 0,
+   "title": "Tea and conversation",
+   "excerpt": "",
+   "body": "<p style=\"font-size: 14px; line-height: 1.6; color: #57646f; margin-top: 0.5em; margin-bottom: 0.5em\">30min <strong>A quiet close beside the finished work, with seasonal wagashi and tea.</strong></p>",
+   "day": 1,
+   "flags": [],
+   "location": {
+    "address": null,
+    "city": null,
+    "countryCode": null,
+    "postCode": null,
+    "latitude": null,
+    "longitude": null,
+    "zoomLevel": 6,
+    "origin": null,
+    "originId": null,
+    "wholeAddress": ""
+   },
+   "address": null,
+   "keyPhoto": null,
+   "photos": []
+  }
+ ],
+ "startTimes": [
+  {
+   "id": 5688449,
+   "label": null,
+   "externalLabel": null,
+   "hour": 0,
+   "minute": 0,
+   "overrideTimeWhenPickup": false,
+   "pickupHour": 0,
+   "pickupMinute": 0,
+   "durationType": "H",
+   "voucherPickupMsg": null,
+   "externalId": null,
+   "duration": 1,
+   "durationMinutes": 30,
+   "durationHours": 1,
+   "durationDays": 0,
+   "durationWeeks": 0,
+   "flags": []
+  }
+ ],
+ "bookableExtras": [],
+ "route": null,
+ "widgetSettings": {
+  "selectionType": "PARTICIPANTS",
+  "startTimeDropdown": false,
+  "sellOutWarningThreshold": 0,
+  "allowSkippingOptionalQuestions": true
+ },
+ "hasOpeningHours": false,
+ "defaultOpeningHours": null,
+ "seasonalOpeningHours": [],
+ "displaySettings": {
+  "showPickupPlaces": true,
+  "showRouteMap": false,
+  "selectRateBasedOnStartTime": false,
+  "customFields": []
+ },
+ "hasBoxes": false,
+ "bookingLabels": [],
+ "marketplaceVisibilityType": "PRIVATE",
+ "createMethod": null,
+ "bookingCutoff": 43200,
+ "requestDeadline": 259200000,
+ "actualId": 1273232,
+ "nextDefaultPriceAsText": "JPY 44000",
+ "actualVendor": {
+  "id": 145344,
+  "title": "ZENRISE",
+  "currencyCode": "JPY",
+  "showInvoiceIdOnTicket": false,
+  "showAgentDetailsOnTicket": false,
+  "showPaymentsOnInvoice": false,
+  "companyEmailIsDefault": false
+ }
+}

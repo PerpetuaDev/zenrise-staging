@@ -1,0 +1,609 @@
+{
+ "id": 1273235,
+ "externalId": null,
+ "productGroupId": 0,
+ "productCategory": "ACTIVITIES",
+ "box": false,
+ "inventoryLocal": true,
+ "inventorySupportsPricing": false,
+ "inventorySupportsAvailability": true,
+ "creationDate": "Thu Aug 20 07:01:08 UTC 2026",
+ "lastModified": "Mon Aug 24 06:39:09 UTC 2026",
+ "lastPublished": "2026-08-24T06:39:08.720Z",
+ "published": false,
+ "title": "A private Japanese candle-making experience in Kamakura.",
+ "description": "<p style=\"font-size:14px;line-height:1.6;color:#57646f;margin-top:0.5em;margin-bottom:0.5em\">Zenrise designs slow, considered private experiences around Kamakura and its surrounding towns. A private wa-rōsoku(Japanese candle) making session with Meria, a wax artist based in Shonan, arranged for up to four guests at a time, in a quiet space in Kamakura or Fujisawa. Every candle begins as a wick, dipped again and again into molten wax until it takes shape — entirely by hand. Natural materials from local farmers and growers — the character of Shonan, held in a single flame. The finished candle is yours to take home, a keepsake you&#39;ll return to each time you light it.</p>",
+ "excerpt": "Experience a private Japanese candle-making session with wax artist Meria, from Shonan Wa-Rōsoku. Held in Kamakura or Fujisawa.",
+ "cancellationPolicy": {
+  "id": 270405,
+  "title": "Candle Making, “A Handmade Light”",
+  "penaltyRules": [
+   {
+    "id": 270480,
+    "cutoffHours": 0,
+    "charge": 100.0,
+    "chargeType": "percentage",
+    "percentage": 100.0
+   },
+   {
+    "id": 270481,
+    "cutoffHours": 24,
+    "charge": 25.0,
+    "chargeType": "percentage",
+    "percentage": 25.0
+   },
+   {
+    "id": 270482,
+    "cutoffHours": 72,
+    "charge": 10.0,
+    "chargeType": "percentage",
+    "percentage": 10.0
+   }
+  ],
+  "tax": null,
+  "defaultPolicy": false,
+  "policyType": "ADVANCED",
+  "simpleCutoffHours": null,
+  "policyTypeEnum": "ADVANCED"
+ },
+ "overrideBarcodeFormat": false,
+ "barcodeType": "QR_CODE",
+ "timeZone": "Asia/Tokyo",
+ "mainContactFields": [],
+ "requiredCustomerFields": [],
+ "keywords": [],
+ "flags": [],
+ "slug": null,
+ "baseLanguage": "ja_JP",
+ "languages": [
+  "JA_JP"
+ ],
+ "paymentCurrencies": [],
+ "customFields": [],
+ "tagGroups": [],
+ "categories": [],
+ "keyPhoto": {
+  "id": 11844900,
+  "originalUrl": "https://bokun.s3.amazonaws.com/9f3bb0ff-c831-4668-a715-7e437044b2cf.jpeg",
+  "description": null,
+  "alternateText": null,
+  "height": "1593",
+  "width": "1290",
+  "fileName": "/9f3bb0ff-c831-4668-a715-7e437044b2cf.jpeg",
+  "flags": [],
+  "derived": [
+   {
+    "name": "thumbnail",
+    "url": "https://imgcdn.bokun.tools/9f3bb0ff-c831-4668-a715-7e437044b2cf.jpeg?w=80&h=80&mode=crop",
+    "cleanUrl": "https://imgcdn.bokun.tools/9f3bb0ff-c831-4668-a715-7e437044b2cf.jpeg?w=80&h=80&mode=crop"
+   },
+   {
+    "name": "preview",
+    "url": "https://imgcdn.bokun.tools/9f3bb0ff-c831-4668-a715-7e437044b2cf.jpeg?w=300&h=300",
+    "cleanUrl": "https://imgcdn.bokun.tools/9f3bb0ff-c831-4668-a715-7e437044b2cf.jpeg?w=300&h=300"
+   },
+   {
+    "name": "large",
+    "url": "https://imgcdn.bokun.tools/9f3bb0ff-c831-4668-a715-7e437044b2cf.jpeg?w=660&h=660",
+    "cleanUrl": "https://imgcdn.bokun.tools/9f3bb0ff-c831-4668-a715-7e437044b2cf.jpeg?w=660&h=660"
+   }
+  ]
+ },
+ "photos": [
+  {
+   "id": 11844899,
+   "originalUrl": "https://bokun.s3.amazonaws.com/ac5f2001-f764-450e-9185-3855e245db48.jpeg",
+   "description": null,
+   "alternateText": null,
+   "height": "1447",
+   "width": "1290",
+   "fileName": "/ac5f2001-f764-450e-9185-3855e245db48.jpeg",
+   "flags": [],
+   "derived": [
+    {
+     "name": "thumbnail",
+     "url": "https://imgcdn.bokun.tools/ac5f2001-f764-450e-9185-3855e245db48.jpeg?w=80&h=80&mode=crop",
+     "cleanUrl": "https://imgcdn.bokun.tools/ac5f2001-f764-450e-9185-3855e245db48.jpeg?w=80&h=80&mode=crop"
+    },
+    {
+     "name": "preview",
+     "url": "https://imgcdn.bokun.tools/ac5f2001-f764-450e-9185-3855e245db48.jpeg?w=300&h=300",
+     "cleanUrl": "https://imgcdn.bokun.tools/ac5f2001-f764-450e-9185-3855e245db48.jpeg?w=300&h=300"
+    },
+    {
+     "name": "large",
+     "url": "https://imgcdn.bokun.tools/ac5f2001-f764-450e-9185-3855e245db48.jpeg?w=660&h=660",
+     "cleanUrl": "https://imgcdn.bokun.tools/ac5f2001-f764-450e-9185-3855e245db48.jpeg?w=660&h=660"
+    }
+   ]
+  },
+  {
+   "id": 11844900,
+   "originalUrl": "https://bokun.s3.amazonaws.com/9f3bb0ff-c831-4668-a715-7e437044b2cf.jpeg",
+   "description": null,
+   "alternateText": null,
+   "height": "1593",
+   "width": "1290",
+   "fileName": "/9f3bb0ff-c831-4668-a715-7e437044b2cf.jpeg",
+   "flags": [],
+   "derived": [
+    {
+     "name": "thumbnail",
+     "url": "https://imgcdn.bokun.tools/9f3bb0ff-c831-4668-a715-7e437044b2cf.jpeg?w=80&h=80&mode=crop",
+     "cleanUrl": "https://imgcdn.bokun.tools/9f3bb0ff-c831-4668-a715-7e437044b2cf.jpeg?w=80&h=80&mode=crop"
+    },
+    {
+     "name": "preview",
+     "url": "https://imgcdn.bokun.tools/9f3bb0ff-c831-4668-a715-7e437044b2cf.jpeg?w=300&h=300",
+     "cleanUrl": "https://imgcdn.bokun.tools/9f3bb0ff-c831-4668-a715-7e437044b2cf.jpeg?w=300&h=300"
+    },
+    {
+     "name": "large",
+     "url": "https://imgcdn.bokun.tools/9f3bb0ff-c831-4668-a715-7e437044b2cf.jpeg?w=660&h=660",
+     "cleanUrl": "https://imgcdn.bokun.tools/9f3bb0ff-c831-4668-a715-7e437044b2cf.jpeg?w=660&h=660"
+    }
+   ]
+  },
+  {
+   "id": 11844901,
+   "originalUrl": "https://bokun.s3.amazonaws.com/6e57345e-d632-444a-867a-271c630e2979.jpeg",
+   "description": null,
+   "alternateText": null,
+   "height": "1409",
+   "width": "1290",
+   "fileName": "/6e57345e-d632-444a-867a-271c630e2979.jpeg",
+   "flags": [],
+   "derived": [
+    {
+     "name": "thumbnail",
+     "url": "https://imgcdn.bokun.tools/6e57345e-d632-444a-867a-271c630e2979.jpeg?w=80&h=80&mode=crop",
+     "cleanUrl": "https://imgcdn.bokun.tools/6e57345e-d632-444a-867a-271c630e2979.jpeg?w=80&h=80&mode=crop"
+    },
+    {
+     "name": "preview",
+     "url": "https://imgcdn.bokun.tools/6e57345e-d632-444a-867a-271c630e2979.jpeg?w=300&h=300",
+     "cleanUrl": "https://imgcdn.bokun.tools/6e57345e-d632-444a-867a-271c630e2979.jpeg?w=300&h=300"
+    },
+    {
+     "name": "large",
+     "url": "https://imgcdn.bokun.tools/6e57345e-d632-444a-867a-271c630e2979.jpeg?w=660&h=660",
+     "cleanUrl": "https://imgcdn.bokun.tools/6e57345e-d632-444a-867a-271c630e2979.jpeg?w=660&h=660"
+    }
+   ]
+  },
+  {
+   "id": 11844902,
+   "originalUrl": "https://bokun.s3.amazonaws.com/ca6e94b5-20ec-433b-977a-b1ef1044ade7.jpeg",
+   "description": null,
+   "alternateText": null,
+   "height": "1453",
+   "width": "1290",
+   "fileName": "/ca6e94b5-20ec-433b-977a-b1ef1044ade7.jpeg",
+   "flags": [],
+   "derived": [
+    {
+     "name": "thumbnail",
+     "url": "https://imgcdn.bokun.tools/ca6e94b5-20ec-433b-977a-b1ef1044ade7.jpeg?w=80&h=80&mode=crop",
+     "cleanUrl": "https://imgcdn.bokun.tools/ca6e94b5-20ec-433b-977a-b1ef1044ade7.jpeg?w=80&h=80&mode=crop"
+    },
+    {
+     "name": "preview",
+     "url": "https://imgcdn.bokun.tools/ca6e94b5-20ec-433b-977a-b1ef1044ade7.jpeg?w=300&h=300",
+     "cleanUrl": "https://imgcdn.bokun.tools/ca6e94b5-20ec-433b-977a-b1ef1044ade7.jpeg?w=300&h=300"
+    },
+    {
+     "name": "large",
+     "url": "https://imgcdn.bokun.tools/ca6e94b5-20ec-433b-977a-b1ef1044ade7.jpeg?w=660&h=660",
+     "cleanUrl": "https://imgcdn.bokun.tools/ca6e94b5-20ec-433b-977a-b1ef1044ade7.jpeg?w=660&h=660"
+    }
+   ]
+  },
+  {
+   "id": 11844903,
+   "originalUrl": "https://bokun.s3.amazonaws.com/bc8b2084-3857-4632-a3c0-5c96ec5ccd3b.jpeg",
+   "description": null,
+   "alternateText": null,
+   "height": "4032",
+   "width": "3024",
+   "fileName": "/bc8b2084-3857-4632-a3c0-5c96ec5ccd3b.jpeg",
+   "flags": [],
+   "derived": [
+    {
+     "name": "thumbnail",
+     "url": "https://imgcdn.bokun.tools/bc8b2084-3857-4632-a3c0-5c96ec5ccd3b.jpeg?w=80&h=80&mode=crop",
+     "cleanUrl": "https://imgcdn.bokun.tools/bc8b2084-3857-4632-a3c0-5c96ec5ccd3b.jpeg?w=80&h=80&mode=crop"
+    },
+    {
+     "name": "preview",
+     "url": "https://imgcdn.bokun.tools/bc8b2084-3857-4632-a3c0-5c96ec5ccd3b.jpeg?w=300&h=300",
+     "cleanUrl": "https://imgcdn.bokun.tools/bc8b2084-3857-4632-a3c0-5c96ec5ccd3b.jpeg?w=300&h=300"
+    },
+    {
+     "name": "large",
+     "url": "https://imgcdn.bokun.tools/bc8b2084-3857-4632-a3c0-5c96ec5ccd3b.jpeg?w=660&h=660",
+     "cleanUrl": "https://imgcdn.bokun.tools/bc8b2084-3857-4632-a3c0-5c96ec5ccd3b.jpeg?w=660&h=660"
+    }
+   ]
+  },
+  {
+   "id": 11844904,
+   "originalUrl": "https://bokun.s3.amazonaws.com/91c64b79-57cd-4c68-879d-6d2acec9c0c5.jpeg",
+   "description": null,
+   "alternateText": null,
+   "height": "4032",
+   "width": "3024",
+   "fileName": "/91c64b79-57cd-4c68-879d-6d2acec9c0c5.jpeg",
+   "flags": [],
+   "derived": [
+    {
+     "name": "thumbnail",
+     "url": "https://imgcdn.bokun.tools/91c64b79-57cd-4c68-879d-6d2acec9c0c5.jpeg?w=80&h=80&mode=crop",
+     "cleanUrl": "https://imgcdn.bokun.tools/91c64b79-57cd-4c68-879d-6d2acec9c0c5.jpeg?w=80&h=80&mode=crop"
+    },
+    {
+     "name": "preview",
+     "url": "https://imgcdn.bokun.tools/91c64b79-57cd-4c68-879d-6d2acec9c0c5.jpeg?w=300&h=300",
+     "cleanUrl": "https://imgcdn.bokun.tools/91c64b79-57cd-4c68-879d-6d2acec9c0c5.jpeg?w=300&h=300"
+    },
+    {
+     "name": "large",
+     "url": "https://imgcdn.bokun.tools/91c64b79-57cd-4c68-879d-6d2acec9c0c5.jpeg?w=660&h=660",
+     "cleanUrl": "https://imgcdn.bokun.tools/91c64b79-57cd-4c68-879d-6d2acec9c0c5.jpeg?w=660&h=660"
+    }
+   ]
+  },
+  {
+   "id": 11844905,
+   "originalUrl": "https://bokun.s3.amazonaws.com/04984a7b-3125-49b8-b118-9a12636a63d2.jpeg",
+   "description": null,
+   "alternateText": null,
+   "height": "1415",
+   "width": "1290",
+   "fileName": "/04984a7b-3125-49b8-b118-9a12636a63d2.jpeg",
+   "flags": [],
+   "derived": [
+    {
+     "name": "thumbnail",
+     "url": "https://imgcdn.bokun.tools/04984a7b-3125-49b8-b118-9a12636a63d2.jpeg?w=80&h=80&mode=crop",
+     "cleanUrl": "https://imgcdn.bokun.tools/04984a7b-3125-49b8-b118-9a12636a63d2.jpeg?w=80&h=80&mode=crop"
+    },
+    {
+     "name": "preview",
+     "url": "https://imgcdn.bokun.tools/04984a7b-3125-49b8-b118-9a12636a63d2.jpeg?w=300&h=300",
+     "cleanUrl": "https://imgcdn.bokun.tools/04984a7b-3125-49b8-b118-9a12636a63d2.jpeg?w=300&h=300"
+    },
+    {
+     "name": "large",
+     "url": "https://imgcdn.bokun.tools/04984a7b-3125-49b8-b118-9a12636a63d2.jpeg?w=660&h=660",
+     "cleanUrl": "https://imgcdn.bokun.tools/04984a7b-3125-49b8-b118-9a12636a63d2.jpeg?w=660&h=660"
+    }
+   ]
+  }
+ ],
+ "videos": [],
+ "vendor": {
+  "id": 145344,
+  "title": "ZENRISE",
+  "currencyCode": "JPY",
+  "showInvoiceIdOnTicket": false,
+  "showAgentDetailsOnTicket": false,
+  "showPaymentsOnInvoice": false,
+  "companyEmailIsDefault": false
+ },
+ "boxedVendor": null,
+ "storedExternally": false,
+ "pluginId": null,
+ "reviewRating": 0.0,
+ "reviewCount": 0,
+ "activityType": "DAY_TOUR_OR_ACTIVITY",
+ "bookingType": "DATE",
+ "scheduleType": "RECURRING",
+ "cutoffType": "RELATIVE_TO_ONE_SET_TIME",
+ "cutoffReferenceHour": 0,
+ "cutoffReferenceMinute": 0,
+ "earlyBookingLimitType": "UNLIMITED",
+ "earlyBookingLimitSpecificDateTime": null,
+ "earlyBookingLimitDaysBefore": null,
+ "earlyBookingLimitMonthsBefore": null,
+ "earlyBookingLimitTime": null,
+ "capacityType": "ON_REQUEST",
+ "passExpiryType": null,
+ "fixedPassExpiryDate": null,
+ "meetingType": "MEET_ON_LOCATION",
+ "privateActivity": false,
+ "passCapacity": 10,
+ "passValidForDays": 0,
+ "passesAvailable": 0,
+ "affiliateHubProduct": false,
+ "dressCode": false,
+ "passportRequired": false,
+ "supportedAccessibilityTypes": [],
+ "startPoints": [],
+ "bookingQuestions": [],
+ "passengerFields": [],
+ "inclusions": [],
+ "included": null,
+ "exclusions": [],
+ "excluded": null,
+ "requirements": null,
+ "knowBeforeYouGoItems": [],
+ "attention": null,
+ "locationCode": null,
+ "googlePlace": null,
+ "tripadvisorReview": null,
+ "resourceSlots": null,
+ "bookingCutoffMinutes": 0,
+ "bookingCutoffHours": 0,
+ "bookingCutoffDays": 30,
+ "bookingCutoffWeeks": 0,
+ "requestDeadlineMinutes": 0,
+ "requestDeadlineHours": 0,
+ "requestDeadlineDays": 3,
+ "requestDeadlineWeeks": 0,
+ "boxedActivityId": 0,
+ "comboActivity": false,
+ "comboParts": null,
+ "returnProduct": null,
+ "offers": null,
+ "ticketPerComboComponent": false,
+ "ticketComboComponents": null,
+ "pickupActivityId": null,
+ "allowCustomizedBookings": false,
+ "reservationTimeout": null,
+ "vendorReservationTimeout": null,
+ "dayBasedAvailability": true,
+ "selectFromDayOptions": false,
+ "dayOptions": [],
+ "activityCategories": [],
+ "activityAttributes": [],
+ "guidanceTypes": [],
+ "defaultRateId": 2536440,
+ "rates": [
+  {
+   "id": 2536440,
+   "title": "Standard Private Group ",
+   "description": "",
+   "index": 0,
+   "rateCode": "",
+   "pricedPerPerson": true,
+   "minPerBooking": 2,
+   "maxPerBooking": 4,
+   "cancellationPolicy": {
+    "id": 270405,
+    "title": "Candle Making, “A Handmade Light”",
+    "penaltyRules": [
+     {
+      "id": 270480,
+      "cutoffHours": 0,
+      "charge": 100.0,
+      "chargeType": "percentage",
+      "percentage": 100.0
+     },
+     {
+      "id": 270481,
+      "cutoffHours": 24,
+      "charge": 25.0,
+      "chargeType": "percentage",
+      "percentage": 25.0
+     },
+     {
+      "id": 270482,
+      "cutoffHours": 72,
+      "charge": 10.0,
+      "chargeType": "percentage",
+      "percentage": 10.0
+     }
+    ],
+    "tax": null,
+    "defaultPolicy": false,
+    "policyType": "ADVANCED",
+    "simpleCutoffHours": null,
+    "policyTypeEnum": "ADVANCED"
+   },
+   "fixedPassExpiryDate": null,
+   "passValidForDays": 0,
+   "pickupSelectionType": "UNAVAILABLE",
+   "pickupPricingType": "INCLUDED_IN_PRICE",
+   "pickupPricedPerPerson": false,
+   "dropoffSelectionType": "UNAVAILABLE",
+   "dropoffPricingType": "INCLUDED_IN_PRICE",
+   "dropoffPricedPerPerson": false,
+   "extraConfigs": [],
+   "startTimeIds": [
+    5688461
+   ],
+   "allStartTimes": false,
+   "tieredPricingEnabled": true,
+   "tiers": [
+    {
+     "id": 5087052,
+     "created": [
+      2026,
+      8,
+      25,
+      7,
+      32,
+      23,
+      986659311
+     ],
+     "minPassengersRequired": 1,
+     "maxPassengersRequired": 2,
+     "pricingCategoryId": 1237647,
+     "activityRateId": 2536440
+    },
+    {
+     "id": 5087053,
+     "created": [
+      2026,
+      8,
+      25,
+      7,
+      32,
+      23,
+      986660335
+     ],
+     "minPassengersRequired": 3,
+     "maxPassengersRequired": 3,
+     "pricingCategoryId": 1237647,
+     "activityRateId": 2536440
+    },
+    {
+     "id": 5087054,
+     "created": [
+      2026,
+      8,
+      25,
+      7,
+      32,
+      23,
+      986660512
+     ],
+     "minPassengersRequired": 4,
+     "maxPassengersRequired": 4,
+     "pricingCategoryId": 1237647,
+     "activityRateId": 2536440
+    }
+   ],
+   "pricingCategoryIds": [
+    1237647
+   ],
+   "allPricingCategories": false,
+   "details": [],
+   "textItems": []
+  }
+ ],
+ "ticketPerPerson": false,
+ "durationType": "HOURS",
+ "duration": 1,
+ "durationMinutes": 0,
+ "durationHours": 1,
+ "durationDays": 0,
+ "durationWeeks": 0,
+ "durationText": "1 時間",
+ "minAge": 0,
+ "originalDefaultPrice": null,
+ "nextDefaultPrice": 29000.0,
+ "nextDefaultPriceMoney": {
+  "amount": 29000.0,
+  "currency": "JPY"
+ },
+ "pickupService": false,
+ "pickupAllotment": false,
+ "pickupAllotmentType": null,
+ "useComponentPickupAllotments": false,
+ "pickupFlags": [],
+ "customPickupAllowed": false,
+ "pickupMinutesBefore": 0,
+ "pickupTimeWindowInMinutes": 0,
+ "pickupTimeLocationBased": false,
+ "pickupTimeByLocations": [],
+ "noPickupMsg": null,
+ "ticketMsg": null,
+ "showGlobalPickupMsg": false,
+ "showNoPickupMsg": false,
+ "pickupPlaceGroups": [],
+ "dropoffService": false,
+ "dropoffFlags": [],
+ "customDropoffAllowed": false,
+ "useSameAsPickUpPlaces": false,
+ "dropoffPlaceGroups": [],
+ "difficultyLevel": "EASY",
+ "pricingCategories": [
+  {
+   "id": 1237647,
+   "title": "Adults",
+   "ticketCategory": "ADULT",
+   "occupancy": 1,
+   "groupSize": 0,
+   "ageQualified": false,
+   "minAge": 0,
+   "maxAge": 0,
+   "dependent": false,
+   "masterCategoryId": 0,
+   "maxPerMaster": 0,
+   "sumDependentCategories": false,
+   "maxDependentSum": 0,
+   "internalUseOnly": false,
+   "flags": [],
+   "defaultCategory": true,
+   "fullTitle": "Adults"
+  }
+ ],
+ "activityPriceCatalogs": [
+  {
+   "catalog": {
+    "id": 167711,
+    "title": "Default",
+    "defaultCurrency": "JPY",
+    "isVendorDefaultCatalog": true,
+    "currencies": [
+     "JPY"
+    ]
+   },
+   "catalogId": 167711,
+   "currencies": [
+    {
+     "currency": "JPY",
+     "currencyId": 10,
+     "default": true
+    }
+   ]
+  }
+ ],
+ "agendaItems": [],
+ "startTimes": [
+  {
+   "id": 5688461,
+   "label": null,
+   "externalLabel": null,
+   "hour": 0,
+   "minute": 0,
+   "overrideTimeWhenPickup": false,
+   "pickupHour": 0,
+   "pickupMinute": 0,
+   "durationType": "H",
+   "voucherPickupMsg": null,
+   "externalId": null,
+   "duration": 1,
+   "durationMinutes": 0,
+   "durationHours": 1,
+   "durationDays": 0,
+   "durationWeeks": 0,
+   "flags": []
+  }
+ ],
+ "bookableExtras": [],
+ "route": null,
+ "widgetSettings": {
+  "selectionType": "PARTICIPANTS",
+  "startTimeDropdown": false,
+  "sellOutWarningThreshold": 0,
+  "allowSkippingOptionalQuestions": true
+ },
+ "hasOpeningHours": false,
+ "defaultOpeningHours": null,
+ "seasonalOpeningHours": [],
+ "displaySettings": {
+  "showPickupPlaces": false,
+  "showRouteMap": false,
+  "selectRateBasedOnStartTime": false,
+  "customFields": []
+ },
+ "hasBoxes": false,
+ "bookingLabels": [],
+ "marketplaceVisibilityType": "PRIVATE",
+ "createMethod": null,
+ "bookingCutoff": 43200,
+ "requestDeadline": 259200000,
+ "actualId": 1273235,
+ "nextDefaultPriceAsText": "JPY 29000",
+ "actualVendor": {
+  "id": 145344,
+  "title": "ZENRISE",
+  "currencyCode": "JPY",
+  "showInvoiceIdOnTicket": false,
+  "showAgentDetailsOnTicket": false,
+  "showPaymentsOnInvoice": false,
+  "companyEmailIsDefault": false
+ }
+}

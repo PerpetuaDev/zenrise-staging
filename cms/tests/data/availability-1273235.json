@@ -1,0 +1,8486 @@
+[
+ {
+  "id": "5688461_20260925",
+  "activityId": 1273235,
+  "activityTitle": "A private Japanese candle-making experience in Kamakura.",
+  "activityOwnerId": 145344,
+  "activityOwnerTitle": "ZENRISE",
+  "startTime": "00:00",
+  "startTimeId": 5688461,
+  "startTimeLabel": null,
+  "flexible": true,
+  "date": 1790294400000,
+  "localizedDate": "Fri 25.Sep'26",
+  "availabilityCount": 999,
+  "bookedParticipants": 0,
+  "minParticipants": 2,
+  "minParticipantsToBookNow": 2,
+  "productGroupId": null,
+  "recurrenceId": 13498250,
+  "pickupAllotment": false,
+  "pickupAvailabilityCount": 999,
+  "unlimitedAvailability": true,
+  "defaultRateId": 2536440,
+  "rates": [
+   {
+    "id": 2536440,
+    "title": "Standard Private Group ",
+    "description": "",
+    "index": 0,
+    "rateCode": "",
+    "pricedPerPerson": true,
+    "minPerBooking": 2,
+    "maxPerBooking": 4,
+    "cancellationPolicy": {
+     "id": 270405,
+     "title": "Candle Making, “A Handmade Light”",
+     "penaltyRules": [
+      {
+       "id": 270480,
+       "cutoffHours": 0,
+       "charge": 100.0,
+       "chargeType": "percentage",
+       "percentage": 100.0
+      },
+      {
+       "id": 270481,
+       "cutoffHours": 24,
+       "charge": 25.0,
+       "chargeType": "percentage",
+       "percentage": 25.0
+      },
+      {
+       "id": 270482,
+       "cutoffHours": 72,
+       "charge": 10.0,
+       "chargeType": "percentage",
+       "percentage": 10.0
+      }
+     ],
+     "tax": null,
+     "defaultPolicy": false,
+     "policyType": "ADVANCED",
+     "simpleCutoffHours": null,
+     "policyTypeEnum": "ADVANCED"
+    },
+    "fixedPassExpiryDate": null,
+    "passValidForDays": null,
+    "pickupSelectionType": "UNAVAILABLE",
+    "pickupPricingType": "INCLUDED_IN_PRICE",
+    "pickupPricedPerPerson": false,
+    "dropoffSelectionType": "UNAVAILABLE",
+    "dropoffPricingType": "INCLUDED_IN_PRICE",
+    "dropoffPricedPerPerson": false,
+    "extraConfigs": [],
+    "startTimeIds": [],
+    "allStartTimes": true,
+    "tieredPricingEnabled": true,
+    "tiers": [
+     {
+      "id": 5087052,
+      "created": [
+       2026,
+       8,
+       20,
+       7,
+       38,
+       54,
+       0
+      ],
+      "minPassengersRequired": 1,
+      "maxPassengersRequired": 2,
+      "pricingCategoryId": 1237647,
+      "activityRateId": 2536440
+     },
+     {
+      "id": 5087053,
+      "created": [
+       2026,
+       8,
+       20,
+       7,
+       38,
+       54,
+       0
+      ],
+      "minPassengersRequired": 3,
+      "maxPassengersRequired": 3,
+      "pricingCategoryId": 1237647,
+      "activityRateId": 2536440
+     },
+     {
+      "id": 5087054,
+      "created": [
+       2026,
+       8,
+       20,
+       7,
+       38,
+       54,
+       0
+      ],
+      "minPassengersRequired": 4,
+      "maxPassengersRequired": 4,
+      "pricingCategoryId": 1237647,
+      "activityRateId": 2536440
+     }
+    ],
+    "pricingCategoryIds": [
+     1237647
+    ],
+    "allPricingCategories": false,
+    "details": [],
+    "textItems": [
+     {
+      "id": 2536440,
+      "created": [
+       2026,
+       8,
+       25,
+       7,
+       32,
+       24,
+       263756320
+      ],
+      "language": "ja_JP",
+      "title": "Standard Private Group ",
+      "activityRateId": 2536440,
+      "description": ""
+     }
+    ]
+   }
+  ],
+  "pricesByRate": [
+   {
+    "activityRateId": 2536440,
+    "pricePerCategoryUnit": [
+     {
+      "id": 1237647,
+      "amount": {
+       "amount": 12000.0,
+       "currency": "JPY"
+      },
+      "minParticipantsRequired": 4,
+      "maxParticipantsRequired": 4
+     },
+     {
+      "id": 1237647,
+      "amount": {
+       "amount": 12000.0,
+       "currency": "JPY"
+      },
+      "minParticipantsRequired": 3,
+      "maxParticipantsRequired": 3
+     },
+     {
+      "id": 1237647,
+      "amount": {
+       "amount": 29000.0,
+       "currency": "JPY"
+      },
+      "minParticipantsRequired": 1,
+      "maxParticipantsRequired": 2
+     }
+    ],
+    "extraPricePerUnit": [],
+    "extraPricePerCategoryUnit": []
+   }
+  ],
+  "comboActivity": false,
+  "comboStartTimes": [],
+  "flags": [],
+  "defaultPrice": null,
+  "pricesByCategory": {},
+  "pickupPrice": null,
+  "pickupPricesByCategory": {},
+  "dropoffPrice": null,
+  "dropoffPricesByCategory": {},
+  "extraPrices": {},
+  "guidedLanguages": [],
+  "unavailable": false,
+  "pickupSoldOut": false,
+  "soldOut": false
+ },
+ {
+  "id": "5688461_20260926",
+  "activityId": 1273235,
+  "activityTitle": "A private Japanese candle-making experience in Kamakura.",
+  "activityOwnerId": 145344,
+  "activityOwnerTitle": "ZENRISE",
+  "startTime": "00:00",
+  "startTimeId": 5688461,
+  "startTimeLabel": null,
+  "flexible": true,
+  "date": 1790380800000,
+  "localizedDate": "Sat 26.Sep'26",
+  "availabilityCount": 999,
+  "bookedParticipants": 0,
+  "minParticipants": 2,
+  "minParticipantsToBookNow": 2,
+  "productGroupId": null,
+  "recurrenceId": 13498250,
+  "pickupAllotment": false,
+  "pickupAvailabilityCount": 999,
+  "unlimitedAvailability": true,
+  "defaultRateId": 2536440,
+  "rates": [
+   {
+    "id": 2536440,
+    "title": "Standard Private Group ",
+    "description": "",
+    "index": 0,
+    "rateCode": "",
+    "pricedPerPerson": true,
+    "minPerBooking": 2,
+    "maxPerBooking": 4,
+    "cancellationPolicy": {
+     "id": 270405,
+     "title": "Candle Making, “A Handmade Light”",
+     "penaltyRules": [
+      {
+       "id": 270480,
+       "cutoffHours": 0,
+       "charge": 100.0,
+       "chargeType": "percentage",
+       "percentage": 100.0
+      },
+      {
+       "id": 270481,
+       "cutoffHours": 24,
+       "charge": 25.0,
+       "chargeType": "percentage",
+       "percentage": 25.0
+      },
+      {
+       "id": 270482,
+       "cutoffHours": 72,
+       "charge": 10.0,
+       "chargeType": "percentage",
+       "percentage": 10.0
+      }
+     ],
+     "tax": null,
+     "defaultPolicy": false,
+     "policyType": "ADVANCED",
+     "simpleCutoffHours": null,
+     "policyTypeEnum": "ADVANCED"
+    },
+    "fixedPassExpiryDate": null,
+    "passValidForDays": null,
+    "pickupSelectionType": "UNAVAILABLE",
+    "pickupPricingType": "INCLUDED_IN_PRICE",
+    "pickupPricedPerPerson": false,
+    "dropoffSelectionType": "UNAVAILABLE",
+    "dropoffPricingType": "INCLUDED_IN_PRICE",
+    "dropoffPricedPerPerson": false,
+    "extraConfigs": [],
+    "startTimeIds": [],
+    "allStartTimes": true,
+    "tieredPricingEnabled": true,
+    "tiers": [
+     {
+      "id": 5087052,
+      "created": [
+       2026,
+       8,
+       20,
+       7,
+       38,
+       54,
+       0
+      ],
+      "minPassengersRequired": 1,
+      "maxPassengersRequired": 2,
+      "pricingCategoryId": 1237647,
+      "activityRateId": 2536440
+     },
+     {
+      "id": 5087053,
+      "created": [
+       2026,
+       8,
+       20,
+       7,
+       38,
+       54,
+       0
+      ],
+      "minPassengersRequired": 3,
+      "maxPassengersRequired": 3,
+      "pricingCategoryId": 1237647,
+      "activityRateId": 2536440
+     },
+     {
+      "id": 5087054,
+      "created": [
+       2026,
+       8,
+       20,
+       7,
+       38,
+       54,
+       0
+      ],
+      "minPassengersRequired": 4,
+      "maxPassengersRequired": 4,
+      "pricingCategoryId": 1237647,
+      "activityRateId": 2536440
+     }
+    ],
+    "pricingCategoryIds": [
+     1237647
+    ],
+    "allPricingCategories": false,
+    "details": [],
+    "textItems": [
+     {
+      "id": 2536440,
+      "created": [
+       2026,
+       8,
+       25,
+       7,
+       32,
+       24,
+       264599012
+      ],
+      "language": "ja_JP",
+      "title": "Standard Private Group ",
+      "activityRateId": 2536440,
+      "description": ""
+     }
+    ]
+   }
+  ],
+  "pricesByRate": [
+   {
+    "activityRateId": 2536440,
+    "pricePerCategoryUnit": [
+     {
+      "id": 1237647,
+      "amount": {
+       "amount": 12000.0,
+       "currency": "JPY"
+      },
+      "minParticipantsRequired": 4,
+      "maxParticipantsRequired": 4
+     },
+     {
+      "id": 1237647,
+      "amount": {
+       "amount": 12000.0,
+       "currency": "JPY"
+      },
+      "minParticipantsRequired": 3,
+      "maxParticipantsRequired": 3
+     },
+     {
+      "id": 1237647,
+      "amount": {
+       "amount": 29000.0,
+       "currency": "JPY"
+      },
+      "minParticipantsRequired": 1,
+      "maxParticipantsRequired": 2
+     }
+    ],
+    "extraPricePerUnit": [],
+    "extraPricePerCategoryUnit": []
+   }
+  ],
+  "comboActivity": false,
+  "comboStartTimes": [],
+  "flags": [],
+  "defaultPrice": null,
+  "pricesByCategory": {},
+  "pickupPrice": null,
+  "pickupPricesByCategory": {},
+  "dropoffPrice": null,
+  "dropoffPricesByCategory": {},
+  "extraPrices": {},
+  "guidedLanguages": [],
+  "unavailable": false,
+  "pickupSoldOut": false,
+  "soldOut": false
+ },
+ {
+  "id": "5688461_20260927",
+  "activityId": 1273235,
+  "activityTitle": "A private Japanese candle-making experience in Kamakura.",
+  "activityOwnerId": 145344,
+  "activityOwnerTitle": "ZENRISE",
+  "startTime": "00:00",
+  "startTimeId": 5688461,
+  "startTimeLabel": null,
+  "flexible": true,
+  "date": 1790467200000,
+  "localizedDate": "Sun 27.Sep'26",
+  "availabilityCount": 999,
+  "bookedParticipants": 0,
+  "minParticipants": 2,
+  "minParticipantsToBookNow": 2,
+  "productGroupId": null,
+  "recurrenceId": 13498250,
+  "pickupAllotment": false,
+  "pickupAvailabilityCount": 999,
+  "unlimitedAvailability": true,
+  "defaultRateId": 2536440,
+  "rates": [
+   {
+    "id": 2536440,
+    "title": "Standard Private Group ",
+    "description": "",
+    "index": 0,
+    "rateCode": "",
+    "pricedPerPerson": true,
+    "minPerBooking": 2,
+    "maxPerBooking": 4,
+    "cancellationPolicy": {
+     "id": 270405,
+     "title": "Candle Making, “A Handmade Light”",
+     "penaltyRules": [
+      {
+       "id": 270480,
+       "cutoffHours": 0,
+       "charge": 100.0,
+       "chargeType": "percentage",
+       "percentage": 100.0
+      },
+      {
+       "id": 270481,
+       "cutoffHours": 24,
+       "charge": 25.0,
+       "chargeType": "percentage",
+       "percentage": 25.0
+      },
+      {
+       "id": 270482,
+       "cutoffHours": 72,
+       "charge": 10.0,
+       "chargeType": "percentage",
+       "percentage": 10.0
+      }
+     ],
+     "tax": null,
+     "defaultPolicy": false,
+     "policyType": "ADVANCED",
+     "simpleCutoffHours": null,
+     "policyTypeEnum": "ADVANCED"
+    },
+    "fixedPassExpiryDate": null,
+    "passValidForDays": null,
+    "pickupSelectionType": "UNAVAILABLE",
+    "pickupPricingType": "INCLUDED_IN_PRICE",
+    "pickupPricedPerPerson": false,
+    "dropoffSelectionType": "UNAVAILABLE",
+    "dropoffPricingType": "INCLUDED_IN_PRICE",
+    "dropoffPricedPerPerson": false,
+    "extraConfigs": [],
+    "startTimeIds": [],
+    "allStartTimes": true,
+    "tieredPricingEnabled": true,
+    "tiers": [
+     {
+      "id": 5087052,
+      "created": [
+       2026,
+       8,
+       20,
+       7,
+       38,
+       54,
+       0
+      ],
+      "minPassengersRequired": 1,
+      "maxPassengersRequired": 2,
+      "pricingCategoryId": 1237647,
+      "activityRateId": 2536440
+     },
+     {
+      "id": 5087053,
+      "created": [
+       2026,
+       8,
+       20,
+       7,
+       38,
+       54,
+       0
+      ],
+      "minPassengersRequired": 3,
+      "maxPassengersRequired": 3,
+      "pricingCategoryId": 1237647,
+      "activityRateId": 2536440
+     },
+     {
+      "id": 5087054,
+      "created": [
+       2026,
+       8,
+       20,
+       7,
+       38,
+       54,
+       0
+      ],
+      "minPassengersRequired": 4,
+      "maxPassengersRequired": 4,
+      "pricingCategoryId": 1237647,
+      "activityRateId": 2536440
+     }
+    ],
+    "pricingCategoryIds": [
+     1237647
+    ],
+    "allPricingCategories": false,
+    "details": [],
+    "textItems": [
+     {
+      "id": 2536440,
+      "created": [
+       2026,
+       8,
+       25,
+       7,
+       32,
+       24,
+       264675306
+      ],
+      "language": "ja_JP",
+      "title": "Standard Private Group ",
+      "activityRateId": 2536440,
+      "description": ""
+     }
+    ]
+   }
+  ],
+  "pricesByRate": [
+   {
+    "activityRateId": 2536440,
+    "pricePerCategoryUnit": [
+     {
+      "id": 1237647,
+      "amount": {
+       "amount": 12000.0,
+       "currency": "JPY"
+      },
+      "minParticipantsRequired": 4,
+      "maxParticipantsRequired": 4
+     },
+     {
+      "id": 1237647,
+      "amount": {
+       "amount": 12000.0,
+       "currency": "JPY"
+      },
+      "minParticipantsRequired": 3,
+      "maxParticipantsRequired": 3
+     },
+     {
+      "id": 1237647,
+      "amount": {
+       "amount": 29000.0,
+       "currency": "JPY"
+      },
+      "minParticipantsRequired": 1,
+      "maxParticipantsRequired": 2
+     }
+    ],
+    "extraPricePerUnit": [],
+    "extraPricePerCategoryUnit": []
+   }
+  ],
+  "comboActivity": false,
+  "comboStartTimes": [],
+  "flags": [],
+  "defaultPrice": null,
+  "pricesByCategory": {},
+  "pickupPrice": null,
+  "pickupPricesByCategory": {},
+  "dropoffPrice": null,
+  "dropoffPricesByCategory": {},
+  "extraPrices": {},
+  "guidedLanguages": [],
+  "unavailable": false,
+  "pickupSoldOut": false,
+  "soldOut": false
+ },
+ {
+  "id": "5688461_20260928",
+  "activityId": 1273235,
+  "activityTitle": "A private Japanese candle-making experience in Kamakura.",
+  "activityOwnerId": 145344,
+  "activityOwnerTitle": "ZENRISE",
+  "startTime": "00:00",
+  "startTimeId": 5688461,
+  "startTimeLabel": null,
+  "flexible": true,
+  "date": 1790553600000,
+  "localizedDate": "Mon 28.Sep'26",
+  "availabilityCount": 999,
+  "bookedParticipants": 0,
+  "minParticipants": 2,
+  "minParticipantsToBookNow": 2,
+  "productGroupId": null,
+  "recurrenceId": 13498250,
+  "pickupAllotment": false,
+  "pickupAvailabilityCount": 999,
+  "unlimitedAvailability": true,
+  "defaultRateId": 2536440,
+  "rates": [
+   {
+    "id": 2536440,
+    "title": "Standard Private Group ",
+    "description": "",
+    "index": 0,
+    "rateCode": "",
+    "pricedPerPerson": true,
+    "minPerBooking": 2,
+    "maxPerBooking": 4,
+    "cancellationPolicy": {
+     "id": 270405,
+     "title": "Candle Making, “A Handmade Light”",
+     "penaltyRules": [
+      {
+       "id": 270480,
+       "cutoffHours": 0,
+       "charge": 100.0,
+       "chargeType": "percentage",
+       "percentage": 100.0
+      },
+      {
+       "id": 270481,
+       "cutoffHours": 24,
+       "charge": 25.0,
+       "chargeType": "percentage",
+       "percentage": 25.0
+      },
+      {
+       "id": 270482,
+       "cutoffHours": 72,
+       "charge": 10.0,
+       "chargeType": "percentage",
+       "percentage": 10.0
+      }
+     ],
+     "tax": null,
+     "defaultPolicy": false,
+     "policyType": "ADVANCED",
+     "simpleCutoffHours": null,
+     "policyTypeEnum": "ADVANCED"
+    },
+    "fixedPassExpiryDate": null,
+    "passValidForDays": null,
+    "pickupSelectionType": "UNAVAILABLE",
+    "pickupPricingType": "INCLUDED_IN_PRICE",
+    "pickupPricedPerPerson": false,
+    "dropoffSelectionType": "UNAVAILABLE",
+    "dropoffPricingType": "INCLUDED_IN_PRICE",
+    "dropoffPricedPerPerson": false,
+    "extraConfigs": [],
+    "startTimeIds": [],
+    "allStartTimes": true,
+    "tieredPricingEnabled": true,
+    "tiers": [
+     {
+      "id": 5087052,
+      "created": [
+       2026,
+       8,
+       20,
+       7,
+       38,
+       54,
+       0
+      ],
+      "minPassengersRequired": 1,
+      "maxPassengersRequired": 2,
+      "pricingCategoryId": 1237647,
+      "activityRateId": 2536440
+     },
+     {
+      "id": 5087053,
+      "created": [
+       2026,
+       8,
+       20,
+       7,
+       38,
+       54,
+       0
+      ],
+      "minPassengersRequired": 3,
+      "maxPassengersRequired": 3,
+      "pricingCategoryId": 1237647,
+      "activityRateId": 2536440
+     },
+     {
+      "id": 5087054,
+      "created": [
+       2026,
+       8,
+       20,
+       7,
+       38,
+       54,
+       0
+      ],
+      "minPassengersRequired": 4,
+      "maxPassengersRequired": 4,
+      "pricingCategoryId": 1237647,
+      "activityRateId": 2536440
+     }
+    ],
+    "pricingCategoryIds": [
+     1237647
+    ],
+    "allPricingCategories": false,
+    "details": [],
+    "textItems": [
+     {
+      "id": 2536440,
+      "created": [
+       2026,
+       8,
+       25,
+       7,
+       32,
+       24,
+       264702990
+      ],
+      "language": "ja_JP",
+      "title": "Standard Private Group ",
+      "activityRateId": 2536440,
+      "description": ""
+     }
+    ]
+   }
+  ],
+  "pricesByRate": [
+   {
+    "activityRateId": 2536440,
+    "pricePerCategoryUnit": [
+     {
+      "id": 1237647,
+      "amount": {
+       "amount": 12000.0,
+       "currency": "JPY"
+      },
+      "minParticipantsRequired": 4,
+      "maxParticipantsRequired": 4
+     },
+     {
+      "id": 1237647,
+      "amount": {
+       "amount": 12000.0,
+       "currency": "JPY"
+      },
+      "minParticipantsRequired": 3,
+      "maxParticipantsRequired": 3
+     },
+     {
+      "id": 1237647,
+      "amount": {
+       "amount": 29000.0,
+       "currency": "JPY"
+      },
+      "minParticipantsRequired": 1,
+      "maxParticipantsRequired": 2
+     }
+    ],
+    "extraPricePerUnit": [],
+    "extraPricePerCategoryUnit": []
+   }
+  ],
+  "comboActivity": false,
+  "comboStartTimes": [],
+  "flags": [],
+  "defaultPrice": null,
+  "pricesByCategory": {},
+  "pickupPrice": null,
+  "pickupPricesByCategory": {},
+  "dropoffPrice": null,
+  "dropoffPricesByCategory": {},
+  "extraPrices": {},
+  "guidedLanguages": [],
+  "unavailable": false,
+  "pickupSoldOut": false,
+  "soldOut": false
+ },
+ {
+  "id": "5688461_20260929",
+  "activityId": 1273235,
+  "activityTitle": "A private Japanese candle-making experience in Kamakura.",
+  "activityOwnerId": 145344,
+  "activityOwnerTitle": "ZENRISE",
+  "startTime": "00:00",
+  "startTimeId": 5688461,
+  "startTimeLabel": null,
+  "flexible": true,
+  "date": 1790640000000,
+  "localizedDate": "Tue 29.Sep'26",
+  "availabilityCount": 999,
+  "bookedParticipants": 0,
+  "minParticipants": 2,
+  "minParticipantsToBookNow": 2,
+  "productGroupId": null,
+  "recurrenceId": 13498250,
+  "pickupAllotment": false,
+  "pickupAvailabilityCount": 999,
+  "unlimitedAvailability": true,
+  "defaultRateId": 2536440,
+  "rates": [
+   {
+    "id": 2536440,
+    "title": "Standard Private Group ",
+    "description": "",
+    "index": 0,
+    "rateCode": "",
+    "pricedPerPerson": true,
+    "minPerBooking": 2,
+    "maxPerBooking": 4,
+    "cancellationPolicy": {
+     "id": 270405,
+     "title": "Candle Making, “A Handmade Light”",
+     "penaltyRules": [
+      {
+       "id": 270480,
+       "cutoffHours": 0,
+       "charge": 100.0,
+       "chargeType": "percentage",
+       "percentage": 100.0
+      },
+      {
+       "id": 270481,
+       "cutoffHours": 24,
+       "charge": 25.0,
+       "chargeType": "percentage",
+       "percentage": 25.0
+      },
+      {
+       "id": 270482,
+       "cutoffHours": 72,
+       "charge": 10.0,
+       "chargeType": "percentage",
+       "percentage": 10.0
+      }
+     ],
+     "tax": null,
+     "defaultPolicy": false,
+     "policyType": "ADVANCED",
+     "simpleCutoffHours": null,
+     "policyTypeEnum": "ADVANCED"
+    },
+    "fixedPassExpiryDate": null,
+    "passValidForDays": null,
+    "pickupSelectionType": "UNAVAILABLE",
+    "pickupPricingType": "INCLUDED_IN_PRICE",
+    "pickupPricedPerPerson": false,
+    "dropoffSelectionType": "UNAVAILABLE",
+    "dropoffPricingType": "INCLUDED_IN_PRICE",
+    "dropoffPricedPerPerson": false,
+    "extraConfigs": [],
+    "startTimeIds": [],
+    "allStartTimes": true,
+    "tieredPricingEnabled": true,
+    "tiers": [
+     {
+      "id": 5087052,
+      "created": [
+       2026,
+       8,
+       20,
+       7,
+       38,
+       54,
+       0
+      ],
+      "minPassengersRequired": 1,
+      "maxPassengersRequired": 2,
+      "pricingCategoryId": 1237647,
+      "activityRateId": 2536440
+     },
+     {
+      "id": 5087053,
+      "created": [
+       2026,
+       8,
+       20,
+       7,
+       38,
+       54,
+       0
+      ],
+      "minPassengersRequired": 3,
+      "maxPassengersRequired": 3,
+      "pricingCategoryId": 1237647,
+      "activityRateId": 2536440
+     },
+     {
+      "id": 5087054,
+      "created": [
+       2026,
+       8,
+       20,
+       7,
+       38,
+       54,
+       0
+      ],
+      "minPassengersRequired": 4,
+      "maxPassengersRequired": 4,
+      "pricingCategoryId": 1237647,
+      "activityRateId": 2536440
+     }
+    ],
+    "pricingCategoryIds": [
+     1237647
+    ],
+    "allPricingCategories": false,
+    "details": [],
+    "textItems": [
+     {
+      "id": 2536440,
+      "created": [
+       2026,
+       8,
+       25,
+       7,
+       32,
+       24,
+       264736221
+      ],
+      "language": "ja_JP",
+      "title": "Standard Private Group ",
+      "activityRateId": 2536440,
+      "description": ""
+     }
+    ]
+   }
+  ],
+  "pricesByRate": [
+   {
+    "activityRateId": 2536440,
+    "pricePerCategoryUnit": [
+     {
+      "id": 1237647,
+      "amount": {
+       "amount": 12000.0,
+       "currency": "JPY"
+      },
+      "minParticipantsRequired": 4,
+      "maxParticipantsRequired": 4
+     },
+     {
+      "id": 1237647,
+      "amount": {
+       "amount": 12000.0,
+       "currency": "JPY"
+      },
+      "minParticipantsRequired": 3,
+      "maxParticipantsRequired": 3
+     },
+     {
+      "id": 1237647,
+      "amount": {
+       "amount": 29000.0,
+       "currency": "JPY"
+      },
+      "minParticipantsRequired": 1,
+      "maxParticipantsRequired": 2
+     }
+    ],
+    "extraPricePerUnit": [],
+    "extraPricePerCategoryUnit": []
+   }
+  ],
+  "comboActivity": false,
+  "comboStartTimes": [],
+  "flags": [],
+  "defaultPrice": null,
+  "pricesByCategory": {},
+  "pickupPrice": null,
+  "pickupPricesByCategory": {},
+  "dropoffPrice": null,
+  "dropoffPricesByCategory": {},
+  "extraPrices": {},
+  "guidedLanguages": [],
+  "unavailable": false,
+  "pickupSoldOut": false,
+  "soldOut": false
+ },
+ {
+  "id": "5688461_20260930",
+  "activityId": 1273235,
+  "activityTitle": "A private Japanese candle-making experience in Kamakura.",
+  "activityOwnerId": 145344,
+  "activityOwnerTitle": "ZENRISE",
+  "startTime": "00:00",
+  "startTimeId": 5688461,
+  "startTimeLabel": null,
+  "flexible": true,
+  "date": 1790726400000,
+  "localizedDate": "Wed 30.Sep'26",
+  "availabilityCount": 999,
+  "bookedParticipants": 0,
+  "minParticipants": 2,
+  "minParticipantsToBookNow": 2,
+  "productGroupId": null,
+  "recurrenceId": 13498250,
+  "pickupAllotment": false,
+  "pickupAvailabilityCount": 999,
+  "unlimitedAvailability": true,
+  "defaultRateId": 2536440,
+  "rates": [
+   {
+    "id": 2536440,
+    "title": "Standard Private Group ",
+    "description": "",
+    "index": 0,
+    "rateCode": "",
+    "pricedPerPerson": true,
+    "minPerBooking": 2,
+    "maxPerBooking": 4,
+    "cancellationPolicy": {
+     "id": 270405,
+     "title": "Candle Making, “A Handmade Light”",
+     "penaltyRules": [
+      {
+       "id": 270480,
+       "cutoffHours": 0,
+       "charge": 100.0,
+       "chargeType": "percentage",
+       "percentage": 100.0
+      },
+      {
+       "id": 270481,
+       "cutoffHours": 24,
+       "charge": 25.0,
+       "chargeType": "percentage",
+       "percentage": 25.0
+      },
+      {
+       "id": 270482,
+       "cutoffHours": 72,
+       "charge": 10.0,
+       "chargeType": "percentage",
+       "percentage": 10.0
+      }
+     ],
+     "tax": null,
+     "defaultPolicy": false,
+     "policyType": "ADVANCED",
+     "simpleCutoffHours": null,
+     "policyTypeEnum": "ADVANCED"
+    },
+    "fixedPassExpiryDate": null,
+    "passValidForDays": null,
+    "pickupSelectionType": "UNAVAILABLE",
+    "pickupPricingType": "INCLUDED_IN_PRICE",
+    "pickupPricedPerPerson": false,
+    "dropoffSelectionType": "UNAVAILABLE",
+    "dropoffPricingType": "INCLUDED_IN_PRICE",
+    "dropoffPricedPerPerson": false,
+    "extraConfigs": [],
+    "startTimeIds": [],
+    "allStartTimes": true,
+    "tieredPricingEnabled": true,
+    "tiers": [
+     {
+      "id": 5087052,
+      "created": [
+       2026,
+       8,
+       20,
+       7,
+       38,
+       54,
+       0
+      ],
+      "minPassengersRequired": 1,
+      "maxPassengersRequired": 2,
+      "pricingCategoryId": 1237647,
+      "activityRateId": 2536440
+     },
+     {
+      "id": 5087053,
+      "created": [
+       2026,
+       8,
+       20,
+       7,
+       38,
+       54,
+       0
+      ],
+      "minPassengersRequired": 3,
+      "maxPassengersRequired": 3,
+      "pricingCategoryId": 1237647,
+      "activityRateId": 2536440
+     },
+     {
+      "id": 5087054,
+      "created": [
+       2026,
+       8,
+       20,
+       7,
+       38,
+       54,
+       0
+      ],
+      "minPassengersRequired": 4,
+      "maxPassengersRequired": 4,
+      "pricingCategoryId": 1237647,
+      "activityRateId": 2536440
+     }
+    ],
+    "pricingCategoryIds": [
+     1237647
+    ],
+    "allPricingCategories": false,
+    "details": [],
+    "textItems": [
+     {
+      "id": 2536440,
+      "created": [
+       2026,
+       8,
+       25,
+       7,
+       32,
+       24,
+       264787533
+      ],
+      "language": "ja_JP",
+      "title": "Standard Private Group ",
+      "activityRateId": 2536440,
+      "description": ""
+     }
+    ]
+   }
+  ],
+  "pricesByRate": [
+   {
+    "activityRateId": 2536440,
+    "pricePerCategoryUnit": [
+     {
+      "id": 1237647,
+      "amount": {
+       "amount": 12000.0,
+       "currency": "JPY"
+      },
+      "minParticipantsRequired": 4,
+      "maxParticipantsRequired": 4
+     },
+     {
+      "id": 1237647,
+      "amount": {
+       "amount": 12000.0,
+       "currency": "JPY"
+      },
+      "minParticipantsRequired": 3,
+      "maxParticipantsRequired": 3
+     },
+     {
+      "id": 1237647,
+      "amount": {
+       "amount": 29000.0,
+       "currency": "JPY"
+      },
+      "minParticipantsRequired": 1,
+      "maxParticipantsRequired": 2
+     }
+    ],
+    "extraPricePerUnit": [],
+    "extraPricePerCategoryUnit": []
+   }
+  ],
+  "comboActivity": false,
+  "comboStartTimes": [],
+  "flags": [],
+  "defaultPrice": null,
+  "pricesByCategory": {},
+  "pickupPrice": null,
+  "pickupPricesByCategory": {},
+  "dropoffPrice": null,
+  "dropoffPricesByCategory": {},
+  "extraPrices": {},
+  "guidedLanguages": [],
+  "unavailable": false,
+  "pickupSoldOut": false,
+  "soldOut": false
+ },
+ {
+  "id": "5688461_20261001",
+  "activityId": 1273235,
+  "activityTitle": "A private Japanese candle-making experience in Kamakura.",
+  "activityOwnerId": 145344,
+  "activityOwnerTitle": "ZENRISE",
+  "startTime": "00:00",
+  "startTimeId": 5688461,
+  "startTimeLabel": null,
+  "flexible": true,
+  "date": 1790812800000,
+  "localizedDate": "Thu 01.Oct'26",
+  "availabilityCount": 999,
+  "bookedParticipants": 0,
+  "minParticipants": 2,
+  "minParticipantsToBookNow": 2,
+  "productGroupId": null,
+  "recurrenceId": 13498250,
+  "pickupAllotment": false,
+  "pickupAvailabilityCount": 999,
+  "unlimitedAvailability": true,
+  "defaultRateId": 2536440,
+  "rates": [
+   {
+    "id": 2536440,
+    "title": "Standard Private Group ",
+    "description": "",
+    "index": 0,
+    "rateCode": "",
+    "pricedPerPerson": true,
+    "minPerBooking": 2,
+    "maxPerBooking": 4,
+    "cancellationPolicy": {
+     "id": 270405,
+     "title": "Candle Making, “A Handmade Light”",
+     "penaltyRules": [
+      {
+       "id": 270480,
+       "cutoffHours": 0,
+       "charge": 100.0,
+       "chargeType": "percentage",
+       "percentage": 100.0
+      },
+      {
+       "id": 270481,
+       "cutoffHours": 24,
+       "charge": 25.0,
+       "chargeType": "percentage",
+       "percentage": 25.0
+      },
+      {
+       "id": 270482,
+       "cutoffHours": 72,
+       "charge": 10.0,
+       "chargeType": "percentage",
+       "percentage": 10.0
+      }
+     ],
+     "tax": null,
+     "defaultPolicy": false,
+     "policyType": "ADVANCED",
+     "simpleCutoffHours": null,
+     "policyTypeEnum": "ADVANCED"
+    },
+    "fixedPassExpiryDate": null,
+    "passValidForDays": null,
+    "pickupSelectionType": "UNAVAILABLE",
+    "pickupPricingType": "INCLUDED_IN_PRICE",
+    "pickupPricedPerPerson": false,
+    "dropoffSelectionType": "UNAVAILABLE",
+    "dropoffPricingType": "INCLUDED_IN_PRICE",
+    "dropoffPricedPerPerson": false,
+    "extraConfigs": [],
+    "startTimeIds": [],
+    "allStartTimes": true,
+    "tieredPricingEnabled": true,
+    "tiers": [
+     {
+      "id": 5087052,
+      "created": [
+       2026,
+       8,
+       20,
+       7,
+       38,
+       54,
+       0
+      ],
+      "minPassengersRequired": 1,
+      "maxPassengersRequired": 2,
+      "pricingCategoryId": 1237647,
+      "activityRateId": 2536440
+     },
+     {
+      "id": 5087053,
+      "created": [
+       2026,
+       8,
+       20,
+       7,
+       38,
+       54,
+       0
+      ],
+      "minPassengersRequired": 3,
+      "maxPassengersRequired": 3,
+      "pricingCategoryId": 1237647,
+      "activityRateId": 2536440
+     },
+     {
+      "id": 5087054,
+      "created": [
+       2026,
+       8,
+       20,
+       7,
+       38,
+       54,
+       0
+      ],
+      "minPassengersRequired": 4,
+      "maxPassengersRequired": 4,
+      "pricingCategoryId": 1237647,
+      "activityRateId": 2536440
+     }
+    ],
+    "pricingCategoryIds": [
+     1237647
+    ],
+    "allPricingCategories": false,
+    "details": [],
+    "textItems": [
+     {
+      "id": 2536440,
+      "created": [
+       2026,
+       8,
+       25,
+       7,
+       32,
+       24,
+       264812642
+      ],
+      "language": "ja_JP",
+      "title": "Standard Private Group ",
+      "activityRateId": 2536440,
+      "description": ""
+     }
+    ]
+   }
+  ],
+  "pricesByRate": [
+   {
+    "activityRateId": 2536440,
+    "pricePerCategoryUnit": [
+     {
+      "id": 1237647,
+      "amount": {
+       "amount": 12000.0,
+       "currency": "JPY"
+      },
+      "minParticipantsRequired": 4,
+      "maxParticipantsRequired": 4
+     },
+     {
+      "id": 1237647,
+      "amount": {
+       "amount": 12000.0,
+       "currency": "JPY"
+      },
+      "minParticipantsRequired": 3,
+      "maxParticipantsRequired": 3
+     },
+     {
+      "id": 1237647,
+      "amount": {
+       "amount": 29000.0,
+       "currency": "JPY"
+      },
+      "minParticipantsRequired": 1,
+      "maxParticipantsRequired": 2
+     }
+    ],
+    "extraPricePerUnit": [],
+    "extraPricePerCategoryUnit": []
+   }
+  ],
+  "comboActivity": false,
+  "comboStartTimes": [],
+  "flags": [],
+  "defaultPrice": null,
+  "pricesByCategory": {},
+  "pickupPrice": null,
+  "pickupPricesByCategory": {},
+  "dropoffPrice": null,
+  "dropoffPricesByCategory": {},
+  "extraPrices": {},
+  "guidedLanguages": [],
+  "unavailable": false,
+  "pickupSoldOut": false,
+  "soldOut": false
+ },
+ {
+  "id": "5688461_20261002",
+  "activityId": 1273235,
+  "activityTitle": "A private Japanese candle-making experience in Kamakura.",
+  "activityOwnerId": 145344,
+  "activityOwnerTitle": "ZENRISE",
+  "startTime": "00:00",
+  "startTimeId": 5688461,
+  "startTimeLabel": null,
+  "flexible": true,
+  "date": 1790899200000,
+  "localizedDate": "Fri 02.Oct'26",
+  "availabilityCount": 999,
+  "bookedParticipants": 0,
+  "minParticipants": 2,
+  "minParticipantsToBookNow": 2,
+  "productGroupId": null,
+  "recurrenceId": 13498250,
+  "pickupAllotment": false,
+  "pickupAvailabilityCount": 999,
+  "unlimitedAvailability": true,
+  "defaultRateId": 2536440,
+  "rates": [
+   {
+    "id": 2536440,
+    "title": "Standard Private Group ",
+    "description": "",
+    "index": 0,
+    "rateCode": "",
+    "pricedPerPerson": true,
+    "minPerBooking": 2,
+    "maxPerBooking": 4,
+    "cancellationPolicy": {
+     "id": 270405,
+     "title": "Candle Making, “A Handmade Light”",
+     "penaltyRules": [
+      {
+       "id": 270480,
+       "cutoffHours": 0,
+       "charge": 100.0,
+       "chargeType": "percentage",
+       "percentage": 100.0
+      },
+      {
+       "id": 270481,
+       "cutoffHours": 24,
+       "charge": 25.0,
+       "chargeType": "percentage",
+       "percentage": 25.0
+      },
+      {
+       "id": 270482,
+       "cutoffHours": 72,
+       "charge": 10.0,
+       "chargeType": "percentage",
+       "percentage": 10.0
+      }
+     ],
+     "tax": null,
+     "defaultPolicy": false,
+     "policyType": "ADVANCED",
+     "simpleCutoffHours": null,
+     "policyTypeEnum": "ADVANCED"
+    },
+    "fixedPassExpiryDate": null,
+    "passValidForDays": null,
+    "pickupSelectionType": "UNAVAILABLE",
+    "pickupPricingType": "INCLUDED_IN_PRICE",
+    "pickupPricedPerPerson": false,
+    "dropoffSelectionType": "UNAVAILABLE",
+    "dropoffPricingType": "INCLUDED_IN_PRICE",
+    "dropoffPricedPerPerson": false,
+    "extraConfigs": [],
+    "startTimeIds": [],
+    "allStartTimes": true,
+    "tieredPricingEnabled": true,
+    "tiers": [
+     {
+      "id": 5087052,
+      "created": [
+       2026,
+       8,
+       20,
+       7,
+       38,
+       54,
+       0
+      ],
+      "minPassengersRequired": 1,
+      "maxPassengersRequired": 2,
+      "pricingCategoryId": 1237647,
+      "activityRateId": 2536440
+     },
+     {
+      "id": 5087053,
+      "created": [
+       2026,
+       8,
+       20,
+       7,
+       38,
+       54,
+       0
+      ],
+      "minPassengersRequired": 3,
+      "maxPassengersRequired": 3,
+      "pricingCategoryId": 1237647,
+      "activityRateId": 2536440
+     },
+     {
+      "id": 5087054,
+      "created": [
+       2026,
+       8,
+       20,
+       7,
+       38,
+       54,
+       0
+      ],
+      "minPassengersRequired": 4,
+      "maxPassengersRequired": 4,
+      "pricingCategoryId": 1237647,
+      "activityRateId": 2536440
+     }
+    ],
+    "pricingCategoryIds": [
+     1237647
+    ],
+    "allPricingCategories": false,
+    "details": [],
+    "textItems": [
+     {
+      "id": 2536440,
+      "created": [
+       2026,
+       8,
+       25,
+       7,
+       32,
+       24,
+       264832997
+      ],
+      "language": "ja_JP",
+      "title": "Standard Private Group ",
+      "activityRateId": 2536440,
+      "description": ""
+     }
+    ]
+   }
+  ],
+  "pricesByRate": [
+   {
+    "activityRateId": 2536440,
+    "pricePerCategoryUnit": [
+     {
+      "id": 1237647,
+      "amount": {
+       "amount": 12000.0,
+       "currency": "JPY"
+      },
+      "minParticipantsRequired": 4,
+      "maxParticipantsRequired": 4
+     },
+     {
+      "id": 1237647,
+      "amount": {
+       "amount": 12000.0,
+       "currency": "JPY"
+      },
+      "minParticipantsRequired": 3,
+      "maxParticipantsRequired": 3
+     },
+     {
+      "id": 1237647,
+      "amount": {
+       "amount": 29000.0,
+       "currency": "JPY"
+      },
+      "minParticipantsRequired": 1,
+      "maxParticipantsRequired": 2
+     }
+    ],
+    "extraPricePerUnit": [],
+    "extraPricePerCategoryUnit": []
+   }
+  ],
+  "comboActivity": false,
+  "comboStartTimes": [],
+  "flags": [],
+  "defaultPrice": null,
+  "pricesByCategory": {},
+  "pickupPrice": null,
+  "pickupPricesByCategory": {},
+  "dropoffPrice": null,
+  "dropoffPricesByCategory": {},
+  "extraPrices": {},
+  "guidedLanguages": [],
+  "unavailable": false,
+  "pickupSoldOut": false,
+  "soldOut": false
+ },
+ {
+  "id": "5688461_20261003",
+  "activityId": 1273235,
+  "activityTitle": "A private Japanese candle-making experience in Kamakura.",
+  "activityOwnerId": 145344,
+  "activityOwnerTitle": "ZENRISE",
+  "startTime": "00:00",
+  "startTimeId": 5688461,
+  "startTimeLabel": null,
+  "flexible": true,
+  "date": 1790985600000,
+  "localizedDate": "Sat 03.Oct'26",
+  "availabilityCount": 999,
+  "bookedParticipants": 0,
+  "minParticipants": 2,
+  "minParticipantsToBookNow": 2,
+  "productGroupId": null,
+  "recurrenceId": 13498250,
+  "pickupAllotment": false,
+  "pickupAvailabilityCount": 999,
+  "unlimitedAvailability": true,
+  "defaultRateId": 2536440,
+  "rates": [
+   {
+    "id": 2536440,
+    "title": "Standard Private Group ",
+    "description": "",
+    "index": 0,
+    "rateCode": "",
+    "pricedPerPerson": true,
+    "minPerBooking": 2,
+    "maxPerBooking": 4,
+    "cancellationPolicy": {
+     "id": 270405,
+     "title": "Candle Making, “A Handmade Light”",
+     "penaltyRules": [
+      {
+       "id": 270480,
+       "cutoffHours": 0,
+       "charge": 100.0,
+       "chargeType": "percentage",
+       "percentage": 100.0
+      },
+      {
+       "id": 270481,
+       "cutoffHours": 24,
+       "charge": 25.0,
+       "chargeType": "percentage",
+       "percentage": 25.0
+      },
+      {
+       "id": 270482,
+       "cutoffHours": 72,
+       "charge": 10.0,
+       "chargeType": "percentage",
+       "percentage": 10.0
+      }
+     ],
+     "tax": null,
+     "defaultPolicy": false,
+     "policyType": "ADVANCED",
+     "simpleCutoffHours": null,
+     "policyTypeEnum": "ADVANCED"
+    },
+    "fixedPassExpiryDate": null,
+    "passValidForDays": null,
+    "pickupSelectionType": "UNAVAILABLE",
+    "pickupPricingType": "INCLUDED_IN_PRICE",
+    "pickupPricedPerPerson": false,
+    "dropoffSelectionType": "UNAVAILABLE",
+    "dropoffPricingType": "INCLUDED_IN_PRICE",
+    "dropoffPricedPerPerson": false,
+    "extraConfigs": [],
+    "startTimeIds": [],
+    "allStartTimes": true,
+    "tieredPricingEnabled": true,
+    "tiers": [
+     {
+      "id": 5087052,
+      "created": [
+       2026,
+       8,
+       20,
+       7,
+       38,
+       54,
+       0
+      ],
+      "minPassengersRequired": 1,
+      "maxPassengersRequired": 2,
+      "pricingCategoryId": 1237647,
+      "activityRateId": 2536440
+     },
+     {
+      "id": 5087053,
+      "created": [
+       2026,
+       8,
+       20,
+       7,
+       38,
+       54,
+       0
+      ],
+      "minPassengersRequired": 3,
+      "maxPassengersRequired": 3,
+      "pricingCategoryId": 1237647,
+      "activityRateId": 2536440
+     },
+     {
+      "id": 5087054,
+      "created": [
+       2026,
+       8,
+       20,
+       7,
+       38,
+       54,
+       0
+      ],
+      "minPassengersRequired": 4,
+      "maxPassengersRequired": 4,
+      "pricingCategoryId": 1237647,
+      "activityRateId": 2536440
+     }
+    ],
+    "pricingCategoryIds": [
+     1237647
+    ],
+    "allPricingCategories": false,
+    "details": [],
+    "textItems": [
+     {
+      "id": 2536440,
+      "created": [
+       2026,
+       8,
+       25,
+       7,
+       32,
+       24,
+       264904530
+      ],
+      "language": "ja_JP",
+      "title": "Standard Private Group ",
+      "activityRateId": 2536440,
+      "description": ""
+     }
+    ]
+   }
+  ],
+  "pricesByRate": [
+   {
+    "activityRateId": 2536440,
+    "pricePerCategoryUnit": [
+     {
+      "id": 1237647,
+      "amount": {
+       "amount": 12000.0,
+       "currency": "JPY"
+      },
+      "minParticipantsRequired": 4,
+      "maxParticipantsRequired": 4
+     },
+     {
+      "id": 1237647,
+      "amount": {
+       "amount": 12000.0,
+       "currency": "JPY"
+      },
+      "minParticipantsRequired": 3,
+      "maxParticipantsRequired": 3
+     },
+     {
+      "id": 1237647,
+      "amount": {
+       "amount": 29000.0,
+       "currency": "JPY"
+      },
+      "minParticipantsRequired": 1,
+      "maxParticipantsRequired": 2
+     }
+    ],
+    "extraPricePerUnit": [],
+    "extraPricePerCategoryUnit": []
+   }
+  ],
+  "comboActivity": false,
+  "comboStartTimes": [],
+  "flags": [],
+  "defaultPrice": null,
+  "pricesByCategory": {},
+  "pickupPrice": null,
+  "pickupPricesByCategory": {},
+  "dropoffPrice": null,
+  "dropoffPricesByCategory": {},
+  "extraPrices": {},
+  "guidedLanguages": [],
+  "unavailable": false,
+  "pickupSoldOut": false,
+  "soldOut": false
+ },
+ {
+  "id": "5688461_20261004",
+  "activityId": 1273235,
+  "activityTitle": "A private Japanese candle-making experience in Kamakura.",
+  "activityOwnerId": 145344,
+  "activityOwnerTitle": "ZENRISE",
+  "startTime": "00:00",
+  "startTimeId": 5688461,
+  "startTimeLabel": null,
+  "flexible": true,
+  "date": 1791072000000,
+  "localizedDate": "Sun 04.Oct'26",
+  "availabilityCount": 999,
+  "bookedParticipants": 0,
+  "minParticipants": 2,
+  "minParticipantsToBookNow": 2,
+  "productGroupId": null,
+  "recurrenceId": 13498250,
+  "pickupAllotment": false,
+  "pickupAvailabilityCount": 999,
+  "unlimitedAvailability": true,
+  "defaultRateId": 2536440,
+  "rates": [
+   {
+    "id": 2536440,
+    "title": "Standard Private Group ",
+    "description": "",
+    "index": 0,
+    "rateCode": "",
+    "pricedPerPerson": true,
+    "minPerBooking": 2,
+    "maxPerBooking": 4,
+    "cancellationPolicy": {
+     "id": 270405,
+     "title": "Candle Making, “A Handmade Light”",
+     "penaltyRules": [
+      {
+       "id": 270480,
+       "cutoffHours": 0,
+       "charge": 100.0,
+       "chargeType": "percentage",
+       "percentage": 100.0
+      },
+      {
+       "id": 270481,
+       "cutoffHours": 24,
+       "charge": 25.0,
+       "chargeType": "percentage",
+       "percentage": 25.0
+      },
+      {
+       "id": 270482,
+       "cutoffHours": 72,
+       "charge": 10.0,
+       "chargeType": "percentage",
+       "percentage": 10.0
+      }
+     ],
+     "tax": null,
+     "defaultPolicy": false,
+     "policyType": "ADVANCED",
+     "simpleCutoffHours": null,
+     "policyTypeEnum": "ADVANCED"
+    },
+    "fixedPassExpiryDate": null,
+    "passValidForDays": null,
+    "pickupSelectionType": "UNAVAILABLE",
+    "pickupPricingType": "INCLUDED_IN_PRICE",
+    "pickupPricedPerPerson": false,
+    "dropoffSelectionType": "UNAVAILABLE",
+    "dropoffPricingType": "INCLUDED_IN_PRICE",
+    "dropoffPricedPerPerson": false,
+    "extraConfigs": [],
+    "startTimeIds": [],
+    "allStartTimes": true,
+    "tieredPricingEnabled": true,
+    "tiers": [
+     {
+      "id": 5087052,
+      "created": [
+       2026,
+       8,
+       20,
+       7,
+       38,
+       54,
+       0
+      ],
+      "minPassengersRequired": 1,
+      "maxPassengersRequired": 2,
+      "pricingCategoryId": 1237647,
+      "activityRateId": 2536440
+     },
+     {
+      "id": 5087053,
+      "created": [
+       2026,
+       8,
+       20,
+       7,
+       38,
+       54,
+       0
+      ],
+      "minPassengersRequired": 3,
+      "maxPassengersRequired": 3,
+      "pricingCategoryId": 1237647,
+      "activityRateId": 2536440
+     },
+     {
+      "id": 5087054,
+      "created": [
+       2026,
+       8,
+       20,
+       7,
+       38,
+       54,
+       0
+      ],
+      "minPassengersRequired": 4,
+      "maxPassengersRequired": 4,
+      "pricingCategoryId": 1237647,
+      "activityRateId": 2536440
+     }
+    ],
+    "pricingCategoryIds": [
+     1237647
+    ],
+    "allPricingCategories": false,
+    "details": [],
+    "textItems": [
+     {
+      "id": 2536440,
+      "created": [
+       2026,
+       8,
+       25,
+       7,
+       32,
+       24,
+       264927414
+      ],
+      "language": "ja_JP",
+      "title": "Standard Private Group ",
+      "activityRateId": 2536440,
+      "description": ""
+     }
+    ]
+   }
+  ],
+  "pricesByRate": [
+   {
+    "activityRateId": 2536440,
+    "pricePerCategoryUnit": [
+     {
+      "id": 1237647,
+      "amount": {
+       "amount": 12000.0,
+       "currency": "JPY"
+      },
+      "minParticipantsRequired": 4,
+      "maxParticipantsRequired": 4
+     },
+     {
+      "id": 1237647,
+      "amount": {
+       "amount": 12000.0,
+       "currency": "JPY"
+      },
+      "minParticipantsRequired": 3,
+      "maxParticipantsRequired": 3
+     },
+     {
+      "id": 1237647,
+      "amount": {
+       "amount": 29000.0,
+       "currency": "JPY"
+      },
+      "minParticipantsRequired": 1,
+      "maxParticipantsRequired": 2
+     }
+    ],
+    "extraPricePerUnit": [],
+    "extraPricePerCategoryUnit": []
+   }
+  ],
+  "comboActivity": false,
+  "comboStartTimes": [],
+  "flags": [],
+  "defaultPrice": null,
+  "pricesByCategory": {},
+  "pickupPrice": null,
+  "pickupPricesByCategory": {},
+  "dropoffPrice": null,
+  "dropoffPricesByCategory": {},
+  "extraPrices": {},
+  "guidedLanguages": [],
+  "unavailable": false,
+  "pickupSoldOut": false,
+  "soldOut": false
+ },
+ {
+  "id": "5688461_20261005",
+  "activityId": 1273235,
+  "activityTitle": "A private Japanese candle-making experience in Kamakura.",
+  "activityOwnerId": 145344,
+  "activityOwnerTitle": "ZENRISE",
+  "startTime": "00:00",
+  "startTimeId": 5688461,
+  "startTimeLabel": null,
+  "flexible": true,
+  "date": 1791158400000,
+  "localizedDate": "Mon 05.Oct'26",
+  "availabilityCount": 999,
+  "bookedParticipants": 0,
+  "minParticipants": 2,
+  "minParticipantsToBookNow": 2,
+  "productGroupId": null,
+  "recurrenceId": 13498250,
+  "pickupAllotment": false,
+  "pickupAvailabilityCount": 999,
+  "unlimitedAvailability": true,
+  "defaultRateId": 2536440,
+  "rates": [
+   {
+    "id": 2536440,
+    "title": "Standard Private Group ",
+    "description": "",
+    "index": 0,
+    "rateCode": "",
+    "pricedPerPerson": true,
+    "minPerBooking": 2,
+    "maxPerBooking": 4,
+    "cancellationPolicy": {
+     "id": 270405,
+     "title": "Candle Making, “A Handmade Light”",
+     "penaltyRules": [
+      {
+       "id": 270480,
+       "cutoffHours": 0,
+       "charge": 100.0,
+       "chargeType": "percentage",
+       "percentage": 100.0
+      },
+      {
+       "id": 270481,
+       "cutoffHours": 24,
+       "charge": 25.0,
+       "chargeType": "percentage",
+       "percentage": 25.0
+      },
+      {
+       "id": 270482,
+       "cutoffHours": 72,
+       "charge": 10.0,
+       "chargeType": "percentage",
+       "percentage": 10.0
+      }
+     ],
+     "tax": null,
+     "defaultPolicy": false,
+     "policyType": "ADVANCED",
+     "simpleCutoffHours": null,
+     "policyTypeEnum": "ADVANCED"
+    },
+    "fixedPassExpiryDate": null,
+    "passValidForDays": null,
+    "pickupSelectionType": "UNAVAILABLE",
+    "pickupPricingType": "INCLUDED_IN_PRICE",
+    "pickupPricedPerPerson": false,
+    "dropoffSelectionType": "UNAVAILABLE",
+    "dropoffPricingType": "INCLUDED_IN_PRICE",
+    "dropoffPricedPerPerson": false,
+    "extraConfigs": [],
+    "startTimeIds": [],
+    "allStartTimes": true,
+    "tieredPricingEnabled": true,
+    "tiers": [
+     {
+      "id": 5087052,
+      "created": [
+       2026,
+       8,
+       20,
+       7,
+       38,
+       54,
+       0
+      ],
+      "minPassengersRequired": 1,
+      "maxPassengersRequired": 2,
+      "pricingCategoryId": 1237647,
+      "activityRateId": 2536440
+     },
+     {
+      "id": 5087053,
+      "created": [
+       2026,
+       8,
+       20,
+       7,
+       38,
+       54,
+       0
+      ],
+      "minPassengersRequired": 3,
+      "maxPassengersRequired": 3,
+      "pricingCategoryId": 1237647,
+      "activityRateId": 2536440
+     },
+     {
+      "id": 5087054,
+      "created": [
+       2026,
+       8,
+       20,
+       7,
+       38,
+       54,
+       0
+      ],
+      "minPassengersRequired": 4,
+      "maxPassengersRequired": 4,
+      "pricingCategoryId": 1237647,
+      "activityRateId": 2536440
+     }
+    ],
+    "pricingCategoryIds": [
+     1237647
+    ],
+    "allPricingCategories": false,
+    "details": [],
+    "textItems": [
+     {
+      "id": 2536440,
+      "created": [
+       2026,
+       8,
+       25,
+       7,
+       32,
+       24,
+       265000644
+      ],
+      "language": "ja_JP",
+      "title": "Standard Private Group ",
+      "activityRateId": 2536440,
+      "description": ""
+     }
+    ]
+   }
+  ],
+  "pricesByRate": [
+   {
+    "activityRateId": 2536440,
+    "pricePerCategoryUnit": [
+     {
+      "id": 1237647,
+      "amount": {
+       "amount": 12000.0,
+       "currency": "JPY"
+      },
+      "minParticipantsRequired": 4,
+      "maxParticipantsRequired": 4
+     },
+     {
+      "id": 1237647,
+      "amount": {
+       "amount": 12000.0,
+       "currency": "JPY"
+      },
+      "minParticipantsRequired": 3,
+      "maxParticipantsRequired": 3
+     },
+     {
+      "id": 1237647,
+      "amount": {
+       "amount": 29000.0,
+       "currency": "JPY"
+      },
+      "minParticipantsRequired": 1,
+      "maxParticipantsRequired": 2
+     }
+    ],
+    "extraPricePerUnit": [],
+    "extraPricePerCategoryUnit": []
+   }
+  ],
+  "comboActivity": false,
+  "comboStartTimes": [],
+  "flags": [],
+  "defaultPrice": null,
+  "pricesByCategory": {},
+  "pickupPrice": null,
+  "pickupPricesByCategory": {},
+  "dropoffPrice": null,
+  "dropoffPricesByCategory": {},
+  "extraPrices": {},
+  "guidedLanguages": [],
+  "unavailable": false,
+  "pickupSoldOut": false,
+  "soldOut": false
+ },
+ {
+  "id": "5688461_20261006",
+  "activityId": 1273235,
+  "activityTitle": "A private Japanese candle-making experience in Kamakura.",
+  "activityOwnerId": 145344,
+  "activityOwnerTitle": "ZENRISE",
+  "startTime": "00:00",
+  "startTimeId": 5688461,
+  "startTimeLabel": null,
+  "flexible": true,
+  "date": 1791244800000,
+  "localizedDate": "Tue 06.Oct'26",
+  "availabilityCount": 999,
+  "bookedParticipants": 0,
+  "minParticipants": 2,
+  "minParticipantsToBookNow": 2,
+  "productGroupId": null,
+  "recurrenceId": 13498250,
+  "pickupAllotment": false,
+  "pickupAvailabilityCount": 999,
+  "unlimitedAvailability": true,
+  "defaultRateId": 2536440,
+  "rates": [
+   {
+    "id": 2536440,
+    "title": "Standard Private Group ",
+    "description": "",
+    "index": 0,
+    "rateCode": "",
+    "pricedPerPerson": true,
+    "minPerBooking": 2,
+    "maxPerBooking": 4,
+    "cancellationPolicy": {
+     "id": 270405,
+     "title": "Candle Making, “A Handmade Light”",
+     "penaltyRules": [
+      {
+       "id": 270480,
+       "cutoffHours": 0,
+       "charge": 100.0,
+       "chargeType": "percentage",
+       "percentage": 100.0
+      },
+      {
+       "id": 270481,
+       "cutoffHours": 24,
+       "charge": 25.0,
+       "chargeType": "percentage",
+       "percentage": 25.0
+      },
+      {
+       "id": 270482,
+       "cutoffHours": 72,
+       "charge": 10.0,
+       "chargeType": "percentage",
+       "percentage": 10.0
+      }
+     ],
+     "tax": null,
+     "defaultPolicy": false,
+     "policyType": "ADVANCED",
+     "simpleCutoffHours": null,
+     "policyTypeEnum": "ADVANCED"
+    },
+    "fixedPassExpiryDate": null,
+    "passValidForDays": null,
+    "pickupSelectionType": "UNAVAILABLE",
+    "pickupPricingType": "INCLUDED_IN_PRICE",
+    "pickupPricedPerPerson": false,
+    "dropoffSelectionType": "UNAVAILABLE",
+    "dropoffPricingType": "INCLUDED_IN_PRICE",
+    "dropoffPricedPerPerson": false,
+    "extraConfigs": [],
+    "startTimeIds": [],
+    "allStartTimes": true,
+    "tieredPricingEnabled": true,
+    "tiers": [
+     {
+      "id": 5087052,
+      "created": [
+       2026,
+       8,
+       20,
+       7,
+       38,
+       54,
+       0
+      ],
+      "minPassengersRequired": 1,
+      "maxPassengersRequired": 2,
+      "pricingCategoryId": 1237647,
+      "activityRateId": 2536440
+     },
+     {
+      "id": 5087053,
+      "created": [
+       2026,
+       8,
+       20,
+       7,
+       38,
+       54,
+       0
+      ],
+      "minPassengersRequired": 3,
+      "maxPassengersRequired": 3,
+      "pricingCategoryId": 1237647,
+      "activityRateId": 2536440
+     },
+     {
+      "id": 5087054,
+      "created": [
+       2026,
+       8,
+       20,
+       7,
+       38,
+       54,
+       0
+      ],
+      "minPassengersRequired": 4,
+      "maxPassengersRequired": 4,
+      "pricingCategoryId": 1237647,
+      "activityRateId": 2536440
+     }
+    ],
+    "pricingCategoryIds": [
+     1237647
+    ],
+    "allPricingCategories": false,
+    "details": [],
+    "textItems": [
+     {
+      "id": 2536440,
+      "created": [
+       2026,
+       8,
+       25,
+       7,
+       32,
+       24,
+       265156663
+      ],
+      "language": "ja_JP",
+      "title": "Standard Private Group ",
+      "activityRateId": 2536440,
+      "description": ""
+     }
+    ]
+   }
+  ],
+  "pricesByRate": [
+   {
+    "activityRateId": 2536440,
+    "pricePerCategoryUnit": [
+     {
+      "id": 1237647,
+      "amount": {
+       "amount": 12000.0,
+       "currency": "JPY"
+      },
+      "minParticipantsRequired": 4,
+      "maxParticipantsRequired": 4
+     },
+     {
+      "id": 1237647,
+      "amount": {
+       "amount": 12000.0,
+       "currency": "JPY"
+      },
+      "minParticipantsRequired": 3,
+      "maxParticipantsRequired": 3
+     },
+     {
+      "id": 1237647,
+      "amount": {
+       "amount": 29000.0,
+       "currency": "JPY"
+      },
+      "minParticipantsRequired": 1,
+      "maxParticipantsRequired": 2
+     }
+    ],
+    "extraPricePerUnit": [],
+    "extraPricePerCategoryUnit": []
+   }
+  ],
+  "comboActivity": false,
+  "comboStartTimes": [],
+  "flags": [],
+  "defaultPrice": null,
+  "pricesByCategory": {},
+  "pickupPrice": null,
+  "pickupPricesByCategory": {},
+  "dropoffPrice": null,
+  "dropoffPricesByCategory": {},
+  "extraPrices": {},
+  "guidedLanguages": [],
+  "unavailable": false,
+  "pickupSoldOut": false,
+  "soldOut": false
+ },
+ {
+  "id": "5688461_20261007",
+  "activityId": 1273235,
+  "activityTitle": "A private Japanese candle-making experience in Kamakura.",
+  "activityOwnerId": 145344,
+  "activityOwnerTitle": "ZENRISE",
+  "startTime": "00:00",
+  "startTimeId": 5688461,
+  "startTimeLabel": null,
+  "flexible": true,
+  "date": 1791331200000,
+  "localizedDate": "Wed 07.Oct'26",
+  "availabilityCount": 999,
+  "bookedParticipants": 0,
+  "minParticipants": 2,
+  "minParticipantsToBookNow": 2,
+  "productGroupId": null,
+  "recurrenceId": 13498250,
+  "pickupAllotment": false,
+  "pickupAvailabilityCount": 999,
+  "unlimitedAvailability": true,
+  "defaultRateId": 2536440,
+  "rates": [
+   {
+    "id": 2536440,
+    "title": "Standard Private Group ",
+    "description": "",
+    "index": 0,
+    "rateCode": "",
+    "pricedPerPerson": true,
+    "minPerBooking": 2,
+    "maxPerBooking": 4,
+    "cancellationPolicy": {
+     "id": 270405,
+     "title": "Candle Making, “A Handmade Light”",
+     "penaltyRules": [
+      {
+       "id": 270480,
+       "cutoffHours": 0,
+       "charge": 100.0,
+       "chargeType": "percentage",
+       "percentage": 100.0
+      },
+      {
+       "id": 270481,
+       "cutoffHours": 24,
+       "charge": 25.0,
+       "chargeType": "percentage",
+       "percentage": 25.0
+      },
+      {
+       "id": 270482,
+       "cutoffHours": 72,
+       "charge": 10.0,
+       "chargeType": "percentage",
+       "percentage": 10.0
+      }
+     ],
+     "tax": null,
+     "defaultPolicy": false,
+     "policyType": "ADVANCED",
+     "simpleCutoffHours": null,
+     "policyTypeEnum": "ADVANCED"
+    },
+    "fixedPassExpiryDate": null,
+    "passValidForDays": null,
+    "pickupSelectionType": "UNAVAILABLE",
+    "pickupPricingType": "INCLUDED_IN_PRICE",
+    "pickupPricedPerPerson": false,
+    "dropoffSelectionType": "UNAVAILABLE",
+    "dropoffPricingType": "INCLUDED_IN_PRICE",
+    "dropoffPricedPerPerson": false,
+    "extraConfigs": [],
+    "startTimeIds": [],
+    "allStartTimes": true,
+    "tieredPricingEnabled": true,
+    "tiers": [
+     {
+      "id": 5087052,
+      "created": [
+       2026,
+       8,
+       20,
+       7,
+       38,
+       54,
+       0
+      ],
+      "minPassengersRequired": 1,
+      "maxPassengersRequired": 2,
+      "pricingCategoryId": 1237647,
+      "activityRateId": 2536440
+     },
+     {
+      "id": 5087053,
+      "created": [
+       2026,
+       8,
+       20,
+       7,
+       38,
+       54,
+       0
+      ],
+      "minPassengersRequired": 3,
+      "maxPassengersRequired": 3,
+      "pricingCategoryId": 1237647,
+      "activityRateId": 2536440
+     },
+     {
+      "id": 5087054,
+      "created": [
+       2026,
+       8,
+       20,
+       7,
+       38,
+       54,
+       0
+      ],
+      "minPassengersRequired": 4,
+      "maxPassengersRequired": 4,
+      "pricingCategoryId": 1237647,
+      "activityRateId": 2536440
+     }
+    ],
+    "pricingCategoryIds": [
+     1237647
+    ],
+    "allPricingCategories": false,
+    "details": [],
+    "textItems": [
+     {
+      "id": 2536440,
+      "created": [
+       2026,
+       8,
+       25,
+       7,
+       32,
+       24,
+       265186598
+      ],
+      "language": "ja_JP",
+      "title": "Standard Private Group ",
+      "activityRateId": 2536440,
+      "description": ""
+     }
+    ]
+   }
+  ],
+  "pricesByRate": [
+   {
+    "activityRateId": 2536440,
+    "pricePerCategoryUnit": [
+     {
+      "id": 1237647,
+      "amount": {
+       "amount": 12000.0,
+       "currency": "JPY"
+      },
+      "minParticipantsRequired": 4,
+      "maxParticipantsRequired": 4
+     },
+     {
+      "id": 1237647,
+      "amount": {
+       "amount": 12000.0,
+       "currency": "JPY"
+      },
+      "minParticipantsRequired": 3,
+      "maxParticipantsRequired": 3
+     },
+     {
+      "id": 1237647,
+      "amount": {
+       "amount": 29000.0,
+       "currency": "JPY"
+      },
+      "minParticipantsRequired": 1,
+      "maxParticipantsRequired": 2
+     }
+    ],
+    "extraPricePerUnit": [],
+    "extraPricePerCategoryUnit": []
+   }
+  ],
+  "comboActivity": false,
+  "comboStartTimes": [],
+  "flags": [],
+  "defaultPrice": null,
+  "pricesByCategory": {},
+  "pickupPrice": null,
+  "pickupPricesByCategory": {},
+  "dropoffPrice": null,
+  "dropoffPricesByCategory": {},
+  "extraPrices": {},
+  "guidedLanguages": [],
+  "unavailable": false,
+  "pickupSoldOut": false,
+  "soldOut": false
+ },
+ {
+  "id": "5688461_20261008",
+  "activityId": 1273235,
+  "activityTitle": "A private Japanese candle-making experience in Kamakura.",
+  "activityOwnerId": 145344,
+  "activityOwnerTitle": "ZENRISE",
+  "startTime": "00:00",
+  "startTimeId": 5688461,
+  "startTimeLabel": null,
+  "flexible": true,
+  "date": 1791417600000,
+  "localizedDate": "Thu 08.Oct'26",
+  "availabilityCount": 999,
+  "bookedParticipants": 0,
+  "minParticipants": 2,
+  "minParticipantsToBookNow": 2,
+  "productGroupId": null,
+  "recurrenceId": 13498250,
+  "pickupAllotment": false,
+  "pickupAvailabilityCount": 999,
+  "unlimitedAvailability": true,
+  "defaultRateId": 2536440,
+  "rates": [
+   {
+    "id": 2536440,
+    "title": "Standard Private Group ",
+    "description": "",
+    "index": 0,
+    "rateCode": "",
+    "pricedPerPerson": true,
+    "minPerBooking": 2,
+    "maxPerBooking": 4,
+    "cancellationPolicy": {
+     "id": 270405,
+     "title": "Candle Making, “A Handmade Light”",
+     "penaltyRules": [
+      {
+       "id": 270480,
+       "cutoffHours": 0,
+       "charge": 100.0,
+       "chargeType": "percentage",
+       "percentage": 100.0
+      },
+      {
+       "id": 270481,
+       "cutoffHours": 24,
+       "charge": 25.0,
+       "chargeType": "percentage",
+       "percentage": 25.0
+      },
+      {
+       "id": 270482,
+       "cutoffHours": 72,
+       "charge": 10.0,
+       "chargeType": "percentage",
+       "percentage": 10.0
+      }
+     ],
+     "tax": null,
+     "defaultPolicy": false,
+     "policyType": "ADVANCED",
+     "simpleCutoffHours": null,
+     "policyTypeEnum": "ADVANCED"
+    },
+    "fixedPassExpiryDate": null,
+    "passValidForDays": null,
+    "pickupSelectionType": "UNAVAILABLE",
+    "pickupPricingType": "INCLUDED_IN_PRICE",
+    "pickupPricedPerPerson": false,
+    "dropoffSelectionType": "UNAVAILABLE",
+    "dropoffPricingType": "INCLUDED_IN_PRICE",
+    "dropoffPricedPerPerson": false,
+    "extraConfigs": [],
+    "startTimeIds": [],
+    "allStartTimes": true,
+    "tieredPricingEnabled": true,
+    "tiers": [
+     {
+      "id": 5087052,
+      "created": [
+       2026,
+       8,
+       20,
+       7,
+       38,
+       54,
+       0
+      ],
+      "minPassengersRequired": 1,
+      "maxPassengersRequired": 2,
+      "pricingCategoryId": 1237647,
+      "activityRateId": 2536440
+     },
+     {
+      "id": 5087053,
+      "created": [
+       2026,
+       8,
+       20,
+       7,
+       38,
+       54,
+       0
+      ],
+      "minPassengersRequired": 3,
+      "maxPassengersRequired": 3,
+      "pricingCategoryId": 1237647,
+      "activityRateId": 2536440
+     },
+     {
+      "id": 5087054,
+      "created": [
+       2026,
+       8,
+       20,
+       7,
+       38,
+       54,
+       0
+      ],
+      "minPassengersRequired": 4,
+      "maxPassengersRequired": 4,
+      "pricingCategoryId": 1237647,
+      "activityRateId": 2536440
+     }
+    ],
+    "pricingCategoryIds": [
+     1237647
+    ],
+    "allPricingCategories": false,
+    "details": [],
+    "textItems": [
+     {
+      "id": 2536440,
+      "created": [
+       2026,
+       8,
+       25,
+       7,
+       32,
+       24,
+       265246157
+      ],
+      "language": "ja_JP",
+      "title": "Standard Private Group ",
+      "activityRateId": 2536440,
+      "description": ""
+     }
+    ]
+   }
+  ],
+  "pricesByRate": [
+   {
+    "activityRateId": 2536440,
+    "pricePerCategoryUnit": [
+     {
+      "id": 1237647,
+      "amount": {
+       "amount": 12000.0,
+       "currency": "JPY"
+      },
+      "minParticipantsRequired": 4,
+      "maxParticipantsRequired": 4
+     },
+     {
+      "id": 1237647,
+      "amount": {
+       "amount": 12000.0,
+       "currency": "JPY"
+      },
+      "minParticipantsRequired": 3,
+      "maxParticipantsRequired": 3
+     },
+     {
+      "id": 1237647,
+      "amount": {
+       "amount": 29000.0,
+       "currency": "JPY"
+      },
+      "minParticipantsRequired": 1,
+      "maxParticipantsRequired": 2
+     }
+    ],
+    "extraPricePerUnit": [],
+    "extraPricePerCategoryUnit": []
+   }
+  ],
+  "comboActivity": false,
+  "comboStartTimes": [],
+  "flags": [],
+  "defaultPrice": null,
+  "pricesByCategory": {},
+  "pickupPrice": null,
+  "pickupPricesByCategory": {},
+  "dropoffPrice": null,
+  "dropoffPricesByCategory": {},
+  "extraPrices": {},
+  "guidedLanguages": [],
+  "unavailable": false,
+  "pickupSoldOut": false,
+  "soldOut": false
+ },
+ {
+  "id": "5688461_20261010",
+  "activityId": 1273235,
+  "activityTitle": "A private Japanese candle-making experience in Kamakura.",
+  "activityOwnerId": 145344,
+  "activityOwnerTitle": "ZENRISE",
+  "startTime": "00:00",
+  "startTimeId": 5688461,
+  "startTimeLabel": null,
+  "flexible": true,
+  "date": 1791590400000,
+  "localizedDate": "Sat 10.Oct'26",
+  "availabilityCount": 999,
+  "bookedParticipants": 0,
+  "minParticipants": 2,
+  "minParticipantsToBookNow": 2,
+  "productGroupId": null,
+  "recurrenceId": 13498250,
+  "pickupAllotment": false,
+  "pickupAvailabilityCount": 999,
+  "unlimitedAvailability": true,
+  "defaultRateId": 2536440,
+  "rates": [
+   {
+    "id": 2536440,
+    "title": "Standard Private Group ",
+    "description": "",
+    "index": 0,
+    "rateCode": "",
+    "pricedPerPerson": true,
+    "minPerBooking": 2,
+    "maxPerBooking": 4,
+    "cancellationPolicy": {
+     "id": 270405,
+     "title": "Candle Making, “A Handmade Light”",
+     "penaltyRules": [
+      {
+       "id": 270480,
+       "cutoffHours": 0,
+       "charge": 100.0,
+       "chargeType": "percentage",
+       "percentage": 100.0
+      },
+      {
+       "id": 270481,
+       "cutoffHours": 24,
+       "charge": 25.0,
+       "chargeType": "percentage",
+       "percentage": 25.0
+      },
+      {
+       "id": 270482,
+       "cutoffHours": 72,
+       "charge": 10.0,
+       "chargeType": "percentage",
+       "percentage": 10.0
+      }
+     ],
+     "tax": null,
+     "defaultPolicy": false,
+     "policyType": "ADVANCED",
+     "simpleCutoffHours": null,
+     "policyTypeEnum": "ADVANCED"
+    },
+    "fixedPassExpiryDate": null,
+    "passValidForDays": null,
+    "pickupSelectionType": "UNAVAILABLE",
+    "pickupPricingType": "INCLUDED_IN_PRICE",
+    "pickupPricedPerPerson": false,
+    "dropoffSelectionType": "UNAVAILABLE",
+    "dropoffPricingType": "INCLUDED_IN_PRICE",
+    "dropoffPricedPerPerson": false,
+    "extraConfigs": [],
+    "startTimeIds": [],
+    "allStartTimes": true,
+    "tieredPricingEnabled": true,
+    "tiers": [
+     {
+      "id": 5087052,
+      "created": [
+       2026,
+       8,
+       20,
+       7,
+       38,
+       54,
+       0
+      ],
+      "minPassengersRequired": 1,
+      "maxPassengersRequired": 2,
+      "pricingCategoryId": 1237647,
+      "activityRateId": 2536440
+     },
+     {
+      "id": 5087053,
+      "created": [
+       2026,
+       8,
+       20,
+       7,
+       38,
+       54,
+       0
+      ],
+      "minPassengersRequired": 3,
+      "maxPassengersRequired": 3,
+      "pricingCategoryId": 1237647,
+      "activityRateId": 2536440
+     },
+     {
+      "id": 5087054,
+      "created": [
+       2026,
+       8,
+       20,
+       7,
+       38,
+       54,
+       0
+      ],
+      "minPassengersRequired": 4,
+      "maxPassengersRequired": 4,
+      "pricingCategoryId": 1237647,
+      "activityRateId": 2536440
+     }
+    ],
+    "pricingCategoryIds": [
+     1237647
+    ],
+    "allPricingCategories": false,
+    "details": [],
+    "textItems": [
+     {
+      "id": 2536440,
+      "created": [
+       2026,
+       8,
+       25,
+       7,
+       32,
+       24,
+       265270684
+      ],
+      "language": "ja_JP",
+      "title": "Standard Private Group ",
+      "activityRateId": 2536440,
+      "description": ""
+     }
+    ]
+   }
+  ],
+  "pricesByRate": [
+   {
+    "activityRateId": 2536440,
+    "pricePerCategoryUnit": [
+     {
+      "id": 1237647,
+      "amount": {
+       "amount": 12000.0,
+       "currency": "JPY"
+      },
+      "minParticipantsRequired": 4,
+      "maxParticipantsRequired": 4
+     },
+     {
+      "id": 1237647,
+      "amount": {
+       "amount": 12000.0,
+       "currency": "JPY"
+      },
+      "minParticipantsRequired": 3,
+      "maxParticipantsRequired": 3
+     },
+     {
+      "id": 1237647,
+      "amount": {
+       "amount": 29000.0,
+       "currency": "JPY"
+      },
+      "minParticipantsRequired": 1,
+      "maxParticipantsRequired": 2
+     }
+    ],
+    "extraPricePerUnit": [],
+    "extraPricePerCategoryUnit": []
+   }
+  ],
+  "comboActivity": false,
+  "comboStartTimes": [],
+  "flags": [],
+  "defaultPrice": null,
+  "pricesByCategory": {},
+  "pickupPrice": null,
+  "pickupPricesByCategory": {},
+  "dropoffPrice": null,
+  "dropoffPricesByCategory": {},
+  "extraPrices": {},
+  "guidedLanguages": [],
+  "unavailable": false,
+  "pickupSoldOut": false,
+  "soldOut": false
+ },
+ {
+  "id": "5688461_20261011",
+  "activityId": 1273235,
+  "activityTitle": "A private Japanese candle-making experience in Kamakura.",
+  "activityOwnerId": 145344,
+  "activityOwnerTitle": "ZENRISE",
+  "startTime": "00:00",
+  "startTimeId": 5688461,
+  "startTimeLabel": null,
+  "flexible": true,
+  "date": 1791676800000,
+  "localizedDate": "Sun 11.Oct'26",
+  "availabilityCount": 999,
+  "bookedParticipants": 0,
+  "minParticipants": 2,
+  "minParticipantsToBookNow": 2,
+  "productGroupId": null,
+  "recurrenceId": 13498250,
+  "pickupAllotment": false,
+  "pickupAvailabilityCount": 999,
+  "unlimitedAvailability": true,
+  "defaultRateId": 2536440,
+  "rates": [
+   {
+    "id": 2536440,
+    "title": "Standard Private Group ",
+    "description": "",
+    "index": 0,
+    "rateCode": "",
+    "pricedPerPerson": true,
+    "minPerBooking": 2,
+    "maxPerBooking": 4,
+    "cancellationPolicy": {
+     "id": 270405,
+     "title": "Candle Making, “A Handmade Light”",
+     "penaltyRules": [
+      {
+       "id": 270480,
+       "cutoffHours": 0,
+       "charge": 100.0,
+       "chargeType": "percentage",
+       "percentage": 100.0
+      },
+      {
+       "id": 270481,
+       "cutoffHours": 24,
+       "charge": 25.0,
+       "chargeType": "percentage",
+       "percentage": 25.0
+      },
+      {
+       "id": 270482,
+       "cutoffHours": 72,
+       "charge": 10.0,
+       "chargeType": "percentage",
+       "percentage": 10.0
+      }
+     ],
+     "tax": null,
+     "defaultPolicy": false,
+     "policyType": "ADVANCED",
+     "simpleCutoffHours": null,
+     "policyTypeEnum": "ADVANCED"
+    },
+    "fixedPassExpiryDate": null,
+    "passValidForDays": null,
+    "pickupSelectionType": "UNAVAILABLE",
+    "pickupPricingType": "INCLUDED_IN_PRICE",
+    "pickupPricedPerPerson": false,
+    "dropoffSelectionType": "UNAVAILABLE",
+    "dropoffPricingType": "INCLUDED_IN_PRICE",
+    "dropoffPricedPerPerson": false,
+    "extraConfigs": [],
+    "startTimeIds": [],
+    "allStartTimes": true,
+    "tieredPricingEnabled": true,
+    "tiers": [
+     {
+      "id": 5087052,
+      "created": [
+       2026,
+       8,
+       20,
+       7,
+       38,
+       54,
+       0
+      ],
+      "minPassengersRequired": 1,
+      "maxPassengersRequired": 2,
+      "pricingCategoryId": 1237647,
+      "activityRateId": 2536440
+     },
+     {
+      "id": 5087053,
+      "created": [
+       2026,
+       8,
+       20,
+       7,
+       38,
+       54,
+       0
+      ],
+      "minPassengersRequired": 3,
+      "maxPassengersRequired": 3,
+      "pricingCategoryId": 1237647,
+      "activityRateId": 2536440
+     },
+     {
+      "id": 5087054,
+      "created": [
+       2026,
+       8,
+       20,
+       7,
+       38,
+       54,
+       0
+      ],
+      "minPassengersRequired": 4,
+      "maxPassengersRequired": 4,
+      "pricingCategoryId": 1237647,
+      "activityRateId": 2536440
+     }
+    ],
+    "pricingCategoryIds": [
+     1237647
+    ],
+    "allPricingCategories": false,
+    "details": [],
+    "textItems": [
+     {
+      "id": 2536440,
+      "created": [
+       2026,
+       8,
+       25,
+       7,
+       32,
+       24,
+       265321608
+      ],
+      "language": "ja_JP",
+      "title": "Standard Private Group ",
+      "activityRateId": 2536440,
+      "description": ""
+     }
+    ]
+   }
+  ],
+  "pricesByRate": [
+   {
+    "activityRateId": 2536440,
+    "pricePerCategoryUnit": [
+     {
+      "id": 1237647,
+      "amount": {
+       "amount": 12000.0,
+       "currency": "JPY"
+      },
+      "minParticipantsRequired": 4,
+      "maxParticipantsRequired": 4
+     },
+     {
+      "id": 1237647,
+      "amount": {
+       "amount": 12000.0,
+       "currency": "JPY"
+      },
+      "minParticipantsRequired": 3,
+      "maxParticipantsRequired": 3
+     },
+     {
+      "id": 1237647,
+      "amount": {
+       "amount": 29000.0,
+       "currency": "JPY"
+      },
+      "minParticipantsRequired": 1,
+      "maxParticipantsRequired": 2
+     }
+    ],
+    "extraPricePerUnit": [],
+    "extraPricePerCategoryUnit": []
+   }
+  ],
+  "comboActivity": false,
+  "comboStartTimes": [],
+  "flags": [],
+  "defaultPrice": null,
+  "pricesByCategory": {},
+  "pickupPrice": null,
+  "pickupPricesByCategory": {},
+  "dropoffPrice": null,
+  "dropoffPricesByCategory": {},
+  "extraPrices": {},
+  "guidedLanguages": [],
+  "unavailable": false,
+  "pickupSoldOut": false,
+  "soldOut": false
+ },
+ {
+  "id": "5688461_20261012",
+  "activityId": 1273235,
+  "activityTitle": "A private Japanese candle-making experience in Kamakura.",
+  "activityOwnerId": 145344,
+  "activityOwnerTitle": "ZENRISE",
+  "startTime": "00:00",
+  "startTimeId": 5688461,
+  "startTimeLabel": null,
+  "flexible": true,
+  "date": 1791763200000,
+  "localizedDate": "Mon 12.Oct'26",
+  "availabilityCount": 999,
+  "bookedParticipants": 0,
+  "minParticipants": 2,
+  "minParticipantsToBookNow": 2,
+  "productGroupId": null,
+  "recurrenceId": 13498250,
+  "pickupAllotment": false,
+  "pickupAvailabilityCount": 999,
+  "unlimitedAvailability": true,
+  "defaultRateId": 2536440,
+  "rates": [
+   {
+    "id": 2536440,
+    "title": "Standard Private Group ",
+    "description": "",
+    "index": 0,
+    "rateCode": "",
+    "pricedPerPerson": true,
+    "minPerBooking": 2,
+    "maxPerBooking": 4,
+    "cancellationPolicy": {
+     "id": 270405,
+     "title": "Candle Making, “A Handmade Light”",
+     "penaltyRules": [
+      {
+       "id": 270480,
+       "cutoffHours": 0,
+       "charge": 100.0,
+       "chargeType": "percentage",
+       "percentage": 100.0
+      },
+      {
+       "id": 270481,
+       "cutoffHours": 24,
+       "charge": 25.0,
+       "chargeType": "percentage",
+       "percentage": 25.0
+      },
+      {
+       "id": 270482,
+       "cutoffHours": 72,
+       "charge": 10.0,
+       "chargeType": "percentage",
+       "percentage": 10.0
+      }
+     ],
+     "tax": null,
+     "defaultPolicy": false,
+     "policyType": "ADVANCED",
+     "simpleCutoffHours": null,
+     "policyTypeEnum": "ADVANCED"
+    },
+    "fixedPassExpiryDate": null,
+    "passValidForDays": null,
+    "pickupSelectionType": "UNAVAILABLE",
+    "pickupPricingType": "INCLUDED_IN_PRICE",
+    "pickupPricedPerPerson": false,
+    "dropoffSelectionType": "UNAVAILABLE",
+    "dropoffPricingType": "INCLUDED_IN_PRICE",
+    "dropoffPricedPerPerson": false,
+    "extraConfigs": [],
+    "startTimeIds": [],
+    "allStartTimes": true,
+    "tieredPricingEnabled": true,
+    "tiers": [
+     {
+      "id": 5087052,
+      "created": [
+       2026,
+       8,
+       20,
+       7,
+       38,
+       54,
+       0
+      ],
+      "minPassengersRequired": 1,
+      "maxPassengersRequired": 2,
+      "pricingCategoryId": 1237647,
+      "activityRateId": 2536440
+     },
+     {
+      "id": 5087053,
+      "created": [
+       2026,
+       8,
+       20,
+       7,
+       38,
+       54,
+       0
+      ],
+      "minPassengersRequired": 3,
+      "maxPassengersRequired": 3,
+      "pricingCategoryId": 1237647,
+      "activityRateId": 2536440
+     },
+     {
+      "id": 5087054,
+      "created": [
+       2026,
+       8,
+       20,
+       7,
+       38,
+       54,
+       0
+      ],
+      "minPassengersRequired": 4,
+      "maxPassengersRequired": 4,
+      "pricingCategoryId": 1237647,
+      "activityRateId": 2536440
+     }
+    ],
+    "pricingCategoryIds": [
+     1237647
+    ],
+    "allPricingCategories": false,
+    "details": [],
+    "textItems": [
+     {
+      "id": 2536440,
+      "created": [
+       2026,
+       8,
+       25,
+       7,
+       32,
+       24,
+       265343024
+      ],
+      "language": "ja_JP",
+      "title": "Standard Private Group ",
+      "activityRateId": 2536440,
+      "description": ""
+     }
+    ]
+   }
+  ],
+  "pricesByRate": [
+   {
+    "activityRateId": 2536440,
+    "pricePerCategoryUnit": [
+     {
+      "id": 1237647,
+      "amount": {
+       "amount": 12000.0,
+       "currency": "JPY"
+      },
+      "minParticipantsRequired": 4,
+      "maxParticipantsRequired": 4
+     },
+     {
+      "id": 1237647,
+      "amount": {
+       "amount": 12000.0,
+       "currency": "JPY"
+      },
+      "minParticipantsRequired": 3,
+      "maxParticipantsRequired": 3
+     },
+     {
+      "id": 1237647,
+      "amount": {
+       "amount": 29000.0,
+       "currency": "JPY"
+      },
+      "minParticipantsRequired": 1,
+      "maxParticipantsRequired": 2
+     }
+    ],
+    "extraPricePerUnit": [],
+    "extraPricePerCategoryUnit": []
+   }
+  ],
+  "comboActivity": false,
+  "comboStartTimes": [],
+  "flags": [],
+  "defaultPrice": null,
+  "pricesByCategory": {},
+  "pickupPrice": null,
+  "pickupPricesByCategory": {},
+  "dropoffPrice": null,
+  "dropoffPricesByCategory": {},
+  "extraPrices": {},
+  "guidedLanguages": [],
+  "unavailable": false,
+  "pickupSoldOut": false,
+  "soldOut": false
+ },
+ {
+  "id": "5688461_20261013",
+  "activityId": 1273235,
+  "activityTitle": "A private Japanese candle-making experience in Kamakura.",
+  "activityOwnerId": 145344,
+  "activityOwnerTitle": "ZENRISE",
+  "startTime": "00:00",
+  "startTimeId": 5688461,
+  "startTimeLabel": null,
+  "flexible": true,
+  "date": 1791849600000,
+  "localizedDate": "Tue 13.Oct'26",
+  "availabilityCount": 999,
+  "bookedParticipants": 0,
+  "minParticipants": 2,
+  "minParticipantsToBookNow": 2,
+  "productGroupId": null,
+  "recurrenceId": 13498250,
+  "pickupAllotment": false,
+  "pickupAvailabilityCount": 999,
+  "unlimitedAvailability": true,
+  "defaultRateId": 2536440,
+  "rates": [
+   {
+    "id": 2536440,
+    "title": "Standard Private Group ",
+    "description": "",
+    "index": 0,
+    "rateCode": "",
+    "pricedPerPerson": true,
+    "minPerBooking": 2,
+    "maxPerBooking": 4,
+    "cancellationPolicy": {
+     "id": 270405,
+     "title": "Candle Making, “A Handmade Light”",
+     "penaltyRules": [
+      {
+       "id": 270480,
+       "cutoffHours": 0,
+       "charge": 100.0,
+       "chargeType": "percentage",
+       "percentage": 100.0
+      },
+      {
+       "id": 270481,
+       "cutoffHours": 24,
+       "charge": 25.0,
+       "chargeType": "percentage",
+       "percentage": 25.0
+      },
+      {
+       "id": 270482,
+       "cutoffHours": 72,
+       "charge": 10.0,
+       "chargeType": "percentage",
+       "percentage": 10.0
+      }
+     ],
+     "tax": null,
+     "defaultPolicy": false,
+     "policyType": "ADVANCED",
+     "simpleCutoffHours": null,
+     "policyTypeEnum": "ADVANCED"
+    },
+    "fixedPassExpiryDate": null,
+    "passValidForDays": null,
+    "pickupSelectionType": "UNAVAILABLE",
+    "pickupPricingType": "INCLUDED_IN_PRICE",
+    "pickupPricedPerPerson": false,
+    "dropoffSelectionType": "UNAVAILABLE",
+    "dropoffPricingType": "INCLUDED_IN_PRICE",
+    "dropoffPricedPerPerson": false,
+    "extraConfigs": [],
+    "startTimeIds": [],
+    "allStartTimes": true,
+    "tieredPricingEnabled": true,
+    "tiers": [
+     {
+      "id": 5087052,
+      "created": [
+       2026,
+       8,
+       20,
+       7,
+       38,
+       54,
+       0
+      ],
+      "minPassengersRequired": 1,
+      "maxPassengersRequired": 2,
+      "pricingCategoryId": 1237647,
+      "activityRateId": 2536440
+     },
+     {
+      "id": 5087053,
+      "created": [
+       2026,
+       8,
+       20,
+       7,
+       38,
+       54,
+       0
+      ],
+      "minPassengersRequired": 3,
+      "maxPassengersRequired": 3,
+      "pricingCategoryId": 1237647,
+      "activityRateId": 2536440
+     },
+     {
+      "id": 5087054,
+      "created": [
+       2026,
+       8,
+       20,
+       7,
+       38,
+       54,
+       0
+      ],
+      "minPassengersRequired": 4,
+      "maxPassengersRequired": 4,
+      "pricingCategoryId": 1237647,
+      "activityRateId": 2536440
+     }
+    ],
+    "pricingCategoryIds": [
+     1237647
+    ],
+    "allPricingCategories": false,
+    "details": [],
+    "textItems": [
+     {
+      "id": 2536440,
+      "created": [
+       2026,
+       8,
+       25,
+       7,
+       32,
+       24,
+       265358015
+      ],
+      "language": "ja_JP",
+      "title": "Standard Private Group ",
+      "activityRateId": 2536440,
+      "description": ""
+     }
+    ]
+   }
+  ],
+  "pricesByRate": [
+   {
+    "activityRateId": 2536440,
+    "pricePerCategoryUnit": [
+     {
+      "id": 1237647,
+      "amount": {
+       "amount": 12000.0,
+       "currency": "JPY"
+      },
+      "minParticipantsRequired": 4,
+      "maxParticipantsRequired": 4
+     },
+     {
+      "id": 1237647,
+      "amount": {
+       "amount": 12000.0,
+       "currency": "JPY"
+      },
+      "minParticipantsRequired": 3,
+      "maxParticipantsRequired": 3
+     },
+     {
+      "id": 1237647,
+      "amount": {
+       "amount": 29000.0,
+       "currency": "JPY"
+      },
+      "minParticipantsRequired": 1,
+      "maxParticipantsRequired": 2
+     }
+    ],
+    "extraPricePerUnit": [],
+    "extraPricePerCategoryUnit": []
+   }
+  ],
+  "comboActivity": false,
+  "comboStartTimes": [],
+  "flags": [],
+  "defaultPrice": null,
+  "pricesByCategory": {},
+  "pickupPrice": null,
+  "pickupPricesByCategory": {},
+  "dropoffPrice": null,
+  "dropoffPricesByCategory": {},
+  "extraPrices": {},
+  "guidedLanguages": [],
+  "unavailable": false,
+  "pickupSoldOut": false,
+  "soldOut": false
+ },
+ {
+  "id": "5688461_20261014",
+  "activityId": 1273235,
+  "activityTitle": "A private Japanese candle-making experience in Kamakura.",
+  "activityOwnerId": 145344,
+  "activityOwnerTitle": "ZENRISE",
+  "startTime": "00:00",
+  "startTimeId": 5688461,
+  "startTimeLabel": null,
+  "flexible": true,
+  "date": 1791936000000,
+  "localizedDate": "Wed 14.Oct'26",
+  "availabilityCount": 999,
+  "bookedParticipants": 0,
+  "minParticipants": 2,
+  "minParticipantsToBookNow": 2,
+  "productGroupId": null,
+  "recurrenceId": 13498250,
+  "pickupAllotment": false,
+  "pickupAvailabilityCount": 999,
+  "unlimitedAvailability": true,
+  "defaultRateId": 2536440,
+  "rates": [
+   {
+    "id": 2536440,
+    "title": "Standard Private Group ",
+    "description": "",
+    "index": 0,
+    "rateCode": "",
+    "pricedPerPerson": true,
+    "minPerBooking": 2,
+    "maxPerBooking": 4,
+    "cancellationPolicy": {
+     "id": 270405,
+     "title": "Candle Making, “A Handmade Light”",
+     "penaltyRules": [
+      {
+       "id": 270480,
+       "cutoffHours": 0,
+       "charge": 100.0,
+       "chargeType": "percentage",
+       "percentage": 100.0
+      },
+      {
+       "id": 270481,
+       "cutoffHours": 24,
+       "charge": 25.0,
+       "chargeType": "percentage",
+       "percentage": 25.0
+      },
+      {
+       "id": 270482,
+       "cutoffHours": 72,
+       "charge": 10.0,
+       "chargeType": "percentage",
+       "percentage": 10.0
+      }
+     ],
+     "tax": null,
+     "defaultPolicy": false,
+     "policyType": "ADVANCED",
+     "simpleCutoffHours": null,
+     "policyTypeEnum": "ADVANCED"
+    },
+    "fixedPassExpiryDate": null,
+    "passValidForDays": null,
+    "pickupSelectionType": "UNAVAILABLE",
+    "pickupPricingType": "INCLUDED_IN_PRICE",
+    "pickupPricedPerPerson": false,
+    "dropoffSelectionType": "UNAVAILABLE",
+    "dropoffPricingType": "INCLUDED_IN_PRICE",
+    "dropoffPricedPerPerson": false,
+    "extraConfigs": [],
+    "startTimeIds": [],
+    "allStartTimes": true,
+    "tieredPricingEnabled": true,
+    "tiers": [
+     {
+      "id": 5087052,
+      "created": [
+       2026,
+       8,
+       20,
+       7,
+       38,
+       54,
+       0
+      ],
+      "minPassengersRequired": 1,
+      "maxPassengersRequired": 2,
+      "pricingCategoryId": 1237647,
+      "activityRateId": 2536440
+     },
+     {
+      "id": 5087053,
+      "created": [
+       2026,
+       8,
+       20,
+       7,
+       38,
+       54,
+       0
+      ],
+      "minPassengersRequired": 3,
+      "maxPassengersRequired": 3,
+      "pricingCategoryId": 1237647,
+      "activityRateId": 2536440
+     },
+     {
+      "id": 5087054,
+      "created": [
+       2026,
+       8,
+       20,
+       7,
+       38,
+       54,
+       0
+      ],
+      "minPassengersRequired": 4,
+      "maxPassengersRequired": 4,
+      "pricingCategoryId": 1237647,
+      "activityRateId": 2536440
+     }
+    ],
+    "pricingCategoryIds": [
+     1237647
+    ],
+    "allPricingCategories": false,
+    "details": [],
+    "textItems": [
+     {
+      "id": 2536440,
+      "created": [
+       2026,
+       8,
+       25,
+       7,
+       32,
+       24,
+       265491881
+      ],
+      "language": "ja_JP",
+      "title": "Standard Private Group ",
+      "activityRateId": 2536440,
+      "description": ""
+     }
+    ]
+   }
+  ],
+  "pricesByRate": [
+   {
+    "activityRateId": 2536440,
+    "pricePerCategoryUnit": [
+     {
+      "id": 1237647,
+      "amount": {
+       "amount": 12000.0,
+       "currency": "JPY"
+      },
+      "minParticipantsRequired": 4,
+      "maxParticipantsRequired": 4
+     },
+     {
+      "id": 1237647,
+      "amount": {
+       "amount": 12000.0,
+       "currency": "JPY"
+      },
+      "minParticipantsRequired": 3,
+      "maxParticipantsRequired": 3
+     },
+     {
+      "id": 1237647,
+      "amount": {
+       "amount": 29000.0,
+       "currency": "JPY"
+      },
+      "minParticipantsRequired": 1,
+      "maxParticipantsRequired": 2
+     }
+    ],
+    "extraPricePerUnit": [],
+    "extraPricePerCategoryUnit": []
+   }
+  ],
+  "comboActivity": false,
+  "comboStartTimes": [],
+  "flags": [],
+  "defaultPrice": null,
+  "pricesByCategory": {},
+  "pickupPrice": null,
+  "pickupPricesByCategory": {},
+  "dropoffPrice": null,
+  "dropoffPricesByCategory": {},
+  "extraPrices": {},
+  "guidedLanguages": [],
+  "unavailable": false,
+  "pickupSoldOut": false,
+  "soldOut": false
+ },
+ {
+  "id": "5688461_20261015",
+  "activityId": 1273235,
+  "activityTitle": "A private Japanese candle-making experience in Kamakura.",
+  "activityOwnerId": 145344,
+  "activityOwnerTitle": "ZENRISE",
+  "startTime": "00:00",
+  "startTimeId": 5688461,
+  "startTimeLabel": null,
+  "flexible": true,
+  "date": 1792022400000,
+  "localizedDate": "Thu 15.Oct'26",
+  "availabilityCount": 999,
+  "bookedParticipants": 0,
+  "minParticipants": 2,
+  "minParticipantsToBookNow": 2,
+  "productGroupId": null,
+  "recurrenceId": 13498250,
+  "pickupAllotment": false,
+  "pickupAvailabilityCount": 999,
+  "unlimitedAvailability": true,
+  "defaultRateId": 2536440,
+  "rates": [
+   {
+    "id": 2536440,
+    "title": "Standard Private Group ",
+    "description": "",
+    "index": 0,
+    "rateCode": "",
+    "pricedPerPerson": true,
+    "minPerBooking": 2,
+    "maxPerBooking": 4,
+    "cancellationPolicy": {
+     "id": 270405,
+     "title": "Candle Making, “A Handmade Light”",
+     "penaltyRules": [
+      {
+       "id": 270480,
+       "cutoffHours": 0,
+       "charge": 100.0,
+       "chargeType": "percentage",
+       "percentage": 100.0
+      },
+      {
+       "id": 270481,
+       "cutoffHours": 24,
+       "charge": 25.0,
+       "chargeType": "percentage",
+       "percentage": 25.0
+      },
+      {
+       "id": 270482,
+       "cutoffHours": 72,
+       "charge": 10.0,
+       "chargeType": "percentage",
+       "percentage": 10.0
+      }
+     ],
+     "tax": null,
+     "defaultPolicy": false,
+     "policyType": "ADVANCED",
+     "simpleCutoffHours": null,
+     "policyTypeEnum": "ADVANCED"
+    },
+    "fixedPassExpiryDate": null,
+    "passValidForDays": null,
+    "pickupSelectionType": "UNAVAILABLE",
+    "pickupPricingType": "INCLUDED_IN_PRICE",
+    "pickupPricedPerPerson": false,
+    "dropoffSelectionType": "UNAVAILABLE",
+    "dropoffPricingType": "INCLUDED_IN_PRICE",
+    "dropoffPricedPerPerson": false,
+    "extraConfigs": [],
+    "startTimeIds": [],
+    "allStartTimes": true,
+    "tieredPricingEnabled": true,
+    "tiers": [
+     {
+      "id": 5087052,
+      "created": [
+       2026,
+       8,
+       20,
+       7,
+       38,
+       54,
+       0
+      ],
+      "minPassengersRequired": 1,
+      "maxPassengersRequired": 2,
+      "pricingCategoryId": 1237647,
+      "activityRateId": 2536440
+     },
+     {
+      "id": 5087053,
+      "created": [
+       2026,
+       8,
+       20,
+       7,
+       38,
+       54,
+       0
+      ],
+      "minPassengersRequired": 3,
+      "maxPassengersRequired": 3,
+      "pricingCategoryId": 1237647,
+      "activityRateId": 2536440
+     },
+     {
+      "id": 5087054,
+      "created": [
+       2026,
+       8,
+       20,
+       7,
+       38,
+       54,
+       0
+      ],
+      "minPassengersRequired": 4,
+      "maxPassengersRequired": 4,
+      "pricingCategoryId": 1237647,
+      "activityRateId": 2536440
+     }
+    ],
+    "pricingCategoryIds": [
+     1237647
+    ],
+    "allPricingCategories": false,
+    "details": [],
+    "textItems": [
+     {
+      "id": 2536440,
+      "created": [
+       2026,
+       8,
+       25,
+       7,
+       32,
+       24,
+       265546798
+      ],
+      "language": "ja_JP",
+      "title": "Standard Private Group ",
+      "activityRateId": 2536440,
+      "description": ""
+     }
+    ]
+   }
+  ],
+  "pricesByRate": [
+   {
+    "activityRateId": 2536440,
+    "pricePerCategoryUnit": [
+     {
+      "id": 1237647,
+      "amount": {
+       "amount": 12000.0,
+       "currency": "JPY"
+      },
+      "minParticipantsRequired": 4,
+      "maxParticipantsRequired": 4
+     },
+     {
+      "id": 1237647,
+      "amount": {
+       "amount": 12000.0,
+       "currency": "JPY"
+      },
+      "minParticipantsRequired": 3,
+      "maxParticipantsRequired": 3
+     },
+     {
+      "id": 1237647,
+      "amount": {
+       "amount": 29000.0,
+       "currency": "JPY"
+      },
+      "minParticipantsRequired": 1,
+      "maxParticipantsRequired": 2
+     }
+    ],
+    "extraPricePerUnit": [],
+    "extraPricePerCategoryUnit": []
+   }
+  ],
+  "comboActivity": false,
+  "comboStartTimes": [],
+  "flags": [],
+  "defaultPrice": null,
+  "pricesByCategory": {},
+  "pickupPrice": null,
+  "pickupPricesByCategory": {},
+  "dropoffPrice": null,
+  "dropoffPricesByCategory": {},
+  "extraPrices": {},
+  "guidedLanguages": [],
+  "unavailable": false,
+  "pickupSoldOut": false,
+  "soldOut": false
+ },
+ {
+  "id": "5688461_20261016",
+  "activityId": 1273235,
+  "activityTitle": "A private Japanese candle-making experience in Kamakura.",
+  "activityOwnerId": 145344,
+  "activityOwnerTitle": "ZENRISE",
+  "startTime": "00:00",
+  "startTimeId": 5688461,
+  "startTimeLabel": null,
+  "flexible": true,
+  "date": 1792108800000,
+  "localizedDate": "Fri 16.Oct'26",
+  "availabilityCount": 999,
+  "bookedParticipants": 0,
+  "minParticipants": 2,
+  "minParticipantsToBookNow": 2,
+  "productGroupId": null,
+  "recurrenceId": 13498250,
+  "pickupAllotment": false,
+  "pickupAvailabilityCount": 999,
+  "unlimitedAvailability": true,
+  "defaultRateId": 2536440,
+  "rates": [
+   {
+    "id": 2536440,
+    "title": "Standard Private Group ",
+    "description": "",
+    "index": 0,
+    "rateCode": "",
+    "pricedPerPerson": true,
+    "minPerBooking": 2,
+    "maxPerBooking": 4,
+    "cancellationPolicy": {
+     "id": 270405,
+     "title": "Candle Making, “A Handmade Light”",
+     "penaltyRules": [
+      {
+       "id": 270480,
+       "cutoffHours": 0,
+       "charge": 100.0,
+       "chargeType": "percentage",
+       "percentage": 100.0
+      },
+      {
+       "id": 270481,
+       "cutoffHours": 24,
+       "charge": 25.0,
+       "chargeType": "percentage",
+       "percentage": 25.0
+      },
+      {
+       "id": 270482,
+       "cutoffHours": 72,
+       "charge": 10.0,
+       "chargeType": "percentage",
+       "percentage": 10.0
+      }
+     ],
+     "tax": null,
+     "defaultPolicy": false,
+     "policyType": "ADVANCED",
+     "simpleCutoffHours": null,
+     "policyTypeEnum": "ADVANCED"
+    },
+    "fixedPassExpiryDate": null,
+    "passValidForDays": null,
+    "pickupSelectionType": "UNAVAILABLE",
+    "pickupPricingType": "INCLUDED_IN_PRICE",
+    "pickupPricedPerPerson": false,
+    "dropoffSelectionType": "UNAVAILABLE",
+    "dropoffPricingType": "INCLUDED_IN_PRICE",
+    "dropoffPricedPerPerson": false,
+    "extraConfigs": [],
+    "startTimeIds": [],
+    "allStartTimes": true,
+    "tieredPricingEnabled": true,
+    "tiers": [
+     {
+      "id": 5087052,
+      "created": [
+       2026,
+       8,
+       20,
+       7,
+       38,
+       54,
+       0
+      ],
+      "minPassengersRequired": 1,
+      "maxPassengersRequired": 2,
+      "pricingCategoryId": 1237647,
+      "activityRateId": 2536440
+     },
+     {
+      "id": 5087053,
+      "created": [
+       2026,
+       8,
+       20,
+       7,
+       38,
+       54,
+       0
+      ],
+      "minPassengersRequired": 3,
+      "maxPassengersRequired": 3,
+      "pricingCategoryId": 1237647,
+      "activityRateId": 2536440
+     },
+     {
+      "id": 5087054,
+      "created": [
+       2026,
+       8,
+       20,
+       7,
+       38,
+       54,
+       0
+      ],
+      "minPassengersRequired": 4,
+      "maxPassengersRequired": 4,
+      "pricingCategoryId": 1237647,
+      "activityRateId": 2536440
+     }
+    ],
+    "pricingCategoryIds": [
+     1237647
+    ],
+    "allPricingCategories": false,
+    "details": [],
+    "textItems": [
+     {
+      "id": 2536440,
+      "created": [
+       2026,
+       8,
+       25,
+       7,
+       32,
+       24,
+       265602788
+      ],
+      "language": "ja_JP",
+      "title": "Standard Private Group ",
+      "activityRateId": 2536440,
+      "description": ""
+     }
+    ]
+   }
+  ],
+  "pricesByRate": [
+   {
+    "activityRateId": 2536440,
+    "pricePerCategoryUnit": [
+     {
+      "id": 1237647,
+      "amount": {
+       "amount": 12000.0,
+       "currency": "JPY"
+      },
+      "minParticipantsRequired": 4,
+      "maxParticipantsRequired": 4
+     },
+     {
+      "id": 1237647,
+      "amount": {
+       "amount": 12000.0,
+       "currency": "JPY"
+      },
+      "minParticipantsRequired": 3,
+      "maxParticipantsRequired": 3
+     },
+     {
+      "id": 1237647,
+      "amount": {
+       "amount": 29000.0,
+       "currency": "JPY"
+      },
+      "minParticipantsRequired": 1,
+      "maxParticipantsRequired": 2
+     }
+    ],
+    "extraPricePerUnit": [],
+    "extraPricePerCategoryUnit": []
+   }
+  ],
+  "comboActivity": false,
+  "comboStartTimes": [],
+  "flags": [],
+  "defaultPrice": null,
+  "pricesByCategory": {},
+  "pickupPrice": null,
+  "pickupPricesByCategory": {},
+  "dropoffPrice": null,
+  "dropoffPricesByCategory": {},
+  "extraPrices": {},
+  "guidedLanguages": [],
+  "unavailable": false,
+  "pickupSoldOut": false,
+  "soldOut": false
+ },
+ {
+  "id": "5688461_20261017",
+  "activityId": 1273235,
+  "activityTitle": "A private Japanese candle-making experience in Kamakura.",
+  "activityOwnerId": 145344,
+  "activityOwnerTitle": "ZENRISE",
+  "startTime": "00:00",
+  "startTimeId": 5688461,
+  "startTimeLabel": null,
+  "flexible": true,
+  "date": 1792195200000,
+  "localizedDate": "Sat 17.Oct'26",
+  "availabilityCount": 999,
+  "bookedParticipants": 0,
+  "minParticipants": 2,
+  "minParticipantsToBookNow": 2,
+  "productGroupId": null,
+  "recurrenceId": 13498250,
+  "pickupAllotment": false,
+  "pickupAvailabilityCount": 999,
+  "unlimitedAvailability": true,
+  "defaultRateId": 2536440,
+  "rates": [
+   {
+    "id": 2536440,
+    "title": "Standard Private Group ",
+    "description": "",
+    "index": 0,
+    "rateCode": "",
+    "pricedPerPerson": true,
+    "minPerBooking": 2,
+    "maxPerBooking": 4,
+    "cancellationPolicy": {
+     "id": 270405,
+     "title": "Candle Making, “A Handmade Light”",
+     "penaltyRules": [
+      {
+       "id": 270480,
+       "cutoffHours": 0,
+       "charge": 100.0,
+       "chargeType": "percentage",
+       "percentage": 100.0
+      },
+      {
+       "id": 270481,
+       "cutoffHours": 24,
+       "charge": 25.0,
+       "chargeType": "percentage",
+       "percentage": 25.0
+      },
+      {
+       "id": 270482,
+       "cutoffHours": 72,
+       "charge": 10.0,
+       "chargeType": "percentage",
+       "percentage": 10.0
+      }
+     ],
+     "tax": null,
+     "defaultPolicy": false,
+     "policyType": "ADVANCED",
+     "simpleCutoffHours": null,
+     "policyTypeEnum": "ADVANCED"
+    },
+    "fixedPassExpiryDate": null,
+    "passValidForDays": null,
+    "pickupSelectionType": "UNAVAILABLE",
+    "pickupPricingType": "INCLUDED_IN_PRICE",
+    "pickupPricedPerPerson": false,
+    "dropoffSelectionType": "UNAVAILABLE",
+    "dropoffPricingType": "INCLUDED_IN_PRICE",
+    "dropoffPricedPerPerson": false,
+    "extraConfigs": [],
+    "startTimeIds": [],
+    "allStartTimes": true,
+    "tieredPricingEnabled": true,
+    "tiers": [
+     {
+      "id": 5087052,
+      "created": [
+       2026,
+       8,
+       20,
+       7,
+       38,
+       54,
+       0
+      ],
+      "minPassengersRequired": 1,
+      "maxPassengersRequired": 2,
+      "pricingCategoryId": 1237647,
+      "activityRateId": 2536440
+     },
+     {
+      "id": 5087053,
+      "created": [
+       2026,
+       8,
+       20,
+       7,
+       38,
+       54,
+       0
+      ],
+      "minPassengersRequired": 3,
+      "maxPassengersRequired": 3,
+      "pricingCategoryId": 1237647,
+      "activityRateId": 2536440
+     },
+     {
+      "id": 5087054,
+      "created": [
+       2026,
+       8,
+       20,
+       7,
+       38,
+       54,
+       0
+      ],
+      "minPassengersRequired": 4,
+      "maxPassengersRequired": 4,
+      "pricingCategoryId": 1237647,
+      "activityRateId": 2536440
+     }
+    ],
+    "pricingCategoryIds": [
+     1237647
+    ],
+    "allPricingCategories": false,
+    "details": [],
+    "textItems": [
+     {
+      "id": 2536440,
+      "created": [
+       2026,
+       8,
+       25,
+       7,
+       32,
+       24,
+       265662565
+      ],
+      "language": "ja_JP",
+      "title": "Standard Private Group ",
+      "activityRateId": 2536440,
+      "description": ""
+     }
+    ]
+   }
+  ],
+  "pricesByRate": [
+   {
+    "activityRateId": 2536440,
+    "pricePerCategoryUnit": [
+     {
+      "id": 1237647,
+      "amount": {
+       "amount": 12000.0,
+       "currency": "JPY"
+      },
+      "minParticipantsRequired": 4,
+      "maxParticipantsRequired": 4
+     },
+     {
+      "id": 1237647,
+      "amount": {
+       "amount": 12000.0,
+       "currency": "JPY"
+      },
+      "minParticipantsRequired": 3,
+      "maxParticipantsRequired": 3
+     },
+     {
+      "id": 1237647,
+      "amount": {
+       "amount": 29000.0,
+       "currency": "JPY"
+      },
+      "minParticipantsRequired": 1,
+      "maxParticipantsRequired": 2
+     }
+    ],
+    "extraPricePerUnit": [],
+    "extraPricePerCategoryUnit": []
+   }
+  ],
+  "comboActivity": false,
+  "comboStartTimes": [],
+  "flags": [],
+  "defaultPrice": null,
+  "pricesByCategory": {},
+  "pickupPrice": null,
+  "pickupPricesByCategory": {},
+  "dropoffPrice": null,
+  "dropoffPricesByCategory": {},
+  "extraPrices": {},
+  "guidedLanguages": [],
+  "unavailable": false,
+  "pickupSoldOut": false,
+  "soldOut": false
+ },
+ {
+  "id": "5688461_20261018",
+  "activityId": 1273235,
+  "activityTitle": "A private Japanese candle-making experience in Kamakura.",
+  "activityOwnerId": 145344,
+  "activityOwnerTitle": "ZENRISE",
+  "startTime": "00:00",
+  "startTimeId": 5688461,
+  "startTimeLabel": null,
+  "flexible": true,
+  "date": 1792281600000,
+  "localizedDate": "Sun 18.Oct'26",
+  "availabilityCount": 999,
+  "bookedParticipants": 0,
+  "minParticipants": 2,
+  "minParticipantsToBookNow": 2,
+  "productGroupId": null,
+  "recurrenceId": 13498250,
+  "pickupAllotment": false,
+  "pickupAvailabilityCount": 999,
+  "unlimitedAvailability": true,
+  "defaultRateId": 2536440,
+  "rates": [
+   {
+    "id": 2536440,
+    "title": "Standard Private Group ",
+    "description": "",
+    "index": 0,
+    "rateCode": "",
+    "pricedPerPerson": true,
+    "minPerBooking": 2,
+    "maxPerBooking": 4,
+    "cancellationPolicy": {
+     "id": 270405,
+     "title": "Candle Making, “A Handmade Light”",
+     "penaltyRules": [
+      {
+       "id": 270480,
+       "cutoffHours": 0,
+       "charge": 100.0,
+       "chargeType": "percentage",
+       "percentage": 100.0
+      },
+      {
+       "id": 270481,
+       "cutoffHours": 24,
+       "charge": 25.0,
+       "chargeType": "percentage",
+       "percentage": 25.0
+      },
+      {
+       "id": 270482,
+       "cutoffHours": 72,
+       "charge": 10.0,
+       "chargeType": "percentage",
+       "percentage": 10.0
+      }
+     ],
+     "tax": null,
+     "defaultPolicy": false,
+     "policyType": "ADVANCED",
+     "simpleCutoffHours": null,
+     "policyTypeEnum": "ADVANCED"
+    },
+    "fixedPassExpiryDate": null,
+    "passValidForDays": null,
+    "pickupSelectionType": "UNAVAILABLE",
+    "pickupPricingType": "INCLUDED_IN_PRICE",
+    "pickupPricedPerPerson": false,
+    "dropoffSelectionType": "UNAVAILABLE",
+    "dropoffPricingType": "INCLUDED_IN_PRICE",
+    "dropoffPricedPerPerson": false,
+    "extraConfigs": [],
+    "startTimeIds": [],
+    "allStartTimes": true,
+    "tieredPricingEnabled": true,
+    "tiers": [
+     {
+      "id": 5087052,
+      "created": [
+       2026,
+       8,
+       20,
+       7,
+       38,
+       54,
+       0
+      ],
+      "minPassengersRequired": 1,
+      "maxPassengersRequired": 2,
+      "pricingCategoryId": 1237647,
+      "activityRateId": 2536440
+     },
+     {
+      "id": 5087053,
+      "created": [
+       2026,
+       8,
+       20,
+       7,
+       38,
+       54,
+       0
+      ],
+      "minPassengersRequired": 3,
+      "maxPassengersRequired": 3,
+      "pricingCategoryId": 1237647,
+      "activityRateId": 2536440
+     },
+     {
+      "id": 5087054,
+      "created": [
+       2026,
+       8,
+       20,
+       7,
+       38,
+       54,
+       0
+      ],
+      "minPassengersRequired": 4,
+      "maxPassengersRequired": 4,
+      "pricingCategoryId": 1237647,
+      "activityRateId": 2536440
+     }
+    ],
+    "pricingCategoryIds": [
+     1237647
+    ],
+    "allPricingCategories": false,
+    "details": [],
+    "textItems": [
+     {
+      "id": 2536440,
+      "created": [
+       2026,
+       8,
+       25,
+       7,
+       32,
+       24,
+       265689792
+      ],
+      "language": "ja_JP",
+      "title": "Standard Private Group ",
+      "activityRateId": 2536440,
+      "description": ""
+     }
+    ]
+   }
+  ],
+  "pricesByRate": [
+   {
+    "activityRateId": 2536440,
+    "pricePerCategoryUnit": [
+     {
+      "id": 1237647,
+      "amount": {
+       "amount": 12000.0,
+       "currency": "JPY"
+      },
+      "minParticipantsRequired": 4,
+      "maxParticipantsRequired": 4
+     },
+     {
+      "id": 1237647,
+      "amount": {
+       "amount": 12000.0,
+       "currency": "JPY"
+      },
+      "minParticipantsRequired": 3,
+      "maxParticipantsRequired": 3
+     },
+     {
+      "id": 1237647,
+      "amount": {
+       "amount": 29000.0,
+       "currency": "JPY"
+      },
+      "minParticipantsRequired": 1,
+      "maxParticipantsRequired": 2
+     }
+    ],
+    "extraPricePerUnit": [],
+    "extraPricePerCategoryUnit": []
+   }
+  ],
+  "comboActivity": false,
+  "comboStartTimes": [],
+  "flags": [],
+  "defaultPrice": null,
+  "pricesByCategory": {},
+  "pickupPrice": null,
+  "pickupPricesByCategory": {},
+  "dropoffPrice": null,
+  "dropoffPricesByCategory": {},
+  "extraPrices": {},
+  "guidedLanguages": [],
+  "unavailable": false,
+  "pickupSoldOut": false,
+  "soldOut": false
+ },
+ {
+  "id": "5688461_20261019",
+  "activityId": 1273235,
+  "activityTitle": "A private Japanese candle-making experience in Kamakura.",
+  "activityOwnerId": 145344,
+  "activityOwnerTitle": "ZENRISE",
+  "startTime": "00:00",
+  "startTimeId": 5688461,
+  "startTimeLabel": null,
+  "flexible": true,
+  "date": 1792368000000,
+  "localizedDate": "Mon 19.Oct'26",
+  "availabilityCount": 999,
+  "bookedParticipants": 0,
+  "minParticipants": 2,
+  "minParticipantsToBookNow": 2,
+  "productGroupId": null,
+  "recurrenceId": 13498250,
+  "pickupAllotment": false,
+  "pickupAvailabilityCount": 999,
+  "unlimitedAvailability": true,
+  "defaultRateId": 2536440,
+  "rates": [
+   {
+    "id": 2536440,
+    "title": "Standard Private Group ",
+    "description": "",
+    "index": 0,
+    "rateCode": "",
+    "pricedPerPerson": true,
+    "minPerBooking": 2,
+    "maxPerBooking": 4,
+    "cancellationPolicy": {
+     "id": 270405,
+     "title": "Candle Making, “A Handmade Light”",
+     "penaltyRules": [
+      {
+       "id": 270480,
+       "cutoffHours": 0,
+       "charge": 100.0,
+       "chargeType": "percentage",
+       "percentage": 100.0
+      },
+      {
+       "id": 270481,
+       "cutoffHours": 24,
+       "charge": 25.0,
+       "chargeType": "percentage",
+       "percentage": 25.0
+      },
+      {
+       "id": 270482,
+       "cutoffHours": 72,
+       "charge": 10.0,
+       "chargeType": "percentage",
+       "percentage": 10.0
+      }
+     ],
+     "tax": null,
+     "defaultPolicy": false,
+     "policyType": "ADVANCED",
+     "simpleCutoffHours": null,
+     "policyTypeEnum": "ADVANCED"
+    },
+    "fixedPassExpiryDate": null,
+    "passValidForDays": null,
+    "pickupSelectionType": "UNAVAILABLE",
+    "pickupPricingType": "INCLUDED_IN_PRICE",
+    "pickupPricedPerPerson": false,
+    "dropoffSelectionType": "UNAVAILABLE",
+    "dropoffPricingType": "INCLUDED_IN_PRICE",
+    "dropoffPricedPerPerson": false,
+    "extraConfigs": [],
+    "startTimeIds": [],
+    "allStartTimes": true,
+    "tieredPricingEnabled": true,
+    "tiers": [
+     {
+      "id": 5087052,
+      "created": [
+       2026,
+       8,
+       20,
+       7,
+       38,
+       54,
+       0
+      ],
+      "minPassengersRequired": 1,
+      "maxPassengersRequired": 2,
+      "pricingCategoryId": 1237647,
+      "activityRateId": 2536440
+     },
+     {
+      "id": 5087053,
+      "created": [
+       2026,
+       8,
+       20,
+       7,
+       38,
+       54,
+       0
+      ],
+      "minPassengersRequired": 3,
+      "maxPassengersRequired": 3,
+      "pricingCategoryId": 1237647,
+      "activityRateId": 2536440
+     },
+     {
+      "id": 5087054,
+      "created": [
+       2026,
+       8,
+       20,
+       7,
+       38,
+       54,
+       0
+      ],
+      "minPassengersRequired": 4,
+      "maxPassengersRequired": 4,
+      "pricingCategoryId": 1237647,
+      "activityRateId": 2536440
+     }
+    ],
+    "pricingCategoryIds": [
+     1237647
+    ],
+    "allPricingCategories": false,
+    "details": [],
+    "textItems": [
+     {
+      "id": 2536440,
+      "created": [
+       2026,
+       8,
+       25,
+       7,
+       32,
+       24,
+       265764185
+      ],
+      "language": "ja_JP",
+      "title": "Standard Private Group ",
+      "activityRateId": 2536440,
+      "description": ""
+     }
+    ]
+   }
+  ],
+  "pricesByRate": [
+   {
+    "activityRateId": 2536440,
+    "pricePerCategoryUnit": [
+     {
+      "id": 1237647,
+      "amount": {
+       "amount": 12000.0,
+       "currency": "JPY"
+      },
+      "minParticipantsRequired": 4,
+      "maxParticipantsRequired": 4
+     },
+     {
+      "id": 1237647,
+      "amount": {
+       "amount": 12000.0,
+       "currency": "JPY"
+      },
+      "minParticipantsRequired": 3,
+      "maxParticipantsRequired": 3
+     },
+     {
+      "id": 1237647,
+      "amount": {
+       "amount": 29000.0,
+       "currency": "JPY"
+      },
+      "minParticipantsRequired": 1,
+      "maxParticipantsRequired": 2
+     }
+    ],
+    "extraPricePerUnit": [],
+    "extraPricePerCategoryUnit": []
+   }
+  ],
+  "comboActivity": false,
+  "comboStartTimes": [],
+  "flags": [],
+  "defaultPrice": null,
+  "pricesByCategory": {},
+  "pickupPrice": null,
+  "pickupPricesByCategory": {},
+  "dropoffPrice": null,
+  "dropoffPricesByCategory": {},
+  "extraPrices": {},
+  "guidedLanguages": [],
+  "unavailable": false,
+  "pickupSoldOut": false,
+  "soldOut": false
+ },
+ {
+  "id": "5688461_20261020",
+  "activityId": 1273235,
+  "activityTitle": "A private Japanese candle-making experience in Kamakura.",
+  "activityOwnerId": 145344,
+  "activityOwnerTitle": "ZENRISE",
+  "startTime": "00:00",
+  "startTimeId": 5688461,
+  "startTimeLabel": null,
+  "flexible": true,
+  "date": 1792454400000,
+  "localizedDate": "Tue 20.Oct'26",
+  "availabilityCount": 999,
+  "bookedParticipants": 0,
+  "minParticipants": 2,
+  "minParticipantsToBookNow": 2,
+  "productGroupId": null,
+  "recurrenceId": 13498250,
+  "pickupAllotment": false,
+  "pickupAvailabilityCount": 999,
+  "unlimitedAvailability": true,
+  "defaultRateId": 2536440,
+  "rates": [
+   {
+    "id": 2536440,
+    "title": "Standard Private Group ",
+    "description": "",
+    "index": 0,
+    "rateCode": "",
+    "pricedPerPerson": true,
+    "minPerBooking": 2,
+    "maxPerBooking": 4,
+    "cancellationPolicy": {
+     "id": 270405,
+     "title": "Candle Making, “A Handmade Light”",
+     "penaltyRules": [
+      {
+       "id": 270480,
+       "cutoffHours": 0,
+       "charge": 100.0,
+       "chargeType": "percentage",
+       "percentage": 100.0
+      },
+      {
+       "id": 270481,
+       "cutoffHours": 24,
+       "charge": 25.0,
+       "chargeType": "percentage",
+       "percentage": 25.0
+      },
+      {
+       "id": 270482,
+       "cutoffHours": 72,
+       "charge": 10.0,
+       "chargeType": "percentage",
+       "percentage": 10.0
+      }
+     ],
+     "tax": null,
+     "defaultPolicy": false,
+     "policyType": "ADVANCED",
+     "simpleCutoffHours": null,
+     "policyTypeEnum": "ADVANCED"
+    },
+    "fixedPassExpiryDate": null,
+    "passValidForDays": null,
+    "pickupSelectionType": "UNAVAILABLE",
+    "pickupPricingType": "INCLUDED_IN_PRICE",
+    "pickupPricedPerPerson": false,
+    "dropoffSelectionType": "UNAVAILABLE",
+    "dropoffPricingType": "INCLUDED_IN_PRICE",
+    "dropoffPricedPerPerson": false,
+    "extraConfigs": [],
+    "startTimeIds": [],
+    "allStartTimes": true,
+    "tieredPricingEnabled": true,
+    "tiers": [
+     {
+      "id": 5087052,
+      "created": [
+       2026,
+       8,
+       20,
+       7,
+       38,
+       54,
+       0
+      ],
+      "minPassengersRequired": 1,
+      "maxPassengersRequired": 2,
+      "pricingCategoryId": 1237647,
+      "activityRateId": 2536440
+     },
+     {
+      "id": 5087053,
+      "created": [
+       2026,
+       8,
+       20,
+       7,
+       38,
+       54,
+       0
+      ],
+      "minPassengersRequired": 3,
+      "maxPassengersRequired": 3,
+      "pricingCategoryId": 1237647,
+      "activityRateId": 2536440
+     },
+     {
+      "id": 5087054,
+      "created": [
+       2026,
+       8,
+       20,
+       7,
+       38,
+       54,
+       0
+      ],
+      "minPassengersRequired": 4,
+      "maxPassengersRequired": 4,
+      "pricingCategoryId": 1237647,
+      "activityRateId": 2536440
+     }
+    ],
+    "pricingCategoryIds": [
+     1237647
+    ],
+    "allPricingCategories": false,
+    "details": [],
+    "textItems": [
+     {
+      "id": 2536440,
+      "created": [
+       2026,
+       8,
+       25,
+       7,
+       32,
+       24,
+       265796591
+      ],
+      "language": "ja_JP",
+      "title": "Standard Private Group ",
+      "activityRateId": 2536440,
+      "description": ""
+     }
+    ]
+   }
+  ],
+  "pricesByRate": [
+   {
+    "activityRateId": 2536440,
+    "pricePerCategoryUnit": [
+     {
+      "id": 1237647,
+      "amount": {
+       "amount": 12000.0,
+       "currency": "JPY"
+      },
+      "minParticipantsRequired": 4,
+      "maxParticipantsRequired": 4
+     },
+     {
+      "id": 1237647,
+      "amount": {
+       "amount": 12000.0,
+       "currency": "JPY"
+      },
+      "minParticipantsRequired": 3,
+      "maxParticipantsRequired": 3
+     },
+     {
+      "id": 1237647,
+      "amount": {
+       "amount": 29000.0,
+       "currency": "JPY"
+      },
+      "minParticipantsRequired": 1,
+      "maxParticipantsRequired": 2
+     }
+    ],
+    "extraPricePerUnit": [],
+    "extraPricePerCategoryUnit": []
+   }
+  ],
+  "comboActivity": false,
+  "comboStartTimes": [],
+  "flags": [],
+  "defaultPrice": null,
+  "pricesByCategory": {},
+  "pickupPrice": null,
+  "pickupPricesByCategory": {},
+  "dropoffPrice": null,
+  "dropoffPricesByCategory": {},
+  "extraPrices": {},
+  "guidedLanguages": [],
+  "unavailable": false,
+  "pickupSoldOut": false,
+  "soldOut": false
+ },
+ {
+  "id": "5688461_20261023",
+  "activityId": 1273235,
+  "activityTitle": "A private Japanese candle-making experience in Kamakura.",
+  "activityOwnerId": 145344,
+  "activityOwnerTitle": "ZENRISE",
+  "startTime": "00:00",
+  "startTimeId": 5688461,
+  "startTimeLabel": null,
+  "flexible": true,
+  "date": 1792713600000,
+  "localizedDate": "Fri 23.Oct'26",
+  "availabilityCount": 999,
+  "bookedParticipants": 0,
+  "minParticipants": 2,
+  "minParticipantsToBookNow": 2,
+  "productGroupId": null,
+  "recurrenceId": 13498250,
+  "pickupAllotment": false,
+  "pickupAvailabilityCount": 999,
+  "unlimitedAvailability": true,
+  "defaultRateId": 2536440,
+  "rates": [
+   {
+    "id": 2536440,
+    "title": "Standard Private Group ",
+    "description": "",
+    "index": 0,
+    "rateCode": "",
+    "pricedPerPerson": true,
+    "minPerBooking": 2,
+    "maxPerBooking": 4,
+    "cancellationPolicy": {
+     "id": 270405,
+     "title": "Candle Making, “A Handmade Light”",
+     "penaltyRules": [
+      {
+       "id": 270480,
+       "cutoffHours": 0,
+       "charge": 100.0,
+       "chargeType": "percentage",
+       "percentage": 100.0
+      },
+      {
+       "id": 270481,
+       "cutoffHours": 24,
+       "charge": 25.0,
+       "chargeType": "percentage",
+       "percentage": 25.0
+      },
+      {
+       "id": 270482,
+       "cutoffHours": 72,
+       "charge": 10.0,
+       "chargeType": "percentage",
+       "percentage": 10.0
+      }
+     ],
+     "tax": null,
+     "defaultPolicy": false,
+     "policyType": "ADVANCED",
+     "simpleCutoffHours": null,
+     "policyTypeEnum": "ADVANCED"
+    },
+    "fixedPassExpiryDate": null,
+    "passValidForDays": null,
+    "pickupSelectionType": "UNAVAILABLE",
+    "pickupPricingType": "INCLUDED_IN_PRICE",
+    "pickupPricedPerPerson": false,
+    "dropoffSelectionType": "UNAVAILABLE",
+    "dropoffPricingType": "INCLUDED_IN_PRICE",
+    "dropoffPricedPerPerson": false,
+    "extraConfigs": [],
+    "startTimeIds": [],
+    "allStartTimes": true,
+    "tieredPricingEnabled": true,
+    "tiers": [
+     {
+      "id": 5087052,
+      "created": [
+       2026,
+       8,
+       20,
+       7,
+       38,
+       54,
+       0
+      ],
+      "minPassengersRequired": 1,
+      "maxPassengersRequired": 2,
+      "pricingCategoryId": 1237647,
+      "activityRateId": 2536440
+     },
+     {
+      "id": 5087053,
+      "created": [
+       2026,
+       8,
+       20,
+       7,
+       38,
+       54,
+       0
+      ],
+      "minPassengersRequired": 3,
+      "maxPassengersRequired": 3,
+      "pricingCategoryId": 1237647,
+      "activityRateId": 2536440
+     },
+     {
+      "id": 5087054,
+      "created": [
+       2026,
+       8,
+       20,
+       7,
+       38,
+       54,
+       0
+      ],
+      "minPassengersRequired": 4,
+      "maxPassengersRequired": 4,
+      "pricingCategoryId": 1237647,
+      "activityRateId": 2536440
+     }
+    ],
+    "pricingCategoryIds": [
+     1237647
+    ],
+    "allPricingCategories": false,
+    "details": [],
+    "textItems": [
+     {
+      "id": 2536440,
+      "created": [
+       2026,
+       8,
+       25,
+       7,
+       32,
+       24,
+       265840812
+      ],
+      "language": "ja_JP",
+      "title": "Standard Private Group ",
+      "activityRateId": 2536440,
+      "description": ""
+     }
+    ]
+   }
+  ],
+  "pricesByRate": [
+   {
+    "activityRateId": 2536440,
+    "pricePerCategoryUnit": [
+     {
+      "id": 1237647,
+      "amount": {
+       "amount": 12000.0,
+       "currency": "JPY"
+      },
+      "minParticipantsRequired": 4,
+      "maxParticipantsRequired": 4
+     },
+     {
+      "id": 1237647,
+      "amount": {
+       "amount": 12000.0,
+       "currency": "JPY"
+      },
+      "minParticipantsRequired": 3,
+      "maxParticipantsRequired": 3
+     },
+     {
+      "id": 1237647,
+      "amount": {
+       "amount": 29000.0,
+       "currency": "JPY"
+      },
+      "minParticipantsRequired": 1,
+      "maxParticipantsRequired": 2
+     }
+    ],
+    "extraPricePerUnit": [],
+    "extraPricePerCategoryUnit": []
+   }
+  ],
+  "comboActivity": false,
+  "comboStartTimes": [],
+  "flags": [],
+  "defaultPrice": null,
+  "pricesByCategory": {},
+  "pickupPrice": null,
+  "pickupPricesByCategory": {},
+  "dropoffPrice": null,
+  "dropoffPricesByCategory": {},
+  "extraPrices": {},
+  "guidedLanguages": [],
+  "unavailable": false,
+  "pickupSoldOut": false,
+  "soldOut": false
+ },
+ {
+  "id": "5688461_20261024",
+  "activityId": 1273235,
+  "activityTitle": "A private Japanese candle-making experience in Kamakura.",
+  "activityOwnerId": 145344,
+  "activityOwnerTitle": "ZENRISE",
+  "startTime": "00:00",
+  "startTimeId": 5688461,
+  "startTimeLabel": null,
+  "flexible": true,
+  "date": 1792800000000,
+  "localizedDate": "Sat 24.Oct'26",
+  "availabilityCount": 999,
+  "bookedParticipants": 0,
+  "minParticipants": 2,
+  "minParticipantsToBookNow": 2,
+  "productGroupId": null,
+  "recurrenceId": 13498250,
+  "pickupAllotment": false,
+  "pickupAvailabilityCount": 999,
+  "unlimitedAvailability": true,
+  "defaultRateId": 2536440,
+  "rates": [
+   {
+    "id": 2536440,
+    "title": "Standard Private Group ",
+    "description": "",
+    "index": 0,
+    "rateCode": "",
+    "pricedPerPerson": true,
+    "minPerBooking": 2,
+    "maxPerBooking": 4,
+    "cancellationPolicy": {
+     "id": 270405,
+     "title": "Candle Making, “A Handmade Light”",
+     "penaltyRules": [
+      {
+       "id": 270480,
+       "cutoffHours": 0,
+       "charge": 100.0,
+       "chargeType": "percentage",
+       "percentage": 100.0
+      },
+      {
+       "id": 270481,
+       "cutoffHours": 24,
+       "charge": 25.0,
+       "chargeType": "percentage",
+       "percentage": 25.0
+      },
+      {
+       "id": 270482,
+       "cutoffHours": 72,
+       "charge": 10.0,
+       "chargeType": "percentage",
+       "percentage": 10.0
+      }
+     ],
+     "tax": null,
+     "defaultPolicy": false,
+     "policyType": "ADVANCED",
+     "simpleCutoffHours": null,
+     "policyTypeEnum": "ADVANCED"
+    },
+    "fixedPassExpiryDate": null,
+    "passValidForDays": null,
+    "pickupSelectionType": "UNAVAILABLE",
+    "pickupPricingType": "INCLUDED_IN_PRICE",
+    "pickupPricedPerPerson": false,
+    "dropoffSelectionType": "UNAVAILABLE",
+    "dropoffPricingType": "INCLUDED_IN_PRICE",
+    "dropoffPricedPerPerson": false,
+    "extraConfigs": [],
+    "startTimeIds": [],
+    "allStartTimes": true,
+    "tieredPricingEnabled": true,
+    "tiers": [
+     {
+      "id": 5087052,
+      "created": [
+       2026,
+       8,
+       20,
+       7,
+       38,
+       54,
+       0
+      ],
+      "minPassengersRequired": 1,
+      "maxPassengersRequired": 2,
+      "pricingCategoryId": 1237647,
+      "activityRateId": 2536440
+     },
+     {
+      "id": 5087053,
+      "created": [
+       2026,
+       8,
+       20,
+       7,
+       38,
+       54,
+       0
+      ],
+      "minPassengersRequired": 3,
+      "maxPassengersRequired": 3,
+      "pricingCategoryId": 1237647,
+      "activityRateId": 2536440
+     },
+     {
+      "id": 5087054,
+      "created": [
+       2026,
+       8,
+       20,
+       7,
+       38,
+       54,
+       0
+      ],
+      "minPassengersRequired": 4,
+      "maxPassengersRequired": 4,
+      "pricingCategoryId": 1237647,
+      "activityRateId": 2536440
+     }
+    ],
+    "pricingCategoryIds": [
+     1237647
+    ],
+    "allPricingCategories": false,
+    "details": [],
+    "textItems": [
+     {
+      "id": 2536440,
+      "created": [
+       2026,
+       8,
+       25,
+       7,
+       32,
+       24,
+       265859393
+      ],
+      "language": "ja_JP",
+      "title": "Standard Private Group ",
+      "activityRateId": 2536440,
+      "description": ""
+     }
+    ]
+   }
+  ],
+  "pricesByRate": [
+   {
+    "activityRateId": 2536440,
+    "pricePerCategoryUnit": [
+     {
+      "id": 1237647,
+      "amount": {
+       "amount": 12000.0,
+       "currency": "JPY"
+      },
+      "minParticipantsRequired": 4,
+      "maxParticipantsRequired": 4
+     },
+     {
+      "id": 1237647,
+      "amount": {
+       "amount": 12000.0,
+       "currency": "JPY"
+      },
+      "minParticipantsRequired": 3,
+      "maxParticipantsRequired": 3
+     },
+     {
+      "id": 1237647,
+      "amount": {
+       "amount": 29000.0,
+       "currency": "JPY"
+      },
+      "minParticipantsRequired": 1,
+      "maxParticipantsRequired": 2
+     }
+    ],
+    "extraPricePerUnit": [],
+    "extraPricePerCategoryUnit": []
+   }
+  ],
+  "comboActivity": false,
+  "comboStartTimes": [],
+  "flags": [],
+  "defaultPrice": null,
+  "pricesByCategory": {},
+  "pickupPrice": null,
+  "pickupPricesByCategory": {},
+  "dropoffPrice": null,
+  "dropoffPricesByCategory": {},
+  "extraPrices": {},
+  "guidedLanguages": [],
+  "unavailable": false,
+  "pickupSoldOut": false,
+  "soldOut": false
+ },
+ {
+  "id": "5688461_20261025",
+  "activityId": 1273235,
+  "activityTitle": "A private Japanese candle-making experience in Kamakura.",
+  "activityOwnerId": 145344,
+  "activityOwnerTitle": "ZENRISE",
+  "startTime": "00:00",
+  "startTimeId": 5688461,
+  "startTimeLabel": null,
+  "flexible": true,
+  "date": 1792886400000,
+  "localizedDate": "Sun 25.Oct'26",
+  "availabilityCount": 999,
+  "bookedParticipants": 0,
+  "minParticipants": 2,
+  "minParticipantsToBookNow": 2,
+  "productGroupId": null,
+  "recurrenceId": 13498250,
+  "pickupAllotment": false,
+  "pickupAvailabilityCount": 999,
+  "unlimitedAvailability": true,
+  "defaultRateId": 2536440,
+  "rates": [
+   {
+    "id": 2536440,
+    "title": "Standard Private Group ",
+    "description": "",
+    "index": 0,
+    "rateCode": "",
+    "pricedPerPerson": true,
+    "minPerBooking": 2,
+    "maxPerBooking": 4,
+    "cancellationPolicy": {
+     "id": 270405,
+     "title": "Candle Making, “A Handmade Light”",
+     "penaltyRules": [
+      {
+       "id": 270480,
+       "cutoffHours": 0,
+       "charge": 100.0,
+       "chargeType": "percentage",
+       "percentage": 100.0
+      },
+      {
+       "id": 270481,
+       "cutoffHours": 24,
+       "charge": 25.0,
+       "chargeType": "percentage",
+       "percentage": 25.0
+      },
+      {
+       "id": 270482,
+       "cutoffHours": 72,
+       "charge": 10.0,
+       "chargeType": "percentage",
+       "percentage": 10.0
+      }
+     ],
+     "tax": null,
+     "defaultPolicy": false,
+     "policyType": "ADVANCED",
+     "simpleCutoffHours": null,
+     "policyTypeEnum": "ADVANCED"
+    },
+    "fixedPassExpiryDate": null,
+    "passValidForDays": null,
+    "pickupSelectionType": "UNAVAILABLE",
+    "pickupPricingType": "INCLUDED_IN_PRICE",
+    "pickupPricedPerPerson": false,
+    "dropoffSelectionType": "UNAVAILABLE",
+    "dropoffPricingType": "INCLUDED_IN_PRICE",
+    "dropoffPricedPerPerson": false,
+    "extraConfigs": [],
+    "startTimeIds": [],
+    "allStartTimes": true,
+    "tieredPricingEnabled": true,
+    "tiers": [
+     {
+      "id": 5087052,
+      "created": [
+       2026,
+       8,
+       20,
+       7,
+       38,
+       54,
+       0
+      ],
+      "minPassengersRequired": 1,
+      "maxPassengersRequired": 2,
+      "pricingCategoryId": 1237647,
+      "activityRateId": 2536440
+     },
+     {
+      "id": 5087053,
+      "created": [
+       2026,
+       8,
+       20,
+       7,
+       38,
+       54,
+       0
+      ],
+      "minPassengersRequired": 3,
+      "maxPassengersRequired": 3,
+      "pricingCategoryId": 1237647,
+      "activityRateId": 2536440
+     },
+     {
+      "id": 5087054,
+      "created": [
+       2026,
+       8,
+       20,
+       7,
+       38,
+       54,
+       0
+      ],
+      "minPassengersRequired": 4,
+      "maxPassengersRequired": 4,
+      "pricingCategoryId": 1237647,
+      "activityRateId": 2536440
+     }
+    ],
+    "pricingCategoryIds": [
+     1237647
+    ],
+    "allPricingCategories": false,
+    "details": [],
+    "textItems": [
+     {
+      "id": 2536440,
+      "created": [
+       2026,
+       8,
+       25,
+       7,
+       32,
+       24,
+       265887774
+      ],
+      "language": "ja_JP",
+      "title": "Standard Private Group ",
+      "activityRateId": 2536440,
+      "description": ""
+     }
+    ]
+   }
+  ],
+  "pricesByRate": [
+   {
+    "activityRateId": 2536440,
+    "pricePerCategoryUnit": [
+     {
+      "id": 1237647,
+      "amount": {
+       "amount": 12000.0,
+       "currency": "JPY"
+      },
+      "minParticipantsRequired": 4,
+      "maxParticipantsRequired": 4
+     },
+     {
+      "id": 1237647,
+      "amount": {
+       "amount": 12000.0,
+       "currency": "JPY"
+      },
+      "minParticipantsRequired": 3,
+      "maxParticipantsRequired": 3
+     },
+     {
+      "id": 1237647,
+      "amount": {
+       "amount": 29000.0,
+       "currency": "JPY"
+      },
+      "minParticipantsRequired": 1,
+      "maxParticipantsRequired": 2
+     }
+    ],
+    "extraPricePerUnit": [],
+    "extraPricePerCategoryUnit": []
+   }
+  ],
+  "comboActivity": false,
+  "comboStartTimes": [],
+  "flags": [],
+  "defaultPrice": null,
+  "pricesByCategory": {},
+  "pickupPrice": null,
+  "pickupPricesByCategory": {},
+  "dropoffPrice": null,
+  "dropoffPricesByCategory": {},
+  "extraPrices": {},
+  "guidedLanguages": [],
+  "unavailable": false,
+  "pickupSoldOut": false,
+  "soldOut": false
+ },
+ {
+  "id": "5688461_20261026",
+  "activityId": 1273235,
+  "activityTitle": "A private Japanese candle-making experience in Kamakura.",
+  "activityOwnerId": 145344,
+  "activityOwnerTitle": "ZENRISE",
+  "startTime": "00:00",
+  "startTimeId": 5688461,
+  "startTimeLabel": null,
+  "flexible": true,
+  "date": 1792972800000,
+  "localizedDate": "Mon 26.Oct'26",
+  "availabilityCount": 999,
+  "bookedParticipants": 0,
+  "minParticipants": 2,
+  "minParticipantsToBookNow": 2,
+  "productGroupId": null,
+  "recurrenceId": 13498250,
+  "pickupAllotment": false,
+  "pickupAvailabilityCount": 999,
+  "unlimitedAvailability": true,
+  "defaultRateId": 2536440,
+  "rates": [
+   {
+    "id": 2536440,
+    "title": "Standard Private Group ",
+    "description": "",
+    "index": 0,
+    "rateCode": "",
+    "pricedPerPerson": true,
+    "minPerBooking": 2,
+    "maxPerBooking": 4,
+    "cancellationPolicy": {
+     "id": 270405,
+     "title": "Candle Making, “A Handmade Light”",
+     "penaltyRules": [
+      {
+       "id": 270480,
+       "cutoffHours": 0,
+       "charge": 100.0,
+       "chargeType": "percentage",
+       "percentage": 100.0
+      },
+      {
+       "id": 270481,
+       "cutoffHours": 24,
+       "charge": 25.0,
+       "chargeType": "percentage",
+       "percentage": 25.0
+      },
+      {
+       "id": 270482,
+       "cutoffHours": 72,
+       "charge": 10.0,
+       "chargeType": "percentage",
+       "percentage": 10.0
+      }
+     ],
+     "tax": null,
+     "defaultPolicy": false,
+     "policyType": "ADVANCED",
+     "simpleCutoffHours": null,
+     "policyTypeEnum": "ADVANCED"
+    },
+    "fixedPassExpiryDate": null,
+    "passValidForDays": null,
+    "pickupSelectionType": "UNAVAILABLE",
+    "pickupPricingType": "INCLUDED_IN_PRICE",
+    "pickupPricedPerPerson": false,
+    "dropoffSelectionType": "UNAVAILABLE",
+    "dropoffPricingType": "INCLUDED_IN_PRICE",
+    "dropoffPricedPerPerson": false,
+    "extraConfigs": [],
+    "startTimeIds": [],
+    "allStartTimes": true,
+    "tieredPricingEnabled": true,
+    "tiers": [
+     {
+      "id": 5087052,
+      "created": [
+       2026,
+       8,
+       20,
+       7,
+       38,
+       54,
+       0
+      ],
+      "minPassengersRequired": 1,
+      "maxPassengersRequired": 2,
+      "pricingCategoryId": 1237647,
+      "activityRateId": 2536440
+     },
+     {
+      "id": 5087053,
+      "created": [
+       2026,
+       8,
+       20,
+       7,
+       38,
+       54,
+       0
+      ],
+      "minPassengersRequired": 3,
+      "maxPassengersRequired": 3,
+      "pricingCategoryId": 1237647,
+      "activityRateId": 2536440
+     },
+     {
+      "id": 5087054,
+      "created": [
+       2026,
+       8,
+       20,
+       7,
+       38,
+       54,
+       0
+      ],
+      "minPassengersRequired": 4,
+      "maxPassengersRequired": 4,
+      "pricingCategoryId": 1237647,
+      "activityRateId": 2536440
+     }
+    ],
+    "pricingCategoryIds": [
+     1237647
+    ],
+    "allPricingCategories": false,
+    "details": [],
+    "textItems": [
+     {
+      "id": 2536440,
+      "created": [
+       2026,
+       8,
+       25,
+       7,
+       32,
+       24,
+       265936168
+      ],
+      "language": "ja_JP",
+      "title": "Standard Private Group ",
+      "activityRateId": 2536440,
+      "description": ""
+     }
+    ]
+   }
+  ],
+  "pricesByRate": [
+   {
+    "activityRateId": 2536440,
+    "pricePerCategoryUnit": [
+     {
+      "id": 1237647,
+      "amount": {
+       "amount": 12000.0,
+       "currency": "JPY"
+      },
+      "minParticipantsRequired": 4,
+      "maxParticipantsRequired": 4
+     },
+     {
+      "id": 1237647,
+      "amount": {
+       "amount": 12000.0,
+       "currency": "JPY"
+      },
+      "minParticipantsRequired": 3,
+      "maxParticipantsRequired": 3
+     },
+     {
+      "id": 1237647,
+      "amount": {
+       "amount": 29000.0,
+       "currency": "JPY"
+      },
+      "minParticipantsRequired": 1,
+      "maxParticipantsRequired": 2
+     }
+    ],
+    "extraPricePerUnit": [],
+    "extraPricePerCategoryUnit": []
+   }
+  ],
+  "comboActivity": false,
+  "comboStartTimes": [],
+  "flags": [],
+  "defaultPrice": null,
+  "pricesByCategory": {},
+  "pickupPrice": null,
+  "pickupPricesByCategory": {},
+  "dropoffPrice": null,
+  "dropoffPricesByCategory": {},
+  "extraPrices": {},
+  "guidedLanguages": [],
+  "unavailable": false,
+  "pickupSoldOut": false,
+  "soldOut": false
+ },
+ {
+  "id": "5688461_20261027",
+  "activityId": 1273235,
+  "activityTitle": "A private Japanese candle-making experience in Kamakura.",
+  "activityOwnerId": 145344,
+  "activityOwnerTitle": "ZENRISE",
+  "startTime": "00:00",
+  "startTimeId": 5688461,
+  "startTimeLabel": null,
+  "flexible": true,
+  "date": 1793059200000,
+  "localizedDate": "Tue 27.Oct'26",
+  "availabilityCount": 999,
+  "bookedParticipants": 0,
+  "minParticipants": 2,
+  "minParticipantsToBookNow": 2,
+  "productGroupId": null,
+  "recurrenceId": 13498250,
+  "pickupAllotment": false,
+  "pickupAvailabilityCount": 999,
+  "unlimitedAvailability": true,
+  "defaultRateId": 2536440,
+  "rates": [
+   {
+    "id": 2536440,
+    "title": "Standard Private Group ",
+    "description": "",
+    "index": 0,
+    "rateCode": "",
+    "pricedPerPerson": true,
+    "minPerBooking": 2,
+    "maxPerBooking": 4,
+    "cancellationPolicy": {
+     "id": 270405,
+     "title": "Candle Making, “A Handmade Light”",
+     "penaltyRules": [
+      {
+       "id": 270480,
+       "cutoffHours": 0,
+       "charge": 100.0,
+       "chargeType": "percentage",
+       "percentage": 100.0
+      },
+      {
+       "id": 270481,
+       "cutoffHours": 24,
+       "charge": 25.0,
+       "chargeType": "percentage",
+       "percentage": 25.0
+      },
+      {
+       "id": 270482,
+       "cutoffHours": 72,
+       "charge": 10.0,
+       "chargeType": "percentage",
+       "percentage": 10.0
+      }
+     ],
+     "tax": null,
+     "defaultPolicy": false,
+     "policyType": "ADVANCED",
+     "simpleCutoffHours": null,
+     "policyTypeEnum": "ADVANCED"
+    },
+    "fixedPassExpiryDate": null,
+    "passValidForDays": null,
+    "pickupSelectionType": "UNAVAILABLE",
+    "pickupPricingType": "INCLUDED_IN_PRICE",
+    "pickupPricedPerPerson": false,
+    "dropoffSelectionType": "UNAVAILABLE",
+    "dropoffPricingType": "INCLUDED_IN_PRICE",
+    "dropoffPricedPerPerson": false,
+    "extraConfigs": [],
+    "startTimeIds": [],
+    "allStartTimes": true,
+    "tieredPricingEnabled": true,
+    "tiers": [
+     {
+      "id": 5087052,
+      "created": [
+       2026,
+       8,
+       20,
+       7,
+       38,
+       54,
+       0
+      ],
+      "minPassengersRequired": 1,
+      "maxPassengersRequired": 2,
+      "pricingCategoryId": 1237647,
+      "activityRateId": 2536440
+     },
+     {
+      "id": 5087053,
+      "created": [
+       2026,
+       8,
+       20,
+       7,
+       38,
+       54,
+       0
+      ],
+      "minPassengersRequired": 3,
+      "maxPassengersRequired": 3,
+      "pricingCategoryId": 1237647,
+      "activityRateId": 2536440
+     },
+     {
+      "id": 5087054,
+      "created": [
+       2026,
+       8,
+       20,
+       7,
+       38,
+       54,
+       0
+      ],
+      "minPassengersRequired": 4,
+      "maxPassengersRequired": 4,
+      "pricingCategoryId": 1237647,
+      "activityRateId": 2536440
+     }
+    ],
+    "pricingCategoryIds": [
+     1237647
+    ],
+    "allPricingCategories": false,
+    "details": [],
+    "textItems": [
+     {
+      "id": 2536440,
+      "created": [
+       2026,
+       8,
+       25,
+       7,
+       32,
+       24,
+       265957354
+      ],
+      "language": "ja_JP",
+      "title": "Standard Private Group ",
+      "activityRateId": 2536440,
+      "description": ""
+     }
+    ]
+   }
+  ],
+  "pricesByRate": [
+   {
+    "activityRateId": 2536440,
+    "pricePerCategoryUnit": [
+     {
+      "id": 1237647,
+      "amount": {
+       "amount": 12000.0,
+       "currency": "JPY"
+      },
+      "minParticipantsRequired": 4,
+      "maxParticipantsRequired": 4
+     },
+     {
+      "id": 1237647,
+      "amount": {
+       "amount": 12000.0,
+       "currency": "JPY"
+      },
+      "minParticipantsRequired": 3,
+      "maxParticipantsRequired": 3
+     },
+     {
+      "id": 1237647,
+      "amount": {
+       "amount": 29000.0,
+       "currency": "JPY"
+      },
+      "minParticipantsRequired": 1,
+      "maxParticipantsRequired": 2
+     }
+    ],
+    "extraPricePerUnit": [],
+    "extraPricePerCategoryUnit": []
+   }
+  ],
+  "comboActivity": false,
+  "comboStartTimes": [],
+  "flags": [],
+  "defaultPrice": null,
+  "pricesByCategory": {},
+  "pickupPrice": null,
+  "pickupPricesByCategory": {},
+  "dropoffPrice": null,
+  "dropoffPricesByCategory": {},
+  "extraPrices": {},
+  "guidedLanguages": [],
+  "unavailable": false,
+  "pickupSoldOut": false,
+  "soldOut": false
+ },
+ {
+  "id": "5688461_20261028",
+  "activityId": 1273235,
+  "activityTitle": "A private Japanese candle-making experience in Kamakura.",
+  "activityOwnerId": 145344,
+  "activityOwnerTitle": "ZENRISE",
+  "startTime": "00:00",
+  "startTimeId": 5688461,
+  "startTimeLabel": null,
+  "flexible": true,
+  "date": 1793145600000,
+  "localizedDate": "Wed 28.Oct'26",
+  "availabilityCount": 999,
+  "bookedParticipants": 0,
+  "minParticipants": 2,
+  "minParticipantsToBookNow": 2,
+  "productGroupId": null,
+  "recurrenceId": 13498250,
+  "pickupAllotment": false,
+  "pickupAvailabilityCount": 999,
+  "unlimitedAvailability": true,
+  "defaultRateId": 2536440,
+  "rates": [
+   {
+    "id": 2536440,
+    "title": "Standard Private Group ",
+    "description": "",
+    "index": 0,
+    "rateCode": "",
+    "pricedPerPerson": true,
+    "minPerBooking": 2,
+    "maxPerBooking": 4,
+    "cancellationPolicy": {
+     "id": 270405,
+     "title": "Candle Making, “A Handmade Light”",
+     "penaltyRules": [
+      {
+       "id": 270480,
+       "cutoffHours": 0,
+       "charge": 100.0,
+       "chargeType": "percentage",
+       "percentage": 100.0
+      },
+      {
+       "id": 270481,
+       "cutoffHours": 24,
+       "charge": 25.0,
+       "chargeType": "percentage",
+       "percentage": 25.0
+      },
+      {
+       "id": 270482,
+       "cutoffHours": 72,
+       "charge": 10.0,
+       "chargeType": "percentage",
+       "percentage": 10.0
+      }
+     ],
+     "tax": null,
+     "defaultPolicy": false,
+     "policyType": "ADVANCED",
+     "simpleCutoffHours": null,
+     "policyTypeEnum": "ADVANCED"
+    },
+    "fixedPassExpiryDate": null,
+    "passValidForDays": null,
+    "pickupSelectionType": "UNAVAILABLE",
+    "pickupPricingType": "INCLUDED_IN_PRICE",
+    "pickupPricedPerPerson": false,
+    "dropoffSelectionType": "UNAVAILABLE",
+    "dropoffPricingType": "INCLUDED_IN_PRICE",
+    "dropoffPricedPerPerson": false,
+    "extraConfigs": [],
+    "startTimeIds": [],
+    "allStartTimes": true,
+    "tieredPricingEnabled": true,
+    "tiers": [
+     {
+      "id": 5087052,
+      "created": [
+       2026,
+       8,
+       20,
+       7,
+       38,
+       54,
+       0
+      ],
+      "minPassengersRequired": 1,
+      "maxPassengersRequired": 2,
+      "pricingCategoryId": 1237647,
+      "activityRateId": 2536440
+     },
+     {
+      "id": 5087053,
+      "created": [
+       2026,
+       8,
+       20,
+       7,
+       38,
+       54,
+       0
+      ],
+      "minPassengersRequired": 3,
+      "maxPassengersRequired": 3,
+      "pricingCategoryId": 1237647,
+      "activityRateId": 2536440
+     },
+     {
+      "id": 5087054,
+      "created": [
+       2026,
+       8,
+       20,
+       7,
+       38,
+       54,
+       0
+      ],
+      "minPassengersRequired": 4,
+      "maxPassengersRequired": 4,
+      "pricingCategoryId": 1237647,
+      "activityRateId": 2536440
+     }
+    ],
+    "pricingCategoryIds": [
+     1237647
+    ],
+    "allPricingCategories": false,
+    "details": [],
+    "textItems": [
+     {
+      "id": 2536440,
+      "created": [
+       2026,
+       8,
+       25,
+       7,
+       32,
+       24,
+       266011484
+      ],
+      "language": "ja_JP",
+      "title": "Standard Private Group ",
+      "activityRateId": 2536440,
+      "description": ""
+     }
+    ]
+   }
+  ],
+  "pricesByRate": [
+   {
+    "activityRateId": 2536440,
+    "pricePerCategoryUnit": [
+     {
+      "id": 1237647,
+      "amount": {
+       "amount": 12000.0,
+       "currency": "JPY"
+      },
+      "minParticipantsRequired": 4,
+      "maxParticipantsRequired": 4
+     },
+     {
+      "id": 1237647,
+      "amount": {
+       "amount": 12000.0,
+       "currency": "JPY"
+      },
+      "minParticipantsRequired": 3,
+      "maxParticipantsRequired": 3
+     },
+     {
+      "id": 1237647,
+      "amount": {
+       "amount": 29000.0,
+       "currency": "JPY"
+      },
+      "minParticipantsRequired": 1,
+      "maxParticipantsRequired": 2
+     }
+    ],
+    "extraPricePerUnit": [],
+    "extraPricePerCategoryUnit": []
+   }
+  ],
+  "comboActivity": false,
+  "comboStartTimes": [],
+  "flags": [],
+  "defaultPrice": null,
+  "pricesByCategory": {},
+  "pickupPrice": null,
+  "pickupPricesByCategory": {},
+  "dropoffPrice": null,
+  "dropoffPricesByCategory": {},
+  "extraPrices": {},
+  "guidedLanguages": [],
+  "unavailable": false,
+  "pickupSoldOut": false,
+  "soldOut": false
+ },
+ {
+  "id": "5688461_20261029",
+  "activityId": 1273235,
+  "activityTitle": "A private Japanese candle-making experience in Kamakura.",
+  "activityOwnerId": 145344,
+  "activityOwnerTitle": "ZENRISE",
+  "startTime": "00:00",
+  "startTimeId": 5688461,
+  "startTimeLabel": null,
+  "flexible": true,
+  "date": 1793232000000,
+  "localizedDate": "Thu 29.Oct'26",
+  "availabilityCount": 999,
+  "bookedParticipants": 0,
+  "minParticipants": 2,
+  "minParticipantsToBookNow": 2,
+  "productGroupId": null,
+  "recurrenceId": 13498250,
+  "pickupAllotment": false,
+  "pickupAvailabilityCount": 999,
+  "unlimitedAvailability": true,
+  "defaultRateId": 2536440,
+  "rates": [
+   {
+    "id": 2536440,
+    "title": "Standard Private Group ",
+    "description": "",
+    "index": 0,
+    "rateCode": "",
+    "pricedPerPerson": true,
+    "minPerBooking": 2,
+    "maxPerBooking": 4,
+    "cancellationPolicy": {
+     "id": 270405,
+     "title": "Candle Making, “A Handmade Light”",
+     "penaltyRules": [
+      {
+       "id": 270480,
+       "cutoffHours": 0,
+       "charge": 100.0,
+       "chargeType": "percentage",
+       "percentage": 100.0
+      },
+      {
+       "id": 270481,
+       "cutoffHours": 24,
+       "charge": 25.0,
+       "chargeType": "percentage",
+       "percentage": 25.0
+      },
+      {
+       "id": 270482,
+       "cutoffHours": 72,
+       "charge": 10.0,
+       "chargeType": "percentage",
+       "percentage": 10.0
+      }
+     ],
+     "tax": null,
+     "defaultPolicy": false,
+     "policyType": "ADVANCED",
+     "simpleCutoffHours": null,
+     "policyTypeEnum": "ADVANCED"
+    },
+    "fixedPassExpiryDate": null,
+    "passValidForDays": null,
+    "pickupSelectionType": "UNAVAILABLE",
+    "pickupPricingType": "INCLUDED_IN_PRICE",
+    "pickupPricedPerPerson": false,
+    "dropoffSelectionType": "UNAVAILABLE",
+    "dropoffPricingType": "INCLUDED_IN_PRICE",
+    "dropoffPricedPerPerson": false,
+    "extraConfigs": [],
+    "startTimeIds": [],
+    "allStartTimes": true,
+    "tieredPricingEnabled": true,
+    "tiers": [
+     {
+      "id": 5087052,
+      "created": [
+       2026,
+       8,
+       20,
+       7,
+       38,
+       54,
+       0
+      ],
+      "minPassengersRequired": 1,
+      "maxPassengersRequired": 2,
+      "pricingCategoryId": 1237647,
+      "activityRateId": 2536440
+     },
+     {
+      "id": 5087053,
+      "created": [
+       2026,
+       8,
+       20,
+       7,
+       38,
+       54,
+       0
+      ],
+      "minPassengersRequired": 3,
+      "maxPassengersRequired": 3,
+      "pricingCategoryId": 1237647,
+      "activityRateId": 2536440
+     },
+     {
+      "id": 5087054,
+      "created": [
+       2026,
+       8,
+       20,
+       7,
+       38,
+       54,
+       0
+      ],
+      "minPassengersRequired": 4,
+      "maxPassengersRequired": 4,
+      "pricingCategoryId": 1237647,
+      "activityRateId": 2536440
+     }
+    ],
+    "pricingCategoryIds": [
+     1237647
+    ],
+    "allPricingCategories": false,
+    "details": [],
+    "textItems": [
+     {
+      "id": 2536440,
+      "created": [
+       2026,
+       8,
+       25,
+       7,
+       32,
+       24,
+       266037641
+      ],
+      "language": "ja_JP",
+      "title": "Standard Private Group ",
+      "activityRateId": 2536440,
+      "description": ""
+     }
+    ]
+   }
+  ],
+  "pricesByRate": [
+   {
+    "activityRateId": 2536440,
+    "pricePerCategoryUnit": [
+     {
+      "id": 1237647,
+      "amount": {
+       "amount": 12000.0,
+       "currency": "JPY"
+      },
+      "minParticipantsRequired": 4,
+      "maxParticipantsRequired": 4
+     },
+     {
+      "id": 1237647,
+      "amount": {
+       "amount": 12000.0,
+       "currency": "JPY"
+      },
+      "minParticipantsRequired": 3,
+      "maxParticipantsRequired": 3
+     },
+     {
+      "id": 1237647,
+      "amount": {
+       "amount": 29000.0,
+       "currency": "JPY"
+      },
+      "minParticipantsRequired": 1,
+      "maxParticipantsRequired": 2
+     }
+    ],
+    "extraPricePerUnit": [],
+    "extraPricePerCategoryUnit": []
+   }
+  ],
+  "comboActivity": false,
+  "comboStartTimes": [],
+  "flags": [],
+  "defaultPrice": null,
+  "pricesByCategory": {},
+  "pickupPrice": null,
+  "pickupPricesByCategory": {},
+  "dropoffPrice": null,
+  "dropoffPricesByCategory": {},
+  "extraPrices": {},
+  "guidedLanguages": [],
+  "unavailable": false,
+  "pickupSoldOut": false,
+  "soldOut": false
+ },
+ {
+  "id": "5688461_20261030",
+  "activityId": 1273235,
+  "activityTitle": "A private Japanese candle-making experience in Kamakura.",
+  "activityOwnerId": 145344,
+  "activityOwnerTitle": "ZENRISE",
+  "startTime": "00:00",
+  "startTimeId": 5688461,
+  "startTimeLabel": null,
+  "flexible": true,
+  "date": 1793318400000,
+  "localizedDate": "Fri 30.Oct'26",
+  "availabilityCount": 999,
+  "bookedParticipants": 0,
+  "minParticipants": 2,
+  "minParticipantsToBookNow": 2,
+  "productGroupId": null,
+  "recurrenceId": 13498250,
+  "pickupAllotment": false,
+  "pickupAvailabilityCount": 999,
+  "unlimitedAvailability": true,
+  "defaultRateId": 2536440,
+  "rates": [
+   {
+    "id": 2536440,
+    "title": "Standard Private Group ",
+    "description": "",
+    "index": 0,
+    "rateCode": "",
+    "pricedPerPerson": true,
+    "minPerBooking": 2,
+    "maxPerBooking": 4,
+    "cancellationPolicy": {
+     "id": 270405,
+     "title": "Candle Making, “A Handmade Light”",
+     "penaltyRules": [
+      {
+       "id": 270480,
+       "cutoffHours": 0,
+       "charge": 100.0,
+       "chargeType": "percentage",
+       "percentage": 100.0
+      },
+      {
+       "id": 270481,
+       "cutoffHours": 24,
+       "charge": 25.0,
+       "chargeType": "percentage",
+       "percentage": 25.0
+      },
+      {
+       "id": 270482,
+       "cutoffHours": 72,
+       "charge": 10.0,
+       "chargeType": "percentage",
+       "percentage": 10.0
+      }
+     ],
+     "tax": null,
+     "defaultPolicy": false,
+     "policyType": "ADVANCED",
+     "simpleCutoffHours": null,
+     "policyTypeEnum": "ADVANCED"
+    },
+    "fixedPassExpiryDate": null,
+    "passValidForDays": null,
+    "pickupSelectionType": "UNAVAILABLE",
+    "pickupPricingType": "INCLUDED_IN_PRICE",
+    "pickupPricedPerPerson": false,
+    "dropoffSelectionType": "UNAVAILABLE",
+    "dropoffPricingType": "INCLUDED_IN_PRICE",
+    "dropoffPricedPerPerson": false,
+    "extraConfigs": [],
+    "startTimeIds": [],
+    "allStartTimes": true,
+    "tieredPricingEnabled": true,
+    "tiers": [
+     {
+      "id": 5087052,
+      "created": [
+       2026,
+       8,
+       20,
+       7,
+       38,
+       54,
+       0
+      ],
+      "minPassengersRequired": 1,
+      "maxPassengersRequired": 2,
+      "pricingCategoryId": 1237647,
+      "activityRateId": 2536440
+     },
+     {
+      "id": 5087053,
+      "created": [
+       2026,
+       8,
+       20,
+       7,
+       38,
+       54,
+       0
+      ],
+      "minPassengersRequired": 3,
+      "maxPassengersRequired": 3,
+      "pricingCategoryId": 1237647,
+      "activityRateId": 2536440
+     },
+     {
+      "id": 5087054,
+      "created": [
+       2026,
+       8,
+       20,
+       7,
+       38,
+       54,
+       0
+      ],
+      "minPassengersRequired": 4,
+      "maxPassengersRequired": 4,
+      "pricingCategoryId": 1237647,
+      "activityRateId": 2536440
+     }
+    ],
+    "pricingCategoryIds": [
+     1237647
+    ],
+    "allPricingCategories": false,
+    "details": [],
+    "textItems": [
+     {
+      "id": 2536440,
+      "created": [
+       2026,
+       8,
+       25,
+       7,
+       32,
+       24,
+       266056462
+      ],
+      "language": "ja_JP",
+      "title": "Standard Private Group ",
+      "activityRateId": 2536440,
+      "description": ""
+     }
+    ]
+   }
+  ],
+  "pricesByRate": [
+   {
+    "activityRateId": 2536440,
+    "pricePerCategoryUnit": [
+     {
+      "id": 1237647,
+      "amount": {
+       "amount": 12000.0,
+       "currency": "JPY"
+      },
+      "minParticipantsRequired": 4,
+      "maxParticipantsRequired": 4
+     },
+     {
+      "id": 1237647,
+      "amount": {
+       "amount": 12000.0,
+       "currency": "JPY"
+      },
+      "minParticipantsRequired": 3,
+      "maxParticipantsRequired": 3
+     },
+     {
+      "id": 1237647,
+      "amount": {
+       "amount": 29000.0,
+       "currency": "JPY"
+      },
+      "minParticipantsRequired": 1,
+      "maxParticipantsRequired": 2
+     }
+    ],
+    "extraPricePerUnit": [],
+    "extraPricePerCategoryUnit": []
+   }
+  ],
+  "comboActivity": false,
+  "comboStartTimes": [],
+  "flags": [],
+  "defaultPrice": null,
+  "pricesByCategory": {},
+  "pickupPrice": null,
+  "pickupPricesByCategory": {},
+  "dropoffPrice": null,
+  "dropoffPricesByCategory": {},
+  "extraPrices": {},
+  "guidedLanguages": [],
+  "unavailable": false,
+  "pickupSoldOut": false,
+  "soldOut": false
+ },
+ {
+  "id": "5688461_20261031",
+  "activityId": 1273235,
+  "activityTitle": "A private Japanese candle-making experience in Kamakura.",
+  "activityOwnerId": 145344,
+  "activityOwnerTitle": "ZENRISE",
+  "startTime": "00:00",
+  "startTimeId": 5688461,
+  "startTimeLabel": null,
+  "flexible": true,
+  "date": 1793404800000,
+  "localizedDate": "Sat 31.Oct'26",
+  "availabilityCount": 999,
+  "bookedParticipants": 0,
+  "minParticipants": 2,
+  "minParticipantsToBookNow": 2,
+  "productGroupId": null,
+  "recurrenceId": 13498250,
+  "pickupAllotment": false,
+  "pickupAvailabilityCount": 999,
+  "unlimitedAvailability": true,
+  "defaultRateId": 2536440,
+  "rates": [
+   {
+    "id": 2536440,
+    "title": "Standard Private Group ",
+    "description": "",
+    "index": 0,
+    "rateCode": "",
+    "pricedPerPerson": true,
+    "minPerBooking": 2,
+    "maxPerBooking": 4,
+    "cancellationPolicy": {
+     "id": 270405,
+     "title": "Candle Making, “A Handmade Light”",
+     "penaltyRules": [
+      {
+       "id": 270480,
+       "cutoffHours": 0,
+       "charge": 100.0,
+       "chargeType": "percentage",
+       "percentage": 100.0
+      },
+      {
+       "id": 270481,
+       "cutoffHours": 24,
+       "charge": 25.0,
+       "chargeType": "percentage",
+       "percentage": 25.0
+      },
+      {
+       "id": 270482,
+       "cutoffHours": 72,
+       "charge": 10.0,
+       "chargeType": "percentage",
+       "percentage": 10.0
+      }
+     ],
+     "tax": null,
+     "defaultPolicy": false,
+     "policyType": "ADVANCED",
+     "simpleCutoffHours": null,
+     "policyTypeEnum": "ADVANCED"
+    },
+    "fixedPassExpiryDate": null,
+    "passValidForDays": null,
+    "pickupSelectionType": "UNAVAILABLE",
+    "pickupPricingType": "INCLUDED_IN_PRICE",
+    "pickupPricedPerPerson": false,
+    "dropoffSelectionType": "UNAVAILABLE",
+    "dropoffPricingType": "INCLUDED_IN_PRICE",
+    "dropoffPricedPerPerson": false,
+    "extraConfigs": [],
+    "startTimeIds": [],
+    "allStartTimes": true,
+    "tieredPricingEnabled": true,
+    "tiers": [
+     {
+      "id": 5087052,
+      "created": [
+       2026,
+       8,
+       20,
+       7,
+       38,
+       54,
+       0
+      ],
+      "minPassengersRequired": 1,
+      "maxPassengersRequired": 2,
+      "pricingCategoryId": 1237647,
+      "activityRateId": 2536440
+     },
+     {
+      "id": 5087053,
+      "created": [
+       2026,
+       8,
+       20,
+       7,
+       38,
+       54,
+       0
+      ],
+      "minPassengersRequired": 3,
+      "maxPassengersRequired": 3,
+      "pricingCategoryId": 1237647,
+      "activityRateId": 2536440
+     },
+     {
+      "id": 5087054,
+      "created": [
+       2026,
+       8,
+       20,
+       7,
+       38,
+       54,
+       0
+      ],
+      "minPassengersRequired": 4,
+      "maxPassengersRequired": 4,
+      "pricingCategoryId": 1237647,
+      "activityRateId": 2536440
+     }
+    ],
+    "pricingCategoryIds": [
+     1237647
+    ],
+    "allPricingCategories": false,
+    "details": [],
+    "textItems": [
+     {
+      "id": 2536440,
+      "created": [
+       2026,
+       8,
+       25,
+       7,
+       32,
+       24,
+       266107432
+      ],
+      "language": "ja_JP",
+      "title": "Standard Private Group ",
+      "activityRateId": 2536440,
+      "description": ""
+     }
+    ]
+   }
+  ],
+  "pricesByRate": [
+   {
+    "activityRateId": 2536440,
+    "pricePerCategoryUnit": [
+     {
+      "id": 1237647,
+      "amount": {
+       "amount": 12000.0,
+       "currency": "JPY"
+      },
+      "minParticipantsRequired": 4,
+      "maxParticipantsRequired": 4
+     },
+     {
+      "id": 1237647,
+      "amount": {
+       "amount": 12000.0,
+       "currency": "JPY"
+      },
+      "minParticipantsRequired": 3,
+      "maxParticipantsRequired": 3
+     },
+     {
+      "id": 1237647,
+      "amount": {
+       "amount": 29000.0,
+       "currency": "JPY"
+      },
+      "minParticipantsRequired": 1,
+      "maxParticipantsRequired": 2
+     }
+    ],
+    "extraPricePerUnit": [],
+    "extraPricePerCategoryUnit": []
+   }
+  ],
+  "comboActivity": false,
+  "comboStartTimes": [],
+  "flags": [],
+  "defaultPrice": null,
+  "pricesByCategory": {},
+  "pickupPrice": null,
+  "pickupPricesByCategory": {},
+  "dropoffPrice": null,
+  "dropoffPricesByCategory": {},
+  "extraPrices": {},
+  "guidedLanguages": [],
+  "unavailable": false,
+  "pickupSoldOut": false,
+  "soldOut": false
+ },
+ {
+  "id": "5688461_20261101",
+  "activityId": 1273235,
+  "activityTitle": "A private Japanese candle-making experience in Kamakura.",
+  "activityOwnerId": 145344,
+  "activityOwnerTitle": "ZENRISE",
+  "startTime": "00:00",
+  "startTimeId": 5688461,
+  "startTimeLabel": null,
+  "flexible": true,
+  "date": 1793491200000,
+  "localizedDate": "Sun 01.Nov'26",
+  "availabilityCount": 999,
+  "bookedParticipants": 0,
+  "minParticipants": 2,
+  "minParticipantsToBookNow": 2,
+  "productGroupId": null,
+  "recurrenceId": 13498250,
+  "pickupAllotment": false,
+  "pickupAvailabilityCount": 999,
+  "unlimitedAvailability": true,
+  "defaultRateId": 2536440,
+  "rates": [
+   {
+    "id": 2536440,
+    "title": "Standard Private Group ",
+    "description": "",
+    "index": 0,
+    "rateCode": "",
+    "pricedPerPerson": true,
+    "minPerBooking": 2,
+    "maxPerBooking": 4,
+    "cancellationPolicy": {
+     "id": 270405,
+     "title": "Candle Making, “A Handmade Light”",
+     "penaltyRules": [
+      {
+       "id": 270480,
+       "cutoffHours": 0,
+       "charge": 100.0,
+       "chargeType": "percentage",
+       "percentage": 100.0
+      },
+      {
+       "id": 270481,
+       "cutoffHours": 24,
+       "charge": 25.0,
+       "chargeType": "percentage",
+       "percentage": 25.0
+      },
+      {
+       "id": 270482,
+       "cutoffHours": 72,
+       "charge": 10.0,
+       "chargeType": "percentage",
+       "percentage": 10.0
+      }
+     ],
+     "tax": null,
+     "defaultPolicy": false,
+     "policyType": "ADVANCED",
+     "simpleCutoffHours": null,
+     "policyTypeEnum": "ADVANCED"
+    },
+    "fixedPassExpiryDate": null,
+    "passValidForDays": null,
+    "pickupSelectionType": "UNAVAILABLE",
+    "pickupPricingType": "INCLUDED_IN_PRICE",
+    "pickupPricedPerPerson": false,
+    "dropoffSelectionType": "UNAVAILABLE",
+    "dropoffPricingType": "INCLUDED_IN_PRICE",
+    "dropoffPricedPerPerson": false,
+    "extraConfigs": [],
+    "startTimeIds": [],
+    "allStartTimes": true,
+    "tieredPricingEnabled": true,
+    "tiers": [
+     {
+      "id": 5087052,
+      "created": [
+       2026,
+       8,
+       20,
+       7,
+       38,
+       54,
+       0
+      ],
+      "minPassengersRequired": 1,
+      "maxPassengersRequired": 2,
+      "pricingCategoryId": 1237647,
+      "activityRateId": 2536440
+     },
+     {
+      "id": 5087053,
+      "created": [
+       2026,
+       8,
+       20,
+       7,
+       38,
+       54,
+       0
+      ],
+      "minPassengersRequired": 3,
+      "maxPassengersRequired": 3,
+      "pricingCategoryId": 1237647,
+      "activityRateId": 2536440
+     },
+     {
+      "id": 5087054,
+      "created": [
+       2026,
+       8,
+       20,
+       7,
+       38,
+       54,
+       0
+      ],
+      "minPassengersRequired": 4,
+      "maxPassengersRequired": 4,
+      "pricingCategoryId": 1237647,
+      "activityRateId": 2536440
+     }
+    ],
+    "pricingCategoryIds": [
+     1237647
+    ],
+    "allPricingCategories": false,
+    "details": [],
+    "textItems": [
+     {
+      "id": 2536440,
+      "created": [
+       2026,
+       8,
+       25,
+       7,
+       32,
+       24,
+       266127135
+      ],
+      "language": "ja_JP",
+      "title": "Standard Private Group ",
+      "activityRateId": 2536440,
+      "description": ""
+     }
+    ]
+   }
+  ],
+  "pricesByRate": [
+   {
+    "activityRateId": 2536440,
+    "pricePerCategoryUnit": [
+     {
+      "id": 1237647,
+      "amount": {
+       "amount": 12000.0,
+       "currency": "JPY"
+      },
+      "minParticipantsRequired": 4,
+      "maxParticipantsRequired": 4
+     },
+     {
+      "id": 1237647,
+      "amount": {
+       "amount": 12000.0,
+       "currency": "JPY"
+      },
+      "minParticipantsRequired": 3,
+      "maxParticipantsRequired": 3
+     },
+     {
+      "id": 1237647,
+      "amount": {
+       "amount": 29000.0,
+       "currency": "JPY"
+      },
+      "minParticipantsRequired": 1,
+      "maxParticipantsRequired": 2
+     }
+    ],
+    "extraPricePerUnit": [],
+    "extraPricePerCategoryUnit": []
+   }
+  ],
+  "comboActivity": false,
+  "comboStartTimes": [],
+  "flags": [],
+  "defaultPrice": null,
+  "pricesByCategory": {},
+  "pickupPrice": null,
+  "pickupPricesByCategory": {},
+  "dropoffPrice": null,
+  "dropoffPricesByCategory": {},
+  "extraPrices": {},
+  "guidedLanguages": [],
+  "unavailable": false,
+  "pickupSoldOut": false,
+  "soldOut": false
+ },
+ {
+  "id": "5688461_20261102",
+  "activityId": 1273235,
+  "activityTitle": "A private Japanese candle-making experience in Kamakura.",
+  "activityOwnerId": 145344,
+  "activityOwnerTitle": "ZENRISE",
+  "startTime": "00:00",
+  "startTimeId": 5688461,
+  "startTimeLabel": null,
+  "flexible": true,
+  "date": 1793577600000,
+  "localizedDate": "Mon 02.Nov'26",
+  "availabilityCount": 999,
+  "bookedParticipants": 0,
+  "minParticipants": 2,
+  "minParticipantsToBookNow": 2,
+  "productGroupId": null,
+  "recurrenceId": 13498250,
+  "pickupAllotment": false,
+  "pickupAvailabilityCount": 999,
+  "unlimitedAvailability": true,
+  "defaultRateId": 2536440,
+  "rates": [
+   {
+    "id": 2536440,
+    "title": "Standard Private Group ",
+    "description": "",
+    "index": 0,
+    "rateCode": "",
+    "pricedPerPerson": true,
+    "minPerBooking": 2,
+    "maxPerBooking": 4,
+    "cancellationPolicy": {
+     "id": 270405,
+     "title": "Candle Making, “A Handmade Light”",
+     "penaltyRules": [
+      {
+       "id": 270480,
+       "cutoffHours": 0,
+       "charge": 100.0,
+       "chargeType": "percentage",
+       "percentage": 100.0
+      },
+      {
+       "id": 270481,
+       "cutoffHours": 24,
+       "charge": 25.0,
+       "chargeType": "percentage",
+       "percentage": 25.0
+      },
+      {
+       "id": 270482,
+       "cutoffHours": 72,
+       "charge": 10.0,
+       "chargeType": "percentage",
+       "percentage": 10.0
+      }
+     ],
+     "tax": null,
+     "defaultPolicy": false,
+     "policyType": "ADVANCED",
+     "simpleCutoffHours": null,
+     "policyTypeEnum": "ADVANCED"
+    },
+    "fixedPassExpiryDate": null,
+    "passValidForDays": null,
+    "pickupSelectionType": "UNAVAILABLE",
+    "pickupPricingType": "INCLUDED_IN_PRICE",
+    "pickupPricedPerPerson": false,
+    "dropoffSelectionType": "UNAVAILABLE",
+    "dropoffPricingType": "INCLUDED_IN_PRICE",
+    "dropoffPricedPerPerson": false,
+    "extraConfigs": [],
+    "startTimeIds": [],
+    "allStartTimes": true,
+    "tieredPricingEnabled": true,
+    "tiers": [
+     {
+      "id": 5087052,
+      "created": [
+       2026,
+       8,
+       20,
+       7,
+       38,
+       54,
+       0
+      ],
+      "minPassengersRequired": 1,
+      "maxPassengersRequired": 2,
+      "pricingCategoryId": 1237647,
+      "activityRateId": 2536440
+     },
+     {
+      "id": 5087053,
+      "created": [
+       2026,
+       8,
+       20,
+       7,
+       38,
+       54,
+       0
+      ],
+      "minPassengersRequired": 3,
+      "maxPassengersRequired": 3,
+      "pricingCategoryId": 1237647,
+      "activityRateId": 2536440
+     },
+     {
+      "id": 5087054,
+      "created": [
+       2026,
+       8,
+       20,
+       7,
+       38,
+       54,
+       0
+      ],
+      "minPassengersRequired": 4,
+      "maxPassengersRequired": 4,
+      "pricingCategoryId": 1237647,
+      "activityRateId": 2536440
+     }
+    ],
+    "pricingCategoryIds": [
+     1237647
+    ],
+    "allPricingCategories": false,
+    "details": [],
+    "textItems": [
+     {
+      "id": 2536440,
+      "created": [
+       2026,
+       8,
+       25,
+       7,
+       32,
+       24,
+       266181753
+      ],
+      "language": "ja_JP",
+      "title": "Standard Private Group ",
+      "activityRateId": 2536440,
+      "description": ""
+     }
+    ]
+   }
+  ],
+  "pricesByRate": [
+   {
+    "activityRateId": 2536440,
+    "pricePerCategoryUnit": [
+     {
+      "id": 1237647,
+      "amount": {
+       "amount": 12000.0,
+       "currency": "JPY"
+      },
+      "minParticipantsRequired": 4,
+      "maxParticipantsRequired": 4
+     },
+     {
+      "id": 1237647,
+      "amount": {
+       "amount": 12000.0,
+       "currency": "JPY"
+      },
+      "minParticipantsRequired": 3,
+      "maxParticipantsRequired": 3
+     },
+     {
+      "id": 1237647,
+      "amount": {
+       "amount": 29000.0,
+       "currency": "JPY"
+      },
+      "minParticipantsRequired": 1,
+      "maxParticipantsRequired": 2
+     }
+    ],
+    "extraPricePerUnit": [],
+    "extraPricePerCategoryUnit": []
+   }
+  ],
+  "comboActivity": false,
+  "comboStartTimes": [],
+  "flags": [],
+  "defaultPrice": null,
+  "pricesByCategory": {},
+  "pickupPrice": null,
+  "pickupPricesByCategory": {},
+  "dropoffPrice": null,
+  "dropoffPricesByCategory": {},
+  "extraPrices": {},
+  "guidedLanguages": [],
+  "unavailable": false,
+  "pickupSoldOut": false,
+  "soldOut": false
+ },
+ {
+  "id": "5688461_20261103",
+  "activityId": 1273235,
+  "activityTitle": "A private Japanese candle-making experience in Kamakura.",
+  "activityOwnerId": 145344,
+  "activityOwnerTitle": "ZENRISE",
+  "startTime": "00:00",
+  "startTimeId": 5688461,
+  "startTimeLabel": null,
+  "flexible": true,
+  "date": 1793664000000,
+  "localizedDate": "Tue 03.Nov'26",
+  "availabilityCount": 999,
+  "bookedParticipants": 0,
+  "minParticipants": 2,
+  "minParticipantsToBookNow": 2,
+  "productGroupId": null,
+  "recurrenceId": 13498250,
+  "pickupAllotment": false,
+  "pickupAvailabilityCount": 999,
+  "unlimitedAvailability": true,
+  "defaultRateId": 2536440,
+  "rates": [
+   {
+    "id": 2536440,
+    "title": "Standard Private Group ",
+    "description": "",
+    "index": 0,
+    "rateCode": "",
+    "pricedPerPerson": true,
+    "minPerBooking": 2,
+    "maxPerBooking": 4,
+    "cancellationPolicy": {
+     "id": 270405,
+     "title": "Candle Making, “A Handmade Light”",
+     "penaltyRules": [
+      {
+       "id": 270480,
+       "cutoffHours": 0,
+       "charge": 100.0,
+       "chargeType": "percentage",
+       "percentage": 100.0
+      },
+      {
+       "id": 270481,
+       "cutoffHours": 24,
+       "charge": 25.0,
+       "chargeType": "percentage",
+       "percentage": 25.0
+      },
+      {
+       "id": 270482,
+       "cutoffHours": 72,
+       "charge": 10.0,
+       "chargeType": "percentage",
+       "percentage": 10.0
+      }
+     ],
+     "tax": null,
+     "defaultPolicy": false,
+     "policyType": "ADVANCED",
+     "simpleCutoffHours": null,
+     "policyTypeEnum": "ADVANCED"
+    },
+    "fixedPassExpiryDate": null,
+    "passValidForDays": null,
+    "pickupSelectionType": "UNAVAILABLE",
+    "pickupPricingType": "INCLUDED_IN_PRICE",
+    "pickupPricedPerPerson": false,
+    "dropoffSelectionType": "UNAVAILABLE",
+    "dropoffPricingType": "INCLUDED_IN_PRICE",
+    "dropoffPricedPerPerson": false,
+    "extraConfigs": [],
+    "startTimeIds": [],
+    "allStartTimes": true,
+    "tieredPricingEnabled": true,
+    "tiers": [
+     {
+      "id": 5087052,
+      "created": [
+       2026,
+       8,
+       20,
+       7,
+       38,
+       54,
+       0
+      ],
+      "minPassengersRequired": 1,
+      "maxPassengersRequired": 2,
+      "pricingCategoryId": 1237647,
+      "activityRateId": 2536440
+     },
+     {
+      "id": 5087053,
+      "created": [
+       2026,
+       8,
+       20,
+       7,
+       38,
+       54,
+       0
+      ],
+      "minPassengersRequired": 3,
+      "maxPassengersRequired": 3,
+      "pricingCategoryId": 1237647,
+      "activityRateId": 2536440
+     },
+     {
+      "id": 5087054,
+      "created": [
+       2026,
+       8,
+       20,
+       7,
+       38,
+       54,
+       0
+      ],
+      "minPassengersRequired": 4,
+      "maxPassengersRequired": 4,
+      "pricingCategoryId": 1237647,
+      "activityRateId": 2536440
+     }
+    ],
+    "pricingCategoryIds": [
+     1237647
+    ],
+    "allPricingCategories": false,
+    "details": [],
+    "textItems": [
+     {
+      "id": 2536440,
+      "created": [
+       2026,
+       8,
+       25,
+       7,
+       32,
+       24,
+       266208821
+      ],
+      "language": "ja_JP",
+      "title": "Standard Private Group ",
+      "activityRateId": 2536440,
+      "description": ""
+     }
+    ]
+   }
+  ],
+  "pricesByRate": [
+   {
+    "activityRateId": 2536440,
+    "pricePerCategoryUnit": [
+     {
+      "id": 1237647,
+      "amount": {
+       "amount": 12000.0,
+       "currency": "JPY"
+      },
+      "minParticipantsRequired": 4,
+      "maxParticipantsRequired": 4
+     },
+     {
+      "id": 1237647,
+      "amount": {
+       "amount": 12000.0,
+       "currency": "JPY"
+      },
+      "minParticipantsRequired": 3,
+      "maxParticipantsRequired": 3
+     },
+     {
+      "id": 1237647,
+      "amount": {
+       "amount": 29000.0,
+       "currency": "JPY"
+      },
+      "minParticipantsRequired": 1,
+      "maxParticipantsRequired": 2
+     }
+    ],
+    "extraPricePerUnit": [],
+    "extraPricePerCategoryUnit": []
+   }
+  ],
+  "comboActivity": false,
+  "comboStartTimes": [],
+  "flags": [],
+  "defaultPrice": null,
+  "pricesByCategory": {},
+  "pickupPrice": null,
+  "pickupPricesByCategory": {},
+  "dropoffPrice": null,
+  "dropoffPricesByCategory": {},
+  "extraPrices": {},
+  "guidedLanguages": [],
+  "unavailable": false,
+  "pickupSoldOut": false,
+  "soldOut": false
+ },
+ {
+  "id": "5688461_20261104",
+  "activityId": 1273235,
+  "activityTitle": "A private Japanese candle-making experience in Kamakura.",
+  "activityOwnerId": 145344,
+  "activityOwnerTitle": "ZENRISE",
+  "startTime": "00:00",
+  "startTimeId": 5688461,
+  "startTimeLabel": null,
+  "flexible": true,
+  "date": 1793750400000,
+  "localizedDate": "Wed 04.Nov'26",
+  "availabilityCount": 999,
+  "bookedParticipants": 0,
+  "minParticipants": 2,
+  "minParticipantsToBookNow": 2,
+  "productGroupId": null,
+  "recurrenceId": 13498250,
+  "pickupAllotment": false,
+  "pickupAvailabilityCount": 999,
+  "unlimitedAvailability": true,
+  "defaultRateId": 2536440,
+  "rates": [
+   {
+    "id": 2536440,
+    "title": "Standard Private Group ",
+    "description": "",
+    "index": 0,
+    "rateCode": "",
+    "pricedPerPerson": true,
+    "minPerBooking": 2,
+    "maxPerBooking": 4,
+    "cancellationPolicy": {
+     "id": 270405,
+     "title": "Candle Making, “A Handmade Light”",
+     "penaltyRules": [
+      {
+       "id": 270480,
+       "cutoffHours": 0,
+       "charge": 100.0,
+       "chargeType": "percentage",
+       "percentage": 100.0
+      },
+      {
+       "id": 270481,
+       "cutoffHours": 24,
+       "charge": 25.0,
+       "chargeType": "percentage",
+       "percentage": 25.0
+      },
+      {
+       "id": 270482,
+       "cutoffHours": 72,
+       "charge": 10.0,
+       "chargeType": "percentage",
+       "percentage": 10.0
+      }
+     ],
+     "tax": null,
+     "defaultPolicy": false,
+     "policyType": "ADVANCED",
+     "simpleCutoffHours": null,
+     "policyTypeEnum": "ADVANCED"
+    },
+    "fixedPassExpiryDate": null,
+    "passValidForDays": null,
+    "pickupSelectionType": "UNAVAILABLE",
+    "pickupPricingType": "INCLUDED_IN_PRICE",
+    "pickupPricedPerPerson": false,
+    "dropoffSelectionType": "UNAVAILABLE",
+    "dropoffPricingType": "INCLUDED_IN_PRICE",
+    "dropoffPricedPerPerson": false,
+    "extraConfigs": [],
+    "startTimeIds": [],
+    "allStartTimes": true,
+    "tieredPricingEnabled": true,
+    "tiers": [
+     {
+      "id": 5087052,
+      "created": [
+       2026,
+       8,
+       20,
+       7,
+       38,
+       54,
+       0
+      ],
+      "minPassengersRequired": 1,
+      "maxPassengersRequired": 2,
+      "pricingCategoryId": 1237647,
+      "activityRateId": 2536440
+     },
+     {
+      "id": 5087053,
+      "created": [
+       2026,
+       8,
+       20,
+       7,
+       38,
+       54,
+       0
+      ],
+      "minPassengersRequired": 3,
+      "maxPassengersRequired": 3,
+      "pricingCategoryId": 1237647,
+      "activityRateId": 2536440
+     },
+     {
+      "id": 5087054,
+      "created": [
+       2026,
+       8,
+       20,
+       7,
+       38,
+       54,
+       0
+      ],
+      "minPassengersRequired": 4,
+      "maxPassengersRequired": 4,
+      "pricingCategoryId": 1237647,
+      "activityRateId": 2536440
+     }
+    ],
+    "pricingCategoryIds": [
+     1237647
+    ],
+    "allPricingCategories": false,
+    "details": [],
+    "textItems": [
+     {
+      "id": 2536440,
+      "created": [
+       2026,
+       8,
+       25,
+       7,
+       32,
+       24,
+       266239966
+      ],
+      "language": "ja_JP",
+      "title": "Standard Private Group ",
+      "activityRateId": 2536440,
+      "description": ""
+     }
+    ]
+   }
+  ],
+  "pricesByRate": [
+   {
+    "activityRateId": 2536440,
+    "pricePerCategoryUnit": [
+     {
+      "id": 1237647,
+      "amount": {
+       "amount": 12000.0,
+       "currency": "JPY"
+      },
+      "minParticipantsRequired": 4,
+      "maxParticipantsRequired": 4
+     },
+     {
+      "id": 1237647,
+      "amount": {
+       "amount": 12000.0,
+       "currency": "JPY"
+      },
+      "minParticipantsRequired": 3,
+      "maxParticipantsRequired": 3
+     },
+     {
+      "id": 1237647,
+      "amount": {
+       "amount": 29000.0,
+       "currency": "JPY"
+      },
+      "minParticipantsRequired": 1,
+      "maxParticipantsRequired": 2
+     }
+    ],
+    "extraPricePerUnit": [],
+    "extraPricePerCategoryUnit": []
+   }
+  ],
+  "comboActivity": false,
+  "comboStartTimes": [],
+  "flags": [],
+  "defaultPrice": null,
+  "pricesByCategory": {},
+  "pickupPrice": null,
+  "pickupPricesByCategory": {},
+  "dropoffPrice": null,
+  "dropoffPricesByCategory": {},
+  "extraPrices": {},
+  "guidedLanguages": [],
+  "unavailable": false,
+  "pickupSoldOut": false,
+  "soldOut": false
+ },
+ {
+  "id": "5688461_20261105",
+  "activityId": 1273235,
+  "activityTitle": "A private Japanese candle-making experience in Kamakura.",
+  "activityOwnerId": 145344,
+  "activityOwnerTitle": "ZENRISE",
+  "startTime": "00:00",
+  "startTimeId": 5688461,
+  "startTimeLabel": null,
+  "flexible": true,
+  "date": 1793836800000,
+  "localizedDate": "Thu 05.Nov'26",
+  "availabilityCount": 999,
+  "bookedParticipants": 0,
+  "minParticipants": 2,
+  "minParticipantsToBookNow": 2,
+  "productGroupId": null,
+  "recurrenceId": 13498250,
+  "pickupAllotment": false,
+  "pickupAvailabilityCount": 999,
+  "unlimitedAvailability": true,
+  "defaultRateId": 2536440,
+  "rates": [
+   {
+    "id": 2536440,
+    "title": "Standard Private Group ",
+    "description": "",
+    "index": 0,
+    "rateCode": "",
+    "pricedPerPerson": true,
+    "minPerBooking": 2,
+    "maxPerBooking": 4,
+    "cancellationPolicy": {
+     "id": 270405,
+     "title": "Candle Making, “A Handmade Light”",
+     "penaltyRules": [
+      {
+       "id": 270480,
+       "cutoffHours": 0,
+       "charge": 100.0,
+       "chargeType": "percentage",
+       "percentage": 100.0
+      },
+      {
+       "id": 270481,
+       "cutoffHours": 24,
+       "charge": 25.0,
+       "chargeType": "percentage",
+       "percentage": 25.0
+      },
+      {
+       "id": 270482,
+       "cutoffHours": 72,
+       "charge": 10.0,
+       "chargeType": "percentage",
+       "percentage": 10.0
+      }
+     ],
+     "tax": null,
+     "defaultPolicy": false,
+     "policyType": "ADVANCED",
+     "simpleCutoffHours": null,
+     "policyTypeEnum": "ADVANCED"
+    },
+    "fixedPassExpiryDate": null,
+    "passValidForDays": null,
+    "pickupSelectionType": "UNAVAILABLE",
+    "pickupPricingType": "INCLUDED_IN_PRICE",
+    "pickupPricedPerPerson": false,
+    "dropoffSelectionType": "UNAVAILABLE",
+    "dropoffPricingType": "INCLUDED_IN_PRICE",
+    "dropoffPricedPerPerson": false,
+    "extraConfigs": [],
+    "startTimeIds": [],
+    "allStartTimes": true,
+    "tieredPricingEnabled": true,
+    "tiers": [
+     {
+      "id": 5087052,
+      "created": [
+       2026,
+       8,
+       20,
+       7,
+       38,
+       54,
+       0
+      ],
+      "minPassengersRequired": 1,
+      "maxPassengersRequired": 2,
+      "pricingCategoryId": 1237647,
+      "activityRateId": 2536440
+     },
+     {
+      "id": 5087053,
+      "created": [
+       2026,
+       8,
+       20,
+       7,
+       38,
+       54,
+       0
+      ],
+      "minPassengersRequired": 3,
+      "maxPassengersRequired": 3,
+      "pricingCategoryId": 1237647,
+      "activityRateId": 2536440
+     },
+     {
+      "id": 5087054,
+      "created": [
+       2026,
+       8,
+       20,
+       7,
+       38,
+       54,
+       0
+      ],
+      "minPassengersRequired": 4,
+      "maxPassengersRequired": 4,
+      "pricingCategoryId": 1237647,
+      "activityRateId": 2536440
+     }
+    ],
+    "pricingCategoryIds": [
+     1237647
+    ],
+    "allPricingCategories": false,
+    "details": [],
+    "textItems": [
+     {
+      "id": 2536440,
+      "created": [
+       2026,
+       8,
+       25,
+       7,
+       32,
+       24,
+       266281318
+      ],
+      "language": "ja_JP",
+      "title": "Standard Private Group ",
+      "activityRateId": 2536440,
+      "description": ""
+     }
+    ]
+   }
+  ],
+  "pricesByRate": [
+   {
+    "activityRateId": 2536440,
+    "pricePerCategoryUnit": [
+     {
+      "id": 1237647,
+      "amount": {
+       "amount": 12000.0,
+       "currency": "JPY"
+      },
+      "minParticipantsRequired": 4,
+      "maxParticipantsRequired": 4
+     },
+     {
+      "id": 1237647,
+      "amount": {
+       "amount": 12000.0,
+       "currency": "JPY"
+      },
+      "minParticipantsRequired": 3,
+      "maxParticipantsRequired": 3
+     },
+     {
+      "id": 1237647,
+      "amount": {
+       "amount": 29000.0,
+       "currency": "JPY"
+      },
+      "minParticipantsRequired": 1,
+      "maxParticipantsRequired": 2
+     }
+    ],
+    "extraPricePerUnit": [],
+    "extraPricePerCategoryUnit": []
+   }
+  ],
+  "comboActivity": false,
+  "comboStartTimes": [],
+  "flags": [],
+  "defaultPrice": null,
+  "pricesByCategory": {},
+  "pickupPrice": null,
+  "pickupPricesByCategory": {},
+  "dropoffPrice": null,
+  "dropoffPricesByCategory": {},
+  "extraPrices": {},
+  "guidedLanguages": [],
+  "unavailable": false,
+  "pickupSoldOut": false,
+  "soldOut": false
+ },
+ {
+  "id": "5688461_20261106",
+  "activityId": 1273235,
+  "activityTitle": "A private Japanese candle-making experience in Kamakura.",
+  "activityOwnerId": 145344,
+  "activityOwnerTitle": "ZENRISE",
+  "startTime": "00:00",
+  "startTimeId": 5688461,
+  "startTimeLabel": null,
+  "flexible": true,
+  "date": 1793923200000,
+  "localizedDate": "Fri 06.Nov'26",
+  "availabilityCount": 999,
+  "bookedParticipants": 0,
+  "minParticipants": 2,
+  "minParticipantsToBookNow": 2,
+  "productGroupId": null,
+  "recurrenceId": 13498250,
+  "pickupAllotment": false,
+  "pickupAvailabilityCount": 999,
+  "unlimitedAvailability": true,
+  "defaultRateId": 2536440,
+  "rates": [
+   {
+    "id": 2536440,
+    "title": "Standard Private Group ",
+    "description": "",
+    "index": 0,
+    "rateCode": "",
+    "pricedPerPerson": true,
+    "minPerBooking": 2,
+    "maxPerBooking": 4,
+    "cancellationPolicy": {
+     "id": 270405,
+     "title": "Candle Making, “A Handmade Light”",
+     "penaltyRules": [
+      {
+       "id": 270480,
+       "cutoffHours": 0,
+       "charge": 100.0,
+       "chargeType": "percentage",
+       "percentage": 100.0
+      },
+      {
+       "id": 270481,
+       "cutoffHours": 24,
+       "charge": 25.0,
+       "chargeType": "percentage",
+       "percentage": 25.0
+      },
+      {
+       "id": 270482,
+       "cutoffHours": 72,
+       "charge": 10.0,
+       "chargeType": "percentage",
+       "percentage": 10.0
+      }
+     ],
+     "tax": null,
+     "defaultPolicy": false,
+     "policyType": "ADVANCED",
+     "simpleCutoffHours": null,
+     "policyTypeEnum": "ADVANCED"
+    },
+    "fixedPassExpiryDate": null,
+    "passValidForDays": null,
+    "pickupSelectionType": "UNAVAILABLE",
+    "pickupPricingType": "INCLUDED_IN_PRICE",
+    "pickupPricedPerPerson": false,
+    "dropoffSelectionType": "UNAVAILABLE",
+    "dropoffPricingType": "INCLUDED_IN_PRICE",
+    "dropoffPricedPerPerson": false,
+    "extraConfigs": [],
+    "startTimeIds": [],
+    "allStartTimes": true,
+    "tieredPricingEnabled": true,
+    "tiers": [
+     {
+      "id": 5087052,
+      "created": [
+       2026,
+       8,
+       20,
+       7,
+       38,
+       54,
+       0
+      ],
+      "minPassengersRequired": 1,
+      "maxPassengersRequired": 2,
+      "pricingCategoryId": 1237647,
+      "activityRateId": 2536440
+     },
+     {
+      "id": 5087053,
+      "created": [
+       2026,
+       8,
+       20,
+       7,
+       38,
+       54,
+       0
+      ],
+      "minPassengersRequired": 3,
+      "maxPassengersRequired": 3,
+      "pricingCategoryId": 1237647,
+      "activityRateId": 2536440
+     },
+     {
+      "id": 5087054,
+      "created": [
+       2026,
+       8,
+       20,
+       7,
+       38,
+       54,
+       0
+      ],
+      "minPassengersRequired": 4,
+      "maxPassengersRequired": 4,
+      "pricingCategoryId": 1237647,
+      "activityRateId": 2536440
+     }
+    ],
+    "pricingCategoryIds": [
+     1237647
+    ],
+    "allPricingCategories": false,
+    "details": [],
+    "textItems": [
+     {
+      "id": 2536440,
+      "created": [
+       2026,
+       8,
+       25,
+       7,
+       32,
+       24,
+       266295997
+      ],
+      "language": "ja_JP",
+      "title": "Standard Private Group ",
+      "activityRateId": 2536440,
+      "description": ""
+     }
+    ]
+   }
+  ],
+  "pricesByRate": [
+   {
+    "activityRateId": 2536440,
+    "pricePerCategoryUnit": [
+     {
+      "id": 1237647,
+      "amount": {
+       "amount": 12000.0,
+       "currency": "JPY"
+      },
+      "minParticipantsRequired": 4,
+      "maxParticipantsRequired": 4
+     },
+     {
+      "id": 1237647,
+      "amount": {
+       "amount": 12000.0,
+       "currency": "JPY"
+      },
+      "minParticipantsRequired": 3,
+      "maxParticipantsRequired": 3
+     },
+     {
+      "id": 1237647,
+      "amount": {
+       "amount": 29000.0,
+       "currency": "JPY"
+      },
+      "minParticipantsRequired": 1,
+      "maxParticipantsRequired": 2
+     }
+    ],
+    "extraPricePerUnit": [],
+    "extraPricePerCategoryUnit": []
+   }
+  ],
+  "comboActivity": false,
+  "comboStartTimes": [],
+  "flags": [],
+  "defaultPrice": null,
+  "pricesByCategory": {},
+  "pickupPrice": null,
+  "pickupPricesByCategory": {},
+  "dropoffPrice": null,
+  "dropoffPricesByCategory": {},
+  "extraPrices": {},
+  "guidedLanguages": [],
+  "unavailable": false,
+  "pickupSoldOut": false,
+  "soldOut": false
+ },
+ {
+  "id": "5688461_20261107",
+  "activityId": 1273235,
+  "activityTitle": "A private Japanese candle-making experience in Kamakura.",
+  "activityOwnerId": 145344,
+  "activityOwnerTitle": "ZENRISE",
+  "startTime": "00:00",
+  "startTimeId": 5688461,
+  "startTimeLabel": null,
+  "flexible": true,
+  "date": 1794009600000,
+  "localizedDate": "Sat 07.Nov'26",
+  "availabilityCount": 999,
+  "bookedParticipants": 0,
+  "minParticipants": 2,
+  "minParticipantsToBookNow": 2,
+  "productGroupId": null,
+  "recurrenceId": 13498250,
+  "pickupAllotment": false,
+  "pickupAvailabilityCount": 999,
+  "unlimitedAvailability": true,
+  "defaultRateId": 2536440,
+  "rates": [
+   {
+    "id": 2536440,
+    "title": "Standard Private Group ",
+    "description": "",
+    "index": 0,
+    "rateCode": "",
+    "pricedPerPerson": true,
+    "minPerBooking": 2,
+    "maxPerBooking": 4,
+    "cancellationPolicy": {
+     "id": 270405,
+     "title": "Candle Making, “A Handmade Light”",
+     "penaltyRules": [
+      {
+       "id": 270480,
+       "cutoffHours": 0,
+       "charge": 100.0,
+       "chargeType": "percentage",
+       "percentage": 100.0
+      },
+      {
+       "id": 270481,
+       "cutoffHours": 24,
+       "charge": 25.0,
+       "chargeType": "percentage",
+       "percentage": 25.0
+      },
+      {
+       "id": 270482,
+       "cutoffHours": 72,
+       "charge": 10.0,
+       "chargeType": "percentage",
+       "percentage": 10.0
+      }
+     ],
+     "tax": null,
+     "defaultPolicy": false,
+     "policyType": "ADVANCED",
+     "simpleCutoffHours": null,
+     "policyTypeEnum": "ADVANCED"
+    },
+    "fixedPassExpiryDate": null,
+    "passValidForDays": null,
+    "pickupSelectionType": "UNAVAILABLE",
+    "pickupPricingType": "INCLUDED_IN_PRICE",
+    "pickupPricedPerPerson": false,
+    "dropoffSelectionType": "UNAVAILABLE",
+    "dropoffPricingType": "INCLUDED_IN_PRICE",
+    "dropoffPricedPerPerson": false,
+    "extraConfigs": [],
+    "startTimeIds": [],
+    "allStartTimes": true,
+    "tieredPricingEnabled": true,
+    "tiers": [
+     {
+      "id": 5087052,
+      "created": [
+       2026,
+       8,
+       20,
+       7,
+       38,
+       54,
+       0
+      ],
+      "minPassengersRequired": 1,
+      "maxPassengersRequired": 2,
+      "pricingCategoryId": 1237647,
+      "activityRateId": 2536440
+     },
+     {
+      "id": 5087053,
+      "created": [
+       2026,
+       8,
+       20,
+       7,
+       38,
+       54,
+       0
+      ],
+      "minPassengersRequired": 3,
+      "maxPassengersRequired": 3,
+      "pricingCategoryId": 1237647,
+      "activityRateId": 2536440
+     },
+     {
+      "id": 5087054,
+      "created": [
+       2026,
+       8,
+       20,
+       7,
+       38,
+       54,
+       0
+      ],
+      "minPassengersRequired": 4,
+      "maxPassengersRequired": 4,
+      "pricingCategoryId": 1237647,
+      "activityRateId": 2536440
+     }
+    ],
+    "pricingCategoryIds": [
+     1237647
+    ],
+    "allPricingCategories": false,
+    "details": [],
+    "textItems": [
+     {
+      "id": 2536440,
+      "created": [
+       2026,
+       8,
+       25,
+       7,
+       32,
+       24,
+       266334396
+      ],
+      "language": "ja_JP",
+      "title": "Standard Private Group ",
+      "activityRateId": 2536440,
+      "description": ""
+     }
+    ]
+   }
+  ],
+  "pricesByRate": [
+   {
+    "activityRateId": 2536440,
+    "pricePerCategoryUnit": [
+     {
+      "id": 1237647,
+      "amount": {
+       "amount": 12000.0,
+       "currency": "JPY"
+      },
+      "minParticipantsRequired": 4,
+      "maxParticipantsRequired": 4
+     },
+     {
+      "id": 1237647,
+      "amount": {
+       "amount": 12000.0,
+       "currency": "JPY"
+      },
+      "minParticipantsRequired": 3,
+      "maxParticipantsRequired": 3
+     },
+     {
+      "id": 1237647,
+      "amount": {
+       "amount": 29000.0,
+       "currency": "JPY"
+      },
+      "minParticipantsRequired": 1,
+      "maxParticipantsRequired": 2
+     }
+    ],
+    "extraPricePerUnit": [],
+    "extraPricePerCategoryUnit": []
+   }
+  ],
+  "comboActivity": false,
+  "comboStartTimes": [],
+  "flags": [],
+  "defaultPrice": null,
+  "pricesByCategory": {},
+  "pickupPrice": null,
+  "pickupPricesByCategory": {},
+  "dropoffPrice": null,
+  "dropoffPricesByCategory": {},
+  "extraPrices": {},
+  "guidedLanguages": [],
+  "unavailable": false,
+  "pickupSoldOut": false,
+  "soldOut": false
+ },
+ {
+  "id": "5688461_20261108",
+  "activityId": 1273235,
+  "activityTitle": "A private Japanese candle-making experience in Kamakura.",
+  "activityOwnerId": 145344,
+  "activityOwnerTitle": "ZENRISE",
+  "startTime": "00:00",
+  "startTimeId": 5688461,
+  "startTimeLabel": null,
+  "flexible": true,
+  "date": 1794096000000,
+  "localizedDate": "Sun 08.Nov'26",
+  "availabilityCount": 999,
+  "bookedParticipants": 0,
+  "minParticipants": 2,
+  "minParticipantsToBookNow": 2,
+  "productGroupId": null,
+  "recurrenceId": 13498250,
+  "pickupAllotment": false,
+  "pickupAvailabilityCount": 999,
+  "unlimitedAvailability": true,
+  "defaultRateId": 2536440,
+  "rates": [
+   {
+    "id": 2536440,
+    "title": "Standard Private Group ",
+    "description": "",
+    "index": 0,
+    "rateCode": "",
+    "pricedPerPerson": true,
+    "minPerBooking": 2,
+    "maxPerBooking": 4,
+    "cancellationPolicy": {
+     "id": 270405,
+     "title": "Candle Making, “A Handmade Light”",
+     "penaltyRules": [
+      {
+       "id": 270480,
+       "cutoffHours": 0,
+       "charge": 100.0,
+       "chargeType": "percentage",
+       "percentage": 100.0
+      },
+      {
+       "id": 270481,
+       "cutoffHours": 24,
+       "charge": 25.0,
+       "chargeType": "percentage",
+       "percentage": 25.0
+      },
+      {
+       "id": 270482,
+       "cutoffHours": 72,
+       "charge": 10.0,
+       "chargeType": "percentage",
+       "percentage": 10.0
+      }
+     ],
+     "tax": null,
+     "defaultPolicy": false,
+     "policyType": "ADVANCED",
+     "simpleCutoffHours": null,
+     "policyTypeEnum": "ADVANCED"
+    },
+    "fixedPassExpiryDate": null,
+    "passValidForDays": null,
+    "pickupSelectionType": "UNAVAILABLE",
+    "pickupPricingType": "INCLUDED_IN_PRICE",
+    "pickupPricedPerPerson": false,
+    "dropoffSelectionType": "UNAVAILABLE",
+    "dropoffPricingType": "INCLUDED_IN_PRICE",
+    "dropoffPricedPerPerson": false,
+    "extraConfigs": [],
+    "startTimeIds": [],
+    "allStartTimes": true,
+    "tieredPricingEnabled": true,
+    "tiers": [
+     {
+      "id": 5087052,
+      "created": [
+       2026,
+       8,
+       20,
+       7,
+       38,
+       54,
+       0
+      ],
+      "minPassengersRequired": 1,
+      "maxPassengersRequired": 2,
+      "pricingCategoryId": 1237647,
+      "activityRateId": 2536440
+     },
+     {
+      "id": 5087053,
+      "created": [
+       2026,
+       8,
+       20,
+       7,
+       38,
+       54,
+       0
+      ],
+      "minPassengersRequired": 3,
+      "maxPassengersRequired": 3,
+      "pricingCategoryId": 1237647,
+      "activityRateId": 2536440
+     },
+     {
+      "id": 5087054,
+      "created": [
+       2026,
+       8,
+       20,
+       7,
+       38,
+       54,
+       0
+      ],
+      "minPassengersRequired": 4,
+      "maxPassengersRequired": 4,
+      "pricingCategoryId": 1237647,
+      "activityRateId": 2536440
+     }
+    ],
+    "pricingCategoryIds": [
+     1237647
+    ],
+    "allPricingCategories": false,
+    "details": [],
+    "textItems": [
+     {
+      "id": 2536440,
+      "created": [
+       2026,
+       8,
+       25,
+       7,
+       32,
+       24,
+       266352516
+      ],
+      "language": "ja_JP",
+      "title": "Standard Private Group ",
+      "activityRateId": 2536440,
+      "description": ""
+     }
+    ]
+   }
+  ],
+  "pricesByRate": [
+   {
+    "activityRateId": 2536440,
+    "pricePerCategoryUnit": [
+     {
+      "id": 1237647,
+      "amount": {
+       "amount": 12000.0,
+       "currency": "JPY"
+      },
+      "minParticipantsRequired": 4,
+      "maxParticipantsRequired": 4
+     },
+     {
+      "id": 1237647,
+      "amount": {
+       "amount": 12000.0,
+       "currency": "JPY"
+      },
+      "minParticipantsRequired": 3,
+      "maxParticipantsRequired": 3
+     },
+     {
+      "id": 1237647,
+      "amount": {
+       "amount": 29000.0,
+       "currency": "JPY"
+      },
+      "minParticipantsRequired": 1,
+      "maxParticipantsRequired": 2
+     }
+    ],
+    "extraPricePerUnit": [],
+    "extraPricePerCategoryUnit": []
+   }
+  ],
+  "comboActivity": false,
+  "comboStartTimes": [],
+  "flags": [],
+  "defaultPrice": null,
+  "pricesByCategory": {},
+  "pickupPrice": null,
+  "pickupPricesByCategory": {},
+  "dropoffPrice": null,
+  "dropoffPricesByCategory": {},
+  "extraPrices": {},
+  "guidedLanguages": [],
+  "unavailable": false,
+  "pickupSoldOut": false,
+  "soldOut": false
+ }
+]

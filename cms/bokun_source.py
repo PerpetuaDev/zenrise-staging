@@ -1,0 +1,119 @@
+"""Fetch the Zenrise-tier products from Bokun as fixture-shaped records.
+
+Records use exactly the keys of cms/tours-fixture.json entries so that
+build-tours.py's tour_model() and every downstream renderer stay unchanged.
+Four keys are added: bokunId, widgets, priceRows, jaReviewed.
+"""
+from datetime import datetime, timedelta, timezone
+
+from . import bokun_price, bokun_text, tours_config
+
+PAIR_FIELDS = ('title', 'sub', 'lede', 'coverCaption',
+               'included', 'notIncluded', 'notAllowed', 'notSuitable')
+
+
+def catalogue(client, cfg):
+    """Product list by name if it exists, otherwise the config allowlist."""
+    wanted = (cfg.get('productListName') or '').strip().lower()
+    if wanted:
+        try:
+            lists = client.get('/product-list.json/list') or []
+        except Exception:
+            lists = []
+        for pl in lists:
+            if (pl.get('title') or '').strip().lower() == wanted:
+                ids = [int(it['activityId']) for it in (pl.get('items') or [])
+                       if it.get('activityId')]
+                if ids:
+                    return ids
+    return tours_config.catalogue_ids(cfg)
+
+
+def _length_from_duration(duration_text):
+    digits = ''.join(c for c in (duration_text or '') if c.isdigit() or c == ' ')
+    first = digits.split()
+    hours = int(first[0]) if first and first[0].isdigit() else 0
+    return 'Full-day' if hours >= 5 else 'Half-day'
+
+
+def to_record(activity, activity_ja, availability, entry, corr):
+    warnings = []
+
+    def cl(value):
+        text, w = bokun_text.clean(value, corr)
+        warnings.extend(w)
+        return text
+
+    title = cl(activity.get('title'))
+    sub = cl(activity.get('excerpt'))
+    parsed, sw = bokun_text.sections(
+        activity.get('description'), corr, entry.get('chipsHeading'))
+    warnings.extend(sw)
+    lede = ' '.join(parsed['lede'])
+    included = '\n'.join(parsed['included'])
+    reviewed = bool(entry.get('jaReviewed'))
+
+    route = []
+    for item in activity.get('agendaItems') or []:
+        route.append({'title': cl(item.get('title')), 'body': cl(item.get('body'))})
+
+    photos = activity.get('photos') or []
+    cover = (photos[0].get('originalUrl') if photos else '') or ''
+    cover_cap = cl(photos[0].get('alternateText')) if photos else ''
+
+    rows = bokun_price.rows(availability, activity.get('pricingCategories') or [])
+    fp = bokun_price.from_price(rows)
+
+    rec = {
+        'id': entry['slug'],
+        'bokunId': int(activity['id']),
+        'number': entry.get('number') or '',
+        'area': entry.get('area') or (activity.get('googlePlace') or {}).get('city') or '',
+        'length': entry.get('length') or _length_from_duration(activity.get('durationText')),
+        'themes': entry.get('themes') or [],
+        'cover': {'url': cover},
+        'hoursEn': cl(activity.get('durationText')),
+        'hoursJa': cl((activity_ja or {}).get('durationText')) or cl(activity.get('durationText')),
+        'priceEn': bokun_price.format_from(fp, 'en'),
+        'priceJa': bokun_price.format_from(fp, 'ja'),
+        'priceRows': rows,
+        'widgets': entry.get('widgets') or {},
+        'jaReviewed': reviewed,
+        'route': route,
+    }
+
+    en_values = {'title': title, 'sub': sub, 'lede': lede, 'coverCaption': cover_cap,
+                 'included': included,
+                 'notIncluded': '', 'notAllowed': '', 'notSuitable': ''}
+    for field in PAIR_FIELDS:
+        rec[field + 'En'] = en_values[field]
+        if reviewed and field in ('title', 'sub', 'lede'):
+            src = {'title': 'title', 'sub': 'excerpt', 'lede': 'description'}[field]
+            rec[field + 'Ja'] = cl((activity_ja or {}).get(src)) or en_values[field]
+        else:
+            # Bokun holds no Japanese product copy. Mirroring English is the
+            # honest fallback; raw machine translation must not reach the site.
+            rec[field + 'Ja'] = en_values[field]
+    return rec, warnings
+
+
+def fetch_records(client, cfg):
+    corr = tours_config.corrections(cfg)
+    today = datetime.now(timezone.utc).date()
+    end = today + timedelta(days=75)
+    records, warnings, raw_texts = [], [], []
+    for pid in catalogue(client, cfg):
+        entry = tours_config.tour_entry(cfg, pid)
+        activity = client.get(f'/activity.json/{pid}?lang=EN')
+        activity_ja = client.get(f'/activity.json/{pid}?lang=ja')
+        availability = client.get(
+            f'/activity.json/{pid}/availabilities?start={today}&end={end}')
+        raw_texts += [activity.get('title') or '', activity.get('excerpt') or '',
+                      activity.get('description') or '']
+        rec, w = to_record(activity, activity_ja, availability, entry, corr)
+        records.append(rec)
+        warnings += [f'[{rec["id"]}] {x}' for x in w]
+    for stale in bokun_text.unused_corrections(raw_texts, corr):
+        warnings.append(f'correction no longer matches any source text, safe to '
+                        f'prune from tours-config.json: {stale!r}')
+    return records, warnings
