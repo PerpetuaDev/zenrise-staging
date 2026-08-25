@@ -57,5 +57,76 @@ class TestClean(unittest.TestCase):
         self.assertEqual(bokun_text.clean(''), ('', []))
 
 
+IKEBANA_DESC = (
+    'Experience the Art of Ikebana in Kamakura with Master Koen Yokoi\n'
+    'Immerse yourself in &#34;Ichika Ichiei&#34; a 90-minute private workshop.\n'
+    'PDF\n'
+    'Tour Highlights &amp; Itinerary (90 minutes):\n'
+    'History &amp; Philosophy (30 mins): Learn about the heritage.PDF\n'
+    'Tea &amp; Conversation (30 mins): Relax and reflect.PDF\n'
+    'What is Included:\n'
+    'PDF\n'
+    'Private Ikebana instruction by Master Koen YokoiPDF\n'
+    'All flower materials, tools, and equipmentPDF\n'
+    'Tour insurancePDF\n')
+
+
+class TestPdfArtifact(unittest.TestCase):
+    def test_strips_standalone_pdf_lines(self):
+        text, _ = bokun_text.clean('One.\nPDF\nTwo.')
+        self.assertNotIn('PDF', text)
+
+    def test_strips_trailing_pdf_tokens(self):
+        text, _ = bokun_text.clean('Tour insurancePDF')
+        self.assertEqual(text, 'Tour insurance')
+
+    def test_keeps_pdf_used_as_a_real_word(self):
+        text, _ = bokun_text.clean('Download the PDF guide before arriving.')
+        self.assertIn('PDF guide', text)
+
+
+class TestSections(unittest.TestCase):
+    def setUp(self):
+        self.parsed, self.warnings = bokun_text.sections(IKEBANA_DESC)
+
+    def test_lede_is_everything_before_the_first_heading(self):
+        self.assertEqual(len(self.parsed['lede']), 2)
+        self.assertIn('Master Koen Yokoi', self.parsed['lede'][0])
+        self.assertNotIn('What is Included', ' '.join(self.parsed['lede']))
+
+    def test_inclusions_extracted_from_the_included_heading(self):
+        self.assertEqual(self.parsed['included'], [
+            'Private Ikebana instruction by Master Koen Yokoi',
+            'All flower materials, tools, and equipment',
+            'Tour insurance'])
+
+    def test_itinerary_heading_is_ignored_agenda_items_own_that(self):
+        self.assertNotIn('History & Philosophy (30 mins): Learn about the heritage.',
+                         self.parsed['included'])
+
+    def test_entities_are_decoded_in_sections(self):
+        self.assertNotIn('&#34;', ' '.join(self.parsed['lede']))
+
+    def test_unstructured_description_is_all_lede_and_no_chips(self):
+        parsed, _ = bokun_text.sections(
+            'Zenrise designs slow, considered private experiences around Kamakura.')
+        self.assertEqual(len(parsed['lede']), 1)
+        self.assertEqual(parsed['included'], [])
+
+    def test_prose_inclusions_are_not_parsed_into_chips(self):
+        # The Zen Journey states inclusions as a sentence under a different
+        # heading; that must not become chips.
+        parsed, _ = bokun_text.sections(
+            'A slow pass through three temples.\n'
+            'Practical Notes\n'
+            'The tour is all-inclusive: transport, admission, lunch.')
+        self.assertEqual(parsed['included'], [])
+
+    def test_custom_heading_override_is_honoured(self):
+        parsed, _ = bokun_text.sections(
+            'Lede.\nInclusions:\nGuide\nTea', chips_heading='Inclusions')
+        self.assertEqual(parsed['included'], ['Guide', 'Tea'])
+
+
 if __name__ == '__main__':
     unittest.main()

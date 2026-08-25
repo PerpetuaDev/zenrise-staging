@@ -53,6 +53,7 @@ def clean(raw, corrections=None):
     text = _BLOCK.sub(' ', text)
     text = _TAG.sub(' ', text)
     text = _apply_corrections(text, corrections)
+    text = '\n'.join(_strip_pdf(l) for l in text.split('\n'))
     text = _WS.sub(' ', text).replace('\n', ' ')
     text = re.sub(r' +', ' ', text).strip()
     return text, _warn(text)
@@ -75,3 +76,56 @@ def paragraphs(raw, corrections=None):
 def unused_corrections(raw_texts, corrections):
     blob = ' '.join(_decode(t) for t in raw_texts)
     return [bad for bad in (corrections or {}) if bad not in blob]
+
+
+# Copy pasted into Bokun left a literal "PDF" at the end of every list item and
+# on its own between blocks. It is debris, not content, so it is removed at a
+# line boundary only -- never mid-sentence, where PDF may be a real word.
+_PDF_LINE = re.compile(r'^\s*PDF\s*$')
+_PDF_TAIL = re.compile(r'PDF\s*$')
+
+_INCLUDED_HEADINGS = ('what is included', "what's included", 'inclusions')
+_HEADING = re.compile(r'^(.{2,60}?):\s*$')
+
+
+def _strip_pdf(line):
+    return _PDF_TAIL.sub('', line).strip()
+
+
+def _lines(raw):
+    text = _decode(raw)
+    text = _BLOCK.sub('\n', text)
+    text = _TAG.sub(' ', text)
+    out = []
+    for line in text.split('\n'):
+        line = re.sub(r'\s+', ' ', line).strip()
+        if not line or _PDF_LINE.match(line):
+            continue
+        out.append(_strip_pdf(line))
+    return [l for l in out if l]
+
+
+def sections(raw, corrections=None, chips_heading=None):
+    """Split a Bokun description into a lede and its named sections.
+
+    Bokun has no inclusions field, but some products carry the list inline under
+    a heading. See spec section 3.4.1.
+    """
+    wanted = [chips_heading.strip().lower()] if chips_heading else list(_INCLUDED_HEADINGS)
+    lede, included, warnings = [], [], []
+    current = None
+    for line in _lines(raw):
+        line = _apply_corrections(line, corrections)
+        heading = _HEADING.match(line)
+        if heading:
+            current = heading.group(1).strip().lower()
+            continue
+        if current is None:
+            lede.append(line)
+            warnings.extend(_warn(line))
+        elif current in wanted:
+            included.append(line)
+            warnings.extend(_warn(line))
+        # Any other section (itinerary, practical notes) is dropped: agendaItems
+        # already carries the itinerary, and prose notes are not chips.
+    return {'lede': lede, 'included': included}, warnings
