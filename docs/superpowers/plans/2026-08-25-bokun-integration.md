@@ -1915,7 +1915,7 @@ def _price_lines(m):
 - [ ] **Step 4: Run test to verify it passes**
 
 Run: `python3 -m unittest cms.tests.test_tours_render -v`
-Expected: 13 tests PASS
+Expected: 16 tests PASS
 
 - [ ] **Step 5: Run the whole suite and the real build**
 
@@ -2049,7 +2049,25 @@ class TestRouteSection(unittest.TestCase):
         html = bt.route_section(m, {}, {})
         self.assertIn('Arriving', html)
         self.assertIn('Meet at the gate.', html)
-        self.assertIn('class="route"', html)
+        # Must reproduce the template's real wrapper, not an invented one.
+        self.assertIn('class="route-wrap"', html)
+        self.assertIn('<div class="route">', html)
+        self.assertIn('data-i18n="td_route"', html)
+
+    def test_route_rows_number_stops_from_one(self):
+        m = dict(model({}), full=True, route=[
+            {'title': 'First', 'body': 'a'}, {'title': 'Second', 'body': 'b'}])
+        en, ja = {}, {}
+        bt.route_section(m, en, ja)
+        self.assertIn('tours_ikebana-ichigo-ichie_rt_01_name', en)
+        self.assertIn('tours_ikebana-ichigo-ichie_rt_02_name', en)
+        self.assertEqual(en['tours_ikebana-ichigo-ichie_rt_02_name'], 'Second')
+
+    def test_route_rows_fill_the_ja_dict_too(self):
+        m = dict(model({}), full=True, route=[{'title': 'First', 'body': 'a'}])
+        en, ja = {}, {}
+        bt.route_section(m, en, ja)
+        self.assertEqual(ja['tours_ikebana-ichigo-ichie_rt_01_name'], 'First')
 
 
 if __name__ == '__main__':
@@ -2106,6 +2124,28 @@ Then wrap the route markup in a function so the whole section disappears when a
 tour has no stops. Add to `build-tours.py`:
 
 ```python
+def route_rows(m, en, ja):
+    """Route rows from Bokun agendaItems.
+
+    Replaces the tour-routes.json version. Bokun carries only a title and a body
+    per stop -- no time, distance, thumbnail, or Japanese variant -- so those
+    columns are gone. See ledger Ruling B.
+    """
+    K = m['K']
+    rows = []
+    for i, st in enumerate(m['route'], 1):
+        n = f'{i:02d}'
+        en[f'{K}_rt_{n}_name'] = st['title']; ja[f'{K}_rt_{n}_name'] = st['title']
+        en[f'{K}_rt_{n}_note'] = st['body'];  ja[f'{K}_rt_{n}_note'] = st['body']
+        rows.append(
+            '        <div class="r-row">\n'
+            f'          <div class="r-num">{n}</div>\n'
+            f'          <div><h3 data-i18n="{K}_rt_{n}_name">{esc(st["title"])}</h3>'
+            f'<p class="r-note" data-i18n="{K}_rt_{n}_note">{esc(st["body"])}</p></div>\n'
+            '        </div>')
+    return '\n'.join(rows)
+
+
 def route_section(m, en, ja):
     """The whole route block, or nothing.
 
@@ -2115,13 +2155,20 @@ def route_section(m, en, ja):
     rows = route_rows(m, en, ja)
     if not rows.strip():
         return ''
-    return f'''      <section class="route" data-screen-label="07 Tour detail — Route">
-        <h2 data-i18n="td_route">The route</h2>
-        <div class="r-rows">
+    return f'''    <section class="route-wrap" data-screen-label="07 Tour detail — Route">
+      <div class="route">
+        <h2 data-i18n="td_route">The route.</h2>
+
 {rows}
-        </div>
-      </section>'''
+
+      </div>
+    </section>'''
 ```
+
+The stop title and note are written into BOTH the `en` and `ja` dictionaries with
+the same string: Bokun holds no Japanese, and a missing key would fall back to
+the inline English anyway. Keeping them symmetric means the JA dictionary is
+complete and `jaReviewed` can later fill it properly.
 
 and in `render_detail` replace `slots['ROUTE_ROWS'] = route_rows(m, en, ja)` with:
 
@@ -2143,13 +2190,13 @@ In `cms/templates/tour-detail.html`:
 
 2. Delete the script block at lines 393-505 in its entirety (the vanilla calendar, its interim Tue/Thu/Sat availability rule, and the `zenrise-booking-v1` handoff). Keep the script block at 366-392.
 
-3. Replace the whole `<section class="route">…</section>` block — it contains `{{ROUTE_ROWS}}` at line 320 — with the single line:
+3. Replace the whole `<section class="route-wrap">…</section>` block — it wraps `<div class="route">` and contains `{{ROUTE_ROWS}}` at line 320 — with the single line:
 
 ```html
 {{ROUTE_SECTION}}
 ```
 
-Copy the section's existing heading and wrapper markup into `route_section()` in Step 3 so the rendered output is byte-identical for tours that do have stops.
+`route_section()` in Step 3 already reproduces that wrapper markup verbatim; confirm it matches the block you removed before deleting it.
 
 4. Confirm no stale slots or calendar remnants survive:
 
@@ -2159,7 +2206,7 @@ Expected: `CLEAN`
 - [ ] **Step 5: Run tests and rebuild**
 
 Run: `python3 -m unittest cms.tests.test_widget_embed -v`
-Expected: 13 tests PASS
+Expected: 16 tests PASS
 
 Run: `python3 cms/build-tours.py --source cache && grep -c bokunWidget tour-ikebana-ichigo-ichie.html`
 Expected: `1`
@@ -2404,8 +2451,14 @@ Use whatever the local list variable is actually called at `cms/build-news.py:35
 Run: `python3 -m unittest discover -s cms/tests -t . -v`
 Expected: all PASS
 
-Run: `python3 cms/build-tours.py --source cache && python3 cms/build-news.py && grep -c "tour-" sitemap.xml`
-Expected: `4`
+Run: `python3 cms/build-tours.py --source cache`
+Expected: succeeds, and `cms/tours-index.json` lists the four slugs
+
+Do **not** run `python3 cms/build-news.py`: staging has no `cms/.env`, so it exits
+before writing, and calling `render_sitemap([])` directly would strip every news
+URL out of `sitemap.xml`. The unit test above proves tours reach the sitemap; the
+committed `sitemap.xml` is regenerated by the news pipeline where credentials
+exist. See ledger Ruling A.
 
 Validate the JSON-LD parses from the generated page:
 
@@ -2419,7 +2472,7 @@ Expected: `Product 21000 JPY`
 - [ ] **Step 7: Commit**
 
 ```bash
-git add cms/build-tours.py cms/build-news.py cms/templates/tour-detail.html cms/templates/tour-prep.html cms/tours-index.json cms/tests/test_tours_seo.py sitemap.xml
+git add cms/build-tours.py cms/build-news.py cms/templates/tour-detail.html cms/templates/tour-prep.html cms/tours-index.json cms/tests/test_tours_seo.py
 git commit -m "Add tour Product JSON-LD, per-tour meta and sitemap entries
 
 Prices bake into our own HTML so they are visible to search engines, which the
@@ -2428,7 +2481,8 @@ tours emit no offer rather than a zero price.
 
 Tours reach sitemap.xml through cms/tours-index.json because build-news.py is
 the single writer of that file; tours.html itself was missing from the sitemap
-and is now included.
+and is now included. sitemap.xml is not regenerated here: staging has no microCMS
+credential, and regenerating with an empty news set would strip every news URL.
 
 Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>"
 ```
@@ -2489,9 +2543,6 @@ jobs:
 
       - name: Rebuild tours
         run: python3 cms/build-tours.py --source bokun
-
-      - name: Rebuild the sitemap
-        run: python3 cms/build-news.py || true
 
       - name: Commit any changes
         run: |
@@ -2842,7 +2893,7 @@ After Task 12, all of these must hold:
 - [ ] `tour-zen-journey.html` and `tour-swordsmithing.html` use the prep layout, carry no price and no widget
 - [ ] `tour-ikebana-ichigo-ichie.html` shows `from ¥21,000 per adult` and mounts exactly one widget iframe
 - [ ] No page outside `archive/` references a retired tour slug, `zenrise-booking-v1`, or `cal-go`
-- [ ] `sitemap.xml` lists `tours.html` and all four tour pages
+- [ ] `render_sitemap` emits `tours.html` and all four tour pages (unit test; the committed sitemap.xml is regenerated by the news pipeline where credentials exist — ledger Ruling A)
 - [ ] `archive/custom-booking/` still loads and still has `RELAY_URL = ''`
 - [ ] `contact.html`, `datepicker.js` and `relay/` are unmodified: `git diff --stat custom-booking-v1 -- contact.html datepicker.js relay/` is empty
 - [ ] No Bokun credential string appears anywhere in the repo: `grep -ri "$(sed -n 's/^BOKUN_ACCESS_KEY=//p' ~/.bokun-api.env | tr -d '"')" . --exclude-dir=.git` returns nothing
