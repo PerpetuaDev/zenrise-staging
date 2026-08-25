@@ -1,0 +1,239 @@
+[
+ {
+  "id": "ikebana-ichigo-ichie",
+  "bokunId": 1273232,
+  "number": "01",
+  "area": "Kamakura",
+  "length": "Half-day",
+  "themes": [
+   "Arts & Craft"
+  ],
+  "cover": {
+   "url": "https://bokun.s3.amazonaws.com/125107cd-37b0-44d5-8ec7-1071be67f871.jpeg"
+  },
+  "hoursEn": "1 hour and 30 minutes",
+  "hoursJa": "1 時間30 分",
+  "priceEn": "from ¥21,000 per adult",
+  "priceJa": "¥21,000〜（大人おひとり）",
+  "priceRows": [
+   {
+    "category": "Adults",
+    "min": 5,
+    "max": 5,
+    "amount": 21000,
+    "currency": "JPY"
+   },
+   {
+    "category": "Adults",
+    "min": 4,
+    "max": 4,
+    "amount": 21000,
+    "currency": "JPY"
+   },
+   {
+    "category": "Adults",
+    "min": 6,
+    "max": 6,
+    "amount": 21000,
+    "currency": "JPY"
+   },
+   {
+    "category": "Adults",
+    "min": 3,
+    "max": 3,
+    "amount": 21000,
+    "currency": "JPY"
+   },
+   {
+    "category": "Adults",
+    "min": 1,
+    "max": 2,
+    "amount": 44000,
+    "currency": "JPY"
+   }
+  ],
+  "widgets": {},
+  "jaReviewed": false,
+  "route": [
+   {
+    "title": "The history and schools of ikebana",
+    "body": "30min The history of the art, its schools, and the Sogetsu spirit she carries as its third generation."
+   },
+   {
+    "title": "Arranging",
+    "body": "30min After the master’s demonstration, guests choose from prepared materials and complete an arrangementunder her guidance. No experience required."
+   },
+   {
+    "title": "Tea and conversation",
+    "body": "30min A quiet close beside the finished work, with seasonal wagashi and tea."
+   }
+  ],
+  "titleEn": "Ikebana Experience , “Ichigo Ichie”-KAMAKURA",
+  "titleJa": "Ikebana Experience , “Ichigo Ichie”-KAMAKURA",
+  "subEn": "An exclusive, 90-minute private Ikebana experience in Kamakura guided by master artist Koen Yokoi, featuring hands-on flower arranging, tea, and seasonal sweets.",
+  "subJa": "An exclusive, 90-minute private Ikebana experience in Kamakura guided by master artist Koen Yokoi, featuring hands-on flower arranging, tea, and seasonal sweets.",
+  "ledeEn": "Experience the Art of Ikebana in Kamakura with Master Koen Yokoi Immerse yourself in \"Ichika Ichiei\" (One Flower, One Encounter)—a unique, 90-minute private floral workshop designed for exclusive small groups of 1 to 6 guests in the historic city of Kamakura. Guided by Master Koen Yokoi, a third-generation Sogetsu Ikebana master with an illustrious career decorating stage productions, international events, and film sets, this private session offers a rare and intimate glimpse into the world of Japanese flower arrangement.",
+  "ledeJa": "Experience the Art of Ikebana in Kamakura with Master Koen Yokoi Immerse yourself in \"Ichika Ichiei\" (One Flower, One Encounter)—a unique, 90-minute private floral workshop designed for exclusive small groups of 1 to 6 guests in the historic city of Kamakura. Guided by Master Koen Yokoi, a third-generation Sogetsu Ikebana master with an illustrious career decorating stage productions, international events, and film sets, this private session offers a rare and intimate glimpse into the world of Japanese flower arrangement.",
+  "coverCaptionEn": "",
+  "coverCaptionJa": "",
+  "includedEn": "Private Ikebana instruction and demonstration by Master Koen Yokoi\nEnglish & Japanese bilingual guide support\nAll flower materials, tools, and equipment\nMatcha/Japanese tea and seasonal sweets\nFree round-trip transfer within Kamakura & Fujisawa cities\nTour insurance",
+  "includedJa": "Private Ikebana instruction and demonstration by Master Koen Yokoi\nEnglish & Japanese bilingual guide support\nAll flower materials, tools, and equipment\nMatcha/Japanese tea and seasonal sweets\nFree round-trip transfer within Kamakura & Fujisawa cities\nTour insurance",
+  "notIncludedEn": "",
+  "notIncludedJa": "",
+  "notAllowedEn": "",
+  "notAllowedJa": "",
+  "notSuitableEn": "",
+  "notSuitableJa": ""
+ },
+ {
+  "id": "candle-making",
+  "bokunId": 1273235,
+  "number": "02",
+  "area": "Kamakura",
+  "length": "Half-day",
+  "themes": [
+   "Arts & Craft"
+  ],
+  "cover": {
+   "url": "https://bokun.s3.amazonaws.com/ac5f2001-f764-450e-9185-3855e245db48.jpeg"
+  },
+  "hoursEn": "1 hour",
+  "hoursJa": "1 時間",
+  "priceEn": "from ¥12,000 per adult",
+  "priceJa": "¥12,000〜（大人おひとり）",
+  "priceRows": [
+   {
+    "category": "Adults",
+    "min": 4,
+    "max": 4,
+    "amount": 12000,
+    "currency": "JPY"
+   },
+   {
+    "category": "Adults",
+    "min": 3,
+    "max": 3,
+    "amount": 12000,
+    "currency": "JPY"
+   },
+   {
+    "category": "Adults",
+    "min": 1,
+    "max": 2,
+    "amount": 29000,
+    "currency": "JPY"
+   }
+  ],
+  "widgets": {},
+  "jaReviewed": false,
+  "route": [],
+  "titleEn": "A private Japanese candle-making experience in Kamakura.",
+  "titleJa": "A private Japanese candle-making experience in Kamakura.",
+  "subEn": "Experience a private Japanese candle-making session with wax artist Meria, from Shonan Wa-Rōsoku. Held in Kamakura or Fujisawa.",
+  "subJa": "Experience a private Japanese candle-making session with wax artist Meria, from Shonan Wa-Rōsoku. Held in Kamakura or Fujisawa.",
+  "ledeEn": "Zenrise designs slow, considered private experiences around Kamakura and its surrounding towns. A private wa-rōsoku(Japanese candle) making session with Meria, a wax artist based in Shonan, arranged for up to four guests at a time, in a quiet space in Kamakura or Fujisawa. Every candle begins as a wick, dipped again and again into molten wax until it takes shape — entirely by hand. Natural materials from local farmers and growers — the character of Shonan, held in a single flame. The finished candle is yours to take home, a keepsake you'll return to each time you light it.",
+  "ledeJa": "Zenrise designs slow, considered private experiences around Kamakura and its surrounding towns. A private wa-rōsoku(Japanese candle) making session with Meria, a wax artist based in Shonan, arranged for up to four guests at a time, in a quiet space in Kamakura or Fujisawa. Every candle begins as a wick, dipped again and again into molten wax until it takes shape — entirely by hand. Natural materials from local farmers and growers — the character of Shonan, held in a single flame. The finished candle is yours to take home, a keepsake you'll return to each time you light it.",
+  "coverCaptionEn": "",
+  "coverCaptionJa": "",
+  "includedEn": "",
+  "includedJa": "",
+  "notIncludedEn": "",
+  "notIncludedJa": "",
+  "notAllowedEn": "",
+  "notAllowedJa": "",
+  "notSuitableEn": "",
+  "notSuitableJa": ""
+ },
+ {
+  "id": "zen-journey",
+  "bokunId": 1273194,
+  "number": "03",
+  "area": "Kamakura",
+  "length": "Half-day",
+  "themes": [
+   "Temples & Shrines",
+   "Walking"
+  ],
+  "cover": {
+   "url": "https://bokun.s3.amazonaws.com/4277c6b0-2337-43f9-8c40-1ed5578910fd.jpeg"
+  },
+  "hoursEn": "4 hours",
+  "hoursJa": "4 時間",
+  "priceEn": "",
+  "priceJa": "",
+  "priceRows": [],
+  "widgets": {},
+  "jaReviewed": false,
+  "route": [
+   {
+    "title": "The Zen Journey",
+    "body": "Meditation, gardens and matcha at Engaku-ji, Jochi-ji and Jomyo-ji. Guiding."
+   },
+   {
+    "title": "\"ZEN\" Lunch",
+    "body": "Shojin temple cuisine , or a lunch of choice (covered by the arrangement fee)"
+   },
+   {
+    "title": "Relaxing moments",
+    "body": "Matcha overlooking the dry landscape garden, unhurried"
+   },
+   {
+    "title": "Tour ends",
+    "body": "Complimentary pick-up / drop-off within Kamakura and Fujisawa."
+   }
+  ],
+  "titleEn": "The Zen Journey-KAMAKURA",
+  "titleJa": "The Zen Journey-KAMAKURA",
+  "subEn": "A private , guided passage through three meditation, temple grounds walked be suit, with an English-speaking guide of the Kamakura Five Mountains — Engaku-ji, Jochi-ji and Jomyo-ji. S eated fore the crowds, matcha over a dry l andscape garden, and a l",
+  "subJa": "A private , guided passage through three meditation, temple grounds walked be suit, with an English-speaking guide of the Kamakura Five Mountains — Engaku-ji, Jochi-ji and Jomyo-ji. S eated fore the crowds, matcha over a dry l andscape garden, and a l",
+  "ledeEn": "Kamakura has kept its temples for eight hundred and fifty years, and its stillness for just as long. This tour is built around that stillness — not a checklist of sights, but a slow pass through three of the city’s five great Zen temples, with a guide who can explain what you’re looking at, and enough quiet, unhurried time to actually look. The Five Mountains, or Gozan, are the five preeminent Rinzai Zen temples whose foundations were laid under the Kamakura shogunate and which were later ranked at the highest tier by the Muromachi shogunate: Kencho‑ji, Engaku‑ji, Jufuku‑ji, Jochi‑ji, and Jomyo‑ji. You’ll sit for a short zazen at Engaku‑ji, wander the seasonal grounds of Jochi‑ji, and take matcha before a dry rock garden at Jomyo‑ji, before lunch closes the morning at a place suited to your taste. Everything is arranged in advance. All you need to bring is a willingness to slow down. Practical Notes Comfortable walking shoes are recommended — the approach to several temples includes stone steps. The tour is all‑inclusive: transport, admission, lunch, and your guide’s company throughout.",
+  "ledeJa": "Kamakura has kept its temples for eight hundred and fifty years, and its stillness for just as long. This tour is built around that stillness — not a checklist of sights, but a slow pass through three of the city’s five great Zen temples, with a guide who can explain what you’re looking at, and enough quiet, unhurried time to actually look. The Five Mountains, or Gozan, are the five preeminent Rinzai Zen temples whose foundations were laid under the Kamakura shogunate and which were later ranked at the highest tier by the Muromachi shogunate: Kencho‑ji, Engaku‑ji, Jufuku‑ji, Jochi‑ji, and Jomyo‑ji. You’ll sit for a short zazen at Engaku‑ji, wander the seasonal grounds of Jochi‑ji, and take matcha before a dry rock garden at Jomyo‑ji, before lunch closes the morning at a place suited to your taste. Everything is arranged in advance. All you need to bring is a willingness to slow down. Practical Notes Comfortable walking shoes are recommended — the approach to several temples includes stone steps. The tour is all‑inclusive: transport, admission, lunch, and your guide’s company throughout.",
+  "coverCaptionEn": "",
+  "coverCaptionJa": "",
+  "includedEn": "",
+  "includedJa": "",
+  "notIncludedEn": "",
+  "notIncludedJa": "",
+  "notAllowedEn": "",
+  "notAllowedJa": "",
+  "notSuitableEn": "",
+  "notSuitableJa": ""
+ },
+ {
+  "id": "swordsmithing",
+  "bokunId": 1275339,
+  "number": "04",
+  "area": "Kamakura",
+  "length": "Half-day",
+  "themes": [
+   "Arts & Craft"
+  ],
+  "cover": {
+   "url": "https://bokun.s3.amazonaws.com/df98408a-a4cb-4cc4-af26-4203a827c34b.jpeg"
+  },
+  "hoursEn": "1 hour",
+  "hoursJa": "1 時間",
+  "priceEn": "",
+  "priceJa": "",
+  "priceRows": [],
+  "widgets": {},
+  "jaReviewed": false,
+  "route": [],
+  "titleEn": "Swordsmithing, “The Smith’s Flame”",
+  "titleJa": "Swordsmithing, “The Smith’s Flame”",
+  "subEn": "The Smith’s Flame 24TH- GENERATION SMITH · LINEAGE OF MASAMUNE · KAMAKURA",
+  "subJa": "The Smith’s Flame 24TH- GENERATION SMITH · LINEAGE OF MASAMUNE · KAMAKURA",
+  "ledeEn": "A visit to the working forge of a swordsmithing house now in its twenty-fourth generation, descended from Masamune , one of Japan's three great masters. Arranged through our partnership with Arte Inc. Guests watch heated steel struck and folded into form, learn the quiet manner in which a blade is appraised, and close the visit with tea and seasonal sweets by the hearth.",
+  "ledeJa": "A visit to the working forge of a swordsmithing house now in its twenty-fourth generation, descended from Masamune , one of Japan's three great masters. Arranged through our partnership with Arte Inc. Guests watch heated steel struck and folded into form, learn the quiet manner in which a blade is appraised, and close the visit with tea and seasonal sweets by the hearth.",
+  "coverCaptionEn": "",
+  "coverCaptionJa": "",
+  "includedEn": "",
+  "includedJa": "",
+  "notIncludedEn": "",
+  "notIncludedJa": "",
+  "notAllowedEn": "",
+  "notAllowedJa": "",
+  "notSuitableEn": "",
+  "notSuitableJa": ""
+ }
+]

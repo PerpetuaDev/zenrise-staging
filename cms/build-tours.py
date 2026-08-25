@@ -61,31 +61,17 @@ def lines(s):
     return [l.strip() for l in (s or '').splitlines() if l.strip()]
 
 
-def fetch_tours(live):
-    if live:
-        key = os.environ.get('MICROCMS_API_KEY')
-        if not key:
-            for line in open(os.path.join(HERE, '.env')):
-                if line.startswith('MICROCMS_API_KEY='):
-                    key = line.strip().split('=', 1)[1]
-        out = subprocess.run(['/usr/bin/curl', '-s', '-m', '30',
-                              '-H', f'X-MICROCMS-API-KEY: {key}',
-                              f'https://zenrise.microcms.io/api/v1/tours?limit=100'],
-                             capture_output=True, text=True).stdout
-        data = json.loads(out)
-        cfg_out = subprocess.run(['/usr/bin/curl', '-s', '-m', '30',
-                                  '-H', f'X-MICROCMS-API-KEY: {key}',
-                                  f'https://zenrise.microcms.io/api/v1/site-config'],
-                                 capture_output=True, text=True).stdout
-        try:
-            cfg = json.loads(cfg_out)
-        except ValueError:
-            cfg = {}
-        return data['contents'], cfg
-    data = json.load(open(os.path.join(HERE, 'tours-fixture.json')))
-    cfg_path = os.path.join(HERE, 'site-config-fixture.json')
-    cfg = json.load(open(cfg_path)) if os.path.exists(cfg_path) else {}
-    return data['contents'], cfg
+def fetch_tours(source):
+    """Records + config. microCMS is no longer a tours source: Bokun is.
+
+    See docs/superpowers/specs/2026-08-25-bokun-integration-design.md section 3.
+    """
+    sys.path.insert(0, os.path.dirname(HERE))
+    from cms import tours_build_source
+    records, cfg, warnings = tours_build_source.load_records(source)
+    for w in warnings:
+        print('WARNING:', w)
+    return records, cfg
 
 
 def tour_model(a, routes):
@@ -251,10 +237,13 @@ def set_page_dict(path, en, ja):
 
 
 def main():
-    live = '--live' in sys.argv
-    contents, cfg = fetch_tours(live)
-    routes = json.load(open(os.path.join(HERE, 'tour-routes.json')))
-    models = [tour_model(a, routes) for a in contents]
+    source = 'bokun'
+    if '--source' in sys.argv:
+        source = sys.argv[sys.argv.index('--source') + 1]
+    elif '--live' in sys.argv:
+        source = 'bokun'          # retained alias, referenced by cms/tours-setup.md
+    contents, cfg = fetch_tours(source)
+    models = [tour_model(a) for a in contents]
 
     tpl_full = load_template('tour-detail.html')
     tpl_prep = load_template('tour-prep.html')
