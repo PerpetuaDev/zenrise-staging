@@ -32,7 +32,12 @@ def catalogue_ids(cfg):
 
 def tour_entry(cfg, bokun_id):
     tours = cfg.get('tours') or {}
-    entry = tours.get(str(bokun_id)) or tours.get(bokun_id)
+    if str(bokun_id) in tours:
+        entry = tours[str(bokun_id)]
+    elif bokun_id in tours:
+        entry = tours[bokun_id]
+    else:
+        entry = None
     if entry is None:
         raise ConfigError(
             f'Bokun product {bokun_id} is in the catalogue but has no entry in '

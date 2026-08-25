@@ -28,6 +28,17 @@ class TestLoad(unittest.TestCase):
                 'tours': {'1273232': {'slug': 'ikebana-ichigo-ichie', 'number': '01'}}}))
             self.assertEqual(tours_config.tour_entry(cfg, 1273232)['slug'], 'ikebana-ichigo-ichie')
 
+    def test_tour_entry_found_by_int_key(self):
+        cfg = {
+            'allowlist': [1273232],
+            'tours': {1273232: {'slug': 'ikebana-ichigo-ichie', 'number': '01'}}}
+        self.assertEqual(tours_config.tour_entry(cfg, 1273232)['slug'], 'ikebana-ichigo-ichie')
+
+    def test_present_but_empty_entry_raises_no_slug_not_no_entry(self):
+        cfg = {'allowlist': [1273232], 'tours': {'1273232': {}}}
+        with self.assertRaisesRegex(tours_config.ConfigError, 'has no slug'):
+            tours_config.tour_entry(cfg, 1273232)
+
     def test_missing_tour_entry_raises(self):
         with tempfile.TemporaryDirectory() as tmp:
             cfg = tours_config.load(write(tmp, {'allowlist': [999], 'tours': {}}))
