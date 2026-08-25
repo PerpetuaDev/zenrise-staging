@@ -1,0 +1,48 @@
+{
+  "productListName": "Website",
+  "allowlist": [1273232, 1273235, 1273194, 1275339],
+  "corrections": {
+    "passag e through": "passage through",
+    "templ e grounds": "temple grounds",
+    "templ e cuisine": "temple cuisine",
+    "wa l ked": "walked"
+  },
+  "tours": {
+    "1273232": {
+      "slug": "ikebana-ichigo-ichie",
+      "number": "01",
+      "area": "Kamakura",
+      "length": "Half-day",
+      "themes": ["Arts & Craft"],
+      "jaReviewed": false,
+      "widgets": {}
+    },
+    "1273235": {
+      "slug": "candle-making",
+      "number": "02",
+      "area": "Kamakura",
+      "length": "Half-day",
+      "themes": ["Arts & Craft"],
+      "jaReviewed": false,
+      "widgets": {}
+    },
+    "1273194": {
+      "slug": "zen-journey",
+      "number": "03",
+      "area": "Kamakura",
+      "length": "Half-day",
+      "themes": ["Temples & Shrines", "Walking"],
+      "jaReviewed": false,
+      "widgets": {}
+    },
+    "1275339": {
+      "slug": "swordsmithing",
+      "number": "04",
+      "area": "Kamakura",
+      "length": "Half-day",
+      "themes": ["Arts & Craft"],
+      "jaReviewed": false,
+      "widgets": {}
+    }
+  }
+}
