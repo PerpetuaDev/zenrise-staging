@@ -1974,6 +1974,22 @@ SPEC.loader.exec_module(bt)
 
 CH = 'e2350ad8-80af-4c18-a21a-acae6d72283f'
 
+# A Bokun-shaped record with no inclusions and no route, as three of the four
+# real tours actually are.
+RECORD = {'id': 'ikebana-ichigo-ichie', 'bokunId': 1273232, 'number': '01',
+          'area': 'Kamakura', 'length': 'Half-day', 'themes': ['Arts & Craft'],
+          'cover': {'url': 'https://img/x.jpg'},
+          'hoursEn': '1 hour and 30 minutes', 'hoursJa': '1 時間30 分',
+          'priceEn': 'from ¥21,000 per adult', 'priceJa': '¥21,000〜（大人おひとり）',
+          'priceRows': [], 'widgets': {}, 'jaReviewed': False,
+          'titleEn': 'Ikebana', 'titleJa': 'Ikebana',
+          'subEn': 'A private workshop.', 'subJa': 'A private workshop.',
+          'ledeEn': 'Ninety minutes.', 'ledeJa': 'Ninety minutes.',
+          'coverCaptionEn': '', 'coverCaptionJa': '',
+          'includedEn': '', 'includedJa': '', 'notIncludedEn': '', 'notIncludedJa': '',
+          'notAllowedEn': '', 'notAllowedJa': '', 'notSuitableEn': '', 'notSuitableJa': '',
+          'route': []}
+
 
 def model(widgets, full=True, slug='ikebana-ichigo-ichie'):
     return {'id': slug, 'widgets': widgets, 'full': full, 'bokun_id': 1273232,
@@ -2036,6 +2052,26 @@ class TestTemplate(unittest.TestCase):
         # A tour with no agendaItems must render no route heading either.
         self.assertIn('{{ROUTE_SECTION}}', self.tpl)
         self.assertNotIn('{{ROUTE_ROWS}}', self.tpl)
+
+
+class TestChipsSection(unittest.TestCase):
+    def test_no_chips_at_all_renders_nothing(self):
+        m = bt.tour_model(dict(RECORD))
+        self.assertEqual(bt.chips_section(m, {}, {}), '')
+
+    def test_only_populated_groups_are_rendered(self):
+        m = bt.tour_model(dict(RECORD, includedEn='Guide\nTea', includedJa='Guide\nTea'))
+        html = bt.chips_section(m, {}, {})
+        self.assertIn('td_included', html)
+        self.assertIn('Guide', html)
+        # the three groups Bokun has no data for must not appear at all
+        for key in ('td_notinc', 'td_notallowed', 'td_notsuitable'):
+            self.assertNotIn(key, html)
+
+    def test_wrapper_only_appears_when_something_is_inside(self):
+        m = bt.tour_model(dict(RECORD, includedEn='Guide', includedJa='Guide'))
+        self.assertIn('class="chip-groups"', bt.chips_section(m, {}, {}))
+        self.assertNotIn('chip-groups', bt.chips_section(bt.tour_model(dict(RECORD)), {}, {}))
 
 
 class TestRouteSection(unittest.TestCase):
@@ -2162,6 +2198,54 @@ In `render_detail`, inside the `if m['full']:` branch, replace the `CAL_PRICE` a
 
 and add `slots['WIDGET_BLOCK'] = ''` to `common_slots()` so the prep template never sees an unfilled slot.
 
+Do the same for the chip groups. Task 7 made each `chips()` call return `''` for
+an empty field, but `render_detail` still emitted all four labelled groups
+unconditionally, so a tour with no inclusions data — three of the four real tours
+— ships four empty labelled boxes. Bokun has inclusions for Ikebana only. Add to
+`build-tours.py`:
+
+```python
+CHIP_GROUPS = (('included', 'inc', 'td_included', 'Included'),
+               ('notIncluded', 'ninc', 'td_notinc', 'Not included'),
+               ('notAllowed', 'na', 'td_notallowed', 'Not allowed'),
+               ('notSuitable', 'ns', 'td_notsuitable', 'Not suitable for'))
+
+
+def chips_section(m, en, ja):
+    """The whole chip-groups block, or nothing.
+
+    Bokun has no inclusions field. Only tours whose description carries an inline
+    list get chips at all, so the labelled groups must not render empty. See spec
+    3.4 and 3.4.1.
+    """
+    groups = []
+    for field, prefix, key, label in CHIP_GROUPS:
+        body = chips(m, field, prefix, en, ja)
+        if not body.strip():
+            continue
+        groups.append(
+            '          <div class="grp">\n'
+            f'            <span class="label" data-i18n="{key}">{label}</span>\n'
+            '            <div class="chips">\n'
+            f'{body}\n'
+            '            </div>\n'
+            '          </div>')
+    if not groups:
+        return ''
+    return ('        <div class="chip-groups">\n'
+            + '\n'.join(groups)
+            + '\n        </div>')
+```
+
+In `render_detail`, replace the four `slots['CHIPS_*']` assignments with:
+
+```python
+        slots['CHIPS_SECTION'] = chips_section(m, en, ja)
+```
+
+and add `slots['CHIPS_SECTION'] = ''` to `common_slots()` beside the other
+whole-section slots.
+
 Then wrap the route markup in a function so the whole section disappears when a
 tour has no stops. Add to `build-tours.py`:
 
@@ -2257,7 +2341,15 @@ In `cms/templates/tour-detail.html`:
 
 2. Delete the script block at lines 393-505 in its entirety (the vanilla calendar, its interim Tue/Thu/Sat availability rule, and the `zenrise-booking-v1` handoff). Keep the script block at 366-392.
 
-3. Replace the whole `<section class="route-wrap">…</section>` block — it wraps `<div class="route">` and contains `{{ROUTE_ROWS}}` at line 320 — with the single line:
+3. Replace the whole `<div class="chip-groups">…</div>` block in `cms/templates/tour-detail.html` — it contains the four `{{CHIPS_INC}}` / `{{CHIPS_NINC}}` / `{{CHIPS_NA}}` / `{{CHIPS_NS}}` slots and their four hardcoded labels — with the single line:
+
+```html
+{{CHIPS_SECTION}}
+```
+
+`chips_section()` reproduces that markup verbatim for the groups that do have content; confirm it matches the block you removed before deleting it.
+
+4. Replace the whole `<section class="route-wrap">…</section>` block — it wraps `<div class="route">` and contains `{{ROUTE_ROWS}}` at line 320 — with the single line:
 
 ```html
 {{ROUTE_SECTION}}
@@ -2265,7 +2357,7 @@ In `cms/templates/tour-detail.html`:
 
 `route_section()` in Step 3 already reproduces that wrapper markup verbatim; confirm it matches the block you removed before deleting it.
 
-4. Adjust the route grid CSS in the template's `<style>` block. The old grid had four columns (thumbnail, time, text, distance); the new markup emits number, optional time, and text. Set `.r-row`'s `grid-template-columns` to `auto auto 1fr`, and add directly after that rule:
+5. Adjust the route grid CSS in the template's `<style>` block. The old grid had four columns (thumbnail, time, text, distance); the new markup emits number, optional time, and text. Set `.r-row`'s `grid-template-columns` to `auto auto 1fr`, and add directly after that rule:
 
 ```css
   .r-row.no-time { grid-template-columns: auto 1fr; }
@@ -2273,9 +2365,9 @@ In `cms/templates/tour-detail.html`:
 
 Delete the now-unused `.r-pic`, `.stripes`, `.rn` and `.r-dist` rules — nothing emits those elements any more. Keep `.r-time` and `.r-note`.
 
-5. Confirm no stale slots or calendar remnants survive:
+6. Confirm no stale slots or calendar remnants survive:
 
-Run: `grep -n 'CAL_PRICE\|ROUTE_ROWS\|cal-go\|zenrise-booking-v1\|cal-days\|r-pic\|r-dist' cms/templates/tour-detail.html || echo CLEAN`
+Run: `grep -n 'CAL_PRICE\|ROUTE_ROWS\|cal-go\|zenrise-booking-v1\|cal-days\|r-pic\|r-dist\|CHIPS_INC\|CHIPS_NINC\|CHIPS_NA\|CHIPS_NS' cms/templates/tour-detail.html || echo CLEAN`
 Expected: `CLEAN`
 
 - [ ] **Step 5: Run tests and rebuild**
