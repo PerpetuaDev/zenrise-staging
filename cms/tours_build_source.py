@@ -48,7 +48,10 @@ def load_records(source='bokun', cache_path=None):
         if cached is None:
             raise RuntimeError('no tours cache to build from')
         return cached, cfg, ['built from cache by request']
-    client = bokun_client.from_env()
-    records, warnings = records_with_fallback(
-        bokun_source.fetch_records, client, cfg, cache_path)
-    return records, cfg, warnings
+    elif source == 'bokun':
+        client = bokun_client.from_env()
+        records, warnings = records_with_fallback(
+            bokun_source.fetch_records, client, cfg, cache_path)
+        return records, cfg, warnings
+    else:
+        raise ValueError(f'unknown --source {source!r}; must be "bokun" or "cache"')

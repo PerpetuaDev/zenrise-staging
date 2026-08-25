@@ -4,16 +4,19 @@ tour (full detail when a lede exists, otherwise the "in preparation" layout),
 plus the card grid in tours.html and the tile grid in index.html (both between
 CMS:...:start/end markers).
 
-Data source is cms/tours-fixture.json by default; pass --live to fetch from the
-microCMS `tours` API once it exists (schema: cms/tours-schema.json). Route
-stops live in cms/tour-routes.json until the schema grows a repeater (v2) —
-only No. 04 has a published pamphlet today.
+Records come from Bokun via cms/tours_build_source.load_records(): --source
+bokun (default) fetches live from the client's Bokun account, --source cache
+reads the committed cms/tours-cache.json without touching the network, and
+--live is retained as an alias for --source bokun. A failed Bokun fetch falls
+back to cms/tours-cache.json automatically so an outage never empties the
+tours pages; with no cache at all the build fails loudly instead. Route stops
+come from Bokun's agendaItems, not a standalone fixture.
 
 Homepage tile order follows site-config.featuredTours when present (fixture:
 cms/site-config-fixture.json), else the tours list order.
 """
 
-import json, os, re, sys, subprocess
+import json, os, re, sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
@@ -239,7 +242,10 @@ def set_page_dict(path, en, ja):
 def main():
     source = 'bokun'
     if '--source' in sys.argv:
-        source = sys.argv[sys.argv.index('--source') + 1]
+        try:
+            source = sys.argv[sys.argv.index('--source') + 1]
+        except IndexError:
+            sys.exit('--source requires a value: bokun or cache')
     elif '--live' in sys.argv:
         source = 'bokun'          # retained alias, referenced by cms/tours-setup.md
     contents, cfg = fetch_tours(source)
