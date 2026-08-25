@@ -1915,7 +1915,7 @@ def _price_lines(m):
 - [ ] **Step 4: Run test to verify it passes**
 
 Run: `python3 -m unittest cms.tests.test_tours_render -v`
-Expected: 16 tests PASS
+Expected: 23 tests PASS
 
 - [ ] **Step 5: Run the whole suite and the real build**
 
@@ -2070,6 +2070,48 @@ class TestRouteSection(unittest.TestCase):
         self.assertEqual(ja['tours_ikebana-ichigo-ichie_rt_01_name'], 'First')
 
 
+class TestStopTime(unittest.TestCase):
+    def test_extracts_a_leading_duration(self):
+        self.assertEqual(bt.split_stop_time('30min The history of the art.'),
+                         ('30min', 'The history of the art.'))
+
+    def test_handles_spaced_and_long_forms(self):
+        for raw, want in [('30 mins: Arranging.', ('30 mins', 'Arranging.')),
+                          ('1 hour - Tea.', ('1 hour', 'Tea.')),
+                          ('90 minutes · Workshop.', ('90 minutes', 'Workshop.'))]:
+            self.assertEqual(bt.split_stop_time(raw), want)
+
+    def test_no_duration_returns_none_and_the_body_intact(self):
+        self.assertEqual(bt.split_stop_time('Meet at the gate.'),
+                         (None, 'Meet at the gate.'))
+
+    def test_does_not_eat_a_leading_number_that_is_not_a_duration(self):
+        self.assertEqual(bt.split_stop_time('3 temples on the northern route.'),
+                         (None, '3 temples on the northern route.'))
+
+    def test_timed_row_renders_a_time_cell(self):
+        m = dict(model({}), full=True,
+                 route=[{'title': 'History', 'body': '30min The Sogetsu school.'}])
+        html = bt.route_section(m, {}, {})
+        self.assertIn('<div class="r-time">30min</div>', html)
+        self.assertNotIn('no-time', html)
+
+    def test_untimed_row_omits_the_cell_and_marks_the_row(self):
+        m = dict(model({}), full=True,
+                 route=[{'title': 'Arriving', 'body': 'Meet at the gate.'}])
+        html = bt.route_section(m, {}, {})
+        self.assertNotIn('r-time', html)
+        self.assertIn('class="r-row no-time"', html)
+
+    def test_duration_is_stripped_from_the_note_text(self):
+        m = dict(model({}), full=True,
+                 route=[{'title': 'History', 'body': '30min The Sogetsu school.'}])
+        en = {}
+        bt.route_section(m, en, {})
+        self.assertEqual(en['tours_ikebana-ichigo-ichie_rt_01_note'],
+                         'The Sogetsu school.')
+
+
 if __name__ == '__main__':
     unittest.main()
 ```
@@ -2124,24 +2166,44 @@ Then wrap the route markup in a function so the whole section disappears when a
 tour has no stops. Add to `build-tours.py`:
 
 ```python
+# A stop duration written at the head of the body, e.g. "30min The history of…".
+# Only some products carry these, so the time cell is optional per row.
+_STOP_TIME = re.compile(
+    r'^\s*(\d+\s*(?:min|mins|minute|minutes|hr|hrs|hour|hours))\b[\s:·\-–—]*',
+    re.I)
+
+
+def split_stop_time(body):
+    """('30min', 'The history of the art…') or (None, body) when there is none."""
+    m = _STOP_TIME.match(body or '')
+    if not m:
+        return None, (body or '').strip()
+    return m.group(1).strip(), body[m.end():].strip()
+
+
 def route_rows(m, en, ja):
     """Route rows from Bokun agendaItems.
 
-    Replaces the tour-routes.json version. Bokun carries only a title and a body
-    per stop -- no time, distance, thumbnail, or Japanese variant -- so those
-    columns are gone. See ledger Ruling B.
+    Replaces the tour-routes.json version. Bokun has no structured per-stop
+    time, distance, thumbnail or Japanese variant. Distance and thumbnail are
+    gone. A duration is rendered when the copy carries one at the head of the
+    body, and the cell is omitted when it does not, so a tour without timings
+    shows no empty column. See ledger Ruling B.
     """
     K = m['K']
     rows = []
     for i, st in enumerate(m['route'], 1):
         n = f'{i:02d}'
+        time, body = split_stop_time(st['body'])
         en[f'{K}_rt_{n}_name'] = st['title']; ja[f'{K}_rt_{n}_name'] = st['title']
-        en[f'{K}_rt_{n}_note'] = st['body'];  ja[f'{K}_rt_{n}_note'] = st['body']
+        en[f'{K}_rt_{n}_note'] = body;        ja[f'{K}_rt_{n}_note'] = body
+        time_cell = f'<div class="r-time">{esc(time)}</div>' if time else ''
         rows.append(
-            '        <div class="r-row">\n'
+            f'        <div class="r-row{"" if time else " no-time"}">\n'
             f'          <div class="r-num">{n}</div>\n'
+            f'          {time_cell}\n'
             f'          <div><h3 data-i18n="{K}_rt_{n}_name">{esc(st["title"])}</h3>'
-            f'<p class="r-note" data-i18n="{K}_rt_{n}_note">{esc(st["body"])}</p></div>\n'
+            f'<p class="r-note" data-i18n="{K}_rt_{n}_note">{esc(body)}</p></div>\n'
             '        </div>')
     return '\n'.join(rows)
 
@@ -2164,6 +2226,11 @@ def route_section(m, en, ja):
       </div>
     </section>'''
 ```
+
+`build-tours.py` must `import re` if it does not already. The `.r-row.no-time`
+class is the graceful-degradation hook: Step 4 adds a CSS rule so a row without a
+duration collapses that column instead of leaving a gap. A tour may legitimately
+mix timed and untimed stops.
 
 The stop title and note are written into BOTH the `en` and `ja` dictionaries with
 the same string: Bokun holds no Japanese, and a missing key would fall back to
@@ -2198,15 +2265,23 @@ In `cms/templates/tour-detail.html`:
 
 `route_section()` in Step 3 already reproduces that wrapper markup verbatim; confirm it matches the block you removed before deleting it.
 
-4. Confirm no stale slots or calendar remnants survive:
+4. Adjust the route grid CSS in the template's `<style>` block. The old grid had four columns (thumbnail, time, text, distance); the new markup emits number, optional time, and text. Set `.r-row`'s `grid-template-columns` to `auto auto 1fr`, and add directly after that rule:
 
-Run: `grep -n 'CAL_PRICE\|ROUTE_ROWS\|cal-go\|zenrise-booking-v1\|cal-days' cms/templates/tour-detail.html || echo CLEAN`
+```css
+  .r-row.no-time { grid-template-columns: auto 1fr; }
+```
+
+Delete the now-unused `.r-pic`, `.stripes`, `.rn` and `.r-dist` rules — nothing emits those elements any more. Keep `.r-time` and `.r-note`.
+
+5. Confirm no stale slots or calendar remnants survive:
+
+Run: `grep -n 'CAL_PRICE\|ROUTE_ROWS\|cal-go\|zenrise-booking-v1\|cal-days\|r-pic\|r-dist' cms/templates/tour-detail.html || echo CLEAN`
 Expected: `CLEAN`
 
 - [ ] **Step 5: Run tests and rebuild**
 
 Run: `python3 -m unittest cms.tests.test_widget_embed -v`
-Expected: 16 tests PASS
+Expected: 23 tests PASS
 
 Run: `python3 cms/build-tours.py --source cache && grep -c bokunWidget tour-ikebana-ichigo-ichie.html`
 Expected: `1`
