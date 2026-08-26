@@ -355,14 +355,17 @@
   .dest {
     display: flex;
     flex-direction: column;
-    aspect-ratio: 446 / 558;
+    /* Height is content-driven: the panel must be free to fit its copy, or the
+       text spills out below the grey box. The photo keeps the design's ratio
+       below. Grid stretch keeps tiles in a row level. Mobile already did this. */
     cursor: pointer;
   }
   .dest:hover { opacity: 1; }
   /* photo region — top two thirds */
   .dest .ph {
     position: relative;
-    height: 66%;
+    /* 66% of the original 446x558 tile, kept as a ratio now the tile is fluid */
+    aspect-ratio: 446 / 368;
     overflow: hidden;
     background: var(--bg-3);
   }
@@ -388,8 +391,7 @@
   }
   /* product panel — booking-system grey, contains the card against the bg */
   .dest .panel {
-    flex: 1;
-    min-height: 0;
+    flex: 1 0 auto;
     background: var(--bg-2);
     padding: 26px 28px 24px;
     display: flex;
@@ -417,7 +419,16 @@
     text-wrap: pretty;
   }
   :lang(ja) .dest .panel .name { line-height: 1.35; }
-  .dest .panel .sub { font-family: var(--display); font-size: 18px; line-height: 1.45; color: var(--ink-60); margin: 8px 0 0; text-wrap: pretty; }
+  /* STOP-GAP (2026-08-26): Bokun excerpts vary from 73 to 251 characters, and the
+     longest run to four lines. Clamped to three with an ellipsis pending a
+     client conversation about shortening the source blurbs. Remove the clamp
+     once the copy itself is bounded. */
+  .dest .panel .sub {
+    font-family: var(--display); font-size: 18px; line-height: 1.45;
+    color: var(--ink-60); margin: 8px 0 0; text-wrap: pretty;
+    display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3;
+    line-clamp: 3; overflow: hidden;
+  }
   :lang(ja) .dest .panel .sub { line-height: 1.6; }
   .dest .panel .row { margin-top: auto; padding-top: 16px; }
   .dest .panel .go { display: inline-flex; align-items: baseline; font-size: 18px; letter-spacing: 0.01em; color: var(--ink); }
