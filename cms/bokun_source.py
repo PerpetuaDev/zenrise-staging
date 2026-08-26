@@ -124,7 +124,11 @@ def to_record(activity, activity_ja, availability, entry, corr):
 def fetch_records(client, cfg):
     corr = tours_config.corrections(cfg)
     today = datetime.now(timezone.utc).date()
-    end = today + timedelta(days=75)
+    # A year, not a quarter. Price is derived from availability, so a window
+    # shorter than a tour's first bookable date silently reports it as unpriced:
+    # Swordsmithing's first slot is 10 Nov 2026 and a 75-day window from 26 Aug
+    # ended 9 Nov, one day short, so it was wrongly shown as "in preparation".
+    end = today + timedelta(days=365)
     records, warnings, raw_texts = [], [], []
     for pid in catalogue(client, cfg):
         entry = tours_config.tour_entry(cfg, pid)

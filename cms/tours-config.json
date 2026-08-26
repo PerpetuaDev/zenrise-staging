@@ -58,7 +58,9 @@
     "Walking"
    ],
    "jaReviewed": false,
-   "widgets": {}
+   "widgets": {
+    "en": "6db7a498-ed75-46ba-b4fa-6ab6abc239c0/experience-calendar/1273194"
+   }
   },
   "1275339": {
    "slug": "swordsmithing",
@@ -69,7 +71,9 @@
     "Arts & Craft"
    ],
    "jaReviewed": false,
-   "widgets": {}
+   "widgets": {
+    "en": "6db7a498-ed75-46ba-b4fa-6ab6abc239c0/experience-calendar/1275339"
+   }
   }
  }
 }

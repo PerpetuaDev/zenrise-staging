@@ -91,51 +91,19 @@
   .chip { font-family: var(--sans); font-size: 16px; letter-spacing: 0.01em; padding: 12px 20px; border: 1px solid var(--ink-30); color: var(--ink); }
   /* ── calendar ── */
   .cal { position: sticky; top: 40px; border: 1px solid var(--ink-30); padding: 40px 40px 36px; }
-  .cal .c-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 32px; }
-  .cal .c-head .c-price { font-family: var(--sans); font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink); }
-  .cal .c-month { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; }
-  .cal .c-month .m-label { font-family: var(--display); font-size: 26px; }
-  .cal .c-month button { width: 44px; height: 44px; background: none; border: 1px solid var(--ink-30); color: var(--ink); font-family: var(--sans); font-size: 17px; font-weight: 300; cursor: pointer; }
-  .cal .c-month button:disabled { color: var(--ink-30); border-color: var(--ink-12); cursor: default; }
-  .cal .c-month button:hover:not(:disabled) { background: rgba(41,65,56,0.06); }
-  .cal .c-wk, .cal .c-days { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; }
-  .cal .c-wk span { text-align: center; font-family: var(--sans); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-40); padding-bottom: 8px; }
-  .cal .c-days .day { height: 52px; display: grid; place-items: center; font-size: 17px; user-select: none; }
-  .cal .c-days .day.off { color: var(--ink-30); }
-  .cal .c-days .day.open { border: 1px solid var(--ink-30); cursor: pointer; }
-  .cal .c-days .day.open:hover { background: rgba(41,65,56,0.06); }
-  .cal .c-days .day.sel { background: var(--ink); color: var(--bg); border: none; }
-  .cal .c-note { font-family: var(--sans); font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-40); margin-top: 16px; }
-  .cal .c-party { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--ink-12); margin-top: 28px; padding-top: 28px; }
-  .cal .stepper { display: flex; border: 1px solid var(--ink-30); }
-  .cal .stepper button { width: 44px; height: 44px; background: none; border: none; color: var(--ink); font-size: 18px; cursor: pointer; }
-  .cal .stepper button:disabled { color: var(--ink-30); cursor: default; }
-  .cal .stepper button:hover:not(:disabled) { background: rgba(41,65,56,0.06); }
-  .cal .stepper .val { width: 56px; display: grid; place-items: center; font-family: var(--display); font-size: 22px; border-left: 1px solid var(--ink-30); border-right: 1px solid var(--ink-30); }
-  .cal .c-sum { display: flex; justify-content: space-between; align-items: baseline; padding: 22px 0 28px; }
-  .cal .c-sum .s-date { font-family: var(--display); font-size: 22px; }
-  .cal .c-sum .s-price { font-family: var(--display); font-size: 26px; }
   .cal .c-go { width: 100%; border: none; padding: 22px 28px; font-family: inherit; font-size: 18px; letter-spacing: 0.02em; color: var(--bg); background: var(--ink); cursor: pointer; }
   .cal .c-go:disabled { background: var(--ink-30); cursor: not-allowed; }
+  .cal-missing { border: 1px solid var(--ink-12); background: var(--bg-2); padding: 40px; font-family: var(--sans); font-size: 15px; line-height: 1.5; color: var(--ink-60); }
   /* ── route ── */
   .route-wrap { padding: 115px 36px 0; }
   .route { border: 1px solid var(--ink-30); padding: 56px 56px 24px; }
   .route h2 { font-family: var(--display); font-weight: 400; font-size: 56px; line-height: 0.98; letter-spacing: -0.005em; margin: 0 0 40px; }
-  .r-row { display: grid; grid-template-columns: 200px 110px 1fr 140px; column-gap: 40px; align-items: center; padding: 24px 0; border-top: 1px solid var(--ink-12); }
-  .r-row .r-pic { position: relative; height: 130px; background: var(--bg-3) center / cover no-repeat; overflow: hidden; }
-  .r-row .r-pic .rn { position: absolute; left: 12px; top: 10px; font-family: var(--sans); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.72); }
-  .r-row .r-pic .stripes { position: absolute; inset: 0; background: #6E7F76; }
-  .r-row .r-pic .stripes::after { content: ''; position: absolute; inset: 0; background-image: repeating-linear-gradient(135deg, rgba(255,255,255,0.07) 0 1px, transparent 1px 16px); }
+  .r-row { display: grid; grid-template-columns: auto auto 1fr; column-gap: 40px; align-items: center; padding: 24px 0; border-top: 1px solid var(--ink-12); }
+  .r-row.no-time { grid-template-columns: auto 1fr; }
   .r-row .r-time { font-family: var(--sans); font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-60); }
   .r-row h3 { font-family: var(--display); font-weight: 400; font-size: 32px; line-height: 1.15; letter-spacing: -0.005em; margin: 0 0 8px; }
   :lang(ja) .r-row h3 { line-height: 1.35; }
   .r-row .r-note { font-size: 17px; line-height: 1.5; color: var(--ink-60); margin: 0; max-width: 620px; text-wrap: pretty; }
-  .r-row .r-dist { text-align: right; font-family: var(--sans); font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-40); }
-  /* ── in preparation ── */
-  .prep { padding: 150px 36px 0; display: grid; grid-template-columns: 1fr 3fr; column-gap: 96px; align-items: start; }
-  .prep .p1 { font-family: var(--display); font-size: 36px; line-height: 1.4; margin: 0 0 24px; max-width: 900px; text-wrap: pretty; }
-  :lang(ja) .prep .p1 { line-height: 1.7; }
-  .prep .p2 { font-size: 18px; line-height: 1.7; color: var(--ink-60); margin: 0; max-width: 620px; text-wrap: pretty; }
   /* ── booking CTA ── */
   .book-cta { padding: 120px 36px 0; }
   .book-cta .box { border: 1px solid var(--ink-30); padding: 110px 64px; text-align: center; }
@@ -188,19 +156,14 @@
     .chip-groups { grid-template-columns: 1fr; row-gap: 36px; }
     .chip { font-size: 14px; padding: 10px 16px; }
     .cal { position: static; padding: 24px 20px 22px; order: -1; }
-    .cal .c-days .day { height: 44px; font-size: 15px; }
     .route-wrap { padding: 64px 20px 0; }
     .route { padding: 24px 18px 8px; }
     .route h2 { font-size: 34px; margin-bottom: 20px; }
-    .r-row { grid-template-columns: 96px 1fr; grid-template-rows: auto auto; column-gap: 16px; row-gap: 6px; padding: 16px 0; }
-    .r-row .r-pic { height: 72px; grid-row: 1 / 3; }
-    .r-row .r-pic .rn { left: 8px; top: 6px; font-size: 9px; }
+    .r-row { grid-template-columns: auto auto 1fr; column-gap: 16px; padding: 16px 0; }
+    .r-row.no-time { grid-template-columns: auto 1fr; }
     .r-row .r-time { font-size: 11px; }
     .r-row h3 { font-size: 20px; margin-bottom: 4px; }
     .r-row .r-note { font-size: 14px; }
-    .r-row .r-dist { display: none; }
-    .prep { padding: 64px 20px 0; grid-template-columns: 1fr; row-gap: 20px; }
-    .prep .p1 { font-size: 22px; }
     .book-cta { padding: 64px 20px 0; }
     .book-cta .box { padding: 56px 24px; }
     .book-cta h2 { font-size: 34px; }
@@ -230,12 +193,18 @@
   "@type": "Brand",
   "name": "Zenrise"
  },
- "image": "https://bokun.s3.amazonaws.com/df98408a-a4cb-4cc4-af26-4203a827c34b.jpeg"
+ "image": "https://bokun.s3.amazonaws.com/df98408a-a4cb-4cc4-af26-4203a827c34b.jpeg",
+ "offers": {
+  "@type": "Offer",
+  "price": 66000,
+  "priceCurrency": "JPY",
+  "url": "https://zenrise.jp/tour-swordsmithing.html#book"
+ }
 }
 </script>
 </head>
 <body>
-  <div class="stage" id="stage">
+  <div class="stage" id="stage" data-entrance=".r-row">
 
     <header class="nav" data-screen-label="07 Tour detail — Header">
       <a class="logo" href="index.html">ZENRISE</a>
@@ -272,25 +241,31 @@
         <div class="cell"><div class="k" data-i18n="td_f_format">Format</div><div class="v" data-i18n="tours_len_half">Half-day</div></div>
         <div class="cell"><div class="k" data-i18n="td_f_length">Length</div><div class="v" data-i18n="tours_swordsmithing_hours">1 hour</div></div>
         <div class="cell"><div class="k" data-i18n="td_f_group">Group</div><div class="v">1 – 6</div></div>
-        <div class="cell"><div class="k" data-i18n="td_f_from">From</div><div class="v" data-i18n="tours_swordsmithing_price"></div></div>
+        <div class="cell"><div class="k" data-i18n="td_f_from">From</div><div class="v" data-i18n="tours_swordsmithing_price">from ¥66,000 per adult</div></div>
       </div>
     </div>
 
-    <main class="prep" data-screen-label="07 Tour detail — In preparation">
-      <span class="label" data-i18n="td_prep_label">In preparation</span>
-      <div>
-        <p class="p1" data-i18n="td_prep_p1">The pamphlet for this tour is still being written — we walk each route several times before we publish it.</p>
-        <p class="p2" data-i18n="td_prep_p2">Write to us in the meantime and we&rsquo;ll send the current itinerary by email, along with the dates we have open.</p>
+    <main class="body-grid" data-screen-label="07 Tour detail — Lede + Booking">
+      <div class="lede-col">
+        <p class="lede" data-i18n="tours_swordsmithing_lede">A visit to the working forge of a swordsmithing house now in its twenty-fourth generation, descended from Masamune , one of Japan's three great masters. Arranged through our partnership with Arte Inc. Guests watch heated steel struck and folded into form, learn the quiet manner in which a blade is appraised, and close the visit with tea and seasonal sweets by the hearth.</p>
+
       </div>
+
+        <aside class="cal" id="book" data-screen-label="07 Tour detail — Booking">
+          <script type="text/javascript" src="https://widgets.bokun.io/assets/javascripts/apps/build/BokunWidgetsLoader.js?bookingChannelUUID=6db7a498-ed75-46ba-b4fa-6ab6abc239c0" async></script>
+          <div class="bokunWidget" data-src="https://widgets.bokun.io/online-sales/6db7a498-ed75-46ba-b4fa-6ab6abc239c0/experience-calendar/1275339"></div>
+          <noscript><a class="c-go" href="go/swordsmithing/">Book this experience&nbsp;&nbsp;→</a></noscript>
+        </aside>
     </main>
+
 
 
     <section class="book-cta" data-screen-label="07 Tour detail — Booking CTA">
       <div class="box">
-        <span class="b-eyebrow" data-i18n="tours_swordsmithing_cta_eyebrow"> ・ 1–6 travelers</span>
+        <span class="b-eyebrow" data-i18n="tours_swordsmithing_cta_eyebrow">from ¥66,000 per adult ・ 1–6 travelers</span>
         <h2 data-i18n="td_cta_h">Walk it with us.</h2>
         <p data-i18n="td_cta_p">Tell us your dates and we&rsquo;ll come back within two working days with the mornings we have open. Printed pamphlet included, English and Japanese.</p>
-        <a class="cta" href="contact.html#booking"><span data-i18n="td_prep_cta">Write to us</span><span class="ar">&nbsp;&nbsp;→</span></a>
+        <a class="cta" href="#book"><span data-i18n="td_cta_link">Book this tour</span><span class="ar">&nbsp;&nbsp;→</span></a>
       </div>
     </section>
 
@@ -353,7 +328,7 @@
     setTimeout(fit, 600);
   })();
 </script>
-<script>window.ZENRISE_CMS_DICT = {"en":{"tours_swordsmithing_name":"Swordsmithing, “The Smith’s Flame”","tours_swordsmithing_sub":"The Smith’s Flame 24TH- GENERATION SMITH · LINEAGE OF MASAMUNE · KAMAKURA","tours_swordsmithing_hours":"1 hour","tours_swordsmithing_title":"Swordsmithing, “The Smith’s Flame” — Zenrise","tours_swordsmithing_eyebrow":"Tour No. 04","tours_swordsmithing_cap":"","tours_swordsmithing_cta_eyebrow":" ・ 1–6 travelers","tours_swordsmithing_price":""},"ja":{"tours_swordsmithing_name":"Swordsmithing, “The Smith’s Flame”","tours_swordsmithing_sub":"The Smith’s Flame 24TH- GENERATION SMITH · LINEAGE OF MASAMUNE · KAMAKURA","tours_swordsmithing_hours":"1 時間","tours_swordsmithing_title":"Swordsmithing, “The Smith’s Flame” — Zenrise","tours_swordsmithing_eyebrow":"ツアー No. 04","tours_swordsmithing_cap":"","tours_swordsmithing_cta_eyebrow":" ・ 1〜6名","tours_swordsmithing_price":""}};</script>
+<script>window.ZENRISE_CMS_DICT = {"en":{"tours_swordsmithing_name":"Swordsmithing, “The Smith’s Flame”","tours_swordsmithing_sub":"The Smith’s Flame 24TH- GENERATION SMITH · LINEAGE OF MASAMUNE · KAMAKURA","tours_swordsmithing_hours":"1 hour","tours_swordsmithing_title":"Swordsmithing, “The Smith’s Flame” — Zenrise","tours_swordsmithing_eyebrow":"Tour No. 04","tours_swordsmithing_cap":"","tours_swordsmithing_cta_eyebrow":"from ¥66,000 per adult ・ 1–6 travelers","tours_swordsmithing_price":"from ¥66,000 per adult","tours_swordsmithing_lede":"A visit to the working forge of a swordsmithing house now in its twenty-fourth generation, descended from Masamune , one of Japan's three great masters. Arranged through our partnership with Arte Inc. Guests watch heated steel struck and folded into form, learn the quiet manner in which a blade is appraised, and close the visit with tea and seasonal sweets by the hearth."},"ja":{"tours_swordsmithing_name":"Swordsmithing, “The Smith’s Flame”","tours_swordsmithing_sub":"The Smith’s Flame 24TH- GENERATION SMITH · LINEAGE OF MASAMUNE · KAMAKURA","tours_swordsmithing_hours":"1 時間","tours_swordsmithing_title":"Swordsmithing, “The Smith’s Flame” — Zenrise","tours_swordsmithing_eyebrow":"ツアー No. 04","tours_swordsmithing_cap":"","tours_swordsmithing_cta_eyebrow":"¥66,000〜（大人おひとり） ・ 1〜6名","tours_swordsmithing_price":"¥66,000〜（大人おひとり）","tours_swordsmithing_lede":"A visit to the working forge of a swordsmithing house now in its twenty-fourth generation, descended from Masamune , one of Japan's three great masters. Arranged through our partnership with Arte Inc. Guests watch heated steel struck and folded into form, learn the quiet manner in which a blade is appraised, and close the visit with tea and seasonal sweets by the hearth."}};</script>
 <script src="lang.js"></script>
 </body>
 </html>

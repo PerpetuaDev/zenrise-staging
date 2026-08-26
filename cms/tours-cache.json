@@ -52,7 +52,9 @@
     "currency": "JPY"
    }
   ],
-  "widgets": {},
+  "widgets": {
+   "en": "6db7a498-ed75-46ba-b4fa-6ab6abc239c0/experience-calendar/1273232"
+  },
   "jaReviewed": false,
   "route": [
    {
@@ -215,10 +217,48 @@
   },
   "hoursEn": "1 hour",
   "hoursJa": "1 時間",
-  "priceEn": "",
-  "priceJa": "",
-  "priceRows": [],
-  "widgets": {},
+  "priceEn": "from ¥66,000 per adult",
+  "priceJa": "¥66,000〜（大人おひとり）",
+  "priceRows": [
+   {
+    "category": "Adults",
+    "min": 6,
+    "max": 6,
+    "amount": 66000,
+    "currency": "JPY"
+   },
+   {
+    "category": "Adults",
+    "min": 5,
+    "max": 5,
+    "amount": 66000,
+    "currency": "JPY"
+   },
+   {
+    "category": "Adults",
+    "min": 1,
+    "max": 2,
+    "amount": 75000,
+    "currency": "JPY"
+   },
+   {
+    "category": "Adults",
+    "min": 4,
+    "max": 4,
+    "amount": 66000,
+    "currency": "JPY"
+   },
+   {
+    "category": "Adults",
+    "min": 3,
+    "max": 3,
+    "amount": 66000,
+    "currency": "JPY"
+   }
+  ],
+  "widgets": {
+   "en": "6db7a498-ed75-46ba-b4fa-6ab6abc239c0/experience-calendar/1275339"
+  },
   "jaReviewed": false,
   "route": [],
   "titleEn": "Swordsmithing, “The Smith’s Flame”",
