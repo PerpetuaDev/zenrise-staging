@@ -253,8 +253,13 @@ def chips_section(m, en, ja):
 
 # A stop duration written at the head of the body, e.g. "30min The history of…".
 # Only some products carry these, so the time cell is optional per row.
+# Two alternatives on purpose: the ASCII units keep a word boundary so "min"
+# cannot match inside a longer word, while the Japanese units need none —
+# \b between two CJK characters does not behave as it does between letters,
+# and quantifying it (\b?) is a regex error, not a shortcut.
 _STOP_TIME = re.compile(
-    r'^\s*(\d+\s*(?:min|mins|minute|minutes|hr|hrs|hour|hours))\b[\s:·\-–—]*',
+    r'^\s*(\d+\s*(?:min|mins|minute|minutes|hr|hrs|hour|hours)\b'
+    r'|\d+\s*(?:分|時間))[\s:·\-–—]*',
     re.I)
 
 
@@ -280,9 +285,19 @@ def route_rows(m, en, ja):
     for i, st in enumerate(m['route'], 1):
         n = f'{i:02d}'
         time, body = split_stop_time(st['body'])
-        en[f'{K}_rt_{n}_name'] = st['title']; ja[f'{K}_rt_{n}_name'] = st['title']
-        en[f'{K}_rt_{n}_note'] = body;        ja[f'{K}_rt_{n}_note'] = body
-        time_cell = f'<div class="r-time">{esc(time)}</div>' if time else ''
+        # A stop may carry Japanese (sample tours do, and Bokun products will
+        # once the client fills the JA slot). Fall back to the English string so
+        # the JA dictionary is always complete rather than missing keys.
+        ja_title = st.get('titleJa') or st['title']
+        ja_time, ja_body = (split_stop_time(st['bodyJa']) if st.get('bodyJa')
+                            else (time, body))
+        en[f'{K}_rt_{n}_name'] = st['title']; ja[f'{K}_rt_{n}_name'] = ja_title
+        en[f'{K}_rt_{n}_note'] = body;        ja[f'{K}_rt_{n}_note'] = ja_body
+        if time:
+            en[f'{K}_rt_{n}_time'] = time
+            ja[f'{K}_rt_{n}_time'] = ja_time or time
+        time_cell = (f'<div class="r-time" data-i18n="{K}_rt_{n}_time">{esc(time)}</div>'
+                     if time else '')
         rows.append(
             f'        <div class="r-row{"" if time else " no-time"}">\n'
             f'          <div class="r-num">{n}</div>\n'
@@ -471,14 +486,25 @@ def main():
     elif '--live' in sys.argv:
         source = 'bokun'          # retained alias, referenced by cms/tours-setup.md
     contents, cfg = fetch_tours(source)
+    # STAGING ONLY: invented sample tours, appended from config. Production's
+    # config has no sampleTours key, so nothing is appended there. They carry
+    # their own bilingual copy and so are the only pages that can demonstrate a
+    # fully Japanese tour while Bokun holds no Japanese.
+    samples = cfg.get('sampleTours') or []
+    if samples:
+        print('NOTE: appending %d invented sample tour(s) — staging only: %s'
+              % (len(samples), ', '.join(s['id'] for s in samples)))
+        contents = list(contents) + samples
+
     models = [tour_model(a) for a in contents]
 
     # Widget paths are configuration, not Bokun data, but they ride along inside
     # each cached record. Re-read them from config here so adding a widget takes
     # effect on a `--source cache` build instead of needing a live refetch.
+    tours_cfg = cfg.get('tours') or {}
     for m in models:
-        entry = (cfg.get('tours') or {}).get(str(m['bokun_id'])) or {}
-        m['widgets'] = entry.get('widgets') or {}
+        if str(m['bokun_id']) in tours_cfg:
+            m['widgets'] = tours_cfg[str(m['bokun_id'])].get('widgets') or {}
 
     tpl_full = load_template('tour-detail.html')
     tpl_prep = load_template('tour-prep.html')

@@ -14,11 +14,25 @@ class TestNoOrphans(unittest.TestCase):
         with open(os.path.join(ROOT, 'cms', 'tours-config.json')) as f:
             cfg = json.load(f)
         self.slugs = {entry['slug'] for entry in cfg['tours'].values()}
+        # Staging-only invented samples generate a page each and are legitimate.
+        self.sample_slugs = {s['id'] for s in (cfg.get('sampleTours') or [])}
 
     def test_only_generated_tour_pages_exist(self):
         on_disk = {os.path.basename(p)[len('tour-'):-len('.html')]
                    for p in glob.glob(os.path.join(ROOT, 'tour-*.html'))}
-        self.assertEqual(on_disk, self.slugs)
+        self.assertEqual(on_disk, self.slugs | self.sample_slugs)
+
+    def test_sample_tours_are_staging_only_and_marked(self):
+        with open(os.path.join(ROOT, 'cms', 'tours-config.json')) as f:
+            cfg = json.load(f)
+        for s in (cfg.get('sampleTours') or []):
+            # A sample must be self-identifying, carry no Bokun product that
+            # could collide with a real one, and never be OTA-tier.
+            self.assertTrue(s.get('_sample'), s['id'])
+            self.assertGreater(s['bokunId'], 9000000, s['id'])
+            self.assertNotIn(s['bokunId'], [1272734, 1272756, 1272817, 1272825,
+                                            1272835, 1272849, 1273963])
+            self.assertNotIn(s['id'], self.slugs)
 
     def test_retired_fixtures_and_schemas_are_gone(self):
         for p in ('cms/tours-fixture.json', 'cms/tours-schema.json',

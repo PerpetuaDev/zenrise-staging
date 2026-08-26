@@ -173,7 +173,10 @@ class TestStopTime(unittest.TestCase):
         m = dict(model({}), full=True,
                  route=[{'title': 'History', 'body': '30min The Sogetsu school.'}])
         html = bt.route_section(m, {}, {})
-        self.assertIn('<div class="r-time">30min</div>', html)
+        # The time cell is translatable, so it carries a data-i18n key.
+        self.assertIn('class="r-time"', html)
+        self.assertIn('>30min</div>', html)
+        self.assertIn('_rt_01_time"', html)
         self.assertNotIn('no-time', html)
 
     def test_untimed_row_omits_the_cell_and_marks_the_row(self):
