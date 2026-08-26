@@ -87,6 +87,23 @@ _PDF_TAIL = re.compile(r'PDF\s*$')
 _INCLUDED_HEADINGS = ('what is included', "what's included", 'inclusions')
 _HEADING = re.compile(r'^(.{2,60}?):\s*$')
 
+# Bokun's included/excluded/requirements/attention fields are rich text
+# shaped <div><p><strong>heading</strong></p><ul><li>item</li>...</ul></div>.
+# The heading is discarded (task 17: our own group labels are used instead);
+# only the ordered <li> contents matter.
+_LIST_ITEM = re.compile(r'(?is)<li\b[^>]*>(.*?)</li>')
+
+
+def list_items(raw):
+    """Ordered, uncleaned inner-HTML of each <li> in a Bokun rich-text field.
+
+    Each item is returned with entities, inline tags/styles, and \\r\\n still
+    intact, so a caller can run it through the same clean()/corrections path
+    as any other Bokun text rather than a second, divergent one."""
+    if not raw:
+        return []
+    return [m.group(1) for m in _LIST_ITEM.finditer(raw)]
+
 
 def _strip_pdf(line):
     return _PDF_TAIL.sub('', line).strip()

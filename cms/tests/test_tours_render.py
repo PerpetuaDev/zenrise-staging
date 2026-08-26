@@ -22,7 +22,7 @@ def record(**over):
          'ledeEn': 'Ninety minutes with a master.', 'ledeJa': 'Ninety minutes with a master.',
          'coverCaptionEn': '', 'coverCaptionJa': '',
          'includedEn': '', 'includedJa': '', 'notIncludedEn': '', 'notIncludedJa': '',
-         'notAllowedEn': '', 'notAllowedJa': '', 'notSuitableEn': '', 'notSuitableJa': '',
+         'bringEn': '', 'bringJa': '', 'knowEn': '', 'knowJa': '',
          'route': []}
     r.update(over)
     return r
@@ -74,6 +74,55 @@ class TestChips(unittest.TestCase):
         html = bt.chips(m, 'included', 'inc', {}, {})
         self.assertIn('Guide', html)
         self.assertIn('Entrance fees', html)
+
+
+class TestChipGroups(unittest.TestCase):
+    """Task 17: the four fixed groups map onto Bokun's own included/excluded/
+    requirements/attention fields. notAllowed/notSuitable are retired --
+    no Bokun field ever fed them."""
+
+    def test_chip_groups_are_the_four_bokun_backed_fields(self):
+        fields = [g[0] for g in bt.CHIP_GROUPS]
+        self.assertEqual(fields, ['included', 'notIncluded', 'bring', 'know'])
+
+    def test_retired_groups_are_gone(self):
+        fields = [g[0] for g in bt.CHIP_GROUPS]
+        keys = [g[2] for g in bt.CHIP_GROUPS]
+        self.assertNotIn('notAllowed', fields)
+        self.assertNotIn('notSuitable', fields)
+        self.assertNotIn('td_notallowed', keys)
+        self.assertNotIn('td_notsuitable', keys)
+
+    def test_new_groups_carry_the_expected_labels_and_keys(self):
+        by_field = {g[0]: g for g in bt.CHIP_GROUPS}
+        self.assertEqual(by_field['bring'][2:], ('td_bring', 'What to bring'))
+        self.assertEqual(by_field['know'][2:], ('td_know', 'Good to know'))
+
+    def test_chips_section_renders_all_four_groups_when_all_are_populated(self):
+        # Zen Journey's real shape once its four Bokun fields are populated:
+        # 9 / 4 / 1 / 8 items across included/notIncluded/bring/know.
+        m = bt.tour_model(record(
+            id='zen-journey',
+            includedEn='\n'.join(f'Inc {i}' for i in range(9)),
+            includedJa='\n'.join(f'Inc {i}' for i in range(9)),
+            notIncludedEn='\n'.join(f'Ninc {i}' for i in range(4)),
+            notIncludedJa='\n'.join(f'Ninc {i}' for i in range(4)),
+            bringEn='Bring 0', bringJa='Bring 0',
+            knowEn='\n'.join(f'Know {i}' for i in range(8)),
+            knowJa='\n'.join(f'Know {i}' for i in range(8))))
+        en, ja = {}, {}
+        html = bt.chips_section(m, en, ja)
+        for key in ('td_included', 'td_notinc', 'td_bring', 'td_know'):
+            self.assertIn(key, html)
+        self.assertEqual(sum(1 for v in en if v.startswith('tours_zen-journey_inc_')), 9)
+        self.assertEqual(sum(1 for v in en if v.startswith('tours_zen-journey_ninc_')), 4)
+        self.assertEqual(sum(1 for v in en if v.startswith('tours_zen-journey_brg_')), 1)
+        self.assertEqual(sum(1 for v in en if v.startswith('tours_zen-journey_kno_')), 8)
+
+    def test_a_tour_with_all_four_fields_empty_renders_no_chip_groups(self):
+        # Candle-making and Swordsmithing: no chip groups at all.
+        m = bt.tour_model(record())
+        self.assertEqual(bt.chips_section(m, {}, {}), '')
 
 
 class TestCardAndTile(unittest.TestCase):

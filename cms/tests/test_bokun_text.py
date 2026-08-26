@@ -128,5 +128,40 @@ class TestSections(unittest.TestCase):
         self.assertEqual(parsed['included'], ['Guide', 'Tea'])
 
 
+# Bokun's included/excluded/requirements/attention fields, shaped as verified
+# live on product 1273194 (task 17).
+RICH_LIST_FIELD = (
+    '<div>\r\n <p style="font-size:14px;color:#57646f">'
+    '<strong>What\'s included in the tour</strong></p>\r\n '
+    '<ul><li style="font-size:14px;color:#57646f">A dedicated guide will '
+    'accompany you throughout</li><li style="font-size:14px;color:#57646f">'
+    'Admission fees to <strong>Meigetsu-in</strong> Temple</li></ul></div>')
+
+
+class TestListItems(unittest.TestCase):
+    def test_extracts_li_contents_in_order(self):
+        self.assertEqual(bokun_text.list_items(RICH_LIST_FIELD), [
+            'A dedicated guide will accompany you throughout',
+            'Admission fees to <strong>Meigetsu-in</strong> Temple'])
+
+    def test_discards_the_heading_paragraph(self):
+        for item in bokun_text.list_items(RICH_LIST_FIELD):
+            self.assertNotIn("What's included", item)
+
+    def test_none_and_no_list_are_safe(self):
+        self.assertEqual(bokun_text.list_items(None), [])
+        self.assertEqual(bokun_text.list_items(''), [])
+        self.assertEqual(bokun_text.list_items('<div><p>Just a sentence.</p></div>'), [])
+
+    def test_items_still_need_clean_to_strip_nested_tags_and_entities(self):
+        # list_items() deliberately returns uncleaned items -- clean() (or a
+        # caller's cl()) is responsible for entities/tags/corrections, same
+        # as every other Bokun text path.
+        item = bokun_text.list_items(RICH_LIST_FIELD)[1]
+        self.assertIn('<strong>', item)
+        text, _ = bokun_text.clean(item)
+        self.assertEqual(text, 'Admission fees to Meigetsu-in Temple')
+
+
 if __name__ == '__main__':
     unittest.main()

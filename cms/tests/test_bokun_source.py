@@ -165,8 +165,11 @@ class TestRecords(unittest.TestCase):
             self.assertEqual(self.by_slug[slug]['includedEn'], '', slug)
 
     def test_fields_bokun_has_no_data_for_stay_empty(self):
+        # The fixtures predate the structured chip fields (task 17): none of
+        # excluded/requirements/attention exist on these recorded activities,
+        # so their record fields stay empty exactly as before.
         for r in self.records:
-            for f in ('notIncludedEn', 'notAllowedEn', 'notSuitableEn'):
+            for f in ('notIncludedEn', 'bringEn', 'knowEn'):
                 self.assertEqual(r[f], '', f)
 
     def test_route_comes_from_agenda_items_and_is_empty_where_there_are_none(self):
@@ -197,6 +200,112 @@ class TestRecords(unittest.TestCase):
             self.assertNotIn('templ e cuisine', w)
 
 
+class TestChipFields(unittest.TestCase):
+    """The four fixed Bokun fields that feed chip groups (task 17):
+    included/excluded/requirements/attention. The recorded fixtures predate
+    these fields entirely (they simply don't exist on the recorded
+    activities), so every shape below is built synthetically, matching what
+    was verified live on product 1273194 -- see the task-17 brief."""
+
+    def _activity(self, pid, **fields):
+        return dict(load(f'activity-{pid}-EN.json'), **fields)
+
+    def test_li_items_are_extracted_cleaned_and_counted(self):
+        activity = self._activity(
+            ZEN,
+            included=('<div>\r\n <p style="font-size:14px"><strong>What\'s '
+                       'included in the tour</strong></p>\r\n '
+                       '<ul><li style="x">Guide</li><li style="x">Entrance fees'
+                       '</li><li style="x">Matcha &amp; wagashi</li></ul></div>'))
+        entry = CFG['tours'][str(ZEN)]
+        rec, warnings, raw_texts = bokun_source.to_record(
+            activity, activity, [], [], entry, {})
+        self.assertEqual(rec['includedEn'].split('\n'),
+                          ['Guide', 'Entrance fees', 'Matcha & wagashi'])
+
+    def test_corrections_apply_inside_chip_items_and_are_marked_used(self):
+        activity = self._activity(
+            ZEN, included='<ul><li>A quiet passag e through the garden</li></ul>')
+        entry = CFG['tours'][str(ZEN)]
+        corr = {'passag e through': 'passage through'}
+        rec, warnings, raw_texts = bokun_source.to_record(
+            activity, activity, [], [], entry, corr)
+        self.assertEqual(rec['includedEn'], 'A quiet passage through the garden')
+        self.assertNotIn('passag e through',
+                          bokun_text.unused_corrections(raw_texts, corr))
+
+    def test_all_four_fields_map_to_their_own_group(self):
+        activity = self._activity(
+            ZEN,
+            included='<ul><li>A</li><li>B</li></ul>',
+            excluded='<ul><li>C</li></ul>',
+            requirements='<ul><li>D</li></ul>',
+            attention='<ul><li>E</li><li>F</li><li>G</li></ul>')
+        entry = CFG['tours'][str(ZEN)]
+        rec, *_ = bokun_source.to_record(activity, activity, [], [], entry, {})
+        self.assertEqual(rec['includedEn'], 'A\nB')
+        self.assertEqual(rec['notIncludedEn'], 'C')
+        self.assertEqual(rec['bringEn'], 'D')
+        self.assertEqual(rec['knowEn'], 'E\nF\nG')
+
+    def test_ikebana_falls_back_to_description_parsing_for_included(self):
+        # Ikebana's real shape: the included field holds one prose sentence
+        # with no <li>, while its description still carries a 6-item
+        # "What is Included:" list. Chips must come from the description,
+        # not go empty. See regression anchor in the task-17 brief.
+        activity = self._activity(
+            IKEBANA,
+            included='<p>Tea and seasonal wagashi are included in every session.</p>')
+        entry = CFG['tours'][str(IKEBANA)]
+        rec, *_ = bokun_source.to_record(activity, activity, [], [], entry, {})
+        items = rec['includedEn'].split('\n')
+        self.assertEqual(len(items), 6)
+        self.assertIn('Tour insurance', items)
+
+    def test_field_with_no_list_and_no_description_fallback_uses_its_own_plain_text(self):
+        # excluded/requirements/attention have no description-parsing
+        # fallback -- only included does -- so a prose field with no <li>
+        # becomes a single chip made of its own plain text.
+        activity = self._activity(
+            ZEN, excluded='<p>Transport to and from your accommodation.</p>')
+        entry = CFG['tours'][str(ZEN)]
+        rec, *_ = bokun_source.to_record(activity, activity, [], [], entry, {})
+        self.assertEqual(rec['notIncludedEn'], 'Transport to and from your accommodation.')
+
+    def test_a_field_with_no_content_at_all_stays_empty(self):
+        # Candle-making and Swordsmithing: all four fields empty, so no
+        # group is populated and chips_section() must render nothing.
+        activity = self._activity(CANDLE, requirements='')
+        entry = CFG['tours'][str(CANDLE)]
+        rec, *_ = bokun_source.to_record(activity, activity, [], [], entry, {})
+        self.assertEqual(rec['bringEn'], '')
+
+    def test_japanese_chip_content_comes_from_the_ja_payload_when_reviewed(self):
+        activity = self._activity(ZEN, included='<ul><li>Guide (EN)</li></ul>')
+        activity_ja = self._activity(ZEN, included='<ul><li>ガイド</li></ul>')
+        entry = dict(CFG['tours'][str(ZEN)], jaReviewed=True)
+        rec, *_ = bokun_source.to_record(activity, activity_ja, [], [], entry, {})
+        self.assertEqual(rec['includedEn'], 'Guide (EN)')
+        self.assertEqual(rec['includedJa'], 'ガイド')
+
+    def test_japanese_chip_content_mirrors_english_until_reviewed(self):
+        # Same gate as title/sub/lede/route: an unreviewed tour must not
+        # show Bokun's Japanese chip content even when it exists.
+        activity = self._activity(ZEN, included='<ul><li>Guide (EN)</li></ul>')
+        activity_ja = self._activity(ZEN, included='<ul><li>ガイド</li></ul>')
+        entry = dict(CFG['tours'][str(ZEN)], jaReviewed=False)
+        rec, *_ = bokun_source.to_record(activity, activity_ja, [], [], entry, {})
+        self.assertEqual(rec['includedJa'], rec['includedEn'])
+        self.assertEqual(rec['includedJa'], 'Guide (EN)')
+
+    def test_japanese_falls_back_to_english_when_the_ja_field_is_empty_even_if_reviewed(self):
+        activity = self._activity(ZEN, included='<ul><li>Guide (EN)</li></ul>')
+        activity_ja = self._activity(ZEN, included='')
+        entry = dict(CFG['tours'][str(ZEN)], jaReviewed=True)
+        rec, *_ = bokun_source.to_record(activity, activity_ja, [], [], entry, {})
+        self.assertEqual(rec['includedJa'], 'Guide (EN)')
+
+
 class TestJaReviewed(unittest.TestCase):
     def test_reviewed_fields_are_sourced_from_the_ja_response(self):
         activity = load(f'activity-{IKEBANA}-EN.json')
@@ -218,9 +327,10 @@ class TestJaReviewed(unittest.TestCase):
         self.assertNotEqual(rec['subJa'], rec['subEn'])
         self.assertNotEqual(rec['ledeJa'], rec['ledeEn'])
 
-        # Bokun has no data for these at all, reviewed or not.
-        for f in ('notIncludedEn', 'notIncludedJa', 'notAllowedEn', 'notAllowedJa',
-                  'notSuitableEn', 'notSuitableJa'):
+        # This fixture has none of excluded/requirements/attention, so their
+        # chip groups stay empty even on a jaReviewed tour.
+        for f in ('notIncludedEn', 'notIncludedJa', 'bringEn', 'bringJa',
+                  'knowEn', 'knowJa'):
             self.assertEqual(rec[f], '', f)
 
     def test_route_ja_is_populated_by_index_when_reviewed(self):

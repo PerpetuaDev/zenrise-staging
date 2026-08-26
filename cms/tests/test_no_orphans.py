@@ -64,6 +64,13 @@ class TestNoOrphans(unittest.TestCase):
                     'td_choose', 'td_request'):
             self.assertNotIn(key, lang, key)
 
+    def test_keys_orphaned_by_the_chip_group_retirement_are_gone(self):
+        # notAllowed/notSuitable (task 17) never had a Bokun field feeding
+        # them, so they were retired in favour of bring/know.
+        lang = read('lang.js')
+        for key in ('td_notallowed', 'td_notsuitable'):
+            self.assertNotIn(key, lang, key)
+
     def test_archive_is_untouched(self):
         self.assertTrue(os.path.exists(os.path.join(ROOT, 'archive/custom-booking/index.html')))
         self.assertIn("var RELAY_URL = ''", read('archive/custom-booking/index.html'))

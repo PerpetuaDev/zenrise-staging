@@ -106,7 +106,7 @@ def tour_model(a):
          'bokun_id': a.get('bokunId'), 'widgets': a.get('widgets') or {},
          'price_rows': a.get('priceRows') or []}
     for f in ('title', 'sub', 'hours', 'coverCaption', 'price', 'lede',
-              'included', 'notIncluded', 'notAllowed', 'notSuitable'):
+              'included', 'notIncluded', 'bring', 'know'):
         m[f] = ((a.get(f + 'En') or '').strip(), (a.get(f + 'Ja') or '').strip())
     m['area'] = a['area']
     m['length'] = a['length']
@@ -221,15 +221,17 @@ def chips(m, field, prefix, en, ja):
 
 CHIP_GROUPS = (('included', 'inc', 'td_included', 'Included'),
                ('notIncluded', 'ninc', 'td_notinc', 'Not included'),
-               ('notAllowed', 'na', 'td_notallowed', 'Not allowed'),
-               ('notSuitable', 'ns', 'td_notsuitable', 'Not suitable for'))
+               ('bring', 'brg', 'td_bring', 'What to bring'),
+               ('know', 'kno', 'td_know', 'Good to know'))
 
 
 def chips_section(m, en, ja):
     """The whole chip-groups block, or nothing.
 
-    Bokun has no inclusions field. Only tours whose description carries an inline
-    list get chips at all, so the labelled groups must not render empty. See spec
+    The four groups map onto Bokun's own included/excluded/requirements/
+    attention fields (task 17), so a client filling those fields on a new
+    tour gets chips with no developer involvement. A tour that leaves a
+    field empty must not render that group's heading over nothing. See spec
     3.4 and 3.4.1.
     """
     groups = []

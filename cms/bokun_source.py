@@ -8,8 +8,16 @@ from datetime import datetime, timedelta, timezone
 
 from . import bokun_price, bokun_text, tours_config
 
-PAIR_FIELDS = ('title', 'sub', 'lede', 'coverCaption',
-               'included', 'notIncluded', 'notAllowed', 'notSuitable')
+PAIR_FIELDS = ('title', 'sub', 'lede', 'coverCaption')
+
+# Bokun field -> record field for the four fixed chip groups (task 17), minus
+# 'included' which is handled separately below because it alone carries a
+# description-parsing fallback. These are structured fields (each holding a
+# <li> list), not open-ended vocabulary, so mapping them once gives every
+# future tour chips with no developer involvement. 'notAllowed'/'notSuitable'
+# are retired: no Bokun field ever fed them, so they could only ever render
+# empty.
+CHIP_FIELDS = (('excluded', 'notIncluded'), ('requirements', 'bring'), ('attention', 'know'))
 
 
 def _reject_ota(ids, denylist):
@@ -74,8 +82,60 @@ def to_record(activity, activity_ja, availability, availability_ja, entry, corr)
         activity.get('description'), corr, entry.get('chipsHeading'))
     warnings.extend(sw)
     lede = ' '.join(parsed['lede'])
-    included = '\n'.join(parsed['included'])
     reviewed = bool(entry.get('jaReviewed'))
+
+    # The Japanese description is only trusted (and only fetched into the
+    # correction-usage ledger) once a tour is jaReviewed -- same gate as the
+    # Japanese lede a few lines below.
+    parsed_ja_included = []
+    if reviewed:
+        raw_texts.append((activity_ja or {}).get('description') or '')
+        parsed_ja, sw_ja = bokun_text.sections(
+            (activity_ja or {}).get('description'), corr, entry.get('chipsHeading'))
+        warnings.extend(sw_ja)
+        parsed_ja_included = parsed_ja['included']
+
+    def chip_items(raw):
+        return [x for x in (cl(li) for li in bokun_text.list_items(raw)) if x]
+
+    def chip_group(bokun_field, desc_fallback_en=(), desc_fallback_ja=()):
+        """(en, ja) newline-joined chip text for one of the four fixed groups.
+
+        Fallback order, and it matters (task 17): <li> items from the field
+        itself; then, for the Included group only, the existing
+        description-parsing (Ikebana's included field is one prose sentence
+        with no list, while its description still carries a 6-item list);
+        then the field's own plain text as a single item. A group with
+        nothing at all stays empty -- chips_section already renders that as
+        no group, and must keep doing so.
+        """
+        en_items = chip_items(activity.get(bokun_field))
+        if not en_items and desc_fallback_en:
+            en_items = list(desc_fallback_en)
+        if not en_items:
+            plain = cl(activity.get(bokun_field))
+            en_items = [plain] if plain else []
+        en_joined = '\n'.join(en_items)
+
+        if reviewed:
+            ja_items = chip_items((activity_ja or {}).get(bokun_field))
+            if not ja_items and desc_fallback_ja:
+                ja_items = list(desc_fallback_ja)
+            if not ja_items:
+                plain_ja = cl((activity_ja or {}).get(bokun_field))
+                ja_items = [plain_ja] if plain_ja else []
+            ja_joined = '\n'.join(ja_items) or en_joined
+        else:
+            # Bokun's Japanese chip content is no more trusted, pre-review,
+            # than any other Japanese field -- mirror English exactly as
+            # title/sub/lede do above.
+            ja_joined = en_joined
+        return en_joined, ja_joined
+
+    chips = {'included': chip_group(
+        'included', desc_fallback_en=parsed['included'], desc_fallback_ja=parsed_ja_included)}
+    for bokun_field, rec_field in CHIP_FIELDS:
+        chips[rec_field] = chip_group(bokun_field)
 
     # agendaItems genuinely localise in Bokun (verified live on product
     # 1273194), but only once a tour is jaReviewed do we trust that Japanese
@@ -129,11 +189,13 @@ def to_record(activity, activity_ja, availability, availability_ja, entry, corr)
         'widgets': entry.get('widgets') or {},
         'jaReviewed': reviewed,
         'route': route,
+        'includedEn': chips['included'][0], 'includedJa': chips['included'][1],
+        'notIncludedEn': chips['notIncluded'][0], 'notIncludedJa': chips['notIncluded'][1],
+        'bringEn': chips['bring'][0], 'bringJa': chips['bring'][1],
+        'knowEn': chips['know'][0], 'knowJa': chips['know'][1],
     }
 
-    en_values = {'title': title, 'sub': sub, 'lede': lede, 'coverCaption': cover_cap,
-                 'included': included,
-                 'notIncluded': '', 'notAllowed': '', 'notSuitable': ''}
+    en_values = {'title': title, 'sub': sub, 'lede': lede, 'coverCaption': cover_cap}
     for field in PAIR_FIELDS:
         rec[field + 'En'] = en_values[field]
         if reviewed and field in ('title', 'sub', 'lede'):

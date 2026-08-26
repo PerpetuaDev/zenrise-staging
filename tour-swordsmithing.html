@@ -77,7 +77,8 @@
   .cover .credit { position: absolute; right: 36px; bottom: 28px; font-family: var(--sans); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.65); }
   /* ── facts ── */
   .facts-wrap { padding: 0 36px; }
-  .facts { display: grid; grid-template-columns: repeat(6, 1fr); border-bottom: 1px solid var(--ink-12); }
+  /* five cells since the price moved to the booking panel, where it is not repeated */
+  .facts { display: grid; grid-template-columns: repeat(5, 1fr); border-bottom: 1px solid var(--ink-12); }
   .facts .cell { padding: 40px 24px 40px 0; }
   .facts .k { font-family: var(--sans); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-60); margin-bottom: 12px; }
   .facts .v { font-family: var(--display); font-size: 26px; line-height: 1.2; }
@@ -94,13 +95,18 @@
   .cal .c-go { width: 100%; border: none; padding: 22px 28px; font-family: inherit; font-size: 18px; letter-spacing: 0.02em; color: var(--bg); background: var(--ink); cursor: pointer; }
   .cal .c-go:disabled { background: var(--ink-30); cursor: not-allowed; }
   .cal-missing { border: 1px solid var(--ink-12); background: var(--bg-2); padding: 40px; font-family: var(--sans); font-size: 15px; line-height: 1.5; color: var(--ink-60); }
-  /* ── price breakdown (above the booking widget) ── */
-  .price-breakdown { margin-bottom: 28px; padding-bottom: 24px; border-bottom: 1px solid var(--ink-12); }
-  .price-breakdown .pb-note { font-family: var(--sans); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-60); margin: 0 0 14px; }
-  .price-breakdown .pb-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
-  .price-breakdown .pb-row { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; font-family: var(--sans); font-size: 15px; line-height: 1.4; color: var(--ink); }
-  .price-breakdown .pb-label { color: var(--ink-60); }
-  .price-breakdown .pb-amt { white-space: nowrap; }
+  /* ── booking panel heading ── */
+  .cal .cal-h { font-family: var(--display); font-size: 26px; line-height: 1.2; margin: 0 0 26px; color: var(--ink); }
+  /* ── price breakdown (above the booking widget) ──
+     The price is no longer repeated in the facts row, so this is the only place
+     it appears. Set on the panel grey with the amounts in the display face, so
+     the figures read as the substance of the panel rather than as a footnote. */
+  .price-breakdown { background: var(--bg-2); padding: 22px 24px 24px; margin-bottom: 30px; }
+  .price-breakdown .pb-note { font-family: var(--sans); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-60); margin: 0 0 16px; }
+  .price-breakdown .pb-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 14px; }
+  .price-breakdown .pb-row { display: flex; justify-content: space-between; align-items: baseline; gap: 18px; line-height: 1.3; color: var(--ink); }
+  .price-breakdown .pb-label { font-family: var(--sans); font-size: 15px; color: var(--ink-60); }
+  .price-breakdown .pb-amt { font-family: var(--display); font-size: 22px; white-space: nowrap; }
   /* ── route ── */
   .route-wrap { padding: 115px 36px 0; }
   .route { border: 1px solid var(--ink-30); padding: 56px 56px 24px; }
@@ -163,8 +169,10 @@
     .chip-groups { grid-template-columns: 1fr; row-gap: 36px; }
     .chip { font-size: 14px; padding: 10px 16px; }
     .cal { position: static; padding: 24px 20px 22px; order: -1; }
-    .price-breakdown { margin-bottom: 20px; padding-bottom: 18px; }
-    .price-breakdown .pb-row { font-size: 14px; }
+    .cal .cal-h { font-size: 22px; margin-bottom: 20px; }
+    .price-breakdown { margin-bottom: 22px; padding: 16px 18px 18px; }
+    .price-breakdown .pb-label { font-size: 14px; }
+    .price-breakdown .pb-amt { font-size: 19px; }
     .route-wrap { padding: 64px 20px 0; }
     .route { padding: 24px 18px 8px; }
     .route h2 { font-size: 34px; margin-bottom: 20px; }
@@ -250,7 +258,6 @@
         <div class="cell"><div class="k" data-i18n="td_f_format">Format</div><div class="v" data-i18n="tours_len_half">Half-day</div></div>
         <div class="cell"><div class="k" data-i18n="td_f_length">Length</div><div class="v" data-i18n="tours_swordsmithing_hours">1 hour</div></div>
         <div class="cell"><div class="k" data-i18n="td_f_group">Group</div><div class="v">1 – 6</div></div>
-        <div class="cell"><div class="k" data-i18n="td_f_from">From</div><div class="v" data-i18n="tours_swordsmithing_price">from ¥66,000 per adult</div></div>
       </div>
     </div>
 
@@ -261,6 +268,7 @@
       </div>
 
         <aside class="cal" id="book" data-screen-label="07 Tour detail — Booking">
+          <h2 class="cal-h" data-i18n="td_book_heading">Book your spot</h2>
           <div class="price-breakdown">
             <p class="pb-note" data-i18n="tours_swordsmithing_pb_note">Full price breakdown</p>
             <ul class="pb-list">
