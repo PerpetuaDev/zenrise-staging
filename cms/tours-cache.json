@@ -163,10 +163,29 @@
   },
   "hoursEn": "4 hours",
   "hoursJa": "4 時間",
-  "priceEn": "",
-  "priceJa": "",
-  "priceRows": [],
-  "widgets": {},
+  "priceEn": "from ¥40,000 per group",
+  "priceJa": "¥40,000〜（1グループ）",
+  "priceRows": [
+   {
+    "category": null,
+    "min": 1,
+    "max": 6,
+    "amount": 40000,
+    "currency": "JPY",
+    "per_booking": true
+   },
+   {
+    "category": null,
+    "min": 1,
+    "max": 6,
+    "amount": 70000,
+    "currency": "JPY",
+    "per_booking": true
+   }
+  ],
+  "widgets": {
+   "en": "6db7a498-ed75-46ba-b4fa-6ab6abc239c0/experience-calendar/1273194"
+  },
   "jaReviewed": false,
   "route": [
    {

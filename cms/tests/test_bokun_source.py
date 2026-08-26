@@ -122,9 +122,19 @@ class TestRecords(unittest.TestCase):
         self.assertEqual(self.by_slug['candle-making']['priceEn'], 'from ¥12,000 per adult')
 
     def test_unpriced_products_have_no_price_and_no_price_rows(self):
-        for slug in ('zen-journey', 'swordsmithing'):
+        for slug in ('swordsmithing',):
             self.assertEqual(self.by_slug[slug]['priceEn'], '')
             self.assertEqual(self.by_slug[slug]['priceRows'], [])
+
+    def test_zen_journey_is_group_priced_from_its_cheaper_rate(self):
+        """The Zen Journey is priced per booking (Half Day ¥40,000, Full Day
+        ¥70,000), not per person, so it must show the cheaper group price
+        rather than coming back unpriced. See task 13."""
+        r = self.by_slug['zen-journey']
+        self.assertEqual(r['priceEn'], 'from ¥40,000 per group')
+        self.assertEqual(r['priceJa'], '¥40,000〜（1グループ）')
+        self.assertTrue(r['priceRows'])
+        self.assertTrue(all(row.get('per_booking') for row in r['priceRows']))
 
     def test_japanese_mirrors_english_until_jaReviewed(self):
         r = self.by_slug['ikebana-ichigo-ichie']
