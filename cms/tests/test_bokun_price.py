@@ -136,9 +136,9 @@ class TestGroupPricing(unittest.TestCase):
         a = group_avail([group_rate(2536321)],
                          [group_price(2536321, 40000)])
         self.assertEqual(bokun_price.rows(a, GROUP_CATS),
-                          [{'category': None, 'min': 1, 'max': 6,
+                          [{'category': None, 'category_ja': None, 'min': 1, 'max': 6,
                             'amount': 40000, 'currency': 'JPY', 'per_booking': True,
-                            'rate_title': 'Group(1~6) Harf Day'}])
+                            'rate_title': 'Group(1~6) Harf Day', 'rate_title_ja': None}])
 
     def test_ticket_category_adult_does_not_make_the_group_row_an_adult_row(self):
         a = group_avail([group_rate(2536321)],
@@ -258,6 +258,75 @@ class TestMergeDuplicateTiers(unittest.TestCase):
                                     unit(1, 29000, 1, 2)]), CATS)
         self.assertEqual(bokun_price.format_full(r, 'en'),
                           ['Adult, 1–2 guests: ¥29,000', 'Adult, 3–4 guests: ¥12,000'])
+
+
+class TestJapaneseLabels(unittest.TestCase):
+    """Task 16: rate titles and pricing-category titles, localised. Bokun's
+    real availability/activity responses are identical between languages
+    today (no Japanese has been entered yet), so these build synthetic
+    Japanese payloads directly rather than relying on the fixtures."""
+
+    def test_rows_carries_category_ja_joined_by_category_id(self):
+        cats_ja = [{'id': 1, 'title': '大人様'}, {'id': 2, 'title': '子供様'}]
+        r = bokun_price.rows(avail([unit(1, 44000, 1, 2), unit(2, 10000, 1, 2)]), CATS,
+                              pricing_categories_ja=cats_ja)
+        self.assertEqual([x['category_ja'] for x in r], ['大人様', '子供様'])
+
+    def test_rows_omits_category_ja_when_the_ja_category_list_is_absent(self):
+        r = bokun_price.rows(avail([unit(1, 44000)]), CATS)
+        self.assertIsNone(r[0]['category_ja'])
+
+    def test_rows_carries_rate_title_ja_joined_by_rate_id(self):
+        avail_ja = group_avail(
+            [group_rate(2536321, title='ハーフデイ（1～6名グループ）')], [])
+        a = group_avail([group_rate(2536321, title='Group(1~6) Harf Day')],
+                         [group_price(2536321, 40000)])
+        r = bokun_price.rows(a, GROUP_CATS, availability_ja=avail_ja)
+        self.assertEqual(r[0]['rate_title_ja'], 'ハーフデイ（1～6名グループ）')
+        self.assertEqual(r[0]['rate_title'], 'Group(1~6) Harf Day')
+
+    def test_rows_omits_rate_title_ja_when_no_ja_availability_given(self):
+        a = group_avail([group_rate(2536321, title='Group(1~6) Harf Day')],
+                         [group_price(2536321, 40000)])
+        r = bokun_price.rows(a, GROUP_CATS)
+        self.assertIsNone(r[0]['rate_title_ja'])
+
+    def test_format_full_prefers_category_ja_over_the_hand_written_map(self):
+        r = bokun_price.rows(avail([unit(1, 44000)]), CATS,
+                              pricing_categories_ja=[{'id': 1, 'title': '大人様'}])
+        self.assertEqual(bokun_price.format_full(r, 'ja'), ['大人様: ¥44,000'])
+
+    def test_format_full_falls_back_to_cat_ja_map_without_a_bokun_ja_title(self):
+        # Same shape as today: no Japanese category name entered in Bokun,
+        # so the hand-written Adult/Child/Infant map is still what renders.
+        r = bokun_price.rows(avail([unit(1, 44000)]), CATS)
+        self.assertEqual(bokun_price.format_full(r, 'ja'), ['大人: ¥44,000'])
+
+    def test_format_full_english_output_is_unaffected_by_ja_fields(self):
+        r = bokun_price.rows(avail([unit(1, 44000, 1, 2)]), CATS,
+                              pricing_categories_ja=[{'id': 1, 'title': '大人様'}])
+        self.assertEqual(bokun_price.format_full(r, 'en'), ['Adult, 1–2 guests: ¥44,000'])
+
+    def test_format_full_prefers_rate_title_ja_for_a_group_row(self):
+        avail_ja = group_avail(
+            [group_rate(2536321, title='ハーフデイ（1～6名グループ）')], [])
+        a = group_avail([group_rate(2536321, title='Group(1~6) Harf Day')],
+                         [group_price(2536321, 40000)])
+        r = bokun_price.rows(a, GROUP_CATS, availability_ja=avail_ja)
+        self.assertEqual(bokun_price.format_full(r, 'ja'),
+                          ['ハーフデイ（1～6名グループ）: ¥40,000'])
+        self.assertEqual(bokun_price.format_full(r, 'en'),
+                          ['Group(1~6) Harf Day: ¥40,000'])
+
+    def test_format_full_group_row_falls_back_to_english_title_without_ja(self):
+        # Regression anchor: today, before any Japanese rate title exists in
+        # Bokun, the Zen Journey's Japanese breakdown still shows the
+        # English rate title verbatim.
+        a = group_avail([group_rate(2536321, title='Group(1~6) Harf Day')],
+                         [group_price(2536321, 40000)])
+        r = bokun_price.rows(a, GROUP_CATS)
+        self.assertEqual(bokun_price.format_full(r, 'ja'),
+                          ['Group(1~6) Harf Day: ¥40,000'])
 
 
 class TestHasPriceBreakdown(unittest.TestCase):

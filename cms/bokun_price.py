@@ -20,8 +20,31 @@ def _money(amount, currency):
     return f'{SYMBOL.get(currency, currency + " ")}{int(amount):,}'
 
 
-def rows(availability, pricing_categories):
+def _rate_titles(availability):
+    """rate id -> title, built from an availability response. Used to look
+    up Japanese rate titles from a `?lang=ja` availability call, keyed the
+    same way as the English `rates` lookup in rows() below. A rate's title
+    doesn't vary by date, only by language, so the first slot that mentions
+    a rate id wins."""
+    titles = {}
+    for slot in availability or []:
+        for r in slot.get('rates') or []:
+            rid = r.get('id')
+            if rid is not None and rid not in titles:
+                titles[rid] = r.get('title')
+    return titles
+
+
+def rows(availability, pricing_categories, pricing_categories_ja=None, availability_ja=None):
     titles = {c['id']: c.get('title') for c in (pricing_categories or [])}
+    # Japanese counterparts of the same two lookups. Both default to empty/
+    # None so an unreviewed tour (which the caller deliberately withholds
+    # these from) or a failed/absent Japanese availability call yields rows
+    # with category_ja/rate_title_ja unset, and format_full falls back to
+    # _CAT_JA or the English string exactly as it did before this field
+    # existed — the pattern is to add a field, not overload one.
+    titles_ja = {c['id']: c.get('title') for c in (pricing_categories_ja or [])}
+    rate_titles_ja = _rate_titles(availability_ja)
     for slot in availability or []:
         rates = {r['id']: r for r in slot.get('rates') or []}
         out = []
@@ -32,14 +55,17 @@ def rows(availability, pricing_categories):
             # format_full: their label is category + tier, as before.
             rate_meta = rates.get(rate.get('activityRateId')) or {}
             rate_title = rate_meta.get('title')
+            rate_title_ja = rate_titles_ja.get(rate.get('activityRateId'))
             for u in rate.get('pricePerCategoryUnit') or []:
                 out.append({
                     'category': titles.get(u.get('id')),
+                    'category_ja': titles_ja.get(u.get('id')),
                     'min': u.get('minParticipantsRequired'),
                     'max': u.get('maxParticipantsRequired'),
                     'amount': int(u['amount']['amount']),
                     'currency': u['amount']['currency'],
                     'rate_title': rate_title,
+                    'rate_title_ja': rate_title_ja,
                 })
             pb = rate.get('pricePerBooking')
             # `is False`, not falsy: a rate with no pricedPerPerson info at
@@ -50,12 +76,14 @@ def rows(availability, pricing_categories):
             if pb and pb.get('amount') is not None and rate_meta.get('pricedPerPerson') is False:
                 out.append({
                     'category': None,
+                    'category_ja': None,
                     'min': rate_meta.get('minPerBooking'),
                     'max': rate_meta.get('maxPerBooking'),
                     'amount': int(pb['amount']),
                     'currency': pb['currency'],
                     'per_booking': True,
                     'rate_title': rate_title,
+                    'rate_title_ja': rate_title_ja,
                 })
                 # extraPricePerCategoryUnit (an extra amount per additional
                 # participant on some group rates) is deliberately ignored:
@@ -149,12 +177,13 @@ def rows_full(price_rows, lang):
     out = []
     for r in _merge(price_rows):
         if r.get('per_booking'):
-            title = r.get('rate_title')
+            # Precedence for a group row's label: the Japanese rate title
+            # from Bokun, if one has been entered; otherwise the English
+            # title verbatim (rate titles are the client's own text,
+            # including their typos, and are never corrected or invented
+            # here — see the group-pricing tests).
+            title = (lang == 'ja' and r.get('rate_title_ja')) or r.get('rate_title')
             if title:
-                # Verbatim, per spec: rate titles are the client's own text
-                # (including their typos) and are not corrected or
-                # translated here. Bokun only has them in English, so
-                # Japanese pages show the English title too.
                 label = title
             else:
                 cat = 'グループ' if lang == 'ja' else 'Group'
@@ -163,7 +192,10 @@ def rows_full(price_rows, lang):
         else:
             cat = r.get('category') or ''
             if lang == 'ja':
-                cat = _CAT_JA.get(cat.lower(), cat)
+                # Precedence: the Japanese category title from Bokun, then
+                # the hand-written Adult/Child/Infant fallback, then the
+                # English string — never invented, never left blank.
+                cat = r.get('category_ja') or _CAT_JA.get(cat.lower(), cat)
             tier = _tier(r, lang)
             label = f'{cat}, {tier}' if cat and tier else (cat or tier)
         money = _money(r['amount'], r['currency'])

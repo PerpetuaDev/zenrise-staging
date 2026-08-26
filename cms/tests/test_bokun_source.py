@@ -1,5 +1,5 @@
 import json, os, unittest
-from cms import bokun_source, bokun_text, tours_config
+from cms import bokun_price, bokun_source, bokun_text, tours_config
 
 DATA = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'data')
 IKEBANA, CANDLE, ZEN, SWORD = 1273232, 1273235, 1273194, 1275339
@@ -209,7 +209,7 @@ class TestJaReviewed(unittest.TestCase):
                             description='JA-SENTINEL description')
         entry = dict(CFG['tours'][str(IKEBANA)], jaReviewed=True)
         rec, warnings, raw_texts = bokun_source.to_record(
-            activity, activity_ja, [], entry, {})
+            activity, activity_ja, [], [], entry, {})
 
         self.assertIn('JA-SENTINEL title', rec['titleJa'])
         self.assertIn('JA-SENTINEL excerpt', rec['subJa'])
@@ -241,7 +241,7 @@ class TestJaReviewed(unittest.TestCase):
         entry = dict(CFG['tours'][str(IKEBANA)], jaReviewed=True)
         corr = {'sentinel damage': 'sentinel fixed'}
         rec, warnings, raw_texts = bokun_source.to_record(
-            activity, activity_ja, [], entry, corr)
+            activity, activity_ja, [], [], entry, corr)
 
         self.assertEqual(len(rec['route']), 3)
         for i, stop in enumerate(rec['route']):
@@ -270,7 +270,7 @@ class TestJaReviewed(unittest.TestCase):
         activity_ja = dict(activity, agendaItems=ja_items)
         entry = dict(CFG['tours'][str(IKEBANA)], jaReviewed=True)
         rec, warnings, raw_texts = bokun_source.to_record(
-            activity, activity_ja, [], entry, {})
+            activity, activity_ja, [], [], entry, {})
 
         route = rec['route']
         self.assertEqual(len(route), 3)
@@ -289,13 +289,128 @@ class TestJaReviewed(unittest.TestCase):
         activity_ja = dict(activity, agendaItems=ja_items)
         entry = dict(CFG['tours'][str(IKEBANA)], jaReviewed=False)
         rec, warnings, raw_texts = bokun_source.to_record(
-            activity, activity_ja, [], entry, {})
+            activity, activity_ja, [], [], entry, {})
 
         for stop in rec['route']:
             self.assertEqual(stop['titleJa'], stop['title'])
             self.assertEqual(stop['bodyJa'], stop['body'])
             self.assertNotIn('JA-SENTINEL', stop['titleJa'])
             self.assertNotIn('JA-SENTINEL', stop['bodyJa'])
+
+    def test_price_rows_localise_when_reviewed(self):
+        # Task 16: category_ja/rate_title_ja on the price rows are gated by
+        # jaReviewed exactly like title/sub/lede/route above -- "do not
+        # invent a separate rule". Bokun's recorded fixtures predate
+        # localisation, so the Japanese category title and rate title here
+        # are built synthetically.
+        activity = load(f'activity-{IKEBANA}-EN.json')
+        availability = load(f'availability-{IKEBANA}.json')
+        activity_ja = dict(activity, pricingCategories=[{'id': 1237647, 'title': '大人様'}])
+        availability_ja = [{'rates': [{'id': 2536435, 'title': 'スタンダード貸切グループ'}],
+                             'pricesByRate': []}]
+        entry = dict(CFG['tours'][str(IKEBANA)], jaReviewed=True)
+        rec, warnings, raw_texts = bokun_source.to_record(
+            activity, activity_ja, availability, availability_ja, entry, {})
+
+        self.assertTrue(rec['priceRows'])
+        for row in rec['priceRows']:
+            self.assertEqual(row['category_ja'], '大人様')
+        ja_rows = bokun_price.format_full(rec['priceRows'], 'ja')
+        self.assertTrue(all('大人様' in r for r in ja_rows))
+
+    def test_price_rows_mirror_english_until_ja_reviewed(self):
+        # Same synthetic ja payload as above, but jaReviewed is False: the
+        # category_ja/rate_title_ja fields must not reach the rows, and the
+        # Japanese breakdown must keep showing today's _CAT_JA fallback
+        # (大人), not the Bokun-entered '大人様'.
+        activity = load(f'activity-{IKEBANA}-EN.json')
+        availability = load(f'availability-{IKEBANA}.json')
+        activity_ja = dict(activity, pricingCategories=[{'id': 1237647, 'title': '大人様'}])
+        availability_ja = [{'rates': [{'id': 2536435, 'title': 'スタンダード貸切グループ'}],
+                             'pricesByRate': []}]
+        entry = dict(CFG['tours'][str(IKEBANA)], jaReviewed=False)
+        rec, warnings, raw_texts = bokun_source.to_record(
+            activity, activity_ja, availability, availability_ja, entry, {})
+
+        for row in rec['priceRows']:
+            self.assertIsNone(row['category_ja'])
+        ja_rows = bokun_price.format_full(rec['priceRows'], 'ja')
+        self.assertTrue(all('大人様' not in r for r in ja_rows))
+        self.assertTrue(any('大人' in r for r in ja_rows))
+
+    def test_group_rate_title_ja_gated_by_ja_reviewed(self):
+        # The Zen Journey model: a per-booking (group) row's Japanese label
+        # comes from rate_title_ja, and is gated by jaReviewed the same way.
+        activity = load(f'activity-{ZEN}-EN.json')
+        availability = load(f'availability-{ZEN}.json')
+        availability_ja = [{'rates': [{'id': 2536321, 'title': 'ハーフデイ・グループ'},
+                                       {'id': 2536324, 'title': 'フルデイ・グループ'}],
+                             'pricesByRate': []}]
+
+        entry_reviewed = dict(CFG['tours'][str(ZEN)], jaReviewed=True)
+        rec, *_ = bokun_source.to_record(
+            activity, activity, availability, availability_ja, entry_reviewed, {})
+        ja_rows = bokun_price.format_full(rec['priceRows'], 'ja')
+        self.assertTrue(any('ハーフデイ・グループ' in r for r in ja_rows))
+
+        entry_unreviewed = dict(CFG['tours'][str(ZEN)], jaReviewed=False)
+        rec2, *_ = bokun_source.to_record(
+            activity, activity, availability, availability_ja, entry_unreviewed, {})
+        ja_rows2 = bokun_price.format_full(rec2['priceRows'], 'ja')
+        self.assertTrue(all('ハーフデイ・グループ' not in r for r in ja_rows2))
+        # Falls back to the English rate title verbatim, exactly as today.
+        self.assertTrue(any('Harf' in r for r in ja_rows2))
+
+
+class FlakyJaAvailabilityClient(FakeClient):
+    """Serves the same fixtures as FakeClient, except the Japanese
+    availability call for one chosen product either raises or returns None
+    -- exercising fetch_records' fallback path (task 16, rule 6: a label is
+    not worth failing a build over)."""
+
+    def __init__(self, fail_pid, mode='raise', product_list=None):
+        super().__init__(product_list)
+        self.fail_pid = fail_pid
+        self.mode = mode
+
+    def get(self, path):
+        if '/availabilities' in path and 'lang=ja' in path:
+            pid = int(path.split('/')[2])
+            if pid == self.fail_pid:
+                if self.mode == 'raise':
+                    raise RuntimeError('simulated Bokun outage')
+                return None
+        return super().get(path)
+
+
+class TestJapaneseAvailabilityFetch(unittest.TestCase):
+    def test_fetch_records_requests_both_language_availabilities(self):
+        c = FakeClient()
+        bokun_source.fetch_records(c, CFG)
+        avail_paths = [p for p in c.paths if '/availabilities' in p]
+        self.assertEqual(len([p for p in avail_paths if 'lang=EN' in p]), 4)
+        self.assertEqual(len([p for p in avail_paths if 'lang=ja' in p]), 4)
+
+    def test_ja_availability_request_failure_falls_back_and_warns(self):
+        c = FlakyJaAvailabilityClient(fail_pid=IKEBANA, mode='raise')
+        records, warnings = bokun_source.fetch_records(c, CFG)
+        self.assertTrue(any('ikebana-ichigo-ichie' in w
+                             and 'Japanese availability request failed' in w
+                             for w in warnings), warnings)
+        by_slug = {r['id']: r for r in records}
+        # The build still completes and still prices the tour from English.
+        self.assertTrue(by_slug['ikebana-ichigo-ichie']['priceRows'])
+        self.assertEqual(by_slug['ikebana-ichigo-ichie']['priceEn'],
+                          'from ¥21,000 per adult')
+
+    def test_ja_availability_returning_nothing_falls_back_and_warns(self):
+        c = FlakyJaAvailabilityClient(fail_pid=ZEN, mode='none')
+        records, warnings = bokun_source.fetch_records(c, CFG)
+        self.assertTrue(any('zen-journey' in w and 'returned nothing' in w
+                             for w in warnings), warnings)
+        by_slug = {r['id']: r for r in records}
+        self.assertTrue(by_slug['zen-journey']['priceRows'])
+        self.assertEqual(by_slug['zen-journey']['priceEn'], 'from ¥40,000 per group')
 
 
 if __name__ == '__main__':

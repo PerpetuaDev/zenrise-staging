@@ -52,7 +52,7 @@ def _length_from_duration(duration_text):
     return 'Full-day' if hours >= 5 else 'Half-day'
 
 
-def to_record(activity, activity_ja, availability, entry, corr):
+def to_record(activity, activity_ja, availability, availability_ja, entry, corr):
     warnings = []
     # Every raw string that is actually run through cl() (or, for the
     # description, through bokun_text.sections() below) is captured here, so
@@ -99,7 +99,18 @@ def to_record(activity, activity_ja, availability, entry, corr):
     cover = (photos[0].get('originalUrl') if photos else '') or ''
     cover_cap = cl(photos[0].get('alternateText')) if photos else ''
 
-    rows = bokun_price.rows(availability, activity.get('pricingCategories') or [])
+    # Rate titles and pricing-category titles are both localised the same
+    # way title/sub/lede/route are above: only once a tour is jaReviewed do
+    # we trust Bokun's Japanese enough to show it. An unreviewed tour (or
+    # one where the Japanese availability call failed/came back empty, see
+    # fetch_records) simply gets no category_ja/rate_title_ja on its rows,
+    # and bokun_price.format_full falls back to the hand-written _CAT_JA
+    # map / the English rate title exactly as it always has.
+    pricing_categories_ja = (activity_ja or {}).get('pricingCategories') or [] if reviewed else []
+    rows = bokun_price.rows(
+        availability, activity.get('pricingCategories') or [],
+        pricing_categories_ja=pricing_categories_ja,
+        availability_ja=availability_ja if reviewed else None)
     fp = bokun_price.from_price(rows)
 
     rec = {
@@ -149,8 +160,27 @@ def fetch_records(client, cfg):
         activity = client.get(f'/activity.json/{pid}?lang=EN')
         activity_ja = client.get(f'/activity.json/{pid}?lang=ja')
         availability = client.get(
-            f'/activity.json/{pid}/availabilities?start={today}&end={end}')
-        rec, w, texts = to_record(activity, activity_ja, availability, entry, corr)
+            f'/activity.json/{pid}/availabilities?start={today}&end={end}&lang=EN')
+        # A label is not worth failing a build over: if the Japanese
+        # availability call itself raises, or comes back as None (as
+        # opposed to a well-formed empty list, which just means no slots in
+        # this window — not a failure), fall back to English rate titles
+        # and carry on, with a warning so the gap is visible.
+        availability_ja = None
+        try:
+            availability_ja = client.get(
+                f'/activity.json/{pid}/availabilities?start={today}&end={end}&lang=ja')
+        except Exception as e:
+            warnings.append(
+                f'[{entry["slug"]}] Japanese availability request failed '
+                f'({e}); price labels fall back to English for this tour.')
+        else:
+            if availability_ja is None:
+                warnings.append(
+                    f'[{entry["slug"]}] Japanese availability returned nothing; '
+                    f'price labels fall back to English for this tour.')
+        availability_ja = availability_ja or []
+        rec, w, texts = to_record(activity, activity_ja, availability, availability_ja, entry, corr)
         records.append(rec)
         warnings += [f'[{rec["id"]}] {x}' for x in w]
         raw_texts += texts
