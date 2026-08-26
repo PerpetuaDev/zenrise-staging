@@ -1,49 +1,73 @@
 {
-  "productListName": "Website",
-  "allowlist": [1273232, 1273235, 1273194, 1275339],
-  "otaDenylist": [1272734, 1272756, 1272817, 1272825, 1272835, 1272849, 1273963],
-  "corrections": {
-    "passag e through": "passage through",
-    "templ e grounds": "temple grounds",
-    "templ e cuisine": "temple cuisine",
-    "wa l ked": "walked"
+ "productListName": "Website",
+ "allowlist": [
+  1273232,
+  1273235,
+  1273194,
+  1275339
+ ],
+ "otaDenylist": [
+  1272734,
+  1272756,
+  1272817,
+  1272825,
+  1272835,
+  1272849,
+  1273963
+ ],
+ "corrections": {
+  "passag e through": "passage through",
+  "templ e grounds": "temple grounds",
+  "templ e cuisine": "temple cuisine",
+  "wa l ked": "walked"
+ },
+ "tours": {
+  "1273232": {
+   "slug": "ikebana-ichigo-ichie",
+   "number": "01",
+   "area": "Kamakura",
+   "length": "Half-day",
+   "themes": [
+    "Arts & Craft"
+   ],
+   "jaReviewed": false,
+   "widgets": {}
   },
-  "tours": {
-    "1273232": {
-      "slug": "ikebana-ichigo-ichie",
-      "number": "01",
-      "area": "Kamakura",
-      "length": "Half-day",
-      "themes": ["Arts & Craft"],
-      "jaReviewed": false,
-      "widgets": {}
-    },
-    "1273235": {
-      "slug": "candle-making",
-      "number": "02",
-      "area": "Kamakura",
-      "length": "Half-day",
-      "themes": ["Arts & Craft"],
-      "jaReviewed": false,
-      "widgets": {}
-    },
-    "1273194": {
-      "slug": "zen-journey",
-      "number": "03",
-      "area": "Kamakura",
-      "length": "Half-day",
-      "themes": ["Temples & Shrines", "Walking"],
-      "jaReviewed": false,
-      "widgets": {}
-    },
-    "1275339": {
-      "slug": "swordsmithing",
-      "number": "04",
-      "area": "Kamakura",
-      "length": "Half-day",
-      "themes": ["Arts & Craft"],
-      "jaReviewed": false,
-      "widgets": {}
-    }
+  "1273235": {
+   "slug": "candle-making",
+   "number": "02",
+   "area": "Kamakura",
+   "length": "Half-day",
+   "themes": [
+    "Arts & Craft"
+   ],
+   "jaReviewed": false,
+   "widgets": {
+    "en": "6db7a498-ed75-46ba-b4fa-6ab6abc239c0/experience-calendar/1273235"
+   }
+  },
+  "1273194": {
+   "slug": "zen-journey",
+   "number": "03",
+   "area": "Kamakura",
+   "length": "Half-day",
+   "themes": [
+    "Temples & Shrines",
+    "Walking"
+   ],
+   "jaReviewed": false,
+   "widgets": {}
+  },
+  "1275339": {
+   "slug": "swordsmithing",
+   "number": "04",
+   "area": "Kamakura",
+   "length": "Half-day",
+   "themes": [
+    "Arts & Craft"
+   ],
+   "jaReviewed": false,
+   "widgets": {}
   }
+ }
 }

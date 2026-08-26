@@ -124,7 +124,9 @@
     "currency": "JPY"
    }
   ],
-  "widgets": {},
+  "widgets": {
+   "en": "6db7a498-ed75-46ba-b4fa-6ab6abc239c0/experience-calendar/1273235"
+  },
   "jaReviewed": false,
   "route": [],
   "titleEn": "A private Japanese candle-making experience in Kamakura.",
