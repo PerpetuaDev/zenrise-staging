@@ -837,6 +837,31 @@
       '  .mobile-nav-lang button .code { font-family: "gill-sans-nova", "Gill Sans", "Gill Sans MT", sans-serif; text-transform: uppercase; font-size: 12px; letter-spacing: 0.08em; color: rgba(41,65,56,0.5); }',
       '  .mobile-nav-lang button .name { font-family: "optima-nova-lt-pro","Optima",serif; font-size: 22px; color: #294138; }',
       '  .mobile-nav-lang button.on .name { text-decoration: underline; text-underline-offset: 4px; }',
+      '}',
+      // CTA underline offset, Japanese correction.
+      //
+      // Every CTA underline sits 0.18em below its text -- the ratio taken from
+      // the home page's "All tours" link. That ratio is right for Latin type,
+      // but Japanese glyphs sit higher in the line box, so the same offset
+      // reads as a noticeably wider gap: measured at 3x DPR on the home tile
+      // CTA, English came out at 6.0px and Japanese at 10.0px from the same
+      // padding. Lifting the rule by 0.22em brings Japanese back to the same
+      // optical gap. Expressed relatively so it holds at every CTA size, and
+      // injected here because this is the language layer and it applies to
+      // every page including the generated ones.
+      'html[lang="ja"] .more-link > span:first-child::after,',
+      'html[lang="ja"] .hero-card .more > span:first-child::after,',
+      'html[lang="ja"] .dest .panel .go .u::after,',
+      'html[lang="ja"] .bespoke .cta > span:first-child::after,',
+      'html[lang="ja"] .book-cta .cta > span:first-child::after,',
+      'html[lang="ja"] .f-body .more > span:first-child::after,',
+      'html[lang="ja"] .cta-panel .cta .u::after,',
+      'html[lang="ja"] .art-head .meta .back .lbl::after,',
+      'html[lang="ja"] .art-foot .back .lbl::after,',
+      'html[lang="ja"] .back .b-label::after,',
+      'html[lang="ja"] .pg-num::after,',
+      'html[lang="ja"] .foot-col .soc > span:first-child::after {',
+      '  bottom: 0.28em;',
       '}'
     ].join('\n');
     document.head.appendChild(s);

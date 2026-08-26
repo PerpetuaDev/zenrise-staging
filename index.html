@@ -277,14 +277,14 @@
     letter-spacing: 0.01em;
     position: relative;
   }
-  .hero-card .more > span:first-child { position: relative; padding-bottom: 4px; }
+  .hero-card .more > span:first-child { position: relative; padding-bottom: 0.18em; }
   .hero-card .more > span:first-child::after {
     content: '';
     position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
-    height: 1.5px;
+    height: 1px;
     background: var(--ink);
     opacity: 0;
     transition: opacity 0.25s ease;
@@ -435,7 +435,7 @@
   /* Hover-reveal underline, matching .more-link and the hero card rather than the
      persistent underline used by tours.html's bespoke CTA and the tour detail
      "Book this tour". Triggered by card hover, like the arrow slide below. */
-  .dest .panel .go .u { position: relative; padding-bottom: 3px; }
+  .dest .panel .go .u { position: relative; padding-bottom: 0.18em; }
   .dest .panel .go .u::after {
     content: ''; position: absolute; bottom: 0; left: 0; right: 0;
     height: 1px; background: var(--ink); opacity: 0;
@@ -465,7 +465,7 @@
   .find-more { display: flex; justify-content: center; padding: 88px 0 0; }
   .more-link { display: inline-flex; align-items: baseline; font-size: 22px; letter-spacing: 0.01em; color: var(--ink); }
   .more-link:hover { opacity: 1; }
-  .more-link > span:first-child { position: relative; padding-bottom: 4px; }
+  .more-link > span:first-child { position: relative; padding-bottom: 0.18em; }
   .more-link > span:first-child::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 1px; background: var(--ink); opacity: 0; transition: opacity 0.25s ease; }
   .more-link:hover > span:first-child::after { opacity: 1; }
   .more-link .ar { position: relative; right: 0; transition: right 0.3s ease; font-weight: 300; }
@@ -546,8 +546,8 @@
     color: var(--ink);
   }
   .foot-v2 .foot-col li a:hover { opacity: 0.6; }
-  .foot-col .soc > span:first-child { position: relative; padding-bottom: 3px; }
-  .foot-col .soc > span:first-child::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 1.5px; background: var(--ink); opacity: 0; transition: opacity 0.25s ease; }
+  .foot-col .soc > span:first-child { position: relative; padding-bottom: 0.18em; }
+  .foot-col .soc > span:first-child::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 1px; background: var(--ink); opacity: 0; transition: opacity 0.25s ease; }
   .foot-col .soc:hover > span:first-child::after { opacity: 1; }
   .foot-col .soc .ar { position: relative; right: 0; transition: right 0.3s ease; font-weight: 300; }
   .foot-col .soc:hover .ar { right: -6px; }

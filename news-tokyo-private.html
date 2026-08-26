@@ -86,7 +86,7 @@
   .art-head .meta .back { color: var(--ink); display: inline-flex; align-items: center; gap: 10px; }
   .art-head .meta .back .ar { font-family: var(--sans); font-size: 17px; font-weight: 300; line-height: 1; position: relative; left: 0; margin-bottom: 3px; transition: left 0.3s ease; }
   .art-head .meta .back:hover .ar { left: -6px; }
-  .art-head .meta .back .lbl { position: relative; padding-bottom: 3px; }
+  .art-head .meta .back .lbl { position: relative; padding-bottom: 0.18em; }
   .art-head .meta .back .lbl::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 1px; background: var(--ink); opacity: 0; transition: opacity 0.25s ease; }
   .art-head .meta .back:hover .lbl::after { opacity: 1; }
   /* centre the date on the label's glyphs, not glyphs + reserved underline pad */
@@ -116,7 +116,7 @@
   .cta-panel .cp-label { font-family: var(--sans); font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-60); display: block; margin-bottom: 26px; }
   .cta-panel p { font-size: 18px; line-height: 1.7; color: var(--ink-60); margin: 0 0 40px; text-wrap: pretty; }
   .cta-panel .cta { margin-top: auto; display: inline-flex; align-items: baseline; font-size: 21px; letter-spacing: 0.01em; color: var(--ink); }
-  .cta-panel .cta .u { position: relative; padding-bottom: 3px; }
+  .cta-panel .cta .u { position: relative; padding-bottom: 0.18em; }
   .cta-panel .cta .u::after { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 1px; background: var(--ink); opacity: 0; transition: opacity 0.25s ease; }
   .cta-panel .cta:hover .u::after { opacity: 1; }
   .cta-panel .cta .ar { position: relative; right: 0; margin-left: 6px; transition: right 0.3s ease; font-weight: 300; }
@@ -125,7 +125,7 @@
   .art-foot .back { color: var(--ink); position: relative; display: inline-flex; align-items: center; font-family: var(--sans); font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase; }
   .art-foot .back .ar { font-family: var(--sans); font-size: 17px; font-weight: 300; line-height: 1; position: absolute; top: 50%; transform: translateY(-50%); left: -27px; margin-top: -1px; transition: left 0.3s ease; }
   .art-foot .back:hover .ar { left: -33px; }
-  .art-foot .back .lbl { position: relative; padding-bottom: 3px; }
+  .art-foot .back .lbl { position: relative; padding-bottom: 0.18em; }
   .art-foot .back .lbl::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 1px; background: var(--ink); opacity: 0; transition: opacity 0.25s ease; }
   .art-foot .back:hover .lbl::after { opacity: 1; }
   /* ── footer (shared) ── */
@@ -138,8 +138,8 @@
   .foot-col ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 14px; }
   .foot-col li { font-size: 18px; line-height: 1.45; color: var(--ink); }
   .foot-col li a:hover { opacity: 0.6; }
-  .foot-col .soc > span:first-child { position: relative; padding-bottom: 3px; }
-  .foot-col .soc > span:first-child::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 1.5px; background: var(--ink); opacity: 0; transition: opacity 0.25s ease; }
+  .foot-col .soc > span:first-child { position: relative; padding-bottom: 0.18em; }
+  .foot-col .soc > span:first-child::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 1px; background: var(--ink); opacity: 0; transition: opacity 0.25s ease; }
   .foot-col .soc:hover > span:first-child::after { opacity: 1; }
   .foot-col .soc .ar { position: relative; right: 0; transition: right 0.3s ease; font-weight: 300; }
   .foot-col .soc:hover .ar { right: -6px; }

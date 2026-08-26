@@ -61,7 +61,7 @@
   .back:hover { opacity: 1; }
   .back .b-ar { font-family: var(--sans); font-size: 19px; font-weight: 300; position: relative; left: 0; transition: left 0.3s ease; }
   .back:hover .b-ar { left: -6px; }
-  .back .b-label { position: relative; padding-bottom: 3px; }
+  .back .b-label { position: relative; padding-bottom: 0.18em; }
   .back .b-label::after { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 1px; background: var(--ink); opacity: 0; transition: opacity 0.25s ease; }
   .back:hover .b-label::after { opacity: 1; }
   /* ── header ── */
@@ -113,7 +113,9 @@
   .book-cta p { font-family: var(--display); font-size: 24px; line-height: 1.45; color: var(--ink-60); margin: 0 auto 44px; max-width: 640px; text-wrap: pretty; }
   :lang(ja) .book-cta p { line-height: 1.7; }
   .book-cta .cta { display: inline-flex; align-items: baseline; font-size: 22px; letter-spacing: 0.01em; color: var(--ink); }
-  .book-cta .cta > span:first-child { padding-bottom: 4px; border-bottom: 1px solid var(--ink); }
+  .book-cta .cta > span:first-child { position: relative; padding-bottom: 0.18em; }
+  .book-cta .cta > span:first-child::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 1px; background: var(--ink); opacity: 0; transition: opacity 0.25s ease; }
+  .book-cta .cta:hover > span:first-child::after { opacity: 1; }
   .book-cta .cta .ar { position: relative; right: 0; transition: right 0.3s ease; font-weight: 300; }
   .book-cta .cta:hover .ar { right: -8px; }
   /* ── footer (shared) ── */
@@ -126,8 +128,8 @@
   .foot-col ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 14px; }
   .foot-col li { font-size: 18px; line-height: 1.45; color: var(--ink); }
   .foot-col li a:hover { opacity: 0.6; }
-  .foot-col .soc > span:first-child { position: relative; padding-bottom: 3px; }
-  .foot-col .soc > span:first-child::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 1.5px; background: var(--ink); opacity: 0; transition: opacity 0.25s ease; }
+  .foot-col .soc > span:first-child { position: relative; padding-bottom: 0.18em; }
+  .foot-col .soc > span:first-child::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 1px; background: var(--ink); opacity: 0; transition: opacity 0.25s ease; }
   .foot-col .soc:hover > span:first-child::after { opacity: 1; }
   .foot-col .soc .ar { position: relative; right: 0; transition: right 0.3s ease; font-weight: 300; }
   .foot-col .soc:hover .ar { right: -6px; }
