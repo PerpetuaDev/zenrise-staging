@@ -19,8 +19,8 @@ GROUP_CATS = [{'id': 1238056, 'title': 'Group（1~6）', 'ticketCategory': 'ADUL
                'occupancy': 6, 'dependent': True}]
 
 
-def group_rate(rate_id, priced_per_person=False, mn=1, mx=6):
-    return {'id': rate_id, 'title': 'Group(1~6) Harf Day',
+def group_rate(rate_id, priced_per_person=False, mn=1, mx=6, title='Group(1~6) Harf Day'):
+    return {'id': rate_id, 'title': title,
             'pricedPerPerson': priced_per_person, 'minPerBooking': mn, 'maxPerBooking': mx}
 
 
@@ -137,7 +137,8 @@ class TestGroupPricing(unittest.TestCase):
                          [group_price(2536321, 40000)])
         self.assertEqual(bokun_price.rows(a, GROUP_CATS),
                           [{'category': None, 'min': 1, 'max': 6,
-                            'amount': 40000, 'currency': 'JPY', 'per_booking': True}])
+                            'amount': 40000, 'currency': 'JPY', 'per_booking': True,
+                            'rate_title': 'Group(1~6) Harf Day'}])
 
     def test_ticket_category_adult_does_not_make_the_group_row_an_adult_row(self):
         a = group_avail([group_rate(2536321)],
@@ -199,6 +200,83 @@ class TestGroupPricing(unittest.TestCase):
         r = bokun_price.rows(a, GROUP_CATS)
         self.assertEqual(r, [])
         self.assertIsNone(bokun_price.from_price(r))
+
+    def test_the_zen_journey_two_rates_are_labelled_by_rate_title_not_both_group(self):
+        """The real trap (task 14): two GROUP rates, both bookable through
+        the same widget, must not render as two identical 'Group' rows."""
+        a = group_avail(
+            [group_rate(2536321, title='Group(1~6) Harf Day'),
+             group_rate(2536324, title='Group(1~6) Full Day')],
+            [group_price(2536321, 40000), group_price(2536324, 70000)])
+        r = bokun_price.rows(a, GROUP_CATS)
+        self.assertEqual(bokun_price.format_full(r, 'en'),
+                          ['Group(1~6) Harf Day: ¥40,000', 'Group(1~6) Full Day: ¥70,000'])
+
+    def test_group_rate_title_is_rendered_verbatim_including_the_clients_typo(self):
+        """'Harf' is the client's own typo. It is reported to them, not
+        silently corrected here."""
+        a = group_avail([group_rate(2536321, title='Group(1~6) Harf Day')],
+                         [group_price(2536321, 40000)])
+        r = bokun_price.rows(a, GROUP_CATS)
+        self.assertIn('Harf', bokun_price.format_full(r, 'en')[0])
+
+    def test_group_rate_title_is_not_translated_on_japanese_pages(self):
+        """Bokun only has rate titles in English (spec: deliberately not in
+        scope to fix here), so the Japanese breakdown shows the English
+        title verbatim rather than a translated or blank label."""
+        a = group_avail([group_rate(2536321, title='Group(1~6) Harf Day')],
+                         [group_price(2536321, 40000)])
+        r = bokun_price.rows(a, GROUP_CATS)
+        self.assertEqual(bokun_price.format_full(r, 'ja'), ['Group(1~6) Harf Day: ¥40,000'])
+
+    def test_group_row_without_a_rate_title_falls_back_to_group_and_tier(self):
+        """Defensive fallback for incomplete data (e.g. a hand-written
+        sample-tour row) — must not crash, and must not render a blank
+        label."""
+        r = [{'category': None, 'min': 1, 'max': 6, 'amount': 40000,
+              'currency': 'JPY', 'per_booking': True}]
+        self.assertEqual(bokun_price.format_full(r, 'en'), ['Group, 1–6 guests: ¥40,000'])
+
+
+class TestMergeDuplicateTiers(unittest.TestCase):
+    """Real Bokun availability often lists one row per exact participant
+    count at the same price, rather than one ready-made range (seen on
+    Ikebana: 3, 4, 5 and 6 guests each as a separate ¥21,000 row). Task 14
+    requires these to collapse into one row per distinct price, not repeat
+    the same amount several times."""
+
+    def test_identical_amount_single_count_tiers_collapse_into_one_range(self):
+        r = bokun_price.rows(avail([
+            unit(1, 21000, 5, 5), unit(1, 21000, 4, 4), unit(1, 21000, 6, 6),
+            unit(1, 21000, 3, 3), unit(1, 44000, 1, 2),
+        ]), CATS)
+        self.assertEqual(bokun_price.format_full(r, 'en'),
+                          ['Adult, 1–2 guests: ¥44,000', 'Adult, 3–6 guests: ¥21,000'])
+
+    def test_merge_never_crosses_different_amounts(self):
+        r = bokun_price.rows(avail([unit(1, 12000, 3, 3), unit(1, 12000, 4, 4),
+                                    unit(1, 29000, 1, 2)]), CATS)
+        self.assertEqual(bokun_price.format_full(r, 'en'),
+                          ['Adult, 1–2 guests: ¥29,000', 'Adult, 3–4 guests: ¥12,000'])
+
+
+class TestHasPriceBreakdown(unittest.TestCase):
+    def test_no_rows_has_no_breakdown(self):
+        self.assertFalse(bokun_price.has_price_breakdown([]))
+
+    def test_a_single_row_has_no_breakdown(self):
+        r = bokun_price.rows(avail([unit(1, 23000)]), CATS)
+        self.assertFalse(bokun_price.has_price_breakdown(r))
+
+    def test_several_rows_all_the_same_amount_have_no_breakdown(self):
+        """If every tier costs the same, the table would only restate the
+        headline 'from' price — render nothing (task 14, rule 5)."""
+        r = bokun_price.rows(avail([unit(1, 21000, 1, 6), unit(1, 21000, 7, 10)]), CATS)
+        self.assertFalse(bokun_price.has_price_breakdown(r))
+
+    def test_two_different_amounts_have_a_breakdown(self):
+        r = bokun_price.rows(avail([unit(1, 44000, 1, 2), unit(1, 21000, 3, 6)]), CATS)
+        self.assertTrue(bokun_price.has_price_breakdown(r))
 
 
 if __name__ == '__main__':

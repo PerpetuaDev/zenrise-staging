@@ -28,9 +28,9 @@ def record(**over):
     return r
 
 
-def model(widgets, full=True, slug='ikebana-ichigo-ichie'):
+def model(widgets, full=True, slug='ikebana-ichigo-ichie', price_rows=None):
     return {'id': slug, 'widgets': widgets, 'full': full, 'bokun_id': 1273232,
-            'K': 'tours_' + slug}
+            'K': 'tours_' + slug, 'price_rows': price_rows or []}
 
 
 class TestModel(unittest.TestCase):
@@ -136,6 +136,120 @@ class TestStopTime(unittest.TestCase):
         bt.route_rows(m, en, {})
         self.assertEqual(en['tours_ikebana-ichigo-ichie_rt_01_note'],
                          'The Sogetsu school.')
+
+
+# Ikebana's real shape: several single-count tiers at the same amount plus
+# one lower-guest-count tier at a higher amount (task 14).
+IKEBANA_ROWS = [
+    {'category': 'Adults', 'min': 5, 'max': 5, 'amount': 21000, 'currency': 'JPY'},
+    {'category': 'Adults', 'min': 4, 'max': 4, 'amount': 21000, 'currency': 'JPY'},
+    {'category': 'Adults', 'min': 6, 'max': 6, 'amount': 21000, 'currency': 'JPY'},
+    {'category': 'Adults', 'min': 3, 'max': 3, 'amount': 21000, 'currency': 'JPY'},
+    {'category': 'Adults', 'min': 1, 'max': 2, 'amount': 44000, 'currency': 'JPY'},
+]
+# The Zen Journey's real shape: two per-booking rates, distinguished only by
+# rate title.
+ZEN_ROWS = [
+    {'category': None, 'min': 1, 'max': 6, 'amount': 40000, 'currency': 'JPY',
+     'per_booking': True, 'rate_title': 'Group(1~6) Harf Day'},
+    {'category': None, 'min': 1, 'max': 6, 'amount': 70000, 'currency': 'JPY',
+     'per_booking': True, 'rate_title': 'Group(1~6) Full Day'},
+]
+
+
+class TestPriceBreakdownBlock(unittest.TestCase):
+    """task 14: the breakdown rendered above the booking widget."""
+
+    def test_hidden_when_every_row_shares_the_headline_amount(self):
+        m = model({}, price_rows=[
+            {'category': 'Adult', 'min': 1, 'max': 6, 'amount': 21000, 'currency': 'JPY'}])
+        self.assertEqual(bt.price_breakdown_block(m, {}, {}), '')
+
+    def test_hidden_when_there_are_no_price_rows(self):
+        m = model({}, price_rows=[])
+        self.assertEqual(bt.price_breakdown_block(m, {}, {}), '')
+
+    def test_renders_a_row_per_distinct_amount_for_ikebana(self):
+        m = model({}, price_rows=IKEBANA_ROWS)
+        en, ja = {}, {}
+        html = bt.price_breakdown_block(m, en, ja)
+        self.assertIn('¥44,000', html)
+        self.assertIn('¥21,000', html)
+        # merged into one row per amount, not five rows
+        self.assertEqual(html.count('class="pb-row"'), 2)
+
+    def test_zen_journey_rows_are_distinguished_by_rate_title_not_both_group(self):
+        m = model({}, slug='zen-journey', price_rows=ZEN_ROWS)
+        en, ja = {}, {}
+        html = bt.price_breakdown_block(m, en, ja)
+        self.assertIn('Group(1~6) Harf Day', html)
+        self.assertIn('Group(1~6) Full Day', html)
+        self.assertEqual(html.count('class="pb-row"'), 2)
+
+    def test_rows_are_written_into_both_i18n_dicts_with_the_k_prefixed_key(self):
+        m = model({}, slug='zen-journey', price_rows=ZEN_ROWS)
+        en, ja = {}, {}
+        bt.price_breakdown_block(m, en, ja)
+        self.assertIn('tours_zen-journey_pb_1', en)
+        self.assertIn('tours_zen-journey_pb_1', ja)
+        self.assertIn('tours_zen-journey_pb_note', en)
+        self.assertIn('tours_zen-journey_pb_note', ja)
+
+    def test_rows_use_data_i18n_html_so_the_language_toggle_can_swap_them(self):
+        m = model({}, slug='zen-journey', price_rows=ZEN_ROWS)
+        html = bt.price_breakdown_block(m, {}, {})
+        self.assertIn('data-i18n-html="tours_zen-journey_pb_1"', html)
+
+    def test_sample_tour_shaped_rows_with_no_rate_title_do_not_crash(self):
+        # The staging-only sample tour has hand-written per-person priceRows
+        # with no rate titles.
+        m = model({}, slug='yokohama-harbour-evening', price_rows=[
+            {'category': 'Adult', 'min': 1, 'max': 6, 'amount': 18000, 'currency': 'JPY'},
+            {'category': 'Child', 'min': 1, 'max': 6, 'amount': 9000, 'currency': 'JPY'},
+        ])
+        html = bt.price_breakdown_block(m, {}, {})
+        self.assertIn('¥18,000', html)
+        self.assertIn('¥9,000', html)
+
+
+class TestWidgetBlockPlacesBreakdown(unittest.TestCase):
+    def test_breakdown_sits_above_the_widget_mount(self):
+        m = model({'en': 'CH/experience-calendar/1273232'}, price_rows=IKEBANA_ROWS)
+        price_html = bt.price_breakdown_block(m, {}, {})
+        html = bt.widget_block(m, price_html)
+        self.assertLess(html.index('price-breakdown'), html.index('bokunWidget'))
+
+    def test_breakdown_sits_above_the_missing_widget_placeholder_too(self):
+        m = model({}, price_rows=IKEBANA_ROWS)
+        price_html = bt.price_breakdown_block(m, {}, {})
+        html = bt.widget_block(m, price_html)
+        self.assertLess(html.index('price-breakdown'),
+                        html.index('Booking widget not yet configured'))
+
+    def test_no_price_html_leaves_widget_block_unchanged(self):
+        m = model({'en': 'CH/experience-calendar/1273232'})
+        self.assertNotIn('price-breakdown', bt.widget_block(m))
+
+
+class TestPrepTemplateUnaffected(unittest.TestCase):
+    """The in-preparation layout has no booking widget and must render no
+    price breakdown either (task 14)."""
+
+    def setUp(self):
+        self.tpl_full = bt.load_template('tour-detail.html')
+        self.tpl_prep = bt.load_template('tour-prep.html')
+
+    def test_unpriced_tour_renders_via_the_prep_template_with_no_breakdown(self):
+        m = bt.tour_model(record(priceEn='', priceJa='', priceRows=[]))
+        html = bt.render_detail(m, self.tpl_full, self.tpl_prep)
+        self.assertNotIn('price-breakdown', html)
+        self.assertNotIn('id="book"', html)
+
+    def test_priced_tour_with_a_real_breakdown_renders_via_the_full_template(self):
+        m = bt.tour_model(record(priceRows=IKEBANA_ROWS))
+        html = bt.render_detail(m, self.tpl_full, self.tpl_prep)
+        self.assertIn('price-breakdown', html)
+        self.assertIn('id="book"', html)
 
 
 if __name__ == '__main__':

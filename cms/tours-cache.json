@@ -172,7 +172,8 @@
     "max": 6,
     "amount": 40000,
     "currency": "JPY",
-    "per_booking": true
+    "per_booking": true,
+    "rate_title": "Group(1~6) Harf Day"
    },
    {
     "category": null,
@@ -180,7 +181,8 @@
     "max": 6,
     "amount": 70000,
     "currency": "JPY",
-    "per_booking": true
+    "per_booking": true,
+    "rate_title": "Group(1~6) Full Day"
    }
   ],
   "widgets": {

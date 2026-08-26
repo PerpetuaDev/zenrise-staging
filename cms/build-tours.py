@@ -332,11 +332,55 @@ WIDGET_LOADER = (WIDGET_HOST +
                  '/assets/javascripts/apps/build/BokunWidgetsLoader.js?bookingChannelUUID=')
 
 
-def widget_block(m):
+def price_breakdown_block(m, en, ja):
+    """The full price breakdown, placed above the widget mount inside the
+    booking aside, so a visitor reads it alongside the widget quoting a
+    different number for their party size (task 14; see spec section 3.5).
+
+    Renders nothing when the breakdown would only restate the headline
+    "from" price (bokun_price.has_price_breakdown). Feeds both languages
+    into the per-page i18n dicts like every other generated string, keyed
+    tours_<slug>_pb_<n>, so the block switches with the language toggle.
+
+    Replaces the PRICE_ROWS slot from an earlier task: format_full's output
+    had never been consumed by any template. There is now exactly one
+    mechanism (bokun_price.rows_full) behind both this block and
+    format_full.
+    """
+    sys.path.insert(0, os.path.dirname(HERE))
+    from cms import bokun_price
+    price_rows = m.get('price_rows') or []
+    if not bokun_price.has_price_breakdown(price_rows):
+        return ''
+    K = m['K']
+    en_rows = bokun_price.rows_full(price_rows, 'en')
+    ja_rows = bokun_price.rows_full(price_rows, 'ja')
+    items = []
+    for i, ((le, me), (lj, mj)) in enumerate(zip(en_rows, ja_rows), 1):
+        key = f'{K}_pb_{i}'
+        en[key] = f'<span class="pb-label">{esc(le)}</span><span class="pb-amt">{esc(me)}</span>'
+        ja[key] = f'<span class="pb-label">{esc(lj)}</span><span class="pb-amt">{esc(mj)}</span>'
+        items.append(f'              <li class="pb-row" data-i18n-html="{key}">'
+                     f'<span class="pb-label">{esc(le)}</span><span class="pb-amt">{esc(me)}</span></li>')
+    note_key = f'{K}_pb_note'
+    en[note_key] = 'Full price breakdown'
+    ja[note_key] = '料金の内訳'
+    return ('          <div class="price-breakdown">\n'
+            f'            <p class="pb-note" data-i18n="{note_key}">Full price breakdown</p>\n'
+            '            <ul class="pb-list">\n'
+            + '\n'.join(items) + '\n'
+            '            </ul>\n'
+            '          </div>\n')
+
+
+def widget_block(m, price_html=''):
     """Bokun calendar widget mount for a priced tour.
 
     The widget is a cross-origin iframe, so it cannot inherit our CSS or the
     Adobe kit; colour is configured in Bokun's panel. See spec section 3.6.
+
+    price_html (task 14) renders above the widget mount, inside the same
+    aside, in both the normal and the widget-not-yet-configured case.
     """
     if not m['full']:
         return ''
@@ -344,6 +388,7 @@ def widget_block(m):
     en = widgets.get('en')
     if not en:
         return (f'        <aside class="cal-missing" id="book" data-widget-missing="{m["id"]}">\n'
+                f'{price_html}'
                 f'          <p>Booking widget not yet configured for this tour.</p>\n'
                 f'        </aside>')
     channel = en.split('/')[0]
@@ -351,7 +396,7 @@ def widget_block(m):
     ja = widgets.get('ja')
     ja_attr = f' data-widget-ja="{WIDGET_HOST}/online-sales/{ja}"' if ja and ja != en else ''
     return f'''        <aside class="cal" id="book" data-screen-label="07 Tour detail — Booking">
-          <script type="text/javascript" src="{WIDGET_LOADER}{channel}" async></script>
+{price_html}          <script type="text/javascript" src="{WIDGET_LOADER}{channel}" async></script>
           <div class="bokunWidget" data-src="{src}"{ja_attr}></div>
           <noscript><a class="c-go" href="go/{m['id']}/">Book this experience&nbsp;&nbsp;→</a></noscript>
         </aside>'''
@@ -404,21 +449,13 @@ def render_detail(m, tpl_full, tpl_prep):
         en[K + '_lede'] = m['lede'][0]; ja[K + '_lede'] = m['lede'][1]
         slots['LEDE_EN'] = esc(m['lede'][0])
         slots['CHIPS_SECTION'] = chips_section(m, en, ja)
-        slots['PRICE_ROWS'] = '\n'.join(
-            f'          <li>{esc(r)}</li>' for r in _price_lines(m))
         slots['ROUTE_SECTION'] = route_section(m, en, ja)
-        slots['WIDGET_BLOCK'] = widget_block(m)
+        slots['WIDGET_BLOCK'] = widget_block(m, price_breakdown_block(m, en, ja))
         tpl = tpl_full
     else:
         tpl = tpl_prep
     slots['DICT_SCRIPT'] = dict_script(en, ja)
     return render(tpl, slots)
-
-
-def _price_lines(m):
-    sys.path.insert(0, os.path.dirname(HERE))
-    from cms import bokun_price
-    return bokun_price.format_full(m['price_rows'], 'en')
 
 
 def card(m):

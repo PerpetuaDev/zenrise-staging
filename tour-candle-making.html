@@ -94,6 +94,13 @@
   .cal .c-go { width: 100%; border: none; padding: 22px 28px; font-family: inherit; font-size: 18px; letter-spacing: 0.02em; color: var(--bg); background: var(--ink); cursor: pointer; }
   .cal .c-go:disabled { background: var(--ink-30); cursor: not-allowed; }
   .cal-missing { border: 1px solid var(--ink-12); background: var(--bg-2); padding: 40px; font-family: var(--sans); font-size: 15px; line-height: 1.5; color: var(--ink-60); }
+  /* ── price breakdown (above the booking widget) ── */
+  .price-breakdown { margin-bottom: 28px; padding-bottom: 24px; border-bottom: 1px solid var(--ink-12); }
+  .price-breakdown .pb-note { font-family: var(--sans); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-60); margin: 0 0 14px; }
+  .price-breakdown .pb-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+  .price-breakdown .pb-row { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; font-family: var(--sans); font-size: 15px; line-height: 1.4; color: var(--ink); }
+  .price-breakdown .pb-label { color: var(--ink-60); }
+  .price-breakdown .pb-amt { white-space: nowrap; }
   /* ── route ── */
   .route-wrap { padding: 115px 36px 0; }
   .route { border: 1px solid var(--ink-30); padding: 56px 56px 24px; }
@@ -156,6 +163,8 @@
     .chip-groups { grid-template-columns: 1fr; row-gap: 36px; }
     .chip { font-size: 14px; padding: 10px 16px; }
     .cal { position: static; padding: 24px 20px 22px; order: -1; }
+    .price-breakdown { margin-bottom: 20px; padding-bottom: 18px; }
+    .price-breakdown .pb-row { font-size: 14px; }
     .route-wrap { padding: 64px 20px 0; }
     .route { padding: 24px 18px 8px; }
     .route h2 { font-size: 34px; margin-bottom: 20px; }
@@ -252,6 +261,13 @@
       </div>
 
         <aside class="cal" id="book" data-screen-label="07 Tour detail — Booking">
+          <div class="price-breakdown">
+            <p class="pb-note" data-i18n="tours_candle-making_pb_note">Full price breakdown</p>
+            <ul class="pb-list">
+              <li class="pb-row" data-i18n-html="tours_candle-making_pb_1"><span class="pb-label">Adults, 1–2 guests</span><span class="pb-amt">¥29,000</span></li>
+              <li class="pb-row" data-i18n-html="tours_candle-making_pb_2"><span class="pb-label">Adults, 3–4 guests</span><span class="pb-amt">¥12,000</span></li>
+            </ul>
+          </div>
           <script type="text/javascript" src="https://widgets.bokun.io/assets/javascripts/apps/build/BokunWidgetsLoader.js?bookingChannelUUID=6db7a498-ed75-46ba-b4fa-6ab6abc239c0" async></script>
           <div class="bokunWidget" data-src="https://widgets.bokun.io/online-sales/6db7a498-ed75-46ba-b4fa-6ab6abc239c0/experience-calendar/1273235"></div>
           <noscript><a class="c-go" href="go/candle-making/">Book this experience&nbsp;&nbsp;→</a></noscript>
@@ -328,7 +344,7 @@
     setTimeout(fit, 600);
   })();
 </script>
-<script>window.ZENRISE_CMS_DICT = {"en":{"tours_candle-making_name":"A private Japanese candle-making experience in Kamakura.","tours_candle-making_sub":"Experience a private Japanese candle-making session with wax artist Meria, from Shonan Wa-Rōsoku. Held in Kamakura or Fujisawa.","tours_candle-making_hours":"1 hour","tours_candle-making_title":"A private Japanese candle-making experience in Kamakura. — Zenrise","tours_candle-making_eyebrow":"Tour No. 02","tours_candle-making_cap":"","tours_candle-making_cta_eyebrow":"from ¥12,000 per adult ・ 1–6 travelers","tours_candle-making_price":"from ¥12,000 per adult","tours_candle-making_lede":"Zenrise designs slow, considered private experiences around Kamakura and its surrounding towns. A private wa-rōsoku(Japanese candle) making session with Meria, a wax artist based in Shonan, arranged for up to four guests at a time, in a quiet space in Kamakura or Fujisawa. Every candle begins as a wick, dipped again and again into molten wax until it takes shape — entirely by hand. Natural materials from local farmers and growers — the character of Shonan, held in a single flame. The finished candle is yours to take home, a keepsake you'll return to each time you light it."},"ja":{"tours_candle-making_name":"A private Japanese candle-making experience in Kamakura.","tours_candle-making_sub":"Experience a private Japanese candle-making session with wax artist Meria, from Shonan Wa-Rōsoku. Held in Kamakura or Fujisawa.","tours_candle-making_hours":"1 時間","tours_candle-making_title":"A private Japanese candle-making experience in Kamakura. — Zenrise","tours_candle-making_eyebrow":"ツアー No. 02","tours_candle-making_cap":"","tours_candle-making_cta_eyebrow":"¥12,000〜（大人おひとり） ・ 1〜6名","tours_candle-making_price":"¥12,000〜（大人おひとり）","tours_candle-making_lede":"Zenrise designs slow, considered private experiences around Kamakura and its surrounding towns. A private wa-rōsoku(Japanese candle) making session with Meria, a wax artist based in Shonan, arranged for up to four guests at a time, in a quiet space in Kamakura or Fujisawa. Every candle begins as a wick, dipped again and again into molten wax until it takes shape — entirely by hand. Natural materials from local farmers and growers — the character of Shonan, held in a single flame. The finished candle is yours to take home, a keepsake you'll return to each time you light it."}};</script>
+<script>window.ZENRISE_CMS_DICT = {"en":{"tours_candle-making_name":"A private Japanese candle-making experience in Kamakura.","tours_candle-making_sub":"Experience a private Japanese candle-making session with wax artist Meria, from Shonan Wa-Rōsoku. Held in Kamakura or Fujisawa.","tours_candle-making_hours":"1 hour","tours_candle-making_title":"A private Japanese candle-making experience in Kamakura. — Zenrise","tours_candle-making_eyebrow":"Tour No. 02","tours_candle-making_cap":"","tours_candle-making_cta_eyebrow":"from ¥12,000 per adult ・ 1–6 travelers","tours_candle-making_price":"from ¥12,000 per adult","tours_candle-making_lede":"Zenrise designs slow, considered private experiences around Kamakura and its surrounding towns. A private wa-rōsoku(Japanese candle) making session with Meria, a wax artist based in Shonan, arranged for up to four guests at a time, in a quiet space in Kamakura or Fujisawa. Every candle begins as a wick, dipped again and again into molten wax until it takes shape — entirely by hand. Natural materials from local farmers and growers — the character of Shonan, held in a single flame. The finished candle is yours to take home, a keepsake you'll return to each time you light it.","tours_candle-making_pb_1":"<span class=\"pb-label\">Adults, 1–2 guests<\/span><span class=\"pb-amt\">¥29,000<\/span>","tours_candle-making_pb_2":"<span class=\"pb-label\">Adults, 3–4 guests<\/span><span class=\"pb-amt\">¥12,000<\/span>","tours_candle-making_pb_note":"Full price breakdown"},"ja":{"tours_candle-making_name":"A private Japanese candle-making experience in Kamakura.","tours_candle-making_sub":"Experience a private Japanese candle-making session with wax artist Meria, from Shonan Wa-Rōsoku. Held in Kamakura or Fujisawa.","tours_candle-making_hours":"1 時間","tours_candle-making_title":"A private Japanese candle-making experience in Kamakura. — Zenrise","tours_candle-making_eyebrow":"ツアー No. 02","tours_candle-making_cap":"","tours_candle-making_cta_eyebrow":"¥12,000〜（大人おひとり） ・ 1〜6名","tours_candle-making_price":"¥12,000〜（大人おひとり）","tours_candle-making_lede":"Zenrise designs slow, considered private experiences around Kamakura and its surrounding towns. A private wa-rōsoku(Japanese candle) making session with Meria, a wax artist based in Shonan, arranged for up to four guests at a time, in a quiet space in Kamakura or Fujisawa. Every candle begins as a wick, dipped again and again into molten wax until it takes shape — entirely by hand. Natural materials from local farmers and growers — the character of Shonan, held in a single flame. The finished candle is yours to take home, a keepsake you'll return to each time you light it.","tours_candle-making_pb_1":"<span class=\"pb-label\">大人, 1–2名<\/span><span class=\"pb-amt\">¥29,000<\/span>","tours_candle-making_pb_2":"<span class=\"pb-label\">大人, 3–4名<\/span><span class=\"pb-amt\">¥12,000<\/span>","tours_candle-making_pb_note":"料金の内訳"}};</script>
 <script src="lang.js"></script>
 </body>
 </html>
