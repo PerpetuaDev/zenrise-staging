@@ -432,7 +432,16 @@
   :lang(ja) .dest .panel .sub { line-height: 1.6; }
   .dest .panel .row { margin-top: auto; padding-top: 16px; }
   .dest .panel .go { display: inline-flex; align-items: baseline; font-size: 18px; letter-spacing: 0.01em; color: var(--ink); }
-  .dest .panel .go .u { padding-bottom: 3px; border-bottom: 1px solid var(--ink); }
+  /* Hover-reveal underline, matching .more-link and the hero card rather than the
+     persistent underline used by tours.html's bespoke CTA and the tour detail
+     "Book this tour". Triggered by card hover, like the arrow slide below. */
+  .dest .panel .go .u { position: relative; padding-bottom: 3px; }
+  .dest .panel .go .u::after {
+    content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+    height: 1px; background: var(--ink); opacity: 0;
+    transition: opacity 0.25s ease;
+  }
+  .dest:hover .panel .go .u::after { opacity: 1; }
   .dest .panel .go .ar { position: relative; right: 0; transition: right 0.3s ease; font-weight: 300; }
   .dest:hover .panel .go .ar { right: -6px; }
 
