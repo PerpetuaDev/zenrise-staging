@@ -396,6 +396,7 @@ def widget_block(m, price_html=''):
     ja = widgets.get('ja')
     ja_attr = f' data-widget-ja="{WIDGET_HOST}/online-sales/{ja}"' if ja and ja != en else ''
     return f'''        <aside class="cal" id="book" data-screen-label="07 Tour detail — Booking">
+          <h2 class="cal-h" data-i18n="td_book_heading">Book your spot</h2>
 {price_html}          <script type="text/javascript" src="{WIDGET_LOADER}{channel}" async></script>
           <div class="bokunWidget" data-src="{src}"{ja_attr}></div>
           <noscript><a class="c-go" href="go/{m['id']}/">Book this experience&nbsp;&nbsp;→</a></noscript>
