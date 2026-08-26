@@ -1,5 +1,5 @@
 import json, os, unittest
-from cms import bokun_source, tours_config
+from cms import bokun_source, bokun_text, tours_config
 
 DATA = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'data')
 IKEBANA, CANDLE, ZEN, SWORD = 1273232, 1273235, 1273194, 1275339
@@ -222,6 +222,80 @@ class TestJaReviewed(unittest.TestCase):
         for f in ('notIncludedEn', 'notIncludedJa', 'notAllowedEn', 'notAllowedJa',
                   'notSuitableEn', 'notSuitableJa'):
             self.assertEqual(rec[f], '', f)
+
+    def test_route_ja_is_populated_by_index_when_reviewed(self):
+        # The recorded ja fixtures predate localisation and are byte-identical
+        # to the English ones, so they can't exercise this path. Build a
+        # synthetic ja agendaItems list instead: same length as the English
+        # one (3 stops for ikebana), each with a distinguishable, entity-laden
+        # title/body so we can prove provenance and that cl() ran on it.
+        activity = load(f'activity-{IKEBANA}-EN.json')
+        en_items = activity['agendaItems']
+        self.assertEqual(len(en_items), 3)
+        ja_items = [
+            {'title': f'JA-SENTINEL title {i} &amp; more',
+             'body': f'JA-SENTINEL body {i} sentinel damage'}
+            for i in range(3)
+        ]
+        activity_ja = dict(activity, agendaItems=ja_items)
+        entry = dict(CFG['tours'][str(IKEBANA)], jaReviewed=True)
+        corr = {'sentinel damage': 'sentinel fixed'}
+        rec, warnings, raw_texts = bokun_source.to_record(
+            activity, activity_ja, [], entry, corr)
+
+        self.assertEqual(len(rec['route']), 3)
+        for i, stop in enumerate(rec['route']):
+            self.assertIn(f'JA-SENTINEL title {i}', stop['titleJa'])
+            self.assertNotIn('&amp;', stop['titleJa'])
+            self.assertIn('&', stop['titleJa'])  # entity decoded, not stripped
+            self.assertIn('sentinel fixed', stop['bodyJa'])
+            self.assertNotIn('sentinel damage', stop['bodyJa'])
+            self.assertNotEqual(stop['titleJa'], stop['title'])
+            self.assertNotEqual(stop['bodyJa'], stop['body'])
+
+        # A correction that only fires inside a route step's Japanese must
+        # still count as used, or the unused-corrections report would lie
+        # to an editor about it being safe to prune. See the English-side
+        # equivalent at test_a_correction_only_used_in_an_agenda_item_is_not_reported_as_prunable.
+        stale = bokun_text.unused_corrections(raw_texts, corr)
+        self.assertNotIn('sentinel damage', stale)
+
+    def test_route_ja_falls_back_when_the_ja_list_is_shorter(self):
+        # Only the first of three English stops gets a paired ja stop; the
+        # rest must mirror English rather than being left unset, raising, or
+        # paired against the wrong (nonexistent) stop.
+        activity = load(f'activity-{IKEBANA}-EN.json')
+        self.assertEqual(len(activity['agendaItems']), 3)
+        ja_items = [{'title': 'JA-SENTINEL title 0', 'body': 'JA-SENTINEL body 0'}]
+        activity_ja = dict(activity, agendaItems=ja_items)
+        entry = dict(CFG['tours'][str(IKEBANA)], jaReviewed=True)
+        rec, warnings, raw_texts = bokun_source.to_record(
+            activity, activity_ja, [], entry, {})
+
+        route = rec['route']
+        self.assertEqual(len(route), 3)
+        self.assertIn('JA-SENTINEL title 0', route[0]['titleJa'])
+        self.assertNotEqual(route[0]['titleJa'], route[0]['title'])
+        for stop in route[1:]:
+            self.assertEqual(stop['titleJa'], stop['title'])
+            self.assertEqual(stop['bodyJa'], stop['body'])
+
+    def test_route_ja_mirrors_english_until_jaReviewed(self):
+        # Same gate as title/sub/lede: even when the ja payload carries full
+        # agendaItems, an unreviewed tour must not show them.
+        activity = load(f'activity-{IKEBANA}-EN.json')
+        ja_items = [{'title': f'JA-SENTINEL title {i}', 'body': f'JA-SENTINEL body {i}'}
+                    for i in range(len(activity['agendaItems']))]
+        activity_ja = dict(activity, agendaItems=ja_items)
+        entry = dict(CFG['tours'][str(IKEBANA)], jaReviewed=False)
+        rec, warnings, raw_texts = bokun_source.to_record(
+            activity, activity_ja, [], entry, {})
+
+        for stop in rec['route']:
+            self.assertEqual(stop['titleJa'], stop['title'])
+            self.assertEqual(stop['bodyJa'], stop['body'])
+            self.assertNotIn('JA-SENTINEL', stop['titleJa'])
+            self.assertNotIn('JA-SENTINEL', stop['bodyJa'])
 
 
 if __name__ == '__main__':

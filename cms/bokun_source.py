@@ -77,9 +77,23 @@ def to_record(activity, activity_ja, availability, entry, corr):
     included = '\n'.join(parsed['included'])
     reviewed = bool(entry.get('jaReviewed'))
 
+    # agendaItems genuinely localise in Bokun (verified live on product
+    # 1273194), but only once a tour is jaReviewed do we trust that Japanese
+    # enough to show it — same gate as title/sub/lede below. Steps are paired
+    # by index; a Japanese list that is shorter (or absent) just leaves the
+    # remaining/ungated stops mirroring English, same as an untranslated stop.
     route = []
-    for item in activity.get('agendaItems') or []:
-        route.append({'title': cl(item.get('title')), 'body': cl(item.get('body'))})
+    agenda_ja = (activity_ja or {}).get('agendaItems') or []
+    for idx, item in enumerate(activity.get('agendaItems') or []):
+        title_en = cl(item.get('title'))
+        body_en = cl(item.get('body'))
+        item_ja = agenda_ja[idx] if reviewed and idx < len(agenda_ja) else None
+        title_ja = cl(item_ja.get('title')) if item_ja else title_en
+        body_ja = cl(item_ja.get('body')) if item_ja else body_en
+        route.append({
+            'title': title_en, 'body': body_en,
+            'titleJa': title_ja or title_en, 'bodyJa': body_ja or body_en,
+        })
 
     photos = activity.get('photos') or []
     cover = (photos[0].get('originalUrl') if photos else '') or ''
