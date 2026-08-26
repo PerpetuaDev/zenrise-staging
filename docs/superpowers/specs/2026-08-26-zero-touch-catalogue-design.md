@@ -54,7 +54,7 @@ none requires a code change.
 |---|---|---|
 | 1. Zenrise tier | `marketplaceVisibilityType == 'PRIVATE'` | a PUBLIC tour is never rendered |
 | 2. Published | member of the `Website` product list | omitted tours are invisible, silently and correctly |
-| 3. Translated | `'en' in languages` AND the English title differs from the Japanese | held back, with a warning naming the product |
+| 3. Sluggable | a slug is already known, OR one can be derived — see 3.3 | held back, with a warning naming the product |
 | 4. Complete | has a price, a cover photo and a description | held back, or renders the in-preparation layout — see 3.4 |
 
 ### 3.1 Tier — `PRIVATE`
@@ -85,10 +85,24 @@ breaks. Once it exists, the list wins. If the list exists but is empty, that is
 an explicit "publish nothing" and must be honoured, not treated as a fallback
 trigger.
 
-### 3.3 Translated — the slug precondition
+### 3.3 Sluggable — a slug precondition, NOT a translation gate
 
-Slugs derive from the English title (3.5), so a tour cannot be published before
-it has one. Detecting that reliably is subtler than it looks.
+Slugs derive from the English title (3.5), so a tour cannot be published before a
+slug can be established. But this gate applies ONLY when a slug has to be
+derived. A tour whose slug is already known — frozen in the registry, or set as a
+config override — publishes regardless of its translation state.
+
+That distinction matters and an earlier draft of this spec got it wrong. Measured
+on 2026-08-26, applying the translation test to publication would have held back
+three of the four live tours: Ikebana and candle-making have no `en` slot at all,
+and Swordsmithing has one that is not yet filled, so its titles match. All three
+have hand-picked slugs and render correctly today. Gating them on translation
+would have cut the site from four tours to one, for no benefit — their slugs are
+not in question.
+
+So: an existing slug satisfies this gate outright. Only a NEW tour, with no slug
+yet, must prove it has an English title before it can be published. Detecting
+that reliably is subtler than it looks.
 
 **Do not use "the slug came out empty" as the detector.** It only works if
 Japanese titles contain no Latin characters, and they frequently do. Measured:
@@ -108,9 +122,10 @@ slot, yet `?lang=EN` returns full English, because the authored English still si
 in the `JA_JP` base slot. That is harmless today and becomes wrong the moment the
 base is replaced with Japanese.
 
-A tour failing this gate is held back with a warning naming the product and the
-missing piece. The warning must be legible: a held-back tour reads as "the site is
-broken" otherwise.
+A NEW tour failing this test is held back with a warning naming the product and
+the missing piece. The warning must be legible: a held-back tour reads as "the
+site is broken" otherwise. An existing tour is never held back by this gate,
+because its slug is already settled.
 
 ### 3.4 Complete — the safety net
 
