@@ -86,10 +86,23 @@
   .body-grid { padding: 150px 36px 0; display: grid; grid-template-columns: 1fr 560px; column-gap: 96px; align-items: start; }
   .lede { font-family: var(--display); font-size: 36px; line-height: 1.4; max-width: 820px; margin: 0 0 110px; text-wrap: pretty; }
   :lang(ja) .lede { line-height: 1.7; }
-  .chip-groups { display: grid; grid-template-columns: 1fr 1fr; column-gap: 56px; row-gap: 48px; max-width: 900px; }
+  /* Task 18: a group with prose reads as sentences, which need a real line
+     length to stay readable -- the previous 2-up half-width grid (fine for
+     short chip labels) squeezed the eight "Good to know" sentences down to
+     ~420px lines and wrapped them just as tall as the bug it replaced.
+     Groups stack full-width instead, at the same 900px measure the rest of
+     the page's prose uses (see .terms-body .prose in terms.html). */
+  .chip-groups { display: flex; flex-direction: column; gap: 48px; max-width: 900px; }
   .grp .label { display: block; margin-bottom: 18px; }
   .grp .chips { display: flex; flex-wrap: wrap; gap: 10px; }
   .chip { font-family: var(--sans); font-size: 16px; letter-spacing: 0.01em; padding: 12px 20px; border: 1px solid var(--ink-30); color: var(--ink); }
+  /* ── prose: Bokun free-text sentences, not short labels, so they read as
+     a stacked list of practical notes -- hairline separators between items
+     only, no per-item box or border. */
+  .grp .chips + .prose { margin-top: 20px; }
+  .grp .prose { list-style: none; margin: 0; padding: 0; }
+  .grp .prose li { font-family: var(--sans); font-size: 16px; line-height: 1.65; color: var(--ink); padding: 14px 0; text-wrap: pretty; }
+  .grp .prose li + li { border-top: 1px solid var(--ink-12); }
   /* ── calendar ── */
   .cal { position: sticky; top: 40px; border: 1px solid var(--ink-30); padding: 40px 40px 36px; }
   .cal .c-go { width: 100%; border: none; padding: 22px 28px; font-family: inherit; font-size: 18px; letter-spacing: 0.02em; color: var(--bg); background: var(--ink); cursor: pointer; }
@@ -166,8 +179,9 @@
     .facts .v { font-size: 20px; }
     .body-grid { padding: 64px 20px 0; grid-template-columns: 1fr; row-gap: 56px; }
     .lede { font-size: 22px; margin-bottom: 44px; }
-    .chip-groups { grid-template-columns: 1fr; row-gap: 36px; }
+    .chip-groups { gap: 36px; }
     .chip { font-size: 14px; padding: 10px 16px; }
+    .grp .prose li { font-size: 14px; padding: 12px 0; }
     .cal { position: static; padding: 24px 20px 22px; order: -1; }
     .cal .cal-h { font-size: 22px; margin-bottom: 20px; }
     .price-breakdown { margin-bottom: 22px; padding: 16px 18px 18px; }

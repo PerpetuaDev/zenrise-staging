@@ -106,7 +106,8 @@ def tour_model(a):
          'bokun_id': a.get('bokunId'), 'widgets': a.get('widgets') or {},
          'price_rows': a.get('priceRows') or []}
     for f in ('title', 'sub', 'hours', 'coverCaption', 'price', 'lede',
-              'included', 'notIncluded', 'bring', 'know'):
+              'included', 'notIncluded', 'bring', 'know',
+              'includedChips', 'knowChips'):
         m[f] = ((a.get(f + 'En') or '').strip(), (a.get(f + 'Ja') or '').strip())
     m['area'] = a['area']
     m['length'] = a['length']
@@ -208,7 +209,14 @@ def common_slots(m):
 
 
 def chips(m, field, prefix, en, ja):
-    if not m[field][0]:
+    """Render <span class="chip"> items from m[field] (an (en, ja) tuple of
+    newline-joined short labels), or '' when there are none.
+
+    Chip content is Bokun's closed enum vocabulary run through
+    cms/bokun_labels.py (task 18) -- short labels, which is what this
+    component was built for. Free-text sentences go through prose() instead.
+    """
+    if field is None or not m[field][0]:
         return ''
     K = m['K']
     out = []
@@ -219,32 +227,63 @@ def chips(m, field, prefix, en, ja):
     return '\n'.join(out)
 
 
-CHIP_GROUPS = (('included', 'inc', 'td_included', 'Included'),
-               ('notIncluded', 'ninc', 'td_notinc', 'Not included'),
-               ('bring', 'brg', 'td_bring', 'What to bring'),
-               ('know', 'kno', 'td_know', 'Good to know'))
+def prose(m, field, prefix, en, ja):
+    """Render <li> items from m[field] (an (en, ja) tuple of newline-joined
+    sentences), or '' when there are none.
+
+    Prose is Bokun's free-text fields (task 18): full sentences, sometimes
+    long ones, so it renders as a stacked list with a hairline separator
+    between items rather than the bordered, padded box chips() draws --
+    see .grp .prose in tour-detail.html.
+    """
+    if not m[field][0]:
+        return ''
+    K = m['K']
+    out = []
+    for i, (e, j) in enumerate(zip(lines(m[field][0]), lines(m[field][1])), 1):
+        en[f'{K}_{prefix}_{i}'] = e
+        ja[f'{K}_{prefix}_{i}'] = j
+        out.append(f'              <li data-i18n="{K}_{prefix}_{i}">{esc(e)}</li>')
+    return '\n'.join(out)
+
+
+# Each group may carry chips (a closed Bokun enum, task 18), prose (Bokun
+# free text), or both -- chips first, prose second, mirroring Bokun's own
+# split between `inclusions`/`knowBeforeYouGoItems` and `included`/
+# `excluded`/`requirements`/`attention`. Only Included and Good to know have
+# an enum counterpart in Bokun; Not included and What to bring are text-only,
+# so their chip field/prefix are None and chips() is never called for them.
+# (prose field, prose prefix, chip field or None, chip prefix or None, i18n key, label)
+CHIP_GROUPS = (('included', 'incp', 'includedChips', 'inc', 'td_included', 'Included'),
+               ('notIncluded', 'nincp', None, None, 'td_notinc', 'Not included'),
+               ('bring', 'brgp', None, None, 'td_bring', 'What to bring'),
+               ('know', 'knop', 'knowChips', 'kno', 'td_know', 'Good to know'))
 
 
 def chips_section(m, en, ja):
     """The whole chip-groups block, or nothing.
 
-    The four groups map onto Bokun's own included/excluded/requirements/
-    attention fields (task 17), so a client filling those fields on a new
-    tour gets chips with no developer involvement. A tour that leaves a
-    field empty must not render that group's heading over nothing. See spec
-    3.4 and 3.4.1.
+    The four groups map onto Bokun's own inclusion fields (task 17, split
+    into chips + prose in task 18), so a client filling those fields on a
+    new tour gets chips and/or prose with no developer involvement. A tour
+    that leaves a group with neither must not render that group's heading
+    over nothing. See spec 3.4 and 3.4.1, and the task 18 brief.
     """
     groups = []
-    for field, prefix, key, label in CHIP_GROUPS:
-        body = chips(m, field, prefix, en, ja)
-        if not body.strip():
+    for prose_field, prose_prefix, chip_field, chip_prefix, key, label in CHIP_GROUPS:
+        chip_html = chips(m, chip_field, chip_prefix, en, ja)
+        prose_html = prose(m, prose_field, prose_prefix, en, ja)
+        if not chip_html.strip() and not prose_html.strip():
             continue
+        body = []
+        if chip_html.strip():
+            body.append('            <div class="chips">\n' + chip_html + '\n            </div>')
+        if prose_html.strip():
+            body.append('            <ul class="prose">\n' + prose_html + '\n            </ul>')
         groups.append(
             '          <div class="grp">\n'
             f'            <span class="label" data-i18n="{key}">{label}</span>\n'
-            '            <div class="chips">\n'
-            f'{body}\n'
-            '            </div>\n'
+            + '\n'.join(body) + '\n'
             '          </div>')
     if not groups:
         return ''

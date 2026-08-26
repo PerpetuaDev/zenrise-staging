@@ -23,6 +23,7 @@ def record(**over):
          'coverCaptionEn': '', 'coverCaptionJa': '',
          'includedEn': '', 'includedJa': '', 'notIncludedEn': '', 'notIncludedJa': '',
          'bringEn': '', 'bringJa': '', 'knowEn': '', 'knowJa': '',
+         'includedChipsEn': '', 'includedChipsJa': '', 'knowChipsEn': '', 'knowChipsJa': '',
          'route': []}
     r.update(over)
     return r
@@ -64,22 +65,60 @@ class TestThemes(unittest.TestCase):
 
 
 class TestChips(unittest.TestCase):
+    """chips() renders short-label content (task 18: Bokun's closed enum
+    vocabulary, read via includedChips/knowChips) as <span class="chip">."""
+
     def test_empty_chip_field_renders_nothing(self):
         m = bt.tour_model(record())
-        self.assertEqual(bt.chips(m, 'included', 'inc', {}, {}), '')
+        self.assertEqual(bt.chips(m, 'includedChips', 'inc', {}, {}), '')
+
+    def test_none_field_renders_nothing(self):
+        # Not included / What to bring have no enum counterpart in Bokun.
+        m = bt.tour_model(record())
+        self.assertEqual(bt.chips(m, None, None, {}, {}), '')
 
     def test_populated_chip_field_renders_items(self):
+        m = bt.tour_model(record(includedChipsEn='Bus fare\nTax',
+                                 includedChipsJa='バス運賃\n消費税'))
+        html = bt.chips(m, 'includedChips', 'inc', {}, {})
+        self.assertIn('Bus fare', html)
+        self.assertIn('Tax', html)
+        self.assertIn('class="chip"', html)
+
+
+class TestProse(unittest.TestCase):
+    """prose() renders free-text sentences (task 18: Bokun's included/
+    excluded/requirements/attention fields) as <li>, not <span class="chip">."""
+
+    def test_empty_prose_field_renders_nothing(self):
+        m = bt.tour_model(record())
+        self.assertEqual(bt.prose(m, 'included', 'incp', {}, {}), '')
+
+    def test_populated_prose_field_renders_list_items(self):
         m = bt.tour_model(record(includedEn='Guide\nEntrance fees',
                                  includedJa='Guide\nEntrance fees'))
-        html = bt.chips(m, 'included', 'inc', {}, {})
+        html = bt.prose(m, 'included', 'incp', {}, {})
         self.assertIn('Guide', html)
         self.assertIn('Entrance fees', html)
+        self.assertIn('<li ', html)
+        self.assertNotIn('class="chip"', html)
+
+    def test_dict_keys_use_the_prose_prefix(self):
+        m = bt.tour_model(record(includedEn='Guide', includedJa='ガイド'))
+        en, ja = {}, {}
+        bt.prose(m, 'included', 'incp', en, ja)
+        self.assertEqual(en['tours_ikebana-ichigo-ichie_incp_1'], 'Guide')
+        self.assertEqual(ja['tours_ikebana-ichigo-ichie_incp_1'], 'ガイド')
 
 
 class TestChipGroups(unittest.TestCase):
     """Task 17: the four fixed groups map onto Bokun's own included/excluded/
-    requirements/attention fields. notAllowed/notSuitable are retired --
-    no Bokun field ever fed them."""
+    requirements/attention fields. notAllowed/notSuitable are retired -- no
+    Bokun field ever fed them. Task 18: Included and Good to know also read
+    a closed enum vocabulary (inclusions/knowBeforeYouGoItems) as chips, with
+    the free-text field rendered as prose alongside; Not included and What
+    to bring have no enum counterpart in Bokun, so their chip field/prefix
+    are None."""
 
     def test_chip_groups_are_the_four_bokun_backed_fields(self):
         fields = [g[0] for g in bt.CHIP_GROUPS]
@@ -87,7 +126,7 @@ class TestChipGroups(unittest.TestCase):
 
     def test_retired_groups_are_gone(self):
         fields = [g[0] for g in bt.CHIP_GROUPS]
-        keys = [g[2] for g in bt.CHIP_GROUPS]
+        keys = [g[4] for g in bt.CHIP_GROUPS]
         self.assertNotIn('notAllowed', fields)
         self.assertNotIn('notSuitable', fields)
         self.assertNotIn('td_notallowed', keys)
@@ -95,34 +134,69 @@ class TestChipGroups(unittest.TestCase):
 
     def test_new_groups_carry_the_expected_labels_and_keys(self):
         by_field = {g[0]: g for g in bt.CHIP_GROUPS}
-        self.assertEqual(by_field['bring'][2:], ('td_bring', 'What to bring'))
-        self.assertEqual(by_field['know'][2:], ('td_know', 'Good to know'))
+        self.assertEqual(by_field['bring'][4:], ('td_bring', 'What to bring'))
+        self.assertEqual(by_field['know'][4:], ('td_know', 'Good to know'))
 
-    def test_chips_section_renders_all_four_groups_when_all_are_populated(self):
-        # Zen Journey's real shape once its four Bokun fields are populated:
-        # 9 / 4 / 1 / 8 items across included/notIncluded/bring/know.
+    def test_only_included_and_know_have_an_enum_chip_field(self):
+        by_field = {g[0]: g for g in bt.CHIP_GROUPS}
+        self.assertEqual(by_field['included'][2:4], ('includedChips', 'inc'))
+        self.assertEqual(by_field['know'][2:4], ('knowChips', 'kno'))
+        self.assertEqual(by_field['notIncluded'][2:4], (None, None))
+        self.assertEqual(by_field['bring'][2:4], (None, None))
+
+    def test_chips_section_renders_the_zen_journey_regression_anchor(self):
+        # Zen Journey's real shape (task 18 brief): Included = 5 chips + 9
+        # prose; Not included = 4 prose; What to bring = 1 prose; Good to
+        # know = 1 chip + 8 prose.
         m = bt.tour_model(record(
             id='zen-journey',
+            includedChipsEn='\n'.join(f'Chip {i}' for i in range(5)),
+            includedChipsJa='\n'.join(f'チップ {i}' for i in range(5)),
             includedEn='\n'.join(f'Inc {i}' for i in range(9)),
             includedJa='\n'.join(f'Inc {i}' for i in range(9)),
             notIncludedEn='\n'.join(f'Ninc {i}' for i in range(4)),
             notIncludedJa='\n'.join(f'Ninc {i}' for i in range(4)),
             bringEn='Bring 0', bringJa='Bring 0',
+            knowChipsEn='Know chip 0', knowChipsJa='知るチップ 0',
             knowEn='\n'.join(f'Know {i}' for i in range(8)),
             knowJa='\n'.join(f'Know {i}' for i in range(8))))
         en, ja = {}, {}
         html = bt.chips_section(m, en, ja)
         for key in ('td_included', 'td_notinc', 'td_bring', 'td_know'):
             self.assertIn(key, html)
-        self.assertEqual(sum(1 for v in en if v.startswith('tours_zen-journey_inc_')), 9)
-        self.assertEqual(sum(1 for v in en if v.startswith('tours_zen-journey_ninc_')), 4)
-        self.assertEqual(sum(1 for v in en if v.startswith('tours_zen-journey_brg_')), 1)
-        self.assertEqual(sum(1 for v in en if v.startswith('tours_zen-journey_kno_')), 8)
+        self.assertEqual(sum(1 for v in en if v.startswith('tours_zen-journey_inc_')), 5)
+        self.assertEqual(sum(1 for v in en if v.startswith('tours_zen-journey_incp_')), 9)
+        self.assertEqual(sum(1 for v in en if v.startswith('tours_zen-journey_nincp_')), 4)
+        self.assertEqual(sum(1 for v in en if v.startswith('tours_zen-journey_brgp_')), 1)
+        self.assertEqual(sum(1 for v in en if v.startswith('tours_zen-journey_kno_')), 1)
+        self.assertEqual(sum(1 for v in en if v.startswith('tours_zen-journey_knop_')), 8)
+        self.assertEqual(html.count('class="chip"'), 6)
+        self.assertEqual(html.count('<li '), 22)
 
-    def test_a_tour_with_all_four_fields_empty_renders_no_chip_groups(self):
-        # Candle-making and Swordsmithing: no chip groups at all.
+    def test_a_tour_with_all_fields_empty_renders_no_chip_groups(self):
+        # Candle-making and Swordsmithing: no groups at all.
         m = bt.tour_model(record())
         self.assertEqual(bt.chips_section(m, {}, {}), '')
+
+    def test_a_group_with_only_prose_renders_no_chips_markup(self):
+        # Not included / What to bring never have a chip field.
+        m = bt.tour_model(record(notIncludedEn='A', notIncludedJa='A'))
+        html = bt.chips_section(m, {}, {})
+        self.assertIn('<li ', html)
+        self.assertNotIn('class="chip"', html)
+
+    def test_a_group_with_only_chips_renders_no_prose_markup(self):
+        m = bt.tour_model(record(includedChipsEn='Bus fare', includedChipsJa='バス運賃'))
+        html = bt.chips_section(m, {}, {})
+        self.assertIn('class="chip"', html)
+        self.assertNotIn('<ul class="prose">', html)
+
+    def test_chips_render_before_prose_within_a_group(self):
+        m = bt.tour_model(record(
+            includedChipsEn='Bus fare', includedChipsJa='バス運賃',
+            includedEn='A guide', includedJa='ガイド'))
+        html = bt.chips_section(m, {}, {})
+        self.assertLess(html.index('class="chips"'), html.index('class="prose"'))
 
 
 class TestCardAndTile(unittest.TestCase):

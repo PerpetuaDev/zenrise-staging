@@ -6,18 +6,25 @@ Four keys are added: bokunId, widgets, priceRows, jaReviewed.
 """
 from datetime import datetime, timedelta, timezone
 
-from . import bokun_price, bokun_text, tours_config
+from . import bokun_labels, bokun_price, bokun_text, tours_config
 
 PAIR_FIELDS = ('title', 'sub', 'lede', 'coverCaption')
 
-# Bokun field -> record field for the four fixed chip groups (task 17), minus
-# 'included' which is handled separately below because it alone carries a
-# description-parsing fallback. These are structured fields (each holding a
-# <li> list), not open-ended vocabulary, so mapping them once gives every
-# future tour chips with no developer involvement. 'notAllowed'/'notSuitable'
-# are retired: no Bokun field ever fed them, so they could only ever render
-# empty.
-CHIP_FIELDS = (('excluded', 'notIncluded'), ('requirements', 'bring'), ('attention', 'know'))
+# Bokun field -> record field for the four fixed PROSE groups (task 17,
+# reclassified as prose rather than chips in task 18), minus 'included' which
+# is handled separately below because it alone carries a description-parsing
+# fallback. These are structured fields (each holding a <li> list) of full
+# sentences, not short labels, so they render as prose. 'notAllowed'/
+# 'notSuitable' are retired: no Bokun field ever fed them, so they could only
+# ever render empty.
+PROSE_FIELDS = (('excluded', 'notIncluded'), ('requirements', 'bring'), ('attention', 'know'))
+
+# Bokun field -> record field for the two groups that also carry a closed,
+# predefined enum vocabulary (task 18). Unlike PROSE_FIELDS above, these
+# values are API constants (SCREAMING_SNAKE), looked up in bokun_labels.py,
+# and rendered as real chips. 'excluded'/'requirements' have no enum
+# counterpart in Bokun at all -- their groups stay prose-only.
+ENUM_CHIP_FIELDS = (('inclusions', 'includedChips'), ('knowBeforeYouGoItems', 'knowChips'))
 
 
 def _reject_ota(ids, denylist):
@@ -95,11 +102,11 @@ def to_record(activity, activity_ja, availability, availability_ja, entry, corr)
         warnings.extend(sw_ja)
         parsed_ja_included = parsed_ja['included']
 
-    def chip_items(raw):
+    def prose_items(raw):
         return [x for x in (cl(li) for li in bokun_text.list_items(raw)) if x]
 
-    def chip_group(bokun_field, desc_fallback_en=(), desc_fallback_ja=()):
-        """(en, ja) newline-joined chip text for one of the four fixed groups.
+    def prose_group(bokun_field, desc_fallback_en=(), desc_fallback_ja=()):
+        """(en, ja) newline-joined PROSE text for one of the four fixed groups.
 
         Fallback order, and it matters (task 17): <li> items from the field
         itself; then, for the Included group only, the existing
@@ -109,7 +116,7 @@ def to_record(activity, activity_ja, availability, availability_ja, entry, corr)
         nothing at all stays empty -- chips_section already renders that as
         no group, and must keep doing so.
         """
-        en_items = chip_items(activity.get(bokun_field))
+        en_items = prose_items(activity.get(bokun_field))
         if not en_items and desc_fallback_en:
             en_items = list(desc_fallback_en)
         if not en_items:
@@ -118,7 +125,7 @@ def to_record(activity, activity_ja, availability, availability_ja, entry, corr)
         en_joined = '\n'.join(en_items)
 
         if reviewed:
-            ja_items = chip_items((activity_ja or {}).get(bokun_field))
+            ja_items = prose_items((activity_ja or {}).get(bokun_field))
             if not ja_items and desc_fallback_ja:
                 ja_items = list(desc_fallback_ja)
             if not ja_items:
@@ -126,16 +133,40 @@ def to_record(activity, activity_ja, availability, availability_ja, entry, corr)
                 ja_items = [plain_ja] if plain_ja else []
             ja_joined = '\n'.join(ja_items) or en_joined
         else:
-            # Bokun's Japanese chip content is no more trusted, pre-review,
+            # Bokun's Japanese prose content is no more trusted, pre-review,
             # than any other Japanese field -- mirror English exactly as
             # title/sub/lede do above.
             ja_joined = en_joined
         return en_joined, ja_joined
 
-    chips = {'included': chip_group(
+    prose = {'included': prose_group(
         'included', desc_fallback_en=parsed['included'], desc_fallback_ja=parsed_ja_included)}
-    for bokun_field, rec_field in CHIP_FIELDS:
-        chips[rec_field] = chip_group(bokun_field)
+    for bokun_field, rec_field in PROSE_FIELDS:
+        prose[rec_field] = prose_group(bokun_field)
+
+    # Predefined enum chip sets (task 18): a closed vocabulary of API
+    # constants, unrelated to the free-text fields above. Bokun's own widget
+    # renders these as chips using its own internal wording; through the API
+    # we only get the constant, so cms/bokun_labels.py supplies the wording
+    # for both languages -- unconditionally, not gated by jaReviewed, because
+    # this is our own copy, not Bokun content (see point 4, task 18 brief).
+    # An unmapped value must never reach the page as a raw SCREAMING_SNAKE
+    # string: it is dropped and reported as a warning instead.
+    def enum_chip_group(api_field):
+        en_items, ja_items = [], []
+        for value in activity.get(api_field) or []:
+            lbl = bokun_labels.label(value)
+            if lbl is None:
+                warnings.append(
+                    f'unmapped {api_field} value {value!r}; add a label to '
+                    f'cms/bokun_labels.py or it will not render on the page.')
+                continue
+            en_items.append(lbl[0])
+            ja_items.append(lbl[1])
+        return '\n'.join(en_items), '\n'.join(ja_items)
+
+    enum_chips = {rec_field: enum_chip_group(api_field)
+                  for api_field, rec_field in ENUM_CHIP_FIELDS}
 
     # agendaItems genuinely localise in Bokun (verified live on product
     # 1273194), but only once a tour is jaReviewed do we trust that Japanese
@@ -189,10 +220,14 @@ def to_record(activity, activity_ja, availability, availability_ja, entry, corr)
         'widgets': entry.get('widgets') or {},
         'jaReviewed': reviewed,
         'route': route,
-        'includedEn': chips['included'][0], 'includedJa': chips['included'][1],
-        'notIncludedEn': chips['notIncluded'][0], 'notIncludedJa': chips['notIncluded'][1],
-        'bringEn': chips['bring'][0], 'bringJa': chips['bring'][1],
-        'knowEn': chips['know'][0], 'knowJa': chips['know'][1],
+        'includedEn': prose['included'][0], 'includedJa': prose['included'][1],
+        'notIncludedEn': prose['notIncluded'][0], 'notIncludedJa': prose['notIncluded'][1],
+        'bringEn': prose['bring'][0], 'bringJa': prose['bring'][1],
+        'knowEn': prose['know'][0], 'knowJa': prose['know'][1],
+        'includedChipsEn': enum_chips['includedChips'][0],
+        'includedChipsJa': enum_chips['includedChips'][1],
+        'knowChipsEn': enum_chips['knowChips'][0],
+        'knowChipsJa': enum_chips['knowChips'][1],
     }
 
     en_values = {'title': title, 'sub': sub, 'lede': lede, 'coverCaption': cover_cap}

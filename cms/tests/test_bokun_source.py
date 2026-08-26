@@ -165,11 +165,19 @@ class TestRecords(unittest.TestCase):
             self.assertEqual(self.by_slug[slug]['includedEn'], '', slug)
 
     def test_fields_bokun_has_no_data_for_stay_empty(self):
-        # The fixtures predate the structured chip fields (task 17): none of
+        # The fixtures predate the structured prose fields (task 17): none of
         # excluded/requirements/attention exist on these recorded activities,
         # so their record fields stay empty exactly as before.
         for r in self.records:
             for f in ('notIncludedEn', 'bringEn', 'knowEn'):
+                self.assertEqual(r[f], '', f)
+
+    def test_fixtures_predate_the_enum_chip_fields_too(self):
+        # The recorded fixtures also predate `inclusions`/
+        # `knowBeforeYouGoItems` (task 18): neither exists on these
+        # activities, so the enum chip record fields stay empty.
+        for r in self.records:
+            for f in ('includedChipsEn', 'includedChipsJa', 'knowChipsEn', 'knowChipsJa'):
                 self.assertEqual(r[f], '', f)
 
     def test_route_comes_from_agenda_items_and_is_empty_where_there_are_none(self):
@@ -201,7 +209,8 @@ class TestRecords(unittest.TestCase):
 
 
 class TestChipFields(unittest.TestCase):
-    """The four fixed Bokun fields that feed chip groups (task 17):
+    """The four fixed Bokun fields that feed the four PROSE groups (task 17,
+    reclassified as prose rather than chips in task 18):
     included/excluded/requirements/attention. The recorded fixtures predate
     these fields entirely (they simply don't exist on the recorded
     activities), so every shape below is built synthetically, matching what
@@ -304,6 +313,89 @@ class TestChipFields(unittest.TestCase):
         entry = dict(CFG['tours'][str(ZEN)], jaReviewed=True)
         rec, *_ = bokun_source.to_record(activity, activity_ja, [], [], entry, {})
         self.assertEqual(rec['includedJa'], 'Guide (EN)')
+
+
+class TestEnumChipFields(unittest.TestCase):
+    """Task 18: `inclusions` and `knowBeforeYouGoItems` are closed Bokun enum
+    vocabularies (lists of SCREAMING_SNAKE constants), mapped to real chip
+    labels via cms/bokun_labels.py. The recorded fixtures predate both
+    fields (verified empty live for all four real tours in the fixture
+    window), so every shape here is built synthetically, matching what was
+    verified live on product 1273194 -- see the task-18 brief."""
+
+    def _activity(self, pid, **fields):
+        return dict(load(f'activity-{pid}-EN.json'), **fields)
+
+    def test_zen_journey_shape_maps_five_inclusions_to_five_chips(self):
+        # Verified live on 1273194: BUS_FARE, PARKING_FEES, FOOD_AND_DRINKS,
+        # ENTRY_OR_ADMISSION_FEE, GOODS_AND_SERVICES_TAX.
+        activity = self._activity(
+            ZEN, inclusions=['BUS_FARE', 'PARKING_FEES', 'FOOD_AND_DRINKS',
+                              'ENTRY_OR_ADMISSION_FEE', 'GOODS_AND_SERVICES_TAX'])
+        entry = CFG['tours'][str(ZEN)]
+        rec, warnings, _ = bokun_source.to_record(activity, activity, [], [], entry, {})
+        self.assertEqual(rec['includedChipsEn'].split('\n'),
+                         ['Bus fare', 'Parking fees', 'Food & drinks',
+                          'Entry & admission fees', 'Tax'])
+        self.assertEqual(rec['includedChipsJa'].split('\n'),
+                         ['バス運賃', '駐車料金', '飲食', '拝観料・入場料', '消費税'])
+        # No unmapped-value warning for any of these five known values (the
+        # fixture's own pre-existing spacing-damage warnings, unrelated to
+        # this field, are not asserted against here).
+        self.assertFalse(any('unmapped' in w for w in warnings), warnings)
+
+    def test_zen_journey_shape_maps_one_know_before_you_go_item_to_one_chip(self):
+        activity = self._activity(ZEN, knowBeforeYouGoItems=['PUBLIC_TRANSPORTATION_NEARBY'])
+        entry = CFG['tours'][str(ZEN)]
+        rec, *_ = bokun_source.to_record(activity, activity, [], [], entry, {})
+        self.assertEqual(rec['knowChipsEn'], 'Public transport nearby')
+        self.assertEqual(rec['knowChipsJa'], '公共交通機関が近い')
+
+    def test_no_enum_values_at_all_stays_empty(self):
+        # Ikebana, Candle-making, Swordsmithing: verified empty live.
+        activity = self._activity(IKEBANA, inclusions=[], knowBeforeYouGoItems=[])
+        entry = CFG['tours'][str(IKEBANA)]
+        rec, *_ = bokun_source.to_record(activity, activity, [], [], entry, {})
+        self.assertEqual(rec['includedChipsEn'], '')
+        self.assertEqual(rec['knowChipsEn'], '')
+
+    def test_enum_chip_labels_are_not_gated_by_ja_reviewed(self):
+        # ja_differs=False for these -- they are our own wording (task 18
+        # point 4), not Bokun content, so Japanese must be present even on
+        # an unreviewed tour.
+        activity = self._activity(ZEN, inclusions=['BUS_FARE'])
+        entry = dict(CFG['tours'][str(ZEN)], jaReviewed=False)
+        rec, *_ = bokun_source.to_record(activity, activity, [], [], entry, {})
+        self.assertEqual(rec['includedChipsEn'], 'Bus fare')
+        self.assertEqual(rec['includedChipsJa'], 'バス運賃')
+
+    def test_unmapped_enum_value_is_dropped_and_warned_not_rendered_raw(self):
+        activity = self._activity(ZEN, inclusions=['BUS_FARE', 'SOME_NEW_ENUM_VALUE'])
+        entry = CFG['tours'][str(ZEN)]
+        rec, warnings, _ = bokun_source.to_record(activity, activity, [], [], entry, {})
+        # The unmapped value never reaches the page as a raw constant.
+        self.assertEqual(rec['includedChipsEn'], 'Bus fare')
+        self.assertNotIn('SOME_NEW_ENUM_VALUE', rec['includedChipsEn'])
+        self.assertNotIn('SOME_NEW_ENUM_VALUE', rec['includedChipsJa'])
+        self.assertTrue(any('SOME_NEW_ENUM_VALUE' in w and 'inclusions' in w for w in warnings),
+                        warnings)
+
+    def test_unmapped_know_before_you_go_value_is_dropped_and_warned(self):
+        activity = self._activity(ZEN, knowBeforeYouGoItems=['SOME_OTHER_ENUM'])
+        entry = CFG['tours'][str(ZEN)]
+        rec, warnings, _ = bokun_source.to_record(activity, activity, [], [], entry, {})
+        self.assertEqual(rec['knowChipsEn'], '')
+        self.assertTrue(
+            any('SOME_OTHER_ENUM' in w and 'knowBeforeYouGoItems' in w for w in warnings),
+            warnings)
+
+    def test_enum_values_are_not_run_through_corrections_or_tracked_as_raw_text(self):
+        # Enum constants are API vocabulary, not damaged human text -- they
+        # must not appear in the unused-corrections ledger's input.
+        activity = self._activity(ZEN, inclusions=['BUS_FARE'])
+        entry = CFG['tours'][str(ZEN)]
+        rec, warnings, raw_texts = bokun_source.to_record(activity, activity, [], [], entry, {})
+        self.assertNotIn('BUS_FARE', ' '.join(raw_texts))
 
 
 class TestJaReviewed(unittest.TestCase):

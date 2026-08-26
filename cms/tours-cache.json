@@ -99,6 +99,10 @@
   "bringJa": "",
   "knowEn": "",
   "knowJa": "",
+  "includedChipsEn": "",
+  "includedChipsJa": "",
+  "knowChipsEn": "",
+  "knowChipsJa": "",
   "titleEn": "Ikebana Experience , “Ichigo Ichie”-KAMAKURA",
   "titleJa": "Ikebana Experience , “Ichigo Ichie”-KAMAKURA",
   "subEn": "An exclusive, 90-minute private Ikebana experience in Kamakura guided by master artist Koen Yokoi, featuring hands-on flower arranging, tea, and seasonal sweets.",
@@ -169,6 +173,10 @@
   "bringJa": "",
   "knowEn": "",
   "knowJa": "",
+  "includedChipsEn": "",
+  "includedChipsJa": "",
+  "knowChipsEn": "",
+  "knowChipsJa": "",
   "titleEn": "A private Japanese candle-making experience in Kamakura.",
   "titleJa": "A private Japanese candle-making experience in Kamakura.",
   "subEn": "Experience a private Japanese candle-making session with wax artist Meria, from Shonan Wa-Rōsoku. Held in Kamakura or Fujisawa.",
@@ -205,7 +213,7 @@
     "currency": "JPY",
     "per_booking": true,
     "rate_title": "Group(1~6) Half Day",
-    "rate_title_ja": "Group(1~6) Half Day"
+    "rate_title_ja": null
    },
    {
     "category": null,
@@ -216,7 +224,7 @@
     "currency": "JPY",
     "per_booking": true,
     "rate_title": "Group(1~6) Full Day",
-    "rate_title_ja": "Group(1~6) Full Day"
+    "rate_title_ja": null
    }
   ],
   "widgets": {
@@ -257,6 +265,10 @@
   "bringJa": "歩きやすい靴。石段のある寺院がございますので、履き慣れた靴がおすすめです。",
   "knowEn": "There are temples with stone steps, so please wear shoes that are easy to walk in.\nThe meeting place is Kita-Kamakura station. If you wish to be picked up from a hotel, Tokyo, etc., we will make a separate estimate according to your departure location.\nPlease let us know your lunch preferences and dietary restrictions at the time of reservation. The listed menu is an example. Nagashi somen is only seasonally from April to October.\nArrangement fees may vary drastically depending on the content of the lunch. After asking about the number of people and the place of departure, we will inform you about the official price.\nThe tour fee includes eco-tour insurance for day trips only, but accidents before or after dissolution, worsening of pre-existing medical conditions, and loss, theft, or damage to personal items are not covered. We strongly recommend that international participants take out their own travel insurance before departure.\nFor reservations made less than 7 days before the tour date, bank transfers cannot be used, and payment is made by credit card.\nCancellation fees are free until 11 days before the tour date, and thereafter will be charged based on standard travel business terms and conditions. Even if you cancel on the day before departure, you will be billed in full for the individual costs that have already been arranged.\nIf we cancel the tour due to bad weather or other unavoidable circumstances, we will give you a full refund.",
   "knowJa": "石段のある寺院がございますので、歩きやすい靴でお越しください。\n集合場所は北鎌倉駅です。ホテル・都内などからの送迎をご希望の場合は、出発地に応じて別途お見積りいたします。\n昼食のご希望・食事制限は、ご予約時にお知らせください。掲載のメニューは一例です。流しそうめんは4月〜10月の季節限定となります。\n手配料は昼食の内容により大幅に変動する場合がございます。人数・出発地を伺った上で、正式な金額をご案内いたします。\nツアー料金には日帰りツアー専用のエコツアー保険が含まれますが、集合前・解散後の事故、既往症の悪化、身の回り品の紛失・盗難・破損は対象外です。海外からご参加のお客様は、ご出発前にご自身で旅行保険にご加入いただくことを強くおすすめいたします。\n催行日の7日前を切ってのご予約は銀行振込をご利用いただけず、クレジットカードでのお支払いとなります。\nキャンセル料は催行日の11日前まで無料、以降は標準旅行業約款に基づき発生いたします。当日出発前のキャンセルであっても、既にお手配済みの個別費用は全額ご請求いたします。\n悪天候その他やむを得ない事情により当社がツアーを中止する場合は、全額返金いたします。",
+  "includedChipsEn": "Bus fare\nParking fees\nFood & drinks\nEntry & admission fees\nTax",
+  "includedChipsJa": "バス運賃\n駐車料金\n飲食\n拝観料・入場料\n消費税",
+  "knowChipsEn": "Public transport nearby",
+  "knowChipsJa": "公共交通機関が近い",
   "titleEn": "The Zen Journey",
   "titleJa": "禅の旅",
   "subEn": "Experience the 850 year history of Kamakura and the essence of Zen. Japanese garden, zazen, matcha.",
@@ -347,6 +359,10 @@
   "bringJa": "",
   "knowEn": "",
   "knowJa": "",
+  "includedChipsEn": "Bus fare\nParking fees\nFood & drinks\nEntry & admission fees\nTax",
+  "includedChipsJa": "バス運賃\n駐車料金\n飲食\n拝観料・入場料\n消費税",
+  "knowChipsEn": "Public transport nearby",
+  "knowChipsJa": "公共交通機関が近い",
   "titleEn": "Swordsmithing, “The Smith’s Flame”",
   "titleJa": "Swordsmithing, “The Smith’s Flame”",
   "subEn": "The Smith’s Flame 24TH- GENERATION SMITH · LINEAGE OF MASAMUNE · KAMAKURA",
