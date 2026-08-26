@@ -473,6 +473,13 @@ def main():
     contents, cfg = fetch_tours(source)
     models = [tour_model(a) for a in contents]
 
+    # Widget paths are configuration, not Bokun data, but they ride along inside
+    # each cached record. Re-read them from config here so adding a widget takes
+    # effect on a `--source cache` build instead of needing a live refetch.
+    for m in models:
+        entry = (cfg.get('tours') or {}).get(str(m['bokun_id'])) or {}
+        m['widgets'] = entry.get('widgets') or {}
+
     tpl_full = load_template('tour-detail.html')
     tpl_prep = load_template('tour-prep.html')
 
