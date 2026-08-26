@@ -213,7 +213,7 @@
     "currency": "JPY",
     "per_booking": true,
     "rate_title": "Group(1~6) Half Day",
-    "rate_title_ja": null
+    "rate_title_ja": "Group(1~6) Half Day"
    },
    {
     "category": null,
@@ -224,7 +224,7 @@
     "currency": "JPY",
     "per_booking": true,
     "rate_title": "Group(1~6) Full Day",
-    "rate_title_ja": null
+    "rate_title_ja": "Group(1~6) Full Day"
    }
   ],
   "widgets": {
@@ -359,10 +359,10 @@
   "bringJa": "",
   "knowEn": "",
   "knowJa": "",
-  "includedChipsEn": "Bus fare\nParking fees\nFood & drinks\nEntry & admission fees\nTax",
-  "includedChipsJa": "バス運賃\n駐車料金\n飲食\n拝観料・入場料\n消費税",
-  "knowChipsEn": "Public transport nearby",
-  "knowChipsJa": "公共交通機関が近い",
+  "includedChipsEn": "",
+  "includedChipsJa": "",
+  "knowChipsEn": "",
+  "knowChipsJa": "",
   "titleEn": "Swordsmithing, “The Smith’s Flame”",
   "titleJa": "Swordsmithing, “The Smith’s Flame”",
   "subEn": "The Smith’s Flame 24TH- GENERATION SMITH · LINEAGE OF MASAMUNE · KAMAKURA",

@@ -40,10 +40,12 @@ _INCLUSIONS = {
 # ── know before you go ─────────────────────────────────────────────────────
 # Bokun's "Traveller information" checklist. All 10 constants confirmed live.
 _KNOW_BEFORE = {
-    # Bokun's own panel labels this "Service animals allowed", but the constant
-    # is broader -- animals OR pets. Worded to match the constant rather than
-    # the panel, since the page should not promise more than the data means.
-    'ANIMALS_OR_PETS_ALLOWED': ('Animals or pets allowed', '動物・ペット同伴可'),
+    # The constant reads broader than the panel's label, but per the user the
+    # intent is unambiguous: assistance animals for disabled travellers, which
+    # is what Bokun's panel calls it. 補助犬 is the term Japanese law uses for
+    # service dogs -- guide, mobility-assistance and hearing dogs alike -- so it
+    # carries the meaning precisely, where 動物・ペット would not.
+    'ANIMALS_OR_PETS_ALLOWED': ('Service animals allowed', '補助犬同伴可'),
     'DRESS_CODE': ('Dress code applies', '服装の指定あり'),
     'INFANTS_MUST_SIT_ON_LAPS': ('Infants sit on your lap', '幼児は膝の上'),
     'INFANT_SEATS_AVAILABLE': ('Infant seats available', 'ベビーシートあり'),
