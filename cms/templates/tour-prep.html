@@ -117,20 +117,6 @@
   .cal .c-sum .s-price { font-family: var(--display); font-size: 26px; }
   .cal .c-go { width: 100%; border: none; padding: 22px 28px; font-family: inherit; font-size: 18px; letter-spacing: 0.02em; color: var(--bg); background: var(--ink); cursor: pointer; }
   .cal .c-go:disabled { background: var(--ink-30); cursor: not-allowed; }
-  /* ── route ── */
-  .route-wrap { padding: 115px 36px 0; }
-  .route { border: 1px solid var(--ink-30); padding: 56px 56px 24px; }
-  .route h2 { font-family: var(--display); font-weight: 400; font-size: 56px; line-height: 0.98; letter-spacing: -0.005em; margin: 0 0 40px; }
-  .r-row { display: grid; grid-template-columns: 200px 110px 1fr 140px; column-gap: 40px; align-items: center; padding: 24px 0; border-top: 1px solid var(--ink-12); }
-  .r-row .r-pic { position: relative; height: 130px; background: var(--bg-3) center / cover no-repeat; overflow: hidden; }
-  .r-row .r-pic .rn { position: absolute; left: 12px; top: 10px; font-family: var(--sans); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.72); }
-  .r-row .r-pic .stripes { position: absolute; inset: 0; background: #6E7F76; }
-  .r-row .r-pic .stripes::after { content: ''; position: absolute; inset: 0; background-image: repeating-linear-gradient(135deg, rgba(255,255,255,0.07) 0 1px, transparent 1px 16px); }
-  .r-row .r-time { font-family: var(--sans); font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-60); }
-  .r-row h3 { font-family: var(--display); font-weight: 400; font-size: 32px; line-height: 1.15; letter-spacing: -0.005em; margin: 0 0 8px; }
-  :lang(ja) .r-row h3 { line-height: 1.35; }
-  .r-row .r-note { font-size: 17px; line-height: 1.5; color: var(--ink-60); margin: 0; max-width: 620px; text-wrap: pretty; }
-  .r-row .r-dist { text-align: right; font-family: var(--sans); font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-40); }
   /* ── in preparation ── */
   .prep { padding: 150px 36px 0; display: grid; grid-template-columns: 1fr 3fr; column-gap: 96px; align-items: start; }
   .prep .p1 { font-family: var(--display); font-size: 36px; line-height: 1.4; margin: 0 0 24px; max-width: 900px; text-wrap: pretty; }
@@ -189,16 +175,6 @@
     .chip { font-size: 14px; padding: 10px 16px; }
     .cal { position: static; padding: 24px 20px 22px; order: -1; }
     .cal .c-days .day { height: 44px; font-size: 15px; }
-    .route-wrap { padding: 64px 20px 0; }
-    .route { padding: 24px 18px 8px; }
-    .route h2 { font-size: 34px; margin-bottom: 20px; }
-    .r-row { grid-template-columns: 96px 1fr; grid-template-rows: auto auto; column-gap: 16px; row-gap: 6px; padding: 16px 0; }
-    .r-row .r-pic { height: 72px; grid-row: 1 / 3; }
-    .r-row .r-pic .rn { left: 8px; top: 6px; font-size: 9px; }
-    .r-row .r-time { font-size: 11px; }
-    .r-row h3 { font-size: 20px; margin-bottom: 4px; }
-    .r-row .r-note { font-size: 14px; }
-    .r-row .r-dist { display: none; }
     .prep { padding: 64px 20px 0; grid-template-columns: 1fr; row-gap: 20px; }
     .prep .p1 { font-size: 22px; }
     .book-cta { padding: 64px 20px 0; }

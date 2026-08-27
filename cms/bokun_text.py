@@ -19,6 +19,10 @@ _SHORT_WORDS = {
     'a', 'i', 'am', 'an', 'as', 'at', 'be', 'by', 'do', 'go', 'he', 'hi', 'if',
     'in', 'is', 'it', 'me', 'my', 'no', 'of', 'oh', 'ok', 'on', 'or', 'so',
     'to', 'up', 'us', 'we',
+    # honorifics: "with Mr Tanaka" is a two-letter token between two words and
+    # otherwise reads as spacing damage. Deliberately not 'st' -- that would
+    # mask real damage such as "fir st class".
+    'mr', 'ms', 'dr',
 }
 
 # word, stray 1-2 letter token, word
@@ -50,7 +54,12 @@ def _warn(text):
 
 def clean(raw, corrections=None):
     text = _decode(raw)
-    text = _BLOCK.sub(' ', text)
+    # A newline, not a space: _strip_pdf() below works per line, so substituting
+    # a space here would hide the "PDF" debris at an HTML block boundary and
+    # strip it only where the source happened to carry a literal newline. The
+    # newlines collapse back to spaces at the end of this function, so
+    # single-line output is unchanged.
+    text = _BLOCK.sub('\n', text)
     text = _TAG.sub(' ', text)
     text = _apply_corrections(text, corrections)
     text = '\n'.join(_strip_pdf(l) for l in text.split('\n'))

@@ -17,6 +17,13 @@ class TestClean(unittest.TestCase):
         text, _ = bokun_text.clean('<p>Kamakura   has\n\nkept</p><p>its temples</p>')
         self.assertEqual(text, 'Kamakura has kept its temples')
 
+    def test_an_honorific_is_not_reported_as_spacing_damage(self):
+        self.assertEqual(bokun_text.clean('A walk with Mr Tanaka.')[1], [])
+        self.assertEqual(bokun_text.clean('Led by Dr Sato.')[1], [])
+
+    def test_real_spacing_damage_is_still_reported(self):
+        self.assertTrue(bokun_text.clean('a wa l ked path')[1])
+
     def test_applies_corrections(self):
         text, _ = bokun_text.clean('three templ e grounds wa l ked slowly', CORR)
         self.assertEqual(text, 'three temple grounds walked slowly')
@@ -83,6 +90,19 @@ class TestPdfArtifact(unittest.TestCase):
     def test_keeps_pdf_used_as_a_real_word(self):
         text, _ = bokun_text.clean('Download the PDF guide before arriving.')
         self.assertIn('PDF guide', text)
+
+    def test_strips_pdf_at_an_html_block_boundary(self):
+        # clean() used to substitute a space for block tags while its per-line
+        # PDF strip needs a newline, so debris survived wherever the source
+        # carried markup rather than a literal newline -- which is every field
+        # Bokun actually returns.
+        text, _ = bokun_text.clean('<li>Tour insurancePDF</li><li>Guide</li>')
+        self.assertNotIn('PDF', text)
+
+    def test_a_block_boundary_still_reads_as_one_line(self):
+        # the newline substitution must not leak into the single-line output
+        text, _ = bokun_text.clean('<p>One.</p><p>Two.</p>')
+        self.assertEqual(text, 'One. Two.')
 
 
 class TestSections(unittest.TestCase):
