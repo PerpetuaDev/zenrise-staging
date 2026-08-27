@@ -116,12 +116,18 @@
     color: rgb(41 65 56) !important;
 }
 
-/* Section headings: Participants / Choose a date / Booking Summary */
-.ParticipantHeader,
-.CalendarHeader,
-.SummaryHeader,
-.SummaryTitle,
-.Title {
+/* Section headings: Participants / Choose a date / Booking Summary.
+   Descendants are targeted explicitly: the heading text lives in a child
+   element that sets its own colour, and !important on a parent does NOT beat a
+   child's own declaration -- it only wins against other rules on the same
+   element. Without the `*` these rendered in Bokun's blue-grey (52,64,78)
+   while the underline bars, which do come from the tokens, were already
+   correct. Verified by measuring the rendered pixels. */
+.ParticipantHeader, .ParticipantHeader *,
+.CalendarHeader, .CalendarHeader *,
+.SummaryHeader, .SummaryHeader *,
+.SummaryTitle, .SummaryTitle *,
+.Title, .Title * {
     font-family: Optima, "Optima Nova", "Palatino Linotype", Palatino,
                  Georgia, serif !important;
     font-weight: 400 !important;
@@ -163,7 +169,9 @@
 /* An unavailable day recedes rather than shouting. */
 .CalendarDayNotAvailable {
     background: transparent !important;
-    color: rgba(41, 65, 56, 0.28) !important;
+    /* 0.38 rather than 0.28: at 0.28 the dates were close to illegible against
+       white once Bokun's own dimming was applied on top. */
+    color: rgba(41, 65, 56, 0.38) !important;
 }
 
 .CalendarDayOfMonth {
@@ -229,17 +237,39 @@
    the only <button href="#"> in the widget, which makes a stable enough hook.
    If a Bokun release ever drops that attribute this rule goes quiet rather
    than misfiring, because day cells and steppers are matched by class above. */
-#root button[href],
-#root button[type="submit"] {
+/* The visible fill is on a child of the button, not the button itself, so the
+   descendants are included -- and three attribute hooks are used because Bokun
+   gives this element no class of its own. Measured before this fix: the button
+   rendered rgba(0,0,0,0.16) grey with #aaa text, i.e. hardcoded neutrals that
+   no token override reaches. */
+#root button[href], #root button[href] *,
+#root button[to], #root button[to] *,
+#root button[loading], #root button[loading] *,
+#root button[type="submit"], #root button[type="submit"] * {
     background: rgb(41 65 56) !important;
     color: #F7F4EA !important;
     border-radius: 0 !important;
     letter-spacing: 0.02em !important;
 }
-#root button[href]:disabled,
-#root button[type="submit"]:disabled {
-    background: rgba(41, 65, 56, 0.28) !important;
+/* Disabled until a date is chosen, which is the state a guest sees first. */
+#root button[href]:disabled, #root button[href]:disabled *,
+#root button[to]:disabled, #root button[to]:disabled *,
+#root button[loading]:disabled, #root button[loading]:disabled *,
+#root button[type="submit"]:disabled, #root button[type="submit"]:disabled * {
+    background: rgba(41, 65, 56, 0.30) !important;
     color: #F7F4EA !important;
+}
+/* Day cells and steppers are also <button>s; make sure the rules above never
+   reach them, whatever attributes a future Bokun release adds. */
+#root button.CalendarOuterWrapper,
+#root button.CalendarOuterWrapper *,
+#root button.PlusButton,
+#root button.MinusButton {
+    background: transparent !important;
+    border-radius: 0 !important;
+}
+#root button.CalendarOuterWrapper .CalendarDayAvailable {
+    background: rgba(41, 65, 56, 0.06) !important;
 }
 
 /* ── Width: use the space the embed gives, up to the widget's own ~420px cap ─ */
