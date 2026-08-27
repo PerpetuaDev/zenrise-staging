@@ -119,8 +119,10 @@
      only, no per-item box or border. */
   .grp .chips + .prose { margin-top: 20px; }
   .grp .prose { list-style: none; margin: 0; padding: 0; }
-  .grp .prose li { font-family: var(--sans); font-size: 16px; line-height: 1.65; color: var(--ink); padding: 14px 0; text-wrap: pretty; }
-  .grp .prose li + li { border-top: 1px solid var(--ink-12); }
+  /* border-bottom on every item, not border-top on li + li. The old rule drew
+     rules only BETWEEN items, so a one-item group like "What to bring" got no
+     rule at all and the last item of every group was left open. */
+  .grp .prose li { font-family: var(--sans); font-size: 16px; line-height: 1.65; color: var(--ink); padding: 14px 0; text-wrap: pretty; border-bottom: 1px solid var(--ink-12); }
   /* ── calendar ── */
   .cal { border: 1px solid var(--ink-30); padding: 32px 32px 30px; }
   /* Sticky ONLY while the column actually fits. A sticky element taller
@@ -187,7 +189,7 @@
   .other .grp .prose li { max-width: 85%; }
   .other .grp { break-inside: avoid; margin: 0 0 44px; }
   .other .grp:last-child { margin-bottom: 0; }
-  .other-terms { margin: 44px 0 0; padding-top: 30px; border-top: 1px solid var(--ink-12); font-family: var(--sans); font-size: 15px; }
+  .other-terms { margin: 44px 0 0; text-align: right; font-family: var(--sans); font-size: 15px; }
   .other-terms a { display: inline-flex; align-items: baseline; color: var(--ink); }
   .other-terms .u { position: relative; padding-bottom: 0.16em; }
   .other-terms .u::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 1px; background: var(--ink); opacity: 0.35; transition: opacity 0.25s ease; }
@@ -258,7 +260,7 @@
     .other h2 { font-size: 34px; margin-bottom: 20px; }
     .other .chip-groups { column-count: 1; }
     .other .grp .prose li { max-width: none; }
-    .other-terms { margin-top: 30px; padding-top: 22px; font-size: 14px; }
+    .other-terms { margin-top: 30px; font-size: 14px; }
     .other .grp { margin-bottom: 32px; }
     .route-wrap { padding: 64px 20px 0; }
     .route { padding: 24px 18px 8px; }
