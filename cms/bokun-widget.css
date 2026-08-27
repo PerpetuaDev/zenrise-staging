@@ -257,9 +257,12 @@ svg rect {
 }
 
 /* ── Booking summary ──────────────────────────────────────────────────────── */
+/* White, not the brand cream: the summary sits directly against the calendar's
+   white surface and a cream panel there reads as a mismatch rather than as
+   brand. The page's own --paper token is #ffffff for card surfaces too. */
 .SummaryWrapper,
 .SummaryOverview {
-    background: #F7F4EA !important;
+    background: #ffffff !important;
     border-radius: 0 !important;
 }
 .SummaryItem {
