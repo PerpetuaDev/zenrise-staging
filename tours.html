@@ -56,7 +56,10 @@
   .rule { height: 1px; background: var(--rule); width: 100%; }
   .label { font-family: var(--sans); font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-60); }
   /* ── page head ── */
-  .tours-wrap { padding: 0 36px; }
+  /* Top padding matches .news-wrap so the hairline under the nav sits at the
+     same height on both pages. Added as space rather than taken out of the
+     heading below, so nothing gets cramped -- everything moves down. */
+  .tours-wrap { padding: 26px 36px 0; }
   .tours-head { padding: 80px 0 88px; display: grid; grid-template-columns: 1fr 1fr; column-gap: 96px; align-items: end; border-bottom: 1px solid var(--ink-12); }
   .tours-head h1 { font-family: var(--display); font-weight: 400; font-size: 140px; line-height: 0.92; margin: 0; letter-spacing: -0.015em; }
   :lang(ja) .tours-head h1 { line-height: 1.1; }
@@ -126,7 +129,7 @@
     .stage { width: auto; }
     .nav { height: 72px; padding: 0 20px; }
     .logo { font-size: 24px; }
-    .tours-wrap { padding: 0 20px; }
+    .tours-wrap { padding: 8px 20px 0; }
     .tours-head { grid-template-columns: 1fr; gap: 24px; padding: 40px 0 44px; align-items: start; }
     .tours-head h1 { font-size: 56px; }
     .tours-head p { font-size: 20px; }
