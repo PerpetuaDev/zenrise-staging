@@ -6,7 +6,7 @@ Four keys are added: bokunId, widgets, priceRows, jaReviewed.
 """
 from datetime import datetime, timedelta, timezone
 
-from . import bokun_labels, bokun_price, bokun_text, tours_config
+from . import bokun_labels, bokun_price, bokun_text, tours_config, tours_slug
 
 PAIR_FIELDS = ('title', 'sub', 'lede', 'coverCaption')
 
@@ -39,10 +39,39 @@ def _reject_ota(ids, denylist):
                 f'allowlist before building.')
 
 
-def catalogue(client, cfg):
-    """Product list by name if it exists, otherwise the config allowlist."""
+class Note(str):
+    """An informational build-log line that is not a warning.
+
+    Routine catalogue resolution is logged on every run, so printing it under a
+    WARNING prefix trains the reader to ignore the prefix -- and a real warning
+    then hides in the noise. Subclassing str keeps every existing consumer,
+    including the tests' substring assertions, working unchanged.
+    """
+
+
+def catalogue(client, cfg, warnings=None):
+    """Product list by name if it exists (gate 2, "Published"), otherwise the
+    config allowlist.
+
+    `/product-list.json/list` returns SUMMARIES only -- no membership -- so a
+    matching list's membership has to be fetched separately from
+    `/product-list.json/<id>`, whose `items` are shaped
+    `{'activity': {'id': ..., 'title': ...}, 'productCategory': ...}`.
+
+    An empty list is a real, deliberate "publish nothing" and is returned as
+    such -- it must never be treated as "no list, fall back". Fallback only
+    happens when no list of this name exists at all.
+
+    `warnings`, if given, gets a human-readable note on how the catalogue was
+    resolved (list membership, or the allowlist fallback) so a tour's absence
+    is traceable from the build log alone (spec 3.1/3.2).
+    """
+    if warnings is None:
+        warnings = []
     denylist = set(tours_config.ota_denylist(cfg))
-    wanted = (cfg.get('productListName') or '').strip().lower()
+    name = cfg.get('productListName') or 'Website'
+    wanted = name.strip().lower()
+    ids = None
     if wanted:
         try:
             lists = client.get('/product-list.json/list') or []
@@ -50,14 +79,66 @@ def catalogue(client, cfg):
             lists = []
         for pl in lists:
             if (pl.get('title') or '').strip().lower() == wanted:
-                ids = [int(it['activityId']) for it in (pl.get('items') or [])
-                       if it.get('activityId')]
-                if ids:
-                    _reject_ota(ids, denylist)
-                    return ids
-    ids = tours_config.catalogue_ids(cfg)
+                detail = client.get(f"/product-list.json/{pl['id']}") or {}
+                ids = [int(it['activity']['id']) for it in (detail.get('items') or [])
+                       if (it.get('activity') or {}).get('id')]
+                break
+    if ids is None:
+        ids = tours_config.catalogue_ids(cfg)
+        warnings.append(
+            f'no product list named {name!r} found; falling back to the '
+            f'config allowlist ({len(ids)} id(s)): {ids}.')
+    else:
+        warnings.append(Note(f'product list {name!r} has {len(ids)} member(s): {ids}.'))
+        # A tour that silently vanishes is the failure mode this logging exists
+        # to prevent, so name the tier products the list leaves out. The config
+        # allowlist is the only "all known tier products" set available without
+        # another round of API calls; it is a superset in practice because every
+        # tour that has ever been published has an entry.
+        try:
+            known = tours_config.catalogue_ids(cfg)
+        except tours_config.ConfigError:
+            known = []
+        for i in known:
+            if i not in set(ids) and i not in denylist:
+                warnings.append(
+                    f'held back: Bokun product {i} is not a member of the '
+                    f'{name!r} product list.')
     _reject_ota(ids, denylist)
     return ids
+
+
+# Bokun carries NO per-rate duration: a rate has only id, title, description
+# and minPerBooking, and the activity carries a single duration and a single
+# start time. So a tour sold as both a half day and a full day says so in its
+# rate titles and nowhere else -- reading them is the only zero-touch signal
+# available. A config `length` still overrides, as it does for every other
+# derived field.
+_FULL_DAY = ('full day', 'full-day', 'fullday', '1\u65e5', '\u4e00\u65e5', '\u7d42\u65e5')
+# "harf" is the client's own typo. It reached the live account once and was
+# corrected, so it is cheap insurance rather than a hypothetical.
+_HALF_DAY = ('half day', 'half-day', 'halfday',
+             'harf day', 'harf-day', 'harfday', '\u534a\u65e5')
+
+
+def _length_from_rates(rows):
+    """'Full / Half-day', 'Full-day', 'Half-day', or '' when the rates say nothing.
+
+    Both the English and Japanese rate titles are scanned, so this keeps working
+    once the client translates rate names -- today they are identical.
+    """
+    titles = [str(r.get(k) or '').lower()
+              for r in (rows or [])
+              for k in ('rate_title', 'rate_title_ja')]
+    full = any(any(m in t for m in _FULL_DAY) for t in titles)
+    half = any(any(m in t for m in _HALF_DAY) for t in titles)
+    if full and half:
+        return 'Full / Half-day'
+    if full:
+        return 'Full-day'
+    if half:
+        return 'Half-day'
+    return ''
 
 
 def _length_from_duration(duration_text):
@@ -65,6 +146,17 @@ def _length_from_duration(duration_text):
     first = digits.split()
     hours = int(first[0]) if first and first[0].isdigit() else 0
     return 'Full-day' if hours >= 5 else 'Half-day'
+
+
+def _trailing_place(en_title):
+    """The single trailing place name a slug derivation would drop from this
+    title (e.g. 'Kamakura' from '...-KAMAKURA'), title-cased, or '' if the
+    title does not end in one of tours_slug.PLACES. Used as the second-choice
+    source for `area` (spec 3.6) when googlePlace carries no city."""
+    words = [w for w in tours_slug.slugify(en_title).split('-') if w]
+    if len(words) > 1 and words[-1] in tours_slug.PLACES:
+        return words[-1].title()
+    return ''
 
 
 def to_record(activity, activity_ja, availability, availability_ja, entry, corr):
@@ -204,12 +296,30 @@ def to_record(activity, activity_ja, availability, availability_ja, entry, corr)
         availability_ja=availability_ja if reviewed else None)
     fp = bokun_price.from_price(rows)
 
+    # Zero-touch has one soft spot here: length comes from the rate NAMES, so a
+    # tour that genuinely sells two formats under names like "Short course" and
+    # "Long course" falls back to the activity duration and the eyebrow quietly
+    # understates it. Detect that shape and say so, rather than leaving the
+    # client to notice a wrong label on the live site.
+    distinct = {(r.get('rate_title') or '').strip()
+                for r in rows if (r.get('rate_title') or '').strip()}
+    if len(distinct) > 1 and not _length_from_rates(rows):
+        warnings.append(
+            'sells %d differently-named rates but none says half- or full-day, '
+            'so the length falls back to the activity duration. Rename them in '
+            'Bokun to include "Half Day"/"Full Day" if both are offered: %s'
+            % (len(distinct), sorted(distinct)))
+
     rec = {
         'id': entry['slug'],
         'bokunId': int(activity['id']),
         'number': entry.get('number') or '',
         'area': entry.get('area') or (activity.get('googlePlace') or {}).get('city') or '',
-        'length': entry.get('length') or _length_from_duration(activity.get('durationText')),
+        # rates before duration: the activity duration understates a tour that
+        # also sells a full day (Zen Journey reads 4 hours while selling a
+        # 7-hour option), so what is actually bookable wins.
+        'length': (entry.get('length') or _length_from_rates(rows)
+                   or _length_from_duration(activity.get('durationText'))),
         'themes': entry.get('themes') or [],
         'cover': {'url': cover},
         'hoursEn': cl(activity.get('durationText')),
@@ -243,7 +353,24 @@ def to_record(activity, activity_ja, availability, availability_ja, entry, corr)
     return rec, warnings, raw_texts
 
 
-def fetch_records(client, cfg):
+def fetch_records(client, cfg, registry_path=None):
+    """Resolve the catalogue through all four gates (spec 3.1-3.4), then build
+    a record for every tour that survives them.
+
+    Gate 2 ("Published": list membership or the allowlist fallback) is
+    resolved once, up front, by catalogue() -- it is what supplies the
+    candidate id list to iterate at all. The remaining three gates (tier,
+    sluggable, complete) are evaluated per candidate below, in that order,
+    because each one needs the activity detail this loop already fetches.
+
+    Every run logs the resolved catalogue (count, id, slug, resolution
+    reason) and one line per held-back tour naming its cause, so a tour's
+    disappearance is traceable from the build output alone (spec 3.1).
+
+    registry_path defaults to the committed cms/tours-slugs.json (via
+    tours_slug's own default); tests pass a scratch path so a fixture using a
+    synthetic Bokun id can never write into the real, committed registry.
+    """
     corr = tours_config.corrections(cfg)
     today = datetime.now(timezone.utc).date()
     # A year, not a quarter. Price is derived from availability, so a window
@@ -252,10 +379,69 @@ def fetch_records(client, cfg):
     # ended 9 Nov, one day short, so it was wrongly shown as "in preparation".
     end = today + timedelta(days=365)
     records, warnings, raw_texts = [], [], []
-    for pid in catalogue(client, cfg):
+    resolved, held_back = [], []
+
+    registry = tours_slug.load_registry(registry_path)
+    registry_dirty = False
+
+    ids = catalogue(client, cfg, warnings=warnings)
+    for pid in ids:
         entry = tours_config.tour_entry(cfg, pid)
         activity = client.get(f'/activity.json/{pid}?lang=EN')
         activity_ja = client.get(f'/activity.json/{pid}?lang=ja')
+        title_en = (activity.get('title') or '').strip()
+        title_ja = ((activity_ja or {}).get('title') or '').strip()
+
+        # Gate 1: tier. Belt-and-braces on top of the denylist check already
+        # applied inside catalogue() -- publishing an OTA tour now needs two
+        # independent mistakes.
+        if activity.get('marketplaceVisibilityType') != 'PRIVATE':
+            held_back.append((pid, title_en,
+                              'not Zenrise-tier (marketplaceVisibilityType is '
+                              f'{activity.get("marketplaceVisibilityType")!r}, not PRIVATE)'))
+            continue
+
+        # Gate 3: sluggable. A config override always wins; then the frozen
+        # registry; then a fresh derivation, which alone requires proof of an
+        # English translation (tours_slug.resolve).
+        slug, reason = tours_slug.resolve(
+            pid, title_en, title_ja, activity.get('languages') or [],
+            registry, override=(entry.get('slug') or None))
+        if not slug:
+            held_back.append((pid, title_en, f'no resolvable slug ({reason})'))
+            continue
+        if registry.get(str(pid)) != slug:
+            registry[str(pid)] = slug
+            registry_dirty = True
+
+        # Gate 4: complete. No price is NOT a hold-back -- that renders the
+        # existing, correct in-preparation layout.
+        photos = activity.get('photos') or []
+        missing = []
+        if not (photos and (photos[0].get('originalUrl') or '').strip()):
+            missing.append('cover photo')
+        if not (activity.get('description') or '').strip():
+            missing.append('description')
+        if missing:
+            held_back.append((pid, title_en, f"missing {' and '.join(missing)}"))
+            continue
+
+        # number: entry override, else this slug's position in the (now
+        # possibly just-extended) registry order -- stable once assigned,
+        # because a new key is appended, never inserted mid-order.
+        number = entry.get('number') or f'{list(registry.keys()).index(str(pid)) + 1:02d}'
+
+        # area: entry override -> googlePlace.city -> the trailing place name
+        # a slug derivation would have dropped from the title -> empty, which
+        # must hold the tour back rather than reach (and crash) area_key().
+        area = (entry.get('area') or (activity.get('googlePlace') or {}).get('city')
+                or _trailing_place(title_en))
+        if not area:
+            held_back.append((pid, title_en,
+                              'no derivable area (no googlePlace.city and no '
+                              'trailing place name in the title)'))
+            continue
+
         availability = client.get(
             f'/activity.json/{pid}/availabilities?start={today}&end={end}&lang=EN')
         # A label is not worth failing a build over: if the Japanese
@@ -269,18 +455,32 @@ def fetch_records(client, cfg):
                 f'/activity.json/{pid}/availabilities?start={today}&end={end}&lang=ja')
         except Exception as e:
             warnings.append(
-                f'[{entry["slug"]}] Japanese availability request failed '
+                f'[{slug}] Japanese availability request failed '
                 f'({e}); price labels fall back to English for this tour.')
         else:
             if availability_ja is None:
                 warnings.append(
-                    f'[{entry["slug"]}] Japanese availability returned nothing; '
+                    f'[{slug}] Japanese availability returned nothing; '
                     f'price labels fall back to English for this tour.')
         availability_ja = availability_ja or []
-        rec, w, texts = to_record(activity, activity_ja, availability, availability_ja, entry, corr)
+
+        built_entry = dict(entry, slug=slug, number=number, area=area)
+        rec, w, texts = to_record(
+            activity, activity_ja, availability, availability_ja, built_entry, corr)
         records.append(rec)
+        resolved.append((pid, slug, reason))
         warnings += [f'[{rec["id"]}] {x}' for x in w]
         raw_texts += texts
+
+    if registry_dirty:
+        tours_slug.save_registry(registry_path, registry)
+
+    warnings.append(Note(f'resolved catalogue: {len(resolved)} tour(s).'))
+    for pid, slug, reason in resolved:
+        warnings.append(Note(f'  [{pid}] -> {slug} (slug: {reason})'))
+    for pid, title, cause in held_back:
+        warnings.append(f'held back: Bokun product {pid} ({title!r}) — {cause}.')
+
     for stale in bokun_text.unused_corrections(raw_texts, corr):
         warnings.append(f'correction no longer matches any source text, safe to '
                         f'prune from tours-config.json: {stale!r}')

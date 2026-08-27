@@ -16,7 +16,7 @@ Homepage tile order follows site-config.featuredTours when present (fixture:
 cms/site-config-fixture.json), else the tours list order.
 """
 
-import json, os, re, sys
+import glob, json, os, re, shutil, sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
@@ -28,7 +28,8 @@ class BuildError(Exception):
 
 AREA_KEY = {'Kamakura': 'tours_area_kamakura', 'Enoshima': 'tours_area_enoshima', 'Yokohama': 'tours_area_yokohama'}
 AREA_JA = {'Kamakura': '鎌倉', 'Enoshima': '江ノ島', 'Yokohama': '横浜'}
-LEN_KEY = {'Half-day': 'tours_len_half', 'Full-day': 'tours_len_full'}
+LEN_KEY = {'Half-day': 'tours_len_half', 'Full-day': 'tours_len_full',
+           'Full / Half-day': 'tours_len_both'}
 THEME_SLUG = {'Temples & Shrines': 'temples', 'Food': 'food', 'Walking': 'walking',
               'Views & Nature': 'nature', 'Local Life': 'local', 'Culture': 'culture',
               'Arts & Craft': 'arts'}
@@ -79,11 +80,6 @@ def load_template(name):
     return open(os.path.join(HERE, 'templates', name)).read()
 
 
-def sel(v):
-    """microCMS returns select values as lists; fixtures may use plain strings."""
-    return v[0] if isinstance(v, list) else v
-
-
 def lines(s):
     return [l.strip() for l in (s or '').splitlines() if l.strip()]
 
@@ -96,8 +92,9 @@ def fetch_tours(source):
     sys.path.insert(0, os.path.dirname(HERE))
     from cms import tours_build_source
     records, cfg, warnings = tours_build_source.load_records(source)
+    from cms.bokun_source import Note
     for w in warnings:
-        print('WARNING:', w)
+        print('NOTE:' if isinstance(w, Note) else 'WARNING:', w)
     return records, cfg
 
 
@@ -433,13 +430,65 @@ def widget_block(m, price_html=''):
                 f'          <p>Booking widget not yet configured for this tour.</p>\n'
                 f'        </aside>')
     channel = en.split('/')[0]
-    src = f'{WIDGET_HOST}/online-sales/{en}'
-    ja = widgets.get('ja')
-    ja_attr = f' data-widget-ja="{WIDGET_HOST}/online-sales/{ja}"' if ja and ja != en else ''
+    base = f'{WIDGET_HOST}/online-sales/{en}'
+    loader = f'{WIDGET_LOADER}{channel}'
+    # Bokun's widget app reads a `lang` param off data-src -- and when it finds
+    # one it also hides its own language selector, which is what we want since
+    # the page already has a switcher and the two can otherwise disagree. With
+    # no param it falls back to <html lang>, read ONCE at init, which is why the
+    # calendar only followed the page after a manual refresh.
+    #
+    # The inline script below runs synchronously, before the async loader, so
+    # the mount already carries the stored language by the time Bokun scans it.
     return f'''        <aside class="cal" id="book" data-screen-label="07 Tour detail — Booking">
           <h2 class="cal-h" data-i18n="td_book_heading">Book your spot</h2>
-{price_html}          <script type="text/javascript" src="{WIDGET_LOADER}{channel}" async></script>
-          <div class="bokunWidget" data-src="{src}"{ja_attr}></div>
+{price_html}          <div class="bokunWidget" data-src="{base}?lang=en" data-widget-base="{base}"></div>
+          <script>(function(){{
+            var m = document.querySelector('.bokunWidget[data-widget-base]');
+            if (!m) return;
+            var stored = 'en';
+            try {{ stored = localStorage.getItem('zenrise-lang') || 'en'; }} catch (e) {{}}
+            var want = stored === 'ja' ? 'ja' : 'en';
+            m.setAttribute('data-src', m.getAttribute('data-widget-base') + '?lang=' + want);
+            m.setAttribute('data-widget-lang', want);
+          }})();</script>
+          <script type="text/javascript" src="{loader}" async></script>
+          <script>(function(){{
+            var LOADER = '{loader}';
+            function remount(lang) {{
+              var old = document.querySelector('.bokunWidget[data-widget-base]');
+              if (!old || old.getAttribute('data-widget-lang') === lang) return;
+              var base = old.getAttribute('data-widget-base');
+              var fresh = document.createElement('div');
+              fresh.className = 'bokunWidget';
+              fresh.setAttribute('data-src', base + '?lang=' + lang);
+              fresh.setAttribute('data-widget-base', base);
+              fresh.setAttribute('data-widget-lang', lang);
+              old.parentNode.replaceChild(fresh, old);
+              var sc = document.createElement('script');
+              sc.src = LOADER; sc.async = true;
+              document.body.appendChild(sc);
+              // The loader is a one-shot IIFE with no DOM watching, so re-running
+              // it is the documented-by-behaviour way to mount a replaced div. If
+              // it does not take, fall back to the reload that is known to work.
+              setTimeout(function () {{
+                if (!fresh.querySelector('iframe')) window.location.reload();
+              }}, 3000);
+            }}
+            function hook() {{
+              if (!window.ZenriseI18n || !window.ZenriseI18n.onChange) return false;
+              window.ZenriseI18n.onChange(function (l) {{
+                remount(l === 'ja' ? 'ja' : 'en');
+              }});
+              return true;
+            }}
+            if (!hook()) {{
+              var tries = 0;
+              var iv = setInterval(function () {{
+                if (hook() || ++tries > 40) clearInterval(iv);
+              }}, 100);
+            }}
+          }})();</script>
           <noscript><a class="c-go" href="go/{m['id']}/">Book this experience&nbsp;&nbsp;→</a></noscript>
         </aside>'''
 
@@ -483,6 +532,55 @@ def write_go_redirects(models):
     return written
 
 
+def cleanup_stale_pages(models, root=None):
+    """Remove tour-<slug>.html and go/<slug>/ for any slug that is frozen in
+    the slug registry but is NOT in this build's resolved catalogue.
+
+    A tour drops out of the catalogue (spec 3.1: switched to PUBLIC, taken
+    off the Website product list, etc) without ever being un-frozen from the
+    registry -- its slug must stay reserved so it can never be reused by a
+    different tour. But the build otherwise only ever writes pages, so its
+    orphaned page and redirect would stay reachable forever. This is that
+    missing removal step (task-3-4 brief).
+
+    Two hard rules:
+    - go/kamakura/ is a live Instagram link to an OTA-tier tour, entirely
+      outside this system, and must never be touched -- guarded by name
+      below even though no configured slug can ever collide with it (see
+      cms/tests/test_go_redirects.py TestInstagramRedirectPreserved).
+    - A tour-*.html on disk whose slug is in neither the resolved catalogue
+      nor the registry is unaccounted for: warn and leave it alone rather
+      than guess.
+    """
+    root = root or ROOT
+    sys.path.insert(0, os.path.dirname(HERE))
+    from cms import tours_slug
+    registry = tours_slug.load_registry()
+    catalogue_slugs = {m['id'] for m in models}
+
+    removed = []
+    for slug in registry.values():
+        if slug in catalogue_slugs or slug == 'kamakura':
+            continue
+        page = os.path.join(root, f'tour-{slug}.html')
+        go_dir = os.path.join(root, 'go', slug)
+        if os.path.isfile(page):
+            os.remove(page)
+            removed.append(f'tour-{slug}.html')
+        if os.path.isdir(go_dir):
+            shutil.rmtree(go_dir)
+            removed.append(f'go/{slug}/')
+
+    accounted = catalogue_slugs | set(registry.values())
+    on_disk = {os.path.basename(p)[len('tour-'):-len('.html')]
+               for p in glob.glob(os.path.join(root, 'tour-*.html'))}
+    for slug in sorted(on_disk - accounted):
+        print(f'WARNING: tour-{slug}.html exists but its slug is in neither the '
+              f'resolved catalogue nor the slug registry; leaving it alone.')
+
+    return removed
+
+
 def render_detail(m, tpl_full, tpl_prep):
     en, ja = base_dict(m)
     slots = common_slots(m)
@@ -492,7 +590,11 @@ def render_detail(m, tpl_full, tpl_prep):
         slots['LEDE_EN'] = esc(m['lede'][0])
         slots['CHIPS_SECTION'] = chips_section(m, en, ja)
         slots['ROUTE_SECTION'] = route_section(m, en, ja)
-        slots['WIDGET_BLOCK'] = widget_block(m, price_breakdown_block(m, en, ja))
+        # The breakdown is unmounted, not deleted: it made the sticky booking
+        # column ~150px taller for information that also lives in the widget.
+        # Restoring it is passing price_breakdown_block(m, en, ja) again, and
+        # where the two rates should live instead is still open.
+        slots['WIDGET_BLOCK'] = widget_block(m)
         tpl = tpl_full
     else:
         tpl = tpl_prep
@@ -577,6 +679,13 @@ def main():
 
     models = [tour_model(a) for a in contents]
 
+    # Display order follows the eyebrow number, never the order Bokun
+    # happened to return the catalogue in. Without this the grid renders out
+    # of sequence -- 02, 03, 01 -- because the Website product list's member
+    # order is the client's to change and bears no relation to the numbering.
+    # Unnumbered tours sort last rather than first.
+    models.sort(key=lambda m: (m['num'] == '', m['num']))
+
     # Widget paths are configuration, not Bokun data, but they ride along inside
     # each cached record. Re-read them from config here so adding a widget takes
     # effect on a `--source cache` build instead of needing a live refetch.
@@ -622,6 +731,15 @@ def main():
     print(f'wrote {len(written)} tour page(s):', ', '.join(written))
     print('rewrote tours.html grid +', len(feats), 'home tiles')
     print(f'wrote {len(go_written)} go/ redirect(s):', ', '.join(go_written))
+
+    # A tour dropping out of the resolved catalogue (spec 3.1) leaves a
+    # registry-frozen slug with no page behind it any more; remove that
+    # orphaned page and redirect so it stops being reachable.
+    removed = cleanup_stale_pages(models)
+    if removed:
+        print(f'removed {len(removed)} stale page(s):', ', '.join(removed))
+    else:
+        print('removed 0 stale page(s)')
 
 
 if __name__ == '__main__':

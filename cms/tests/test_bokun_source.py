@@ -1,5 +1,5 @@
-import json, os, unittest
-from cms import bokun_price, bokun_source, bokun_text, tours_config
+import json, os, tempfile, unittest
+from cms import bokun_price, bokun_source, bokun_text, tours_config, tours_slug
 
 DATA = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'data')
 IKEBANA, CANDLE, ZEN, SWORD = 1273232, 1273235, 1273194, 1275339
@@ -12,26 +12,63 @@ def load(name):
 
 
 class FakeClient:
-    """Serves the recorded fixtures and records the paths asked for."""
+    """Serves the recorded fixtures and records the paths asked for.
 
-    def __init__(self, product_list=None):
-        self.paths, self._list = [], product_list
+    Product lists are served the way the real API actually shapes them
+    (verified 2026-08-26, task-3-4 brief): `/product-list.json/list` returns
+    SUMMARIES only (no membership), and a matching list's membership comes
+    from a second call to `/product-list.json/<id>`, whose `items` are
+    `{'activity': {'id': ..., 'title': ...}, 'productCategory': ...}`.
+
+    `overrides` lets a test replace or delete arbitrary keys on an
+    already-recorded activity fixture (e.g. to flip marketplaceVisibilityType,
+    or to blank out photos/description) without re-recording it -- keyed
+    '<pid>-<lang>', value either a dict of key overrides or the sentinel
+    DELETE_KEYS to remove keys entirely.
+    """
+
+    def __init__(self, product_list=None, product_list_items=None, overrides=None):
+        self.paths = []
+        self._list = product_list
+        self._items = product_list_items or {}
+        self._overrides = overrides or {}
 
     def get(self, path):
         self.paths.append(path)
         if path.startswith('/product-list.json/list'):
             return self._list if self._list is not None else []
+        if path.startswith('/product-list.json/'):
+            list_id = int(path.split('/')[2])
+            items = self._items.get(list_id, [])
+            return {'id': list_id, 'items': items}
         if '/availabilities' in path:
             pid = int(path.split('/')[2])
             return load(f'availability-{pid}.json')
         if path.startswith('/activity.json/'):
             pid = int(path.split('/')[2].split('?')[0])
             lang = 'ja' if 'lang=ja' in path else 'EN'
-            return load(f'activity-{pid}-{lang}.json')
+            data = load(f'activity-{pid}-{lang}.json')
+            ov = self._overrides.get(f'{pid}-{lang}')
+            if ov:
+                data = dict(data)
+                for k, v in ov.items():
+                    if v is DELETE:
+                        data.pop(k, None)
+                    else:
+                        data[k] = v
+            return data
         raise AssertionError('unexpected path ' + path)
 
     def post(self, path, body):
         raise AssertionError('no POST expected')
+
+
+DELETE = object()
+
+
+def list_item(activity_id):
+    """One /product-list.json/<id> membership row for `activity_id`."""
+    return {'activity': {'id': activity_id, 'title': 'x'}, 'productCategory': 'x'}
 
 
 CFG = {
@@ -43,16 +80,16 @@ CFG = {
                     'templ e cuisine': 'temple cuisine'},
     'tours': {
         str(IKEBANA): {'slug': 'ikebana-ichigo-ichie', 'number': '01', 'area': 'Kamakura',
-                       'length': 'Half-day', 'themes': ['Arts & Craft'], 'jaReviewed': False,
+                       'themes': ['Arts & Craft'], 'jaReviewed': False,
                        'widgets': {'en': 'CH/experience-calendar/1273232'}},
         str(CANDLE): {'slug': 'candle-making', 'number': '02', 'area': 'Kamakura',
-                      'length': 'Half-day', 'themes': ['Arts & Craft'], 'jaReviewed': False,
+                      'themes': ['Arts & Craft'], 'jaReviewed': False,
                       'widgets': {}},
         str(ZEN): {'slug': 'zen-journey', 'number': '03', 'area': 'Kamakura',
-                   'length': 'Half-day', 'themes': ['Walking'], 'jaReviewed': False,
+                   'themes': ['Walking'], 'jaReviewed': False,
                    'widgets': {}},
         str(SWORD): {'slug': 'swordsmithing', 'number': '04', 'area': 'Kamakura',
-                     'length': 'Half-day', 'themes': ['Arts & Craft'], 'jaReviewed': False,
+                     'themes': ['Arts & Craft'], 'jaReviewed': False,
                      'widgets': {}},
     },
 }
@@ -60,26 +97,77 @@ CFG = {
 
 class TestCatalogue(unittest.TestCase):
     def test_prefers_the_named_product_list(self):
-        c = FakeClient(product_list=[{'id': 77, 'title': 'Website',
-                                      'items': [{'activityId': IKEBANA}]}])
+        c = FakeClient(product_list=[{'id': 77, 'title': 'Website'}],
+                       product_list_items={77: [list_item(IKEBANA)]})
         self.assertEqual(bokun_source.catalogue(c, CFG), [IKEBANA])
+
+    def test_list_membership_requires_the_per_list_detail_call(self):
+        # /product-list.json/list returns summaries only -- no 'items' key at
+        # all -- so catalogue() must not (mis)read membership off it directly.
+        c = FakeClient(product_list=[{'id': 77, 'title': 'Website'}],
+                       product_list_items={77: [list_item(IKEBANA)]})
+        bokun_source.catalogue(c, CFG)
+        self.assertIn('/product-list.json/77', c.paths)
 
     def test_falls_back_to_the_allowlist_when_no_list_exists(self):
         self.assertEqual(bokun_source.catalogue(FakeClient(product_list=[]), CFG),
                          [IKEBANA, CANDLE, ZEN, SWORD])
 
+    def test_fallback_is_warned_about(self):
+        warnings = []
+        bokun_source.catalogue(FakeClient(product_list=[]), CFG, warnings=warnings)
+        self.assertTrue(any('falling back' in w for w in warnings), warnings)
+
+    def test_a_present_but_empty_list_publishes_nothing_not_a_fallback(self):
+        c = FakeClient(product_list=[{'id': 77, 'title': 'Website'}],
+                       product_list_items={77: []})
+        warnings = []
+        self.assertEqual(bokun_source.catalogue(c, CFG, warnings=warnings), [])
+        self.assertFalse(any('falling back' in w for w in warnings), warnings)
+
     def test_ignores_product_lists_with_a_different_name(self):
-        c = FakeClient(product_list=[{'id': 1, 'title': 'OTA', 'items': [{'activityId': 999}]}])
+        c = FakeClient(product_list=[{'id': 1, 'title': 'OTA'}],
+                       product_list_items={1: [list_item(999)]})
         self.assertEqual(bokun_source.catalogue(c, CFG), [IKEBANA, CANDLE, ZEN, SWORD])
 
     def test_denylisted_id_from_the_product_list_is_rejected(self):
         ota_id = OTA_IDS[0]
-        c = FakeClient(product_list=[{'id': 77, 'title': 'Website',
-                                      'items': [{'activityId': IKEBANA},
-                                                {'activityId': ota_id}]}])
+        c = FakeClient(product_list=[{'id': 77, 'title': 'Website'}],
+                       product_list_items={77: [list_item(IKEBANA), list_item(ota_id)]})
         with self.assertRaises(tours_config.ConfigError) as ctx:
             bokun_source.catalogue(c, CFG)
         self.assertIn(str(ota_id), str(ctx.exception))
+
+    def test_tier_products_the_list_omits_are_named_in_the_log(self):
+        # a tour vanishing silently is the failure this logging prevents
+        c = FakeClient(product_list=[{'id': 77, 'title': 'Website'}],
+                       product_list_items={77: [list_item(IKEBANA)]})
+        warnings = []
+        bokun_source.catalogue(c, CFG, warnings=warnings)
+        held = [w for w in warnings if 'held back' in w]
+        self.assertTrue(any(str(SWORD) in w for w in held), warnings)
+        self.assertFalse(any(str(IKEBANA) in w for w in held), warnings)
+
+    def test_an_omitted_product_is_a_warning_not_a_note(self):
+        c = FakeClient(product_list=[{'id': 77, 'title': 'Website'}],
+                       product_list_items={77: [list_item(IKEBANA)]})
+        warnings = []
+        bokun_source.catalogue(c, CFG, warnings=warnings)
+        for w in warnings:
+            if 'held back' in w:
+                self.assertNotIsInstance(w, bokun_source.Note, w)
+            if 'member(s)' in w:
+                self.assertIsInstance(w, bokun_source.Note, w)
+
+    def test_no_ota_product_is_ever_named_as_merely_held_back(self):
+        # an OTA id must raise, never be reported as a publishable tour the
+        # list happens to omit
+        c = FakeClient(product_list=[{'id': 77, 'title': 'Website'}],
+                       product_list_items={77: [list_item(IKEBANA)]})
+        warnings = []
+        bokun_source.catalogue(c, CFG, warnings=warnings)
+        for ota in OTA_IDS:
+            self.assertFalse(any(str(ota) in w for w in warnings), ota)
 
     def test_denylisted_id_from_the_allowlist_is_rejected(self):
         ota_id = OTA_IDS[0]
@@ -125,6 +213,19 @@ class TestRecords(unittest.TestCase):
         for slug in ('swordsmithing',):
             self.assertEqual(self.by_slug[slug]['priceEn'], '')
             self.assertEqual(self.by_slug[slug]['priceRows'], [])
+
+    def test_zen_journey_reads_as_both_lengths_from_its_real_rates(self):
+        self.assertEqual(self.by_slug['zen-journey']['length'], 'Full / Half-day')
+
+    def test_rates_beat_the_activity_duration(self):
+        # Zen Journey's durationText is 4 hours, which alone derives Half-day;
+        # it sells a full day too, and what is bookable wins.
+        self.assertEqual(self.by_slug['zen-journey']['hoursEn'], '4 hours')
+        self.assertNotEqual(self.by_slug['zen-journey']['length'], 'Half-day')
+
+    def test_tours_whose_rates_say_nothing_keep_the_duration_length(self):
+        for slug in ('candle-making', 'ikebana-ichigo-ichie'):
+            self.assertEqual(self.by_slug[slug]['length'], 'Half-day', slug)
 
     def test_zen_journey_is_group_priced_from_its_cheaper_rate(self):
         """The Zen Journey is priced per booking (Half Day ¥40,000, Full Day
@@ -206,6 +307,82 @@ class TestRecords(unittest.TestCase):
         # remove — removing it would let the damage reach the live route text.
         for w in self.warnings:
             self.assertNotIn('templ e cuisine', w)
+
+
+class TestLengthFromRates(unittest.TestCase):
+    """Bokun has no per-rate duration, so rate titles are the only signal."""
+
+    def rows(self, *titles, ja=None):
+        return [{'rate_title': t, 'rate_title_ja': (ja or t)} for t in titles]
+
+    def test_both_options_present(self):
+        self.assertEqual(
+            bokun_source._length_from_rates(
+                self.rows('Group(1~6) Half Day', 'Group(1~6) Full Day')),
+            'Full / Half-day')
+
+    def test_full_day_only(self):
+        self.assertEqual(
+            bokun_source._length_from_rates(self.rows('Full Day Private')),
+            'Full-day')
+
+    def test_half_day_only(self):
+        self.assertEqual(
+            bokun_source._length_from_rates(self.rows('Half-day Group')),
+            'Half-day')
+
+    def test_rates_that_say_nothing_defer(self):
+        # the real shape for three of the four tours
+        self.assertEqual(
+            bokun_source._length_from_rates(self.rows('Standard Private Group ')), '')
+        self.assertEqual(bokun_source._length_from_rates([]), '')
+
+    def test_tolerates_the_clients_harf_typo(self):
+        # it reached the live account once already
+        self.assertEqual(
+            bokun_source._length_from_rates(self.rows('Group Harf Day', 'Group Full Day')),
+            'Full / Half-day')
+
+    def test_reads_japanese_rate_titles(self):
+        # today the ja titles mirror English; this keeps working when they stop
+        self.assertEqual(
+            bokun_source._length_from_rates(
+                [{'rate_title': 'A', 'rate_title_ja': '\u534a\u65e5\u30d7\u30e9\u30f3'},
+                 {'rate_title': 'B', 'rate_title_ja': '\u4e00\u65e5\u30d7\u30e9\u30f3'}]),
+            'Full / Half-day')
+
+    def test_a_half_day_title_is_not_read_as_a_full_day(self):
+        # '\u534a\u65e5' shares a character with '\u4e00\u65e5' and '1\u65e5'
+        self.assertEqual(
+            bokun_source._length_from_rates(
+                [{'rate_title': '', 'rate_title_ja': '\u534a\u65e5'}]),
+            'Half-day')
+
+
+class TestAmbiguousRateNaming(unittest.TestCase):
+    """The one soft spot in deriving length from rate names."""
+
+    def warn(self, *titles):
+        rows = [{'rate_title': t, 'rate_title_ja': t, 'amount': 1, 'min': 1,
+                 'max': 6, 'per_booking': True, 'category': None,
+                 'category_ja': None, 'currency': 'JPY'} for t in titles]
+        distinct = {(r.get('rate_title') or '').strip()
+                    for r in rows if (r.get('rate_title') or '').strip()}
+        return len(distinct) > 1 and not bokun_source._length_from_rates(rows)
+
+    def test_two_opaque_rate_names_are_flagged(self):
+        self.assertTrue(self.warn('Short course', 'Long course'))
+
+    def test_group_size_tiers_sharing_one_name_are_not_flagged(self):
+        # candle-making and ikebana: many rows, one rate name, no ambiguity
+        self.assertFalse(self.warn('Standard Private Group ',
+                                   'Standard Private Group '))
+
+    def test_a_single_rate_is_not_flagged(self):
+        self.assertFalse(self.warn('Standard Private Group '))
+
+    def test_correctly_named_rates_are_not_flagged(self):
+        self.assertFalse(self.warn('Group(1~6) Half Day', 'Group(1~6) Full Day'))
 
 
 class TestChipFields(unittest.TestCase):
@@ -613,6 +790,176 @@ class TestJapaneseAvailabilityFetch(unittest.TestCase):
         by_slug = {r['id']: r for r in records}
         self.assertTrue(by_slug['zen-journey']['priceRows'])
         self.assertEqual(by_slug['zen-journey']['priceEn'], 'from ¥40,000 per group')
+
+
+class TestGates(unittest.TestCase):
+    """The four zero-touch-catalogue gates (spec 3.1-3.4), plus the
+    number/area derivations (spec 3.6). All exercised against the real
+    recorded fixtures with synthetic overrides -- no new fixture files, per
+    the task-3-4 brief -- and always against a scratch registry path, so a
+    fixture using a real product id (with an empty registry) can never write
+    into the committed cms/tours-slugs.json."""
+
+    def _cfg_without_entry(self, pid):
+        """CFG with pid's tours-config.json entry removed entirely (so
+        tour_entry(cfg, pid) returns {} -- no slug/number/area override) and
+        the allowlist narrowed to just pid, so these single-tour derivation
+        tests are never polluted by the other three real tours' ids landing
+        in the same scratch registry (which would shift registry-position
+        numbering)."""
+        tours = dict(CFG['tours'])
+        tours.pop(str(pid), None)
+        return dict(CFG, tours=tours, allowlist=[pid])
+
+    def _run(self, client, cfg, registry=None):
+        with tempfile.TemporaryDirectory() as tmp:
+            p = os.path.join(tmp, 'r.json')
+            if registry is not None:
+                tours_slug.save_registry(p, registry)
+            records, warnings = bokun_source.fetch_records(client, cfg, registry_path=p)
+            final_registry = tours_slug.load_registry(p)
+        return records, warnings, final_registry
+
+    # --- Gate 1: tier ---------------------------------------------------
+
+    def test_a_public_tier_product_is_held_back_even_if_listed_and_configured(self):
+        c = FakeClient(overrides={f'{ZEN}-EN': {'marketplaceVisibilityType': 'PUBLIC'}})
+        records, warnings, _ = self._run(c, CFG, registry=tours_slug.load_registry())
+        self.assertNotIn('zen-journey', {r['id'] for r in records})
+        self.assertTrue(any(str(ZEN) in w and 'not Zenrise-tier' in w for w in warnings), warnings)
+
+    # --- Gate 2: published (list membership / allowlist fallback) is
+    # already covered by TestCatalogue; this confirms it flows through
+    # fetch_records and is logged.
+
+    def test_the_resolved_catalogue_is_logged_every_run(self):
+        records, warnings, _ = self._run(FakeClient(), CFG, registry=tours_slug.load_registry())
+        self.assertTrue(any('resolved catalogue: 4 tour(s)' in w for w in warnings), warnings)
+        self.assertTrue(any(f'[{IKEBANA}] -> ikebana-ichigo-ichie' in w for w in warnings), warnings)
+
+    # --- Gate 3: sluggable -----------------------------------------------
+
+    def test_a_new_product_with_no_english_slot_is_held_back_and_named(self):
+        # Zen Journey's real fixture has languages=['JA_JP'] -- no 'en' slot.
+        # With its config override removed and an empty registry, this is
+        # exactly a brand-new, untranslated product.
+        cfg = self._cfg_without_entry(ZEN)
+        records, warnings, final_registry = self._run(FakeClient(), cfg, registry={})
+        self.assertNotIn('zen-journey', {r['id'] for r in records})
+        self.assertTrue(any(str(ZEN) in w and 'no resolvable slug' in w
+                            and 'The Zen Journey-KAMAKURA' in w for w in warnings), warnings)
+        self.assertNotIn(str(ZEN), final_registry)
+
+    def test_a_new_translated_product_derives_and_freezes_its_slug(self):
+        cfg = self._cfg_without_entry(ZEN)
+        c = FakeClient(overrides={
+            f'{ZEN}-EN': {'languages': ['en', 'JA_JP']},
+            f'{ZEN}-ja': {'title': 'ZEN-JA-SENTINEL'},
+        })
+        records, warnings, final_registry = self._run(c, cfg, registry={})
+        by_slug = {r['id']: r for r in records}
+        self.assertIn('zen-journey', by_slug)
+        self.assertTrue(any(f'[{ZEN}] -> zen-journey (slug: derived)' in w for w in warnings), warnings)
+        # Frozen: the next build must not recompute it.
+        self.assertEqual(final_registry[str(ZEN)], 'zen-journey')
+
+    def test_an_already_frozen_slug_publishes_regardless_of_translation_state(self):
+        # Ikebana's real shape: no 'en' language slot at all, yet its slug is
+        # already settled in the registry and must not be held back.
+        cfg = self._cfg_without_entry(IKEBANA)
+        registry = {str(IKEBANA): 'ikebana-ichigo-ichie'}
+        records, warnings, _ = self._run(FakeClient(), cfg, registry=registry)
+        by_slug = {r['id']: r for r in records}
+        self.assertIn('ikebana-ichigo-ichie', by_slug)
+        self.assertTrue(any(f'[{IKEBANA}] -> ikebana-ichigo-ichie (slug: registry)' in w
+                            for w in warnings), warnings)
+
+    # --- Gate 4: complete --------------------------------------------------
+
+    def test_missing_cover_photo_is_held_back_and_named(self):
+        c = FakeClient(overrides={f'{CANDLE}-EN': {'photos': []}})
+        records, warnings, _ = self._run(c, CFG, registry=tours_slug.load_registry())
+        self.assertNotIn('candle-making', {r['id'] for r in records})
+        self.assertTrue(any(str(CANDLE) in w and 'missing cover photo' in w for w in warnings), warnings)
+
+    def test_missing_description_is_held_back_and_named(self):
+        c = FakeClient(overrides={f'{IKEBANA}-EN': {'description': ''}})
+        records, warnings, _ = self._run(c, CFG, registry=tours_slug.load_registry())
+        self.assertNotIn('ikebana-ichigo-ichie', {r['id'] for r in records})
+        self.assertTrue(any(str(IKEBANA) in w and 'missing description' in w for w in warnings), warnings)
+
+    def test_missing_price_is_not_a_holdback(self):
+        # Swordsmithing's real fixtures are unpriced (see TestRecords); it
+        # must still render, via the in-preparation layout.
+        records, warnings, _ = self._run(FakeClient(), CFG, registry=tours_slug.load_registry())
+        self.assertIn('swordsmithing', {r['id'] for r in records})
+        self.assertFalse(any(str(SWORD) in w and 'held back' in w for w in warnings), warnings)
+
+    # --- Derivations: area -------------------------------------------------
+
+    def test_area_falls_back_to_the_trailing_place_dropped_from_the_title(self):
+        # Zen Journey's real title ends "-KAMAKURA" and googlePlace is null.
+        cfg = self._cfg_without_entry(ZEN)
+        cfg['tours'][str(ZEN)] = {'slug': 'zj-area-test'}  # only the slug is an override
+        records, warnings, _ = self._run(FakeClient(), cfg, registry={})
+        rec = next(r for r in records if r['id'] == 'zj-area-test')
+        self.assertEqual(rec['area'], 'Kamakura')
+
+    def test_area_prefers_google_place_city_over_the_title(self):
+        cfg = self._cfg_without_entry(ZEN)
+        cfg['tours'][str(ZEN)] = {'slug': 'zj-area-test'}
+        c = FakeClient(overrides={f'{ZEN}-EN': {'googlePlace': {'city': 'Fujisawa'}}})
+        records, warnings, _ = self._run(c, cfg, registry={})
+        rec = next(r for r in records if r['id'] == 'zj-area-test')
+        self.assertEqual(rec['area'], 'Fujisawa')
+
+    def test_an_underivable_area_holds_the_tour_back_instead_of_crashing(self):
+        # No googlePlace, and a title with no trailing place name at all.
+        cfg = self._cfg_without_entry(ZEN)
+        cfg['tours'][str(ZEN)] = {'slug': 'zj-area-test'}
+        c = FakeClient(overrides={f'{ZEN}-EN': {'title': 'The Zen Journey'}})
+        records, warnings, _ = self._run(c, cfg, registry={})
+        self.assertNotIn('zj-area-test', {r['id'] for r in records})
+        self.assertTrue(any(str(ZEN) in w and 'no derivable area' in w for w in warnings), warnings)
+
+    # --- Derivations: number ------------------------------------------------
+
+    def test_number_falls_back_to_the_slugs_registry_position(self):
+        cfg = self._cfg_without_entry(ZEN)
+        cfg['tours'][str(ZEN)] = {'slug': 'zj-num-test'}  # no explicit number
+        registry = {'900001': 'placeholder-one', '900002': 'placeholder-two'}
+        records, warnings, final_registry = self._run(FakeClient(), cfg, registry=registry)
+        rec = next(r for r in records if r['id'] == 'zj-num-test')
+        # zj-num-test is appended after the two seeded placeholders: position 3.
+        self.assertEqual(rec['number'], '03')
+
+    def test_explicit_config_number_still_overrides_derivation(self):
+        cfg = self._cfg_without_entry(ZEN)
+        cfg['tours'][str(ZEN)] = {'slug': 'zj-num-test', 'number': '99'}
+        registry = {'900001': 'placeholder-one'}
+        records, warnings, _ = self._run(FakeClient(), cfg, registry=registry)
+        rec = next(r for r in records if r['id'] == 'zj-num-test')
+        self.assertEqual(rec['number'], '99')
+
+
+class TestConfigEntryIsOptional(unittest.TestCase):
+    """A tour the client adds in Bokun and never touches in
+    tours-config.json at all must still build (spec 3.6)."""
+
+    def test_a_bokun_id_with_no_config_entry_at_all_still_builds(self):
+        cfg = dict(CFG, tours={})
+        c = FakeClient(overrides={
+            f'{ZEN}-EN': {'languages': ['en', 'JA_JP']},
+            f'{ZEN}-ja': {'title': 'ZEN-JA-SENTINEL'},
+        })
+        with tempfile.TemporaryDirectory() as tmp:
+            p = os.path.join(tmp, 'r.json')
+            tours_slug.save_registry(p, {})
+            records, warnings = bokun_source.fetch_records(c, cfg, registry_path=p)
+        by_slug = {r['id']: r for r in records}
+        self.assertIn('zen-journey', by_slug)
+        self.assertEqual(by_slug['zen-journey']['themes'], [])
+        self.assertEqual(by_slug['zen-journey']['widgets'], {})
 
 
 if __name__ == '__main__':

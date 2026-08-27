@@ -39,15 +39,35 @@ class TestWidgetBlock(unittest.TestCase):
         self.assertIn(f'https://widgets.bokun.io/online-sales/{CH}/experience-calendar/1273232',
                       html)
 
-    def test_records_the_ja_widget_for_later_language_switching(self):
+    def test_language_is_pinned_on_data_src_not_a_second_widget(self):
+        # Bokun's widget app reads a `lang` param off data-src, so ONE widget
+        # serves both languages. A separate ja widget is no longer needed, and
+        # the obsolete data-widget-ja attribute must not come back.
+        html = bt.widget_block(model({'en': f'{CH}/experience-calendar/1273232'}))
+        base = f'https://widgets.bokun.io/online-sales/{CH}/experience-calendar/1273232'
+        self.assertIn(f'data-src="{base}?lang=en"', html)
+        self.assertIn(f'data-widget-base="{base}"', html)
+        self.assertNotIn('data-widget-ja', html)
+
+    def test_the_stored_language_is_applied_before_the_async_loader_runs(self):
+        # the loader reads the mount once; if it wins the race the calendar is
+        # stuck in the wrong language until a manual refresh
+        html = bt.widget_block(model({'en': f'{CH}/experience-calendar/1273232'}))
+        set_lang = html.index("localStorage.getItem('zenrise-lang')")
+        loader = html.index('BokunWidgetsLoader.js')
+        self.assertLess(set_lang, loader)
+
+    def test_a_language_change_remounts_with_a_reload_fallback(self):
+        html = bt.widget_block(model({'en': f'{CH}/experience-calendar/1273232'}))
+        self.assertIn('ZenriseI18n', html)
+        self.assertIn('onChange', html)
+        self.assertIn('?lang=' + "' + lang", html)
+        self.assertIn('window.location.reload()', html)
+
+    def test_a_stale_config_ja_path_is_ignored_rather_than_emitted(self):
         html = bt.widget_block(model({'en': f'{CH}/experience-calendar/1273232',
                                       'ja': f'{CH}/experience-calendar/999'}))
-        self.assertIn('data-widget-ja="https://widgets.bokun.io/online-sales/'
-                      f'{CH}/experience-calendar/999"', html)
-
-    def test_ja_falls_back_to_en_when_absent(self):
-        html = bt.widget_block(model({'en': f'{CH}/experience-calendar/1273232'}))
-        self.assertNotIn('data-widget-ja', html)
+        self.assertNotIn('experience-calendar/999', html)
 
     def test_noscript_points_at_the_go_redirect(self):
         html = bt.widget_block(model({'en': f'{CH}/experience-calendar/1273232'}))

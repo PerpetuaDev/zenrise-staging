@@ -18,9 +18,21 @@ class TestNoOrphans(unittest.TestCase):
         self.sample_slugs = {s['id'] for s in (cfg.get('sampleTours') or [])}
 
     def test_only_generated_tour_pages_exist(self):
+        # Zero-touch catalogue (2026-08-26): a tours-config.json entry is a
+        # pinned override, not a publish decision any more -- a tour can be
+        # configured (its slug/number/area frozen from an earlier run) and
+        # still be correctly held back from the live catalogue (e.g. taken
+        # off the Bokun "Website" product list), in which case
+        # cleanup_stale_pages() removes its page. So the invariant this test
+        # can still check from static config alone is one-directional: no
+        # page exists for a slug config doesn't know about at all. The
+        # reverse -- every currently-catalogued slug DOES have a page -- is
+        # covered by the live/gate tests in test_bokun_source.py and
+        # test_stale_cleanup.py, which have the catalogue to check against.
         on_disk = {os.path.basename(p)[len('tour-'):-len('.html')]
                    for p in glob.glob(os.path.join(ROOT, 'tour-*.html'))}
-        self.assertEqual(on_disk, self.slugs | self.sample_slugs)
+        known = self.slugs | self.sample_slugs
+        self.assertTrue(on_disk <= known, on_disk - known)
 
     def test_sample_tours_are_staging_only_and_marked(self):
         with open(os.path.join(ROOT, 'cms', 'tours-config.json')) as f:

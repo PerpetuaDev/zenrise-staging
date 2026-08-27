@@ -31,21 +31,22 @@ def catalogue_ids(cfg):
 
 
 def tour_entry(cfg, bokun_id):
+    """A tour's hand-written config, or {} when it has none at all.
+
+    A config entry is now OPTIONAL (zero-touch catalogue, spec 3.6): the slug,
+    number and area all have a derivation path of their own (see
+    bokun_source.fetch_records), so a tour the client adds in Bokun and never
+    touches in tours-config.json must still build. This no longer requires a
+    'slug' key either -- a present entry with no slug simply carries no slug
+    override (derivation or the registry take over), while any other
+    hand-written fields (themes, widgets, jaReviewed, ...) still apply.
+    """
     tours = cfg.get('tours') or {}
     if str(bokun_id) in tours:
-        entry = tours[str(bokun_id)]
-    elif bokun_id in tours:
-        entry = tours[bokun_id]
-    else:
-        entry = None
-    if entry is None:
-        raise ConfigError(
-            f'Bokun product {bokun_id} is in the catalogue but has no entry in '
-            f'tours-config.json. Add one with a permanent slug before building; '
-            f'deriving a slug from the title would make the URL churn.')
-    if not entry.get('slug'):
-        raise ConfigError(f'tours-config.json entry for {bokun_id} has no slug.')
-    return entry
+        return tours[str(bokun_id)]
+    if bokun_id in tours:
+        return tours[bokun_id]
+    return {}
 
 
 def corrections(cfg):

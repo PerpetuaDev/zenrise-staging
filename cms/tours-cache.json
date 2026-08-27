@@ -1,5 +1,171 @@
 [
  {
+  "id": "candle-making",
+  "bokunId": 1273235,
+  "number": "02",
+  "area": "Kamakura",
+  "length": "Half-day",
+  "themes": [
+   "Arts & Craft"
+  ],
+  "cover": {
+   "url": "https://bokun.s3.amazonaws.com/ac5f2001-f764-450e-9185-3855e245db48.jpeg"
+  },
+  "hoursEn": "1 hour",
+  "hoursJa": "1 時間",
+  "priceEn": "from ¥12,000 per adult",
+  "priceJa": "¥12,000〜（大人おひとり）",
+  "priceRows": [
+   {
+    "category": "Adults",
+    "category_ja": null,
+    "min": 4,
+    "max": 4,
+    "amount": 12000,
+    "currency": "JPY",
+    "rate_title": "Standard Private Group ",
+    "rate_title_ja": null
+   },
+   {
+    "category": "Adults",
+    "category_ja": null,
+    "min": 3,
+    "max": 3,
+    "amount": 12000,
+    "currency": "JPY",
+    "rate_title": "Standard Private Group ",
+    "rate_title_ja": null
+   },
+   {
+    "category": "Adults",
+    "category_ja": null,
+    "min": 1,
+    "max": 2,
+    "amount": 29000,
+    "currency": "JPY",
+    "rate_title": "Standard Private Group ",
+    "rate_title_ja": null
+   }
+  ],
+  "widgets": {
+   "en": "6db7a498-ed75-46ba-b4fa-6ab6abc239c0/experience-calendar/1273235"
+  },
+  "jaReviewed": false,
+  "route": [],
+  "includedEn": "",
+  "includedJa": "",
+  "notIncludedEn": "",
+  "notIncludedJa": "",
+  "bringEn": "",
+  "bringJa": "",
+  "knowEn": "",
+  "knowJa": "",
+  "includedChipsEn": "",
+  "includedChipsJa": "",
+  "knowChipsEn": "",
+  "knowChipsJa": "",
+  "titleEn": "A private Japanese candle-making experience in Kamakura.",
+  "titleJa": "A private Japanese candle-making experience in Kamakura.",
+  "subEn": "Experience a private Japanese candle-making session with wax artist Meria, from Shonan Wa-Rōsoku. Held in Kamakura or Fujisawa.",
+  "subJa": "Experience a private Japanese candle-making session with wax artist Meria, from Shonan Wa-Rōsoku. Held in Kamakura or Fujisawa.",
+  "ledeEn": "Zenrise designs slow, considered private experiences around Kamakura and its surrounding towns. A private wa-rōsoku(Japanese candle) making session with Meria, a wax artist based in Shonan, arranged for up to four guests at a time, in a quiet space in Kamakura or Fujisawa. Every candle begins as a wick, dipped again and again into molten wax until it takes shape — entirely by hand. Natural materials from local farmers and growers — the character of Shonan, held in a single flame. The finished candle is yours to take home, a keepsake you'll return to each time you light it.",
+  "ledeJa": "Zenrise designs slow, considered private experiences around Kamakura and its surrounding towns. A private wa-rōsoku(Japanese candle) making session with Meria, a wax artist based in Shonan, arranged for up to four guests at a time, in a quiet space in Kamakura or Fujisawa. Every candle begins as a wick, dipped again and again into molten wax until it takes shape — entirely by hand. Natural materials from local farmers and growers — the character of Shonan, held in a single flame. The finished candle is yours to take home, a keepsake you'll return to each time you light it.",
+  "coverCaptionEn": "",
+  "coverCaptionJa": ""
+ },
+ {
+  "id": "zen-journey",
+  "bokunId": 1273194,
+  "number": "03",
+  "area": "Kamakura",
+  "length": "Full / Half-day",
+  "themes": [
+   "Temples & Shrines",
+   "Walking"
+  ],
+  "cover": {
+   "url": "https://bokun.s3.amazonaws.com/4277c6b0-2337-43f9-8c40-1ed5578910fd.jpeg"
+  },
+  "hoursEn": "4 hours",
+  "hoursJa": "4 時間",
+  "priceEn": "from ¥40,000 per group",
+  "priceJa": "¥40,000〜（1グループ）",
+  "priceRows": [
+   {
+    "category": null,
+    "category_ja": null,
+    "min": 1,
+    "max": 6,
+    "amount": 40000,
+    "currency": "JPY",
+    "per_booking": true,
+    "rate_title": "Group(1~6) Half Day",
+    "rate_title_ja": "Group(1~6) Half Day"
+   },
+   {
+    "category": null,
+    "category_ja": null,
+    "min": 1,
+    "max": 6,
+    "amount": 70000,
+    "currency": "JPY",
+    "per_booking": true,
+    "rate_title": "Group(1~6) Full Day",
+    "rate_title_ja": "Group(1~6) Full Day"
+   }
+  ],
+  "widgets": {
+   "en": "6db7a498-ed75-46ba-b4fa-6ab6abc239c0/experience-calendar/1273194"
+  },
+  "jaReviewed": true,
+  "route": [
+   {
+    "title": "Zen Journey",
+    "body": "Meditation, gardens and matcha at Engaku-ji, Jochi-ji and Jomyo-ji. Guiding.",
+    "titleJa": "禅の旅",
+    "bodyJa": "Meditation, gardens and matcha at Engaku-ji, Jochi-ji and Jomyo-ji. Guiding."
+   },
+   {
+    "title": "\"ZEN\" Lunch",
+    "body": "Shojin temple cuisine , or a lunch of choice (covered by the arrangement fee)",
+    "titleJa": "\"ZEN\" Lunch",
+    "bodyJa": "Shojin temple cuisine , or a lunch of choice (covered by the arrangement fee)"
+   },
+   {
+    "title": "Relaxing moments",
+    "body": "Matcha overlooking the dry landscape garden, unhurried",
+    "titleJa": "Relaxing moments",
+    "bodyJa": "Matcha overlooking the dry landscape garden, unhurried"
+   },
+   {
+    "title": "Tour ends",
+    "body": "Complimentary pick-up / drop-off within Kamakura and Fujisawa.",
+    "titleJa": "Tour ends",
+    "bodyJa": "Complimentary pick-up / drop-off within Kamakura and Fujisawa."
+   }
+  ],
+  "includedEn": "A dedicated guide will accompany you during the tour and guide you at each temple\nAdmission fees for the three temples (Engakuji, Jochiji, and Jomyo-ji)\nA short zazen experience at Engaku-ji Temple (led by a guide)\nEnjoy matcha while looking out at the dry landscape garden at a teahouse in Jomyo-ji Temple\nlunch. We will prepare it at the restaurant of your choice according to your preferences and dietary restrictions\nGetting around Kamakura city during the tour\nExclusive eco-tour insurance (including domestic travel accident insurance and facility liability insurance. (International customers are also included in the day trip)\nAdvance arrangements and complete reservation\nMeet and greet at Kita-Kamakura Station",
+  "includedJa": "ツアー中、専任ガイドが同行し、各寺院にてご案内いたします\n三寺院（円覚寺・浄智寺・浄妙寺）の拝観料\n円覚寺での短い坐禅体験（ガイド引率）\n浄妙寺の茶屋にて、枯山水庭園を望みながらいただく抹茶\n昼食。お好み・食事制限に応じてお選びいただいたお店にてご用意いたします\nツアー中の鎌倉市内の移動\n専用のエコツアー保険（国内旅行傷害保険・施設賠償責任保険を含む。海外からのお客様も日帰りツアーの対象に含まれます）\n事前のお手配・ご予約一式\n北鎌倉駅でのお出迎え",
+  "notIncludedEn": "Food and drink expenses other than the included lunch and matcha\nHire and transfers from hotels, Tokyo, etc. (if you wish, we will quote separately according to your departure location)\nPersonal shopping\nThe customer's own overseas travel insurance (we strongly recommend that customers who participate from overseas take part)",
+  "notIncludedJa": "含まれている昼食および抹茶以外のご飲食代\nホテル・都内などからのハイヤーおよび送迎（ご希望の場合は、出発地に応じて別途お見積りいたします）\n個人的なお買い物\nお客様ご自身の海外旅行保険（海外からご参加のお客様にはご加入を強くおすすめしております）",
+  "bringEn": "Comfortable walking shoes. There are temples with stone steps, so we recommend comfortable shoes.",
+  "bringJa": "歩きやすい靴。石段のある寺院がございますので、履き慣れた靴がおすすめです。",
+  "knowEn": "There are temples with stone steps, so please wear shoes that are easy to walk in.\nThe meeting place is Kita-Kamakura station. If you wish to be picked up from a hotel, Tokyo, etc., we will make a separate estimate according to your departure location.\nPlease let us know your lunch preferences and dietary restrictions at the time of reservation. The listed menu is an example. Nagashi somen is only seasonally from April to October.\nArrangement fees may vary drastically depending on the content of the lunch. After asking about the number of people and the place of departure, we will inform you about the official price.\nThe tour fee includes eco-tour insurance for day trips only, but accidents before or after dissolution, worsening of pre-existing medical conditions, and loss, theft, or damage to personal items are not covered. We strongly recommend that international participants take out their own travel insurance before departure.\nFor reservations made less than 7 days before the tour date, bank transfers cannot be used, and payment is made by credit card.\nCancellation fees are free until 11 days before the tour date, and thereafter will be charged based on standard travel business terms and conditions. Even if you cancel on the day before departure, you will be billed in full for the individual costs that have already been arranged.\nIf we cancel the tour due to bad weather or other unavoidable circumstances, we will give you a full refund.",
+  "knowJa": "石段のある寺院がございますので、歩きやすい靴でお越しください。\n集合場所は北鎌倉駅です。ホテル・都内などからの送迎をご希望の場合は、出発地に応じて別途お見積りいたします。\n昼食のご希望・食事制限は、ご予約時にお知らせください。掲載のメニューは一例です。流しそうめんは4月〜10月の季節限定となります。\n手配料は昼食の内容により大幅に変動する場合がございます。人数・出発地を伺った上で、正式な金額をご案内いたします。\nツアー料金には日帰りツアー専用のエコツアー保険が含まれますが、集合前・解散後の事故、既往症の悪化、身の回り品の紛失・盗難・破損は対象外です。海外からご参加のお客様は、ご出発前にご自身で旅行保険にご加入いただくことを強くおすすめいたします。\n催行日の7日前を切ってのご予約は銀行振込をご利用いただけず、クレジットカードでのお支払いとなります。\nキャンセル料は催行日の11日前まで無料、以降は標準旅行業約款に基づき発生いたします。当日出発前のキャンセルであっても、既にお手配済みの個別費用は全額ご請求いたします。\n悪天候その他やむを得ない事情により当社がツアーを中止する場合は、全額返金いたします。",
+  "includedChipsEn": "Bus fare\nParking fees\nFood & drinks\nEntry & admission fees\nTax",
+  "includedChipsJa": "バス運賃\n駐車料金\n飲食\n拝観料・入場料\n消費税",
+  "knowChipsEn": "Public transport nearby",
+  "knowChipsJa": "公共交通機関が近い",
+  "titleEn": "The Zen Journey",
+  "titleJa": "禅の旅",
+  "subEn": "Experience the 850 year history of Kamakura and the essence of Zen. Japanese garden, zazen, matcha.",
+  "subJa": "850年の鎌倉の歴史と、禅の本質に触れる。日本庭園・坐禅・抹茶。",
+  "ledeEn": "Kamakura's temples have been protected for 850 years. That serenity has also been around the same number of years. This tour is a day to enjoy that serenity. In addition to visiting famous places, you will also slowly visit the three Zen temples of the Kamakura Five Mountains, and the guide will carefully guide you through the scenery in front of you one by one. The Kamakura Gozan is a general term for the five highest ranking temples of the Rinzai sect — Kenchoji, Engaku-ji, Jufuku-ji, Jochi-ji, and Jomyo-ji — founded by the Kamakura Shogunate and determined by the Muromachi Shogunate. At Engakuji, you will experience a short zazen meditation; at Jochi-ji Temple, you will walk around the precincts decorated with seasonal flowers, and enjoy matcha while looking at dry mountain water at Jomyo-ji Temple. At the end of the morning, have lunch at a restaurant that suits your preferences. All arrangements have been made in advance, so all that's left to do is be prepared to walk slowly. Practical Notes There are temples with stone steps, so we recommend shoes that are easy to walk in. We will guide you on an all-inclusive basis, including travel expenses, admission fees, lunch, and accompanying a guide.",
+  "ledeJa": "鎌倉の寺々は八百五十年にわたり守られてきました。その静けさもまた、同じだけの歳月を重ねています。本ツアーは、その静けさを味わうための一日です。名所を巡るだけでなく、鎌倉五山のうち三つの禅寺をゆっくりと巡り、ガイドが目の前の景色をひとつひとつ丁寧にご案内します。 鎌倉五山とは、鎌倉幕府が礎を築き、室町幕府によって定められた、臨済宗の五つの最高格式寺院——建長寺・円覚寺・寿福寺・浄智寺・浄妙寺——の総称です。 円覚寺では短い坐禅を体験し、浄智寺では四季折々の草花が彩る境内をそぞろ歩き、浄妙寺では枯山水を眺めながら抹茶をいただきます。午前の締めくくりには、お好みに合わせたお店で昼食を。 すべての手配はあらかじめ整えてありますので、あとはゆっくりと歩む心構えだけをお持ちください。 ご案内 石段のある寺院がございますので、歩きやすい靴をおすすめします。移動費・拝観料・昼食代・ガイド同行を含む、オールインクルーシブでご案内いたします。",
+  "coverCaptionEn": "",
+  "coverCaptionJa": ""
+ },
+ {
   "id": "ikebana-ichigo-ichie",
   "bokunId": 1273232,
   "number": "01",
@@ -109,266 +275,6 @@
   "subJa": "An exclusive, 90-minute private Ikebana experience in Kamakura guided by master artist Koen Yokoi, featuring hands-on flower arranging, tea, and seasonal sweets.",
   "ledeEn": "Experience the Art of Ikebana in Kamakura with Master Koen Yokoi Immerse yourself in \"Ichika Ichiei\" (One Flower, One Encounter)—a unique, 90-minute private floral workshop designed for exclusive small groups of 1 to 6 guests in the historic city of Kamakura. Guided by Master Koen Yokoi, a third-generation Sogetsu Ikebana master with an illustrious career decorating stage productions, international events, and film sets, this private session offers a rare and intimate glimpse into the world of Japanese flower arrangement.",
   "ledeJa": "Experience the Art of Ikebana in Kamakura with Master Koen Yokoi Immerse yourself in \"Ichika Ichiei\" (One Flower, One Encounter)—a unique, 90-minute private floral workshop designed for exclusive small groups of 1 to 6 guests in the historic city of Kamakura. Guided by Master Koen Yokoi, a third-generation Sogetsu Ikebana master with an illustrious career decorating stage productions, international events, and film sets, this private session offers a rare and intimate glimpse into the world of Japanese flower arrangement.",
-  "coverCaptionEn": "",
-  "coverCaptionJa": ""
- },
- {
-  "id": "candle-making",
-  "bokunId": 1273235,
-  "number": "02",
-  "area": "Kamakura",
-  "length": "Half-day",
-  "themes": [
-   "Arts & Craft"
-  ],
-  "cover": {
-   "url": "https://bokun.s3.amazonaws.com/ac5f2001-f764-450e-9185-3855e245db48.jpeg"
-  },
-  "hoursEn": "1 hour",
-  "hoursJa": "1 時間",
-  "priceEn": "from ¥12,000 per adult",
-  "priceJa": "¥12,000〜（大人おひとり）",
-  "priceRows": [
-   {
-    "category": "Adults",
-    "category_ja": null,
-    "min": 4,
-    "max": 4,
-    "amount": 12000,
-    "currency": "JPY",
-    "rate_title": "Standard Private Group ",
-    "rate_title_ja": null
-   },
-   {
-    "category": "Adults",
-    "category_ja": null,
-    "min": 3,
-    "max": 3,
-    "amount": 12000,
-    "currency": "JPY",
-    "rate_title": "Standard Private Group ",
-    "rate_title_ja": null
-   },
-   {
-    "category": "Adults",
-    "category_ja": null,
-    "min": 1,
-    "max": 2,
-    "amount": 29000,
-    "currency": "JPY",
-    "rate_title": "Standard Private Group ",
-    "rate_title_ja": null
-   }
-  ],
-  "widgets": {
-   "en": "6db7a498-ed75-46ba-b4fa-6ab6abc239c0/experience-calendar/1273235"
-  },
-  "jaReviewed": false,
-  "route": [],
-  "includedEn": "",
-  "includedJa": "",
-  "notIncludedEn": "",
-  "notIncludedJa": "",
-  "bringEn": "",
-  "bringJa": "",
-  "knowEn": "",
-  "knowJa": "",
-  "includedChipsEn": "",
-  "includedChipsJa": "",
-  "knowChipsEn": "",
-  "knowChipsJa": "",
-  "titleEn": "A private Japanese candle-making experience in Kamakura.",
-  "titleJa": "A private Japanese candle-making experience in Kamakura.",
-  "subEn": "Experience a private Japanese candle-making session with wax artist Meria, from Shonan Wa-Rōsoku. Held in Kamakura or Fujisawa.",
-  "subJa": "Experience a private Japanese candle-making session with wax artist Meria, from Shonan Wa-Rōsoku. Held in Kamakura or Fujisawa.",
-  "ledeEn": "Zenrise designs slow, considered private experiences around Kamakura and its surrounding towns. A private wa-rōsoku(Japanese candle) making session with Meria, a wax artist based in Shonan, arranged for up to four guests at a time, in a quiet space in Kamakura or Fujisawa. Every candle begins as a wick, dipped again and again into molten wax until it takes shape — entirely by hand. Natural materials from local farmers and growers — the character of Shonan, held in a single flame. The finished candle is yours to take home, a keepsake you'll return to each time you light it.",
-  "ledeJa": "Zenrise designs slow, considered private experiences around Kamakura and its surrounding towns. A private wa-rōsoku(Japanese candle) making session with Meria, a wax artist based in Shonan, arranged for up to four guests at a time, in a quiet space in Kamakura or Fujisawa. Every candle begins as a wick, dipped again and again into molten wax until it takes shape — entirely by hand. Natural materials from local farmers and growers — the character of Shonan, held in a single flame. The finished candle is yours to take home, a keepsake you'll return to each time you light it.",
-  "coverCaptionEn": "",
-  "coverCaptionJa": ""
- },
- {
-  "id": "zen-journey",
-  "bokunId": 1273194,
-  "number": "03",
-  "area": "Kamakura",
-  "length": "Half-day",
-  "themes": [
-   "Temples & Shrines",
-   "Walking"
-  ],
-  "cover": {
-   "url": "https://bokun.s3.amazonaws.com/4277c6b0-2337-43f9-8c40-1ed5578910fd.jpeg"
-  },
-  "hoursEn": "4 hours",
-  "hoursJa": "4 時間",
-  "priceEn": "from ¥40,000 per group",
-  "priceJa": "¥40,000〜（1グループ）",
-  "priceRows": [
-   {
-    "category": null,
-    "category_ja": null,
-    "min": 1,
-    "max": 6,
-    "amount": 40000,
-    "currency": "JPY",
-    "per_booking": true,
-    "rate_title": "Group(1~6) Half Day",
-    "rate_title_ja": "Group(1~6) Half Day"
-   },
-   {
-    "category": null,
-    "category_ja": null,
-    "min": 1,
-    "max": 6,
-    "amount": 70000,
-    "currency": "JPY",
-    "per_booking": true,
-    "rate_title": "Group(1~6) Full Day",
-    "rate_title_ja": "Group(1~6) Full Day"
-   }
-  ],
-  "widgets": {
-   "en": "6db7a498-ed75-46ba-b4fa-6ab6abc239c0/experience-calendar/1273194"
-  },
-  "jaReviewed": true,
-  "route": [
-   {
-    "title": "Zen Journey",
-    "body": "Meditation, gardens and matcha at Engaku-ji, Jochi-ji and Jomyo-ji. Guiding.",
-    "titleJa": "禅の旅",
-    "bodyJa": "Meditation, gardens and matcha at Engaku-ji, Jochi-ji and Jomyo-ji. Guiding."
-   },
-   {
-    "title": "\"ZEN\" Lunch",
-    "body": "Shojin temple cuisine , or a lunch of choice (covered by the arrangement fee)",
-    "titleJa": "\"ZEN\" Lunch",
-    "bodyJa": "Shojin temple cuisine , or a lunch of choice (covered by the arrangement fee)"
-   },
-   {
-    "title": "Relaxing moments",
-    "body": "Matcha overlooking the dry landscape garden, unhurried",
-    "titleJa": "Relaxing moments",
-    "bodyJa": "Matcha overlooking the dry landscape garden, unhurried"
-   },
-   {
-    "title": "Tour ends",
-    "body": "Complimentary pick-up / drop-off within Kamakura and Fujisawa.",
-    "titleJa": "Tour ends",
-    "bodyJa": "Complimentary pick-up / drop-off within Kamakura and Fujisawa."
-   }
-  ],
-  "includedEn": "A dedicated guide will accompany you during the tour and guide you at each temple\nAdmission fees for the three temples (Engakuji, Jochiji, and Jomyo-ji)\nA short zazen experience at Engaku-ji Temple (led by a guide)\nEnjoy matcha while looking out at the dry landscape garden at a teahouse in Jomyo-ji Temple\nlunch. We will prepare it at the restaurant of your choice according to your preferences and dietary restrictions\nGetting around Kamakura city during the tour\nExclusive eco-tour insurance (including domestic travel accident insurance and facility liability insurance. (International customers are also included in the day trip)\nAdvance arrangements and complete reservation\nMeet and greet at Kita-Kamakura Station",
-  "includedJa": "ツアー中、専任ガイドが同行し、各寺院にてご案内いたします\n三寺院（円覚寺・浄智寺・浄妙寺）の拝観料\n円覚寺での短い坐禅体験（ガイド引率）\n浄妙寺の茶屋にて、枯山水庭園を望みながらいただく抹茶\n昼食。お好み・食事制限に応じてお選びいただいたお店にてご用意いたします\nツアー中の鎌倉市内の移動\n専用のエコツアー保険（国内旅行傷害保険・施設賠償責任保険を含む。海外からのお客様も日帰りツアーの対象に含まれます）\n事前のお手配・ご予約一式\n北鎌倉駅でのお出迎え",
-  "notIncludedEn": "Food and drink expenses other than the included lunch and matcha\nHire and transfers from hotels, Tokyo, etc. (if you wish, we will quote separately according to your departure location)\nPersonal shopping\nThe customer's own overseas travel insurance (we strongly recommend that customers who participate from overseas take part)",
-  "notIncludedJa": "含まれている昼食および抹茶以外のご飲食代\nホテル・都内などからのハイヤーおよび送迎（ご希望の場合は、出発地に応じて別途お見積りいたします）\n個人的なお買い物\nお客様ご自身の海外旅行保険（海外からご参加のお客様にはご加入を強くおすすめしております）",
-  "bringEn": "Comfortable walking shoes. There are temples with stone steps, so we recommend comfortable shoes.",
-  "bringJa": "歩きやすい靴。石段のある寺院がございますので、履き慣れた靴がおすすめです。",
-  "knowEn": "There are temples with stone steps, so please wear shoes that are easy to walk in.\nThe meeting place is Kita-Kamakura station. If you wish to be picked up from a hotel, Tokyo, etc., we will make a separate estimate according to your departure location.\nPlease let us know your lunch preferences and dietary restrictions at the time of reservation. The listed menu is an example. Nagashi somen is only seasonally from April to October.\nArrangement fees may vary drastically depending on the content of the lunch. After asking about the number of people and the place of departure, we will inform you about the official price.\nThe tour fee includes eco-tour insurance for day trips only, but accidents before or after dissolution, worsening of pre-existing medical conditions, and loss, theft, or damage to personal items are not covered. We strongly recommend that international participants take out their own travel insurance before departure.\nFor reservations made less than 7 days before the tour date, bank transfers cannot be used, and payment is made by credit card.\nCancellation fees are free until 11 days before the tour date, and thereafter will be charged based on standard travel business terms and conditions. Even if you cancel on the day before departure, you will be billed in full for the individual costs that have already been arranged.\nIf we cancel the tour due to bad weather or other unavoidable circumstances, we will give you a full refund.",
-  "knowJa": "石段のある寺院がございますので、歩きやすい靴でお越しください。\n集合場所は北鎌倉駅です。ホテル・都内などからの送迎をご希望の場合は、出発地に応じて別途お見積りいたします。\n昼食のご希望・食事制限は、ご予約時にお知らせください。掲載のメニューは一例です。流しそうめんは4月〜10月の季節限定となります。\n手配料は昼食の内容により大幅に変動する場合がございます。人数・出発地を伺った上で、正式な金額をご案内いたします。\nツアー料金には日帰りツアー専用のエコツアー保険が含まれますが、集合前・解散後の事故、既往症の悪化、身の回り品の紛失・盗難・破損は対象外です。海外からご参加のお客様は、ご出発前にご自身で旅行保険にご加入いただくことを強くおすすめいたします。\n催行日の7日前を切ってのご予約は銀行振込をご利用いただけず、クレジットカードでのお支払いとなります。\nキャンセル料は催行日の11日前まで無料、以降は標準旅行業約款に基づき発生いたします。当日出発前のキャンセルであっても、既にお手配済みの個別費用は全額ご請求いたします。\n悪天候その他やむを得ない事情により当社がツアーを中止する場合は、全額返金いたします。",
-  "includedChipsEn": "Bus fare\nParking fees\nFood & drinks\nEntry & admission fees\nTax",
-  "includedChipsJa": "バス運賃\n駐車料金\n飲食\n拝観料・入場料\n消費税",
-  "knowChipsEn": "Public transport nearby",
-  "knowChipsJa": "公共交通機関が近い",
-  "titleEn": "The Zen Journey",
-  "titleJa": "禅の旅",
-  "subEn": "Experience the 850 year history of Kamakura and the essence of Zen. Japanese garden, zazen, matcha.",
-  "subJa": "850年の鎌倉の歴史と、禅の本質に触れる。日本庭園・坐禅・抹茶。",
-  "ledeEn": "Kamakura's temples have been protected for 850 years. That serenity has also been around the same number of years. This tour is a day to enjoy that serenity. In addition to visiting famous places, you will also slowly visit the three Zen temples of the Kamakura Five Mountains, and the guide will carefully guide you through the scenery in front of you one by one. The Kamakura Gozan is a general term for the five highest ranking temples of the Rinzai sect — Kenchoji, Engaku-ji, Jufuku-ji, Jochi-ji, and Jomyo-ji — founded by the Kamakura Shogunate and determined by the Muromachi Shogunate. At Engakuji, you will experience a short zazen meditation; at Jochi-ji Temple, you will walk around the precincts decorated with seasonal flowers, and enjoy matcha while looking at dry mountain water at Jomyo-ji Temple. At the end of the morning, have lunch at a restaurant that suits your preferences. All arrangements have been made in advance, so all that's left to do is be prepared to walk slowly. Practical Notes There are temples with stone steps, so we recommend shoes that are easy to walk in. We will guide you on an all-inclusive basis, including travel expenses, admission fees, lunch, and accompanying a guide.",
-  "ledeJa": "鎌倉の寺々は八百五十年にわたり守られてきました。その静けさもまた、同じだけの歳月を重ねています。本ツアーは、その静けさを味わうための一日です。名所を巡るだけでなく、鎌倉五山のうち三つの禅寺をゆっくりと巡り、ガイドが目の前の景色をひとつひとつ丁寧にご案内します。 鎌倉五山とは、鎌倉幕府が礎を築き、室町幕府によって定められた、臨済宗の五つの最高格式寺院——建長寺・円覚寺・寿福寺・浄智寺・浄妙寺——の総称です。 円覚寺では短い坐禅を体験し、浄智寺では四季折々の草花が彩る境内をそぞろ歩き、浄妙寺では枯山水を眺めながら抹茶をいただきます。午前の締めくくりには、お好みに合わせたお店で昼食を。 すべての手配はあらかじめ整えてありますので、あとはゆっくりと歩む心構えだけをお持ちください。 ご案内 石段のある寺院がございますので、歩きやすい靴をおすすめします。移動費・拝観料・昼食代・ガイド同行を含む、オールインクルーシブでご案内いたします。",
-  "coverCaptionEn": "",
-  "coverCaptionJa": ""
- },
- {
-  "id": "swordsmithing",
-  "bokunId": 1275339,
-  "number": "04",
-  "area": "Kamakura",
-  "length": "Half-day",
-  "themes": [
-   "Arts & Craft"
-  ],
-  "cover": {
-   "url": "https://bokun.s3.amazonaws.com/df98408a-a4cb-4cc4-af26-4203a827c34b.jpeg"
-  },
-  "hoursEn": "1 hour",
-  "hoursJa": "1 時間",
-  "priceEn": "from ¥66,000 per adult",
-  "priceJa": "¥66,000〜（大人おひとり）",
-  "priceRows": [
-   {
-    "category": "Adults",
-    "category_ja": null,
-    "min": 6,
-    "max": 6,
-    "amount": 66000,
-    "currency": "JPY",
-    "rate_title": "Standard rate",
-    "rate_title_ja": null
-   },
-   {
-    "category": "Adults",
-    "category_ja": null,
-    "min": 5,
-    "max": 5,
-    "amount": 66000,
-    "currency": "JPY",
-    "rate_title": "Standard rate",
-    "rate_title_ja": null
-   },
-   {
-    "category": "Adults",
-    "category_ja": null,
-    "min": 1,
-    "max": 2,
-    "amount": 75000,
-    "currency": "JPY",
-    "rate_title": "Standard rate",
-    "rate_title_ja": null
-   },
-   {
-    "category": "Adults",
-    "category_ja": null,
-    "min": 4,
-    "max": 4,
-    "amount": 66000,
-    "currency": "JPY",
-    "rate_title": "Standard rate",
-    "rate_title_ja": null
-   },
-   {
-    "category": "Adults",
-    "category_ja": null,
-    "min": 3,
-    "max": 3,
-    "amount": 66000,
-    "currency": "JPY",
-    "rate_title": "Standard rate",
-    "rate_title_ja": null
-   }
-  ],
-  "widgets": {
-   "en": "6db7a498-ed75-46ba-b4fa-6ab6abc239c0/experience-calendar/1275339"
-  },
-  "jaReviewed": false,
-  "route": [],
-  "includedEn": "",
-  "includedJa": "",
-  "notIncludedEn": "",
-  "notIncludedJa": "",
-  "bringEn": "",
-  "bringJa": "",
-  "knowEn": "",
-  "knowJa": "",
-  "includedChipsEn": "",
-  "includedChipsJa": "",
-  "knowChipsEn": "",
-  "knowChipsJa": "",
-  "titleEn": "Swordsmithing, “The Smith’s Flame”",
-  "titleJa": "Swordsmithing, “The Smith’s Flame”",
-  "subEn": "The Smith’s Flame 24TH- GENERATION SMITH · LINEAGE OF MASAMUNE · KAMAKURA",
-  "subJa": "The Smith’s Flame 24TH- GENERATION SMITH · LINEAGE OF MASAMUNE · KAMAKURA",
-  "ledeEn": "A visit to the working forge of a swordsmithing house now in its twenty-fourth generation, descended from Masamune , one of Japan's three great masters. Arranged through our partnership with Arte Inc. Guests watch heated steel struck and folded into form, learn the quiet manner in which a blade is appraised, and close the visit with tea and seasonal sweets by the hearth.",
-  "ledeJa": "A visit to the working forge of a swordsmithing house now in its twenty-fourth generation, descended from Masamune , one of Japan's three great masters. Arranged through our partnership with Arte Inc. Guests watch heated steel struck and folded into form, learn the quiet manner in which a blade is appraised, and close the visit with tea and seasonal sweets by the hearth.",
   "coverCaptionEn": "",
   "coverCaptionJa": ""
  }

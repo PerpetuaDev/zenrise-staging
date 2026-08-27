@@ -1,5 +1,5 @@
 # cms/tests/test_tours_render.py
-import importlib.util, os, unittest
+import importlib.util, os, re, unittest
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 SPEC = importlib.util.spec_from_file_location(
@@ -373,6 +373,32 @@ class TestPrepTemplateUnaffected(unittest.TestCase):
         html = bt.render_detail(m, self.tpl_full, self.tpl_prep)
         self.assertIn('price-breakdown', html)
         self.assertIn('id="book"', html)
+
+
+class TestGridOrder(unittest.TestCase):
+    """The grid must read in sequence, whatever order Bokun returns.
+
+    The Website product list's member order is the client's to change and bears
+    no relation to the eyebrow numbering, so a build that renders in catalogue
+    order produces a grid reading 02, 03, 01.
+    """
+
+    def _numbers(self, page):
+        with open(os.path.join(ROOT, page), encoding='utf-8') as f:
+            html = f.read()
+        return [m.group(1) for m in re.finditer(
+            r'href="tour-[a-z0-9-]+\.html".*?No\.\s*(\d+)', html, re.S)]
+
+    def test_cards_render_in_ascending_number_order(self):
+        for page in ('tours.html', 'index.html'):
+            nums = self._numbers(page)
+            self.assertTrue(nums, page)
+            self.assertEqual(nums, sorted(nums), page)
+
+    def test_sort_key_puts_unnumbered_tours_last(self):
+        models = [{'num': ''}, {'num': '03'}, {'num': '01'}]
+        models.sort(key=lambda m: (m['num'] == '', m['num']))
+        self.assertEqual([m['num'] for m in models], ['01', '03', ''])
 
 
 if __name__ == '__main__':
