@@ -116,23 +116,27 @@
     color: rgb(41 65 56) !important;
 }
 
-/* Section headings: Participants / Choose a date / Booking Summary.
-   Descendants are targeted explicitly: the heading text lives in a child
-   element that sets its own colour, and !important on a parent does NOT beat a
-   child's own declaration -- it only wins against other rules on the same
-   element. Without the `*` these rendered in Bokun's blue-grey (52,64,78)
-   while the underline bars, which do come from the tokens, were already
-   correct. Verified by measuring the rendered pixels. */
-.ParticipantHeader, .ParticipantHeader *,
-.CalendarHeader, .CalendarHeader *,
-.SummaryHeader, .SummaryHeader *,
-.SummaryTitle, .SummaryTitle *,
-.Title, .Title * {
+/* Section headings. Targeted as elements, not by wrapper class: all three are
+   plain <h2> sharing one generated class, and the wrappers differ per section --
+   "Participants" sits in .ParticipantHeader, "Booking Summary" in
+   .SummaryHeader, but "Choose a date" sits in .MonthCalendarHeader, while
+   .CalendarHeader is actually the weekday row. Targeting the wrappers left
+   "Choose a date" in Bokun's blue-grey; verified by measuring the pixels.
+   <h5> catches the "Total:" label, which ships a hardcoded color="#57646F". */
+#root h2, #root h3, #root h4, #root h5, #root h6 {
     font-family: Optima, "Optima Nova", "Palatino Linotype", Palatino,
                  Georgia, serif !important;
     font-weight: 400 !important;
     letter-spacing: -0.005em !important;
     color: rgb(41 65 56) !important;
+}
+
+/* Icon fills: Bokun ships some as presentation attributes, including a stray
+   #1D57C7 blue on the stepper's plus icon. A CSS fill overrides an attribute. */
+#root svg path,
+#root svg circle,
+#root svg rect {
+    fill: rgb(41 65 56) !important;
 }
 
 /* Weekday labels read as the site's eyebrow/meta style. */
@@ -237,30 +241,31 @@
    the only <button href="#"> in the widget, which makes a stable enough hook.
    If a Bokun release ever drops that attribute this rule goes quiet rather
    than misfiring, because day cells and steppers are matched by class above. */
-/* The visible fill is on a child of the button, not the button itself, so the
-   descendants are included -- and three attribute hooks are used because Bokun
-   gives this element no class of its own. Measured before this fix: the button
-   rendered rgba(0,0,0,0.16) grey with #aaa text, i.e. hardcoded neutrals that
-   no token override reaches. */
-#root button[href], #root button[href] *,
-#root button[to], #root button[to] *,
-#root button[loading], #root button[loading] *,
-#root button[type="submit"], #root button[type="submit"] * {
+/* Checkout button. The button itself carries no class, but its wrapper does:
+   <div data-testid="checkout-button">. Earlier attempts matched on href/to/
+   loading attributes and did nothing -- measured 13,151px of unchanged
+   rgba(0,0,0,0.16) grey -- so this uses the testid instead. Descendants and the
+   svg are included because the fill and the lock icon sit inside the button. */
+[data-testid="checkout-button"] button,
+[data-testid="checkout-button"] button * {
     background: rgb(41 65 56) !important;
     color: #F7F4EA !important;
     border-radius: 0 !important;
     letter-spacing: 0.02em !important;
 }
-/* Disabled until a date is chosen, which is the state a guest sees first. */
-#root button[href]:disabled, #root button[href]:disabled *,
-#root button[to]:disabled, #root button[to]:disabled *,
-#root button[loading]:disabled, #root button[loading]:disabled *,
-#root button[type="submit"]:disabled, #root button[type="submit"]:disabled * {
+[data-testid="checkout-button"] button svg path,
+[data-testid="checkout-button"] button svg circle,
+[data-testid="checkout-button"] button svg rect {
+    fill: #F7F4EA !important;
+}
+/* Disabled until a date is chosen -- the state a guest sees first. */
+[data-testid="checkout-button"] button:disabled,
+[data-testid="checkout-button"] button:disabled * {
     background: rgba(41, 65, 56, 0.30) !important;
     color: #F7F4EA !important;
 }
-/* Day cells and steppers are also <button>s; make sure the rules above never
-   reach them, whatever attributes a future Bokun release adds. */
+
+/* Day cells and steppers are <button>s too; keep their surfaces clean. */
 #root button.CalendarOuterWrapper,
 #root button.CalendarOuterWrapper *,
 #root button.PlusButton,
