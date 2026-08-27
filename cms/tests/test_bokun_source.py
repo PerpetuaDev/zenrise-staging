@@ -964,3 +964,39 @@ class TestConfigEntryIsOptional(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+
+
+class TestProseWithoutBullets(unittest.TestCase):
+    """A client may write these fields as bullets OR as paragraphs.
+
+    Bokun's editor allows both, and this product was switched from bullets to
+    paragraphs separated in line. With only <li> handled every item collapsed
+    into one run-on blob.
+    """
+
+    def rec_for(self, included_html):
+        activity = dict(load(f'activity-{ZEN}-EN.json'), included=included_html)
+        availability = load(f'availability-{ZEN}.json')
+        rec, *_ = bokun_source.to_record(
+            activity, activity, availability, [], CFG['tours'][str(ZEN)], {})
+        return [x for x in rec['includedEn'].split('\n') if x.strip()]
+
+    def test_paragraphs_become_separate_items(self):
+        html = ('<p>First thing</p><p>Second thing</p><p>Third thing</p>')
+        self.assertEqual(self.rec_for(html), ['First thing', 'Second thing', 'Third thing'])
+
+    def test_trailing_breaks_do_not_create_empty_items(self):
+        # the shape this product actually uses
+        html = ('<p>First thing<br /><br /></p><p>Second thing<br /><br /></p>')
+        self.assertEqual(self.rec_for(html), ['First thing', 'Second thing'])
+
+    def test_leading_breaks_do_not_create_empty_items(self):
+        html = '<p>First thing</p><p><br />Second thing</p>'
+        self.assertEqual(self.rec_for(html), ['First thing', 'Second thing'])
+
+    def test_bullets_still_win_when_present(self):
+        html = '<ul><li>Bullet one</li><li>Bullet two</li></ul><p>Stray paragraph</p>'
+        self.assertEqual(self.rec_for(html), ['Bullet one', 'Bullet two'])
+
+    def test_a_single_paragraph_is_one_item(self):
+        self.assertEqual(self.rec_for('<p>Only one thing</p>'), ['Only one thing'])

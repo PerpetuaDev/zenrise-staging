@@ -235,16 +235,35 @@ def to_record(activity, activity_ja, availability, availability_ja, entry, corr)
         parsed_ja_lede = list(parsed_ja['lede'])
 
     def prose_items(raw):
+        """One item per <li>, or [] when the field carries no list."""
         return [x for x in (cl(li) for li in bokun_text.list_items(raw)) if x]
+
+    def prose_paragraphs(raw):
+        """One item per paragraph, for a field written without bullets.
+
+        Bokun's editor allows either shape and this product was switched from
+        bullets to paragraphs separated in line; with only <li> handled, every
+        item collapsed into one run-on blob. paragraphs() splits on block
+        boundaries and drops the empty chunks a trailing <br /><br /> inside a
+        <p> produces, so both shapes yield one item each.
+
+        Deliberately tried AFTER the description fallback, not before: Ikebana's
+        included field is a single prose sentence while its 6-item list lives in
+        the description, and splitting that sentence into one paragraph would
+        short-circuit the fallback that finds the real list.
+        """
+        paras, _ = bokun_text.paragraphs(raw, corr)
+        return [x for x in paras if x]
 
     def prose_group(bokun_field, desc_fallback_en=(), desc_fallback_ja=()):
         """(en, ja) newline-joined PROSE text for one of the four fixed groups.
 
-        Fallback order, and it matters (task 17): <li> items from the field
-        itself; then, for the Included group only, the existing
-        description-parsing (Ikebana's included field is one prose sentence
-        with no list, while its description still carries a 6-item list);
-        then the field's own plain text as a single item. A group with
+        Fallback order, and it matters (task 17): <li> items from the field;
+        then, for the Included group only, description-parsing (Ikebana's
+        included field is one prose sentence with no list, while its description
+        still carries a 6-item list); then the field's own paragraphs, which
+        also covers the single-paragraph case that used to be handled as plain
+        text. A group with
         nothing at all stays empty -- chips_section already renders that as
         no group, and must keep doing so.
         """
@@ -252,8 +271,7 @@ def to_record(activity, activity_ja, availability, availability_ja, entry, corr)
         if not en_items and desc_fallback_en:
             en_items = list(desc_fallback_en)
         if not en_items:
-            plain = cl(activity.get(bokun_field))
-            en_items = [plain] if plain else []
+            en_items = prose_paragraphs(activity.get(bokun_field))
         en_joined = '\n'.join(en_items)
 
         if reviewed:
@@ -261,8 +279,7 @@ def to_record(activity, activity_ja, availability, availability_ja, entry, corr)
             if not ja_items and desc_fallback_ja:
                 ja_items = list(desc_fallback_ja)
             if not ja_items:
-                plain_ja = cl((activity_ja or {}).get(bokun_field))
-                ja_items = [plain_ja] if plain_ja else []
+                ja_items = prose_paragraphs((activity_ja or {}).get(bokun_field))
             ja_joined = '\n'.join(ja_items) or en_joined
         else:
             # Bokun's Japanese prose content is no more trusted, pre-review,
