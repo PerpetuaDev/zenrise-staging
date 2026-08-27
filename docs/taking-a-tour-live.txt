@@ -2,6 +2,8 @@ TAKING A TOUR LIVE ON ZENRISE.JP
 A step-by-step guide for the Zenrise team
 Prepared 2026-08-27
 
+(Japanese version: docs/taking-a-tour-live.ja.txt — same content)
+
 
 HOW THIS WORKS, IN ONE PARAGRAPH
 ==============================================================================
