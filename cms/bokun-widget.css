@@ -1,0 +1,252 @@
+/* ─────────────────────────────────────────────────────────────────────────────
+   Zenrise theme for the Bokun calendar widget.
+
+   THIS FILE IS NOT SERVED BY THE SITE. It is the source of truth for the CSS
+   that lives in Bokun's panel:
+       Booking channel -> widget -> Show advanced options -> Custom CSS/SASS
+   It is kept in git so it is recoverable and reviewable; paste it into the
+   panel to apply it. The CSS is shared across all widgets of the same type, so
+   it only needs pasting once (verified 2026-08-27).
+
+   HOW THIS WORKS: the widget is a cross-origin iframe, so none of the site's
+   own stylesheet reaches it. But its ~480 style rules are built on CSS custom
+   properties consumed as `rgb(var(--token))` -- ~190 references to --primary-*,
+   ~129 to --neutral-*, ~66 to --tertiary-*. Redefining those recolours the
+   widget coherently. Class-level rules below then handle typography and the
+   few pieces the tokens do not reach.
+
+   TWO LIMITS, both verified rather than assumed:
+
+   1. FONTS. --display and --sans are Adobe Typekit faces, licensed per domain,
+      so they cannot load inside widgets.bokun.io. The stacks below fall back to
+      Optima and Gill Sans, which exist on macOS and Windows respectively, then
+      to Palatino/Georgia and Trebuchet. On Linux both resolve to a generic
+      serif/sans. The widget will therefore not match the page's type exactly on
+      every platform; nothing pasted into Bokun's panel can change that.
+
+   2. WIDTH. The calendar caps its own content at ~400-420px and centres in
+      anything wider (measured at a fixed viewport: a 600px column yields a
+      417px grid, an 820px column yields 384px). The width rules at the end let
+      it use the space it is given up to that cap; they cannot exceed it.
+
+   The semantic class names (.CalendarDay, .SummaryTitle, ...) carry no
+   declarations of their own -- they are stable hooks, while the real styles sit
+   on build-generated classes (sc-jsMahE, fEgmOB) that change on Bokun deploys.
+   That is why nearly everything here needs !important. Never target the
+   scrambled names.
+   ───────────────────────────────────────────────────────────────────────────── */
+
+:root {
+    /* Brand ramp, anchored on --ink #294138 = 41 65 56, running up from the
+       cream --bg #F7F4EA = 247 244 234. Space-separated RGB triples, because
+       the widget consumes them as rgb(var(--primary-500)) etc. */
+    --primary-50:  247 244 234;
+    --primary-100: 237 233 229;
+    --primary-200: 228 223 213;
+    --primary-300: 201 208 200;
+    --primary-400: 154 171 159;
+    --primary-500: 109 133 119;
+    --primary-600:  76 101  89;
+    --primary-700:  56  81  70;
+    --primary-800:  41  65  56;
+    --primary-900:  33  52  45;
+    --primary-950:  23  36  31;
+    /* Bokun's default points --primary at --primary-900; --primary-800 is the
+       exact brand ink, so point it there instead. */
+    --primary: var(--primary-800);
+    --secondary: 237 233 229;
+
+    /* Neutrals: warm rather than Bokun's cool greys, so borders and muted text
+       sit against the cream instead of fighting it. */
+    --neutral-50:  247 244 234;
+    --neutral-100: 237 233 229;
+    --neutral-200: 228 223 213;
+    --neutral-300: 208 202 191;
+    --neutral-400: 163 160 149;
+    --neutral-500: 122 122 113;
+    --neutral-600:  92  95  88;
+    --neutral-700:  68  76  70;
+    --neutral-800:  49  60  54;
+    --neutral-900:  41  65  56;
+    --neutral-950:  26  38  33;
+
+    /* Tertiary defaults to violet, which is off-brand wherever it surfaces.
+       Fold it into the same green family. */
+    --tertiary-50:  247 244 234;
+    --tertiary-100: 237 233 229;
+    --tertiary-200: 228 223 213;
+    --tertiary-300: 201 208 200;
+    --tertiary-400: 154 171 159;
+    --tertiary-500: 109 133 119;
+    --tertiary-600:  76 101  89;
+    --tertiary-700:  56  81  70;
+    --tertiary-800:  41  65  56;
+    --tertiary-900:  33  52  45;
+    --tertiary-950:  23  36  31;
+    --tertiary: var(--tertiary-600);
+
+    /* "Available" markers stay green but move into the brand family. */
+    --success-50:  238 243 238;
+    --success-500: 109 133 119;
+    --success-600:  76 101  89;
+    --success-700:  56  81  70;
+
+    /* Errors deliberately stay warm and red: a guest needs to read a failed
+       booking as a failure, not as brand colour. */
+    --semantic-destructive: 168  62  48;
+
+    --border-input-focus: 41 65 56;
+
+    /* NOTE: --radius is deliberately NOT overridden. Bokun consumes it as
+       calc(var(--radius) - 2px) and calc(var(--radius) - 4px), so setting it to
+       0 makes those invalid and silently drops the rules. Square corners are
+       applied per element below instead. */
+}
+
+/* ── Typography ─────────────────────────────────────────────────────────────
+   Set on #root so it inherits, then reasserted on the headings, which carry
+   their own font-family further down Bokun's cascade. */
+#root,
+#root input,
+#root button,
+#root select,
+#root textarea {
+    font-family: "Gill Sans", "Gill Sans MT", "Trebuchet MS",
+                 "Helvetica Neue", Arial, sans-serif !important;
+    color: rgb(41 65 56) !important;
+}
+
+/* Section headings: Participants / Choose a date / Booking Summary */
+.ParticipantHeader,
+.CalendarHeader,
+.SummaryHeader,
+.SummaryTitle,
+.Title {
+    font-family: Optima, "Optima Nova", "Palatino Linotype", Palatino,
+                 Georgia, serif !important;
+    font-weight: 400 !important;
+    letter-spacing: -0.005em !important;
+    color: rgb(41 65 56) !important;
+}
+
+/* Weekday labels read as the site's eyebrow/meta style. */
+.CalendarColumns .CalendarDay {
+    font-family: "Gill Sans", "Gill Sans MT", "Trebuchet MS", sans-serif !important;
+    font-size: 11px !important;
+    letter-spacing: 0.08em !important;
+    text-transform: uppercase !important;
+    color: rgba(41, 65, 56, 0.62) !important;
+}
+
+/* Month label sits in the display face, like the page's headings. */
+.MonthCalendarHeader,
+.CalendarMonthSelector {
+    font-family: Optima, "Optima Nova", "Palatino Linotype", Palatino,
+                 Georgia, serif !important;
+    color: rgb(41 65 56) !important;
+}
+
+/* ── Calendar surface ──────────────────────────────────────────────────────── */
+.CalendarDayWrapper {
+    background: transparent !important;
+}
+
+/* A bookable day: cream-tinted, brand ink, and readable as clickable. */
+.CalendarDayAvailable {
+    background: rgba(41, 65, 56, 0.06) !important;
+    color: rgb(41 65 56) !important;
+}
+.CalendarOuterWrapper:hover .CalendarDayAvailable {
+    background: rgba(41, 65, 56, 0.14) !important;
+}
+
+/* An unavailable day recedes rather than shouting. */
+.CalendarDayNotAvailable {
+    background: transparent !important;
+    color: rgba(41, 65, 56, 0.28) !important;
+}
+
+.CalendarDayOfMonth {
+    font-family: Optima, "Optima Nova", "Palatino Linotype", Palatino,
+                 Georgia, serif !important;
+    font-size: 15px !important;
+}
+
+/* Per-day price: small, uppercase, muted -- the site's meta treatment. */
+.CalendarDayPrice,
+.Price,
+.Currency {
+    font-family: "Gill Sans", "Gill Sans MT", "Trebuchet MS", sans-serif !important;
+    letter-spacing: 0.04em !important;
+    color: rgba(41, 65, 56, 0.62) !important;
+}
+
+/* Bokun draws the availability tag as a ::before corner triangle on the day
+   cell itself -- .NotAvailableIcon is a single legend element, not the marker.
+   Tint the triangle to the brand green; `border: none` would remove it. */
+.CalendarDayAvailable::before {
+    border-color: rgb(76 101 89) !important;
+}
+.NotAvailableIcon {
+    border-color: rgba(41, 65, 56, 0.28) !important;
+}
+
+/* ── Participants / pricing selectors ─────────────────────────────────────── */
+.PlusButton,
+.MinusButton {
+    border-color: rgba(41, 65, 56, 0.28) !important;
+    color: rgb(41 65 56) !important;
+}
+.PlusButton:hover,
+.MinusButton:hover {
+    background: rgba(41, 65, 56, 0.08) !important;
+}
+
+.Select,
+.PricingCategorySelector {
+    border-color: rgba(41, 65, 56, 0.28) !important;
+    border-radius: 0 !important;
+}
+
+/* ── Booking summary ──────────────────────────────────────────────────────── */
+.SummaryWrapper,
+.SummaryOverview {
+    background: #F7F4EA !important;
+    border-radius: 0 !important;
+}
+.SummaryItem {
+    border-color: rgba(41, 65, 56, 0.14) !important;
+}
+.SummaryPrice,
+.SummaryPriceWrapper {
+    font-family: Optima, "Optima Nova", "Palatino Linotype", Palatino,
+                 Georgia, serif !important;
+    color: rgb(41 65 56) !important;
+}
+
+/* ── Checkout button: the site's solid ink block, square, cream text ────────
+   Bokun gives this button no semantic class -- only build hashes -- but it is
+   the only <button href="#"> in the widget, which makes a stable enough hook.
+   If a Bokun release ever drops that attribute this rule goes quiet rather
+   than misfiring, because day cells and steppers are matched by class above. */
+#root button[href],
+#root button[type="submit"] {
+    background: rgb(41 65 56) !important;
+    color: #F7F4EA !important;
+    border-radius: 0 !important;
+    letter-spacing: 0.02em !important;
+}
+#root button[href]:disabled,
+#root button[type="submit"]:disabled {
+    background: rgba(41, 65, 56, 0.28) !important;
+    color: #F7F4EA !important;
+}
+
+/* ── Width: use the space the embed gives, up to the widget's own ~420px cap ─ */
+.Calendar           { width: 100% !important; }
+.CalendarColumns    { width: 100% !important; }
+.CalendarDayWrapper { width: 100% !important; }
+.CalendarColumns .CalendarDay {
+    flex: 1 1 0 !important;
+    min-width: 0 !important;
+}
