@@ -335,10 +335,17 @@ def to_record(activity, activity_ja, availability, availability_ja, entry, corr)
     # and bokun_price.format_full falls back to the hand-written _CAT_JA
     # map / the English rate title exactly as it always has.
     pricing_categories_ja = (activity_ja or {}).get('pricingCategories') or [] if reviewed else []
+    # Rate titles from the activity payload, which localises them properly.
+    def _rate_title_map(payload):
+        return {r['id']: r.get('title')
+                for r in ((payload or {}).get('rates') or []) if r.get('id') is not None}
+
     rows = bokun_price.rows(
         availability, activity.get('pricingCategories') or [],
         pricing_categories_ja=pricing_categories_ja,
-        availability_ja=availability_ja if reviewed else None)
+        availability_ja=availability_ja if reviewed else None,
+        rate_titles_en=_rate_title_map(activity),
+        rate_titles_ja=_rate_title_map(activity_ja) if reviewed else None)
     fp = bokun_price.from_price(rows)
 
     # Zero-touch has one soft spot here: length comes from the rate NAMES, so a

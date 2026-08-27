@@ -35,7 +35,24 @@ def _rate_titles(availability):
     return titles
 
 
-def rows(availability, pricing_categories, pricing_categories_ja=None, availability_ja=None):
+def rows(availability, pricing_categories, pricing_categories_ja=None,
+         availability_ja=None, rate_titles_en=None, rate_titles_ja=None):
+    """Price rows from an availability response.
+
+    rate_titles_en / rate_titles_ja are {rate id: title} from the ACTIVITY
+    payload. The precedence is deliberately asymmetric, because each side prefers
+    the source proven to localise correctly (verified 2026-08-27):
+
+      English  activity wins. activity.json?lang=EN returns English rate titles,
+               but the availabilities endpoint returns them in the product's base
+               language -- Japanese here -- so availability alone put Japanese
+               labels on the English record.
+
+      Japanese availability wins. It returns base-language titles, which for this
+               account IS Japanese; the activity ja payload falls back to English
+               for any rate the client has not translated, and English overriding
+               a usable Japanese title would be a regression.
+    """
     titles = {c['id']: c.get('title') for c in (pricing_categories or [])}
     # Japanese counterparts of the same two lookups. Both default to empty/
     # None so an unreviewed tour (which the caller deliberately withholds
@@ -44,7 +61,10 @@ def rows(availability, pricing_categories, pricing_categories_ja=None, availabil
     # _CAT_JA or the English string exactly as it did before this field
     # existed — the pattern is to add a field, not overload one.
     titles_ja = {c['id']: c.get('title') for c in (pricing_categories_ja or [])}
-    rate_titles_ja = _rate_titles(availability_ja)
+    # Availability is the fallback; the activity payload is authoritative.
+    avail_titles_ja = _rate_titles(availability_ja)
+    override_en = rate_titles_en or {}
+    override_ja = rate_titles_ja or {}
     for slot in availability or []:
         rates = {r['id']: r for r in slot.get('rates') or []}
         out = []
@@ -53,9 +73,10 @@ def rows(availability, pricing_categories, pricing_categories_ja=None, availabil
             # every row from this rate so a group row can be labelled by it
             # (task 14). Per-person rows carry it too but ignore it in
             # format_full: their label is category + tier, as before.
-            rate_meta = rates.get(rate.get('activityRateId')) or {}
-            rate_title = rate_meta.get('title')
-            rate_title_ja = rate_titles_ja.get(rate.get('activityRateId'))
+            rate_id = rate.get('activityRateId')
+            rate_meta = rates.get(rate_id) or {}
+            rate_title = override_en.get(rate_id) or rate_meta.get('title')
+            rate_title_ja = avail_titles_ja.get(rate_id) or override_ja.get(rate_id)
             for u in rate.get('pricePerCategoryUnit') or []:
                 out.append({
                     'category': titles.get(u.get('id')),

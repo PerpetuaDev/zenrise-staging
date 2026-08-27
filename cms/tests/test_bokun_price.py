@@ -350,3 +350,42 @@ class TestHasPriceBreakdown(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+
+
+class TestRateTitleSource(unittest.TestCase):
+    """Where a rate's title comes from, per language.
+
+    Verified against the live account 2026-08-27: activity.json?lang=EN returns
+    English rate titles, while the availabilities endpoint returns them in the
+    product's base language regardless of ?lang. Reading them off availability
+    alone put Japanese labels on the English record.
+    """
+
+    def av(self, title):
+        return [{'rates': [{'id': 7, 'title': title, 'pricedPerPerson': False,
+                            'minPerBooking': 1, 'maxPerBooking': 6}],
+                 'pricesByRate': [{'activityRateId': 7,
+                                   'pricePerBooking': {'amount': 40000,
+                                                       'currency': 'JPY'}}]}]
+
+    def test_activity_title_wins_for_english(self):
+        rows = bokun_price.rows(self.av('グループ半日'), [],
+                                rate_titles_en={7: 'Group Half Day'})
+        self.assertEqual(rows[0]['rate_title'], 'Group Half Day')
+
+    def test_availability_title_is_the_english_fallback(self):
+        rows = bokun_price.rows(self.av('Group Half Day'), [])
+        self.assertEqual(rows[0]['rate_title'], 'Group Half Day')
+
+    def test_availability_wins_for_japanese(self):
+        # the ja activity payload falls back to English for an untranslated rate,
+        # and English must not override a usable Japanese title
+        rows = bokun_price.rows(self.av('EN from availability'), [],
+                                availability_ja=self.av('半日グループ'),
+                                rate_titles_ja={7: 'Group Half Day'})
+        self.assertEqual(rows[0]['rate_title_ja'], '半日グループ')
+
+    def test_activity_ja_is_the_japanese_fallback(self):
+        rows = bokun_price.rows(self.av('EN'), [],
+                                rate_titles_ja={7: 'グループ半日'})
+        self.assertEqual(rows[0]['rate_title_ja'], 'グループ半日')
