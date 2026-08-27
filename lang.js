@@ -800,9 +800,16 @@
       '.lang-menu button:hover { background: rgba(41,65,56,0.04); }',
       '.lang-menu .name { font-family: "optima-nova-lt-pro", "toppan-bunkyu-mincho-pr6n", "Optima", serif; font-size: 22px; color: #294138; letter-spacing: -0.005em; line-height: 1; }',
       '.lang-menu button.on::after { content: ""; width: 6px; height: 6px; background: #294138; }',
-      // ── mobile hamburger nav (shared, phone widths only) ──
+      // ── mobile hamburger nav (shared, phone AND tablet widths) ──
+      // 899, not 599: the nav's own content needs about 832px (brand + five
+      // links + the language switcher), so between 600 and 860 the switcher was
+      // pushed off the right edge -- 832px of content in a 768px viewport, which
+      // also gave the page a horizontal scroll. Measured: overflows at 640 and
+      // 768, fits from 860. 899 leaves margin. iPad landscape (1024+) keeps the
+      // full nav. The .nav height/padding already drop to 72/20px at 1023, so
+      // the burger's fixed offsets line up across this whole range.
       '.nav-burger, .mobile-nav { display: none; }',
-      '@media (max-width: 599px) {',
+      '@media (max-width: 899px) {',
       '  .nav { position: relative; }',
       '  .navlinks { display: none !important; }',
       '  .lang-switcher { display: none !important; }',

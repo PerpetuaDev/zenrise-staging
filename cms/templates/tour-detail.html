@@ -290,6 +290,20 @@
     .foot-v2-bottom { font-size: 11px; padding: 20px 0; }
     .foot-v2-bottom .legal { gap: 20px; }
   }
+  /* Tablet landscape and small laptops: stack rather than squeeze.
+     The booking column is a fixed 600px track, but with minmax(0,1fr) beside it
+     the browser shrinks both when there is not enough room -- measured ~320px of
+     booking column at a 1024 viewport, and Bokun's calendar declares
+     min-width:325px, so the calendar itself was being squeezed under its own
+     floor. Stacking gives it the full width instead. Placed after the 1023 block
+     so it also covers 1024-1199; the type sizes deliberately stay at their
+     desktop values through this band. order:-1 matches the phone layout, so the
+     booking box does not jump from bottom to top as the window narrows. */
+  @media (max-width: 1199px) {
+    .body-grid { grid-template-columns: minmax(0, 1fr); row-gap: 56px; }
+    .cal { position: static; order: -1; }
+  }
+
   @media (max-width: 599px) { .navlinks { display: none; } }
 </style>
 {{JSON_LD}}
