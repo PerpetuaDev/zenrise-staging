@@ -90,3 +90,25 @@ class TestNoOrphans(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+
+
+class TestNoUnsizedImages(unittest.TestCase):
+    """No generated page may request a Bokun original.
+
+    Originals live on bokun.s3.amazonaws.com and are around 4000x2800; the
+    resized derivatives come from imgcdn.bokun.tools with an explicit ?w=. A
+    bare original slipping back in is a 1.6MB download for a 430px slot.
+    """
+
+    def pages(self):
+        return (['index.html', 'tours.html']
+                + [os.path.basename(p) for p in glob.glob(os.path.join(ROOT, 'tour-*.html'))])
+
+    def test_no_s3_original_is_referenced(self):
+        for page in self.pages():
+            self.assertNotIn('bokun.s3.amazonaws.com', read(page), page)
+
+    def test_every_bokun_image_asks_for_a_width(self):
+        for page in self.pages():
+            for url in re.findall(r'https://imgcdn\.bokun\.tools/[^"\'()\s]+', read(page)):
+                self.assertIn('w=', url, f'{page}: {url}')

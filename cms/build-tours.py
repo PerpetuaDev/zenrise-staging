@@ -115,6 +115,9 @@ def tour_model(a):
     m['length'] = a['length']
     m['themes'] = a.get('themes') or []
     m['cover'] = (a.get('cover') or {}).get('url', '')
+    # Bokun's image CDN base, when the photo came from Bokun. Sample tours carry
+    # a plain URL and no base, so they fall back to that URL untouched.
+    m['cover_base'] = (a.get('cover') or {}).get('base', '') or ''
     # Price is per tour and comes from Bokun, so there is no shared length key.
     m['price_key'] = None
     m['price_en'] = m['price'][0]
@@ -134,6 +137,26 @@ def meta_desc(m):
     return cut.rstrip(' ,.;:') + '…'
 
 
+def sized(base, fallback, width, height=None):
+    """A CDN URL at the size actually displayed, or the fallback URL.
+
+    Bokun's originals are around 4000x2800. Serving one to a 430px card is the
+    reason the tours page loaded slowly, and no amount of CSS fixes that -- the
+    browser downloads the whole file first. mode=crop is only used where the slot
+    has a fixed aspect, so a width-only request never distorts.
+    """
+    if not base:
+        return fallback
+    q = f'?w={width}'
+    if height:
+        q += f'&h={height}&mode=crop'
+    return base + q
+
+
+def cover_at(m, width, height=None):
+    return sized(m.get('cover_base'), m['cover'], width, height)
+
+
 def json_ld(m):
     data = {
         '@context': 'https://schema.org',
@@ -144,7 +167,7 @@ def json_ld(m):
         'brand': {'@type': 'Brand', 'name': 'Zenrise'},
     }
     if m['cover']:
-        data['image'] = m['cover']
+        data['image'] = cover_at(m, 1200, 630)
     rows = m.get('price_rows') or []
     if m['full'] and rows:
         low = min(rows, key=lambda r: r['amount'])
@@ -188,7 +211,8 @@ def base_dict(m):
 def og_image(m):
     if not m['cover']:
         return f'{SITE}/assets/shrines/temple-gate-pine.jpg'
-    return m['cover'] if m['cover'].startswith('http') else f"{SITE}/{m['cover']}"
+    url = cover_at(m, 1200, 630)
+    return url if url.startswith('http') else f"{SITE}/{url}"
 
 
 def common_slots(m):
@@ -198,7 +222,7 @@ def common_slots(m):
         'META_DESC': esc(meta_desc(m)),
         'JSON_LD': json_ld(m),
         'OG_IMAGE': esc(og_image(m)),
-        'COVER_URL': esc(m['cover']),
+        'COVER_URL': esc(cover_at(m, 1900)),
         'CAP_EN': esc(m['coverCaption'][0]),
         'AREA_KEY': area_key(m['area']), 'AREA_EN': m['area'],
         'LEN_KEY': LEN_KEY[m['length']], 'LEN_EN': m['length'],
@@ -375,9 +399,25 @@ def route_rows(m, en, ja):
             ja[f'{K}_rt_{n}_time'] = ja_time or time
         time_cell = (f'<div class="r-time" data-i18n="{K}_rt_{n}_time">{esc(time)}</div>'
                      if time else '')
+        # The stop thumbnail, restored now that Bokun carries a key photo per
+        # agenda item. When there is one the stop number sits on the photo, as
+        # the original design had it; without one it keeps its own cell, so a
+        # tour whose agenda has no photos is unchanged.
+        photo = sized(st.get('photoBase'), (st.get('photo') or '').strip(), 420, 280)
+        if photo:
+            # alt is empty on purpose: the stop's own heading is right beside it,
+            # so alt text here would only repeat it to a screen reader.
+            # aria-hidden and no role: purely decorative, since the stop's own
+            # heading sits beside it. role="img" would contradict aria-hidden.
+            num_cell = (f'<div class="r-pic" aria-hidden="true" '
+                        f'style="background-image: url(\'{esc(photo)}\')">'
+                        f'<span class="rn">{n}</span></div>')
+        else:
+            num_cell = f'<div class="r-num">{n}</div>'
+        classes = 'r-row' + (' has-pic' if photo else '') + ('' if time else ' no-time')
         rows.append(
-            f'        <div class="r-row{"" if time else " no-time"}">\n'
-            f'          <div class="r-num">{n}</div>\n'
+            f'        <div class="{classes}">\n'
+            f'          {num_cell}\n'
             f'          {time_cell}\n'
             f'          <div><h3 data-i18n="{K}_rt_{n}_name">{esc(st["title"])}</h3>'
             f'<p class="r-note" data-i18n="{K}_rt_{n}_note">{esc(body)}</p></div>\n'
@@ -669,7 +709,7 @@ def card(m):
     price_html = ('' if not m['price_en'] else
                   f'<span class="price" data-i18n="{K}_price">{esc(m["price_en"])}</span>')
     return f'''        <a class="tcard" href="tour-{m['id']}.html" data-area="{m['area'].lower()}" data-themes="{' '.join(theme_slugs(m['themes']))}">
-          <div class="pic" style="background-image: url('{esc(m['cover'])}')">
+          <div class="pic" style="background-image: url('{esc(cover_at(m, 900))}')">
             <span class="num">No. {m['num']}</span>
           </div>
           <div class="t-body">
@@ -686,7 +726,7 @@ def tile(m):
     K = m['K']
     return f'''        <a class="dest" href="tour-{m['id']}.html">
           <div class="ph">
-            <div class="pic photo" style="background-image: url('{esc(m['cover'])}')"></div>
+            <div class="pic photo" style="background-image: url('{esc(cover_at(m, 900))}')"></div>
             <span class="num-tag">No. {m['num']}</span>
           </div>
           <div class="panel">

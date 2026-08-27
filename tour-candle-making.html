@@ -11,7 +11,7 @@
 <meta property="og:title" content="A private Japanese candle-making experience in Kamakura. — Zenrise" />
 <meta property="og:description" content="Experience a private Japanese candle-making session with wax artist Meria, from Shonan Wa-Rōsoku. Held in Kamakura or Fujisawa." />
 <meta property="og:url" content="https://zenrise.jp/tour-candle-making.html" />
-<meta property="og:image" content="https://bokun.s3.amazonaws.com/ac5f2001-f764-450e-9185-3855e245db48.jpeg" />
+<meta property="og:image" content="https://imgcdn.bokun.tools/ac5f2001-f764-450e-9185-3855e245db48.jpeg?w=1200&amp;h=630&amp;mode=crop" />
 <meta name="twitter:card" content="summary_large_image" />
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png" />
 <link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png" />
@@ -154,6 +154,14 @@
   .route h2 { font-family: var(--display); font-weight: 400; font-size: 56px; line-height: 0.98; letter-spacing: -0.005em; margin: 0 0 40px; }
   .r-row { display: grid; grid-template-columns: auto auto 1fr; column-gap: 40px; align-items: center; padding: 24px 0; border-top: 1px solid var(--ink-12); }
   .r-row.no-time { grid-template-columns: auto 1fr; }
+  /* Stop thumbnail, restored now that Bokun carries a key photo per agenda item.
+     The number sits on the photo as it did originally; a scrim keeps it legible
+     on a bright image, which the original had no protection against. */
+  .r-row.has-pic { grid-template-columns: 200px auto 1fr; }
+  .r-row.has-pic.no-time { grid-template-columns: 200px 1fr; }
+  .r-row .r-pic { position: relative; height: 130px; background: var(--bg-3) center / cover no-repeat; overflow: hidden; }
+  .r-row .r-pic::before { content: ''; position: absolute; inset: 0 0 auto 0; height: 56px; background: linear-gradient(to bottom, rgba(0,0,0,0.34), rgba(0,0,0,0)); }
+  .r-row .r-pic .rn { position: absolute; left: 12px; top: 10px; font-family: var(--sans); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.86); }
   .r-row .r-time { font-family: var(--sans); font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-60); }
   .r-row h3 { font-family: var(--display); font-weight: 400; font-size: 32px; line-height: 1.15; letter-spacing: -0.005em; margin: 0 0 8px; }
   :lang(ja) .r-row h3 { line-height: 1.35; }
@@ -251,6 +259,10 @@
     .route h2 { font-size: 34px; margin-bottom: 20px; }
     .r-row { grid-template-columns: auto auto 1fr; column-gap: 16px; padding: 16px 0; }
     .r-row.no-time { grid-template-columns: auto 1fr; }
+    .r-row.has-pic, .r-row.has-pic.no-time { grid-template-columns: 96px 1fr; grid-template-rows: auto auto; column-gap: 16px; }
+    .r-row.has-pic .r-pic { height: 72px; grid-row: 1 / 3; }
+    .r-row.has-pic .r-pic::before { height: 34px; }
+    .r-row .r-pic .rn { left: 8px; top: 6px; font-size: 9px; }
     .r-row .r-time { font-size: 11px; }
     .r-row h3 { font-size: 20px; margin-bottom: 4px; }
     .r-row .r-note { font-size: 14px; }
@@ -283,7 +295,7 @@
   "@type": "Brand",
   "name": "Zenrise"
  },
- "image": "https://bokun.s3.amazonaws.com/ac5f2001-f764-450e-9185-3855e245db48.jpeg",
+ "image": "https://imgcdn.bokun.tools/ac5f2001-f764-450e-9185-3855e245db48.jpeg?w=1200&h=630&mode=crop",
  "offers": {
   "@type": "Offer",
   "price": 12000,
@@ -319,7 +331,7 @@
       </div>
     </div>
 
-    <section class="cover" style="background-image: url('https://bokun.s3.amazonaws.com/ac5f2001-f764-450e-9185-3855e245db48.jpeg')" data-screen-label="07 Tour detail — Cover">
+    <section class="cover" style="background-image: url('https://imgcdn.bokun.tools/ac5f2001-f764-450e-9185-3855e245db48.jpeg?w=1900')" data-screen-label="07 Tour detail — Cover">
       <span class="cap" data-i18n="tours_candle-making_cap"></span>
       <span class="credit">© Zenrise</span>
     </section>

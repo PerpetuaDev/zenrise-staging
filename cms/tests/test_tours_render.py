@@ -486,5 +486,70 @@ class TestLedeParagraphs(unittest.TestCase):
         self.assertIn('&amp;', html)
 
 
+class TestImageSizing(unittest.TestCase):
+    """Bokun originals are ~4000x2800. Serving one to a 430px card is why the
+    tours page loaded slowly, and CSS cannot fix it -- the browser downloads the
+    whole file first."""
+
+    def test_width_only_request(self):
+        self.assertEqual(bt.sized('https://cdn/x.jpeg', 'fallback', 900),
+                         'https://cdn/x.jpeg?w=900')
+
+    def test_fixed_aspect_request_crops(self):
+        self.assertEqual(bt.sized('https://cdn/x.jpeg', 'fallback', 1200, 630),
+                         'https://cdn/x.jpeg?w=1200&h=630&mode=crop')
+
+    def test_no_base_falls_back_untouched(self):
+        # sample tours carry a plain URL and no CDN base
+        self.assertEqual(bt.sized('', 'https://example/photo.jpg', 900),
+                         'https://example/photo.jpg')
+
+    def test_cover_at_uses_the_base_when_present(self):
+        m = bt.tour_model(record(cover={'url': 'https://s3/orig.jpeg',
+                                        'base': 'https://cdn/orig.jpeg'}))
+        self.assertEqual(bt.cover_at(m, 900), 'https://cdn/orig.jpeg?w=900')
+
+    def test_cover_at_falls_back_to_the_plain_url(self):
+        m = bt.tour_model(record(cover={'url': 'https://example/photo.jpg'}))
+        self.assertEqual(bt.cover_at(m, 900), 'https://example/photo.jpg')
+
+
+class TestRouteThumbnails(unittest.TestCase):
+    def stop(self, **over):
+        d = {'title': 'A stop', 'body': 'Body text.', 'titleJa': 'A stop',
+             'bodyJa': 'Body text.'}
+        d.update(over)
+        return d
+
+    def test_a_stop_with_a_photo_renders_the_pic_cell(self):
+        m = dict(bt.tour_model(record()), route=[
+            self.stop(photo='https://cdn/p.jpeg?w=300&h=300',
+                      photoBase='https://cdn/p.jpeg')])
+        html = bt.route_rows(m, {}, {})
+        self.assertIn('has-pic', html)
+        self.assertIn('class="r-pic"', html)
+        # the URL is HTML-escaped in the style attribute
+        self.assertIn('w=420&amp;h=280&amp;mode=crop', html)
+        # the number moves onto the photo
+        self.assertIn('class="rn"', html)
+        self.assertNotIn('class="r-num"', html)
+
+    def test_a_stop_without_a_photo_keeps_its_own_number_cell(self):
+        m = dict(bt.tour_model(record()), route=[self.stop()])
+        html = bt.route_rows(m, {}, {})
+        self.assertNotIn('has-pic', html)
+        self.assertNotIn('r-pic', html)
+        self.assertIn('class="r-num"', html)
+
+    def test_the_thumbnail_is_not_announced_twice_to_a_screen_reader(self):
+        # the stop's own heading sits beside it, so the image is decorative
+        m = dict(bt.tour_model(record()), route=[
+            self.stop(photo='https://cdn/p.jpeg', photoBase='https://cdn/p.jpeg')])
+        html = bt.route_rows(m, {}, {})
+        self.assertIn('aria-hidden="true"', html)
+        # role="img" would contradict aria-hidden
+        self.assertNotIn('role="img"', html)
+
+
 if __name__ == '__main__':
     unittest.main()

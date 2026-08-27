@@ -9,7 +9,8 @@
    "Arts & Craft"
   ],
   "cover": {
-   "url": "https://bokun.s3.amazonaws.com/ac5f2001-f764-450e-9185-3855e245db48.jpeg"
+   "url": "https://bokun.s3.amazonaws.com/ac5f2001-f764-450e-9185-3855e245db48.jpeg",
+   "base": "https://imgcdn.bokun.tools/ac5f2001-f764-450e-9185-3855e245db48.jpeg"
   },
   "hoursEn": "1 hour",
   "hoursJa": "1 時間",
@@ -90,7 +91,8 @@
    "Walking"
   ],
   "cover": {
-   "url": "https://bokun.s3.amazonaws.com/4277c6b0-2337-43f9-8c40-1ed5578910fd.jpeg"
+   "url": "https://bokun.s3.amazonaws.com/4277c6b0-2337-43f9-8c40-1ed5578910fd.jpeg",
+   "base": "https://imgcdn.bokun.tools/4277c6b0-2337-43f9-8c40-1ed5578910fd.jpeg"
   },
   "hoursEn": "4 hours",
   "hoursJa": "4 時間",
@@ -129,25 +131,33 @@
     "title": "Zen Journey",
     "body": "Meditation, gardens and matcha at Engaku-ji, Jochi-ji and Jomyo-ji. Guiding.",
     "titleJa": "禅の旅",
-    "bodyJa": "Meditation, gardens and matcha at Engaku-ji, Jochi-ji and Jomyo-ji. Guiding."
+    "bodyJa": "円覚寺・浄智寺・浄妙寺での坐禅、庭園、抹茶。ガイドが同行いたします。",
+    "photo": "https://imgcdn.bokun.tools/4e806600-40c6-4359-bf0b-12302c87b7cd.jpeg?w=300&h=300",
+    "photoBase": "https://imgcdn.bokun.tools/4e806600-40c6-4359-bf0b-12302c87b7cd.jpeg"
    },
    {
     "title": "\"ZEN\" Lunch",
     "body": "Shojin temple cuisine , or a lunch of choice (covered by the arrangement fee)",
-    "titleJa": "\"ZEN\" Lunch",
-    "bodyJa": "Shojin temple cuisine , or a lunch of choice (covered by the arrangement fee)"
+    "titleJa": "「禅」の昼食",
+    "bodyJa": "精進料理、またはお好みのお店での昼食（手配料に含まれます）。",
+    "photo": "https://imgcdn.bokun.tools/2d2ca067-e89d-4118-a857-083386ea60aa.jpeg?w=300&h=300",
+    "photoBase": "https://imgcdn.bokun.tools/2d2ca067-e89d-4118-a857-083386ea60aa.jpeg"
    },
    {
     "title": "Relaxing moments",
     "body": "Matcha overlooking the dry landscape garden, unhurried",
-    "titleJa": "Relaxing moments",
-    "bodyJa": "Matcha overlooking the dry landscape garden, unhurried"
+    "titleJa": "憩いのひととき",
+    "bodyJa": "枯山水の庭を望みながら、ゆっくりと抹茶を。",
+    "photo": "https://imgcdn.bokun.tools/81b5099e-10d7-4529-9f80-66feb13b2915.jpeg?w=300&h=300",
+    "photoBase": "https://imgcdn.bokun.tools/81b5099e-10d7-4529-9f80-66feb13b2915.jpeg"
    },
    {
     "title": "Tour ends",
     "body": "Complimentary pick-up / drop-off within Kamakura and Fujisawa.",
-    "titleJa": "Tour ends",
-    "bodyJa": "Complimentary pick-up / drop-off within Kamakura and Fujisawa."
+    "titleJa": "ツアー終了",
+    "bodyJa": "鎌倉・藤沢市内へ無料でお送りいたします。",
+    "photo": "https://imgcdn.bokun.tools/39eb00df-5ae3-44e5-8f23-f560b048cea0.jpeg?w=300&h=300",
+    "photoBase": "https://imgcdn.bokun.tools/39eb00df-5ae3-44e5-8f23-f560b048cea0.jpeg"
    }
   ],
   "includedEn": "A dedicated guide will accompany you during the tour and guide you at each temple\nAdmission fees for the three temples (Engakuji, Jochiji, and Jomyo-ji)\nA short zazen experience at Engaku-ji Temple (led by a guide)\nEnjoy matcha while looking out at the dry landscape garden at a teahouse in Jomyo-ji Temple\nlunch. We will prepare it at the restaurant of your choice according to your preferences and dietary restrictions\nGetting around Kamakura city during the tour\nExclusive eco-tour insurance (including domestic travel accident insurance and facility liability insurance. (International customers are also included in the day trip)\nAdvance arrangements and complete reservation\nMeet and greet at Kita-Kamakura Station",
@@ -157,7 +167,7 @@
   "bringEn": "Comfortable walking shoes. There are temples with stone steps, so we recommend comfortable shoes.",
   "bringJa": "歩きやすい靴。石段のある寺院がございますので、履き慣れた靴がおすすめです。",
   "knowEn": "There are temples with stone steps, so please wear shoes that are easy to walk in.\nThe meeting place is Kita-Kamakura station. If you wish to be picked up from a hotel, Tokyo, etc., we will make a separate estimate according to your departure location.\nPlease let us know your lunch preferences and dietary restrictions at the time of reservation. The listed menu is an example. Nagashi somen is only seasonally from April to October.\nArrangement fees may vary drastically depending on the content of the lunch. After asking about the number of people and the place of departure, we will inform you about the official price.\nThe tour fee includes eco-tour insurance for day trips only, but accidents before or after dissolution, worsening of pre-existing medical conditions, and loss, theft, or damage to personal items are not covered. We strongly recommend that international participants take out their own travel insurance before departure.\nFor reservations made less than 7 days before the tour date, bank transfers cannot be used, and payment is made by credit card.\nCancellation fees are free until 11 days before the tour date, and thereafter will be charged based on standard travel business terms and conditions. Even if you cancel on the day before departure, you will be billed in full for the individual costs that have already been arranged.\nIf we cancel the tour due to bad weather or other unavoidable circumstances, we will give you a full refund.",
-  "knowJa": "石段のある寺院がございますので、歩きやすい靴でお越しください。\n集合場所は北鎌倉駅です。ホテル・都内などからの送迎をご希望の場合は、出発地に応じて別途お見積りいたします。\n昼食のご希望・食事制限は、ご予約時にお知らせください。掲載のメニューは一例です。流しそうめんは4月〜10月の季節限定となります。\n手配料は昼食の内容により大幅に変動する場合がございます。人数・出発地を伺った上で、正式な金額をご案内いたします。\nツアー料金には日帰りツアー専用のエコツアー保険が含まれますが、集合前・解散後の事故、既往症の悪化、身の回り品の紛失・盗難・破損は対象外です。海外からご参加のお客様は、ご出発前にご自身で旅行保険にご加入いただくことを強くおすすめいたします。\n催行日の7日前を切ってのご予約は銀行振込をご利用いただけず、クレジットカードでのお支払いとなります。\nキャンセル料は催行日の11日前まで無料、以降は標準旅行業約款に基づき発生いたします。当日出発前のキャンセルであっても、既にお手配済みの個別費用は全額ご請求いたします。\n悪天候その他やむを得ない事情により当社がツアーを中止する場合は、全額返金いたします。",
+  "knowJa": "集合場所は北鎌倉駅です。ホテル・都内などからの送迎をご希望の場合は、出発地に応じて別途お見積りいたします。 昼食のご希望・食事制限は、ご予約時にお知らせください。掲載のメニューは一例です。流しそうめんは4月〜10月の季節限定となります。 手配料は昼食の内容により大幅に変動する場合がございます。人数・出発地を伺った上で、正式な金額をご案内いたします。",
   "includedChipsEn": "Bus fare\nParking fees\nFood & drinks\nEntry & admission fees\nTax",
   "includedChipsJa": "バス運賃\n駐車料金\n飲食\n拝観料・入場料\n消費税",
   "knowChipsEn": "Public transport nearby",
@@ -170,19 +180,17 @@
    "There are temples with stone steps, so we recommend shoes that are easy to walk in. We will guide you on an all-inclusive basis, including travel expenses, admission fees, lunch, and accompanying a guide."
   ],
   "ledeParasJa": [
-   "鎌倉の寺々は八百五十年にわたり守られてきました。その静けさもまた、同じだけの歳月を重ねています。",
-   "本ツアーは、その静けさを味わうための一日です。名所を巡るだけでなく、鎌倉五山のうち三つの禅寺をゆっくりと巡り、ガイドが目の前の景色をひとつひとつ丁寧にご案内します。",
-   "鎌倉五山とは、鎌倉幕府が礎を築き、室町幕府によって定められた、臨済宗の五つの最高格式寺院——建長寺・円覚寺・寿福寺・浄智寺・浄妙寺——の総称です。",
+   "鎌倉の寺々は八百五十年にわたり守られてきました。その静けさもまた、同じだけの歳月を重ねています。本ツアーは、その静けさを味わうための一日です。",
+   "名所を巡るだけでなく、鎌倉五山のうち三つの禅寺をゆっくりと巡り、ガイドが目の前の景色をひとつひとつ丁寧にご案内します。鎌倉五山とは、鎌倉幕府が礎を築き、室町幕府によって定められた、臨済宗の五つの最高格式寺院——建長寺・円覚寺・寿福寺・浄智寺・浄妙寺——の総称です。",
    "円覚寺では短い坐禅を体験し、浄智寺では四季折々の草花が彩る境内をそぞろ歩き、浄妙寺では枯山水を眺めながら抹茶をいただきます。午前の締めくくりには、お好みに合わせたお店で昼食を。",
-   "すべての手配はあらかじめ整えてありますので、あとはゆっくりと歩む心構えだけをお持ちください。",
-   "石段のある寺院がございますので、歩きやすい靴をおすすめします。移動費・拝観料・昼食代・ガイド同行を含む、オールインクルーシブでご案内いたします。"
+   "すべての手配はあらかじめ整えてありますので、あとはゆっくりと歩む心構えだけをお持ちください。"
   ],
   "titleEn": "The Zen Journey",
   "titleJa": "禅の旅",
   "subEn": "Experience the 850 year history of Kamakura and the essence of Zen. Japanese garden, zazen, matcha.",
   "subJa": "850年の鎌倉の歴史と、禅の本質に触れる。日本庭園・坐禅・抹茶。",
   "ledeEn": "Kamakura's temples have been protected for 850 years. That serenity has also been around the same number of years. This tour is a day to enjoy that serenity. In addition to visiting famous places, you will also slowly visit the three Zen temples of the Kamakura Five Mountains, and the guide will carefully guide you through the scenery in front of you one by one. The Kamakura Gozan is a general term for the five highest ranking temples of the Rinzai sect — Kenchoji, Engaku-ji, Jufuku-ji, Jochi-ji, and Jomyo-ji — founded by the Kamakura Shogunate and determined by the Muromachi Shogunate. At Engakuji, you will experience a short zazen meditation; at Jochi-ji Temple, you will walk around the precincts decorated with seasonal flowers, and enjoy matcha while looking at dry mountain water at Jomyo-ji Temple. At the end of the morning, have lunch at a restaurant that suits your preferences. All arrangements have been made in advance, so all that's left to do is be prepared to walk slowly. There are temples with stone steps, so we recommend shoes that are easy to walk in. We will guide you on an all-inclusive basis, including travel expenses, admission fees, lunch, and accompanying a guide.",
-  "ledeJa": "鎌倉の寺々は八百五十年にわたり守られてきました。その静けさもまた、同じだけの歳月を重ねています。 本ツアーは、その静けさを味わうための一日です。名所を巡るだけでなく、鎌倉五山のうち三つの禅寺をゆっくりと巡り、ガイドが目の前の景色をひとつひとつ丁寧にご案内します。 鎌倉五山とは、鎌倉幕府が礎を築き、室町幕府によって定められた、臨済宗の五つの最高格式寺院——建長寺・円覚寺・寿福寺・浄智寺・浄妙寺——の総称です。 円覚寺では短い坐禅を体験し、浄智寺では四季折々の草花が彩る境内をそぞろ歩き、浄妙寺では枯山水を眺めながら抹茶をいただきます。午前の締めくくりには、お好みに合わせたお店で昼食を。 すべての手配はあらかじめ整えてありますので、あとはゆっくりと歩む心構えだけをお持ちください。 石段のある寺院がございますので、歩きやすい靴をおすすめします。移動費・拝観料・昼食代・ガイド同行を含む、オールインクルーシブでご案内いたします。",
+  "ledeJa": "鎌倉の寺々は八百五十年にわたり守られてきました。その静けさもまた、同じだけの歳月を重ねています。本ツアーは、その静けさを味わうための一日です。 名所を巡るだけでなく、鎌倉五山のうち三つの禅寺をゆっくりと巡り、ガイドが目の前の景色をひとつひとつ丁寧にご案内します。鎌倉五山とは、鎌倉幕府が礎を築き、室町幕府によって定められた、臨済宗の五つの最高格式寺院——建長寺・円覚寺・寿福寺・浄智寺・浄妙寺——の総称です。 円覚寺では短い坐禅を体験し、浄智寺では四季折々の草花が彩る境内をそぞろ歩き、浄妙寺では枯山水を眺めながら抹茶をいただきます。午前の締めくくりには、お好みに合わせたお店で昼食を。 すべての手配はあらかじめ整えてありますので、あとはゆっくりと歩む心構えだけをお持ちください。",
   "coverCaptionEn": "",
   "coverCaptionJa": ""
  },
@@ -196,53 +204,14 @@
    "Arts & Craft"
   ],
   "cover": {
-   "url": "https://bokun.s3.amazonaws.com/125107cd-37b0-44d5-8ec7-1071be67f871.jpeg"
+   "url": "https://bokun.s3.amazonaws.com/125107cd-37b0-44d5-8ec7-1071be67f871.jpeg",
+   "base": "https://imgcdn.bokun.tools/125107cd-37b0-44d5-8ec7-1071be67f871.jpeg"
   },
   "hoursEn": "1 hour and 30 minutes",
   "hoursJa": "1 時間30 分",
-  "priceEn": "from ¥21,000 per adult",
-  "priceJa": "¥21,000〜（大人おひとり）",
+  "priceEn": "from ¥44,000 per adult",
+  "priceJa": "¥44,000〜（大人おひとり）",
   "priceRows": [
-   {
-    "category": "Adults",
-    "category_ja": null,
-    "min": 5,
-    "max": 5,
-    "amount": 21000,
-    "currency": "JPY",
-    "rate_title": "Standard Private Group ",
-    "rate_title_ja": null
-   },
-   {
-    "category": "Adults",
-    "category_ja": null,
-    "min": 4,
-    "max": 4,
-    "amount": 21000,
-    "currency": "JPY",
-    "rate_title": "Standard Private Group ",
-    "rate_title_ja": null
-   },
-   {
-    "category": "Adults",
-    "category_ja": null,
-    "min": 6,
-    "max": 6,
-    "amount": 21000,
-    "currency": "JPY",
-    "rate_title": "Standard Private Group ",
-    "rate_title_ja": null
-   },
-   {
-    "category": "Adults",
-    "category_ja": null,
-    "min": 3,
-    "max": 3,
-    "amount": 21000,
-    "currency": "JPY",
-    "rate_title": "Standard Private Group ",
-    "rate_title_ja": null
-   },
    {
     "category": "Adults",
     "category_ja": null,
@@ -263,19 +232,25 @@
     "title": "The history and schools of ikebana",
     "body": "30min The history of the art, its schools, and the Sogetsu spirit she carries as its third generation.",
     "titleJa": "The history and schools of ikebana",
-    "bodyJa": "30min The history of the art, its schools, and the Sogetsu spirit she carries as its third generation."
+    "bodyJa": "30min The history of the art, its schools, and the Sogetsu spirit she carries as its third generation.",
+    "photo": "",
+    "photoBase": ""
    },
    {
     "title": "Arranging",
     "body": "30min After the master’s demonstration, guests choose from prepared materials and complete an arrangementunder her guidance. No experience required.",
     "titleJa": "Arranging",
-    "bodyJa": "30min After the master’s demonstration, guests choose from prepared materials and complete an arrangementunder her guidance. No experience required."
+    "bodyJa": "30min After the master’s demonstration, guests choose from prepared materials and complete an arrangementunder her guidance. No experience required.",
+    "photo": "",
+    "photoBase": ""
    },
    {
     "title": "Tea and conversation",
     "body": "30min A quiet close beside the finished work, with seasonal wagashi and tea.",
     "titleJa": "Tea and conversation",
-    "bodyJa": "30min A quiet close beside the finished work, with seasonal wagashi and tea."
+    "bodyJa": "30min A quiet close beside the finished work, with seasonal wagashi and tea.",
+    "photo": "",
+    "photoBase": ""
    }
   ],
   "includedEn": "Private Ikebana instruction and demonstration by Master Koen Yokoi\nEnglish & Japanese bilingual guide support\nAll flower materials, tools, and equipment\nMatcha/Japanese tea and seasonal sweets\nFree round-trip transfer within Kamakura & Fujisawa cities\nTour insurance",

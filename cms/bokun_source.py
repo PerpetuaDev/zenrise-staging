@@ -159,6 +159,39 @@ def _trailing_place(en_title):
     return ''
 
 
+def cdn_base(photo):
+    """The Bokun image CDN base for a photo, or '' when it has no derivatives.
+
+    Read off a named derivative rather than hardcoding imgcdn.bokun.tools, so a
+    host change on Bokun's side follows automatically. Callers append their own
+    ?w=&h= to request the size they actually display: the originals here are
+    around 4000x2800, and were being served whole to a 430px card and a 760px
+    hero, which is why those pages loaded slowly.
+    """
+    for d in (photo or {}).get('derived') or []:
+        u = d.get('url') or ''
+        if '?' in u:
+            return u.split('?', 1)[0]
+    return ''
+
+
+def _agenda_photo(item):
+    """(url, cdn_base) for an agenda item's key photo. Either may be ''.
+
+    The URL is a named derivative as a safe default; the base lets the renderer
+    ask for the exact size the thumbnail cell needs.
+    """
+    kp = item.get('keyPhoto') or {}
+    derived = {d.get('name'): d.get('url')
+               for d in (kp.get('derived') or []) if d.get('url')}
+    url = ''
+    for name in ('preview', 'large', 'thumbnail'):
+        if derived.get(name):
+            url = derived[name]
+            break
+    return (url or kp.get('originalUrl') or ''), cdn_base(kp)
+
+
 def to_record(activity, activity_ja, availability, availability_ja, entry, corr):
     warnings = []
     # Every raw string that is actually run through cl() (or, for the
@@ -283,10 +316,15 @@ def to_record(activity, activity_ja, availability, availability_ja, entry, corr)
         route.append({
             'title': title_en, 'body': body_en,
             'titleJa': title_ja or title_en, 'bodyJa': body_ja or body_en,
+            # Photos are not language-specific, so these are read from the
+            # English payload for both.
+            'photo': _agenda_photo(item)[0],
+            'photoBase': _agenda_photo(item)[1],
         })
 
     photos = activity.get('photos') or []
     cover = (photos[0].get('originalUrl') if photos else '') or ''
+    cover_base = cdn_base(photos[0]) if photos else ''
     cover_cap = cl(photos[0].get('alternateText')) if photos else ''
 
     # Rate titles and pricing-category titles are both localised the same
@@ -328,7 +366,7 @@ def to_record(activity, activity_ja, availability, availability_ja, entry, corr)
         'length': (entry.get('length') or _length_from_rates(rows)
                    or _length_from_duration(activity.get('durationText'))),
         'themes': entry.get('themes') or [],
-        'cover': {'url': cover},
+        'cover': {'url': cover, 'base': cover_base},
         'hoursEn': cl(activity.get('durationText')),
         'hoursJa': cl((activity_ja or {}).get('durationText')) or cl(activity.get('durationText')),
         'priceEn': bokun_price.format_from(fp, 'en'),
