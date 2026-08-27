@@ -83,18 +83,17 @@
   .facts .k { font-family: var(--sans); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-60); margin-bottom: 12px; }
   .facts .v { font-family: var(--display); font-size: 26px; line-height: 1.2; }
   /* ── lede + practical + calendar ── */
-  /* Booking column widens in steps. Deliberately NOT clamp(...100vw...): a
-     viewport-relative track ignores the scrollbar and the container's own
-     padding, so the same page measured 532px one run and 720px the next.
-     Stepped breakpoints are boring and deterministic. Widening does not
-     shorten the widget -- the loaded calendar is ~1195px tall at any width;
-     it is purely that 560px looked cramped. minmax(0,1fr) lets the prose
-     column shrink rather than overflow. */
+  /* 560px column - 32px padding either side = exactly 496px of content, which
+     is the Bokun calendar's own hard max-width (verified: the card renders
+     494px at a 700px viewport and 494px at 1300px, centred, with the surplus
+     as empty margin). So a wider column cannot make the calendar bigger -- it
+     only adds cream around it, which is what a first attempt at widening did.
+     Raising that cap needs custom CSS in Bokun's panel; nothing here can.
+     Height is width-independent too: ~1192px at 1782px wide vs ~1195px at
+     653px. minmax(0,1fr) lets the prose column shrink rather than overflow. */
   .body-grid { padding: 150px 36px 0; display: grid;
     grid-template-columns: minmax(0, 1fr) 560px;
     column-gap: 96px; align-items: start; }
-  @media (min-width: 1360px) { .body-grid { grid-template-columns: minmax(0, 1fr) 640px; } }
-  @media (min-width: 1560px) { .body-grid { grid-template-columns: minmax(0, 1fr) 720px; } }
   .lede { font-family: var(--display); font-size: 36px; line-height: 1.4; max-width: 820px; margin: 0 0 110px; text-wrap: pretty; }
   :lang(ja) .lede { line-height: 1.7; }
   /* Task 18: a group with prose reads as sentences, which need a real line
