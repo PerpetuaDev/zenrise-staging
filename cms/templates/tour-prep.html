@@ -198,7 +198,7 @@
 {{JSON_LD}}
 </head>
 <body>
-  <div class="stage" id="stage">
+  <div class="stage" id="stage" data-entrance=".facts, .prep > *, .book-cta .box">
 
     <header class="nav" data-screen-label="07 Tour detail — Header">
       <a class="logo" href="index.html">ZENRISE</a>
@@ -217,13 +217,13 @@
     </div>
 
     <div class="t-head-wrap">
-      <div class="t-head">
+      <div class="t-head intro-a">
         <span class="eyebrow" data-i18n="{{K}}_eyebrow">Tour No. {{NUM}}</span>
         <h1 data-i18n="{{K}}_name">{{TITLE_EN}}</h1>
       </div>
     </div>
 
-    <section class="cover" style="background-image: url('{{COVER_URL}}')" data-screen-label="07 Tour detail — Cover">
+    <section class="cover intro-b" style="background-image: url('{{COVER_URL}}')" data-screen-label="07 Tour detail — Cover">
       <span class="cap" data-i18n="{{K}}_cap">{{CAP_EN}}</span>
       <span class="credit">© Zenrise</span>
     </section>
