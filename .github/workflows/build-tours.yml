@@ -1,0 +1,45 @@
+name: Build tours from Bokun
+
+# Hourly, so a change made in the Bokun panel reaches the site without anyone
+# running a build. Triggers are deliberately limited to schedule and manual
+# dispatch: this repo is public, and pull_request_target would hand the
+# credentials to any fork.
+on:
+  schedule:
+    - cron: '0 * * * *'
+  workflow_dispatch:
+
+concurrency:
+  group: build-tours
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Rebuild tour pages from the Bokun catalogue
+        env:
+          BOKUN_ACCESS_KEY: ${{ secrets.BOKUN_ACCESS_KEY }}
+          BOKUN_SECRET_KEY: ${{ secrets.BOKUN_SECRET_KEY }}
+        # --require-live turns off the cache fallback. Without it a credentials
+        # failure rebuilds from the committed cache, produces no diff, and the
+        # run reports "no changes to publish" -- a green tick for a job that
+        # published nothing. Here it fails instead.
+        run: python3 cms/build-tours.py --source bokun --require-live
+
+      - name: Commit and push if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No changes to publish"
+            exit 0
+          fi
+          git commit -m "CMS: rebuild tour pages from Bokun"
+          git push
