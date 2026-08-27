@@ -127,7 +127,10 @@
   .cal .c-go:disabled { background: var(--ink-30); cursor: not-allowed; }
   .cal-missing { border: 1px solid var(--ink-12); background: var(--bg-2); padding: 40px; font-family: var(--sans); font-size: 15px; line-height: 1.5; color: var(--ink-60); }
   /* ── booking panel heading ── */
-  .cal .cal-h { font-family: var(--display); font-size: 26px; line-height: 1.2; margin: 0 0 26px; color: var(--ink); }
+  /* 32px, not 26: the widget's own section headings compute to 24px, so at 26
+     this read as a peer of them rather than the heading above them. 32 is an
+     existing step in this template's scale and stays below the 36px lede. */
+  .cal .cal-h { font-family: var(--display); font-size: 32px; line-height: 1.2; margin: 0 0 26px; color: var(--ink); }
   /* ── price breakdown (above the booking widget) ──
      The price is no longer repeated in the facts row, so this is the only place
      it appears. Set on the panel grey with the amounts in the display face, so
@@ -201,7 +204,7 @@
     .chip { font-size: 14px; padding: 10px 16px; }
     .grp .prose li { font-size: 14px; padding: 12px 0; }
     .cal { position: static; padding: 24px 20px 22px; order: -1; }
-    .cal .cal-h { font-size: 22px; margin-bottom: 20px; }
+    .cal .cal-h { font-size: 26px; margin-bottom: 20px; }
     .price-breakdown { margin-bottom: 22px; padding: 16px 18px 18px; }
     .price-breakdown .pb-label { font-size: 14px; }
     .price-breakdown .pb-amt { font-size: 19px; }
