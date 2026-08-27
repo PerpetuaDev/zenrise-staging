@@ -29,6 +29,20 @@
       417px grid, an 820px column yields 384px). The width rules at the end let
       it use the space it is given up to that cap; they cannot exceed it.
 
+   HOW TO TEST THIS WITHOUT PASTING IT INTO THE PANEL. Selector debugging by
+   eye costs a round trip per attempt, because the widget is cross-origin and
+   only its rendered pixels are visible from the page. Instead:
+
+       chrome --headless=new --dump-dom \
+         "https://widgets.bokun.io/online-sales/<channel>/experience-calendar/<id>?lang=en" \
+         > page.html
+       # strip every <script> so React cannot remount and wipe the markup,
+       # append this file in a <style>, serve the directory, then load it and
+       # read getComputedStyle() on the elements of interest.
+
+   That harness is same-origin, so computed colours and the winning rules are
+   directly readable. Every value in this file was confirmed that way.
+
    The semantic class names (.CalendarDay, .SummaryTitle, ...) carry no
    declarations of their own -- they are stable hooks, while the real styles sit
    on build-generated classes (sc-jsMahE, fEgmOB) that change on Bokun deploys.
@@ -104,13 +118,16 @@
 }
 
 /* ── Typography ─────────────────────────────────────────────────────────────
-   Set on #root so it inherits, then reasserted on the headings, which carry
-   their own font-family further down Bokun's cascade. */
-#root,
-#root input,
-#root button,
-#root select,
-#root textarea {
+   Deliberately NOT prefixed with #root. An id raises specificity to 1-0-1,
+   which outranks the [data-testid] button rules below and left the checkout
+   button with dark text on a dark fill. #root-prefixed rules also behaved
+   inconsistently on the live widget while unprefixed ones did not, so the
+   prefix is avoided throughout this file. */
+body,
+input,
+button,
+select,
+textarea {
     font-family: "Gill Sans", "Gill Sans MT", "Trebuchet MS",
                  "Helvetica Neue", Arial, sans-serif !important;
     color: rgb(41 65 56) !important;
@@ -143,9 +160,9 @@ h2, h3, h4, h5, h6,
 
 /* Icon fills: Bokun ships some as presentation attributes, including a stray
    #1D57C7 blue on the stepper's plus icon. A CSS fill overrides an attribute. */
-#root svg path,
-#root svg circle,
-#root svg rect {
+svg path,
+svg circle,
+svg rect {
     fill: rgb(41 65 56) !important;
 }
 
@@ -270,22 +287,29 @@ h2, h3, h4, h5, h6,
 [data-testid="checkout-button"] button svg rect {
     fill: #F7F4EA !important;
 }
-/* Disabled until a date is chosen -- the state a guest sees first. */
+/* Disabled until a date is chosen -- the state a guest sees first, so it has to
+   stay readable. Cream on rgba(41,65,56,0.30) measures about 1.6:1, effectively
+   invisible; ink at 0.60 on a 0.10 wash reads as disabled and stays legible (about 3.2:1). */
 [data-testid="checkout-button"] button:disabled,
 [data-testid="checkout-button"] button:disabled * {
-    background: rgba(41, 65, 56, 0.30) !important;
-    color: #F7F4EA !important;
+    background: rgba(41, 65, 56, 0.10) !important;
+    color: rgba(41, 65, 56, 0.60) !important;
+}
+[data-testid="checkout-button"] button:disabled svg path,
+[data-testid="checkout-button"] button:disabled svg circle,
+[data-testid="checkout-button"] button:disabled svg rect {
+    fill: rgba(41, 65, 56, 0.60) !important;
 }
 
 /* Day cells and steppers are <button>s too; keep their surfaces clean. */
-#root button.CalendarOuterWrapper,
-#root button.CalendarOuterWrapper *,
-#root button.PlusButton,
-#root button.MinusButton {
+button.CalendarOuterWrapper,
+button.CalendarOuterWrapper *,
+button.PlusButton,
+button.MinusButton {
     background: transparent !important;
     border-radius: 0 !important;
 }
-#root button.CalendarOuterWrapper .CalendarDayAvailable {
+button.CalendarOuterWrapper .CalendarDayAvailable {
     background: rgba(41, 65, 56, 0.06) !important;
 }
 
