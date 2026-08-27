@@ -154,6 +154,19 @@
     .foot-v2-bottom { font-size: 11px; padding: 20px 0; }
     .foot-v2-bottom .legal { gap: 20px; }
   }
+  /* Tablet: two up. A single column at 768 makes every card 728px wide, which
+     oversizes the images against their own captions and triples the page length.
+     The home page already shows its tiles two up at these widths, so this also
+     stops the two pages disagreeing.
+
+     Placed at top level AFTER the 1023 block, not inside it. Splitting that
+     block to insert this put every rule following .tour-grid -- including the
+     mobile footer -- inside a min-width:600px band, and the footer then lost its
+     single-column layout below 600 and overflowed. */
+  @media (min-width: 600px) and (max-width: 1023px) {
+    .tour-grid { grid-template-columns: repeat(2, 1fr); gap: 48px 20px; }
+  }
+
   @media (max-width: 599px) { .navlinks { display: none; } }
 </style>
 </head>
