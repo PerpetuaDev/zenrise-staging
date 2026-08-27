@@ -64,6 +64,12 @@
   "includedChipsJa": "",
   "knowChipsEn": "",
   "knowChipsJa": "",
+  "ledeParasEn": [
+   "Zenrise designs slow, considered private experiences around Kamakura and its surrounding towns. A private wa-rōsoku(Japanese candle) making session with Meria, a wax artist based in Shonan, arranged for up to four guests at a time, in a quiet space in Kamakura or Fujisawa. Every candle begins as a wick, dipped again and again into molten wax until it takes shape — entirely by hand. Natural materials from local farmers and growers — the character of Shonan, held in a single flame. The finished candle is yours to take home, a keepsake you'll return to each time you light it."
+  ],
+  "ledeParasJa": [
+   "Zenrise designs slow, considered private experiences around Kamakura and its surrounding towns. A private wa-rōsoku(Japanese candle) making session with Meria, a wax artist based in Shonan, arranged for up to four guests at a time, in a quiet space in Kamakura or Fujisawa. Every candle begins as a wick, dipped again and again into molten wax until it takes shape — entirely by hand. Natural materials from local farmers and growers — the character of Shonan, held in a single flame. The finished candle is yours to take home, a keepsake you'll return to each time you light it."
+  ],
   "titleEn": "A private Japanese candle-making experience in Kamakura.",
   "titleJa": "A private Japanese candle-making experience in Kamakura.",
   "subEn": "Experience a private Japanese candle-making session with wax artist Meria, from Shonan Wa-Rōsoku. Held in Kamakura or Fujisawa.",
@@ -156,6 +162,20 @@
   "includedChipsJa": "バス運賃\n駐車料金\n飲食\n拝観料・入場料\n消費税",
   "knowChipsEn": "Public transport nearby",
   "knowChipsJa": "公共交通機関が近い",
+  "ledeParasEn": [
+   "Kamakura's temples have been protected for 850 years. That serenity has also been around the same number of years. This tour is a day to enjoy that serenity. In addition to visiting famous places, you will also slowly visit the three Zen temples of the Kamakura Five Mountains, and the guide will carefully guide you through the scenery in front of you one by one.",
+   "The Kamakura Gozan is a general term for the five highest ranking temples of the Rinzai sect — Kenchoji, Engaku-ji, Jufuku-ji, Jochi-ji, and Jomyo-ji — founded by the Kamakura Shogunate and determined by the Muromachi Shogunate.",
+   "At Engakuji, you will experience a short zazen meditation; at Jochi-ji Temple, you will walk around the precincts decorated with seasonal flowers, and enjoy matcha while looking at dry mountain water at Jomyo-ji Temple. At the end of the morning, have lunch at a restaurant that suits your preferences.",
+   "All arrangements have been made in advance, so all that's left to do is be prepared to walk slowly.",
+   "There are temples with stone steps, so we recommend shoes that are easy to walk in. We will guide you on an all-inclusive basis, including travel expenses, admission fees, lunch, and accompanying a guide."
+  ],
+  "ledeParasJa": [
+   "鎌倉の寺々は八百五十年にわたり守られてきました。その静けさもまた、同じだけの歳月を重ねています。本ツアーは、その静けさを味わうための一日です。名所を巡るだけでなく、鎌倉五山のうち三つの禅寺をゆっくりと巡り、ガイドが目の前の景色をひとつひとつ丁寧にご案内します。",
+   "鎌倉五山とは、鎌倉幕府が礎を築き、室町幕府によって定められた、臨済宗の五つの最高格式寺院——建長寺・円覚寺・寿福寺・浄智寺・浄妙寺——の総称です。",
+   "円覚寺では短い坐禅を体験し、浄智寺では四季折々の草花が彩る境内をそぞろ歩き、浄妙寺では枯山水を眺めながら抹茶をいただきます。午前の締めくくりには、お好みに合わせたお店で昼食を。",
+   "すべての手配はあらかじめ整えてありますので、あとはゆっくりと歩む心構えだけをお持ちください。",
+   "石段のある寺院がございますので、歩きやすい靴をおすすめします。移動費・拝観料・昼食代・ガイド同行を含む、オールインクルーシブでご案内いたします。"
+  ],
   "titleEn": "The Zen Journey",
   "titleJa": "禅の旅",
   "subEn": "Experience the 850 year history of Kamakura and the essence of Zen. Japanese garden, zazen, matcha.",
@@ -269,6 +289,16 @@
   "includedChipsJa": "",
   "knowChipsEn": "",
   "knowChipsJa": "",
+  "ledeParasEn": [
+   "Experience the Art of Ikebana in Kamakura with Master Koen Yokoi",
+   "Immerse yourself in \"Ichika Ichiei\" (One Flower, One Encounter)—a unique, 90-minute private floral workshop designed for exclusive small groups of 1 to 6 guests in the historic city of Kamakura.",
+   "Guided by Master Koen Yokoi, a third-generation Sogetsu Ikebana master with an illustrious career decorating stage productions, international events, and film sets, this private session offers a rare and intimate glimpse into the world of Japanese flower arrangement."
+  ],
+  "ledeParasJa": [
+   "Experience the Art of Ikebana in Kamakura with Master Koen Yokoi",
+   "Immerse yourself in \"Ichika Ichiei\" (One Flower, One Encounter)—a unique, 90-minute private floral workshop designed for exclusive small groups of 1 to 6 guests in the historic city of Kamakura.",
+   "Guided by Master Koen Yokoi, a third-generation Sogetsu Ikebana master with an illustrious career decorating stage productions, international events, and film sets, this private session offers a rare and intimate glimpse into the world of Japanese flower arrangement."
+  ],
   "titleEn": "Ikebana Experience , “Ichigo Ichie”-KAMAKURA",
   "titleJa": "Ikebana Experience , “Ichigo Ichie”-KAMAKURA",
   "subEn": "An exclusive, 90-minute private Ikebana experience in Kamakura guided by master artist Koen Yokoi, featuring hands-on flower arranging, tea, and seasonal sweets.",

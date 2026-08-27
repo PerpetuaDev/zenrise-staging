@@ -401,5 +401,57 @@ class TestGridOrder(unittest.TestCase):
         self.assertEqual([m['num'] for m in models], ['01', '03', ''])
 
 
+class TestLedeParagraphs(unittest.TestCase):
+    """The description keeps Bokun's paragraphing: first large, rest reduced."""
+
+    def block(self, paras_en, paras_ja=None, joined=''):
+        en, ja = {}, {}
+        m = bt.tour_model(record(ledeParasEn=paras_en,
+                                 ledeParasJa=paras_ja if paras_ja is not None else paras_en,
+                                 ledeEn=joined or ' '.join(paras_en),
+                                 ledeJa=joined or ' '.join(paras_en)))
+        return bt.lede_block(m, en, ja), en, ja
+
+    def test_first_paragraph_leads_and_the_rest_are_reduced(self):
+        html, _, _ = self.block(['One.', 'Two.', 'Three.'])
+        self.assertEqual(html.count('class="lede"'), 1)
+        self.assertEqual(html.count('class="lede-sub"'), 2)
+        self.assertLess(html.index('class="lede"'), html.index('class="lede-sub"'))
+
+    def test_a_single_paragraph_emits_no_sub_paragraph(self):
+        html, _, _ = self.block(['Only one.'])
+        self.assertIn('class="lede"', html)
+        self.assertNotIn('lede-sub', html)
+
+    def test_every_paragraph_is_keyed_in_both_languages(self):
+        _, en, ja = self.block(['One.', 'Two.', 'Three.'])
+        self.assertEqual(sorted(en), sorted(ja))
+        self.assertEqual(len(en), 3)
+
+    def test_keys_are_numbered_from_two(self):
+        _, en, _ = self.block(['One.', 'Two.'])
+        self.assertIn('tours_ikebana-ichigo-ichie_lede', en)
+        self.assertIn('tours_ikebana-ichigo-ichie_lede_2', en)
+
+    def test_japanese_running_short_falls_back_to_english(self):
+        _, en, ja = self.block(['One.', 'Two.', 'Three.'], paras_ja=['\u4e00\u3002'])
+        self.assertEqual(ja['tours_ikebana-ichigo-ichie_lede'], '\u4e00\u3002')
+        # the two English paragraphs Japanese does not cover stand in unchanged
+        self.assertEqual(ja['tours_ikebana-ichigo-ichie_lede_2'], 'Two.')
+        self.assertEqual(ja['tours_ikebana-ichigo-ichie_lede_3'], 'Three.')
+
+    def test_falls_back_to_the_joined_lede_for_an_older_cache(self):
+        # cache entries written before ledeParas existed carry only the string
+        html, en, _ = self.block([], joined='A single joined lede.')
+        self.assertIn('class="lede"', html)
+        self.assertNotIn('lede-sub', html)
+        self.assertEqual(en['tours_ikebana-ichigo-ichie_lede'], 'A single joined lede.')
+
+    def test_paragraph_text_is_escaped(self):
+        html, _, _ = self.block(['Quotes "here" & ampersands'])
+        self.assertNotIn('"here"', html.split('data-i18n')[1])
+        self.assertIn('&amp;', html)
+
+
 if __name__ == '__main__':
     unittest.main()

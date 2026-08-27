@@ -95,8 +95,15 @@
   .body-grid { padding: 150px 36px 0; display: grid;
     grid-template-columns: minmax(0, 1fr) 600px;
     column-gap: 96px; align-items: start; }
-  .lede { font-family: var(--display); font-size: 36px; line-height: 1.4; max-width: 820px; margin: 0 0 110px; text-wrap: pretty; }
+  /* The description keeps Bokun's paragraphing: the first paragraph leads at
+     36px, the rest follow at 22px. The 110px gap before the next section now
+     sits on whichever paragraph is last, so a one-paragraph tour spaces the
+     same as a five-paragraph one. */
+  .lede { font-family: var(--display); font-size: 36px; line-height: 1.4; max-width: 820px; margin: 0 0 26px; text-wrap: pretty; }
   :lang(ja) .lede { line-height: 1.7; }
+  .lede-sub { font-family: var(--display); font-size: 22px; line-height: 1.6; max-width: 820px; margin: 0 0 20px; text-wrap: pretty; }
+  :lang(ja) .lede-sub { line-height: 1.9; }
+  .lede-col > p:last-of-type { margin-bottom: 110px; }
   /* Task 18: a group with prose reads as sentences, which need a real line
      length to stay readable -- the previous 2-up half-width grid (fine for
      short chip labels) squeezed the eight "Good to know" sentences down to
@@ -199,7 +206,9 @@
     .facts .cell { padding: 20px 16px 20px 0; }
     .facts .v { font-size: 20px; }
     .body-grid { padding: 64px 20px 0; grid-template-columns: 1fr; row-gap: 56px; }
-    .lede { font-size: 22px; margin-bottom: 44px; }
+    .lede { font-size: 22px; margin-bottom: 18px; }
+    .lede-sub { font-size: 17px; margin-bottom: 14px; }
+    .lede-col > p:last-of-type { margin-bottom: 44px; }
     .chip-groups { gap: 36px; }
     .chip { font-size: 14px; padding: 10px 16px; }
     .grp .prose li { font-size: 14px; padding: 12px 0; }

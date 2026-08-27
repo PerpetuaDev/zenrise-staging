@@ -107,6 +107,10 @@ def tour_model(a):
               'included', 'notIncluded', 'bring', 'know',
               'includedChips', 'knowChips'):
         m[f] = ((a.get(f + 'En') or '').strip(), (a.get(f + 'Ja') or '').strip())
+    # Paragraph list, falling back to the joined lede for cache entries written
+    # before this existed.
+    m['lede_paras'] = (list(a.get('ledeParasEn') or []),
+                       list(a.get('ledeParasJa') or []))
     m['area'] = a['area']
     m['length'] = a['length']
     m['themes'] = a.get('themes') or []
@@ -578,13 +582,38 @@ def cleanup_stale_pages(models, root=None):
     return removed
 
 
+def lede_block(m, en, ja):
+    """The description: first paragraph large, the rest reduced.
+
+    Breaks where Bokun's description breaks. Bokun emits real paragraphs as <p>
+    and uses <br> as editor spacing, and bokun_text drops the empty chunks a
+    leading <br> produces, so the split matches the author's intent. A <br>
+    placed mid-sentence would still split there, which is the honest limit of
+    respecting the source layout.
+
+    Japanese is paired by index because the two descriptions are split
+    independently; where Japanese runs short the English paragraph stands in,
+    which is the same fallback used for every other unreviewed field.
+    """
+    K = m['K']
+    paras_en = m['lede_paras'][0] or ([m['lede'][0]] if m['lede'][0] else [])
+    paras_ja = m['lede_paras'][1] or ([m['lede'][1]] if m['lede'][1] else [])
+    out = []
+    for i, text in enumerate(paras_en):
+        key = f'{K}_lede' if i == 0 else f'{K}_lede_{i + 1}'
+        en[key] = text
+        ja[key] = paras_ja[i] if i < len(paras_ja) else text
+        cls = 'lede' if i == 0 else 'lede-sub'
+        out.append(f'        <p class="{cls}" data-i18n="{key}">{esc(text)}</p>')
+    return '\n'.join(out)
+
+
 def render_detail(m, tpl_full, tpl_prep):
     en, ja = base_dict(m)
     slots = common_slots(m)
     if m['full']:
         K = m['K']
-        en[K + '_lede'] = m['lede'][0]; ja[K + '_lede'] = m['lede'][1]
-        slots['LEDE_EN'] = esc(m['lede'][0])
+        slots['LEDE_BLOCK'] = lede_block(m, en, ja)
         slots['CHIPS_SECTION'] = chips_section(m, en, ja)
         slots['ROUTE_SECTION'] = route_section(m, en, ja)
         # The breakdown is unmounted, not deleted: it made the sticky booking

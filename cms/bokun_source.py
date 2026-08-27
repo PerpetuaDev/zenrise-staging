@@ -180,6 +180,11 @@ def to_record(activity, activity_ja, availability, availability_ja, entry, corr)
     parsed, sw = bokun_text.sections(
         activity.get('description'), corr, entry.get('chipsHeading'))
     warnings.extend(sw)
+    # Kept as a list as well as joined: the detail page renders the first
+    # paragraph large and the rest smaller, breaking where Bokun's description
+    # breaks. The joined form stays because the meta description and JSON-LD
+    # want one continuous string.
+    lede_paras = list(parsed['lede'])
     lede = ' '.join(parsed['lede'])
     reviewed = bool(entry.get('jaReviewed'))
 
@@ -187,12 +192,14 @@ def to_record(activity, activity_ja, availability, availability_ja, entry, corr)
     # correction-usage ledger) once a tour is jaReviewed -- same gate as the
     # Japanese lede a few lines below.
     parsed_ja_included = []
+    parsed_ja_lede = []
     if reviewed:
         raw_texts.append((activity_ja or {}).get('description') or '')
         parsed_ja, sw_ja = bokun_text.sections(
             (activity_ja or {}).get('description'), corr, entry.get('chipsHeading'))
         warnings.extend(sw_ja)
         parsed_ja_included = parsed_ja['included']
+        parsed_ja_lede = list(parsed_ja['lede'])
 
     def prose_items(raw):
         return [x for x in (cl(li) for li in bokun_text.list_items(raw)) if x]
@@ -339,6 +346,12 @@ def to_record(activity, activity_ja, availability, availability_ja, entry, corr)
         'knowChipsEn': enum_chips['knowChips'][0],
         'knowChipsJa': enum_chips['knowChips'][1],
     }
+
+    # Japanese paragraph counts can differ from English, since the two
+    # descriptions are split independently. The renderer pairs by index and
+    # falls back to the English paragraph where Japanese runs short.
+    rec['ledeParasEn'] = lede_paras
+    rec['ledeParasJa'] = parsed_ja_lede or lede_paras
 
     en_values = {'title': title, 'sub': sub, 'lede': lede, 'coverCaption': cover_cap}
     for field in PAIR_FIELDS:
