@@ -174,6 +174,13 @@
   .other .chip-groups { display: block; column-count: 2; column-gap: 64px; max-width: none; }
   .other .grp { break-inside: avoid; margin: 0 0 44px; }
   .other .grp:last-child { margin-bottom: 0; }
+  .other-terms { margin: 44px 0 0; padding-top: 30px; border-top: 1px solid var(--ink-12); font-family: var(--sans); font-size: 15px; }
+  .other-terms a { display: inline-flex; align-items: baseline; color: var(--ink); }
+  .other-terms .u { position: relative; padding-bottom: 0.16em; }
+  .other-terms .u::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 1px; background: var(--ink); opacity: 0.35; transition: opacity 0.25s ease; }
+  .other-terms a:hover .u::after { opacity: 1; }
+  .other-terms .ar { position: relative; right: 0; transition: right 0.3s ease; font-weight: 300; }
+  .other-terms a:hover .ar { right: -6px; }
   /* ── booking CTA ── */
   .book-cta { padding: 120px 36px 0; }
   .book-cta .box { border: 1px solid var(--ink-30); padding: 110px 64px; text-align: center; }
@@ -237,6 +244,7 @@
     .other { padding: 24px 18px 20px; }
     .other h2 { font-size: 34px; margin-bottom: 20px; }
     .other .chip-groups { column-count: 1; }
+    .other-terms { margin-top: 30px; padding-top: 22px; font-size: 14px; }
     .other .grp { margin-bottom: 32px; }
     .route-wrap { padding: 64px 20px 0; }
     .route { padding: 24px 18px 8px; }
@@ -378,6 +386,11 @@
             </ul>
           </div>
         </div>
+        <p class="other-terms">
+          <a href="terms.html">
+            <span class="u" data-i18n="td_other_terms">Cancellation, insurance and payment terms in full</span><span class="ar">&nbsp;→</span>
+          </a>
+        </p>
       </div>
     </section>
 

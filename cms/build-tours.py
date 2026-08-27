@@ -311,10 +311,19 @@ def other_info_section(m, en, ja):
     body = _chip_groups(m, en, ja, 'prose')
     if not body:
         return ''
+    # Cancellation, insurance and payment are general terms, set out in full and
+    # more precisely on terms.html. Pointing there keeps this block to what is
+    # specific to the tour, and gives the client somewhere to send the general
+    # clauses that currently duplicate the terms page.
     return f'''    <section class="other-wrap" data-screen-label="07 Tour detail — Other info">
       <div class="other">
         <h2 data-i18n="td_other">Other info.</h2>
 {body}
+        <p class="other-terms">
+          <a href="terms.html">
+            <span class="u" data-i18n="td_other_terms">Cancellation, insurance and payment terms in full</span><span class="ar">&nbsp;→</span>
+          </a>
+        </p>
       </div>
     </section>'''
 

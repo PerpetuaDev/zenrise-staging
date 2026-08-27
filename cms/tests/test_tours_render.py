@@ -213,6 +213,17 @@ class TestChipGroups(unittest.TestCase):
         self.assertIn('td_included', chips_html)
         self.assertIn('td_included', other_html)
 
+    def test_other_info_links_to_the_terms_page(self):
+        # cancellation, insurance and payment are general terms set out in full
+        # on terms.html; the tour block points there rather than restating them
+        m = bt.tour_model(record(notIncludedEn='A', notIncludedJa='A'))
+        html = bt.other_info_section(m, {}, {})
+        self.assertIn('href="terms.html"', html)
+        self.assertIn('td_other_terms', html)
+
+    def test_no_terms_link_when_there_is_no_other_info(self):
+        self.assertNotIn('terms.html', bt.other_info_section(bt.tour_model(record()), {}, {}))
+
     def test_other_info_is_a_titled_section_or_nothing(self):
         m = bt.tour_model(record(notIncludedEn='A', notIncludedJa='A'))
         self.assertIn('td_other', bt.other_info_section(m, {}, {}))
