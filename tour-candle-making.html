@@ -180,6 +180,11 @@
      height of its tallest cell, leaving a dead gap under the short one.
      Columns flow and balance instead; break-inside keeps a group whole. */
   .other .chip-groups { display: block; column-count: 2; column-gap: 64px; max-width: none; }
+  /* Lines stop 15% short of the column edge, so the left column's text is not
+     running up against the right column's. The gutter alone was not enough:
+     the measure filled the whole 626px column. A percentage rather than a
+     fixed width, so it holds at other viewport widths. */
+  .other .grp .prose li { max-width: 85%; }
   .other .grp { break-inside: avoid; margin: 0 0 44px; }
   .other .grp:last-child { margin-bottom: 0; }
   .other-terms { margin: 44px 0 0; padding-top: 30px; border-top: 1px solid var(--ink-12); font-family: var(--sans); font-size: 15px; }
@@ -252,6 +257,7 @@
     .other { padding: 24px 18px 20px; }
     .other h2 { font-size: 34px; margin-bottom: 20px; }
     .other .chip-groups { column-count: 1; }
+    .other .grp .prose li { max-width: none; }
     .other-terms { margin-top: 30px; padding-top: 22px; font-size: 14px; }
     .other .grp { margin-bottom: 32px; }
     .route-wrap { padding: 64px 20px 0; }
