@@ -553,3 +553,41 @@ class TestRouteThumbnails(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+
+
+class TestBuildToleratesOneBadTour(unittest.TestCase):
+    """The hourly build must not freeze the whole site over one bad tour.
+
+    area_key() and theme_slugs() raise on a value with no i18n key, e.g. a tour
+    in a city we have never had. Before this, that aborted the build.
+    """
+
+    def setUp(self):
+        self.tpl_full = bt.load_template('tour-detail.html')
+        self.tpl_prep = bt.load_template('tour-prep.html')
+
+    def test_a_bad_area_holds_back_only_that_tour(self):
+        good = bt.tour_model(record())
+        bad = bt.tour_model(record(area='Nikko'))
+        bad['id'] = 'nikko-tour'
+        written, skipped = bt.render_all([good, bad], self.tpl_full,
+                                         self.tpl_prep, write=False)
+        self.assertEqual(len(written), 1)
+        self.assertEqual([s[0] for s in skipped], ['nikko-tour'])
+        self.assertIn('no i18n key', skipped[0][1])
+
+    def test_a_bad_theme_holds_back_only_that_tour(self):
+        good = bt.tour_model(record())
+        bad = bt.tour_model(record(themes=['Nonexistent Theme']))
+        bad['id'] = 'bad-theme-tour'
+        written, skipped = bt.render_all([good, bad], self.tpl_full,
+                                         self.tpl_prep, write=False)
+        self.assertEqual(len(written), 1)
+        self.assertEqual([s[0] for s in skipped], ['bad-theme-tour'])
+
+    def test_all_good_tours_render(self):
+        models = [bt.tour_model(record()), bt.tour_model(record())]
+        written, skipped = bt.render_all(models, self.tpl_full, self.tpl_prep,
+                                        write=False)
+        self.assertEqual(len(written), 2)
+        self.assertEqual(skipped, [])

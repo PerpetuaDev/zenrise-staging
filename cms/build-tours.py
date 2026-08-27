@@ -758,6 +758,39 @@ def set_page_dict(path, en, ja):
     open(path, 'w').write(s)
 
 
+def render_all(models, tpl_full, tpl_prep, write=True):
+    """Render every tour, holding back any that cannot be rendered.
+
+    Returns (written, skipped) where skipped is [(slug, reason)].
+
+    One misconfigured tour must not stop the site updating. area_key() and
+    theme_slugs() raise BuildError on a value with no i18n key -- a tour in a
+    city we have never had, for instance -- and this build runs unattended every
+    hour, so an abort would freeze the whole site until someone noticed. The
+    caller keeps the full `models` list for the stale-page cleanup, which must
+    not delete the page of a tour that is merely misconfigured.
+    """
+    written, skipped = [], []
+    for m in models:
+        try:
+            # Themes are validated here even though render_detail does not use
+            # them: theme_slugs() is called later by card()/tile() for the grid,
+            # which is outside this loop, so an invalid theme would otherwise
+            # abort the build after these pages were already written. Validating
+            # both here makes this the single gate, and everything downstream
+            # runs on the tours this returns.
+            theme_slugs(m['themes'])
+            out = render_detail(m, tpl_full, tpl_prep)
+        except BuildError as e:
+            skipped.append((m['id'], str(e)))
+            continue
+        name = f"tour-{m['id']}.html"
+        if write:
+            open(os.path.join(ROOT, name), 'w').write(out)
+        written.append(name + ('' if m['full'] else ' (prep)'))
+    return written, skipped
+
+
 def main():
     source = 'bokun'
     if '--source' in sys.argv:
@@ -816,29 +849,34 @@ def main():
     tpl_full = load_template('tour-detail.html')
     tpl_prep = load_template('tour-prep.html')
 
-    written = []
-    for m in models:
-        out = render_detail(m, tpl_full, tpl_prep)
-        name = f"tour-{m['id']}.html"
-        open(os.path.join(ROOT, name), 'w').write(out)
-        written.append(name + ('' if m['full'] else ' (prep)'))
+    written, skipped = render_all(models, tpl_full, tpl_prep)
+    for slug, why in skipped:
+        print(f'WARNING: held back {slug}: {why}')
 
-    write_tours_index(models)
-    go_written = write_go_redirects(models)
+    # Everything downstream -- the grid, the home tiles, the sitemap index and
+    # the go/ redirects -- also calls area_key()/theme_slugs(), so a held-back
+    # tour has to drop out of those too or it raises again there. `models` is
+    # kept intact for the stale-page cleanup, which must not delete the page of
+    # a tour that is only misconfigured.
+    held = {slug for slug, _ in skipped}
+    live = [m for m in models if m['id'] not in held]
+
+    write_tours_index(live)
+    go_written = write_go_redirects(live)
 
     # tours.html: grid + card dict
     rewrite_region(os.path.join(ROOT, 'tours.html'), 'tours-grid',
-                   '\n\n'.join(card(m) for m in models))
+                   '\n\n'.join(card(m) for m in live))
     en, ja = {}, {}
-    for m in models:
+    for m in live:
         e, j = base_dict(m)
         en.update(e); ja.update(j)
     set_page_dict(os.path.join(ROOT, 'tours.html'), en, ja)
 
     # index.html: featured tiles + dict (site-config order, else list order)
     featured_ids = [f['id'] if isinstance(f, dict) else f for f in (cfg.get('featuredTours') or [])]
-    by_id = {m['id']: m for m in models}
-    feats = [by_id[i] for i in featured_ids if i in by_id] or models
+    by_id = {m['id']: m for m in live}
+    feats = [by_id[i] for i in featured_ids if i in by_id] or live
     rewrite_region(os.path.join(ROOT, 'index.html'), 'home-tours',
                    '\n\n'.join(tile(m) for m in feats))
     en, ja = {}, {}
