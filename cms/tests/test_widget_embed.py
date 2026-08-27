@@ -1,5 +1,5 @@
 # cms/tests/test_widget_embed.py
-import importlib.util, os, unittest
+import glob, importlib.util, json, os, unittest
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 SPEC = importlib.util.spec_from_file_location(
@@ -245,3 +245,41 @@ class TestStopTime(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+
+
+class TestWidgetPathIsDerivable(unittest.TestCase):
+    """A newly listed tour must get a booking calendar with no developer step.
+
+    Bokun renders a calendar for any product in the channel at
+    <channel>/experience-calendar/<productId>, with no per-product setup in the
+    panel -- verified against products that never had a widget configured. Before
+    this, a new tour published with "Booking widget not yet configured".
+    """
+
+    def setUp(self):
+        with open(os.path.join(ROOT, 'cms', 'tours-config.json')) as f:
+            self.cfg = json.load(f)
+        self.samples = {s['id'] for s in (self.cfg.get('sampleTours') or [])}
+
+    def test_the_channel_uuid_is_configured(self):
+        self.assertTrue((self.cfg.get('bookingChannelUUID') or '').strip(),
+                        'bookingChannelUUID is what makes the path derivable')
+
+    def test_every_real_tour_page_has_a_mounted_widget(self):
+        for path in glob.glob(os.path.join(ROOT, 'tour-*.html')):
+            slug = os.path.basename(path)[len('tour-'):-len('.html')]
+            if slug in self.samples:
+                continue
+            html = open(path, encoding='utf-8').read()
+            self.assertIn('class="bokunWidget"', html, slug)
+            self.assertNotIn('data-widget-missing', html, slug)
+
+    def test_sample_tours_do_not_get_a_derived_widget(self):
+        # they carry an invented bokunId, so a derived URL would point at a
+        # product that does not exist
+        for slug in self.samples:
+            path = os.path.join(ROOT, f'tour-{slug}.html')
+            if not os.path.exists(path):
+                continue
+            html = open(path, encoding='utf-8').read()
+            self.assertNotIn('data-widget-base', html, slug)

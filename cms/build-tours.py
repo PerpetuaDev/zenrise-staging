@@ -794,9 +794,24 @@ def main():
     # each cached record. Re-read them from config here so adding a widget takes
     # effect on a `--source cache` build instead of needing a live refetch.
     tours_cfg = cfg.get('tours') or {}
+    # Derive the widget path when config has none. Bokun renders a calendar for
+    # ANY product in the channel at
+    #   <channel>/experience-calendar/<productId>
+    # with no per-product setup in the panel -- verified against products that
+    # have never had a widget configured. Without this a newly listed tour
+    # published with "Booking widget not yet configured", which was the last
+    # step still needing a developer.
+    channel = (cfg.get('bookingChannelUUID') or '').strip()
+    # Sample tours carry an invented bokunId, so deriving a widget URL for them
+    # points at a product that does not exist. They are excluded by id.
+    sample_ids = {s.get('id') for s in samples}
     for m in models:
         if str(m['bokun_id']) in tours_cfg:
             m['widgets'] = tours_cfg[str(m['bokun_id'])].get('widgets') or {}
+        if (not (m.get('widgets') or {}).get('en') and channel
+                and m.get('bokun_id') and m['id'] not in sample_ids):
+            m['widgets'] = dict(m.get('widgets') or {},
+                                en=f"{channel}/experience-calendar/{m['bokun_id']}")
 
     tpl_full = load_template('tour-detail.html')
     tpl_prep = load_template('tour-prep.html')
