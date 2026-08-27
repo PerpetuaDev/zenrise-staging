@@ -116,14 +116,24 @@
     color: rgb(41 65 56) !important;
 }
 
-/* Section headings. Targeted as elements, not by wrapper class: all three are
-   plain <h2> sharing one generated class, and the wrappers differ per section --
-   "Participants" sits in .ParticipantHeader, "Booking Summary" in
-   .SummaryHeader, but "Choose a date" sits in .MonthCalendarHeader, while
-   .CalendarHeader is actually the weekday row. Targeting the wrappers left
-   "Choose a date" in Bokun's blue-grey; verified by measuring the pixels.
+/* Section headings.
+
+   Belt and braces, because both single-selector attempts failed in different
+   ways and this has cost enough round trips. The wrapper-descendant form
+   (.ParticipantHeader *) provably works -- it cut the off-brand pixels from 705
+   to 161 -- but missed "Choose a date", which sits in .MonthCalendarHeader and
+   not .CalendarHeader (.CalendarHeader is the weekday row). Replacing it with
+   `#root h2` then matched nothing at all and the count went back up to 831, so
+   an id-prefixed element selector is unreliable here for reasons I have not
+   established. Both forms are therefore listed, unprefixed.
+
    <h5> catches the "Total:" label, which ships a hardcoded color="#57646F". */
-#root h2, #root h3, #root h4, #root h5, #root h6 {
+h2, h3, h4, h5, h6,
+.ParticipantHeader, .ParticipantHeader *,
+.SummaryHeader, .SummaryHeader *,
+.MonthCalendarHeader, .MonthCalendarHeader *,
+.SummaryTitle, .SummaryTitle *,
+.Title, .Title * {
     font-family: Optima, "Optima Nova", "Palatino Linotype", Palatino,
                  Georgia, serif !important;
     font-weight: 400 !important;
@@ -139,8 +149,10 @@
     fill: rgb(41 65 56) !important;
 }
 
-/* Weekday labels read as the site's eyebrow/meta style. */
-.CalendarColumns .CalendarDay {
+/* Weekday labels read as the site's eyebrow/meta style. Listed after the
+   heading block so it wins on source order at equal specificity. */
+.CalendarColumns .CalendarDay,
+.CalendarColumns .CalendarDay * {
     font-family: "Gill Sans", "Gill Sans MT", "Trebuchet MS", sans-serif !important;
     font-size: 11px !important;
     letter-spacing: 0.08em !important;
