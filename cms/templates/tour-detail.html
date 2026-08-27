@@ -158,6 +158,22 @@
   .r-row h3 { font-family: var(--display); font-weight: 400; font-size: 32px; line-height: 1.15; letter-spacing: -0.005em; margin: 0 0 8px; }
   :lang(ja) .r-row h3 { line-height: 1.35; }
   .r-row .r-note { font-size: 17px; line-height: 1.5; color: var(--ink-60); margin: 0; max-width: 620px; text-wrap: pretty; }
+  /* ── other info ──
+     A peer of the route section, holding the dense free-text inclusion lines
+     that used to sit under the lede and bury it. Two columns on wide screens so
+     the longest group does not read as one unbroken wall; the .grp/.prose rules
+     above still do the styling inside. */
+  .other-wrap { padding: 115px 36px 0; }
+  .other { border: 1px solid var(--ink-30); padding: 56px 56px 40px; }
+  .other h2 { font-family: var(--display); font-weight: 400; font-size: 56px; line-height: 0.98; letter-spacing: -0.005em; margin: 0 0 40px; }
+  :lang(ja) .other h2 { line-height: 1.3; }
+  /* CSS columns rather than a 2-up grid: the groups are very unequal (nine
+     'included' lines against four 'not included'), and a grid row takes the
+     height of its tallest cell, leaving a dead gap under the short one.
+     Columns flow and balance instead; break-inside keeps a group whole. */
+  .other .chip-groups { display: block; column-count: 2; column-gap: 64px; max-width: none; }
+  .other .grp { break-inside: avoid; margin: 0 0 44px; }
+  .other .grp:last-child { margin-bottom: 0; }
   /* ── booking CTA ── */
   .book-cta { padding: 120px 36px 0; }
   .book-cta .box { border: 1px solid var(--ink-30); padding: 110px 64px; text-align: center; }
@@ -217,6 +233,11 @@
     .price-breakdown { margin-bottom: 22px; padding: 16px 18px 18px; }
     .price-breakdown .pb-label { font-size: 14px; }
     .price-breakdown .pb-amt { font-size: 19px; }
+    .other-wrap { padding: 64px 20px 0; }
+    .other { padding: 24px 18px 20px; }
+    .other h2 { font-size: 34px; margin-bottom: 20px; }
+    .other .chip-groups { column-count: 1; }
+    .other .grp { margin-bottom: 32px; }
     .route-wrap { padding: 64px 20px 0; }
     .route { padding: 24px 18px 8px; }
     .route h2 { font-size: 34px; margin-bottom: 20px; }
@@ -296,6 +317,8 @@
     </main>
 
 {{ROUTE_SECTION}}
+
+{{OTHER_INFO_SECTION}}
 
     <section class="book-cta" data-screen-label="07 Tour detail — Booking CTA">
       <div class="box">

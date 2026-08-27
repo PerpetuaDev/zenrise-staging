@@ -161,9 +161,14 @@ class TestChipGroups(unittest.TestCase):
             knowEn='\n'.join(f'Know {i}' for i in range(8)),
             knowJa='\n'.join(f'Know {i}' for i in range(8))))
         en, ja = {}, {}
-        html = bt.chips_section(m, en, ja)
+        chips_html = bt.chips_section(m, en, ja)
+        other_html = bt.other_info_section(m, en, ja)
+        html = chips_html + other_html
         for key in ('td_included', 'td_notinc', 'td_bring', 'td_know'):
             self.assertIn(key, html)
+        # chips under the lede, prose below the route -- never mixed
+        self.assertNotIn('class="prose"', chips_html)
+        self.assertNotIn('class="chip"', other_html)
         self.assertEqual(sum(1 for v in en if v.startswith('tours_zen-journey_inc_')), 5)
         self.assertEqual(sum(1 for v in en if v.startswith('tours_zen-journey_incp_')), 9)
         self.assertEqual(sum(1 for v in en if v.startswith('tours_zen-journey_nincp_')), 4)
@@ -178,12 +183,13 @@ class TestChipGroups(unittest.TestCase):
         m = bt.tour_model(record())
         self.assertEqual(bt.chips_section(m, {}, {}), '')
 
-    def test_a_group_with_only_prose_renders_no_chips_markup(self):
+    def test_a_prose_only_group_lands_in_other_info_not_under_the_lede(self):
         # Not included / What to bring never have a chip field.
         m = bt.tour_model(record(notIncludedEn='A', notIncludedJa='A'))
-        html = bt.chips_section(m, {}, {})
-        self.assertIn('<li ', html)
-        self.assertNotIn('class="chip"', html)
+        self.assertEqual(bt.chips_section(m, {}, {}), '')
+        other = bt.other_info_section(m, {}, {})
+        self.assertIn('<li ', other)
+        self.assertNotIn('class="chip"', other)
 
     def test_a_group_with_only_chips_renders_no_prose_markup(self):
         m = bt.tour_model(record(includedChipsEn='Bus fare', includedChipsJa='バス運賃'))
@@ -191,12 +197,28 @@ class TestChipGroups(unittest.TestCase):
         self.assertIn('class="chip"', html)
         self.assertNotIn('<ul class="prose">', html)
 
-    def test_chips_render_before_prose_within_a_group(self):
+    def test_one_group_splits_across_the_two_sections(self):
+        # "Included" commonly has both kinds: the chips belong under the lede,
+        # the sentences below the route.
         m = bt.tour_model(record(
             includedChipsEn='Bus fare', includedChipsJa='バス運賃',
             includedEn='A guide', includedJa='ガイド'))
-        html = bt.chips_section(m, {}, {})
-        self.assertLess(html.index('class="chips"'), html.index('class="prose"'))
+        chips_html = bt.chips_section(m, {}, {})
+        other_html = bt.other_info_section(m, {}, {})
+        self.assertIn('class="chips"', chips_html)
+        self.assertNotIn('class="prose"', chips_html)
+        self.assertIn('class="prose"', other_html)
+        self.assertNotIn('class="chips"', other_html)
+        # both still carry the group's own heading
+        self.assertIn('td_included', chips_html)
+        self.assertIn('td_included', other_html)
+
+    def test_other_info_is_a_titled_section_or_nothing(self):
+        m = bt.tour_model(record(notIncludedEn='A', notIncludedJa='A'))
+        self.assertIn('td_other', bt.other_info_section(m, {}, {}))
+        self.assertIn('class="other-wrap"', bt.other_info_section(m, {}, {}))
+        # a tour with no prose at all must not render an empty heading
+        self.assertEqual(bt.other_info_section(bt.tour_model(record()), {}, {}), '')
 
 
 class TestCardAndTile(unittest.TestCase):

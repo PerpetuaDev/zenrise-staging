@@ -158,6 +158,22 @@
   .r-row h3 { font-family: var(--display); font-weight: 400; font-size: 32px; line-height: 1.15; letter-spacing: -0.005em; margin: 0 0 8px; }
   :lang(ja) .r-row h3 { line-height: 1.35; }
   .r-row .r-note { font-size: 17px; line-height: 1.5; color: var(--ink-60); margin: 0; max-width: 620px; text-wrap: pretty; }
+  /* ── other info ──
+     A peer of the route section, holding the dense free-text inclusion lines
+     that used to sit under the lede and bury it. Two columns on wide screens so
+     the longest group does not read as one unbroken wall; the .grp/.prose rules
+     above still do the styling inside. */
+  .other-wrap { padding: 115px 36px 0; }
+  .other { border: 1px solid var(--ink-30); padding: 56px 56px 40px; }
+  .other h2 { font-family: var(--display); font-weight: 400; font-size: 56px; line-height: 0.98; letter-spacing: -0.005em; margin: 0 0 40px; }
+  :lang(ja) .other h2 { line-height: 1.3; }
+  /* CSS columns rather than a 2-up grid: the groups are very unequal (nine
+     'included' lines against four 'not included'), and a grid row takes the
+     height of its tallest cell, leaving a dead gap under the short one.
+     Columns flow and balance instead; break-inside keeps a group whole. */
+  .other .chip-groups { display: block; column-count: 2; column-gap: 64px; max-width: none; }
+  .other .grp { break-inside: avoid; margin: 0 0 44px; }
+  .other .grp:last-child { margin-bottom: 0; }
   /* ── booking CTA ── */
   .book-cta { padding: 120px 36px 0; }
   .book-cta .box { border: 1px solid var(--ink-30); padding: 110px 64px; text-align: center; }
@@ -217,6 +233,11 @@
     .price-breakdown { margin-bottom: 22px; padding: 16px 18px 18px; }
     .price-breakdown .pb-label { font-size: 14px; }
     .price-breakdown .pb-amt { font-size: 19px; }
+    .other-wrap { padding: 64px 20px 0; }
+    .other { padding: 24px 18px 20px; }
+    .other h2 { font-size: 34px; margin-bottom: 20px; }
+    .other .chip-groups { column-count: 1; }
+    .other .grp { margin-bottom: 32px; }
     .route-wrap { padding: 64px 20px 0; }
     .route { padding: 24px 18px 8px; }
     .route h2 { font-size: 34px; margin-bottom: 20px; }
@@ -308,16 +329,7 @@
     <main class="body-grid" data-screen-label="07 Tour detail — Lede + Booking">
       <div class="lede-col">
         <p class="lede" data-i18n="tours_yokohama-harbour-evening_lede">Yokohama changes character once the light goes. This walk begins where the harbour opens out, follows the water while the cranes are still lit, then turns inland into Noge — a few streets of small counters and older bars that have outlasted everything built around them. We keep the pace slow and the group small, and finish somewhere you would not have found on your own.</p>
-        <div class="chip-groups">
-          <div class="grp">
-            <span class="label" data-i18n="td_included">Included</span>
-            <ul class="prose">
-              <li data-i18n="tours_yokohama-harbour-evening_incp_1">English-speaking guide</li>
-              <li data-i18n="tours_yokohama-harbour-evening_incp_2">One drink at the final stop</li>
-              <li data-i18n="tours_yokohama-harbour-evening_incp_3">Harbour-side walk and Noge back lanes</li>
-            </ul>
-          </div>
-        </div>
+
       </div>
 
         <aside class="cal-missing" id="book" data-widget-missing="yokohama-harbour-evening">
@@ -350,6 +362,22 @@
           <div><h3 data-i18n="tours_yokohama-harbour-evening_rt_04_name">One quiet drink</h3><p class="r-note" data-i18n="tours_yokohama-harbour-evening_rt_04_note">A single counter, chosen for the company rather than the list.</p></div>
         </div>
 
+      </div>
+    </section>
+
+    <section class="other-wrap" data-screen-label="07 Tour detail — Other info">
+      <div class="other">
+        <h2 data-i18n="td_other">Other info.</h2>
+        <div class="chip-groups">
+          <div class="grp">
+            <span class="label" data-i18n="td_included">Included</span>
+            <ul class="prose">
+              <li data-i18n="tours_yokohama-harbour-evening_incp_1">English-speaking guide</li>
+              <li data-i18n="tours_yokohama-harbour-evening_incp_2">One drink at the final stop</li>
+              <li data-i18n="tours_yokohama-harbour-evening_incp_3">Harbour-side walk and Noge back lanes</li>
+            </ul>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -421,7 +449,7 @@
     setTimeout(fit, 600);
   })();
 </script>
-<script>window.ZENRISE_CMS_DICT = {"en":{"tours_yokohama-harbour-evening_name":"Yokohama Harbour, After Dark","tours_yokohama-harbour-evening_sub":"An evening walk from the waterfront into the back lanes of Noge, ending over a quiet drink.","tours_yokohama-harbour-evening_hours":"4 hours","tours_yokohama-harbour-evening_title":"Yokohama Harbour, After Dark — Zenrise","tours_yokohama-harbour-evening_eyebrow":"Tour No. 05","tours_yokohama-harbour-evening_cap":"Noge, early evening","tours_yokohama-harbour-evening_cta_eyebrow":"from ¥18,000 per adult ・ 1–6 travelers","tours_yokohama-harbour-evening_price":"from ¥18,000 per adult","tours_yokohama-harbour-evening_lede":"Yokohama changes character once the light goes. This walk begins where the harbour opens out, follows the water while the cranes are still lit, then turns inland into Noge — a few streets of small counters and older bars that have outlasted everything built around them. We keep the pace slow and the group small, and finish somewhere you would not have found on your own.","tours_yokohama-harbour-evening_incp_1":"English-speaking guide","tours_yokohama-harbour-evening_incp_2":"One drink at the final stop","tours_yokohama-harbour-evening_incp_3":"Harbour-side walk and Noge back lanes","tours_yokohama-harbour-evening_rt_01_name":"Harbour edge","tours_yokohama-harbour-evening_rt_01_note":"Meeting where the water opens out, with the cranes still working across the bay.","tours_yokohama-harbour-evening_rt_01_time":"45min","tours_yokohama-harbour-evening_rt_02_name":"Along the water","tours_yokohama-harbour-evening_rt_02_note":"A slow walk north as the light goes, past the older warehouses.","tours_yokohama-harbour-evening_rt_02_time":"60min","tours_yokohama-harbour-evening_rt_03_name":"Into Noge","tours_yokohama-harbour-evening_rt_03_note":"Turning inland into the narrow streets, and how the district survived.","tours_yokohama-harbour-evening_rt_03_time":"45min","tours_yokohama-harbour-evening_rt_04_name":"One quiet drink","tours_yokohama-harbour-evening_rt_04_note":"A single counter, chosen for the company rather than the list.","tours_yokohama-harbour-evening_rt_04_time":"60min"},"ja":{"tours_yokohama-harbour-evening_name":"横浜、夜の港をあるく","tours_yokohama-harbour-evening_sub":"海沿いから野毛の路地へ。夜の横浜を歩き、静かな一杯で締めくくる半日です。","tours_yokohama-harbour-evening_hours":"4 時間","tours_yokohama-harbour-evening_title":"横浜、夜の港をあるく — Zenrise","tours_yokohama-harbour-evening_eyebrow":"ツアー No. 05","tours_yokohama-harbour-evening_cap":"野毛、夕暮れ","tours_yokohama-harbour-evening_cta_eyebrow":"¥18,000〜（大人おひとり） ・ 1〜6名","tours_yokohama-harbour-evening_price":"¥18,000〜（大人おひとり）","tours_yokohama-harbour-evening_lede":"灯がともるころ、横浜の表情は変わります。港が大きく開ける場所から歩きはじめ、クレーンの明かりを眺めながら水辺をたどり、やがて内陸の野毛へ。まわりが移り変わっても残りつづけてきた、小さなカウンターと古い酒場が並ぶ数本の路地です。少人数でゆっくりと歩き、ひとりでは見つけられない一軒で締めくくります。","tours_yokohama-harbour-evening_incp_1":"英語対応ガイド","tours_yokohama-harbour-evening_incp_2":"最後の一軒でのお飲み物一杯","tours_yokohama-harbour-evening_incp_3":"港沿いの散策と野毛の路地めぐり","tours_yokohama-harbour-evening_rt_01_name":"港の際","tours_yokohama-harbour-evening_rt_01_note":"水辺が大きく開ける場所で集合。湾の向こうではまだクレーンが動いています。","tours_yokohama-harbour-evening_rt_01_time":"45分","tours_yokohama-harbour-evening_rt_02_name":"水辺をたどる","tours_yokohama-harbour-evening_rt_02_note":"陽が落ちるなか、古い倉庫群を横目に北へゆっくりと歩きます。","tours_yokohama-harbour-evening_rt_02_time":"60分","tours_yokohama-harbour-evening_rt_03_name":"野毛へ","tours_yokohama-harbour-evening_rt_03_note":"細い路地へ入り、この街がどう残ってきたのかを辿ります。","tours_yokohama-harbour-evening_rt_03_time":"45分","tours_yokohama-harbour-evening_rt_04_name":"静かな一杯","tours_yokohama-harbour-evening_rt_04_note":"品書きではなく、その店の人柄で選んだ一軒のカウンターで。","tours_yokohama-harbour-evening_rt_04_time":"60分"}};</script>
+<script>window.ZENRISE_CMS_DICT = {"en":{"tours_yokohama-harbour-evening_name":"Yokohama Harbour, After Dark","tours_yokohama-harbour-evening_sub":"An evening walk from the waterfront into the back lanes of Noge, ending over a quiet drink.","tours_yokohama-harbour-evening_hours":"4 hours","tours_yokohama-harbour-evening_title":"Yokohama Harbour, After Dark — Zenrise","tours_yokohama-harbour-evening_eyebrow":"Tour No. 05","tours_yokohama-harbour-evening_cap":"Noge, early evening","tours_yokohama-harbour-evening_cta_eyebrow":"from ¥18,000 per adult ・ 1–6 travelers","tours_yokohama-harbour-evening_price":"from ¥18,000 per adult","tours_yokohama-harbour-evening_lede":"Yokohama changes character once the light goes. This walk begins where the harbour opens out, follows the water while the cranes are still lit, then turns inland into Noge — a few streets of small counters and older bars that have outlasted everything built around them. We keep the pace slow and the group small, and finish somewhere you would not have found on your own.","tours_yokohama-harbour-evening_rt_01_name":"Harbour edge","tours_yokohama-harbour-evening_rt_01_note":"Meeting where the water opens out, with the cranes still working across the bay.","tours_yokohama-harbour-evening_rt_01_time":"45min","tours_yokohama-harbour-evening_rt_02_name":"Along the water","tours_yokohama-harbour-evening_rt_02_note":"A slow walk north as the light goes, past the older warehouses.","tours_yokohama-harbour-evening_rt_02_time":"60min","tours_yokohama-harbour-evening_rt_03_name":"Into Noge","tours_yokohama-harbour-evening_rt_03_note":"Turning inland into the narrow streets, and how the district survived.","tours_yokohama-harbour-evening_rt_03_time":"45min","tours_yokohama-harbour-evening_rt_04_name":"One quiet drink","tours_yokohama-harbour-evening_rt_04_note":"A single counter, chosen for the company rather than the list.","tours_yokohama-harbour-evening_rt_04_time":"60min","tours_yokohama-harbour-evening_incp_1":"English-speaking guide","tours_yokohama-harbour-evening_incp_2":"One drink at the final stop","tours_yokohama-harbour-evening_incp_3":"Harbour-side walk and Noge back lanes"},"ja":{"tours_yokohama-harbour-evening_name":"横浜、夜の港をあるく","tours_yokohama-harbour-evening_sub":"海沿いから野毛の路地へ。夜の横浜を歩き、静かな一杯で締めくくる半日です。","tours_yokohama-harbour-evening_hours":"4 時間","tours_yokohama-harbour-evening_title":"横浜、夜の港をあるく — Zenrise","tours_yokohama-harbour-evening_eyebrow":"ツアー No. 05","tours_yokohama-harbour-evening_cap":"野毛、夕暮れ","tours_yokohama-harbour-evening_cta_eyebrow":"¥18,000〜（大人おひとり） ・ 1〜6名","tours_yokohama-harbour-evening_price":"¥18,000〜（大人おひとり）","tours_yokohama-harbour-evening_lede":"灯がともるころ、横浜の表情は変わります。港が大きく開ける場所から歩きはじめ、クレーンの明かりを眺めながら水辺をたどり、やがて内陸の野毛へ。まわりが移り変わっても残りつづけてきた、小さなカウンターと古い酒場が並ぶ数本の路地です。少人数でゆっくりと歩き、ひとりでは見つけられない一軒で締めくくります。","tours_yokohama-harbour-evening_rt_01_name":"港の際","tours_yokohama-harbour-evening_rt_01_note":"水辺が大きく開ける場所で集合。湾の向こうではまだクレーンが動いています。","tours_yokohama-harbour-evening_rt_01_time":"45分","tours_yokohama-harbour-evening_rt_02_name":"水辺をたどる","tours_yokohama-harbour-evening_rt_02_note":"陽が落ちるなか、古い倉庫群を横目に北へゆっくりと歩きます。","tours_yokohama-harbour-evening_rt_02_time":"60分","tours_yokohama-harbour-evening_rt_03_name":"野毛へ","tours_yokohama-harbour-evening_rt_03_note":"細い路地へ入り、この街がどう残ってきたのかを辿ります。","tours_yokohama-harbour-evening_rt_03_time":"45分","tours_yokohama-harbour-evening_rt_04_name":"静かな一杯","tours_yokohama-harbour-evening_rt_04_note":"品書きではなく、その店の人柄で選んだ一軒のカウンターで。","tours_yokohama-harbour-evening_rt_04_time":"60分","tours_yokohama-harbour-evening_incp_1":"英語対応ガイド","tours_yokohama-harbour-evening_incp_2":"最後の一軒でのお飲み物一杯","tours_yokohama-harbour-evening_incp_3":"港沿いの散策と野毛の路地めぐり"}};</script>
 <script src="lang.js"></script>
 </body>
 </html>

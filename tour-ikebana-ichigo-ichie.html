@@ -158,6 +158,22 @@
   .r-row h3 { font-family: var(--display); font-weight: 400; font-size: 32px; line-height: 1.15; letter-spacing: -0.005em; margin: 0 0 8px; }
   :lang(ja) .r-row h3 { line-height: 1.35; }
   .r-row .r-note { font-size: 17px; line-height: 1.5; color: var(--ink-60); margin: 0; max-width: 620px; text-wrap: pretty; }
+  /* ── other info ──
+     A peer of the route section, holding the dense free-text inclusion lines
+     that used to sit under the lede and bury it. Two columns on wide screens so
+     the longest group does not read as one unbroken wall; the .grp/.prose rules
+     above still do the styling inside. */
+  .other-wrap { padding: 115px 36px 0; }
+  .other { border: 1px solid var(--ink-30); padding: 56px 56px 40px; }
+  .other h2 { font-family: var(--display); font-weight: 400; font-size: 56px; line-height: 0.98; letter-spacing: -0.005em; margin: 0 0 40px; }
+  :lang(ja) .other h2 { line-height: 1.3; }
+  /* CSS columns rather than a 2-up grid: the groups are very unequal (nine
+     'included' lines against four 'not included'), and a grid row takes the
+     height of its tallest cell, leaving a dead gap under the short one.
+     Columns flow and balance instead; break-inside keeps a group whole. */
+  .other .chip-groups { display: block; column-count: 2; column-gap: 64px; max-width: none; }
+  .other .grp { break-inside: avoid; margin: 0 0 44px; }
+  .other .grp:last-child { margin-bottom: 0; }
   /* ── booking CTA ── */
   .book-cta { padding: 120px 36px 0; }
   .book-cta .box { border: 1px solid var(--ink-30); padding: 110px 64px; text-align: center; }
@@ -217,6 +233,11 @@
     .price-breakdown { margin-bottom: 22px; padding: 16px 18px 18px; }
     .price-breakdown .pb-label { font-size: 14px; }
     .price-breakdown .pb-amt { font-size: 19px; }
+    .other-wrap { padding: 64px 20px 0; }
+    .other { padding: 24px 18px 20px; }
+    .other h2 { font-size: 34px; margin-bottom: 20px; }
+    .other .chip-groups { column-count: 1; }
+    .other .grp { margin-bottom: 32px; }
     .route-wrap { padding: 64px 20px 0; }
     .route { padding: 24px 18px 8px; }
     .route h2 { font-size: 34px; margin-bottom: 20px; }
@@ -310,19 +331,7 @@
         <p class="lede" data-i18n="tours_ikebana-ichigo-ichie_lede">Experience the Art of Ikebana in Kamakura with Master Koen Yokoi</p>
         <p class="lede-sub" data-i18n="tours_ikebana-ichigo-ichie_lede_2">Immerse yourself in &quot;Ichika Ichiei&quot; (One Flower, One Encounter)—a unique, 90-minute private floral workshop designed for exclusive small groups of 1 to 6 guests in the historic city of Kamakura.</p>
         <p class="lede-sub" data-i18n="tours_ikebana-ichigo-ichie_lede_3">Guided by Master Koen Yokoi, a third-generation Sogetsu Ikebana master with an illustrious career decorating stage productions, international events, and film sets, this private session offers a rare and intimate glimpse into the world of Japanese flower arrangement.</p>
-        <div class="chip-groups">
-          <div class="grp">
-            <span class="label" data-i18n="td_included">Included</span>
-            <ul class="prose">
-              <li data-i18n="tours_ikebana-ichigo-ichie_incp_1">Private Ikebana instruction and demonstration by Master Koen Yokoi</li>
-              <li data-i18n="tours_ikebana-ichigo-ichie_incp_2">English &amp; Japanese bilingual guide support</li>
-              <li data-i18n="tours_ikebana-ichigo-ichie_incp_3">All flower materials, tools, and equipment</li>
-              <li data-i18n="tours_ikebana-ichigo-ichie_incp_4">Matcha/Japanese tea and seasonal sweets</li>
-              <li data-i18n="tours_ikebana-ichigo-ichie_incp_5">Free round-trip transfer within Kamakura &amp; Fujisawa cities</li>
-              <li data-i18n="tours_ikebana-ichigo-ichie_incp_6">Tour insurance</li>
-            </ul>
-          </div>
-        </div>
+
       </div>
 
         <aside class="cal" id="book" data-screen-label="07 Tour detail — Booking">
@@ -397,6 +406,25 @@
       </div>
     </section>
 
+    <section class="other-wrap" data-screen-label="07 Tour detail — Other info">
+      <div class="other">
+        <h2 data-i18n="td_other">Other info.</h2>
+        <div class="chip-groups">
+          <div class="grp">
+            <span class="label" data-i18n="td_included">Included</span>
+            <ul class="prose">
+              <li data-i18n="tours_ikebana-ichigo-ichie_incp_1">Private Ikebana instruction and demonstration by Master Koen Yokoi</li>
+              <li data-i18n="tours_ikebana-ichigo-ichie_incp_2">English &amp; Japanese bilingual guide support</li>
+              <li data-i18n="tours_ikebana-ichigo-ichie_incp_3">All flower materials, tools, and equipment</li>
+              <li data-i18n="tours_ikebana-ichigo-ichie_incp_4">Matcha/Japanese tea and seasonal sweets</li>
+              <li data-i18n="tours_ikebana-ichigo-ichie_incp_5">Free round-trip transfer within Kamakura &amp; Fujisawa cities</li>
+              <li data-i18n="tours_ikebana-ichigo-ichie_incp_6">Tour insurance</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="book-cta" data-screen-label="07 Tour detail — Booking CTA">
       <div class="box">
         <span class="b-eyebrow" data-i18n="tours_ikebana-ichigo-ichie_cta_eyebrow">from ¥21,000 per adult ・ 1–6 travelers</span>
@@ -465,7 +493,7 @@
     setTimeout(fit, 600);
   })();
 </script>
-<script>window.ZENRISE_CMS_DICT = {"en":{"tours_ikebana-ichigo-ichie_name":"Ikebana Experience , “Ichigo Ichie”-KAMAKURA","tours_ikebana-ichigo-ichie_sub":"An exclusive, 90-minute private Ikebana experience in Kamakura guided by master artist Koen Yokoi, featuring hands-on flower arranging, tea, and seasonal sweets.","tours_ikebana-ichigo-ichie_hours":"1 hour and 30 minutes","tours_ikebana-ichigo-ichie_title":"Ikebana Experience , “Ichigo Ichie”-KAMAKURA — Zenrise","tours_ikebana-ichigo-ichie_eyebrow":"Tour No. 01","tours_ikebana-ichigo-ichie_cap":"","tours_ikebana-ichigo-ichie_cta_eyebrow":"from ¥21,000 per adult ・ 1–6 travelers","tours_ikebana-ichigo-ichie_price":"from ¥21,000 per adult","tours_ikebana-ichigo-ichie_lede":"Experience the Art of Ikebana in Kamakura with Master Koen Yokoi","tours_ikebana-ichigo-ichie_lede_2":"Immerse yourself in \"Ichika Ichiei\" (One Flower, One Encounter)—a unique, 90-minute private floral workshop designed for exclusive small groups of 1 to 6 guests in the historic city of Kamakura.","tours_ikebana-ichigo-ichie_lede_3":"Guided by Master Koen Yokoi, a third-generation Sogetsu Ikebana master with an illustrious career decorating stage productions, international events, and film sets, this private session offers a rare and intimate glimpse into the world of Japanese flower arrangement.","tours_ikebana-ichigo-ichie_incp_1":"Private Ikebana instruction and demonstration by Master Koen Yokoi","tours_ikebana-ichigo-ichie_incp_2":"English & Japanese bilingual guide support","tours_ikebana-ichigo-ichie_incp_3":"All flower materials, tools, and equipment","tours_ikebana-ichigo-ichie_incp_4":"Matcha/Japanese tea and seasonal sweets","tours_ikebana-ichigo-ichie_incp_5":"Free round-trip transfer within Kamakura & Fujisawa cities","tours_ikebana-ichigo-ichie_incp_6":"Tour insurance","tours_ikebana-ichigo-ichie_rt_01_name":"The history and schools of ikebana","tours_ikebana-ichigo-ichie_rt_01_note":"The history of the art, its schools, and the Sogetsu spirit she carries as its third generation.","tours_ikebana-ichigo-ichie_rt_01_time":"30min","tours_ikebana-ichigo-ichie_rt_02_name":"Arranging","tours_ikebana-ichigo-ichie_rt_02_note":"After the master’s demonstration, guests choose from prepared materials and complete an arrangementunder her guidance. No experience required.","tours_ikebana-ichigo-ichie_rt_02_time":"30min","tours_ikebana-ichigo-ichie_rt_03_name":"Tea and conversation","tours_ikebana-ichigo-ichie_rt_03_note":"A quiet close beside the finished work, with seasonal wagashi and tea.","tours_ikebana-ichigo-ichie_rt_03_time":"30min"},"ja":{"tours_ikebana-ichigo-ichie_name":"Ikebana Experience , “Ichigo Ichie”-KAMAKURA","tours_ikebana-ichigo-ichie_sub":"An exclusive, 90-minute private Ikebana experience in Kamakura guided by master artist Koen Yokoi, featuring hands-on flower arranging, tea, and seasonal sweets.","tours_ikebana-ichigo-ichie_hours":"1 時間30 分","tours_ikebana-ichigo-ichie_title":"Ikebana Experience , “Ichigo Ichie”-KAMAKURA — Zenrise","tours_ikebana-ichigo-ichie_eyebrow":"ツアー No. 01","tours_ikebana-ichigo-ichie_cap":"","tours_ikebana-ichigo-ichie_cta_eyebrow":"¥21,000〜（大人おひとり） ・ 1〜6名","tours_ikebana-ichigo-ichie_price":"¥21,000〜（大人おひとり）","tours_ikebana-ichigo-ichie_lede":"Experience the Art of Ikebana in Kamakura with Master Koen Yokoi","tours_ikebana-ichigo-ichie_lede_2":"Immerse yourself in \"Ichika Ichiei\" (One Flower, One Encounter)—a unique, 90-minute private floral workshop designed for exclusive small groups of 1 to 6 guests in the historic city of Kamakura.","tours_ikebana-ichigo-ichie_lede_3":"Guided by Master Koen Yokoi, a third-generation Sogetsu Ikebana master with an illustrious career decorating stage productions, international events, and film sets, this private session offers a rare and intimate glimpse into the world of Japanese flower arrangement.","tours_ikebana-ichigo-ichie_incp_1":"Private Ikebana instruction and demonstration by Master Koen Yokoi","tours_ikebana-ichigo-ichie_incp_2":"English & Japanese bilingual guide support","tours_ikebana-ichigo-ichie_incp_3":"All flower materials, tools, and equipment","tours_ikebana-ichigo-ichie_incp_4":"Matcha/Japanese tea and seasonal sweets","tours_ikebana-ichigo-ichie_incp_5":"Free round-trip transfer within Kamakura & Fujisawa cities","tours_ikebana-ichigo-ichie_incp_6":"Tour insurance","tours_ikebana-ichigo-ichie_rt_01_name":"The history and schools of ikebana","tours_ikebana-ichigo-ichie_rt_01_note":"The history of the art, its schools, and the Sogetsu spirit she carries as its third generation.","tours_ikebana-ichigo-ichie_rt_01_time":"30min","tours_ikebana-ichigo-ichie_rt_02_name":"Arranging","tours_ikebana-ichigo-ichie_rt_02_note":"After the master’s demonstration, guests choose from prepared materials and complete an arrangementunder her guidance. No experience required.","tours_ikebana-ichigo-ichie_rt_02_time":"30min","tours_ikebana-ichigo-ichie_rt_03_name":"Tea and conversation","tours_ikebana-ichigo-ichie_rt_03_note":"A quiet close beside the finished work, with seasonal wagashi and tea.","tours_ikebana-ichigo-ichie_rt_03_time":"30min"}};</script>
+<script>window.ZENRISE_CMS_DICT = {"en":{"tours_ikebana-ichigo-ichie_name":"Ikebana Experience , “Ichigo Ichie”-KAMAKURA","tours_ikebana-ichigo-ichie_sub":"An exclusive, 90-minute private Ikebana experience in Kamakura guided by master artist Koen Yokoi, featuring hands-on flower arranging, tea, and seasonal sweets.","tours_ikebana-ichigo-ichie_hours":"1 hour and 30 minutes","tours_ikebana-ichigo-ichie_title":"Ikebana Experience , “Ichigo Ichie”-KAMAKURA — Zenrise","tours_ikebana-ichigo-ichie_eyebrow":"Tour No. 01","tours_ikebana-ichigo-ichie_cap":"","tours_ikebana-ichigo-ichie_cta_eyebrow":"from ¥21,000 per adult ・ 1–6 travelers","tours_ikebana-ichigo-ichie_price":"from ¥21,000 per adult","tours_ikebana-ichigo-ichie_lede":"Experience the Art of Ikebana in Kamakura with Master Koen Yokoi","tours_ikebana-ichigo-ichie_lede_2":"Immerse yourself in \"Ichika Ichiei\" (One Flower, One Encounter)—a unique, 90-minute private floral workshop designed for exclusive small groups of 1 to 6 guests in the historic city of Kamakura.","tours_ikebana-ichigo-ichie_lede_3":"Guided by Master Koen Yokoi, a third-generation Sogetsu Ikebana master with an illustrious career decorating stage productions, international events, and film sets, this private session offers a rare and intimate glimpse into the world of Japanese flower arrangement.","tours_ikebana-ichigo-ichie_rt_01_name":"The history and schools of ikebana","tours_ikebana-ichigo-ichie_rt_01_note":"The history of the art, its schools, and the Sogetsu spirit she carries as its third generation.","tours_ikebana-ichigo-ichie_rt_01_time":"30min","tours_ikebana-ichigo-ichie_rt_02_name":"Arranging","tours_ikebana-ichigo-ichie_rt_02_note":"After the master’s demonstration, guests choose from prepared materials and complete an arrangementunder her guidance. No experience required.","tours_ikebana-ichigo-ichie_rt_02_time":"30min","tours_ikebana-ichigo-ichie_rt_03_name":"Tea and conversation","tours_ikebana-ichigo-ichie_rt_03_note":"A quiet close beside the finished work, with seasonal wagashi and tea.","tours_ikebana-ichigo-ichie_rt_03_time":"30min","tours_ikebana-ichigo-ichie_incp_1":"Private Ikebana instruction and demonstration by Master Koen Yokoi","tours_ikebana-ichigo-ichie_incp_2":"English & Japanese bilingual guide support","tours_ikebana-ichigo-ichie_incp_3":"All flower materials, tools, and equipment","tours_ikebana-ichigo-ichie_incp_4":"Matcha/Japanese tea and seasonal sweets","tours_ikebana-ichigo-ichie_incp_5":"Free round-trip transfer within Kamakura & Fujisawa cities","tours_ikebana-ichigo-ichie_incp_6":"Tour insurance"},"ja":{"tours_ikebana-ichigo-ichie_name":"Ikebana Experience , “Ichigo Ichie”-KAMAKURA","tours_ikebana-ichigo-ichie_sub":"An exclusive, 90-minute private Ikebana experience in Kamakura guided by master artist Koen Yokoi, featuring hands-on flower arranging, tea, and seasonal sweets.","tours_ikebana-ichigo-ichie_hours":"1 時間30 分","tours_ikebana-ichigo-ichie_title":"Ikebana Experience , “Ichigo Ichie”-KAMAKURA — Zenrise","tours_ikebana-ichigo-ichie_eyebrow":"ツアー No. 01","tours_ikebana-ichigo-ichie_cap":"","tours_ikebana-ichigo-ichie_cta_eyebrow":"¥21,000〜（大人おひとり） ・ 1〜6名","tours_ikebana-ichigo-ichie_price":"¥21,000〜（大人おひとり）","tours_ikebana-ichigo-ichie_lede":"Experience the Art of Ikebana in Kamakura with Master Koen Yokoi","tours_ikebana-ichigo-ichie_lede_2":"Immerse yourself in \"Ichika Ichiei\" (One Flower, One Encounter)—a unique, 90-minute private floral workshop designed for exclusive small groups of 1 to 6 guests in the historic city of Kamakura.","tours_ikebana-ichigo-ichie_lede_3":"Guided by Master Koen Yokoi, a third-generation Sogetsu Ikebana master with an illustrious career decorating stage productions, international events, and film sets, this private session offers a rare and intimate glimpse into the world of Japanese flower arrangement.","tours_ikebana-ichigo-ichie_rt_01_name":"The history and schools of ikebana","tours_ikebana-ichigo-ichie_rt_01_note":"The history of the art, its schools, and the Sogetsu spirit she carries as its third generation.","tours_ikebana-ichigo-ichie_rt_01_time":"30min","tours_ikebana-ichigo-ichie_rt_02_name":"Arranging","tours_ikebana-ichigo-ichie_rt_02_note":"After the master’s demonstration, guests choose from prepared materials and complete an arrangementunder her guidance. No experience required.","tours_ikebana-ichigo-ichie_rt_02_time":"30min","tours_ikebana-ichigo-ichie_rt_03_name":"Tea and conversation","tours_ikebana-ichigo-ichie_rt_03_note":"A quiet close beside the finished work, with seasonal wagashi and tea.","tours_ikebana-ichigo-ichie_rt_03_time":"30min","tours_ikebana-ichigo-ichie_incp_1":"Private Ikebana instruction and demonstration by Master Koen Yokoi","tours_ikebana-ichigo-ichie_incp_2":"English & Japanese bilingual guide support","tours_ikebana-ichigo-ichie_incp_3":"All flower materials, tools, and equipment","tours_ikebana-ichigo-ichie_incp_4":"Matcha/Japanese tea and seasonal sweets","tours_ikebana-ichigo-ichie_incp_5":"Free round-trip transfer within Kamakura & Fujisawa cities","tours_ikebana-ichigo-ichie_incp_6":"Tour insurance"}};</script>
 <script src="lang.js"></script>
 </body>
 </html>

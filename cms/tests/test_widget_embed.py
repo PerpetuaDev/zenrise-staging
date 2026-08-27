@@ -140,8 +140,9 @@ class TestChipsSection(unittest.TestCase):
         self.assertEqual(bt.chips_section(m, {}, {}), '')
 
     def test_only_populated_groups_are_rendered(self):
+        # free text, so this is Other info rather than chips
         m = bt.tour_model(dict(RECORD, includedEn='Guide\nTea', includedJa='Guide\nTea'))
-        html = bt.chips_section(m, {}, {})
+        html = bt.other_info_section(m, {}, {})
         self.assertIn('td_included', html)
         self.assertIn('Guide', html)
         # the three groups Bokun has no data for must not appear at all
@@ -150,8 +151,19 @@ class TestChipsSection(unittest.TestCase):
 
     def test_wrapper_only_appears_when_something_is_inside(self):
         m = bt.tour_model(dict(RECORD, includedEn='Guide', includedJa='Guide'))
-        self.assertIn('class="chip-groups"', bt.chips_section(m, {}, {}))
-        self.assertNotIn('chip-groups', bt.chips_section(bt.tour_model(dict(RECORD)), {}, {}))
+        self.assertIn('class="chip-groups"', bt.other_info_section(m, {}, {}))
+        empty = bt.tour_model(dict(RECORD))
+        self.assertNotIn('chip-groups', bt.other_info_section(empty, {}, {}))
+        self.assertNotIn('chip-groups', bt.chips_section(empty, {}, {}))
+
+    def test_the_template_has_a_slot_for_other_info_after_the_route(self):
+        tpl = bt.load_template('tour-detail.html')
+        self.assertIn('{{OTHER_INFO_SECTION}}', tpl)
+        self.assertLess(tpl.index('{{ROUTE_SECTION}}'),
+                        tpl.index('{{OTHER_INFO_SECTION}}'))
+        # and the chips stay above, inside the lede column
+        self.assertLess(tpl.index('{{CHIPS_SECTION}}'),
+                        tpl.index('{{ROUTE_SECTION}}'))
 
 
 class TestRouteSection(unittest.TestCase):

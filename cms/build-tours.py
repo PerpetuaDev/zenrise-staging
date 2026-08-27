@@ -262,36 +262,61 @@ CHIP_GROUPS = (('included', 'incp', 'includedChips', 'inc', 'td_included', 'Incl
                ('know', 'knop', 'knowChips', 'kno', 'td_know', 'Good to know'))
 
 
-def chips_section(m, en, ja):
-    """The whole chip-groups block, or nothing.
+def _chip_groups(m, en, ja, want):
+    """The four Bokun inclusion groups, rendered with only one kind of content.
 
-    The four groups map onto Bokun's own inclusion fields (task 17, split
-    into chips + prose in task 18), so a client filling those fields on a
-    new tour gets chips and/or prose with no developer involvement. A tour
-    that leaves a group with neither must not render that group's heading
-    over nothing. See spec 3.4 and 3.4.1, and the task 18 brief.
+    want='chips' keeps the closed-vocabulary enum chips; want='prose' keeps the
+    free-text lines. They are split across two places on the page because they
+    behave differently: chips are short and scannable and belong under the lede,
+    while the prose is dense and was crowding it out. A group with nothing of
+    the requested kind renders no heading over nothing.
+
+    See spec 3.4 and 3.4.1.
     """
     groups = []
     for prose_field, prose_prefix, chip_field, chip_prefix, key, label in CHIP_GROUPS:
-        chip_html = chips(m, chip_field, chip_prefix, en, ja)
-        prose_html = prose(m, prose_field, prose_prefix, en, ja)
-        if not chip_html.strip() and not prose_html.strip():
+        if want == 'chips':
+            body_html = chips(m, chip_field, chip_prefix, en, ja)
+            wrapper = ('            <div class="chips">\n', '\n            </div>')
+        else:
+            body_html = prose(m, prose_field, prose_prefix, en, ja)
+            wrapper = ('            <ul class="prose">\n', '\n            </ul>')
+        if not body_html.strip():
             continue
-        body = []
-        if chip_html.strip():
-            body.append('            <div class="chips">\n' + chip_html + '\n            </div>')
-        if prose_html.strip():
-            body.append('            <ul class="prose">\n' + prose_html + '\n            </ul>')
         groups.append(
             '          <div class="grp">\n'
             f'            <span class="label" data-i18n="{key}">{label}</span>\n'
-            + '\n'.join(body) + '\n'
+            + wrapper[0] + body_html + wrapper[1] + '\n'
             '          </div>')
     if not groups:
         return ''
     return ('        <div class="chip-groups">\n'
             + '\n'.join(groups)
             + '\n        </div>')
+
+
+def chips_section(m, en, ja):
+    """The scannable enum chips, shown directly under the lede."""
+    return _chip_groups(m, en, ja, 'chips')
+
+
+def other_info_section(m, en, ja):
+    """The dense free-text inclusion lines, as their own section below the route.
+
+    Previously these sat under the lede alongside the chips, which buried the
+    description under several hundred words of logistics. They are a peer of the
+    route section now, and laid out in two columns on wide screens so the
+    longest group does not read as one unbroken wall.
+    """
+    body = _chip_groups(m, en, ja, 'prose')
+    if not body:
+        return ''
+    return f'''    <section class="other-wrap" data-screen-label="07 Tour detail — Other info">
+      <div class="other">
+        <h2 data-i18n="td_other">Other info.</h2>
+{body}
+      </div>
+    </section>'''
 
 
 # A stop duration written at the head of the body, e.g. "30min The history of…".
@@ -616,6 +641,7 @@ def render_detail(m, tpl_full, tpl_prep):
         slots['LEDE_BLOCK'] = lede_block(m, en, ja)
         slots['CHIPS_SECTION'] = chips_section(m, en, ja)
         slots['ROUTE_SECTION'] = route_section(m, en, ja)
+        slots['OTHER_INFO_SECTION'] = other_info_section(m, en, ja)
         # The breakdown is unmounted, not deleted: it made the sticky booking
         # column ~150px taller for information that also lives in the widget.
         # Restoring it is passing price_breakdown_block(m, en, ja) again, and
