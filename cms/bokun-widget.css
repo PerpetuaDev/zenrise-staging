@@ -179,7 +179,14 @@ svg rect {
 
 /* Month label sits in the display face, like the page's headings. */
 .MonthCalendarHeader,
-.CalendarMonthSelector {
+/* The month label is a react-select: the visible text is a child span with its
+   own colour, so descendants must be named. Without them "August 2026" was the
+   last thing left in Bokun's blue-grey -- 58 of the 62 remaining off-brand
+   pixels. .Select-value-label is react-select's own stable class. */
+.CalendarMonthSelector,
+.CalendarMonthSelector *,
+.Select-value-label,
+.Select-control {
     font-family: Optima, "Optima Nova", "Palatino Linotype", Palatino,
                  Georgia, serif !important;
     color: rgb(41 65 56) !important;
