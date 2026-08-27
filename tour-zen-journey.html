@@ -366,31 +366,27 @@
           })();</script>
           <script type="text/javascript" src="https://widgets.bokun.io/assets/javascripts/apps/build/BokunWidgetsLoader.js?bookingChannelUUID=6db7a498-ed75-46ba-b4fa-6ab6abc239c0" async></script>
           <script>(function(){
-            var LOADER = 'https://widgets.bokun.io/assets/javascripts/apps/build/BokunWidgetsLoader.js?bookingChannelUUID=6db7a498-ed75-46ba-b4fa-6ab6abc239c0';
-            function remount(lang) {
-              var old = document.querySelector('.bokunWidget[data-widget-base]');
-              if (!old || old.getAttribute('data-widget-lang') === lang) return;
-              var base = old.getAttribute('data-widget-base');
-              var fresh = document.createElement('div');
-              fresh.className = 'bokunWidget';
-              fresh.setAttribute('data-src', base + '?lang=' + lang);
-              fresh.setAttribute('data-widget-base', base);
-              fresh.setAttribute('data-widget-lang', lang);
-              old.parentNode.replaceChild(fresh, old);
-              var sc = document.createElement('script');
-              sc.src = LOADER; sc.async = true;
-              document.body.appendChild(sc);
-              // The loader is a one-shot IIFE with no DOM watching, so re-running
-              // it is the documented-by-behaviour way to mount a replaced div. If
-              // it does not take, fall back to the reload that is known to work.
-              setTimeout(function () {
-                if (!fresh.querySelector('iframe')) window.location.reload();
-              }, 3000);
-            }
+            // Language change reloads the page rather than re-mounting in place.
+            // Re-mounting does swap correctly -- the new iframe carries lang=ja --
+            // but it then hangs at the loader's 700px "Loading booking engine"
+            // placeholder, because Bokun's app script has already initialised and
+            // its parent/iframe handshake does not re-establish for a second
+            // mount. A reload is what a guest was otherwise doing by hand.
+            //
+            // lang.js writes the choice to localStorage BEFORE it calls its
+            // listeners, so by the time this runs the stored language is already
+            // the new one and the inline script above picks it up on the way back.
             function hook() {
               if (!window.ZenriseI18n || !window.ZenriseI18n.onChange) return false;
               window.ZenriseI18n.onChange(function (l) {
-                remount(l === 'ja' ? 'ja' : 'en');
+                var want = l === 'ja' ? 'ja' : 'en';
+                var m = document.querySelector('.bokunWidget[data-widget-base]');
+                // Only reload when the widget is actually showing the other
+                // language, so this cannot loop and does nothing on pages or
+                // states where no widget is mounted.
+                if (m && m.getAttribute('data-widget-lang') !== want) {
+                  window.location.reload();
+                }
               });
               return true;
             }

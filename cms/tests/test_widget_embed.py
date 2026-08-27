@@ -57,12 +57,28 @@ class TestWidgetBlock(unittest.TestCase):
         loader = html.index('BokunWidgetsLoader.js')
         self.assertLess(set_lang, loader)
 
-    def test_a_language_change_remounts_with_a_reload_fallback(self):
+    def test_a_language_change_reloads_the_page(self):
+        # Re-mounting in place was tried and abandoned: the swap works and the
+        # new iframe carries lang=ja, but it hangs at the loader's 700px
+        # placeholder because Bokun's app script does not re-handshake for a
+        # second mount. A reload is deterministic.
         html = bt.widget_block(model({'en': f'{CH}/experience-calendar/1273232'}))
         self.assertIn('ZenriseI18n', html)
         self.assertIn('onChange', html)
-        self.assertIn('?lang=' + "' + lang", html)
         self.assertIn('window.location.reload()', html)
+
+    def test_the_reload_is_guarded_so_it_cannot_loop(self):
+        # Reloading unconditionally on a language event would re-fire on the way
+        # back in. The guard compares against what the mount actually rendered.
+        html = bt.widget_block(model({'en': f'{CH}/experience-calendar/1273232'}))
+        self.assertIn("getAttribute('data-widget-lang') !== want", html)
+        # and it must do nothing when no widget is mounted
+        self.assertIn('if (m &&', html)
+
+    def test_no_in_place_remount_survives(self):
+        html = bt.widget_block(model({'en': f'{CH}/experience-calendar/1273232'}))
+        self.assertNotIn('replaceChild', html)
+        self.assertNotIn('createElement(\'div\')', html)
 
     def test_a_stale_config_ja_path_is_ignored_rather_than_emitted(self):
         html = bt.widget_block(model({'en': f'{CH}/experience-calendar/1273232',
