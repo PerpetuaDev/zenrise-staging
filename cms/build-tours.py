@@ -84,14 +84,15 @@ def lines(s):
     return [l.strip() for l in (s or '').splitlines() if l.strip()]
 
 
-def fetch_tours(source):
+def fetch_tours(source, require_live=False):
     """Records + config. microCMS is no longer a tours source: Bokun is.
 
     See docs/superpowers/specs/2026-08-25-bokun-integration-design.md section 3.
     """
     sys.path.insert(0, os.path.dirname(HERE))
     from cms import tours_build_source
-    records, cfg, warnings = tours_build_source.load_records(source)
+    records, cfg, warnings = tours_build_source.load_records(
+        source, require_live=require_live)
     from cms.bokun_source import Note
     for w in warnings:
         print('NOTE:' if isinstance(w, Note) else 'WARNING:', w)
@@ -662,7 +663,10 @@ def main():
             sys.exit('--source requires a value: bokun or cache')
     elif '--live' in sys.argv:
         source = 'bokun'          # retained alias, referenced by cms/tours-setup.md
-    contents, cfg = fetch_tours(source)
+    # --require-live: fail rather than quietly rebuild from the cache. The
+    # scheduled workflow passes it, because a silent fallback there produces no
+    # diff and so looks like a healthy run that published nothing.
+    contents, cfg = fetch_tours(source, require_live='--require-live' in sys.argv)
     # STAGING ONLY: invented sample tours, appended from config. Production's
     # config has no sampleTours key, so nothing is appended there. They carry
     # their own bilingual copy and so are the only pages that can demonstrate a

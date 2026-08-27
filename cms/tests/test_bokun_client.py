@@ -1,4 +1,5 @@
 import base64, hashlib, hmac, json, os, tempfile, unittest
+from unittest import mock
 from cms import bokun_client
 
 
@@ -77,3 +78,20 @@ class TestClient(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+
+
+class TestCredentialsFromEnvironment(unittest.TestCase):
+    """CI has no ~/.bokun-api.env, so secrets arrive as environment variables."""
+
+    def test_environment_wins_over_the_file(self):
+        with mock.patch.dict(os.environ, {'BOKUN_ACCESS_KEY': 'env-ak',
+                                          'BOKUN_SECRET_KEY': 'env-sk'}):
+            self.assertEqual(bokun_client.load_credentials('/nonexistent/path'),
+                             ('env-ak', 'env-sk'))
+
+    def test_a_partial_environment_falls_back_to_the_file(self):
+        # half-configured CI must not silently sign with an empty secret
+        with mock.patch.dict(os.environ, {'BOKUN_ACCESS_KEY': 'env-ak'}, clear=False):
+            os.environ.pop('BOKUN_SECRET_KEY', None)
+            with self.assertRaises(bokun_client.BokunError):
+                bokun_client.load_credentials('/nonexistent/path')

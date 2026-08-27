@@ -76,3 +76,34 @@ class TestLoadRecordsSourceSelection(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+
+
+class TestRequireLive(unittest.TestCase):
+    """An unattended build must fail rather than quietly use the cache.
+
+    A silent fallback produces no diff, so a scheduled job with bad credentials
+    would report "no changes to publish" forever and look healthy.
+    """
+
+    def boom(self, client, cfg):
+        raise RuntimeError('credentials rejected')
+
+    def test_fallback_is_used_by_default(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            p = os.path.join(tmp, 'cache.json')
+            tbs.write_cache(p, [{'id': 'a'}])
+            recs, warns = tbs.records_with_fallback(self.boom, None, {}, p)
+            self.assertEqual(recs, [{'id': 'a'}])
+            self.assertTrue(any('fetch failed' in w for w in warns))
+
+    def test_require_live_raises_even_with_a_usable_cache(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            p = os.path.join(tmp, 'cache.json')
+            tbs.write_cache(p, [{'id': 'a'}])
+            with self.assertRaises(RuntimeError):
+                tbs.records_with_fallback(self.boom, None, {}, p, require_live=True)
+
+    def test_load_records_passes_the_flag_through(self):
+        import inspect
+        self.assertIn('require_live',
+                      inspect.signature(tbs.load_records).parameters)

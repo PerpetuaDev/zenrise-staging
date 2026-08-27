@@ -22,6 +22,16 @@ class BokunError(Exception):
 
 
 def load_credentials(path=None):
+    """(access_key, secret_key) from the environment, else from the env file.
+
+    The environment is checked first so CI can supply them as secrets: a runner
+    has no ~/.bokun-api.env, and writing the file just to read it back would put
+    the credentials on disk in the workspace.
+    """
+    env_ak = os.environ.get('BOKUN_ACCESS_KEY')
+    env_sk = os.environ.get('BOKUN_SECRET_KEY')
+    if env_ak and env_sk:
+        return env_ak, env_sk
     path = path or DEFAULT_ENV
     values = {}
     try:

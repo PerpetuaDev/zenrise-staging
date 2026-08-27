@@ -23,14 +23,21 @@ def write_cache(path, records):
         json.dump(records, f, ensure_ascii=False, indent=1)
 
 
-def records_with_fallback(fetch, client, cfg, cache_path=None):
+def records_with_fallback(fetch, client, cfg, cache_path=None, require_live=False):
     """Fetch from Bokun; on failure fall back to the committed cache.
 
     An API outage must never empty the tours pages.
+
+    require_live turns that fallback off. Unattended builds need it: a silent
+    cache rebuild produces no diff, so a scheduled job with wrong credentials
+    would report "no changes to publish" on every run and look healthy while
+    publishing nothing at all.
     """
     try:
         records, warnings = fetch(client, cfg)
     except Exception as e:
+        if require_live:
+            raise
         cached = read_cache(cache_path)
         if cached is None:
             raise
@@ -40,7 +47,7 @@ def records_with_fallback(fetch, client, cfg, cache_path=None):
     return records, warnings
 
 
-def load_records(source='bokun', cache_path=None):
+def load_records(source='bokun', cache_path=None, require_live=False):
     from . import bokun_client, bokun_source, tours_config
     cfg = tours_config.load()
     if source == 'cache':
@@ -51,7 +58,8 @@ def load_records(source='bokun', cache_path=None):
     elif source == 'bokun':
         client = bokun_client.from_env()
         records, warnings = records_with_fallback(
-            bokun_source.fetch_records, client, cfg, cache_path)
+            bokun_source.fetch_records, client, cfg, cache_path,
+            require_live=require_live)
         return records, cfg, warnings
     else:
         raise ValueError(f'unknown --source {source!r}; must be "bokun" or "cache"')
