@@ -4,7 +4,7 @@
 constants, not free text -- Bokun's own booking widget maps them to wording
 internally, but the API hands back only the constant. They never localise
 (`ja_differs=False`): they are our wording to supply in both languages, once,
-for good, not Bokun content gated by jaReviewed.
+for good, not Bokun content.
 
 The full vocabularies were captured on 2026-08-26 by ticking every box on one
 product and reading the API back, because Bokun exposes no reference endpoint

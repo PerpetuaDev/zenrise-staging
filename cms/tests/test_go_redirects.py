@@ -23,22 +23,18 @@ def _write_go_redirects_in_tmp(models, tmp):
 
 class TestRedirectHtml(unittest.TestCase):
     def test_redirects_to_the_widget_url(self):
-        html = bt.go_redirect_html({'id': 's', 'full': True,
+        html = bt.go_redirect_html({'id': 's',
                                     'widgets': {'en': f'{CH}/experience-calendar/1'}})
         self.assertIn(f'https://widgets.bokun.io/online-sales/{CH}/experience-calendar/1', html)
         self.assertIn('http-equiv="refresh"', html)
         self.assertIn('location.replace', html)
 
     def test_is_noindex(self):
-        html = bt.go_redirect_html({'id': 's', 'full': True, 'widgets': {'en': f'{CH}/x/1'}})
+        html = bt.go_redirect_html({'id': 's', 'widgets': {'en': f'{CH}/x/1'}})
         self.assertIn('noindex', html)
 
     def test_no_page_without_a_widget(self):
-        self.assertIsNone(bt.go_redirect_html({'id': 's', 'full': True, 'widgets': {}}))
-
-    def test_no_page_for_an_unpriced_tour(self):
-        self.assertIsNone(bt.go_redirect_html(
-            {'id': 's', 'full': False, 'widgets': {'en': f'{CH}/x/1'}}))
+        self.assertIsNone(bt.go_redirect_html({'id': 's', 'widgets': {}}))
 
 
 class TestWriteGoRedirects(unittest.TestCase):
@@ -48,10 +44,10 @@ class TestWriteGoRedirects(unittest.TestCase):
 
     def test_writes_exactly_the_expected_slug_directories(self):
         models = [
-            {'id': 'ikebana-ichigo-ichie', 'full': True, 'widgets': {'en': f'{CH}/a/1'}},
-            {'id': 'candle-making', 'full': True, 'widgets': {'en': f'{CH}/b/1'}},
-            {'id': 'zen-journey', 'full': False, 'widgets': {}},
-            {'id': 'swordsmithing', 'full': False, 'widgets': {}},
+            {'id': 'ikebana-ichigo-ichie', 'widgets': {'en': f'{CH}/a/1'}},
+            {'id': 'candle-making', 'widgets': {'en': f'{CH}/b/1'}},
+            {'id': 'zen-journey', 'widgets': {}},
+            {'id': 'swordsmithing', 'widgets': {}},
         ]
         with tempfile.TemporaryDirectory() as tmp:
             written = _write_go_redirects_in_tmp(models, tmp)
@@ -83,7 +79,7 @@ class TestInstagramRedirectPreserved(unittest.TestCase):
         # it reports writing -- tolerant of go/ not existing here at all.
         with open(os.path.join(ROOT, 'cms', 'tours-config.json')) as f:
             cfg = json.load(f)
-        models = [{'id': e['slug'], 'full': True, 'widgets': {'en': f'{CH}/x/1'}}
+        models = [{'id': e['slug'], 'widgets': {'en': f'{CH}/x/1'}}
                   for e in cfg['tours'].values()]
 
         with tempfile.TemporaryDirectory() as tmp:

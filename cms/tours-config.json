@@ -23,9 +23,8 @@
    "number": "01",
    "area": "Kamakura",
    "themes": [
-    "Arts & Craft"
+    "arts"
    ],
-   "jaReviewed": false,
    "widgets": {
     "en": "6db7a498-ed75-46ba-b4fa-6ab6abc239c0/experience-calendar/1273232"
    }
@@ -35,9 +34,8 @@
    "number": "02",
    "area": "Kamakura",
    "themes": [
-    "Arts & Craft"
+    "arts"
    ],
-   "jaReviewed": false,
    "widgets": {
     "en": "6db7a498-ed75-46ba-b4fa-6ab6abc239c0/experience-calendar/1273235"
    }
@@ -47,10 +45,8 @@
    "number": "03",
    "area": "Kamakura",
    "themes": [
-    "Temples & Shrines",
-    "Walking"
+    "walking"
    ],
-   "jaReviewed": true,
    "widgets": {
     "en": "6db7a498-ed75-46ba-b4fa-6ab6abc239c0/experience-calendar/1273194"
    }
@@ -60,9 +56,8 @@
    "number": "04",
    "area": "Kamakura",
    "themes": [
-    "Arts & Craft"
+    "arts"
    ],
-   "jaReviewed": false,
    "widgets": {
     "en": "6db7a498-ed75-46ba-b4fa-6ab6abc239c0/experience-calendar/1275339"
    }
@@ -76,9 +71,8 @@
    "area": "Yokohama",
    "length": "Half-day",
    "themes": [
-    "Local Life",
-    "Food",
-    "Walking"
+    "food",
+    "walking"
    ],
    "cover": {
     "url": "assets/everyday/retro-street-corner.jpg"
@@ -145,7 +139,6 @@
      "bodyJa": "60分 品書きではなく、その店の人柄で選んだ一軒のカウンターで。"
     }
    ],
-   "jaReviewed": true,
    "widgets": {},
    "_sample": true
   }

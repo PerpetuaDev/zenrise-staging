@@ -10,7 +10,7 @@ SPEC.loader.exec_module(bt)
 
 def record(**over):
     r = {'id': 'ikebana-ichigo-ichie', 'bokunId': 1273232, 'number': '01',
-         'area': 'Kamakura', 'length': 'Half-day', 'themes': ['Arts & Craft'],
+         'area': 'Kamakura', 'length': 'Half-day', 'themes': ['arts'],
          'cover': {'url': 'https://img/x.jpg'},
          'hoursEn': '1 hour and 30 minutes', 'hoursJa': '1 時間30 分',
          'priceEn': 'from ¥21,000 per adult', 'priceJa': '¥21,000〜（大人おひとり）',
@@ -29,18 +29,12 @@ def record(**over):
     return r
 
 
-def model(widgets, full=True, slug='ikebana-ichigo-ichie', price_rows=None):
-    return {'id': slug, 'widgets': widgets, 'full': full, 'bokun_id': 1273232,
+def model(widgets, slug='ikebana-ichigo-ichie', price_rows=None):
+    return {'id': slug, 'widgets': widgets, 'bokun_id': 1273232,
             'K': 'tours_' + slug, 'price_rows': price_rows or []}
 
 
 class TestModel(unittest.TestCase):
-    def test_priced_product_is_full(self):
-        self.assertTrue(bt.tour_model(record())['full'])
-
-    def test_unpriced_product_is_not_full(self):
-        self.assertFalse(bt.tour_model(record(priceEn='', priceJa=''))['full'])
-
     def test_price_text_comes_from_the_record(self):
         m = bt.tour_model(record())
         self.assertEqual(m['price_en'], 'from ¥21,000 per adult')
@@ -56,12 +50,12 @@ class TestModel(unittest.TestCase):
 
 
 class TestThemes(unittest.TestCase):
-    def test_arts_and_craft_maps_to_a_slug(self):
-        self.assertIn('arts', bt.card(bt.tour_model(record())))
+    def test_theme_slug_reaches_the_card_filter_attribute(self):
+        self.assertIn('data-themes="arts"', bt.card(bt.tour_model(record())))
 
     def test_unknown_theme_raises_a_readable_error(self):
         with self.assertRaises(bt.BuildError):
-            bt.card(bt.tour_model(record(themes=['Nonexistent Theme'])))
+            bt.card(bt.tour_model(record(themes=['nonexistent'])))
 
 
 class TestChips(unittest.TestCase):
@@ -269,7 +263,7 @@ class TestStopTime(unittest.TestCase):
     def test_timed_row_renders_a_time_cell(self):
         # route_section() belongs to Task 8; route_rows() already carries the
         # per-row markup this exercises.
-        m = dict(model({}), full=True,
+        m = dict(model({}),
                  route=[{'title': 'History', 'body': '30min The Sogetsu school.'}])
         html = bt.route_rows(m, {}, {})
         # The time cell is translatable, so it carries a data-i18n key.
@@ -279,14 +273,14 @@ class TestStopTime(unittest.TestCase):
         self.assertNotIn('no-time', html)
 
     def test_untimed_row_omits_the_cell_and_marks_the_row(self):
-        m = dict(model({}), full=True,
+        m = dict(model({}),
                  route=[{'title': 'Arriving', 'body': 'Meet at the gate.'}])
         html = bt.route_rows(m, {}, {})
         self.assertNotIn('r-time', html)
         self.assertIn('class="r-row no-time"', html)
 
     def test_duration_is_stripped_from_the_note_text(self):
-        m = dict(model({}), full=True,
+        m = dict(model({}),
                  route=[{'title': 'History', 'body': '30min The Sogetsu school.'}])
         en = {}
         bt.route_rows(m, en, {})
@@ -387,23 +381,16 @@ class TestWidgetBlockPlacesBreakdown(unittest.TestCase):
         self.assertNotIn('price-breakdown', bt.widget_block(m))
 
 
-class TestPrepTemplateUnaffected(unittest.TestCase):
+class TestDetailTemplate(unittest.TestCase):
     """The in-preparation layout has no booking widget and must render no
     price breakdown either (task 14)."""
 
     def setUp(self):
         self.tpl_full = bt.load_template('tour-detail.html')
-        self.tpl_prep = bt.load_template('tour-prep.html')
-
-    def test_unpriced_tour_renders_via_the_prep_template_with_no_breakdown(self):
-        m = bt.tour_model(record(priceEn='', priceJa='', priceRows=[]))
-        html = bt.render_detail(m, self.tpl_full, self.tpl_prep)
-        self.assertNotIn('price-breakdown', html)
-        self.assertNotIn('id="book"', html)
 
     def test_priced_tour_with_a_real_breakdown_renders_via_the_full_template(self):
         m = bt.tour_model(record(priceRows=IKEBANA_ROWS))
-        html = bt.render_detail(m, self.tpl_full, self.tpl_prep)
+        html = bt.render_detail(m, self.tpl_full)
         self.assertIn('price-breakdown', html)
         self.assertIn('id="book"', html)
 
@@ -564,30 +551,28 @@ class TestBuildToleratesOneBadTour(unittest.TestCase):
 
     def setUp(self):
         self.tpl_full = bt.load_template('tour-detail.html')
-        self.tpl_prep = bt.load_template('tour-prep.html')
 
     def test_a_bad_area_holds_back_only_that_tour(self):
         good = bt.tour_model(record())
         bad = bt.tour_model(record(area='Nikko'))
         bad['id'] = 'nikko-tour'
         written, skipped = bt.render_all([good, bad], self.tpl_full,
-                                         self.tpl_prep, write=False)
+                                         write=False)
         self.assertEqual(len(written), 1)
         self.assertEqual([s[0] for s in skipped], ['nikko-tour'])
         self.assertIn('no i18n key', skipped[0][1])
 
     def test_a_bad_theme_holds_back_only_that_tour(self):
         good = bt.tour_model(record())
-        bad = bt.tour_model(record(themes=['Nonexistent Theme']))
+        bad = bt.tour_model(record(themes=['nonexistent']))
         bad['id'] = 'bad-theme-tour'
         written, skipped = bt.render_all([good, bad], self.tpl_full,
-                                         self.tpl_prep, write=False)
+                                         write=False)
         self.assertEqual(len(written), 1)
         self.assertEqual([s[0] for s in skipped], ['bad-theme-tour'])
 
     def test_all_good_tours_render(self):
         models = [bt.tour_model(record()), bt.tour_model(record())]
-        written, skipped = bt.render_all(models, self.tpl_full, self.tpl_prep,
-                                        write=False)
+        written, skipped = bt.render_all(models, self.tpl_full, write=False)
         self.assertEqual(len(written), 2)
         self.assertEqual(skipped, [])

@@ -52,6 +52,49 @@ def _warn(text):
     return warnings
 
 
+# Kana and the CJK ideographs. Both count: a terse Japanese line can be
+# written almost entirely in kanji, and demanding kana held such lines back.
+_JA = re.compile(r'[\u3040-\u309f\u30a0-\u30ff\u4e00-\u9fff]')
+
+
+def _plain(raw):
+    return re.sub(r'\s+', ' ', re.sub(r'<[^>]+>', '', raw or '')).strip()
+
+
+def has_japanese(raw):
+    """True when `raw` contains any Japanese script at all.
+
+    Deliberately permissive. English inside Japanese is normal and fine --
+    brand names, place names, untranslatable terms -- so this only asks
+    whether anything Japanese was written, not how much.
+    """
+    return bool(_JA.search(_plain(raw)))
+
+
+def same_text(a, b):
+    """True when two fields carry the same prose, ignoring markup and spacing.
+
+    This is what proves a Japanese field was never translated: Bokun serves
+    the base-language text in the ja slot when nobody has written into it, so
+    the two come back byte-identical. Two empty fields are NOT a match -- that
+    is a missing description, a different fault with a different message.
+    """
+    pa, pb = _plain(a), _plain(b)
+    return bool(pa) and pa == pb
+
+
+def japanese_ratio(raw):
+    """Share of the non-space characters that are Japanese script.
+
+    Used to warn -- never to block. Blocking on a ratio is what made the first
+    version reject short and kanji-heavy Japanese.
+    """
+    text = _plain(raw).replace(' ', '')
+    if not text:
+        return 0.0
+    return len(_JA.findall(text)) / len(text)
+
+
 def clean(raw, corrections=None):
     text = _decode(raw)
     # A newline, not a space: _strip_pdf() below works per line, so substituting

@@ -1,94 +1,15 @@
 [
  {
-  "id": "candle-making",
-  "bokunId": 1273235,
-  "number": "02",
-  "area": "Kamakura",
-  "length": "Half-day",
-  "themes": [
-   "Arts & Craft"
-  ],
-  "cover": {
-   "url": "https://bokun.s3.amazonaws.com/ac5f2001-f764-450e-9185-3855e245db48.jpeg",
-   "base": "https://imgcdn.bokun.tools/ac5f2001-f764-450e-9185-3855e245db48.jpeg"
-  },
-  "hoursEn": "1 hour",
-  "hoursJa": "1 時間",
-  "priceEn": "from ¥12,000",
-  "priceJa": "¥12,000〜",
-  "priceRows": [
-   {
-    "category": "Standard Price",
-    "category_ja": null,
-    "min": 4,
-    "max": 4,
-    "amount": 12000,
-    "currency": "JPY",
-    "rate_title": "Standard Private Group ",
-    "rate_title_ja": null
-   },
-   {
-    "category": "Standard Price",
-    "category_ja": null,
-    "min": 3,
-    "max": 3,
-    "amount": 12000,
-    "currency": "JPY",
-    "rate_title": "Standard Private Group ",
-    "rate_title_ja": null
-   },
-   {
-    "category": "Standard Price",
-    "category_ja": null,
-    "min": 1,
-    "max": 2,
-    "amount": 29000,
-    "currency": "JPY",
-    "rate_title": "Standard Private Group ",
-    "rate_title_ja": null
-   }
-  ],
-  "widgets": {
-   "en": "6db7a498-ed75-46ba-b4fa-6ab6abc239c0/experience-calendar/1273235"
-  },
-  "jaReviewed": false,
-  "route": [],
-  "includedEn": "",
-  "includedJa": "",
-  "notIncludedEn": "",
-  "notIncludedJa": "",
-  "bringEn": "",
-  "bringJa": "",
-  "knowEn": "",
-  "knowJa": "",
-  "includedChipsEn": "",
-  "includedChipsJa": "",
-  "knowChipsEn": "",
-  "knowChipsJa": "",
-  "ledeParasEn": [
-   "Zenrise designs slow, considered private experiences around Kamakura and its surrounding towns. A private wa-rōsoku(Japanese candle) making session with Meria, a wax artist based in Shonan, arranged for up to four guests at a time, in a quiet space in Kamakura or Fujisawa. Every candle begins as a wick, dipped again and again into molten wax until it takes shape — entirely by hand. Natural materials from local farmers and growers — the character of Shonan, held in a single flame. The finished candle is yours to take home, a keepsake you'll return to each time you light it."
-  ],
-  "ledeParasJa": [
-   "Zenrise designs slow, considered private experiences around Kamakura and its surrounding towns. A private wa-rōsoku(Japanese candle) making session with Meria, a wax artist based in Shonan, arranged for up to four guests at a time, in a quiet space in Kamakura or Fujisawa. Every candle begins as a wick, dipped again and again into molten wax until it takes shape — entirely by hand. Natural materials from local farmers and growers — the character of Shonan, held in a single flame. The finished candle is yours to take home, a keepsake you'll return to each time you light it."
-  ],
-  "titleEn": "A private Japanese candle-making experience in Kamakura.",
-  "titleJa": "A private Japanese candle-making experience in Kamakura.",
-  "subEn": "Experience a private Japanese candle-making session with wax artist Meria, from Shonan Wa-Rōsoku. Held in Kamakura or Fujisawa.",
-  "subJa": "Experience a private Japanese candle-making session with wax artist Meria, from Shonan Wa-Rōsoku. Held in Kamakura or Fujisawa.",
-  "ledeEn": "Zenrise designs slow, considered private experiences around Kamakura and its surrounding towns. A private wa-rōsoku(Japanese candle) making session with Meria, a wax artist based in Shonan, arranged for up to four guests at a time, in a quiet space in Kamakura or Fujisawa. Every candle begins as a wick, dipped again and again into molten wax until it takes shape — entirely by hand. Natural materials from local farmers and growers — the character of Shonan, held in a single flame. The finished candle is yours to take home, a keepsake you'll return to each time you light it.",
-  "ledeJa": "Zenrise designs slow, considered private experiences around Kamakura and its surrounding towns. A private wa-rōsoku(Japanese candle) making session with Meria, a wax artist based in Shonan, arranged for up to four guests at a time, in a quiet space in Kamakura or Fujisawa. Every candle begins as a wick, dipped again and again into molten wax until it takes shape — entirely by hand. Natural materials from local farmers and growers — the character of Shonan, held in a single flame. The finished candle is yours to take home, a keepsake you'll return to each time you light it.",
-  "coverCaptionEn": "",
-  "coverCaptionJa": ""
- },
- {
   "id": "zen-journey",
   "bokunId": 1273194,
   "number": "03",
   "area": "Kamakura",
   "length": "Full / Half-day",
   "themes": [
-   "Temples & Shrines",
-   "Walking"
+   "temples",
+   "culture",
+   "walking",
+   "nature"
   ],
   "cover": {
    "url": "https://bokun.s3.amazonaws.com/4277c6b0-2337-43f9-8c40-1ed5578910fd.jpeg",
@@ -96,134 +17,35 @@
   },
   "hoursEn": "4 hours",
   "hoursJa": "4 時間",
-  "priceEn": "from ¥50,000",
-  "priceJa": "¥50,000〜",
+  "priceEn": "from ¥40,000 per group",
+  "priceJa": "¥40,000〜（1グループ）",
   "priceRows": [
    {
-    "category": "Standard Price",
-    "category_ja": "Standard Price",
-    "min": 5,
-    "max": 5,
-    "amount": 90000,
-    "currency": "JPY",
-    "rate_title": "Group (1–6) Half Day",
-    "rate_title_ja": "Standard Price Harf Day"
-   },
-   {
-    "category": "Standard Price",
-    "category_ja": "Standard Price",
-    "min": 6,
+    "category": null,
+    "category_ja": null,
+    "min": 1,
     "max": 6,
-    "amount": 100000,
+    "amount": 40000,
     "currency": "JPY",
+    "per_booking": true,
     "rate_title": "Group (1–6) Half Day",
-    "rate_title_ja": "Standard Price Harf Day"
+    "rate_title_ja": "グループ（1〜6名）半日"
    },
    {
-    "category": "Standard Price",
-    "category_ja": "Standard Price",
-    "min": 3,
-    "max": 3,
+    "category": null,
+    "category_ja": null,
+    "min": 1,
+    "max": 6,
     "amount": 70000,
     "currency": "JPY",
-    "rate_title": "Group (1–6) Half Day",
-    "rate_title_ja": "Standard Price Harf Day"
-   },
-   {
-    "category": "Standard Price",
-    "category_ja": "Standard Price",
-    "min": 4,
-    "max": 4,
-    "amount": 80000,
-    "currency": "JPY",
-    "rate_title": "Group (1–6) Half Day",
-    "rate_title_ja": "Standard Price Harf Day"
-   },
-   {
-    "category": "Standard Price",
-    "category_ja": "Standard Price",
-    "min": 1,
-    "max": 1,
-    "amount": 50000,
-    "currency": "JPY",
-    "rate_title": "Group (1–6) Half Day",
-    "rate_title_ja": "Standard Price Harf Day"
-   },
-   {
-    "category": "Standard Price",
-    "category_ja": "Standard Price",
-    "min": 2,
-    "max": 2,
-    "amount": 60000,
-    "currency": "JPY",
-    "rate_title": "Group (1–6) Half Day",
-    "rate_title_ja": "Standard Price Harf Day"
-   },
-   {
-    "category": "Standard Price",
-    "category_ja": "Standard Price",
-    "min": 1,
-    "max": 1,
-    "amount": 90000,
-    "currency": "JPY",
+    "per_booking": true,
     "rate_title": "Group (1–6) Full Day",
-    "rate_title_ja": "Standard Price Full Day"
-   },
-   {
-    "category": "Standard Price",
-    "category_ja": "Standard Price",
-    "min": 2,
-    "max": 2,
-    "amount": 110000,
-    "currency": "JPY",
-    "rate_title": "Group (1–6) Full Day",
-    "rate_title_ja": "Standard Price Full Day"
-   },
-   {
-    "category": "Standard Price",
-    "category_ja": "Standard Price",
-    "min": 5,
-    "max": 5,
-    "amount": 170000,
-    "currency": "JPY",
-    "rate_title": "Group (1–6) Full Day",
-    "rate_title_ja": "Standard Price Full Day"
-   },
-   {
-    "category": "Standard Price",
-    "category_ja": "Standard Price",
-    "min": 6,
-    "max": 6,
-    "amount": 190000,
-    "currency": "JPY",
-    "rate_title": "Group (1–6) Full Day",
-    "rate_title_ja": "Standard Price Full Day"
-   },
-   {
-    "category": "Standard Price",
-    "category_ja": "Standard Price",
-    "min": 3,
-    "max": 3,
-    "amount": 130000,
-    "currency": "JPY",
-    "rate_title": "Group (1–6) Full Day",
-    "rate_title_ja": "Standard Price Full Day"
-   },
-   {
-    "category": "Standard Price",
-    "category_ja": "Standard Price",
-    "min": 4,
-    "max": 4,
-    "amount": 150000,
-    "currency": "JPY",
-    "rate_title": "Group (1–6) Full Day",
-    "rate_title_ja": "Standard Price Full Day"
+    "rate_title_ja": "グループ（1〜6名）一日"
    }
   ],
   "widgets": {
    "en": "6db7a498-ed75-46ba-b4fa-6ab6abc239c0/experience-calendar/1273194"
   },
-  "jaReviewed": true,
   "route": [
    {
     "title": "A 'Zen' Journey",
@@ -289,96 +111,6 @@
   "subJa": "850年の鎌倉の歴史と、禅の本質に触れる。日本庭園・坐禅・抹茶。",
   "ledeEn": "Kamakura has kept its temples for eight hundred and fifty years, and its stillness for just as long. This tour is built around that stillness — not a checklist of sights, but a slow pass through three of the city's five great Zen temples, with a guide who can explain what you're looking at, and enough quiet, unhurried time to actually look. The Five Mountains, or Gozan, are the five preeminent Rinzai Zen temples whose foundations were laid under the Kamakura shogunate and which were later ranked at the highest tier by the Muromachi shogunate: Kencho-ji, Engaku-ji, Jufuku-ji, Jochi-ji, and Jomyo-ji. You'll sit for a short zazen at Engaku-ji, wander the seasonal grounds of Jochi-ji, and take matcha before a dry rock garden at Jomyo-ji, before lunch closes the morning at a place suited to your taste. Everything is arranged in advance. All you need to bring is a willingness to slow down.",
   "ledeJa": "鎌倉の寺々は八百五十年にわたり守られてきました。その静けさもまた、同じだけの歳月を重ねています。本ツアーは、その静けさを味わうための一日です。 名所を巡るだけでなく、鎌倉五山のうち三つの禅寺をゆっくりと巡り、ガイドが目の前の景色をひとつひとつ丁寧にご案内します。鎌倉五山とは、鎌倉幕府が礎を築き、室町幕府によって定められた、臨済宗の五つの最高格式寺院——建長寺・円覚寺・寿福寺・浄智寺・浄妙寺——の総称です。 円覚寺では短い坐禅を体験し、浄智寺では四季折々の草花が彩る境内をそぞろ歩き、浄妙寺では枯山水を眺めながら抹茶をいただきます。午前の締めくくりには、お好みに合わせたお店で昼食を。 すべての手配はあらかじめ整えてありますので、あとはゆっくりと歩む心構えだけをお持ちください。",
-  "coverCaptionEn": "",
-  "coverCaptionJa": ""
- },
- {
-  "id": "ikebana-ichigo-ichie",
-  "bokunId": 1273232,
-  "number": "01",
-  "area": "Kamakura",
-  "length": "Half-day",
-  "themes": [
-   "Arts & Craft"
-  ],
-  "cover": {
-   "url": "https://bokun.s3.amazonaws.com/125107cd-37b0-44d5-8ec7-1071be67f871.jpeg",
-   "base": "https://imgcdn.bokun.tools/125107cd-37b0-44d5-8ec7-1071be67f871.jpeg"
-  },
-  "hoursEn": "1 hour and 30 minutes",
-  "hoursJa": "1 時間30 分",
-  "priceEn": "from ¥44,000",
-  "priceJa": "¥44,000〜",
-  "priceRows": [
-   {
-    "category": "Standard Price",
-    "category_ja": null,
-    "min": 1,
-    "max": 2,
-    "amount": 44000,
-    "currency": "JPY",
-    "rate_title": "Standard Private Group ",
-    "rate_title_ja": null
-   }
-  ],
-  "widgets": {
-   "en": "6db7a498-ed75-46ba-b4fa-6ab6abc239c0/experience-calendar/1273232"
-  },
-  "jaReviewed": false,
-  "route": [
-   {
-    "title": "The history and schools of ikebana",
-    "body": "30min The history of the art, its schools, and the Sogetsu spirit she carries as its third generation.",
-    "titleJa": "The history and schools of ikebana",
-    "bodyJa": "30min The history of the art, its schools, and the Sogetsu spirit she carries as its third generation.",
-    "photo": "",
-    "photoBase": ""
-   },
-   {
-    "title": "Arranging",
-    "body": "30min After the master’s demonstration, guests choose from prepared materials and complete an arrangementunder her guidance. No experience required.",
-    "titleJa": "Arranging",
-    "bodyJa": "30min After the master’s demonstration, guests choose from prepared materials and complete an arrangementunder her guidance. No experience required.",
-    "photo": "",
-    "photoBase": ""
-   },
-   {
-    "title": "Tea and conversation",
-    "body": "30min A quiet close beside the finished work, with seasonal wagashi and tea.",
-    "titleJa": "Tea and conversation",
-    "bodyJa": "30min A quiet close beside the finished work, with seasonal wagashi and tea.",
-    "photo": "",
-    "photoBase": ""
-   }
-  ],
-  "includedEn": "Private Ikebana instruction and demonstration by Master Koen Yokoi\nEnglish & Japanese bilingual guide support\nAll flower materials, tools, and equipment\nMatcha/Japanese tea and seasonal sweets\nFree round-trip transfer within Kamakura & Fujisawa cities\nTour insurance",
-  "includedJa": "Private Ikebana instruction and demonstration by Master Koen Yokoi\nEnglish & Japanese bilingual guide support\nAll flower materials, tools, and equipment\nMatcha/Japanese tea and seasonal sweets\nFree round-trip transfer within Kamakura & Fujisawa cities\nTour insurance",
-  "notIncludedEn": "Food and drink charges",
-  "notIncludedJa": "Food and drink charges",
-  "bringEn": "",
-  "bringJa": "",
-  "knowEn": "",
-  "knowJa": "",
-  "includedChipsEn": "",
-  "includedChipsJa": "",
-  "knowChipsEn": "",
-  "knowChipsJa": "",
-  "ledeParasEn": [
-   "Experience the Art of Ikebana in Kamakura with Master Koen Yokoi",
-   "Immerse yourself in \"Ichika Ichiei\" (One Flower, One Encounter)—a unique, 90-minute private floral workshop designed for exclusive small groups of 1 to 6 guests in the historic city of Kamakura.",
-   "Guided by Master Koen Yokoi, a third-generation Sogetsu Ikebana master with an illustrious career decorating stage productions, international events, and film sets, this private session offers a rare and intimate glimpse into the world of Japanese flower arrangement."
-  ],
-  "ledeParasJa": [
-   "Experience the Art of Ikebana in Kamakura with Master Koen Yokoi",
-   "Immerse yourself in \"Ichika Ichiei\" (One Flower, One Encounter)—a unique, 90-minute private floral workshop designed for exclusive small groups of 1 to 6 guests in the historic city of Kamakura.",
-   "Guided by Master Koen Yokoi, a third-generation Sogetsu Ikebana master with an illustrious career decorating stage productions, international events, and film sets, this private session offers a rare and intimate glimpse into the world of Japanese flower arrangement."
-  ],
-  "titleEn": "Ikebana Experience , “Ichigo Ichie”-KAMAKURA",
-  "titleJa": "Ikebana Experience , “Ichigo Ichie”-KAMAKURA",
-  "subEn": "An exclusive, 90-minute private Ikebana experience in Kamakura guided by master artist Koen Yokoi, featuring hands-on flower arranging, tea, and seasonal sweets.",
-  "subJa": "An exclusive, 90-minute private Ikebana experience in Kamakura guided by master artist Koen Yokoi, featuring hands-on flower arranging, tea, and seasonal sweets.",
-  "ledeEn": "Experience the Art of Ikebana in Kamakura with Master Koen Yokoi Immerse yourself in \"Ichika Ichiei\" (One Flower, One Encounter)—a unique, 90-minute private floral workshop designed for exclusive small groups of 1 to 6 guests in the historic city of Kamakura. Guided by Master Koen Yokoi, a third-generation Sogetsu Ikebana master with an illustrious career decorating stage productions, international events, and film sets, this private session offers a rare and intimate glimpse into the world of Japanese flower arrangement.",
-  "ledeJa": "Experience the Art of Ikebana in Kamakura with Master Koen Yokoi Immerse yourself in \"Ichika Ichiei\" (One Flower, One Encounter)—a unique, 90-minute private floral workshop designed for exclusive small groups of 1 to 6 guests in the historic city of Kamakura. Guided by Master Koen Yokoi, a third-generation Sogetsu Ikebana master with an illustrious career decorating stage productions, international events, and film sets, this private session offers a rare and intimate glimpse into the world of Japanese flower arrangement.",
   "coverCaptionEn": "",
   "coverCaptionJa": ""
  }

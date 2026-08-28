@@ -185,3 +185,58 @@ class TestListItems(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+
+
+class TestJapaneseDetection(unittest.TestCase):
+    """Evidence that a Japanese field was actually written in Japanese.
+
+    The first version of this counted kana and demanded ten of them, which
+    held back perfectly good Japanese that happened to be terse or written
+    mostly in kanji. What actually needs catching is the untranslated case:
+    the Japanese slot still mirroring the English.
+    """
+
+    def test_kana_counts_as_japanese(self):
+        self.assertTrue(bokun_text.has_japanese('鎌倉の禅寺を歩く。'))
+
+    def test_a_single_kana_is_enough(self):
+        self.assertTrue(bokun_text.has_japanese('Zenrise の Ikebana Experience'))
+
+    def test_kanji_alone_counts_as_japanese(self):
+        # A terse, kanji-only line is still Japanese.
+        self.assertTrue(bokun_text.has_japanese('鎌倉五山禅寺巡礼半日'))
+
+    def test_plain_english_is_not_japanese(self):
+        self.assertFalse(bokun_text.has_japanese(
+            '<p>A private candle-making experience in Kamakura.</p>'))
+
+    def test_empty_is_not_japanese(self):
+        self.assertFalse(bokun_text.has_japanese(''))
+        self.assertFalse(bokun_text.has_japanese(None))
+
+
+class TestSameText(unittest.TestCase):
+    def test_identical_prose_matches_through_markup_and_spacing(self):
+        self.assertTrue(bokun_text.same_text(
+            '<p>A  Zen   Journey</p>', '<div>A Zen Journey</div>  '))
+
+    def test_different_prose_does_not_match(self):
+        self.assertFalse(bokun_text.same_text('A Zen Journey', '禅の旅'))
+
+    def test_two_empties_do_not_count_as_a_match(self):
+        # Otherwise a tour with neither description would read as "untranslated"
+        # rather than as missing a description, which is a different fault.
+        self.assertFalse(bokun_text.same_text('', ''))
+
+
+class TestJapaneseRatio(unittest.TestCase):
+    def test_japanese_prose_scores_high(self):
+        self.assertGreater(
+            bokun_text.japanese_ratio('鎌倉の禅寺をめぐる、静かな半日の旅です。'), 0.8)
+
+    def test_english_with_one_japanese_place_name_scores_low(self):
+        self.assertLess(bokun_text.japanese_ratio(
+            'A walk through Kamakura 鎌倉 and Enoshima, ending in Noge.'), 0.1)
+
+    def test_empty_text_scores_zero(self):
+        self.assertEqual(bokun_text.japanese_ratio(''), 0.0)

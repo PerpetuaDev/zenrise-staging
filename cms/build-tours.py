@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 """Render the tours section from the tours content model: one tour-<id>.html per
-tour (full detail when a lede exists, otherwise the "in preparation" layout),
-plus the card grid in tours.html and the tile grid in index.html (both between
+tour, plus the card grid in tours.html and the tile grid in index.html (both between
 CMS:...:start/end markers).
 
 Records come from Bokun via cms/tours_build_source.load_records(): --source
@@ -30,22 +29,81 @@ AREA_KEY = {'Kamakura': 'tours_area_kamakura', 'Enoshima': 'tours_area_enoshima'
 AREA_JA = {'Kamakura': '鎌倉', 'Enoshima': '江ノ島', 'Yokohama': '横浜'}
 LEN_KEY = {'Half-day': 'tours_len_half', 'Full-day': 'tours_len_full',
            'Full / Half-day': 'tours_len_both'}
-THEME_SLUG = {'Temples & Shrines': 'temples', 'Food': 'food', 'Walking': 'walking',
-              'Views & Nature': 'nature', 'Local Life': 'local', 'Culture': 'culture',
-              'Arts & Craft': 'arts'}
+
+
+def _themes():
+    sys.path.insert(0, os.path.dirname(HERE))
+    from cms import tours_themes
+    return tours_themes
 
 
 def theme_slugs(themes):
-    out = []
+    """Validate that every theme is a live slug. Bokun and tours-config.json
+    both speak slugs, so this is a gate rather than a translation."""
+    tt = _themes()
     for t in themes:
-        try:
-            out.append(THEME_SLUG[t])
-        except KeyError:
+        if t not in tt.I18N_KEY:
             raise BuildError(
-                f'theme {t!r} has no slug. Add it to THEME_SLUG in build-tours.py '
-                f'and to the filter buttons in tours.html, or correct the themes '
-                f'value in cms/tours-config.json.')
-    return out
+                f'theme {t!r} is not a live theme slug. Valid slugs are '
+                f'{", ".join(tt.ORDER)} -- add it to cms/tours_themes.py, or '
+                f'correct the themes value in cms/tours-config.json.')
+    return list(themes)
+
+
+def filter_rows(models):
+    """The area and theme chip rows on tours.html, built from the catalogue.
+
+    Only values a tour actually has get a chip, so a filter can never come up
+    empty. A row with fewer than two distinct values is dropped whole: one chip
+    filters nothing, because everything it can reveal is already on screen.
+    """
+    tt = _themes()
+    areas, themes = [], set()
+    for m in models:
+        if m['area'] not in areas:
+            areas.append(m['area'])
+        themes.update(theme_slugs(m['themes']))
+
+    # Validate every area before deciding whether the row renders: iterating
+    # AREA_KEY below would silently skip a place we have no key for, and the
+    # tour would then fail later in card() instead of being held back here.
+    for a in areas:
+        area_key(a)
+
+    rows = []
+    if len(areas) > 1:
+        buttons = ['<button type="button" class="chip on" data-area="all" '
+                   'data-i18n="tours_area_all">All areas</button>']
+        for a in AREA_KEY:                       # canonical order, not catalogue order
+            if a in areas:
+                buttons.append(
+                    f'<button type="button" class="chip" data-area="{a.lower()}" '
+                    f'data-i18n="{area_key(a)}">{a}</button>')
+        rows.append(('areas', 'Filter by area', buttons))
+
+    if len(themes) > 1:
+        buttons = [f'<button type="button" class="chip" data-theme="{s}" '
+                   f'data-i18n="{tt.I18N_KEY[s]}">{tt.LABEL_EN[s]}</button>'
+                   for s in tt.ORDER if s in themes]
+        rows.append(('themes', 'Filter by theme', buttons))
+
+    if not rows:
+        return ''
+
+    # The label has to describe what actually rendered: with every tour in one
+    # place the area row drops, and "Browse by area" would then sit above a row
+    # of experience types.
+    if rows[0][0] == 'areas':
+        label_key, label_en = 'tours_filter_label', 'Browse by area'
+    else:
+        label_key, label_en = 'tours_filter_label_theme', 'Browse by experience'
+    out = [f'        <span class="label" data-i18n="{label_key}">{label_en}</span>']
+
+    for cls, aria, buttons in rows:
+        inner = '\n'.join('          ' + b for b in buttons)
+        out.append(f'        <div class="chip-row {cls}" role="group" '
+                   f'aria-label="{aria}">\n{inner}\n        </div>')
+    return '\n'.join(out)
 
 
 def area_key(area):
@@ -123,9 +181,6 @@ def tour_model(a):
     m['price_en'] = m['price'][0]
     m['price_ja'] = m['price'][1]
     m['route'] = a.get('route') or []
-    # A tour is "full" when it has a price. Unpriced products get the
-    # in-preparation layout (spec 3.5).
-    m['full'] = bool(m['price'][0])
     return m
 
 
@@ -169,7 +224,7 @@ def json_ld(m):
     if m['cover']:
         data['image'] = cover_at(m, 1200, 630)
     rows = m.get('price_rows') or []
-    if m['full'] and rows:
+    if rows:
         low = min(rows, key=lambda r: r['amount'])
         data['offers'] = {
             '@type': 'Offer',
@@ -190,6 +245,40 @@ def write_tours_index(models):
         json.dump([m['id'] for m in models], f, indent=1)
 
 
+def party_range(price_rows):
+    """The party size a tour can actually take, read from its rate tiers.
+
+    Bokun prices per tier -- candle-making sells 1-2, then 3, then 4 -- so the
+    real range is the widest pair across the tiers, not a house assumption. It
+    used to be hardcoded as 1-6 on every tour, which invited parties Bokun has
+    no price for (ikebana is priced for two people at most).
+    """
+    lo = [r['min'] for r in price_rows or [] if r.get('min') is not None]
+    hi = [r['max'] for r in price_rows or [] if r.get('max') is not None]
+    if not lo or not hi:
+        return None
+    return min(lo), max(hi)
+
+
+def party_label(price_rows, lang):
+    """'1-4 travelers' / '1〜4名', or '' when no tier carries bounds."""
+    r = party_range(price_rows)
+    if not r:
+        return ''
+    lo, hi = r
+    if lang == 'ja':
+        return f'{lo}〜{hi}名' if lo != hi else f'{hi}名'
+    if lo != hi:
+        return f'{lo}\u2013{hi} travelers'
+    return '1 traveler' if hi == 1 else f'{hi} travelers'
+
+
+def cta_eyebrow(price, party):
+    """Join price and party size, dropping the separator when either is absent
+    -- an in-preparation tour has neither."""
+    return ' \u30fb '.join(x for x in (price, party) if x)
+
+
 def base_dict(m):
     """Keys shared by every rendering of this tour (cards, tiles, detail head)."""
     K = m['K']
@@ -197,12 +286,14 @@ def base_dict(m):
           K + '_title': f"{m['title'][0]} — Zenrise",
           K + '_eyebrow': f"Tour No. {m['num']}",
           K + '_cap': m['coverCaption'][0],
-          K + '_cta_eyebrow': f"{m['price_en']} ・ 1–6 travelers"}
+          K + '_cta_eyebrow': cta_eyebrow(m['price_en'],
+                                          party_label(m['price_rows'], 'en'))}
     ja = {K + '_name': m['title'][1], K + '_sub': m['sub'][1], K + '_hours': m['hours'][1],
           K + '_title': f"{m['title'][1]} — Zenrise",
           K + '_eyebrow': f"ツアー No. {m['num']}",
           K + '_cap': m['coverCaption'][1],
-          K + '_cta_eyebrow': f"{m['price_ja']} ・ 1〜6名"}
+          K + '_cta_eyebrow': cta_eyebrow(m['price_ja'],
+                                          party_label(m['price_rows'], 'ja'))}
     en[K + '_price'] = m['price_en']
     ja[K + '_price'] = m['price_ja']
     return en, ja
@@ -229,7 +320,8 @@ def common_slots(m):
         'HOURS_EN': esc(m['hours'][0]),
         'PRICE_KEY': m['price_key'] or (m['K'] + '_price'),
         'PRICE_EN': esc(m['price_en']),
-        'CTA_EYEBROW_EN': esc(f"{m['price_en']} ・ 1–6 travelers"),
+        'CTA_EYEBROW_EN': esc(cta_eyebrow(m['price_en'],
+                                          party_label(m['price_rows'], 'en'))),
         'WIDGET_BLOCK': '', 'CHIPS_SECTION': '', 'ROUTE_SECTION': '',
     }
 
@@ -499,8 +591,6 @@ def widget_block(m, price_html=''):
     price_html (task 14) renders above the widget mount, inside the same
     aside, in both the normal and the widget-not-yet-configured case.
     """
-    if not m['full']:
-        return ''
     widgets = m.get('widgets') or {}
     en = widgets.get('en')
     if not en:
@@ -570,8 +660,6 @@ def widget_block(m, price_html=''):
 
 def go_redirect_html(m):
     """No-JS and email/social fallback: a bare redirect to the Bokun widget."""
-    if not m.get('full'):
-        return None
     en = (m.get('widgets') or {}).get('en')
     if not en:
         return None
@@ -682,23 +770,18 @@ def lede_block(m, en, ja):
     return '\n'.join(out)
 
 
-def render_detail(m, tpl_full, tpl_prep):
+def render_detail(m, tpl):
     en, ja = base_dict(m)
     slots = common_slots(m)
-    if m['full']:
-        K = m['K']
-        slots['LEDE_BLOCK'] = lede_block(m, en, ja)
-        slots['CHIPS_SECTION'] = chips_section(m, en, ja)
-        slots['ROUTE_SECTION'] = route_section(m, en, ja)
-        slots['OTHER_INFO_SECTION'] = other_info_section(m, en, ja)
-        # The breakdown is unmounted, not deleted: it made the sticky booking
-        # column ~150px taller for information that also lives in the widget.
-        # Restoring it is passing price_breakdown_block(m, en, ja) again, and
-        # where the two rates should live instead is still open.
-        slots['WIDGET_BLOCK'] = widget_block(m)
-        tpl = tpl_full
-    else:
-        tpl = tpl_prep
+    slots['LEDE_BLOCK'] = lede_block(m, en, ja)
+    slots['CHIPS_SECTION'] = chips_section(m, en, ja)
+    slots['ROUTE_SECTION'] = route_section(m, en, ja)
+    slots['OTHER_INFO_SECTION'] = other_info_section(m, en, ja)
+    # The breakdown is unmounted, not deleted: it made the sticky booking
+    # column ~150px taller for information that also lives in the widget.
+    # Restoring it is passing price_breakdown_block(m, en, ja) again, and
+    # where the two rates should live instead is still open.
+    slots['WIDGET_BLOCK'] = widget_block(m)
     slots['DICT_SCRIPT'] = dict_script(en, ja)
     return render(tpl, slots)
 
@@ -758,7 +841,7 @@ def set_page_dict(path, en, ja):
     open(path, 'w').write(s)
 
 
-def render_all(models, tpl_full, tpl_prep, write=True):
+def render_all(models, tpl, write=True):
     """Render every tour, holding back any that cannot be rendered.
 
     Returns (written, skipped) where skipped is [(slug, reason)].
@@ -780,14 +863,14 @@ def render_all(models, tpl_full, tpl_prep, write=True):
             # both here makes this the single gate, and everything downstream
             # runs on the tours this returns.
             theme_slugs(m['themes'])
-            out = render_detail(m, tpl_full, tpl_prep)
+            out = render_detail(m, tpl)
         except BuildError as e:
             skipped.append((m['id'], str(e)))
             continue
         name = f"tour-{m['id']}.html"
         if write:
             open(os.path.join(ROOT, name), 'w').write(out)
-        written.append(name + ('' if m['full'] else ' (prep)'))
+        written.append(name)
     return written, skipped
 
 
@@ -847,9 +930,8 @@ def main():
                                 en=f"{channel}/experience-calendar/{m['bokun_id']}")
 
     tpl_full = load_template('tour-detail.html')
-    tpl_prep = load_template('tour-prep.html')
 
-    written, skipped = render_all(models, tpl_full, tpl_prep)
+    written, skipped = render_all(models, tpl_full)
     for slug, why in skipped:
         print(f'WARNING: held back {slug}: {why}')
 
@@ -864,7 +946,10 @@ def main():
     write_tours_index(live)
     go_written = write_go_redirects(live)
 
-    # tours.html: grid + card dict
+    # tours.html: filters + grid + card dict. The chips are built from `live`,
+    # so a chip can never match nothing and a card can never be unreachable.
+    rewrite_region(os.path.join(ROOT, 'tours.html'), 'tours-filters',
+                   filter_rows(live))
     rewrite_region(os.path.join(ROOT, 'tours.html'), 'tours-grid',
                    '\n\n'.join(card(m) for m in live))
     en, ja = {}, {}

@@ -2,11 +2,11 @@
 
 Records use exactly the keys of cms/tours-fixture.json entries so that
 build-tours.py's tour_model() and every downstream renderer stay unchanged.
-Four keys are added: bokunId, widgets, priceRows, jaReviewed.
+Three keys are added: bokunId, widgets, priceRows.
 """
 from datetime import datetime, timedelta, timezone
 
-from . import bokun_labels, bokun_price, bokun_text, tours_config, tours_slug
+from . import bokun_labels, bokun_price, bokun_text, tours_config, tours_slug, tours_themes
 
 PAIR_FIELDS = ('title', 'sub', 'lede', 'coverCaption')
 
@@ -219,14 +219,13 @@ def to_record(activity, activity_ja, availability, availability_ja, entry, corr)
     # want one continuous string.
     lede_paras = list(parsed['lede'])
     lede = ' '.join(parsed['lede'])
-    reviewed = bool(entry.get('jaReviewed'))
-
-    # The Japanese description is only trusted (and only fetched into the
-    # correction-usage ledger) once a tour is jaReviewed -- same gate as the
-    # Japanese lede a few lines below.
+    # Japanese is the authored original: the client writes it and translates
+    # outward, and a tour whose Japanese slot still holds English never gets
+    # this far (see the language gates in fetch_records). So it is used as
+    # written, with no review flag in front of it.
     parsed_ja_included = []
     parsed_ja_lede = []
-    if reviewed:
+    if True:
         raw_texts.append((activity_ja or {}).get('description') or '')
         parsed_ja, sw_ja = bokun_text.sections(
             (activity_ja or {}).get('description'), corr, entry.get('chipsHeading'))
@@ -274,7 +273,7 @@ def to_record(activity, activity_ja, availability, availability_ja, entry, corr)
             en_items = prose_paragraphs(activity.get(bokun_field))
         en_joined = '\n'.join(en_items)
 
-        if reviewed:
+        if True:
             ja_items = prose_items((activity_ja or {}).get(bokun_field))
             if not ja_items and desc_fallback_ja:
                 ja_items = list(desc_fallback_ja)
@@ -297,8 +296,8 @@ def to_record(activity, activity_ja, availability, availability_ja, entry, corr)
     # constants, unrelated to the free-text fields above. Bokun's own widget
     # renders these as chips using its own internal wording; through the API
     # we only get the constant, so cms/bokun_labels.py supplies the wording
-    # for both languages -- unconditionally, not gated by jaReviewed, because
-    # this is our own copy, not Bokun content (see point 4, task 18 brief).
+    # for both languages -- this is our own copy, not Bokun content (see
+    # point 4, task 18 brief).
     # An unmapped value must never reach the page as a raw SCREAMING_SNAKE
     # string: it is dropped and reported as a warning instead.
     def enum_chip_group(api_field):
@@ -318,16 +317,14 @@ def to_record(activity, activity_ja, availability, availability_ja, entry, corr)
                   for api_field, rec_field in ENUM_CHIP_FIELDS}
 
     # agendaItems genuinely localise in Bokun (verified live on product
-    # 1273194), but only once a tour is jaReviewed do we trust that Japanese
-    # enough to show it — same gate as title/sub/lede below. Steps are paired
-    # by index; a Japanese list that is shorter (or absent) just leaves the
-    # remaining/ungated stops mirroring English, same as an untranslated stop.
+    # 1273194). Steps are paired by index; a Japanese list that is shorter, or
+    # absent, leaves the remaining stops mirroring English.
     route = []
     agenda_ja = (activity_ja or {}).get('agendaItems') or []
     for idx, item in enumerate(activity.get('agendaItems') or []):
         title_en = cl(item.get('title'))
         body_en = cl(item.get('body'))
-        item_ja = agenda_ja[idx] if reviewed and idx < len(agenda_ja) else None
+        item_ja = agenda_ja[idx] if idx < len(agenda_ja) else None
         title_ja = cl(item_ja.get('title')) if item_ja else title_en
         body_ja = cl(item_ja.get('body')) if item_ja else body_en
         route.append({
@@ -344,14 +341,12 @@ def to_record(activity, activity_ja, availability, availability_ja, entry, corr)
     cover_base = cdn_base(photos[0]) if photos else ''
     cover_cap = cl(photos[0].get('alternateText')) if photos else ''
 
-    # Rate titles and pricing-category titles are both localised the same
-    # way title/sub/lede/route are above: only once a tour is jaReviewed do
-    # we trust Bokun's Japanese enough to show it. An unreviewed tour (or
-    # one where the Japanese availability call failed/came back empty, see
-    # fetch_records) simply gets no category_ja/rate_title_ja on its rows,
-    # and bokun_price.format_full falls back to the hand-written _CAT_JA
-    # map / the English rate title exactly as it always has.
-    pricing_categories_ja = (activity_ja or {}).get('pricingCategories') or [] if reviewed else []
+    # Rate titles and pricing-category titles are localised the same way
+    # title/sub/lede/route are above. Where the Japanese availability call
+    # failed or came back empty (see fetch_records) the rows simply carry no
+    # category_ja/rate_title_ja, and bokun_price.format_full falls back to the
+    # hand-written _CAT_JA map / the English rate title as it always has.
+    pricing_categories_ja = (activity_ja or {}).get('pricingCategories') or []
     # Rate titles from the activity payload, which localises them properly.
     def _rate_title_map(payload):
         return {r['id']: r.get('title')
@@ -360,9 +355,9 @@ def to_record(activity, activity_ja, availability, availability_ja, entry, corr)
     rows = bokun_price.rows(
         availability, activity.get('pricingCategories') or [],
         pricing_categories_ja=pricing_categories_ja,
-        availability_ja=availability_ja if reviewed else None,
+        availability_ja=availability_ja,
         rate_titles_en=_rate_title_map(activity),
-        rate_titles_ja=_rate_title_map(activity_ja) if reviewed else None)
+        rate_titles_ja=_rate_title_map(activity_ja))
     fp = bokun_price.from_price(rows)
 
     # Zero-touch has one soft spot here: length comes from the rate NAMES, so a
@@ -379,6 +374,20 @@ def to_record(activity, activity_ja, availability, availability_ja, entry, corr)
             'Bokun to include "Half Day"/"Full Day" if both are offered: %s'
             % (len(distinct), sorted(distinct)))
 
+    # Themes: Bokun when it has anything to say, the tours-config.json seed
+    # when it does not. A tour with neither is still published -- themes are
+    # editorial, not structural -- it just sits under no chip, so say so.
+    themes, theme_warnings = tours_themes.from_categories(
+        activity.get('activityCategories'))
+    warnings.extend(theme_warnings)
+    if not themes:
+        themes = list(entry.get('themes') or [])
+        if not themes:
+            warnings.append(
+                'no theme: Bokun lists no mappable activityCategories and '
+                'tours-config.json seeds none, so this tour appears in the grid '
+                'but under no filter chip. Tag it in the Bokun panel.')
+
     rec = {
         'id': entry['slug'],
         'bokunId': int(activity['id']),
@@ -389,7 +398,7 @@ def to_record(activity, activity_ja, availability, availability_ja, entry, corr)
         # 7-hour option), so what is actually bookable wins.
         'length': (entry.get('length') or _length_from_rates(rows)
                    or _length_from_duration(activity.get('durationText'))),
-        'themes': entry.get('themes') or [],
+        'themes': themes,
         'cover': {'url': cover, 'base': cover_base},
         'hoursEn': cl(activity.get('durationText')),
         'hoursJa': cl((activity_ja or {}).get('durationText')) or cl(activity.get('durationText')),
@@ -397,7 +406,6 @@ def to_record(activity, activity_ja, availability, availability_ja, entry, corr)
         'priceJa': bokun_price.format_from(fp, 'ja'),
         'priceRows': rows,
         'widgets': entry.get('widgets') or {},
-        'jaReviewed': reviewed,
         'route': route,
         'includedEn': prose['included'][0], 'includedJa': prose['included'][1],
         'notIncludedEn': prose['notIncluded'][0], 'notIncludedJa': prose['notIncluded'][1],
@@ -418,7 +426,7 @@ def to_record(activity, activity_ja, availability, availability_ja, entry, corr)
     en_values = {'title': title, 'sub': sub, 'lede': lede, 'coverCaption': cover_cap}
     for field in PAIR_FIELDS:
         rec[field + 'En'] = en_values[field]
-        if reviewed and field in ('title', 'sub', 'lede'):
+        if field in ('title', 'sub', 'lede'):
             src = {'title': 'title', 'sub': 'excerpt', 'lede': 'description'}[field]
             rec[field + 'Ja'] = cl((activity_ja or {}).get(src)) or en_values[field]
         else:
@@ -489,8 +497,10 @@ def fetch_records(client, cfg, registry_path=None):
             registry[str(pid)] = slug
             registry_dirty = True
 
-        # Gate 4: complete. No price is NOT a hold-back -- that renders the
-        # existing, correct in-preparation layout.
+        # Gate 4: complete. A tour on the site is one a visitor can read and
+        # book, so anything short of that is held back rather than published
+        # in a reduced form. (This replaced the in-preparation layout, which
+        # published unpriced tours: the client's call, 2026-08-28.)
         photos = activity.get('photos') or []
         missing = []
         if not (photos and (photos[0].get('originalUrl') or '').strip()):
@@ -500,6 +510,43 @@ def fetch_records(client, cfg, registry_path=None):
         if missing:
             held_back.append((pid, title_en, f"missing {' and '.join(missing)}"))
             continue
+
+        # Gate 5: both languages, really written. Tours are authored in
+        # Japanese and translated into English, so the Japanese is the
+        # original and its absence means the tour is not written yet. Bokun
+        # reports a JA_JP base language on every product whether or not
+        # anyone wrote Japanese into it, so the text is the only evidence --
+        # candle-making's English currently sits in its Japanese slot.
+        if 'en' not in [l.lower() for l in (activity.get('languages') or [])]:
+            held_back.append((pid, title_en,
+                              'no English version in Bokun (languages is '
+                              f'{activity.get("languages")}). Create the English '
+                              'version and check its text before it publishes'))
+            continue
+        # Two unambiguous failures only. English INSIDE Japanese is normal --
+        # brand names, place names, untranslatable terms -- and an earlier
+        # version that demanded a quantity of kana held back Japanese that was
+        # merely terse or kanji-heavy. So: block when nothing was written, and
+        # warn (never block) when what was written is mostly English.
+        ja_description = (activity_ja or {}).get('description')
+        if bokun_text.same_text(ja_description, activity.get('description')):
+            held_back.append((pid, title_en,
+                              'the Japanese description is identical to the '
+                              'English one, so the tour has not been translated '
+                              'into Japanese yet'))
+            continue
+        if not bokun_text.has_japanese(ja_description):
+            held_back.append((pid, title_en,
+                              'the Japanese description contains no Japanese '
+                              'at all'))
+            continue
+        ratio = bokun_text.japanese_ratio(ja_description)
+        if ratio < 0.10:
+            warnings.append(
+                f'[{slug}] the Japanese description is mostly English '
+                f'({ratio:.0%} Japanese). It publishes, but check it reads as '
+                f'Japanese rather than as English with a few Japanese words in '
+                f'it.')
 
         # number: entry override, else this slug's position in the (now
         # possibly just-extended) registry order -- stable once assigned,
@@ -519,6 +566,15 @@ def fetch_records(client, cfg, registry_path=None):
 
         availability = client.get(
             f'/activity.json/{pid}/availabilities?start={today}&end={end}&lang=EN')
+
+        # Gate 6: bookable. A tour with no open date in a whole year cannot be
+        # sold, so a calendar that can never accept a booking is worse than no
+        # page at all. Swordsmithing is the live example.
+        if not availability:
+            held_back.append((pid, title_en,
+                              'no bookable dates in the next year -- open some '
+                              'availability in Bokun'))
+            continue
         # A label is not worth failing a build over: if the Japanese
         # availability call itself raises, or comes back as None (as
         # opposed to a well-formed empty list, which just means no slots in
@@ -542,6 +598,14 @@ def fetch_records(client, cfg, registry_path=None):
         built_entry = dict(entry, slug=slug, number=number, area=area)
         rec, w, texts = to_record(
             activity, activity_ja, availability, availability_ja, built_entry, corr)
+
+        # Gate 7: priced. Derived from the rates, so it is checked once the
+        # record exists rather than guessed at from the activity.
+        if not rec['priceEn']:
+            held_back.append((pid, title_en,
+                              'no price -- set at least one rate in Bokun'))
+            continue
+
         records.append(rec)
         resolved.append((pid, slug, reason))
         warnings += [f'[{rec["id"]}] {x}' for x in w]

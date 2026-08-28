@@ -39,7 +39,7 @@ def tour_entry(cfg, bokun_id):
     touches in tours-config.json must still build. This no longer requires a
     'slug' key either -- a present entry with no slug simply carries no slug
     override (derivation or the registry take over), while any other
-    hand-written fields (themes, widgets, jaReviewed, ...) still apply.
+    hand-written fields (themes, widgets, ...) still apply.
     """
     tours = cfg.get('tours') or {}
     if str(bokun_id) in tours:

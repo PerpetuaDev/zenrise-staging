@@ -27,11 +27,13 @@ class FakeClient:
     DELETE_KEYS to remove keys entirely.
     """
 
-    def __init__(self, product_list=None, product_list_items=None, overrides=None):
+    def __init__(self, product_list=None, product_list_items=None, overrides=None,
+                 baseline=True):
         self.paths = []
         self._list = product_list
         self._items = product_list_items or {}
         self._overrides = overrides or {}
+        self._baseline = baseline
 
     def get(self, path):
         self.paths.append(path)
@@ -48,6 +50,8 @@ class FakeClient:
             pid = int(path.split('/')[2].split('?')[0])
             lang = 'ja' if 'lang=ja' in path else 'EN'
             data = load(f'activity-{pid}-{lang}.json')
+            if self._baseline:
+                data = dict(data, **BASELINE.get(lang, {}))
             ov = self._overrides.get(f'{pid}-{lang}')
             if ov:
                 data = dict(data)
@@ -65,6 +69,18 @@ class FakeClient:
 
 DELETE = object()
 
+# The recorded fixtures are from 2026-08-25, before the client's bilingual
+# work: no product carries an `en` version and every Japanese slot holds
+# English, so under the publish gates every one of them would be held back.
+# FakeClient therefore serves them lifted through the LANGUAGE gates, letting
+# each test target one gate at a time; a test exercising a language gate
+# overrides these back (see test_publish_gates) or passes baseline=False.
+BASELINE = {
+    'EN': {'languages': ['en', 'JA_JP']},
+    'ja': {'description': '<p>鎌倉の禅寺をめぐる、静かな半日の旅です。</p>'
+                          '<p>坐禅を組み、抹茶と和菓子をお召し上がりいただきます。</p>'},
+}
+
 
 def list_item(activity_id):
     """One /product-list.json/<id> membership row for `activity_id`."""
@@ -80,16 +96,16 @@ CFG = {
                     'templ e cuisine': 'temple cuisine'},
     'tours': {
         str(IKEBANA): {'slug': 'ikebana-ichigo-ichie', 'number': '01', 'area': 'Kamakura',
-                       'themes': ['Arts & Craft'], 'jaReviewed': False,
+                       'themes': ['arts'], 'jaReviewed': False,
                        'widgets': {'en': 'CH/experience-calendar/1273232'}},
         str(CANDLE): {'slug': 'candle-making', 'number': '02', 'area': 'Kamakura',
-                      'themes': ['Arts & Craft'], 'jaReviewed': False,
+                      'themes': ['arts'], 'jaReviewed': False,
                       'widgets': {}},
         str(ZEN): {'slug': 'zen-journey', 'number': '03', 'area': 'Kamakura',
-                   'themes': ['Walking'], 'jaReviewed': False,
+                   'themes': ['walking'], 'jaReviewed': False,
                    'widgets': {}},
         str(SWORD): {'slug': 'swordsmithing', 'number': '04', 'area': 'Kamakura',
-                     'themes': ['Arts & Craft'], 'jaReviewed': False,
+                     'themes': ['arts'], 'jaReviewed': False,
                      'widgets': {}},
     },
 }
@@ -183,8 +199,10 @@ class TestRecords(unittest.TestCase):
         self.by_slug = {r['id']: r for r in self.records}
 
     def test_one_record_per_catalogue_product(self):
+        # Swordsmithing is absent by design: unpriced and with no availability,
+        # it cannot be booked, so it is held back rather than published.
         self.assertEqual(sorted(self.by_slug),
-                         ['candle-making', 'ikebana-ichigo-ichie', 'swordsmithing', 'zen-journey'])
+                         ['candle-making', 'ikebana-ichigo-ichie', 'zen-journey'])
 
     def test_slug_and_number_come_from_config_not_bokun(self):
         r = self.by_slug['ikebana-ichigo-ichie']
@@ -209,10 +227,12 @@ class TestRecords(unittest.TestCase):
     def test_candle_from_price_is_the_lowest_adult_tier(self):
         self.assertEqual(self.by_slug['candle-making']['priceEn'], 'from ¥12,000 per adult')
 
-    def test_unpriced_products_have_no_price_and_no_price_rows(self):
-        for slug in ('swordsmithing',):
-            self.assertEqual(self.by_slug[slug]['priceEn'], '')
-            self.assertEqual(self.by_slug[slug]['priceRows'], [])
+    def test_every_record_is_priced(self):
+        # Unpriced products are held back now, so a record without a price
+        # would mean a gate had leaked.
+        for slug, rec in self.by_slug.items():
+            self.assertTrue(rec['priceEn'], slug)
+            self.assertTrue(rec['priceRows'], slug)
 
     def test_zen_journey_reads_as_both_lengths_from_its_real_rates(self):
         self.assertEqual(self.by_slug['zen-journey']['length'], 'Full / Half-day')
@@ -237,12 +257,13 @@ class TestRecords(unittest.TestCase):
         self.assertTrue(r['priceRows'])
         self.assertTrue(all(row.get('per_booking') for row in r['priceRows']))
 
-    def test_japanese_mirrors_english_until_jaReviewed(self):
+    def test_japanese_comes_from_the_ja_payload(self):
+        # FakeClient's BASELINE puts real Japanese in the description slot, so
+        # the lede must come from there rather than mirroring English.
         r = self.by_slug['ikebana-ichigo-ichie']
-        self.assertEqual(r['titleJa'], r['titleEn'])
-        self.assertEqual(r['ledeJa'], r['ledeEn'])
+        self.assertNotEqual(r['ledeJa'], r['ledeEn'])
 
-    def test_duration_text_does_localise_even_when_unreviewed(self):
+    def test_duration_text_localises(self):
         r = self.by_slug['ikebana-ichigo-ichie']
         self.assertNotEqual(r['hoursJa'], r['hoursEn'])
 
@@ -262,7 +283,7 @@ class TestRecords(unittest.TestCase):
                          self.by_slug['ikebana-ichigo-ichie']['ledeEn'])
 
     def test_products_without_an_inclusions_list_have_no_chips(self):
-        for slug in ('candle-making', 'zen-journey', 'swordsmithing'):
+        for slug in ('candle-making', 'zen-journey'):
             self.assertEqual(self.by_slug[slug]['includedEn'], '', slug)
 
     def test_fields_bokun_has_no_data_for_stay_empty(self):
@@ -284,7 +305,6 @@ class TestRecords(unittest.TestCase):
     def test_route_comes_from_agenda_items_and_is_empty_where_there_are_none(self):
         self.assertTrue(len(self.by_slug['ikebana-ichigo-ichie']['route']) >= 3)
         self.assertEqual(self.by_slug['candle-making']['route'], [])
-        self.assertEqual(self.by_slug['swordsmithing']['route'], [])
 
     def test_widgets_carry_through_from_config(self):
         self.assertEqual(self.by_slug['ikebana-ichigo-ichie']['widgets'],
@@ -474,15 +494,15 @@ class TestChipFields(unittest.TestCase):
         self.assertEqual(rec['includedEn'], 'Guide (EN)')
         self.assertEqual(rec['includedJa'], 'ガイド')
 
-    def test_japanese_chip_content_mirrors_english_until_reviewed(self):
-        # Same gate as title/sub/lede/route: an unreviewed tour must not
-        # show Bokun's Japanese chip content even when it exists.
+    def test_japanese_chip_content_is_used_as_written(self):
+        # Japanese is the authored original, so it is shown as written; the
+        # publish gates already refuse a tour whose Japanese slot is English.
         activity = self._activity(ZEN, included='<ul><li>Guide (EN)</li></ul>')
         activity_ja = self._activity(ZEN, included='<ul><li>ガイド</li></ul>')
-        entry = dict(CFG['tours'][str(ZEN)], jaReviewed=False)
+        entry = dict(CFG['tours'][str(ZEN)])
         rec, *_ = bokun_source.to_record(activity, activity_ja, [], [], entry, {})
-        self.assertEqual(rec['includedJa'], rec['includedEn'])
-        self.assertEqual(rec['includedJa'], 'Guide (EN)')
+        self.assertEqual(rec['includedJa'], 'ガイド')
+        self.assertNotEqual(rec['includedJa'], rec['includedEn'])
 
     def test_japanese_falls_back_to_english_when_the_ja_field_is_empty_even_if_reviewed(self):
         activity = self._activity(ZEN, included='<ul><li>Guide (EN)</li></ul>')
@@ -659,22 +679,19 @@ class TestJaReviewed(unittest.TestCase):
             self.assertEqual(stop['titleJa'], stop['title'])
             self.assertEqual(stop['bodyJa'], stop['body'])
 
-    def test_route_ja_mirrors_english_until_jaReviewed(self):
-        # Same gate as title/sub/lede: even when the ja payload carries full
-        # agendaItems, an unreviewed tour must not show them.
+    def test_route_ja_needs_no_review_flag(self):
+        # The ja agendaItems are shown as written -- no flag in front of them.
         activity = load(f'activity-{IKEBANA}-EN.json')
         ja_items = [{'title': f'JA-SENTINEL title {i}', 'body': f'JA-SENTINEL body {i}'}
                     for i in range(len(activity['agendaItems']))]
         activity_ja = dict(activity, agendaItems=ja_items)
-        entry = dict(CFG['tours'][str(IKEBANA)], jaReviewed=False)
+        entry = dict(CFG['tours'][str(IKEBANA)])
         rec, warnings, raw_texts = bokun_source.to_record(
             activity, activity_ja, [], [], entry, {})
 
         for stop in rec['route']:
-            self.assertEqual(stop['titleJa'], stop['title'])
-            self.assertEqual(stop['bodyJa'], stop['body'])
-            self.assertNotIn('JA-SENTINEL', stop['titleJa'])
-            self.assertNotIn('JA-SENTINEL', stop['bodyJa'])
+            self.assertIn('JA-SENTINEL', stop['titleJa'])
+            self.assertIn('JA-SENTINEL', stop['bodyJa'])
 
     def test_price_rows_localise_when_reviewed(self):
         # Task 16: category_ja/rate_title_ja on the price rows are gated by
@@ -697,48 +714,37 @@ class TestJaReviewed(unittest.TestCase):
         ja_rows = bokun_price.format_full(rec['priceRows'], 'ja')
         self.assertTrue(all('大人様' in r for r in ja_rows))
 
-    def test_price_rows_mirror_english_until_ja_reviewed(self):
-        # Same synthetic ja payload as above, but jaReviewed is False: the
-        # category_ja/rate_title_ja fields must not reach the rows, and the
-        # Japanese breakdown must keep showing today's _CAT_JA fallback
-        # (大人), not the Bokun-entered '大人様'.
+    def test_price_rows_use_bokuns_japanese_category_titles(self):
+        # Bokun's own Japanese category title wins over the hand-written
+        # _CAT_JA fallback, with no review flag in front of it.
         activity = load(f'activity-{IKEBANA}-EN.json')
         availability = load(f'availability-{IKEBANA}.json')
         activity_ja = dict(activity, pricingCategories=[{'id': 1237647, 'title': '大人様'}])
         availability_ja = [{'rates': [{'id': 2536435, 'title': 'スタンダード貸切グループ'}],
                              'pricesByRate': []}]
-        entry = dict(CFG['tours'][str(IKEBANA)], jaReviewed=False)
+        entry = dict(CFG['tours'][str(IKEBANA)])
         rec, warnings, raw_texts = bokun_source.to_record(
             activity, activity_ja, availability, availability_ja, entry, {})
 
         for row in rec['priceRows']:
-            self.assertIsNone(row['category_ja'])
+            self.assertEqual(row['category_ja'], '大人様')
         ja_rows = bokun_price.format_full(rec['priceRows'], 'ja')
-        self.assertTrue(all('大人様' not in r for r in ja_rows))
-        self.assertTrue(any('大人' in r for r in ja_rows))
+        self.assertTrue(any('大人様' in r for r in ja_rows))
 
-    def test_group_rate_title_ja_gated_by_ja_reviewed(self):
+    def test_group_rate_title_ja_comes_from_the_ja_payload(self):
         # The Zen Journey model: a per-booking (group) row's Japanese label
-        # comes from rate_title_ja, and is gated by jaReviewed the same way.
+        # comes from rate_title_ja.
         activity = load(f'activity-{ZEN}-EN.json')
         availability = load(f'availability-{ZEN}.json')
         availability_ja = [{'rates': [{'id': 2536321, 'title': 'ハーフデイ・グループ'},
                                        {'id': 2536324, 'title': 'フルデイ・グループ'}],
                              'pricesByRate': []}]
 
-        entry_reviewed = dict(CFG['tours'][str(ZEN)], jaReviewed=True)
+        entry = dict(CFG['tours'][str(ZEN)])
         rec, *_ = bokun_source.to_record(
-            activity, activity, availability, availability_ja, entry_reviewed, {})
+            activity, activity, availability, availability_ja, entry, {})
         ja_rows = bokun_price.format_full(rec['priceRows'], 'ja')
         self.assertTrue(any('ハーフデイ・グループ' in r for r in ja_rows))
-
-        entry_unreviewed = dict(CFG['tours'][str(ZEN)], jaReviewed=False)
-        rec2, *_ = bokun_source.to_record(
-            activity, activity, availability, availability_ja, entry_unreviewed, {})
-        ja_rows2 = bokun_price.format_full(rec2['priceRows'], 'ja')
-        self.assertTrue(all('ハーフデイ・グループ' not in r for r in ja_rows2))
-        # Falls back to the English rate title verbatim, exactly as today.
-        self.assertTrue(any('Harf' in r for r in ja_rows2))
 
 
 class FlakyJaAvailabilityClient(FakeClient):
@@ -767,8 +773,11 @@ class TestJapaneseAvailabilityFetch(unittest.TestCase):
         c = FakeClient()
         bokun_source.fetch_records(c, CFG)
         avail_paths = [p for p in c.paths if '/availabilities' in p]
+        # Four products are asked for English availability; swordsmithing is
+        # then held back for having none, so only three reach the Japanese
+        # call.
         self.assertEqual(len([p for p in avail_paths if 'lang=EN' in p]), 4)
-        self.assertEqual(len([p for p in avail_paths if 'lang=ja' in p]), 4)
+        self.assertEqual(len([p for p in avail_paths if 'lang=ja' in p]), 3)
 
     def test_ja_availability_request_failure_falls_back_and_warns(self):
         c = FlakyJaAvailabilityClient(fail_pid=IKEBANA, mode='raise')
@@ -834,7 +843,7 @@ class TestGates(unittest.TestCase):
 
     def test_the_resolved_catalogue_is_logged_every_run(self):
         records, warnings, _ = self._run(FakeClient(), CFG, registry=tours_slug.load_registry())
-        self.assertTrue(any('resolved catalogue: 4 tour(s)' in w for w in warnings), warnings)
+        self.assertTrue(any('resolved catalogue: 3 tour(s)' in w for w in warnings), warnings)
         self.assertTrue(any(f'[{IKEBANA}] -> ikebana-ichigo-ichie' in w for w in warnings), warnings)
 
     # --- Gate 3: sluggable -----------------------------------------------
@@ -888,12 +897,13 @@ class TestGates(unittest.TestCase):
         self.assertNotIn('ikebana-ichigo-ichie', {r['id'] for r in records})
         self.assertTrue(any(str(IKEBANA) in w and 'missing description' in w for w in warnings), warnings)
 
-    def test_missing_price_is_not_a_holdback(self):
-        # Swordsmithing's real fixtures are unpriced (see TestRecords); it
-        # must still render, via the in-preparation layout.
+    def test_an_unbookable_product_is_held_back(self):
+        # Swordsmithing's real fixtures are unpriced AND have no availability.
+        # It used to publish through the in-preparation layout; since
+        # 2026-08-28 an incomplete tour does not publish at all.
         records, warnings, _ = self._run(FakeClient(), CFG, registry=tours_slug.load_registry())
-        self.assertIn('swordsmithing', {r['id'] for r in records})
-        self.assertFalse(any(str(SWORD) in w and 'held back' in w for w in warnings), warnings)
+        self.assertNotIn('swordsmithing', {r['id'] for r in records})
+        self.assertTrue(any(str(SWORD) in w and 'held back' in w for w in warnings), warnings)
 
     # --- Derivations: area -------------------------------------------------
 
@@ -958,7 +968,9 @@ class TestConfigEntryIsOptional(unittest.TestCase):
             records, warnings = bokun_source.fetch_records(c, cfg, registry_path=p)
         by_slug = {r['id']: r for r in records}
         self.assertIn('zen-journey', by_slug)
-        self.assertEqual(by_slug['zen-journey']['themes'], [])
+        # Themes need no config entry either: they come from Bokun's own
+        # activityCategories, so a tour added in the panel arrives filterable.
+        self.assertEqual(by_slug['zen-journey']['themes'], ['culture', 'walking'])
         self.assertEqual(by_slug['zen-journey']['widgets'], {})
 
 

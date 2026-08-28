@@ -9,8 +9,8 @@ SPEC.loader.exec_module(bt)
 
 def model(**over):
     m = {'id': 'ikebana-ichigo-ichie', 'K': 'tours_ikebana-ichigo-ichie', 'num': '01',
-         'area': 'Kamakura', 'length': 'Half-day', 'themes': ['Arts & Craft'],
-         'cover': 'https://img/x.jpg', 'full': True, 'bokun_id': 1273232, 'widgets': {},
+         'area': 'Kamakura', 'length': 'Half-day', 'themes': ['arts'],
+         'cover': 'https://img/x.jpg', 'bokun_id': 1273232, 'widgets': {},
          'title': ('Ikebana', 'Ikebana'), 'sub': ('A private workshop.', ''),
          'lede': ('Ninety minutes with a master of the Sogetsu school.', ''),
          'hours': ('1 hour and 30 minutes', ''), 'coverCaption': ('', ''),
@@ -40,7 +40,7 @@ class TestJsonLd(unittest.TestCase):
 
     def test_unpriced_tour_emits_no_offer(self):
         d = json.loads(re.search(r'>(.*)</script>',
-                                 bt.json_ld(model(full=False, price_rows=[])), re.S).group(1))
+                                 bt.json_ld(model(price_rows=[])), re.S).group(1))
         self.assertNotIn('offers', d)
 
     def test_escapes_a_closing_script_tag_in_copy(self):
@@ -62,10 +62,9 @@ class TestMetaDesc(unittest.TestCase):
 
 
 class TestTemplatesAndSitemap(unittest.TestCase):
-    def test_both_templates_carry_the_json_ld_slot(self):
-        for name in ('tour-detail.html', 'tour-prep.html'):
-            with open(os.path.join(ROOT, 'cms', 'templates', name)) as f:
-                self.assertIn('{{JSON_LD}}', f.read(), name)
+    def test_the_detail_template_carries_the_json_ld_slot(self):
+        with open(os.path.join(ROOT, 'cms', 'templates', 'tour-detail.html')) as f:
+            self.assertIn('{{JSON_LD}}', f.read())
 
     def test_sitemap_includes_tours_when_the_index_exists(self):
         news_spec = importlib.util.spec_from_file_location(
@@ -74,7 +73,13 @@ class TestTemplatesAndSitemap(unittest.TestCase):
         news_spec.loader.exec_module(bn)
         xml = bn.render_sitemap([])
         self.assertIn('https://zenrise.jp/tours.html', xml)
-        self.assertIn('https://zenrise.jp/tour-ikebana-ichigo-ichie.html', xml)
+        # Every published tour, and only those: naming a slug here would make
+        # the test fail whenever the client's catalogue changes.
+        with open(os.path.join(ROOT, 'cms', 'tours-index.json')) as f:
+            published = json.load(f)
+        self.assertTrue(published)
+        for slug in published:
+            self.assertIn(f'https://zenrise.jp/tour-{slug}.html', xml)
 
 
 if __name__ == '__main__':

@@ -12,7 +12,7 @@ CH = 'e2350ad8-80af-4c18-a21a-acae6d72283f'
 # A Bokun-shaped record with no inclusions and no route, as three of the four
 # real tours actually are.
 RECORD = {'id': 'ikebana-ichigo-ichie', 'bokunId': 1273232, 'number': '01',
-          'area': 'Kamakura', 'length': 'Half-day', 'themes': ['Arts & Craft'],
+          'area': 'Kamakura', 'length': 'Half-day', 'themes': ['arts'],
           'cover': {'url': 'https://img/x.jpg'},
           'hoursEn': '1 hour and 30 minutes', 'hoursJa': '1 時間30 分',
           'priceEn': 'from ¥21,000 per adult', 'priceJa': '¥21,000〜（大人おひとり）',
@@ -26,8 +26,8 @@ RECORD = {'id': 'ikebana-ichigo-ichie', 'bokunId': 1273232, 'number': '01',
           'route': []}
 
 
-def model(widgets, full=True, slug='ikebana-ichigo-ichie'):
-    return {'id': slug, 'widgets': widgets, 'full': full, 'bokun_id': 1273232,
+def model(widgets, slug='ikebana-ichigo-ichie'):
+    return {'id': slug, 'widgets': widgets, 'bokun_id': 1273232,
             'K': 'tours_' + slug}
 
 
@@ -94,9 +94,6 @@ class TestWidgetBlock(unittest.TestCase):
         html = bt.widget_block(model({}))
         self.assertIn('data-widget-missing', html)
         self.assertNotIn('bokunWidget', html)
-
-    def test_unpriced_tour_gets_no_widget(self):
-        self.assertEqual(bt.widget_block(model({'en': 'x/y/1'}, full=False)), '')
 
     def test_book_anchor_resolves_in_both_the_widget_and_placeholder_branches(self):
         # The bottom CTA links to #book in every rendering of the full template,
@@ -168,12 +165,12 @@ class TestChipsSection(unittest.TestCase):
 
 class TestRouteSection(unittest.TestCase):
     def test_route_section_is_empty_when_there_are_no_stops(self):
-        m = dict(model({}), route=[], full=True)
+        m = dict(model({}), route=[])
         self.assertEqual(bt.route_section(m, {}, {}), '')
 
     def test_route_section_renders_heading_and_rows_when_there_are_stops(self):
         m = dict(model({}), route=[{'title': 'Arriving', 'body': 'Meet at the gate.'}],
-                 full=True)
+                 )
         html = bt.route_section(m, {}, {})
         self.assertIn('Arriving', html)
         self.assertIn('Meet at the gate.', html)
@@ -183,7 +180,7 @@ class TestRouteSection(unittest.TestCase):
         self.assertIn('data-i18n="td_route"', html)
 
     def test_route_rows_number_stops_from_one(self):
-        m = dict(model({}), full=True, route=[
+        m = dict(model({}), route=[
             {'title': 'First', 'body': 'a'}, {'title': 'Second', 'body': 'b'}])
         en, ja = {}, {}
         bt.route_section(m, en, ja)
@@ -192,7 +189,7 @@ class TestRouteSection(unittest.TestCase):
         self.assertEqual(en['tours_ikebana-ichigo-ichie_rt_02_name'], 'Second')
 
     def test_route_rows_fill_the_ja_dict_too(self):
-        m = dict(model({}), full=True, route=[{'title': 'First', 'body': 'a'}])
+        m = dict(model({}), route=[{'title': 'First', 'body': 'a'}])
         en, ja = {}, {}
         bt.route_section(m, en, ja)
         self.assertEqual(ja['tours_ikebana-ichigo-ichie_rt_01_name'], 'First')
@@ -218,7 +215,7 @@ class TestStopTime(unittest.TestCase):
                          (None, '3 temples on the northern route.'))
 
     def test_timed_row_renders_a_time_cell(self):
-        m = dict(model({}), full=True,
+        m = dict(model({}),
                  route=[{'title': 'History', 'body': '30min The Sogetsu school.'}])
         html = bt.route_section(m, {}, {})
         # The time cell is translatable, so it carries a data-i18n key.
@@ -228,14 +225,14 @@ class TestStopTime(unittest.TestCase):
         self.assertNotIn('no-time', html)
 
     def test_untimed_row_omits_the_cell_and_marks_the_row(self):
-        m = dict(model({}), full=True,
+        m = dict(model({}),
                  route=[{'title': 'Arriving', 'body': 'Meet at the gate.'}])
         html = bt.route_section(m, {}, {})
         self.assertNotIn('r-time', html)
         self.assertIn('class="r-row no-time"', html)
 
     def test_duration_is_stripped_from_the_note_text(self):
-        m = dict(model({}), full=True,
+        m = dict(model({}),
                  route=[{'title': 'History', 'body': '30min The Sogetsu school.'}])
         en = {}
         bt.route_section(m, en, {})
