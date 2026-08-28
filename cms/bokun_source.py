@@ -370,9 +370,10 @@ def to_record(activity, activity_ja, availability, availability_ja, entry, corr)
     if len(distinct) > 1 and not _length_from_rates(rows):
         warnings.append(
             'sells %d differently-named rates but none says half- or full-day, '
-            'so the length falls back to the activity duration. Rename them in '
-            'Bokun to include "Half Day"/"Full Day" if both are offered: %s'
-            % (len(distinct), sorted(distinct)))
+            'so the length falls back to the activity duration. Rate names are '
+            'the only signal Bokun gives us. Put 半日 or 一日 in the Japanese '
+            'rate name (or "Half Day"/"Full Day" in the English one) if both '
+            'are offered: %s' % (len(distinct), sorted(distinct)))
 
     # Themes: Bokun when it has anything to say, the tours-config.json seed
     # when it does not. A tour with neither is still published -- themes are

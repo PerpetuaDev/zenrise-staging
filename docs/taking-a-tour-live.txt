@@ -301,12 +301,18 @@ STEP 9 — Set the duration, group size, rates, prices and availability
   a tour is a half day, a full day, or both by READING YOUR RATE NAMES. Bokun
   does not record a duration per rate, so the names are the only signal.
 
-  Keep the words 'Half Day' and 'Full Day' in the ENGLISH rate names:
-        Group (1-6) Half Day        <- good
-        Group (1-6) Full Day        <- good
-        Group (1-6) Morning         <- the site cannot tell, and will fall
-                                       back to the overall duration
-  Japanese rate names can be written freely; 半日 and 一日 are both understood.
+  Put 半日 or 一日 in the JAPANESE rate name:
+
+        Good:  グループ（1〜6名）半日
+               グループ（1〜6名）一日
+
+        Bad:   グループ（1〜6名）朝のコース
+               No 半日 or 一日, so the site cannot tell and falls back to
+               the overall duration.
+
+  1日 and 終日 also read as a full day. English rate names work the same way,
+  with 'Half Day' or 'Full Day' — either language is enough on its own, so a
+  tour whose English is not written yet still gets the right label.
 
   A tour with both a half-day and a full-day rate shows 'Full / Half-day' in
   the FORMAT column. A tour with neither word falls back to the overall

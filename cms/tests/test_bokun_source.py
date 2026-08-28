@@ -1012,3 +1012,61 @@ class TestProseWithoutBullets(unittest.TestCase):
 
     def test_a_single_paragraph_is_one_item(self):
         self.assertEqual(self.rec_for('<p>Only one thing</p>'), ['Only one thing'])
+
+
+class TestLengthFromJapaneseRates(unittest.TestCase):
+    """Rate names are written in Japanese first, so the length must be
+    derivable from them alone -- Bokun records no duration per rate, and the
+    English name may not exist yet."""
+
+    def rows(self, *ja_titles):
+        return [{'rate_title': None, 'rate_title_ja': t} for t in ja_titles]
+
+    def test_half_day_alone(self):
+        self.assertEqual(
+            bokun_source._length_from_rates(self.rows('グループ（1〜6名）半日')),
+            'Half-day')
+
+    def test_full_day_alone(self):
+        self.assertEqual(
+            bokun_source._length_from_rates(self.rows('グループ（1〜6名）一日')),
+            'Full-day')
+
+    def test_both_read_as_both(self):
+        self.assertEqual(
+            bokun_source._length_from_rates(
+                self.rows('グループ（1〜6名）半日', 'グループ（1〜6名）一日')),
+            'Full / Half-day')
+
+    def test_the_other_full_day_spellings(self):
+        for title in ('1日コース', '終日プラン'):
+            self.assertEqual(bokun_source._length_from_rates(self.rows(title)),
+                             'Full-day', title)
+
+    def test_japanese_alone_needs_no_english_rate_name(self):
+        # The English title is absent entirely, which is the shape a
+        # Japanese-first tour has before anyone writes the translation.
+        rows = self.rows('半日')
+        self.assertIsNone(rows[0]['rate_title'])
+        self.assertEqual(bokun_source._length_from_rates(rows), 'Half-day')
+
+    def test_rates_that_say_nothing_return_empty(self):
+        self.assertEqual(bokun_source._length_from_rates(self.rows('朝のコース')), '')
+
+
+class TestLengthWarningIsBilingual(unittest.TestCase):
+    def test_the_warning_names_the_japanese_words_too(self):
+        # The client writes rate names in Japanese, so telling them to add
+        # "Half Day"/"Full Day" sends them to the wrong field.
+        base = load(f'activity-{ZEN}-EN.json')
+        rates = [dict(r, title=t) for r, t in
+                 zip(base['rates'], ('朝のコース', '夕方のコース'))]
+        activity = dict(base, rates=rates, durationText='4 hours')
+        availability = load(f'availability-{ZEN}.json')
+        entry = dict(CFG['tours'][str(ZEN)])
+        rec, warnings, _ = bokun_source.to_record(
+            activity, activity, availability, [], entry, {})
+        nag = [w for w in warnings if 'half- or full-day' in w]
+        self.assertTrue(nag, 'the length warning did not fire; test is vacuous')
+        self.assertIn('半日', nag[0])
+        self.assertIn('一日', nag[0])
