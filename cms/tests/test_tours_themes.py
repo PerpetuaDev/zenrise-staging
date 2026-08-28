@@ -51,9 +51,15 @@ class TestCategoryMapping(unittest.TestCase):
         slugs, _ = tours_themes.from_categories(['CULINARY'])
         self.assertEqual(slugs, ['food'])
 
-    def test_both_bike_categories_map_to_cycling(self):
-        slugs, _ = tours_themes.from_categories(['BIKE_TOUR', 'EBIKE_TOUR'])
-        self.assertEqual(slugs, ['cycling'])
+    def test_cycling_is_not_a_theme(self):
+        # Retired 2026-08-28: Zenrise does not sell cycling, so the two bike
+        # categories are ignored rather than given a chip.
+        slugs, warnings = tours_themes.from_categories(['BIKE_TOUR', 'EBIKE_TOUR'])
+        self.assertEqual((slugs, warnings), ([], []))
+
+    def test_cycling_is_not_a_live_slug(self):
+        self.assertNotIn('cycling', tours_themes.ORDER)
+        self.assertNotIn('cycling', tours_themes.I18N_KEY)
 
     def test_slugs_come_back_in_canonical_order_not_bokun_order(self):
         # Bokun lists categories in its own order; the chip row must not

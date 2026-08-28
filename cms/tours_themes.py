@@ -17,7 +17,7 @@ relative order for the themes that survived the narrowing, with `arts` -- which
 had no chip at all before -- appended.
 """
 
-ORDER = ['temples', 'culture', 'arts', 'food', 'walking', 'nature', 'cycling']
+ORDER = ['temples', 'culture', 'arts', 'food', 'walking', 'nature']
 
 # Many Bokun values fold into one editorial chip. Mapping generously costs
 # nothing: a chip only renders when a published tour actually carries it, so an
@@ -39,9 +39,6 @@ CATEGORY_THEME = {
     'NATURE': 'nature',
     'HIKING': 'nature',
     'BIRDWATCHING': 'nature',
-
-    'BIKE_TOUR': 'cycling',
-    'EBIKE_TOUR': 'cycling',
 }
 
 # Real values that describe an OTA shelf, a mode of transport, or an activity
@@ -60,6 +57,7 @@ IGNORED = {
     'GLACIER_HIKING', 'CAVING', 'HUNTING', 'FISHING', 'GOLF', 'HORSEBACK_RIDING',
     'JET_SKI_TOUR', 'CANOEING', 'DIVING', 'DOLPHIN_OR_WHALEWATCHING',
     'AMUSEMENT_PARK', 'THEME_PARKS', 'ESCAPE_GAME', 'SHOPPING',
+    'BIKE_TOUR', 'EBIKE_TOUR',
     # Deliberate: Zen Journey -- a seated-meditation temple walk -- carries it,
     # so it marks anything scenic rather than an actual photography tour. Move
     # it into CATEGORY_THEME if a real one ever appears.
@@ -92,7 +90,6 @@ LABEL_EN = {
     'food': 'Food &amp; Drink',
     'walking': 'Walking',
     'nature': 'Nature &amp; Views',
-    'cycling': 'Cycling',
 }
 
 I18N_KEY = {s: f'tours_theme_{s}' for s in ORDER}

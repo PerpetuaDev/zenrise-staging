@@ -89,8 +89,8 @@ BEFORE YOU START — HAVE THESE READY
   - Duration, group size, and at least one price
   - Which of these themes the tour belongs to (set as Bokun categories,
     see STEP 5):
-        Temples & Shrines · Culture · Arts & Craft · Food & Drink ·
-        Walking · Nature & Views · Cycling
+        Temples & Shrines · Culture · Arts & Craft ·
+        Food & Drink · Walking · Nature & Views
   - Which area: Kamakura, Enoshima or Yokohama  (see CAUTION 1)
 
 
@@ -184,14 +184,11 @@ STEP 5 — Set the tour's categories
         Hiking                            ->  Nature & Views
         Birdwatching                      ->  Nature & Views
 
-        Bike tour                         ->  Cycling
-        E-bike tour                       ->  Cycling
-
   Everything else is ignored on purpose. Sightseeing, Day trips and
   excursions, Luxury and special occasions and the like describe an OTA shelf
   rather than the tour — six of your products carry Sightseeing, so a filter
   built on it would show almost everything and separate nothing. Golf, Diving,
-  Theme parks and the rest are simply not what Zenrise sells.
+  Bike tour, Theme parks and the rest are simply not what Zenrise sells.
 
   Ticking an ignored category does no harm: nothing breaks, nothing appears.
 
