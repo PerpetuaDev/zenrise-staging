@@ -1,29 +1,53 @@
 TAKING A TOUR LIVE ON ZENRISE.JP
 A step-by-step guide for the Zenrise team
-Prepared 2026-08-27
+Prepared 2026-08-27, revised 2026-08-28
 
 (Japanese version: docs/taking-a-tour-live.ja.txt — same content)
+
+
+WRITE IN JAPANESE FIRST
+==============================================================================
+
+Every tour is written in Japanese first, at every step: title, short
+description, full description, itinerary, rate names, everything. Japanese is
+the original, and it is what the website treats as authoritative.
+
+The English is a TRANSLATION of that Japanese, made afterwards using Bokun's
+English version of the product. Bokun can machine-translate it for you, but
+machine output is a starting point and not a draft: read every line and correct
+it before the tour goes live. The English is what most of your guests will
+read, and it is the version that sells the tour.
+
+A tour will not publish until BOTH exist — see the conditions below. That is
+deliberate: a half-translated tour on a bilingual site is worse than no tour.
 
 
 HOW THIS WORKS, IN ONE PARAGRAPH
 ==============================================================================
 
 The website reads your tours from Bokun. You do not edit the website. You edit
-the tour in Bokun, add it to one product list, and within the hour the site
-rebuilds itself: the tour page, the card on Our Tours, the tile on the home
-page, the booking calendar, and the sitemap. There is no separate copy of your
-tour text anywhere. Bokun is the only place it lives.
+the tour in Bokun, add it to one product list, and the site rebuilds itself:
+the tour page, the card on Our Tours, the tile on the home page, the booking
+calendar, and the sitemap. There is no separate copy of your tour text
+anywhere. Bokun is the only place it lives.
 
-Practically, that means two things. Anything wrong in Bokun shows up on the
-site within the hour — and anything you fix in Bokun is fixed on the site
-within the hour, without asking anyone.
+Rebuilds are automatic but not instant. They are scheduled hourly, though the
+schedule is run on a best-effort basis and is often skipped, so in practice a
+change usually appears within a few hours. Nothing is lost when a rebuild is
+skipped — the next one picks up everything. If you need a change live at a
+particular time, tell your developer: they can run a rebuild in under a
+minute.
+
+Practically, that means two things. Anything wrong in Bokun reaches the site on
+its own — and anything you fix in Bokun is fixed on the site on its own,
+without asking anyone.
 
 
-THE FOUR THINGS THAT DECIDE WHETHER A TOUR IS PUBLISHED
+WHAT DECIDES WHETHER A TOUR IS PUBLISHED
 ==============================================================================
 
-A tour appears on the website only when ALL FOUR are true. If one is missing,
-the tour is skipped quietly and the rest of the site carries on as normal.
+A tour appears on the website only when ALL of these are true. If one is
+missing, that tour is held back and the rest of the site carries on as normal.
 
   1. It is a Zenrise-tier tour, i.e. set to PRIVATE in Bokun.
      Public/OTA-styled tours are excluded, deliberately and doubly so.
@@ -36,9 +60,22 @@ the tour is skipped quietly and the rest of the site carries on as normal.
 
   4. It has a cover photo and a description.
 
-A tour with no price is NOT skipped. It publishes with an 'in preparation'
-layout instead of a booking calendar, which is intentional — it lets you put a
-tour in front of people while you finish pricing it.
+  5. It has a Japanese description that is actually in Japanese.
+     A tour whose Japanese still holds English text has not been written yet.
+
+  6. It has an English version in Bokun.
+     Creating that version is you saying the English has been checked.
+
+  7. It has at least one price.
+
+  8. It has at least one bookable date in the next year.
+
+The site publishes complete, bookable tours only. There is no half-published
+state: a tour missing a price, or with no open dates, does not appear at all,
+because a page a guest cannot book is worse than no page.
+
+This means you can take as long as you like preparing a tour without any of it
+leaking onto the site. Nothing appears until it is finished.
 
 
 BEFORE YOU START — HAVE THESE READY
@@ -50,9 +87,9 @@ BEFORE YOU START — HAVE THESE READY
   - A cover photo, and ideally one photo per itinerary step
   - What is included / not included / what to bring / good to know
   - Duration, group size, and at least one price
-  - Which of these themes the tour belongs to:
-        Temples & Shrines · Food · Walking · Views & Nature ·
-        Local Life · Culture · Arts & Craft
+  - Which of these themes the tour belongs to (set as Bokun categories,
+    see STEP 5):
+        Food · Walking · Views & Nature · Culture · Arts & Craft
   - Which area: Kamakura, Enoshima or Yokohama  (see CAUTION 1)
 
 
@@ -116,7 +153,37 @@ STEP 4 — Tick the predefined inclusions and traveller information
   Tick only what is genuinely true. All twelve ticked reads as boilerplate.
 
 
-STEP 5 — Write the four free-text blocks
+STEP 5 — Set the tour's categories
+------------------------------------------------------------------------------
+  Bokun's categories are what put a tour under a filter on Our Tours. The
+  website reads them directly; there is nothing to set on the site itself.
+
+  Only these five become a filter:
+
+        Walking tour                  ->  Walking
+        Hiking                        ->  Views & Nature
+        Cultural and theme tours      ->  Culture
+        Arts and culture              ->  Arts & Craft
+        Classes and workshops         ->  Arts & Craft
+
+  Everything else you tick is ignored on purpose — Sightseeing, Day trips and
+  excursions, Luxury and special occasions and the rest describe an OTA shelf
+  rather than the tour. Six of your products carry Sightseeing, so a filter
+  built on it would show almost everything and separate nothing.
+
+  Tick them honestly rather than broadly. Two categories that fit beat five
+  that nearly fit.
+
+  CAUTION: a tour with NONE of the five above still publishes and still sells
+  — but it sits under no filter, so someone browsing by experience will not
+  find it. If a tour is missing from the filters, this is almost always why.
+
+  A filter only appears when some tour actually uses it, so the row grows with
+  your catalogue. When every tour shares one value the row is hidden, because
+  filtering by it would hide nothing.
+
+
+STEP 6 — Write the four free-text blocks
 ------------------------------------------------------------------------------
       Included · Not included · What to bring · Good to know
 
@@ -138,7 +205,7 @@ STEP 5 — Write the four free-text blocks
   is specific to THIS tour.
 
 
-STEP 6 — Build the itinerary, and give each step a photo
+STEP 7 — Build the itinerary, and give each step a photo
 ------------------------------------------------------------------------------
   Each itinerary step becomes a numbered row in 'The route' section.
 
@@ -154,7 +221,7 @@ STEP 6 — Build the itinerary, and give each step a photo
   in that section while the rest of the page is Japanese.
 
 
-STEP 7 — Upload photos
+STEP 8 — Upload photos
 ------------------------------------------------------------------------------
   Upload the LARGEST version you have. Do not resize them first.
 
@@ -166,8 +233,19 @@ STEP 7 — Upload photos
   strongest image first.
 
 
-STEP 8 — Set the duration, group size, rates and prices
+STEP 9 — Set the duration, group size, rates, prices and availability
 ------------------------------------------------------------------------------
+  A tour needs at least one price AND at least one open date to publish. Both
+  are conditions, not nice-to-haves: an unpriced tour, or one with no open
+  dates in the next year, is held back until you set them. If a tour is
+  finished everywhere else but still missing from the site, this is the second
+  most common reason after the 'Website' list.
+
+  Open your availability far enough ahead to be useful. Note also that a
+  booking cut-off set in Bokun pushes the first bookable date forward — a
+  30-day cut-off means nobody can book for a month, which is a commercial
+  decision worth making on purpose.
+
   CAUTION — RATE NAMES MATTER MORE THAN THEY LOOK. The site works out whether
   a tour is a half day, a full day, or both by READING YOUR RATE NAMES. Bokun
   does not record a duration per rate, so the names are the only signal.
@@ -190,7 +268,7 @@ STEP 8 — Set the duration, group size, rates and prices
   visible inside the booking calendar.
 
 
-STEP 9 — Optional extras
+STEP 10 — Optional extras
 ------------------------------------------------------------------------------
   CAUTION: give every extra a PRICE. An extra with no price set will show as
   free, or be refused at checkout. Either is worse than not offering it.
@@ -202,10 +280,10 @@ STEP 9 — Optional extras
   before paying.
 
 
-STEP 10 — Add the tour to the 'Website' product list
+STEP 11 — Add the tour to the 'Website' product list
 ------------------------------------------------------------------------------
   THIS IS THE PUBLISH BUTTON. Nothing before this step puts anything on the
-  site, so you can take as long as you like getting steps 1-9 right.
+  site, so you can take as long as you like getting steps 1-10 right.
 
   Removing a tour from the list unpublishes it: its page and its short link
   are deleted on the next rebuild. The tour itself stays in Bokun untouched,
@@ -215,18 +293,23 @@ STEP 10 — Add the tour to the 'Website' product list
   not treated as a mistake. Do not empty the list to test something.
 
 
-STEP 11 — Wait up to an hour, then check the site
+STEP 12 — Wait for the next rebuild, then check the site
 ------------------------------------------------------------------------------
-  The site rebuilds every hour, on the hour. There is nothing to trigger.
+  Rebuilds are scheduled hourly and there is nothing for you to trigger. The
+  schedule is best-effort though, and is often skipped, so allow a few hours
+  rather than one. Nothing is lost by a skipped rebuild: the next one picks up
+  every change since.
 
-  If you need it immediately, your developer can run it in under a minute.
+  If you need it live at a particular time — a launch, a press deadline — tell
+  your developer, who can run a rebuild in under a minute.
 
 
 CHECK THIS AFTER IT GOES LIVE
 ==============================================================================
 
   [ ] The tour appears on Our Tours, with the right photo and price
-  [ ] It appears under the right theme when you use the theme filters
+  [ ] It appears under the right theme filter (if it appears under none,
+      check its categories — see STEP 5)
   [ ] The tour page opens, and the address looks sensible
   [ ] FORMAT reads correctly (Half-day / Full-day / Full / Half-day)
   [ ] The route section shows your thumbnails and step numbers
@@ -250,22 +333,24 @@ CAUTION 1 — AREA MUST BE ONE WE ALREADY HAVE
   The rest of the site keeps working normally. If you are planning a tour in a
   new city, tell your developer BEFORE you add it to the Website list.
 
-CAUTION 2 — THEMES STILL NEED A DEVELOPER
-  Themes are the only part of a tour a developer still sets. A tour with no
-  theme publishes perfectly well; it simply will not appear under any theme
-  filter. Send the theme along when you add the tour and it takes a minute.
+CAUTION 2 — THEMES ARE YOURS NOW, BUT ONLY FIVE CATEGORIES COUNT
+  Themes come from the Bokun categories you tick — no developer involved. Only
+  the five listed in STEP 5 become a filter; everything else is ignored. A tour
+  with none of them publishes perfectly well, it simply appears under no theme
+  filter. Adding a brand-new theme to the site is still a developer job, as it
+  needs a Japanese translation and a button.
 
-CAUTION 3 — JAPANESE IS HELD BACK UNTIL IT IS REVIEWED
-  Japanese text does not go live automatically. Each tour has a review flag,
-  set by your developer, and until it is set the site shows English in both
-  languages rather than risk publishing raw machine translation. Tell your
-  developer when a tour's Japanese is finished and checked.
+CAUTION 3 — YOUR JAPANESE GOES LIVE AS YOU WROTE IT
+  There is no review step between you and the site: the Japanese you enter is
+  what a Japanese visitor reads, word for word. It is the original, and the
+  site treats it as authoritative. Nobody proofreads it downstream.
 
 CAUTION 4 — MACHINE TRANSLATION IS NOT A DRAFT
-  Bokun can machine-translate a tour in one click. The output has reached the
-  site before and was not usable: mangled words, split characters, sentences
-  in the wrong order. If you use it, treat it as a starting point to be
-  rewritten, and do not ask for the review flag until a person has read it.
+  Bokun can machine-translate your Japanese into English in one click. The
+  output has reached the site before and was not usable: mangled words, split
+  characters, sentences in the wrong order. Treat it as a starting point to be
+  rewritten. Creating the English version is you saying a person has read it —
+  and the English is what most of your guests will actually read.
 
 CAUTION 5 — SPACING DAMAGE FROM PASTED TEXT
   Text pasted from a PDF or a design file has arrived with words broken
@@ -293,31 +378,31 @@ IF THE TOUR HAS NOT APPEARED
 
 Work down this list — it is in the order the site checks things.
 
-  1. Is it in the 'Website' product list?              -> most common cause
-  2. Is it set to PRIVATE, not PUBLIC?
-  3. Does it have an ENGLISH title, distinct from the Japanese one?
-  4. Does it have a cover photo?
-  5. Does it have a description?
-  6. Is its city one of Kamakura / Enoshima / Yokohama?
-  7. Has an hour passed since the change?
+   1. Is it in the 'Website' product list?             -> most common cause
+   2. Is it set to PRIVATE, not PUBLIC?
+   3. Does it have an ENGLISH title, distinct from the Japanese one?
+   4. Does it have a cover photo?
+   5. Does it have a description?
+   6. Is its Japanese description actually in Japanese, not English?
+   7. Does it have an English version in Bokun?
+   8. Does it have at least one price?
+   9. Does it have open availability?
+  10. Is its city one of Kamakura / Enoshima / Yokohama?
+  11. Has a rebuild run since the change?
 
-If all seven are yes, ask your developer to check the build log. Every skipped
-tour is named there with the exact reason, so it is a quick answer rather than
-an investigation.
-
-A tour that has appeared but shows 'in preparation' instead of a calendar is
-not broken: it has no price yet.
+If all eleven are yes, ask your developer to check the build log. Every held-
+back tour is named there with the exact reason, so it is a quick answer rather
+than an investigation.
 
 
 WHAT A DEVELOPER STILL DOES
 ==============================================================================
 
-  - Sets a tour's theme (Caution 2)
-  - Sets the Japanese review flag (Caution 3)
   - Adds a new area (Caution 1)
   - Corrects a web address if one comes out badly (Step 2)
   - Adds new wording to the Booking Terms page
+  - Adds a theme the site does not have yet (Caution 2)
 
 Everything else — text, photos, itinerary, prices, extras, publishing and
-unpublishing — is yours, and takes effect within the hour.
+unpublishing — is yours, and reaches the site on the next rebuild.
 
