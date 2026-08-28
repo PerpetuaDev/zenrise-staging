@@ -89,7 +89,7 @@ BEFORE YOU START — HAVE THESE READY
   - Duration, group size, and at least one price
   - Which of these themes the tour belongs to (set as Bokun categories,
     see STEP 5):
-        Temples & Shrines · Culture · Arts & Craft ·
+        Temples & Shrines · Culture · Arts ·
         Food & Drink · Walking · Nature & Views
   - Which area: Kamakura, Enoshima or Yokohama  (see CAUTION 1)
 
@@ -173,8 +173,8 @@ STEP 5 — Set the tour's categories
         Educational tour                  ->  Culture
         Festival                          ->  Culture
 
-        Arts and culture                  ->  Arts & Craft
-        Classes and workshops             ->  Arts & Craft
+        Arts and culture                  ->  Arts
+        Classes and workshops             ->  Arts
 
         Culinary                          ->  Food & Drink
 
@@ -216,7 +216,7 @@ STEP 5 — Set the tour's categories
   A cooking and craft afternoon —
 
         You ticked:  Culinary, Classes and workshops, Sightseeing
-        Guest sees:  Food & Drink · Arts & Craft
+        Guest sees:  Food & Drink · Arts
 
         Two categories folded into one filter, plus one dropped.
 

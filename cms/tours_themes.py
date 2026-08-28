@@ -86,7 +86,7 @@ def from_categories(categories):
 LABEL_EN = {
     'temples': 'Temples &amp; Shrines',
     'culture': 'Culture',
-    'arts': 'Arts &amp; Craft',
+    'arts': 'Arts',
     'food': 'Food &amp; Drink',
     'walking': 'Walking',
     'nature': 'Nature &amp; Views',
