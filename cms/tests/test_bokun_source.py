@@ -77,7 +77,10 @@ DELETE = object()
 # overrides these back (see test_publish_gates) or passes baseline=False.
 BASELINE = {
     'EN': {'languages': ['en', 'JA_JP']},
-    'ja': {'description': '<p>鎌倉の禅寺をめぐる、静かな半日の旅です。</p>'
+    # The title is lifted as well as the description: both are gated, so a
+    # test targeting some other gate needs a product that clears both.
+    'ja': {'title': '禅の旅',
+           'description': '<p>鎌倉の禅寺をめぐる、静かな半日の旅です。</p>'
                           '<p>坐禅を組み、抹茶と和菓子をお召し上がりいただきます。</p>'},
 }
 
@@ -853,7 +856,10 @@ class TestGates(unittest.TestCase):
         # With its config override removed and an empty registry, this is
         # exactly a brand-new, untranslated product.
         cfg = self._cfg_without_entry(ZEN)
-        records, warnings, final_registry = self._run(FakeClient(), cfg, registry={})
+        # baseline=False: the baseline lifts products through the language
+        # gates, which is the opposite of what this test is about.
+        records, warnings, final_registry = self._run(
+            FakeClient(baseline=False), cfg, registry={})
         self.assertNotIn('zen-journey', {r['id'] for r in records})
         self.assertTrue(any(str(ZEN) in w and 'no resolvable slug' in w
                             and 'The Zen Journey-KAMAKURA' in w for w in warnings), warnings)
@@ -863,7 +869,7 @@ class TestGates(unittest.TestCase):
         cfg = self._cfg_without_entry(ZEN)
         c = FakeClient(overrides={
             f'{ZEN}-EN': {'languages': ['en', 'JA_JP']},
-            f'{ZEN}-ja': {'title': 'ZEN-JA-SENTINEL'},
+            f'{ZEN}-ja': {'title': '禅ZEN-JA-SENTINEL'},
         })
         records, warnings, final_registry = self._run(c, cfg, registry={})
         by_slug = {r['id']: r for r in records}
@@ -960,7 +966,7 @@ class TestConfigEntryIsOptional(unittest.TestCase):
         cfg = dict(CFG, tours={})
         c = FakeClient(overrides={
             f'{ZEN}-EN': {'languages': ['en', 'JA_JP']},
-            f'{ZEN}-ja': {'title': 'ZEN-JA-SENTINEL'},
+            f'{ZEN}-ja': {'title': '禅ZEN-JA-SENTINEL'},
         })
         with tempfile.TemporaryDirectory() as tmp:
             p = os.path.join(tmp, 'r.json')

@@ -1,5 +1,5 @@
 # cms/tests/test_tours_render.py
-import importlib.util, os, re, unittest
+import importlib.util, io, os, re, unittest
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 SPEC = importlib.util.spec_from_file_location(
@@ -241,6 +241,48 @@ class TestCardAndTile(unittest.TestCase):
         self.assertIn('href="tour-ikebana-ichigo-ichie.html"', bt.tile(bt.tour_model(record())))
 
 
+class TestEmptyCatalogue(unittest.TestCase):
+    """An empty catalogue is reachable: every tour held back at once, which
+    is exactly what the publish gates produced on 2026-09-01."""
+
+    def test_no_tours_renders_an_empty_state(self):
+        out = bt.grid_region([])
+        self.assertIn('class="tours-empty"', out)
+        self.assertIn('data-i18n="tours_empty"', out)
+
+    def test_the_empty_state_key_is_translated_both_ways(self):
+        lang = io.open(os.path.join(ROOT, 'lang.js'), encoding='utf-8').read()
+        # once in the en dict, once in the ja dict
+        self.assertEqual(lang.count('tours_empty:'), 2)
+
+    def test_tours_with_cards_render_no_empty_state(self):
+        out = bt.grid_region([bt.tour_model(record())])
+        self.assertNotIn('tours-empty', out)
+        self.assertIn('tcard', out)
+
+    def test_an_empty_filter_section_is_collapsed_by_css(self):
+        # The build writes no chips, so the section must hide itself rather
+        # than leave dead padding above the empty state.
+        page = io.open(os.path.join(ROOT, 'tours.html'), encoding='utf-8').read()
+        self.assertIn('.filters:not(:has(.chip-row))', page)
+
+    def test_the_home_tiles_region_shows_the_same_empty_state(self):
+        out = bt.home_tours_region([])
+        self.assertIn('data-i18n="tours_empty"', out)
+
+    def test_the_home_tours_section_is_not_hidden_when_empty(self):
+        # The hero's "Read more" link is href="#find"; collapsing the section
+        # would leave that anchor pointing at nothing.
+        page = io.open(os.path.join(ROOT, 'index.html'), encoding='utf-8').read()
+        self.assertIn('href="#find"', page)
+        self.assertNotIn('.find:not(:has(.dest))', page)
+
+    def test_the_home_tiles_region_renders_tiles_when_there_are_tours(self):
+        out = bt.home_tours_region([bt.tour_model(record())])
+        self.assertNotIn('tours-empty', out)
+        self.assertIn('class="dest"', out)
+
+
 class TestStopTime(unittest.TestCase):
     def test_extracts_a_leading_duration(self):
         self.assertEqual(bt.split_stop_time('30min The history of the art.'),
@@ -410,9 +452,16 @@ class TestGridOrder(unittest.TestCase):
             r'href="tour-[a-z0-9-]+\.html".*?No\.\s*(\d+)', html, re.S)]
 
     def test_cards_render_in_ascending_number_order(self):
+        # An empty catalogue is legitimate -- every tour can be held back by
+        # the publish gates at once, which is what happened on 2026-09-01. So
+        # assert the ordering when there are cards, and the empty state when
+        # there are none, rather than demanding at least one card.
         for page in ('tours.html', 'index.html'):
             nums = self._numbers(page)
-            self.assertTrue(nums, page)
+            if not nums:
+                with open(os.path.join(ROOT, page), encoding='utf-8') as fh:
+                    self.assertIn('data-i18n="tours_empty"', fh.read(), page)
+                continue
             self.assertEqual(nums, sorted(nums), page)
 
     def test_sort_key_puts_unnumbered_tours_last(self):

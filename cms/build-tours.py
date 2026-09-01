@@ -799,6 +799,40 @@ def render_detail(m, tpl):
     return render(tpl, slots)
 
 
+def grid_region(models):
+    """The tours-grid region: the cards, or an empty state when there are none.
+
+    An empty catalogue is reachable and has happened -- every tour held back
+    by the publish gates at once. Without this the page rendered its heading
+    and lede, then two empty sections' worth of padding, then the bespoke
+    CTA, which reads as broken rather than as deliberately empty. The
+    filters section above collapses on its own (see tours.html: it hides
+    when it holds no chip row); the home page shows the same line via
+    home_tours_region.
+    """
+    if not models:
+        return empty_state()
+    return '\n\n'.join(card(m) for m in models)
+
+
+def empty_state():
+    """The one line of copy shown wherever tours would otherwise be listed."""
+    return ('        <p class="tours-empty" data-i18n="tours_empty">New tours '
+            'are in preparation. Please check back soon.</p>')
+
+
+def home_tours_region(models):
+    """The home page's tiles region, or the same empty state.
+
+    The section is not hidden when empty: the hero's "Read more" link is
+    href="#find", so collapsing the section would leave that anchor
+    pointing at nothing.
+    """
+    if not models:
+        return empty_state()
+    return '\n\n'.join(tile(m) for m in models)
+
+
 def card(m):
     """tours.html grid card."""
     K = m['K']
@@ -964,7 +998,7 @@ def main():
     rewrite_region(os.path.join(ROOT, 'tours.html'), 'tours-filters',
                    filter_rows(live))
     rewrite_region(os.path.join(ROOT, 'tours.html'), 'tours-grid',
-                   '\n\n'.join(card(m) for m in live))
+                   grid_region(live))
     en, ja = {}, {}
     for m in live:
         e, j = base_dict(m)
@@ -976,7 +1010,7 @@ def main():
     by_id = {m['id']: m for m in live}
     feats = [by_id[i] for i in featured_ids if i in by_id] or live
     rewrite_region(os.path.join(ROOT, 'index.html'), 'home-tours',
-                   '\n\n'.join(tile(m) for m in feats))
+                   home_tours_region(feats))
     en, ja = {}, {}
     for m in feats:
         e, j = base_dict(m)

@@ -164,6 +164,57 @@ class TestUntranslatedJapanese(unittest.TestCase):
         self.assertTrue(any('Japanese' in w for w in held(warnings)), warnings)
 
 
+class TestJapaneseTitleGate(unittest.TestCase):
+    """The title is held to the same standard as the description.
+
+    The live case that prompted this: the client edited zen-journey's
+    Japanese title to "The Zen Journey" against an English "A Zen Journey".
+    One word apart, so same_text does not match it -- only the
+    has_japanese check catches it.
+    """
+
+    def _ja_title(self, pid, title):
+        ov = complete(pid)
+        ov[f'{pid}-ja'] = dict(ov[f'{pid}-ja'], title=title)
+        return ov
+
+    def test_a_japanese_title_identical_to_the_english_is_held_back(self):
+        recs, warns = run([ZEN], self._ja_title(ZEN, 'The Zen Journey-KAMAKURA'))
+        self.assertEqual(recs, [])
+        self.assertIn('the Japanese title is identical to the English one',
+                      ' '.join(held(warns)))
+
+    def test_reworded_english_in_the_japanese_title_is_held_back(self):
+        # same_text misses this -- a title is short enough that one changed
+        # word makes it non-identical. This is the real-world failure.
+        recs, warns = run([ZEN], self._ja_title(ZEN, 'A Zen Journey'))
+        self.assertEqual(recs, [])
+        joined = ' '.join(held(warns))
+        self.assertIn('the Japanese title contains no Japanese at all', joined)
+        self.assertIn('A Zen Journey', joined)
+
+    def test_a_japanese_title_publishes(self):
+        recs, _ = run([ZEN], self._ja_title(ZEN, '禅の旅'))
+        self.assertEqual([r['id'] for r in recs], ['zen-journey'])
+
+    def test_english_inside_a_japanese_title_publishes(self):
+        # Brand and place names in Latin script are normal in a Japanese
+        # title and must not block, matching the description rule.
+        recs, _ = run([ZEN], self._ja_title(ZEN, 'Zenrise 禅の旅 KAMAKURA'))
+        self.assertEqual([r['id'] for r in recs], ['zen-journey'])
+
+    def test_the_description_gate_still_reports_first(self):
+        # When both are wrong the description is the more substantive fault,
+        # so its message is the one the client sees.
+        ov = complete(ZEN)
+        ov[f'{ZEN}-ja'] = {'title': 'A Zen Journey',
+                           'description': '<p>Kamakura has kept its temples.</p>'}
+        recs, warns = run([ZEN], ov)
+        self.assertEqual(recs, [])
+        self.assertIn('the Japanese description contains no Japanese at all',
+                      ' '.join(held(warns)))
+
+
 class TestNoFalseNegatives(unittest.TestCase):
     """Real Japanese publishes however terse or kanji-heavy it is."""
 

@@ -77,7 +77,9 @@ class TestTemplatesAndSitemap(unittest.TestCase):
         # the test fail whenever the client's catalogue changes.
         with open(os.path.join(ROOT, 'cms', 'tours-index.json')) as f:
             published = json.load(f)
-        self.assertTrue(published)
+        # Not assertTrue(published): an empty index is a legitimate state,
+        # for the same reason a slug is not named above -- the catalogue is
+        # the client's to change, and the gates can hold every tour back.
         for slug in published:
             self.assertIn(f'https://zenrise.jp/tour-{slug}.html', xml)
 

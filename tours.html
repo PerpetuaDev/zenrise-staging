@@ -67,6 +67,10 @@
   :lang(ja) .tours-head p { line-height: 1.7; }
   /* ── filters ── */
   .filters { padding-top: 72px; }
+  /* With no published tours the build writes no chips, and an empty
+     filter section would just be 72px of dead space above the empty
+     state. Collapse it rather than have the page look broken. */
+  .filters:not(:has(.chip-row)) { display: none; }
   .filters .label { display: block; margin-bottom: 24px; }
   .chip-row { display: flex; flex-wrap: wrap; gap: 10px; }
   .chip-row.areas { margin-bottom: 20px; }
@@ -76,6 +80,11 @@
   .chip.on { background: var(--ink); border-color: var(--ink); color: var(--bg); }
   /* ── tour grid ── */
   .tour-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 60px 20px; }
+  /* Empty state: spans the grid so it reads as a line of copy, not as
+     a card in the first column. */
+  .tours-empty { grid-column: 1 / -1; font-family: var(--display); font-size: 24px;
+    line-height: 1.45; color: var(--ink-60); margin: 0; padding: 8px 0 40px;
+    text-wrap: pretty; }
   .tcard { display: flex; flex-direction: column; cursor: pointer; }
   .tcard[hidden] { display: none; }
   .tcard:hover { opacity: 1; }
@@ -198,13 +207,7 @@
       <section class="filters" data-screen-label="06 Tours — Filters">
         <!-- CMS:tours-filters:start -->
 
-        <span class="label" data-i18n="tours_filter_label_theme">Browse by experience</span>
-        <div class="chip-row themes" role="group" aria-label="Filter by theme">
-          <button type="button" class="chip" data-theme="temples" data-i18n="tours_theme_temples">Temples &amp; Shrines</button>
-          <button type="button" class="chip" data-theme="culture" data-i18n="tours_theme_culture">Culture</button>
-          <button type="button" class="chip" data-theme="walking" data-i18n="tours_theme_walking">Walking</button>
-          <button type="button" class="chip" data-theme="nature" data-i18n="tours_theme_nature">Nature &amp; Views</button>
-        </div>
+
 
       <!-- CMS:tours-filters:end -->
       </section>
@@ -212,17 +215,7 @@
       <section class="tour-grid" data-screen-label="06 Tours — All tours">
       <!-- CMS:tours-grid:start -->
 
-        <a class="tcard" href="tour-zen-journey.html" data-area="kamakura" data-themes="temples culture walking nature">
-          <div class="pic" style="background-image: url('https://imgcdn.bokun.tools/4277c6b0-2337-43f9-8c40-1ed5578910fd.jpeg?w=900')">
-            <span class="num">No. 03</span>
-          </div>
-          <div class="t-body">
-            <div class="t-meta"><span data-i18n="tours_area_kamakura">Kamakura</span><span class="dot">・</span><span data-i18n="tours_len_half">Half-day</span></div>
-            <h3 data-i18n="tours_zen-journey_name">A Zen Journey</h3>
-            <p class="t-sub" data-i18n="tours_zen-journey_sub">A private, guided passage through three temple grounds of the Kamakura Five Mountains. Seated meditation before the crowds, matcha over a dry landscape garden, and an unhurried walk, with an English-speaking guide.</p>
-            <div class="t-foot"><span data-i18n="tours_zen-journey_hours">4 hours</span><span class="price" data-i18n="tours_zen-journey_price">from ¥50,000</span></div>
-          </div>
-        </a>
+        <p class="tours-empty" data-i18n="tours_empty">New tours are in preparation. Please check back soon.</p>
 
       <!-- CMS:tours-grid:end -->
       </section>
@@ -334,7 +327,7 @@
     });
   })();
 </script>
-<script>window.ZENRISE_CMS_DICT = {"en":{"tours_zen-journey_name":"A Zen Journey","tours_zen-journey_sub":"A private, guided passage through three temple grounds of the Kamakura Five Mountains. Seated meditation before the crowds, matcha over a dry landscape garden, and an unhurried walk, with an English-speaking guide.","tours_zen-journey_hours":"4 hours","tours_zen-journey_title":"A Zen Journey — Zenrise","tours_zen-journey_eyebrow":"Tour No. 03","tours_zen-journey_cap":"","tours_zen-journey_cta_eyebrow":"from ¥50,000","tours_zen-journey_price":"from ¥50,000"},"ja":{"tours_zen-journey_name":"The Zen Journey","tours_zen-journey_sub":"850年の鎌倉の歴史と、禅の本質に触れる。日本庭園・坐禅・抹茶。","tours_zen-journey_hours":"4 時間","tours_zen-journey_title":"The Zen Journey — Zenrise","tours_zen-journey_eyebrow":"ツアー No. 03","tours_zen-journey_cap":"","tours_zen-journey_cta_eyebrow":"¥50,000〜","tours_zen-journey_price":"¥50,000〜"}};</script>
+<script>window.ZENRISE_CMS_DICT = {"en":{},"ja":{}};</script>
 <script src="lang.js"></script>
 </body>
 </html>

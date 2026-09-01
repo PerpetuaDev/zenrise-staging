@@ -541,6 +541,30 @@ def fetch_records(client, cfg, registry_path=None):
                               'the Japanese description contains no Japanese '
                               'at all'))
             continue
+        # The title is held to the same standard as the description. It has
+        # to be checked separately: a title is short enough that a reworded
+        # English one is not byte-identical to the English original, so
+        # same_text alone misses it -- zen-journey shipped a Japanese title
+        # of "The Zen Journey" against an English "A Zen Journey", which
+        # differs by one word and slipped straight through.
+        #
+        # A caveat for whoever hits a false positive here: a Japanese title
+        # that is legitimately all romaji (a bare brand name, say) has no
+        # Japanese script and would be held back by the second check. No
+        # product in the catalogue is written that way today -- every real
+        # Japanese title so far carries kana or kanji -- but if one ever is,
+        # the fix is a per-tour override, not loosening the gate for all.
+        if bokun_text.same_text(title_ja, title_en):
+            held_back.append((pid, title_en,
+                              'the Japanese title is identical to the English '
+                              'one, so the tour has not been translated into '
+                              'Japanese yet'))
+            continue
+        if not bokun_text.has_japanese(title_ja):
+            held_back.append((pid, title_en,
+                              'the Japanese title contains no Japanese at all '
+                              f'(it reads {title_ja!r})'))
+            continue
         ratio = bokun_text.japanese_ratio(ja_description)
         if ratio < 0.10:
             warnings.append(
