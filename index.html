@@ -850,7 +850,14 @@
     var stage = document.getElementById('stage');
     function fit() {
       var vw = document.documentElement.clientWidth;
-      if (vw < 1024) {
+      // Gate on the same media query the CSS uses, not on clientWidth: the
+      // two disagree by the width of a classic scrollbar, so between a 1024
+      // and a 1038px window the CSS had already dropped its max-width:1023px
+      // override (leaving .stage at its 1920px design width) while this
+      // branch still read 'mobile' and cleared the zoom. The page then laid
+      // out at 1920 and clipped, with overflow-x: hidden leaving no way to
+      // scroll to the rest of it.
+      if (!window.matchMedia('(min-width: 1024px)').matches) {
         stage.style.zoom = '';
         stage.style.width = '';
         stage.style.margin = '';
