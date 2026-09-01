@@ -167,6 +167,12 @@
     .fig .ph { height: 56vw; }
     .fig .ph.tall { height: 90vw; }
     .cta-duo { width: auto; margin: 48px 0 0; grid-template-columns: 1fr; gap: 16px; padding-top: 48px; }
+    /* The desktop rule pins a lone panel to 914px. A 1fr track is really
+       minmax(auto, 1fr), so that fixed width becomes the track's automatic
+       minimum and the grid blows out past the viewport -- leaving
+       max-width: 100% resolving against the blown track, so it caps
+       nothing. Releasing the width lets the track govern again. */
+    .cta-duo .cta-panel:only-child { width: auto; }
     .cta-panel { padding: 26px 22px 30px; }
     .cta-panel p { font-size: 16px; margin-bottom: 28px; }
     .cta-panel .cta { font-size: 17px; }
