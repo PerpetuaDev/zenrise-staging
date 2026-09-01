@@ -4,7 +4,7 @@
   "bokunId": 1273194,
   "number": "03",
   "area": "Kamakura",
-  "length": "Full / Half-day",
+  "length": "Half-day",
   "themes": [
    "temples",
    "culture",
@@ -21,124 +21,124 @@
   "priceJa": "¥50,000〜",
   "priceRows": [
    {
-    "category": "Standard Price",
-    "category_ja": "Standard Price",
-    "min": 5,
-    "max": 5,
-    "amount": 90000,
-    "currency": "JPY",
-    "rate_title": "Group (1–6) Half Day",
-    "rate_title_ja": "Standard Price Harf Day"
-   },
-   {
-    "category": "Standard Price",
-    "category_ja": "Standard Price",
-    "min": 6,
-    "max": 6,
-    "amount": 100000,
-    "currency": "JPY",
-    "rate_title": "Group (1–6) Half Day",
-    "rate_title_ja": "Standard Price Harf Day"
-   },
-   {
-    "category": "Standard Price",
-    "category_ja": "Standard Price",
-    "min": 3,
-    "max": 3,
-    "amount": 70000,
-    "currency": "JPY",
-    "rate_title": "Group (1–6) Half Day",
-    "rate_title_ja": "Standard Price Harf Day"
-   },
-   {
-    "category": "Standard Price",
-    "category_ja": "Standard Price",
-    "min": 4,
-    "max": 4,
-    "amount": 80000,
-    "currency": "JPY",
-    "rate_title": "Group (1–6) Half Day",
-    "rate_title_ja": "Standard Price Harf Day"
-   },
-   {
-    "category": "Standard Price",
-    "category_ja": "Standard Price",
+    "category": " 1 group 4 person-Full Day",
+    "category_ja": " 1 group 4 person-Full Day",
     "min": 1,
-    "max": 1,
+    "max": null,
+    "amount": 150000,
+    "currency": "JPY",
+    "rate_title": "Group (1–6) Half Day",
+    "rate_title_ja": "Standard Price "
+   },
+   {
+    "category": " 1 group 1 person-Harf Day",
+    "category_ja": " 1 group 1 person-Harf Day",
+    "min": 1,
+    "max": null,
     "amount": 50000,
     "currency": "JPY",
     "rate_title": "Group (1–6) Half Day",
-    "rate_title_ja": "Standard Price Harf Day"
+    "rate_title_ja": "Standard Price "
    },
    {
-    "category": "Standard Price",
-    "category_ja": "Standard Price",
-    "min": 2,
-    "max": 2,
+    "category": " 1 group 3 person-Harf Day",
+    "category_ja": " 1 group 3 person-Harf Day",
+    "min": 1,
+    "max": null,
+    "amount": 70000,
+    "currency": "JPY",
+    "rate_title": "Group (1–6) Half Day",
+    "rate_title_ja": "Standard Price "
+   },
+   {
+    "category": " 1 group 6 person-Harf Day",
+    "category_ja": " 1 group 6 person-Harf Day",
+    "min": 1,
+    "max": null,
+    "amount": 100000,
+    "currency": "JPY",
+    "rate_title": "Group (1–6) Half Day",
+    "rate_title_ja": "Standard Price "
+   },
+   {
+    "category": " 1 group 5person-Harf Day",
+    "category_ja": " 1 group 5person-Harf Day",
+    "min": 1,
+    "max": null,
+    "amount": 90000,
+    "currency": "JPY",
+    "rate_title": "Group (1–6) Half Day",
+    "rate_title_ja": "Standard Price "
+   },
+   {
+    "category": " 1 group 2 person-Harf Day",
+    "category_ja": " 1 group 2 person-Harf Day",
+    "min": 1,
+    "max": null,
     "amount": 60000,
     "currency": "JPY",
     "rate_title": "Group (1–6) Half Day",
-    "rate_title_ja": "Standard Price Harf Day"
+    "rate_title_ja": "Standard Price "
    },
    {
-    "category": "Standard Price",
-    "category_ja": "Standard Price",
+    "category": " 1 group 1 person-Full Day",
+    "category_ja": " 1 group 1 person-Full Day",
     "min": 1,
-    "max": 1,
+    "max": null,
     "amount": 90000,
     "currency": "JPY",
-    "rate_title": "Group (1–6) Full Day",
-    "rate_title_ja": "Standard Price Full Day"
+    "rate_title": "Group (1–6) Half Day",
+    "rate_title_ja": "Standard Price "
    },
    {
-    "category": "Standard Price",
-    "category_ja": "Standard Price",
-    "min": 2,
-    "max": 2,
-    "amount": 110000,
+    "category": " 1 group 4 person-Harf Day",
+    "category_ja": " 1 group 4 person-Harf Day",
+    "min": 1,
+    "max": null,
+    "amount": 80000,
     "currency": "JPY",
-    "rate_title": "Group (1–6) Full Day",
-    "rate_title_ja": "Standard Price Full Day"
+    "rate_title": "Group (1–6) Half Day",
+    "rate_title_ja": "Standard Price "
    },
    {
-    "category": "Standard Price",
-    "category_ja": "Standard Price",
-    "min": 5,
-    "max": 5,
-    "amount": 170000,
-    "currency": "JPY",
-    "rate_title": "Group (1–6) Full Day",
-    "rate_title_ja": "Standard Price Full Day"
-   },
-   {
-    "category": "Standard Price",
-    "category_ja": "Standard Price",
-    "min": 6,
-    "max": 6,
-    "amount": 190000,
-    "currency": "JPY",
-    "rate_title": "Group (1–6) Full Day",
-    "rate_title_ja": "Standard Price Full Day"
-   },
-   {
-    "category": "Standard Price",
-    "category_ja": "Standard Price",
-    "min": 3,
-    "max": 3,
+    "category": " 1 group 3 person-Full Day",
+    "category_ja": " 1 group 3 person-Full Day",
+    "min": 1,
+    "max": null,
     "amount": 130000,
     "currency": "JPY",
-    "rate_title": "Group (1–6) Full Day",
-    "rate_title_ja": "Standard Price Full Day"
+    "rate_title": "Group (1–6) Half Day",
+    "rate_title_ja": "Standard Price "
    },
    {
-    "category": "Standard Price",
-    "category_ja": "Standard Price",
-    "min": 4,
-    "max": 4,
-    "amount": 150000,
+    "category": " 1 group 6 person-Full Day",
+    "category_ja": " 1 group 6 person-Full Day",
+    "min": 1,
+    "max": null,
+    "amount": 190000,
     "currency": "JPY",
-    "rate_title": "Group (1–6) Full Day",
-    "rate_title_ja": "Standard Price Full Day"
+    "rate_title": "Group (1–6) Half Day",
+    "rate_title_ja": "Standard Price "
+   },
+   {
+    "category": " 1 group 5 person-Full Day",
+    "category_ja": " 1 group 5 person-Full Day",
+    "min": 1,
+    "max": null,
+    "amount": 170000,
+    "currency": "JPY",
+    "rate_title": "Group (1–6) Half Day",
+    "rate_title_ja": "Standard Price "
+   },
+   {
+    "category": " 1 group 2 person-Full Day",
+    "category_ja": " 1 group 2 person-Full Day",
+    "min": 1,
+    "max": null,
+    "amount": 110000,
+    "currency": "JPY",
+    "rate_title": "Group (1–6) Half Day",
+    "rate_title_ja": "Standard Price "
    }
   ],
   "widgets": {
@@ -204,7 +204,7 @@
    "すべての手配はあらかじめ整えてありますので、あとはゆっくりと歩む心構えだけをお持ちください。"
   ],
   "titleEn": "A Zen Journey",
-  "titleJa": "禅の旅",
+  "titleJa": "The Zen Journey",
   "subEn": "A private, guided passage through three temple grounds of the Kamakura Five Mountains. Seated meditation before the crowds, matcha over a dry landscape garden, and an unhurried walk, with an English-speaking guide.",
   "subJa": "850年の鎌倉の歴史と、禅の本質に触れる。日本庭園・坐禅・抹茶。",
   "ledeEn": "Kamakura has kept its temples for eight hundred and fifty years, and its stillness for just as long. This tour is built around that stillness — not a checklist of sights, but a slow pass through three of the city's five great Zen temples, with a guide who can explain what you're looking at, and enough quiet, unhurried time to actually look. The Five Mountains, or Gozan, are the five preeminent Rinzai Zen temples whose foundations were laid under the Kamakura shogunate and which were later ranked at the highest tier by the Muromachi shogunate: Kencho-ji, Engaku-ji, Jufuku-ji, Jochi-ji, and Jomyo-ji. You'll sit for a short zazen at Engaku-ji, wander the seasonal grounds of Jochi-ji, and take matcha before a dry rock garden at Jomyo-ji, before lunch closes the morning at a place suited to your taste. Everything is arranged in advance. All you need to bring is a willingness to slow down.",
