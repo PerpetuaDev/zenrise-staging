@@ -42,4 +42,19 @@ jobs:
             exit 0
           fi
           git commit -m "CMS: rebuild tour pages from Bokun"
-          git push
+          # Two publishes in quick succession race each other: the loser's push
+          # is rejected as a non-fast-forward and, before this loop, the run
+          # simply failed and its rebuild was dropped on the floor -- silently,
+          # since nothing reports a red run back to whoever published. The
+          # commit only ever touches generated files and the build is
+          # deterministic from the source of truth, so rebasing onto whoever
+          # won and pushing again is safe.
+          for attempt in 1 2 3 4 5; do
+            if git push; then
+              exit 0
+            fi
+            echo "push rejected (attempt $attempt), rebasing onto origin/main"
+            git pull --rebase origin main || exit 1
+          done
+          echo "push still rejected after 5 attempts"
+          exit 1
