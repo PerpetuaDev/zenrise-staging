@@ -14,11 +14,11 @@
   },
   "hoursEn": "1 hour",
   "hoursJa": "1 時間",
-  "priceEn": "from ¥12,000 per adult",
-  "priceJa": "¥12,000〜（大人おひとり）",
+  "priceEn": "from ¥12,000",
+  "priceJa": "¥12,000〜",
   "priceRows": [
    {
-    "category": "Adults",
+    "category": "Standard Price",
     "category_ja": null,
     "min": 4,
     "max": 4,
@@ -28,7 +28,7 @@
     "rate_title_ja": null
    },
    {
-    "category": "Adults",
+    "category": "Standard Price",
     "category_ja": null,
     "min": 3,
     "max": 3,
@@ -38,7 +38,7 @@
     "rate_title_ja": null
    },
    {
-    "category": "Adults",
+    "category": "Standard Price",
     "category_ja": null,
     "min": 1,
     "max": 2,
@@ -96,30 +96,128 @@
   },
   "hoursEn": "4 hours",
   "hoursJa": "4 時間",
-  "priceEn": "from ¥40,000 per group",
-  "priceJa": "¥40,000〜（1グループ）",
+  "priceEn": "from ¥50,000",
+  "priceJa": "¥50,000〜",
   "priceRows": [
    {
-    "category": null,
-    "category_ja": null,
-    "min": 1,
-    "max": 6,
-    "amount": 40000,
+    "category": "Standard Price",
+    "category_ja": "Standard Price",
+    "min": 5,
+    "max": 5,
+    "amount": 90000,
     "currency": "JPY",
-    "per_booking": true,
     "rate_title": "Group (1–6) Half Day",
-    "rate_title_ja": "グループ（1〜6名）半日"
+    "rate_title_ja": "Standard Price Harf Day"
    },
    {
-    "category": null,
-    "category_ja": null,
-    "min": 1,
+    "category": "Standard Price",
+    "category_ja": "Standard Price",
+    "min": 6,
     "max": 6,
+    "amount": 100000,
+    "currency": "JPY",
+    "rate_title": "Group (1–6) Half Day",
+    "rate_title_ja": "Standard Price Harf Day"
+   },
+   {
+    "category": "Standard Price",
+    "category_ja": "Standard Price",
+    "min": 3,
+    "max": 3,
     "amount": 70000,
     "currency": "JPY",
-    "per_booking": true,
+    "rate_title": "Group (1–6) Half Day",
+    "rate_title_ja": "Standard Price Harf Day"
+   },
+   {
+    "category": "Standard Price",
+    "category_ja": "Standard Price",
+    "min": 4,
+    "max": 4,
+    "amount": 80000,
+    "currency": "JPY",
+    "rate_title": "Group (1–6) Half Day",
+    "rate_title_ja": "Standard Price Harf Day"
+   },
+   {
+    "category": "Standard Price",
+    "category_ja": "Standard Price",
+    "min": 1,
+    "max": 1,
+    "amount": 50000,
+    "currency": "JPY",
+    "rate_title": "Group (1–6) Half Day",
+    "rate_title_ja": "Standard Price Harf Day"
+   },
+   {
+    "category": "Standard Price",
+    "category_ja": "Standard Price",
+    "min": 2,
+    "max": 2,
+    "amount": 60000,
+    "currency": "JPY",
+    "rate_title": "Group (1–6) Half Day",
+    "rate_title_ja": "Standard Price Harf Day"
+   },
+   {
+    "category": "Standard Price",
+    "category_ja": "Standard Price",
+    "min": 1,
+    "max": 1,
+    "amount": 90000,
+    "currency": "JPY",
     "rate_title": "Group (1–6) Full Day",
-    "rate_title_ja": "グループ（1〜6名）一日"
+    "rate_title_ja": "Standard Price Full Day"
+   },
+   {
+    "category": "Standard Price",
+    "category_ja": "Standard Price",
+    "min": 2,
+    "max": 2,
+    "amount": 110000,
+    "currency": "JPY",
+    "rate_title": "Group (1–6) Full Day",
+    "rate_title_ja": "Standard Price Full Day"
+   },
+   {
+    "category": "Standard Price",
+    "category_ja": "Standard Price",
+    "min": 5,
+    "max": 5,
+    "amount": 170000,
+    "currency": "JPY",
+    "rate_title": "Group (1–6) Full Day",
+    "rate_title_ja": "Standard Price Full Day"
+   },
+   {
+    "category": "Standard Price",
+    "category_ja": "Standard Price",
+    "min": 6,
+    "max": 6,
+    "amount": 190000,
+    "currency": "JPY",
+    "rate_title": "Group (1–6) Full Day",
+    "rate_title_ja": "Standard Price Full Day"
+   },
+   {
+    "category": "Standard Price",
+    "category_ja": "Standard Price",
+    "min": 3,
+    "max": 3,
+    "amount": 130000,
+    "currency": "JPY",
+    "rate_title": "Group (1–6) Full Day",
+    "rate_title_ja": "Standard Price Full Day"
+   },
+   {
+    "category": "Standard Price",
+    "category_ja": "Standard Price",
+    "min": 4,
+    "max": 4,
+    "amount": 150000,
+    "currency": "JPY",
+    "rate_title": "Group (1–6) Full Day",
+    "rate_title_ja": "Standard Price Full Day"
    }
   ],
   "widgets": {
@@ -209,11 +307,11 @@
   },
   "hoursEn": "1 hour and 30 minutes",
   "hoursJa": "1 時間30 分",
-  "priceEn": "from ¥44,000 per adult",
-  "priceJa": "¥44,000〜（大人おひとり）",
+  "priceEn": "from ¥44,000",
+  "priceJa": "¥44,000〜",
   "priceRows": [
    {
-    "category": "Adults",
+    "category": "Standard Price",
     "category_ja": null,
     "min": 1,
     "max": 2,
