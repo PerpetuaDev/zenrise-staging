@@ -146,12 +146,20 @@
   },
   "route": [
    {
-    "title": "A 'Zen' Journey",
-    "body": "Guided meditation, gardens and matcha at Engaku-ji, Jochi-ji and Jomyo-ji.",
-    "titleJa": "禅の旅",
-    "bodyJa": "円覚寺・浄智寺・浄妙寺での坐禅、庭園、抹茶。ガイドが同行いたします。",
+    "title": "Engaku-ji Temple — Zazen Meditation Experience",
+    "body": "Engaku‑ji ranks second among Kamakura’s Five Mountains, the great Zen temples of the old shogunate. Here, your guide leads a short zazen sitting — not a full formal session, but enough to feel, even briefly, what the practice asks of you: stillness, breath, and attention",
+    "titleJa": "Engaku-ji Temple — Zazen Meditation Experience",
+    "bodyJa": "Engaku‑ji ranks second among Kamakura’s Five Mountains, the great Zen temples of the old shogunate. Here, your guide leads a short zazen sitting — not a full formal session, but enough to feel, even briefly, what the practice asks of you: stillness, breath, and attention",
     "photo": "https://imgcdn.bokun.tools/4e806600-40c6-4359-bf0b-12302c87b7cd.jpeg?w=300&h=300",
     "photoBase": "https://imgcdn.bokun.tools/4e806600-40c6-4359-bf0b-12302c87b7cd.jpeg"
+   },
+   {
+    "title": "Jochi-ji Temple — Discover Wabi-Sabi (Quiet Zen Beauty)",
+    "body": "Jochi‑ji, the fourth of the Five Mountains, keeps its grounds simply — a bamboo grove, a mossed stone stairway, flowers that change with the season. Here, there is little to do but walk slowly, let every sense settle into quiet, and take in the scenery as it unfolds.",
+    "titleJa": "Jochi-ji Temple — Discover Wabi-Sabi (Quiet Zen Beauty)",
+    "bodyJa": "Jochi‑ji, the fourth of the Five Mountains, keeps its grounds simply — a bamboo grove, a mossed stone stairway, flowers that change with the season. Here, there is little to do but walk slowly, let every sense settle into quiet, and take in the scenery as it unfolds.",
+    "photo": "https://imgcdn.bokun.tools/4277c6b0-2337-43f9-8c40-1ed5578910fd.jpeg?w=300&h=300",
+    "photoBase": "https://imgcdn.bokun.tools/4277c6b0-2337-43f9-8c40-1ed5578910fd.jpeg"
    },
    {
     "title": "A 'Zen' Lunch",
