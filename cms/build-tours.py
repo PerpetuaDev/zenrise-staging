@@ -695,6 +695,17 @@ def write_go_redirects(models):
     return written
 
 
+# go/ directories that are maintained by hand and must never be touched by
+# the cleanup below. Both are live advertising links to OTA-tier tours on a
+# DIFFERENT Bokun booking channel (e2350ad8-...) from the one this site's
+# widgets use, and both are outside this system entirely:
+#   kamakura -> a single experience, linked from the Instagram profile
+#   tours    -> the 'OTA Tours' product list (Bokun list 113115)
+# Guarded by name even though no configured slug can currently collide with
+# either -- see cms/tests/test_go_redirects.py.
+HAND_MAINTAINED_GO_SLUGS = ('kamakura', 'tours')
+
+
 def cleanup_stale_pages(models, root=None):
     """Remove tour-<slug>.html and go/<slug>/ for any slug that is frozen in
     the slug registry but is NOT in this build's resolved catalogue.
@@ -707,10 +718,12 @@ def cleanup_stale_pages(models, root=None):
     missing removal step (task-3-4 brief).
 
     Two hard rules:
-    - go/kamakura/ is a live Instagram link to an OTA-tier tour, entirely
-      outside this system, and must never be touched -- guarded by name
-      below even though no configured slug can ever collide with it (see
-      cms/tests/test_go_redirects.py TestInstagramRedirectPreserved).
+    - The go/ directories in HAND_MAINTAINED_GO_SLUGS (kamakura, tours) are
+      live advertising links to OTA-tier tours on another booking channel,
+      entirely outside this system, and must never be touched -- guarded by
+      name above even though no configured slug can currently collide with
+      them (see cms/tests/test_go_redirects.py TestInstagramRedirectPreserved
+      and test_stale_cleanup.py test_every_hand_maintained_go_slug_is_guarded).
     - A tour-*.html on disk whose slug is in neither the resolved catalogue
       nor the registry is unaccounted for: warn and leave it alone rather
       than guess.
@@ -723,7 +736,7 @@ def cleanup_stale_pages(models, root=None):
 
     removed = []
     for slug in registry.values():
-        if slug in catalogue_slugs or slug == 'kamakura':
+        if slug in catalogue_slugs or slug in HAND_MAINTAINED_GO_SLUGS:
             continue
         page = os.path.join(root, f'tour-{slug}.html')
         go_dir = os.path.join(root, 'go', slug)

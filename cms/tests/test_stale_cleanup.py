@@ -64,6 +64,32 @@ class TestCleanupStalePages(unittest.TestCase):
             self.assertEqual(removed, [])
             self.assertTrue(os.path.exists(os.path.join(tmp, 'go', 'kamakura', 'index.html')))
 
+    def test_never_touches_tours_even_if_it_somehow_matched(self):
+        # go/tours/ is a live advertising link to the Bokun 'OTA Tours'
+        # product list (list 113115, on the OTA booking channel) -- the same
+        # hard rule as kamakura, and for the same reason.
+        with tempfile.TemporaryDirectory() as tmp:
+            _touch(os.path.join(tmp, 'go', 'tours', 'index.html'))
+            models = []
+            with mock.patch('cms.tours_slug.load_registry',
+                            return_value={'999999': 'tours'}):
+                removed = bt.cleanup_stale_pages(models, root=tmp)
+            self.assertEqual(removed, [])
+            self.assertTrue(os.path.exists(os.path.join(tmp, 'go', 'tours', 'index.html')))
+
+    def test_every_hand_maintained_go_slug_is_guarded(self):
+        # Whatever the constant lists must actually survive the cleanup, so
+        # adding a slug to it can never be a no-op that only looks safe.
+        for slug in bt.HAND_MAINTAINED_GO_SLUGS:
+            with tempfile.TemporaryDirectory() as tmp:
+                _touch(os.path.join(tmp, 'go', slug, 'index.html'))
+                with mock.patch('cms.tours_slug.load_registry',
+                                return_value={'1': slug}):
+                    removed = bt.cleanup_stale_pages([], root=tmp)
+                self.assertEqual(removed, [], slug)
+                self.assertTrue(
+                    os.path.exists(os.path.join(tmp, 'go', slug, 'index.html')), slug)
+
     def test_an_unaccounted_page_is_warned_about_and_left_alone(self):
         # In neither the resolved catalogue nor the slug registry: this must
         # never be guessed about and deleted.
