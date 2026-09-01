@@ -82,8 +82,15 @@
   .tour-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 60px 20px; }
   /* Empty state: spans the grid so it reads as a line of copy, not as
      a card in the first column. */
+  /* padding-top carries the whole gap under the tours-head rule: the filter
+     section above is collapsed when there are no chips, so its 72px is gone.
+     8px left the line almost touching the rule, against 160px of air below
+     it. 48px reads as deliberate without claiming the full 72px that the
+     chips (and so the first row of cards) normally sit at. No padding-bottom:
+     .bespoke already contributes 120px, the same gap a last row of cards
+     gets. */
   .tours-empty { grid-column: 1 / -1; font-family: var(--display); font-size: 24px;
-    line-height: 1.45; color: var(--ink-60); margin: 0; padding: 8px 0 40px;
+    line-height: 1.45; color: var(--ink-60); margin: 0; padding: 48px 0 0;
     text-wrap: pretty; }
   .tcard { display: flex; flex-direction: column; cursor: pointer; }
   .tcard[hidden] { display: none; }
@@ -143,6 +150,7 @@
     .tours-head h1 { font-size: 56px; }
     .tours-head p { font-size: 20px; }
     .filters { padding-top: 40px; }
+    .tours-empty { font-size: 20px; padding-top: 28px; }
     .filters .label { margin-bottom: 16px; }
     .chip { font-size: 14px; padding: 10px 16px; }
     .chip-row.themes { margin-bottom: 40px; }
