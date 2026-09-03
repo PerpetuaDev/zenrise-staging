@@ -215,7 +215,13 @@
       <section class="filters" data-screen-label="06 Tours — Filters">
         <!-- CMS:tours-filters:start -->
 
-
+        <span class="label" data-i18n="tours_filter_label_theme">Browse by experience</span>
+        <div class="chip-row themes" role="group" aria-label="Filter by theme">
+          <button type="button" class="chip" data-theme="temples" data-i18n="tours_theme_temples">Temples &amp; Shrines</button>
+          <button type="button" class="chip" data-theme="culture" data-i18n="tours_theme_culture">Culture</button>
+          <button type="button" class="chip" data-theme="walking" data-i18n="tours_theme_walking">Walking</button>
+          <button type="button" class="chip" data-theme="nature" data-i18n="tours_theme_nature">Nature &amp; Views</button>
+        </div>
 
       <!-- CMS:tours-filters:end -->
       </section>
@@ -223,7 +229,17 @@
       <section class="tour-grid" data-screen-label="06 Tours — All tours">
       <!-- CMS:tours-grid:start -->
 
-        <p class="tours-empty" data-i18n="tours_empty">New tours are in preparation. Please check back soon.</p>
+        <a class="tcard" href="tour-zen-journey.html" data-area="kamakura" data-themes="temples culture walking nature">
+          <div class="pic" style="background-image: url('https://imgcdn.bokun.tools/4277c6b0-2337-43f9-8c40-1ed5578910fd.jpeg?w=900')">
+            <span class="num">No. 03</span>
+          </div>
+          <div class="t-body">
+            <div class="t-meta"><span data-i18n="tours_area_kamakura">Kamakura</span><span class="dot">・</span><span data-i18n="tours_len_both">Full / Half-day</span></div>
+            <h3 data-i18n="tours_zen-journey_name">Kamakura: The Zen Journey</h3>
+            <p class="t-sub" data-i18n="tours_zen-journey_sub">Eight hundred and fifty years of Kamakura, and the quiet heart of Zen. Japanese gardens, zazen, and matcha.</p>
+            <div class="t-foot"><span data-i18n="tours_zen-journey_hours">4 hours</span><span class="price" data-i18n="tours_zen-journey_price">from ¥50,000</span></div>
+          </div>
+        </a>
 
       <!-- CMS:tours-grid:end -->
       </section>
@@ -335,7 +351,7 @@
     });
   })();
 </script>
-<script>window.ZENRISE_CMS_DICT = {"en":{},"ja":{}};</script>
+<script>window.ZENRISE_CMS_DICT = {"en":{"tours_zen-journey_name":"Kamakura: The Zen Journey","tours_zen-journey_sub":"Eight hundred and fifty years of Kamakura, and the quiet heart of Zen. Japanese gardens, zazen, and matcha.","tours_zen-journey_hours":"4 hours","tours_zen-journey_title":"Kamakura: The Zen Journey — Zenrise","tours_zen-journey_eyebrow":"Tour No. 03","tours_zen-journey_cap":"","tours_zen-journey_cta_eyebrow":"from ¥50,000 ・ 1–6 travelers","tours_zen-journey_price":"from ¥50,000"},"ja":{"tours_zen-journey_name":"鎌倉 禅の旅","tours_zen-journey_sub":"850年の鎌倉の歴史と、禅の本質に触れる。日本庭園・坐禅・抹茶。","tours_zen-journey_hours":"4 時間","tours_zen-journey_title":"鎌倉 禅の旅 — Zenrise","tours_zen-journey_eyebrow":"ツアー No. 03","tours_zen-journey_cap":"","tours_zen-journey_cta_eyebrow":"¥50,000〜 ・ 1〜6名","tours_zen-journey_price":"¥50,000〜"}};</script>
 <script src="lang.js"></script>
 </body>
 </html>

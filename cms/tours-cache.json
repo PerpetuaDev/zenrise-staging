@@ -1,1 +1,229 @@
-[]
+[
+ {
+  "id": "zen-journey",
+  "bokunId": 1273194,
+  "number": "03",
+  "area": "Kamakura",
+  "length": "Full / Half-day",
+  "themes": [
+   "temples",
+   "culture",
+   "walking",
+   "nature"
+  ],
+  "cover": {
+   "url": "https://bokun.s3.amazonaws.com/4277c6b0-2337-43f9-8c40-1ed5578910fd.jpeg",
+   "base": "https://imgcdn.bokun.tools/4277c6b0-2337-43f9-8c40-1ed5578910fd.jpeg"
+  },
+  "hoursEn": "4 hours",
+  "hoursJa": "4 時間",
+  "priceEn": "from ¥50,000",
+  "priceJa": "¥50,000〜",
+  "priceRows": [
+   {
+    "category": "Group of 1 (Half-day)",
+    "category_ja": "Group of 1 (Half-day)",
+    "min": 1,
+    "max": null,
+    "amount": 50000,
+    "currency": "JPY",
+    "rate_title": "Group (1–6) Half Day (4 hours)",
+    "rate_title_ja": "グループ（1〜6名）半日（4時間）"
+   },
+   {
+    "category": "Group of 3 (Half-day)",
+    "category_ja": "Group of 3 (Half-day)",
+    "min": 1,
+    "max": null,
+    "amount": 70000,
+    "currency": "JPY",
+    "rate_title": "Group (1–6) Half Day (4 hours)",
+    "rate_title_ja": "グループ（1〜6名）半日（4時間）"
+   },
+   {
+    "category": "Group of 6 (Half-day)",
+    "category_ja": "Group of 6 (Half-day)",
+    "min": 1,
+    "max": null,
+    "amount": 100000,
+    "currency": "JPY",
+    "rate_title": "Group (1–6) Half Day (4 hours)",
+    "rate_title_ja": "グループ（1〜6名）半日（4時間）"
+   },
+   {
+    "category": "Group of 5 (Half-day)",
+    "category_ja": "Group of 5 (Half-day)",
+    "min": 1,
+    "max": null,
+    "amount": 90000,
+    "currency": "JPY",
+    "rate_title": "Group (1–6) Half Day (4 hours)",
+    "rate_title_ja": "グループ（1〜6名）半日（4時間）"
+   },
+   {
+    "category": "Group of 2 (Half-day)",
+    "category_ja": "Group of 2 (Half-day)",
+    "min": 1,
+    "max": null,
+    "amount": 60000,
+    "currency": "JPY",
+    "rate_title": "Group (1–6) Half Day (4 hours)",
+    "rate_title_ja": "グループ（1〜6名）半日（4時間）"
+   },
+   {
+    "category": "Group of 4 (Half-day)",
+    "category_ja": "Group of 4 (Half-day)",
+    "min": 1,
+    "max": null,
+    "amount": 80000,
+    "currency": "JPY",
+    "rate_title": "Group (1–6) Half Day (4 hours)",
+    "rate_title_ja": "グループ（1〜6名）半日（4時間）"
+   },
+   {
+    "category": " Group of 4 (Full-day)",
+    "category_ja": " Group of 4 (Full-day)",
+    "min": 1,
+    "max": 6,
+    "amount": 150000,
+    "currency": "JPY",
+    "rate_title": "Group (1–6) Full Day (8 hours)",
+    "rate_title_ja": "グループ（1〜6名）終日（8時間）"
+   },
+   {
+    "category": " Group of 5 (Full-day)",
+    "category_ja": " Group of 5 (Full-day)",
+    "min": 1,
+    "max": 6,
+    "amount": 170000,
+    "currency": "JPY",
+    "rate_title": "Group (1–6) Full Day (8 hours)",
+    "rate_title_ja": "グループ（1〜6名）終日（8時間）"
+   },
+   {
+    "category": " Group of 2 (Full-day)",
+    "category_ja": " Group of 2 (Full-day)",
+    "min": 1,
+    "max": 6,
+    "amount": 110000,
+    "currency": "JPY",
+    "rate_title": "Group (1–6) Full Day (8 hours)",
+    "rate_title_ja": "グループ（1〜6名）終日（8時間）"
+   },
+   {
+    "category": " Group of 3 (Full-day)",
+    "category_ja": " Group of 3 (Full-day)",
+    "min": 1,
+    "max": 6,
+    "amount": 130000,
+    "currency": "JPY",
+    "rate_title": "Group (1–6) Full Day (8 hours)",
+    "rate_title_ja": "グループ（1〜6名）終日（8時間）"
+   },
+   {
+    "category": " Group of 6 (Full-day)",
+    "category_ja": " Group of 6 (Full-day)",
+    "min": 1,
+    "max": 6,
+    "amount": 190000,
+    "currency": "JPY",
+    "rate_title": "Group (1–6) Full Day (8 hours)",
+    "rate_title_ja": "グループ（1〜6名）終日（8時間）"
+   },
+   {
+    "category": "Group of 1 (Full-day)",
+    "category_ja": "Group of 1 (Full-day)",
+    "min": 1,
+    "max": 6,
+    "amount": 90000,
+    "currency": "JPY",
+    "rate_title": "Group (1–6) Full Day (8 hours)",
+    "rate_title_ja": "グループ（1〜6名）終日（8時間）"
+   }
+  ],
+  "widgets": {
+   "en": "6db7a498-ed75-46ba-b4fa-6ab6abc239c0/experience-calendar/1273194"
+  },
+  "route": [
+   {
+    "title": "Meet & Greet at Kita-Kamakura Station",
+    "body": "The standard meeting point is Kita-Kamakura Station. Your guide will meet you outside the West Exit. We offer free pick-up and drop-off anywhere within Kamakura and Fujisawa cities. Please let us know your preferred location in advance. If you require hotel pick-up from Tokyo or other areas outside Kamakura/Fujisawa, or wish to arrange a private vehicle, we can provide a custom quote based on your departure point. Please feel free to inquire.",
+    "titleJa": "北鎌倉駅でお出迎え",
+    "bodyJa": "基本の集合場所は北鎌倉駅（西口改札）となります。ガイドが改札出口にてお迎えいたします。 なお、鎌倉市・藤沢市内は無料送迎に対応しております。ご希望のピックアップ場所を事前にお知らせください。 ※東京方面など対象エリア外からのホテルピックアップや専用車手配をご希望の場合は、出発地に応じたお見積もりをご案内いたしますので、お気軽にご相談ください。",
+    "photo": "https://imgcdn.bokun.tools/52927cdb-5b6b-47b3-8dbb-4a686a265c09.jpeg?w=300&h=300",
+    "photoBase": "https://imgcdn.bokun.tools/52927cdb-5b6b-47b3-8dbb-4a686a265c09.jpeg"
+   },
+   {
+    "title": "Engaku-ji — Zazen meditation—a stillness held in half-light.",
+    "body": "Engaku‑ji ranks second among Kamakura’s Five Mountains, the great Zen temples of the old shogunate. Here, your guide leads a short zazen sitting — not a full formal session, but enough to feel, even briefly, what the practice asks of you: stillness, breath, and attention",
+    "titleJa": "円覚寺 — 座禅 — 薄暗がりに満ちる静けさ",
+    "bodyJa": "円覚寺は鎌倉五山の第二位に列せられる禅寺です。ここでは、ガ イドとともに短い坐禅を体験していただきます。本格的な修行で はありませんが、静けさと呼吸、そして意識を澄ますという禅の 感覚を、気軽に味わっていただけます。",
+    "photo": "https://imgcdn.bokun.tools/4e806600-40c6-4359-bf0b-12302c87b7cd.jpeg?w=300&h=300",
+    "photoBase": "https://imgcdn.bokun.tools/4e806600-40c6-4359-bf0b-12302c87b7cd.jpeg"
+   },
+   {
+    "title": "Jochi-ji — Discovering Wabi-Sabi — The Quiet Beauty of Zen",
+    "body": "Jochi‑ji, the fourth of the Five Mountains, keeps its grounds simply — a bamboo grove, a mossed stone stairway, flowers that change with the season. Here, there is little to do but walk slowly, let every sense settle into quiet, and take in the scenery as it unfolds.",
+    "titleJa": "浄智寺 — 侘び寂びの発見 — 静寂なる禅の美",
+    "bodyJa": "鎌倉五山の第四位、浄智寺は、境内を飾らずに保っていま す。竹林、苔むした石段、季節ごとに移ろう草花——ここで は、ただゆっくりと歩き、五感に耳を澄ませながら、目に映 る景色をご堪能ください。",
+    "photo": "https://imgcdn.bokun.tools/4277c6b0-2337-43f9-8c40-1ed5578910fd.jpeg?w=300&h=300",
+    "photoBase": "https://imgcdn.bokun.tools/4277c6b0-2337-43f9-8c40-1ed5578910fd.jpeg"
+   },
+   {
+    "title": "Zen lunch (Shojin Ryori or Your Choice)",
+    "body": "Traditional Shojin ryori (Zen Buddhist vegetarian cuisine) or a lunch tailored to your preferences, fully covered by the arrangement fee.",
+    "titleJa": "禅ランチ — 精進料理またはお好みの昼食",
+    "bodyJa": "本格的な精進料理、またはお客様のお好みに合わせたお食事をお楽しみください。（ランチは料金に含まれております）",
+    "photo": "https://imgcdn.bokun.tools/2d2ca067-e89d-4118-a857-083386ea60aa.jpeg?w=300&h=300",
+    "photoBase": "https://imgcdn.bokun.tools/2d2ca067-e89d-4118-a857-083386ea60aa.jpeg"
+   },
+   {
+    "title": "Jomyo-ji — A bowl of matcha, served in quiet.",
+    "body": "Jomyo‑ji, ranked fifth among the Five Mountains, holds a beautiful Japanese tea house set quietly within its grounds, facing a dry landscape Zen garden raked into rippling lines. Here, matcha is served in quiet, the garden doing the talking.",
+    "titleJa": "浄明寺 — 静けさの中でいただく、一服の抹茶",
+    "bodyJa": "鎌倉五山の第五位、浄妙寺の境内には、美しい日本茶屋がひっそ りと佇んでいます。目の前には、波紋のように掃き整えられた枯山水。静けさの中でいただく一服の抹茶は、庭がすべてを語って くれます。",
+    "photo": "https://imgcdn.bokun.tools/81b5099e-10d7-4529-9f80-66feb13b2915.jpeg?w=300&h=300",
+    "photoBase": "https://imgcdn.bokun.tools/81b5099e-10d7-4529-9f80-66feb13b2915.jpeg"
+   },
+   {
+    "title": "Tour End & Drop-off",
+    "body": "Complimentary drop-off within Kamakura and Fujisawa.",
+    "titleJa": "ツアー終了・お送り",
+    "bodyJa": "ツアーの最後は、鎌倉市内または藤沢市内のご希望の場所まで無料でお送りいたします。（料金に含まれております）",
+    "photo": "https://imgcdn.bokun.tools/6cdd94fe-d5c6-421a-ba40-663cc89e4cf2.jpeg?w=300&h=300",
+    "photoBase": "https://imgcdn.bokun.tools/6cdd94fe-d5c6-421a-ba40-663cc89e4cf2.jpeg"
+   }
+  ],
+  "includedEn": "Private, English-speaking guide.\nAdmission fee for all 3 temples\nShort zazen meditation at Engaku-ji.\nZen Buddhist lunch (Shojin Ryori) or a meal of your choice.\nMatcha at the Jomyo-ji teahouse\nLocal transportation during the tour (within Kamakura)\nTravel insurance (domestic accident and liability coverage)\nFull advance reservations and arrangements\nComplimentary pick-up and drop-off within Kamakura & Fujisawa area",
+  "includedJa": "英語プライベートガイド\n各寺院の拝観料\n坐禅体験料\nお抹茶代（枯山水庭園の鑑賞を含む）\nお食事（昼食）： お客様のお好みやアレルギー・宗教上の食事制限に合わせたレストランのご手配\n現地交通費： ツアー中の鎌倉市内におけるすべての移動費\n旅行保険： 国内旅行傷害保険および施設賠償責任保険を含む専用保険\n事前手配一式： 必要な手配・予約の完全代行\n無料送迎サービス： 鎌倉市内および藤沢市内エリア内のご指定場所へのピックアップ＆ドロップオフ",
+  "notIncludedEn": "Additional food and drinks not specified in the itinerary\nPrivate car or transfer from a hotel or central Tokyo (quoted separately on request)\nPersonal expenses",
+  "notIncludedJa": "追加の飲食代： 含まれている昼食・お抹茶以外の食事、軽食、お飲み物代\nエリア外からの送迎・ハイヤー代： 東京方面や遠方のご宿泊先など、鎌倉・藤沢エリア外からの移動費および専用車手配（ご希望に応じてお見積もり・ご手配可能です）\n個人費用： お買い物、お土産代、その他個人的な諸費用",
+  "bringEn": "Comfortable walking shoes — the approach to several temples includes stone steps.\nCash — recommended for souvenirs or any additional personal expenses.",
+  "bringJa": "歩きやすい靴： 境内散策や石段の移動があるため、履き慣れたスニーカーなどを推奨いたします。\n現金： お土産の購入や追加の飲食等で現金が必要となる場合がございます。",
+  "knowEn": "We meet at Kita-Kamakura Station. If you would prefer a transfer from a hotel outside the Kamakura/Fujisawa area or from central Tokyo, we will quote separately based on where you set out from.\nPlease tell us your lunch preferences and any dietary requirements when you book.\nThis itinerary outlines our half-day tour. For full-day bookings, the afternoon itinerary after lunch is custom-built to your requests.",
+  "knowJa": "集合場所： 基本的に北鎌倉駅集合となります。東京方面やその他のエリアからのホテルピックアップ、または専用車での送迎をご希望の場合は、出発地に応じたお見積もりをご案内いたしますのでお気軽にお申し付けください。\nお食事に関するご要望： 昼食のお好みやアレルギー・宗教上の食事制限などがございましたら、ご予約時にあらかじめお知らせください。\n本旅程は半日ツアーの基本コースです。終日ツアーをご希望の場合は、この半日コースをベースに、昼食以降の行程をお客様のご要望に合わせてオーダーメイドで作成いたします。",
+  "includedChipsEn": "",
+  "includedChipsJa": "",
+  "knowChipsEn": "Public transport nearby\nAccessible with limited sight",
+  "knowChipsJa": "公共交通機関が近い\n視覚に障がいのある方に対応",
+  "ledeParasEn": [
+   "Kamakura has preserved its temples for eight hundred and fifty years — and its stillness for just as long. This tour is built around that stillness: not a rapid checklist of sights, but a unhurried journey through three of the city’s five great Zen temples, accompanied by a guide who brings their history to life and gives you ample time to truly absorb each moment.",
+   "The Five Mountains, or Kamakura Gozan, are the five preeminent Rinzai Zen temples whose foundations were laid under the Kamakura shogunate and which were later ranked at the highest tier by the Muromachi shogunate: Kencho‑ji, Engaku‑ji, Jufuku‑ji, Jochi‑ji, and Jomyo‑ji.",
+   "On this journey, you will experience a brief zazen meditation at Engaku-ji, stroll through the seasonal grounds of Jochi-ji, and savor matcha overlooking the dry landscape Zen garden at Jomyo-ji. The morning concludes with a relaxed lunch tailored to your taste.",
+   "Everything is arranged in advance. All you need to bring is a willingness to slow down. For full-day tours, the afternoon itinerary following lunch will be fully customized to your preferences."
+  ],
+  "ledeParasJa": [
+   "鎌倉の寺々は八百五十年にわたり守られてきました。その静けさ もまた、同じだけの歳月を重ねています。本ツアーは、その静け さを味わうための一日です。名所を巡るだけでなく、鎌倉五山のうち三つの禅寺をゆっくりと巡り、ガイドが目の前の景色をひとつひとつ丁寧にご案内します。",
+   "鎌倉五山とは、鎌倉幕府が礎を築き、室町幕府によって定められ た、臨済宗の五つの最高格式寺院——建長寺・円覚寺・寿福寺・浄 智寺・浄妙寺——の総称です。",
+   "円覚寺では短い坐禅を体験し、浄智寺では四季折々の草花が彩る境内をそぞろ歩き、浄妙寺では枯山水を眺めながら抹茶をいただ きます。午前の締めくくりには、お好みに合わせたお店で昼食を。すべての手配はあらかじめ整えてありますので、あとはゆっくりと歩む心構えだけをお持ちください。終日ツアーをご予約のお客様は、昼食以降の行程をオーダーメイドでご提案いたします。"
+  ],
+  "titleEn": "Kamakura: The Zen Journey",
+  "titleJa": "鎌倉 禅の旅",
+  "subEn": "Eight hundred and fifty years of Kamakura, and the quiet heart of Zen. Japanese gardens, zazen, and matcha.",
+  "subJa": "850年の鎌倉の歴史と、禅の本質に触れる。日本庭園・坐禅・抹茶。",
+  "ledeEn": "Kamakura has preserved its temples for eight hundred and fifty years — and its stillness for just as long. This tour is built around that stillness: not a rapid checklist of sights, but a unhurried journey through three of the city’s five great Zen temples, accompanied by a guide who brings their history to life and gives you ample time to truly absorb each moment. The Five Mountains, or Kamakura Gozan, are the five preeminent Rinzai Zen temples whose foundations were laid under the Kamakura shogunate and which were later ranked at the highest tier by the Muromachi shogunate: Kencho‑ji, Engaku‑ji, Jufuku‑ji, Jochi‑ji, and Jomyo‑ji. On this journey, you will experience a brief zazen meditation at Engaku-ji, stroll through the seasonal grounds of Jochi-ji, and savor matcha overlooking the dry landscape Zen garden at Jomyo-ji. The morning concludes with a relaxed lunch tailored to your taste. Everything is arranged in advance. All you need to bring is a willingness to slow down. For full-day tours, the afternoon itinerary following lunch will be fully customized to your preferences.",
+  "ledeJa": "鎌倉の寺々は八百五十年にわたり守られてきました。その静けさ もまた、同じだけの歳月を重ねています。本ツアーは、その静け さを味わうための一日です。名所を巡るだけでなく、鎌倉五山のうち三つの禅寺をゆっくりと巡り、ガイドが目の前の景色をひとつひとつ丁寧にご案内します。 鎌倉五山とは、鎌倉幕府が礎を築き、室町幕府によって定められ た、臨済宗の五つの最高格式寺院——建長寺・円覚寺・寿福寺・浄 智寺・浄妙寺——の総称です。 円覚寺では短い坐禅を体験し、浄智寺では四季折々の草花が彩る境内をそぞろ歩き、浄妙寺では枯山水を眺めながら抹茶をいただ きます。午前の締めくくりには、お好みに合わせたお店で昼食を。すべての手配はあらかじめ整えてありますので、あとはゆっくりと歩む心構えだけをお持ちください。終日ツアーをご予約のお客様は、昼食以降の行程をオーダーメイドでご提案いたします。",
+  "coverCaptionEn": "",
+  "coverCaptionJa": ""
+ }
+]
