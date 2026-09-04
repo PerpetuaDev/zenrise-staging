@@ -21,8 +21,8 @@
   "priceJa": "¥50,000〜",
   "priceRows": [
    {
-    "category": "Group of 1 (Half-day)",
-    "category_ja": "Group of 1 (Half-day)",
+    "category": "Group of 1 (Half day)",
+    "category_ja": "Group of 1 (Half day)",
     "min": 1,
     "max": null,
     "amount": 50000,
@@ -31,18 +31,8 @@
     "rate_title_ja": "グループ（1〜6名）半日（4時間）"
    },
    {
-    "category": "Group of 3 (Half-day)",
-    "category_ja": "Group of 3 (Half-day)",
-    "min": 1,
-    "max": null,
-    "amount": 70000,
-    "currency": "JPY",
-    "rate_title": "Group (1–6) Half Day (4 hours)",
-    "rate_title_ja": "グループ（1〜6名）半日（4時間）"
-   },
-   {
-    "category": "Group of 6 (Half-day)",
-    "category_ja": "Group of 6 (Half-day)",
+    "category": "Group of 6 (Half day)",
+    "category_ja": "Group of 6 (Half day)",
     "min": 1,
     "max": null,
     "amount": 100000,
@@ -51,18 +41,18 @@
     "rate_title_ja": "グループ（1〜6名）半日（4時間）"
    },
    {
-    "category": "Group of 5 (Half-day)",
-    "category_ja": "Group of 5 (Half-day)",
+    "category": "Group of 4 (Half day)",
+    "category_ja": "Group of 4 (Half day)",
     "min": 1,
     "max": null,
-    "amount": 90000,
+    "amount": 80000,
     "currency": "JPY",
     "rate_title": "Group (1–6) Half Day (4 hours)",
     "rate_title_ja": "グループ（1〜6名）半日（4時間）"
    },
    {
-    "category": "Group of 2 (Half-day)",
-    "category_ja": "Group of 2 (Half-day)",
+    "category": "Group of 2 (Half day)",
+    "category_ja": "Group of 2 (Half day)",
     "min": 1,
     "max": null,
     "amount": 60000,
@@ -71,11 +61,21 @@
     "rate_title_ja": "グループ（1〜6名）半日（4時間）"
    },
    {
-    "category": "Group of 4 (Half-day)",
-    "category_ja": "Group of 4 (Half-day)",
+    "category": "Group of 5 (Half day)",
+    "category_ja": "Group of 5 (Half day)",
     "min": 1,
     "max": null,
-    "amount": 80000,
+    "amount": 90000,
+    "currency": "JPY",
+    "rate_title": "Group (1–6) Half Day (4 hours)",
+    "rate_title_ja": "グループ（1〜6名）半日（4時間）"
+   },
+   {
+    "category": "Group of 3 (Half day)",
+    "category_ja": "Group of 3 (Half day)",
+    "min": 1,
+    "max": null,
+    "amount": 70000,
     "currency": "JPY",
     "rate_title": "Group (1–6) Half Day (4 hours)",
     "rate_title_ja": "グループ（1〜6名）半日（4時間）"
@@ -207,23 +207,420 @@
   "knowChipsEn": "Public transport nearby\nAccessible with limited sight",
   "knowChipsJa": "公共交通機関が近い\n視覚に障がいのある方に対応",
   "ledeParasEn": [
-   "Kamakura has preserved its temples for eight hundred and fifty years — and its stillness for just as long.",
+   "Kamakura has preserved its temples for 850 years — and its stillness for just as long.",
    "This tour is built around that stillness: not a rapid checklist of sights, but a unhurried journey through three of the city’s five great Zen temples, accompanied by a guide who brings their history to life and gives you ample time to truly absorb each moment.",
    "The Five Mountains, or Kamakura Gozan, are the five preeminent Rinzai Zen temples whose foundations were laid under the Kamakura shogunate and which were later ranked at the highest tier by the Muromachi shogunate: Kencho‑ji, Engaku‑ji, Jufuku‑ji, Jochi‑ji, and Jomyo‑ji.",
    "On this journey, you will experience a brief zazen meditation at Engaku-ji, stroll through the seasonal grounds of Jochi-ji, and savor matcha overlooking the dry landscape Zen garden at Jomyo-ji. The morning concludes with a relaxed lunch tailored to your taste.",
    "Everything is arranged in advance. All you need to bring is a willingness to slow down. For full-day tours, the afternoon itinerary following lunch will be fully customized to your preferences."
   ],
   "ledeParasJa": [
-   "鎌倉の寺々は八百五十年にわたり守られてきました。その静けさ もまた、同じだけの歳月を重ねています。本ツアーは、その静け さを味わうための一日です。名所を巡るだけでなく、鎌倉五山のうち三つの禅寺をゆっくりと巡り、ガイドが目の前の景色をひとつひとつ丁寧にご案内します。",
+   "鎌倉の寺々は八百五十年にわたり守られてきました。その静けさ もまた、同じだけの歳月を重ねています。",
+   "本ツアーは、その静け さを味わうための一日です。名所を巡るだけでなく、鎌倉五山のうち三つの禅寺をゆっくりと巡り、ガイドが目の前の景色をひとつひとつ丁寧にご案内します。",
    "鎌倉五山とは、鎌倉幕府が礎を築き、室町幕府によって定められ た、臨済宗の五つの最高格式寺院——建長寺・円覚寺・寿福寺・浄 智寺・浄妙寺——の総称です。",
    "円覚寺では短い坐禅を体験し、浄智寺では四季折々の草花が彩る境内をそぞろ歩き、浄妙寺では枯山水を眺めながら抹茶をいただ きます。午前の締めくくりには、お好みに合わせたお店で昼食を。すべての手配はあらかじめ整えてありますので、あとはゆっくりと歩む心構えだけをお持ちください。終日ツアーをご予約のお客様は、昼食以降の行程をオーダーメイドでご提案いたします。"
   ],
   "titleEn": "Kamakura: The Zen Journey",
   "titleJa": "鎌倉 禅の旅",
-  "subEn": "Eight hundred and fifty years of Kamakura, and the quiet heart of Zen. Japanese gardens, zazen, and matcha.",
+  "subEn": "Experience 850 years of Kamakura and the quiet heart of Zen through Japanese gardens, zazen, and matcha.Experience 850 years of Kamakura and the quiet heart of Zen through Japanese gardens, zazen, and matcha.",
   "subJa": "850年の鎌倉の歴史と、禅の本質に触れる。日本庭園・坐禅・抹茶。",
-  "ledeEn": "Kamakura has preserved its temples for eight hundred and fifty years — and its stillness for just as long. This tour is built around that stillness: not a rapid checklist of sights, but a unhurried journey through three of the city’s five great Zen temples, accompanied by a guide who brings their history to life and gives you ample time to truly absorb each moment. The Five Mountains, or Kamakura Gozan, are the five preeminent Rinzai Zen temples whose foundations were laid under the Kamakura shogunate and which were later ranked at the highest tier by the Muromachi shogunate: Kencho‑ji, Engaku‑ji, Jufuku‑ji, Jochi‑ji, and Jomyo‑ji. On this journey, you will experience a brief zazen meditation at Engaku-ji, stroll through the seasonal grounds of Jochi-ji, and savor matcha overlooking the dry landscape Zen garden at Jomyo-ji. The morning concludes with a relaxed lunch tailored to your taste. Everything is arranged in advance. All you need to bring is a willingness to slow down. For full-day tours, the afternoon itinerary following lunch will be fully customized to your preferences.",
-  "ledeJa": "鎌倉の寺々は八百五十年にわたり守られてきました。その静けさ もまた、同じだけの歳月を重ねています。本ツアーは、その静け さを味わうための一日です。名所を巡るだけでなく、鎌倉五山のうち三つの禅寺をゆっくりと巡り、ガイドが目の前の景色をひとつひとつ丁寧にご案内します。 鎌倉五山とは、鎌倉幕府が礎を築き、室町幕府によって定められ た、臨済宗の五つの最高格式寺院——建長寺・円覚寺・寿福寺・浄 智寺・浄妙寺——の総称です。 円覚寺では短い坐禅を体験し、浄智寺では四季折々の草花が彩る境内をそぞろ歩き、浄妙寺では枯山水を眺めながら抹茶をいただ きます。午前の締めくくりには、お好みに合わせたお店で昼食を。すべての手配はあらかじめ整えてありますので、あとはゆっくりと歩む心構えだけをお持ちください。終日ツアーをご予約のお客様は、昼食以降の行程をオーダーメイドでご提案いたします。",
+  "ledeEn": "Kamakura has preserved its temples for 850 years — and its stillness for just as long. This tour is built around that stillness: not a rapid checklist of sights, but a unhurried journey through three of the city’s five great Zen temples, accompanied by a guide who brings their history to life and gives you ample time to truly absorb each moment. The Five Mountains, or Kamakura Gozan, are the five preeminent Rinzai Zen temples whose foundations were laid under the Kamakura shogunate and which were later ranked at the highest tier by the Muromachi shogunate: Kencho‑ji, Engaku‑ji, Jufuku‑ji, Jochi‑ji, and Jomyo‑ji. On this journey, you will experience a brief zazen meditation at Engaku-ji, stroll through the seasonal grounds of Jochi-ji, and savor matcha overlooking the dry landscape Zen garden at Jomyo-ji. The morning concludes with a relaxed lunch tailored to your taste. Everything is arranged in advance. All you need to bring is a willingness to slow down. For full-day tours, the afternoon itinerary following lunch will be fully customized to your preferences.",
+  "ledeJa": "鎌倉の寺々は八百五十年にわたり守られてきました。その静けさ もまた、同じだけの歳月を重ねています。 本ツアーは、その静け さを味わうための一日です。名所を巡るだけでなく、鎌倉五山のうち三つの禅寺をゆっくりと巡り、ガイドが目の前の景色をひとつひとつ丁寧にご案内します。 鎌倉五山とは、鎌倉幕府が礎を築き、室町幕府によって定められ た、臨済宗の五つの最高格式寺院——建長寺・円覚寺・寿福寺・浄 智寺・浄妙寺——の総称です。 円覚寺では短い坐禅を体験し、浄智寺では四季折々の草花が彩る境内をそぞろ歩き、浄妙寺では枯山水を眺めながら抹茶をいただ きます。午前の締めくくりには、お好みに合わせたお店で昼食を。すべての手配はあらかじめ整えてありますので、あとはゆっくりと歩む心構えだけをお持ちください。終日ツアーをご予約のお客様は、昼食以降の行程をオーダーメイドでご提案いたします。",
+  "coverCaptionEn": "",
+  "coverCaptionJa": ""
+ },
+ {
+  "id": "ikebana-ichigo-ichie",
+  "bokunId": 1273232,
+  "number": "01",
+  "area": "Kamakura",
+  "length": "Half-day",
+  "themes": [
+   "culture",
+   "arts"
+  ],
+  "cover": {
+   "url": "https://bokun.s3.amazonaws.com/125107cd-37b0-44d5-8ec7-1071be67f871.jpeg",
+   "base": "https://imgcdn.bokun.tools/125107cd-37b0-44d5-8ec7-1071be67f871.jpeg"
+  },
+  "hoursEn": "1 hour and 30 minutes",
+  "hoursJa": "1 時間30 分",
+  "priceEn": "from ¥88,000",
+  "priceJa": "¥88,000〜",
+  "priceRows": [
+   {
+    "category": "Group of 4 ",
+    "category_ja": "Group of 4 ",
+    "min": 1,
+    "max": 6,
+    "amount": 120000,
+    "currency": "JPY",
+    "rate_title": "Price",
+    "rate_title_ja": "Price"
+   },
+   {
+    "category": "Group of 5 ",
+    "category_ja": "Group of 5 ",
+    "min": 1,
+    "max": 6,
+    "amount": 141000,
+    "currency": "JPY",
+    "rate_title": "Price",
+    "rate_title_ja": "Price"
+   },
+   {
+    "category": "Group of 2 ",
+    "category_ja": "Group of 2 ",
+    "min": 1,
+    "max": 6,
+    "amount": 88000,
+    "currency": "JPY",
+    "rate_title": "Price",
+    "rate_title_ja": "Price"
+   },
+   {
+    "category": "Group of 3 ",
+    "category_ja": "Group of 3 ",
+    "min": 1,
+    "max": 6,
+    "amount": 99000,
+    "currency": "JPY",
+    "rate_title": "Price",
+    "rate_title_ja": "Price"
+   },
+   {
+    "category": "Group of 6 ",
+    "category_ja": "Group of 6 ",
+    "min": 1,
+    "max": 6,
+    "amount": 162000,
+    "currency": "JPY",
+    "rate_title": "Price",
+    "rate_title_ja": "Price"
+   },
+   {
+    "category": "Group of 1 ",
+    "category_ja": "Group of 1 ",
+    "min": 1,
+    "max": 6,
+    "amount": 88000,
+    "currency": "JPY",
+    "rate_title": "Price",
+    "rate_title_ja": "Price"
+   }
+  ],
+  "widgets": {
+   "en": "6db7a498-ed75-46ba-b4fa-6ab6abc239c0/experience-calendar/1273232"
+  },
+  "route": [
+   {
+    "title": "History & Philosophy of Ikebana",
+    "body": "A 30-minute introductory talk on the history and major schools of traditional Japanese flower arrangement. Discover how ikebana evolved, alongside an introduction to the philosophy of the Sogetsu School passed down to Master Yokoi as a third-generation artist.",
+    "titleJa": "生け花の歴史と流派について",
+    "bodyJa": "30分の座学 華道の歴史と流派について。そして三代目として彼女が受け継ぐ「草月流の精神」について解説",
+    "photo": "https://imgcdn.bokun.tools/053d154a-c1e3-47e2-b85b-1542b7a43bab.jpeg?w=300&h=300",
+    "photoBase": "https://imgcdn.bokun.tools/053d154a-c1e3-47e2-b85b-1542b7a43bab.jpeg"
+   },
+   {
+    "title": "Hands-on Ikebana Workshop",
+    "body": "Following a live demonstration by Master Yokoi, select your own seasonal blooms and craft a personal arrangement under her direct, gentle guidance. No prior experience is necessary.",
+    "titleJa": "生け花体験",
+    "bodyJa": "横井によるデモンストレーションの後、用意された花材を選び、横井の指導のもとで実際に生け花を完成させます。経験は不要です。",
+    "photo": "https://imgcdn.bokun.tools/125107cd-37b0-44d5-8ec7-1071be67f871.jpeg?w=300&h=300",
+    "photoBase": "https://imgcdn.bokun.tools/125107cd-37b0-44d5-8ec7-1071be67f871.jpeg"
+   },
+   {
+    "title": "Tea & Conversation",
+    "body": "A quiet 30-minute interlude alongside your completed arrangement, enjoying seasonal Japanese sweets and tea while reflecting on the experience.",
+    "titleJa": "お茶と会話",
+    "bodyJa": "30分間、完成した作品を傍らに、季節の和菓子とお茶とともに静かなひとときをお過ごしください。",
+    "photo": "https://imgcdn.bokun.tools/cb9cf486-1431-4059-ab48-29749c64b7e2.jpeg?w=300&h=300",
+    "photoBase": "https://imgcdn.bokun.tools/cb9cf486-1431-4059-ab48-29749c64b7e2.jpeg"
+   }
+  ],
+  "includedEn": "English & Japanese-speaking guide\nIkebana demonstration by Master Koen Yokoi\nAll necessary flowers, materials, and equipment\nComplimentary pick-up & drop-off within Kamakura and Fujisawa cities\nJapanese tea and seasonal sweets\nInsurance",
+  "includedJa": "・日本語・英語対応ガイドの同行\n・横井先生による生け花デモンストレーション\n・花材・道具一式\n・無料送迎(鎌倉・藤沢市内から会場まで)\n・お茶と季節の和菓子\n・エコツアー傷害・賠償責任保険",
+  "notIncludedEn": "Food and drink beyond tea and seasonal sweets\nPersonal expenses\nTransfers outside Kamakura and Fujisawa cities",
+  "notIncludedJa": "・個人的な飲食代\n・個人的な買い物\n・鎌倉、藤沢エリア以外の交通費\n・鎌倉、藤沢エリア以外の送迎",
+  "bringEn": "",
+  "bringJa": "",
+  "knowEn": "",
+  "knowJa": "",
+  "includedChipsEn": "",
+  "includedChipsJa": "",
+  "knowChipsEn": "",
+  "knowChipsJa": "",
+  "ledeParasEn": [
+   "ZENRISE designs slow, considered private experiences around Kamakura and its surrounding towns.",
+   "This is a private audience with a working ikebana master, arranged for one to six guests at a time, in a room chosen for its quiet.",
+   "The Japanese phrase ichigo ichie — one time, one meeting — describes a single encounter that will never occur in quite the same way again. A flower cut this morning, arranged by this ikebana master, for this small group of guests: the finished piece is yours to take home, a keepsake of a moment created only once.",
+   "Koen Yokoi",
+   "Koen Yokoi was born into three generations of performing and floral arts: her grandfather was Kuro Hosho Shigehide, 17th head of the Hosho School of Noh; her father, Shigeru Yokoi, was a Noh stage director and choreographer; and both her grandmother and mother were ikebana artists of the Sogetsu school. A graduate of Musashino Art University, she inherited the family practice in 2000, and since 2001 has designed flowers for film sets, Noh stages, embassies, and public spaces across Japan and abroad. Widely known as a cherry blossom installation specialist, she is also a strong advocate of eco-conscious ikebana."
+  ],
+  "ledeParasJa": [
+   "Zenriseは、鎌倉とその周辺の街を舞台に、ゆっくりと考え抜かれたプライベート体験を企画しています。その最新作が、現役の華道家による、少人数だけのための生け花体験です。1名から6名までの少人数限定で、静けさを大切に選ばれた部屋にて行います。「一期一会」という言葉は、二度と同じようには訪れない、たった一度きりの出会いを表します。その日の朝に切られた花、生け花マスターの手で、この小さなグループのためだけに生けられる一枝。仕上がった作品はそのままお持ち帰りいただけます、二度と同じ形では訪れない出会いの記憶として。生け花マスター横井紅炎は、能楽宝生流17世宗家・宝生九郎重英を祖父に、舞踊演出家の横井茂を父に、そして祖母・母ともに草月流華道家という家に生まれた。武蔵野美術大学卒業後、2000年に家督を受け継ぎ、2001年より能舞台、現代劇、コンサート、公共空間、デモンストレーションなど、日本国内外のあらゆる空間に花を生けてきた——本人いわく「空間へチャレンジしていく」仕事である。「桜花いけ請負人」としても知られ、廃棄素材や採集した自然物を用いるエコ推進華道家としても活動している。"
+  ],
+  "titleEn": "Kamakura：Ikebana — One Flower, One Encounter",
+  "titleJa": "鎌倉：生け花体験・一花一会",
+  "subEn": "Private Ikebana Experience with Master Artist Koen Yokoi.",
+  "subJa": "華道家・横井紅炎による、プライベートいけばな体験。 鎌倉にて開催。",
+  "ledeEn": "ZENRISE designs slow, considered private experiences around Kamakura and its surrounding towns. This is a private audience with a working ikebana master, arranged for one to six guests at a time, in a room chosen for its quiet. The Japanese phrase ichigo ichie — one time, one meeting — describes a single encounter that will never occur in quite the same way again. A flower cut this morning, arranged by this ikebana master, for this small group of guests: the finished piece is yours to take home, a keepsake of a moment created only once. Koen Yokoi Koen Yokoi was born into three generations of performing and floral arts: her grandfather was Kuro Hosho Shigehide, 17th head of the Hosho School of Noh; her father, Shigeru Yokoi, was a Noh stage director and choreographer; and both her grandmother and mother were ikebana artists of the Sogetsu school. A graduate of Musashino Art University, she inherited the family practice in 2000, and since 2001 has designed flowers for film sets, Noh stages, embassies, and public spaces across Japan and abroad. Widely known as a cherry blossom installation specialist, she is also a strong advocate of eco-conscious ikebana.",
+  "ledeJa": "Zenriseは、鎌倉とその周辺の街を舞台に、ゆっくりと考え抜かれたプライベート体験を企画しています。その最新作が、現役の華道家による、少人数だけのための生け花体験です。1名から6名までの少人数限定で、静けさを大切に選ばれた部屋にて行います。「一期一会」という言葉は、二度と同じようには訪れない、たった一度きりの出会いを表します。その日の朝に切られた花、生け花マスターの手で、この小さなグループのためだけに生けられる一枝。仕上がった作品はそのままお持ち帰りいただけます、二度と同じ形では訪れない出会いの記憶として。生け花マスター横井紅炎は、能楽宝生流17世宗家・宝生九郎重英を祖父に、舞踊演出家の横井茂を父に、そして祖母・母ともに草月流華道家という家に生まれた。武蔵野美術大学卒業後、2000年に家督を受け継ぎ、2001年より能舞台、現代劇、コンサート、公共空間、デモンストレーションなど、日本国内外のあらゆる空間に花を生けてきた——本人いわく「空間へチャレンジしていく」仕事である。「桜花いけ請負人」としても知られ、廃棄素材や採集した自然物を用いるエコ推進華道家としても活動している。",
+  "coverCaptionEn": "",
+  "coverCaptionJa": ""
+ },
+ {
+  "id": "kamakura-enoshima-yokohama-local",
+  "bokunId": 1272725,
+  "number": "05",
+  "area": "Kamakura",
+  "length": "Full / Half-day",
+  "themes": [
+   "culture",
+   "arts",
+   "walking",
+   "nature"
+  ],
+  "cover": {
+   "url": "https://bokun.s3.amazonaws.com/7ba205a2-33a3-4fba-89a0-5fb7cb6f21b2.jpeg",
+   "base": "https://imgcdn.bokun.tools/7ba205a2-33a3-4fba-89a0-5fb7cb6f21b2.jpeg"
+  },
+  "hoursEn": "8 hours",
+  "hoursJa": "8 時間",
+  "priceEn": "from ¥40,000 per group",
+  "priceJa": "¥40,000〜（1グループ）",
+  "priceRows": [
+   {
+    "category": null,
+    "category_ja": null,
+    "min": 1,
+    "max": 6,
+    "amount": 40000,
+    "currency": "JPY",
+    "per_booking": true,
+    "rate_title": "グループ(1–6) 半日(4h)",
+    "rate_title_ja": "グループ(1–6) 半日(4h)"
+   },
+   {
+    "category": null,
+    "category_ja": null,
+    "min": 1,
+    "max": 6,
+    "amount": 60000,
+    "currency": "JPY",
+    "per_booking": true,
+    "rate_title": "グループ(1–6) 一日(8h)",
+    "rate_title_ja": "グループ(1–6) 一日(8h)"
+   }
+  ],
+  "widgets": {},
+  "route": [
+   {
+    "title": "Kamakura, Enoshima & Yokohama Private Local Guide Service",
+    "body": "An experienced English-speaking local guide will accompany you to your preferred destinations. Enjoy a smooth, flexible stay at your own pace without rigid tour itineraries. Choose between a Half-Day (4 hours) or Full-Day (8 hours) service. Additional transportation fees will apply if the starting or ending location is outside of Kamakura, Fujisawa, or Yokohama.",
+    "titleJa": "鎌倉・江の島・横浜 英語対応プライベートガイドサービス",
+    "bodyJa": "地元に精通した英語対応ガイドが、お客様のご希望の場所をご案内いたします。決まったツアーコースではないため、あなたのペースで自由でスムーズな滞在を楽しめます。ツアー時間は「半日（4時間）」または「終日（8時間）」よりお選びいただけます。鎌倉市・藤沢市・横浜市以外の場所を出発・到着地点にご指定いただく場合は、別途交通費を申し受けます。",
+    "photo": "",
+    "photoBase": ""
+   }
+  ],
+  "includedEn": "Local spot recommendations by the guide\nInsurance (Food poisoning is not covered)\nHotel pick-up and drop-off (available within Kamakura and Fujisawa areas)",
+  "includedJa": "・英語対応の専属ローカルガイド\n・ガイドによるおすすめスポットのご提案\n・保険（食中毒は含まれません）\n・送迎サービス：鎌倉・藤沢エリア内対応可能",
+  "notIncludedEn": "Transportation fares\nTemple / Venue admission fees\nFood and drinks\nPersonal expenses",
+  "notIncludedJa": "・交通費\n・拝観料・入場料\n・お食事・お飲み物代\n・個人費用",
+  "bringEn": "Cash (Yen): Please bring Japanese Yen in cash to pay for admission fees, shopping, and meals on-site.\nComfortable walking shoes We recommend wearing comfortable walking shoes for walking around temple grounds and moving between spots.",
+  "bringJa": "・現金（日本円） 入場料やお買い物、お食事の現地支払いに備え、日本円の現金をご用意ください。\n・歩きやすい靴 境内の散策や移動のため、履き慣れた靴をおすすめいたします。",
+  "knowEn": "On-site Payments: Temple/facility admission fees, food and drinks, and public transportation fares are not included in the tour price. Please pay these directly on-site using cash or credit card.",
+  "knowJa": "現地での各種お支払い： 各施設の拝観料・入場料、お食事・お飲み物代、公共交通機関の運賃などはサービス代金に含まれておりません。現地にて現金またはクレジットカードで直接お支払いください。",
+  "includedChipsEn": "",
+  "includedChipsJa": "",
+  "knowChipsEn": "",
+  "knowChipsJa": "",
+  "ledeParasEn": [
+   "Private English-speaking local guide service for the Kamakura, Enoshima, and Yokohama areas. Choose between a Half-Day (4 hours) or Full-Day (8 hours) option according to your schedule.",
+   "This service is ideal if you already have a set itinerary or specific places in mind and are looking for local guiding, transit support, and translation. A knowledgeable local guide will accompany small groups of 1 to 6 people, helping with train transfers and offering flexible recommendations to ensure a seamless travel experience.",
+   "[Included]",
+   "Private local guide fee, local spot recommendations, and pick-up/drop-off within the Kamakura and Fujisawa areas.",
+   "[Excluded]",
+   "Public transportation fares, temple/venue admission fees, meals, and additional activity fees. (Please pay actual expenses directly on-site.)"
+  ],
+  "ledeParasJa": [
+   "鎌倉、江の島、横浜エリアを巡る英語対応のプライベート・ローカルガイドサービスです。ご予定に合わせて「半日（4時間）」または「終日（8時間）」からお選びいただけます。",
+   "行きたい場所や大まかな旅程は決まっているけれど、「現地の移動サポートや通訳をしてほしい」という方に最適です。1名様から6名様までの小グループを対象に、地元に精通したガイドが同行し、電車の乗り継ぎ案内や移動サポート、現地での柔軟なスポット案内まで快適な旅をしっかりお手伝いします。",
+   "含まれるもの：",
+   "専属ガイド料、現地おすすめスポットのご提案、鎌倉・藤沢エリア内でのピックアップ＆ドロップオフ。",
+   "含まれないもの：",
+   "公共交通費、各施設の拝観料・入場料、お食事代、その他アクティビティ体験料。（現地にて実費をお支払いください）"
+  ],
+  "titleEn": "Kamakura, Enoshima & Yokohama Private Local Guide Service",
+  "titleJa": "鎌倉・江の島・横浜 英語対応 専属ガイドサービス",
+  "subEn": "Have an itinerary but worried about train transfers or language barriers? An experienced English-speaking local guide will accompany you around Kamakura, Enoshima, and Yokohama, providing smooth navigation, translation, and local tips at your own pace.",
+  "subJa": "「行きたい場所はあるけれど、電車の乗り継ぎや現地の移動が不安…」そんな悩みを解消します。地元に精通した英語対応専属ガイドが同行し、鎌倉・江の島・横浜での移動サポートから通訳、現地でのおすすめスポット提案まで快適にアテンドいたします。決まったツアーコースではないため、あなたのペースで自由でスムーズな滞在を楽しめます。（半日4時間／終日8時間・1〜6名様まで）",
+  "ledeEn": "Private English-speaking local guide service for the Kamakura, Enoshima, and Yokohama areas. Choose between a Half-Day (4 hours) or Full-Day (8 hours) option according to your schedule. This service is ideal if you already have a set itinerary or specific places in mind and are looking for local guiding, transit support, and translation. A knowledgeable local guide will accompany small groups of 1 to 6 people, helping with train transfers and offering flexible recommendations to ensure a seamless travel experience. [Included] Private local guide fee, local spot recommendations, and pick-up/drop-off within the Kamakura and Fujisawa areas. [Excluded] Public transportation fares, temple/venue admission fees, meals, and additional activity fees. (Please pay actual expenses directly on-site.)",
+  "ledeJa": "鎌倉、江の島、横浜エリアを巡る英語対応のプライベート・ローカルガイドサービスです。ご予定に合わせて「半日（4時間）」または「終日（8時間）」からお選びいただけます。 行きたい場所や大まかな旅程は決まっているけれど、「現地の移動サポートや通訳をしてほしい」という方に最適です。1名様から6名様までの小グループを対象に、地元に精通したガイドが同行し、電車の乗り継ぎ案内や移動サポート、現地での柔軟なスポット案内まで快適な旅をしっかりお手伝いします。 含まれるもの： 専属ガイド料、現地おすすめスポットのご提案、鎌倉・藤沢エリア内でのピックアップ＆ドロップオフ。 含まれないもの： 公共交通費、各施設の拝観料・入場料、お食事代、その他アクティビティ体験料。（現地にて実費をお支払いください）",
+  "coverCaptionEn": "",
+  "coverCaptionJa": ""
+ },
+ {
+  "id": "swordsmithing",
+  "bokunId": 1275339,
+  "number": "04",
+  "area": "Kamakura",
+  "length": "Half-day",
+  "themes": [
+   "culture",
+   "arts"
+  ],
+  "cover": {
+   "url": "https://bokun.s3.amazonaws.com/df98408a-a4cb-4cc4-af26-4203a827c34b.jpeg",
+   "base": "https://imgcdn.bokun.tools/df98408a-a4cb-4cc4-af26-4203a827c34b.jpeg"
+  },
+  "hoursEn": "2 hours",
+  "hoursJa": "2 時間",
+  "priceEn": "from ¥150,000",
+  "priceJa": "¥150,000〜",
+  "priceRows": [
+   {
+    "category": "Group of 1 ",
+    "category_ja": "Group of 1 ",
+    "min": 1,
+    "max": null,
+    "amount": 150000,
+    "currency": "JPY",
+    "rate_title": "Price",
+    "rate_title_ja": "Price"
+   },
+   {
+    "category": "Group of 3 ",
+    "category_ja": "Group of 3 ",
+    "min": 1,
+    "max": null,
+    "amount": 216000,
+    "currency": "JPY",
+    "rate_title": "Price",
+    "rate_title_ja": "Price"
+   },
+   {
+    "category": "Group of 6 ",
+    "category_ja": "Group of 6 ",
+    "min": 1,
+    "max": null,
+    "amount": 414000,
+    "currency": "JPY",
+    "rate_title": "Price",
+    "rate_title_ja": "Price"
+   },
+   {
+    "category": "Group of 5 ",
+    "category_ja": "Group of 5 ",
+    "min": 1,
+    "max": null,
+    "amount": 348000,
+    "currency": "JPY",
+    "rate_title": "Price",
+    "rate_title_ja": "Price"
+   },
+   {
+    "category": "Group of 2 ",
+    "category_ja": "Group of 2 ",
+    "min": 1,
+    "max": null,
+    "amount": 150000,
+    "currency": "JPY",
+    "rate_title": "Price",
+    "rate_title_ja": "Price"
+   },
+   {
+    "category": "Group of 4 ",
+    "category_ja": "Group of 4 ",
+    "min": 1,
+    "max": null,
+    "amount": 282000,
+    "currency": "JPY",
+    "rate_title": "Price",
+    "rate_title_ja": "Price"
+   }
+  ],
+  "widgets": {
+   "en": "6db7a498-ed75-46ba-b4fa-6ab6abc239c0/experience-calendar/1275339"
+  },
+  "route": [
+   {
+    "title": "Pickup",
+    "body": "Complimentary pickup service within Kamakura and Fujisawa cities. For transfers outside these areas, please contact us in advance to discuss options.",
+    "titleJa": "ピックアップ",
+    "bodyJa": "鎌倉、藤沢市内は送迎無料。 上記以外のエリアの送迎は別途、ご相談ください。",
+    "photo": "",
+    "photoBase": ""
+   },
+   {
+    "title": "Swordsmithing Experience",
+    "body": "Guided observation of traditional forging, blade appreciation, and hearthside tea. Total duration: 120 minutes.",
+    "titleJa": "刀鍛冶体験",
+    "bodyJa": "鍛錬見学・拝刀作法・炉端でのお茶。合計120分。",
+    "photo": "https://imgcdn.bokun.tools/df98408a-a4cb-4cc4-af26-4203a827c34b.jpeg?w=300&h=300",
+    "photoBase": "https://imgcdn.bokun.tools/df98408a-a4cb-4cc4-af26-4203a827c34b.jpeg"
+   },
+   {
+    "title": "The Masamune Legacy",
+    "body": "Masamune — properly, Gorō Nyūdō Masamune — is counted among Japan’s Three Great Swordsmiths, and his work was recorded in the Kyōhō Meibutsuchō, a register of treasured blades commissioned by the eighth shogun, Tokugawa Yoshimune. He is said to have been admired even by Toyotomi Hideyoshi. His Sōshū-den tradition of swordsmithing continues today in Kamakura, upheld by the twenty-fourth-generation swordsmith of the family line. At the hearth, you’ll come face to face with raw steel, and with the patient discipline that turns it into a blade",
+    "titleJa": "正宗の系譜",
+    "bodyJa": "正宗——正式には五郎入道正宗——は日本三大刀匠の一人に数えられ、その作は八代将軍・徳川吉宗の命により編纂された名物帳「享保名物帳」にも記されています。豊臣秀吉にも愛されたと伝わるその相州伝の技は、鎌倉の地で今なお受け継がれ、一門の24代目がその系譜を守っています。炉端では、生の鋼と、それを刃へと変える忍耐の技に間近で向き合っていただきます。",
+    "photo": "https://imgcdn.bokun.tools/26472403-01db-405a-96d8-1044968b4ac0.jpeg?w=300&h=300",
+    "photoBase": "https://imgcdn.bokun.tools/26472403-01db-405a-96d8-1044968b4ac0.jpeg"
+   },
+   {
+    "title": "The Forge",
+    "body": "At the hearth, steel is heated until it glows, then drawn, folded, and struck into shape amidst a shower of sparks. Guests stand close enough to feel the heat and hear the cadence of the hammer, guided through each stage by the swordsmith and an interpreter. This is not a demonstration behind glass; it is the workshop’s ordinary, extraordinary work, opened exclusively to a small group.",
+    "titleJa": "鍛錬見学",
+    "bodyJa": "炉端では、鋼が赤く灼けるまで熱され、打たれ、折り返され、火花とともに少しずつ形をなしていきます。お客様は熱と槌の音を間近に感じられる距離に立ち、刀匠と同行の通訳ガイドの案内のもと、その工程をひとつひとつご覧いただきます。ガラス越しの実演ではなく、工房の日常であり、同時に類まれな仕事を、少人数のためだけに開いていただく時間です。",
+    "photo": "https://imgcdn.bokun.tools/bce4e516-87ea-41e8-8992-f27fb5282a4a.jpeg?w=300&h=300",
+    "photoBase": "https://imgcdn.bokun.tools/bce4e516-87ea-41e8-8992-f27fb5282a4a.jpeg"
+   },
+   {
+    "title": "Sword Appreciation & Tea",
+    "body": "Following the demonstration, you’ll learn haitō — the quiet etiquette of viewing a Japanese sword: how to hold it, how to look at it, and what to look for in the grain of the steel and the line of its edge. The visit closes with tea and traditional sweets, served in the same unhurried quiet that runs through the entire experience.",
+    "titleJa": "拝刀と茶の一服",
+    "bodyJa": "鍛錬見学の後は、日本刀を鑑賞する際の静かな作法「拝刀」を学びます——刀の持ち方、見方、そして鋼の地肌や刃文に何を見るか。体験の締めくくりには、お茶と季節の菓子を、体験全体を貫く落ち着いた静けさの中でお召し上がりいただきます。",
+    "photo": "https://imgcdn.bokun.tools/c99559d6-c201-4530-8ed1-0a5fb0a507ce.jpeg?w=300&h=300",
+    "photoBase": "https://imgcdn.bokun.tools/c99559d6-c201-4530-8ed1-0a5fb0a507ce.jpeg"
+   },
+   {
+    "title": "Drop-off",
+    "body": "Complimentary drop-off service within Kamakura and Fujisawa cities. For transfers outside these areas, please contact us in advance to discuss options.",
+    "titleJa": "ドロップオフ",
+    "bodyJa": "鎌倉、藤沢市内は送迎無料。 上記以外のエリアの送迎は別途、ご相談ください。",
+    "photo": "",
+    "photoBase": ""
+   }
+  ],
+  "includedEn": "Guided observation of traditional sword forging, blade viewing, and expert commentary\nJapanese tea and seasonal sweets at the workshop\nProfessional English-speaking interpreter guide\nComplimentary round-trip transport within Kamakura and Fujisawa cities\nInsurance",
+  "includedJa": "・伝統的な日本刀の鍛錬見学、鑑賞、および解説付きガイドツアー\n・工房での日本茶と季節の和菓子\n・専門の英語通訳ガイド\n・鎌倉市・藤沢市内の無料往復送迎サービス\n・旅行傷害保険",
+  "notIncludedEn": "Personal food and beverage expenses\nPersonal purchases and shopping\nTransportation outside Kamakura and Fujisawa cities",
+  "notIncludedJa": "・個人的な飲食代\n・個人的な買い物\n・鎌倉、藤沢市以外の送迎",
+  "bringEn": "",
+  "bringJa": "",
+  "knowEn": "01. About the Tour This experience is operated and arranged by Zenrise in partnership with Arte Inc. and Masamune Sword Works. Upon receiving your booking request, we will check availability with our partners (typically responding within a few business days). Your reservation is confirmed once payment is completed.\n02. Bookings Reservations open two months prior to the tour date. Group sizes range from a minimum of 2 to a maximum of 6 guests. Group size, dietary restrictions (such as allergies), and transportation requests must be finalized in advance.\n03. Cancellation Policy Because this experience is arranged in collaboration with an independent workshop and partner organizations, a unique cancellation policy applies. Change requests after confirmation may not be possible. Should your schedule change, our team will do our best to coordinate with the workshop and Arte Inc. We strongly recommend confirming your travel itinerary before booking.\n04. Weather & Unforeseen Circumstances If the experience cannot be held due to workshop circumstances (including unscheduled closures or force majeure), Zenrise, in coordination with Arte Inc., will propose an alternative date or issue a full refund.",
+  "knowJa": "01. 体験ツアーについて\n本体験は、Zenriseが株式会社アルテおよび正宗工芸制作所との提携のもと手配・企画しております。ご予約のリクエストをいただいた後、提携先への空き状況の確認を行います（通常数営業日以内にご回答いたします）。決済の完了をもちまして、正式なご予約確定となります。\n02. ご予約について\nご予約はツアー開催日の2ヶ月前から承ります。最少催行人数は2名様、最大催行人数は6名様です。グループの人数、アレルギー等の食事制限、移動に関するご要望は、あらかじめ事前に確定いただく必要がございます。\n03. キャンセルポリシーについて\n本体験は独立した工房および提携団体との連携により手配されるため、通常のデイツアーとは異なるキャンセルポリシーが適用されます。ご予約確定後の変更リクエストはお受けできない場合がございます。なお、日程等の変更が生じた場合は、弊チームが工房および株式会社アルテと調整に尽力いたします。お申し込みにあたっては、事前にご旅行日程を確定されたうえでご予約いただくことを強く推奨いたします。\n04. 悪天候・不可抗力について\n工房の都合（臨時休業や不可抗力による事態を含む）により体験の開催が困難となった場合、Zenriseは株式会社アルテと連携のうえ、振替日程のご提案または全額返金の対応をさせていただきます。",
+  "includedChipsEn": "",
+  "includedChipsJa": "",
+  "knowChipsEn": "",
+  "knowChipsJa": "",
+  "ledeParasEn": [
+   "Kamakura has kept its temples, its craft, and its quiet for eight hundred and fifty years.",
+   "Not far from the Five Mountains, one workshop has kept something rarer still: an unbroken lineage of swordsmiths, twenty-four generations deep, descended from Masamune — one of Japan’s Three Great Swordsmiths, whose blades were once recorded among the shogunate’s own treasures.",
+   "This experience brings you to that hearth. You’ll watch raw steel drawn, folded, and struck into shape; learn the quiet etiquette of viewing a blade; and enjoy tea and traditional sweets before you go — arranged in partnership with Arte Inc. Everything is seamlessly prepared in advance. All you need to bring is a willingness to look closely.",
+   "Practical Notes",
+   "This experience is arranged for groups of two to six guests and runs year-round. It takes place at a working forge — please expect heat, smoke, and the sound of the hammer. Comfortable, closed-toe footwear is recommended."
+  ],
+  "ledeParasJa": [
+   "鎌倉は、八百五十年にわたり寺院と匠の技、そしてその静けさを守り続けてきました。鎌倉五山からほど近い一軒の工房には、さらに稀なものが受け継がれています——日本三大刀匠の一人、正宗の系譜を継ぐ、24代にわたり途切れることのない刀鍛冶の血脈です。かつてその作は幕府自らの宝物帳にも記されました。本体験では、その炉端へお客様をご案内します。熱された鋼が打たれ、折り返され、形をなす様子をご覧いただき、刀を鑑賞する静かな作法を学び、最後にお茶と季節の菓子でひと息ついていただきます——株式会社Arteとの提携により、すべての手配はあらかじめ整えてありますので、あとはじっくりと見つめる心構えだけをお持ちください。本体験は2名から6名までのグループを対象に、通年でご案内しています。実際に稼働する鍛冶場でのご案内のため、熱や煙、槌の音がございます。歩きやすく、つま先の覆われた靴をおすすめします。"
+  ],
+  "titleEn": "The Swordsmith's Flame",
+  "titleJa": "鎌倉： 刀匠の炎 刀鍛冶体験",
+  "subEn": "An authentic swordsmithing experience with a 24th-generation descendant of Masamune — one of Japan’s Three Great Swordsmiths — preserving an unbroken lineage of master craftsmanship.",
+  "subJa": "日本三大刀匠の一人、正宗の系譜を継ぐ、24代にわたり途切れることの ない刀鍛冶の血脈による刀鍛冶体験。",
+  "ledeEn": "Kamakura has kept its temples, its craft, and its quiet for eight hundred and fifty years. Not far from the Five Mountains, one workshop has kept something rarer still: an unbroken lineage of swordsmiths, twenty-four generations deep, descended from Masamune — one of Japan’s Three Great Swordsmiths, whose blades were once recorded among the shogunate’s own treasures. This experience brings you to that hearth. You’ll watch raw steel drawn, folded, and struck into shape; learn the quiet etiquette of viewing a blade; and enjoy tea and traditional sweets before you go — arranged in partnership with Arte Inc. Everything is seamlessly prepared in advance. All you need to bring is a willingness to look closely. Practical Notes This experience is arranged for groups of two to six guests and runs year-round. It takes place at a working forge — please expect heat, smoke, and the sound of the hammer. Comfortable, closed-toe footwear is recommended.",
+  "ledeJa": "鎌倉は、八百五十年にわたり寺院と匠の技、そしてその静けさを守り続けてきました。鎌倉五山からほど近い一軒の工房には、さらに稀なものが受け継がれています——日本三大刀匠の一人、正宗の系譜を継ぐ、24代にわたり途切れることのない刀鍛冶の血脈です。かつてその作は幕府自らの宝物帳にも記されました。本体験では、その炉端へお客様をご案内します。熱された鋼が打たれ、折り返され、形をなす様子をご覧いただき、刀を鑑賞する静かな作法を学び、最後にお茶と季節の菓子でひと息ついていただきます——株式会社Arteとの提携により、すべての手配はあらかじめ整えてありますので、あとはじっくりと見つめる心構えだけをお持ちください。本体験は2名から6名までのグループを対象に、通年でご案内しています。実際に稼働する鍛冶場でのご案内のため、熱や煙、槌の音がございます。歩きやすく、つま先の覆われた靴をおすすめします。",
   "coverCaptionEn": "",
   "coverCaptionJa": ""
  }
