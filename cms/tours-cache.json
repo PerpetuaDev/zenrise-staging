@@ -1,5 +1,148 @@
 [
  {
+  "id": "candle-making",
+  "bokunId": 1273235,
+  "number": "02",
+  "area": "Kamakura",
+  "length": "Half-day",
+  "themes": [
+   "culture",
+   "arts"
+  ],
+  "cover": {
+   "url": "https://bokun.s3.amazonaws.com/cfe134ea-d26d-45eb-b812-8eeabf2478f8.jpeg",
+   "base": "https://imgcdn.bokun.tools/cfe134ea-d26d-45eb-b812-8eeabf2478f8.jpeg"
+  },
+  "hoursEn": "2 hours",
+  "hoursJa": "2 時間",
+  "priceEn": "from ¥58,000",
+  "priceJa": "¥58,000〜",
+  "priceRows": [
+   {
+    "category": "Group of 2 ",
+    "category_ja": "Group of 2 ",
+    "min": 1,
+    "max": null,
+    "amount": 58000,
+    "currency": "JPY",
+    "rate_title": "Price",
+    "rate_title_ja": "Price"
+   },
+   {
+    "category": "Group of 4 ",
+    "category_ja": "Group of 4 ",
+    "min": 1,
+    "max": null,
+    "amount": 82000,
+    "currency": "JPY",
+    "rate_title": "Price",
+    "rate_title_ja": "Price"
+   },
+   {
+    "category": "Group of 1 ",
+    "category_ja": "Group of 1 ",
+    "min": 1,
+    "max": null,
+    "amount": 58000,
+    "currency": "JPY",
+    "rate_title": "Price",
+    "rate_title_ja": "Price"
+   },
+   {
+    "category": "Group of 3 ",
+    "category_ja": "Group of 3 ",
+    "min": 1,
+    "max": null,
+    "amount": 70000,
+    "currency": "JPY",
+    "rate_title": "Price",
+    "rate_title_ja": "Price"
+   }
+  ],
+  "widgets": {
+   "en": "6db7a498-ed75-46ba-b4fa-6ab6abc239c0/experience-calendar/1273235"
+  },
+  "route": [
+   {
+    "title": "Pick-up",
+    "body": "Complimentary pick-up and drop-off within Kamakura and Fujisawa cities. Transfers outside these areas are available upon request for an additional fee.",
+    "titleJa": "ピックアップ",
+    "bodyJa": "鎌倉市内、藤沢市内は無料送迎。 それ以外の場所は別途ご相談に応じます。",
+    "photo": "https://imgcdn.bokun.tools/8c79f252-8e1a-4b73-a819-eadf35b541b1.jpeg?w=300&h=300",
+    "photoBase": "https://imgcdn.bokun.tools/8c79f252-8e1a-4b73-a819-eadf35b541b1.jpeg"
+   },
+   {
+    "title": "Introduction & History (60 min)",
+    "body": "Learn about the history of traditional Japanese candles ( wa-rōsoku ), how they differ from Western candles, and Meria’s personal journey to becoming a wax artist.",
+    "titleJa": "座学 60分",
+    "bodyJa": "和蝋燭の歴史や、洋蝋燭との違い、Meriaが蝋作家になるまでの歩みについてお話しします。",
+    "photo": "https://imgcdn.bokun.tools/661f9611-1c4f-4c35-991d-327964f78307.jpeg?w=300&h=300",
+    "photoBase": "https://imgcdn.bokun.tools/661f9611-1c4f-4c35-991d-327964f78307.jpeg"
+   },
+   {
+    "title": "Candle-Making Workshop (45 min)",
+    "body": "Step-by-step hands-on guidance as you dip the wick into molten wax, layering and shaping your custom candle by hand.",
+    "titleJa": "体験 45分",
+    "bodyJa": "溶けた蝋に灯芯を浸しては形を整える工程を、実際に手を動かしながら学びます。",
+    "photo": "https://imgcdn.bokun.tools/39cfe363-0f58-4c61-9537-a90bec4d4709.jpeg?w=300&h=300",
+    "photoBase": "https://imgcdn.bokun.tools/39cfe363-0f58-4c61-9537-a90bec4d4709.jpeg"
+   },
+   {
+    "title": "Reflection & Tea Time (15 min)",
+    "body": "Light your finished candle, ask questions, and enjoy relaxed conversation over tea to conclude the experience.",
+    "titleJa": "雑談 15分",
+    "bodyJa": "仕上がった和蝋燭を前に、質問や雑談を楽しむ、決まった形のない締めくくりの時間です。",
+    "photo": "https://imgcdn.bokun.tools/f9e33708-fb1f-4d49-8a0f-c335d79664dc.jpeg?w=300&h=300",
+    "photoBase": "https://imgcdn.bokun.tools/f9e33708-fb1f-4d49-8a0f-c335d79664dc.jpeg"
+   },
+   {
+    "title": "Drop-off",
+    "body": "Complimentary drop-off within Kamakura and Fujisawa cities. Other locations available upon request for an additional fee.",
+    "titleJa": "ドロップオフ",
+    "bodyJa": "鎌倉市内、藤沢市内は無料送迎 それ以外の場所は別途ご相談に応じます。",
+    "photo": "https://imgcdn.bokun.tools/0b2a8cf8-af37-41d5-90c9-38b11a59a89c.jpeg?w=300&h=300",
+    "photoBase": "https://imgcdn.bokun.tools/0b2a8cf8-af37-41d5-90c9-38b11a59a89c.jpeg"
+   }
+  ],
+  "includedEn": "English-speaking guide\nInstruction by wax artist Meria\nAll materials, tools, and venue fees\nTea\nYour handcrafted wa-rosoku candle to take home\nComplimentary pick-up / drop-off within Kamakura & Fujisawa cities",
+  "includedJa": "・英語対応ガイドの同行\n・Meriaによる指導\n・材料・道具一式、会場費\n・お茶\n・制作した和蝋燭のお持ち帰り\n・鎌倉・藤沢市内の無料送迎",
+  "notIncludedEn": "Personal food and drink expenses\nPersonal shopping expenses\nTransfer outside Kamakura & Fujisawa cities",
+  "notIncludedJa": "・個人的な飲食代\n・個人的な買い物\n・鎌倉、藤沢以外の送迎",
+  "bringEn": "Wax is used during the experience. Please wear clothes that you don't mind getting slightly dirty.",
+  "bringJa": "汚れる可能性もあるため服装にご注意ください。",
+  "knowEn": "",
+  "knowJa": "",
+  "includedChipsEn": "",
+  "includedChipsJa": "",
+  "knowChipsEn": "",
+  "knowChipsJa": "",
+  "ledeParasEn": [
+   "A quiet moment with a flame can become one of the most memorable parts of a journey.",
+   "In Shonan, discover the traditional craft of Japanese candle-making through an intimate workshop led by local candle artisan Meria. Working with natural materials sourced from the region, you will shape your own Japanese candle entirely by hand.",
+   "Limited to four guests, the experience takes place in a quiet setting in Kamakura or Fujisawa — a chance to slow down, work with your hands, and experience a different rhythm of Japan.",
+   "Your finished candle is yours to take home, carrying with it the memory of your time in Shonan.",
+   "Shonan Japanese Candles Inspired by the quiet beauty of the Shonan coast, Shonan Japanese Candles bring together local materials and a traditional Japanese craft. Each candle is made by hand from plant-based mokurō wax, derived from the Japanese wax tree, and a natural wick made from washi and rush. As the candle burns, the wax is drawn into the wick and gradually disappears into the flame. There is very little residue, and the natural materials allow the candle to return gently to the environment. The larger, steady flame has long been valued in Japanese temples and tea rooms.",
+   "Meet Meria Based in Fujisawa, Meria creates Shonan Japanese Candles using natural materials from local farmers and producers.",
+   "From developing each color to shaping and finishing every candle, she works entirely by hand, choosing a slower process over mass production. Her workshops offer a space to become absorbed in the simple act of making — where time seems to slow, and the hands take over."
+  ],
+  "ledeParasJa": [
+   "炎を静かに見つめる時間は、旅の中でも心に残るひとときになることがあります。",
+   "湘南で活動する蝋作家・Meriaとともに、日本の伝統的な和蝋燭づくりを体験します。地域の自然素材に触れながら、一本の和蝋燭をすべて手作業で仕上げます。定員4名までの少人数制。鎌倉または藤沢の静かな空間で、手を動かしながら、いつもとは少し違う日本の時間を味わいます。完成した和蝋燭は、そのままお持ち帰りいただけます。湘南で過ごした時間を思い出す、小さな灯りとして。",
+   "湘南和蝋燭について",
+   "湘南の海辺の静かな美しさと、日本の伝統技法をひとつの灯りに込めた「湘南和蝋燭」。日本の和蝋燭は、ハゼの実から採れる植物性の蝋「木蝋」と、和紙やイグサでつくられた自然素材の芯から、一本ずつ手作りされます。火を灯すと、蝋は芯に吸われながらゆっくりと燃え、最後には炎の中へと消えていきます。蝋垂れや燃え残りが少なく、自然素材ならではの美しさを持つ灯りです。大きく、安定した炎は、古くから寺院や茶室でも大切に使われてきました。",
+   "蝋作家・Meria",
+   "神奈川県藤沢市を拠点に、Meriaは湘南の自然と地域の素材を生かした「湘南和蝋燭」を制作しています。地元の農家や事業者から届く自然素材を選び、色づくりから成形、仕上げまで、すべて自身の手で行っています。大量生産ではなく、時間をかけて一つひとつをつくること。ワークショップでは、手を動かすうちに時間を忘れ、ものづくりそのものに静かに没頭できる場を大切にしています。"
+  ],
+  "titleEn": "Kamakura & Fujisawa: Japanese Candle-Making — A Handmade Light",
+  "titleJa": "鎌倉・藤沢：和蝋燭作り体験 — 手作りの灯",
+  "subEn": "A private, intimate candle-making experience in Shonan, where you can slow down and discover the quiet beauty of Japanese craftsmanship. Guided by local candle artisan Meria, create your own Japanese candle by hand using natural materials from the region,",
+  "subJa": "湘南の静かな空間で、日本の手仕事に触れながら、ゆっくりと過ごすプライベートな和蝋燭づくり体験。湘南を拠点に活動する蝋作家・Meriaとともに、地域の自然素材を使って一本の和蝋燭を手作りし、日本で過ごした時間の記憶とともに持ち帰ります。",
+  "ledeEn": "A quiet moment with a flame can become one of the most memorable parts of a journey. In Shonan, discover the traditional craft of Japanese candle-making through an intimate workshop led by local candle artisan Meria. Working with natural materials sourced from the region, you will shape your own Japanese candle entirely by hand. Limited to four guests, the experience takes place in a quiet setting in Kamakura or Fujisawa — a chance to slow down, work with your hands, and experience a different rhythm of Japan. Your finished candle is yours to take home, carrying with it the memory of your time in Shonan. Shonan Japanese Candles Inspired by the quiet beauty of the Shonan coast, Shonan Japanese Candles bring together local materials and a traditional Japanese craft. Each candle is made by hand from plant-based mokurō wax, derived from the Japanese wax tree, and a natural wick made from washi and rush. As the candle burns, the wax is drawn into the wick and gradually disappears into the flame. There is very little residue, and the natural materials allow the candle to return gently to the environment. The larger, steady flame has long been valued in Japanese temples and tea rooms. Meet Meria Based in Fujisawa, Meria creates Shonan Japanese Candles using natural materials from local farmers and producers. From developing each color to shaping and finishing every candle, she works entirely by hand, choosing a slower process over mass production. Her workshops offer a space to become absorbed in the simple act of making — where time seems to slow, and the hands take over.",
+  "ledeJa": "炎を静かに見つめる時間は、旅の中でも心に残るひとときになることがあります。 湘南で活動する蝋作家・Meriaとともに、日本の伝統的な和蝋燭づくりを体験します。地域の自然素材に触れながら、一本の和蝋燭をすべて手作業で仕上げます。定員4名までの少人数制。鎌倉または藤沢の静かな空間で、手を動かしながら、いつもとは少し違う日本の時間を味わいます。完成した和蝋燭は、そのままお持ち帰りいただけます。湘南で過ごした時間を思い出す、小さな灯りとして。 湘南和蝋燭について 湘南の海辺の静かな美しさと、日本の伝統技法をひとつの灯りに込めた「湘南和蝋燭」。日本の和蝋燭は、ハゼの実から採れる植物性の蝋「木蝋」と、和紙やイグサでつくられた自然素材の芯から、一本ずつ手作りされます。火を灯すと、蝋は芯に吸われながらゆっくりと燃え、最後には炎の中へと消えていきます。蝋垂れや燃え残りが少なく、自然素材ならではの美しさを持つ灯りです。大きく、安定した炎は、古くから寺院や茶室でも大切に使われてきました。 蝋作家・Meria 神奈川県藤沢市を拠点に、Meriaは湘南の自然と地域の素材を生かした「湘南和蝋燭」を制作しています。地元の農家や事業者から届く自然素材を選び、色づくりから成形、仕上げまで、すべて自身の手で行っています。大量生産ではなく、時間をかけて一つひとつをつくること。ワークショップでは、手を動かすうちに時間を忘れ、ものづくりそのものに静かに没頭できる場を大切にしています。",
+  "coverCaptionEn": "",
+  "coverCaptionJa": ""
+ },
+ {
   "id": "zen-journey",
   "bokunId": 1273194,
   "number": "03",
@@ -221,7 +364,7 @@
   ],
   "titleEn": "Kamakura: The Zen Journey",
   "titleJa": "鎌倉 禅の旅",
-  "subEn": "Experience 850 years of Kamakura and the quiet heart of Zen through Japanese gardens, zazen, and matcha.Experience 850 years of Kamakura and the quiet heart of Zen through Japanese gardens, zazen, and matcha.",
+  "subEn": "Experience 850 years of Kamakura and the quiet heart of Zen through Japanese gardens, zazen, and matcha.",
   "subJa": "850年の鎌倉の歴史と、禅の本質に触れる。日本庭園・坐禅・抹茶。",
   "ledeEn": "Kamakura has preserved its temples for 850 years — and its stillness for just as long. This tour is built around that stillness: not a rapid checklist of sights, but a unhurried journey through three of the city’s five great Zen temples, accompanied by a guide who brings their history to life and gives you ample time to truly absorb each moment. The Five Mountains, or Kamakura Gozan, are the five preeminent Rinzai Zen temples whose foundations were laid under the Kamakura shogunate and which were later ranked at the highest tier by the Muromachi shogunate: Kencho‑ji, Engaku‑ji, Jufuku‑ji, Jochi‑ji, and Jomyo‑ji. On this journey, you will experience a brief zazen meditation at Engaku-ji, stroll through the seasonal grounds of Jochi-ji, and savor matcha overlooking the dry landscape Zen garden at Jomyo-ji. The morning concludes with a relaxed lunch tailored to your taste. Everything is arranged in advance. All you need to bring is a willingness to slow down. For full-day tours, the afternoon itinerary following lunch will be fully customized to your preferences.",
   "ledeJa": "鎌倉の寺々は八百五十年にわたり守られてきました。その静けさ もまた、同じだけの歳月を重ねています。 本ツアーは、その静け さを味わうための一日です。名所を巡るだけでなく、鎌倉五山のうち三つの禅寺をゆっくりと巡り、ガイドが目の前の景色をひとつひとつ丁寧にご案内します。 鎌倉五山とは、鎌倉幕府が礎を築き、室町幕府によって定められ た、臨済宗の五つの最高格式寺院——建長寺・円覚寺・寿福寺・浄 智寺・浄妙寺——の総称です。 円覚寺では短い坐禅を体験し、浄智寺では四季折々の草花が彩る境内をそぞろ歩き、浄妙寺では枯山水を眺めながら抹茶をいただ きます。午前の締めくくりには、お好みに合わせたお店で昼食を。すべての手配はあらかじめ整えてありますので、あとはゆっくりと歩む心構えだけをお持ちください。終日ツアーをご予約のお客様は、昼食以降の行程をオーダーメイドでご提案いたします。",
@@ -357,21 +500,24 @@
    "Koen Yokoi was born into three generations of performing and floral arts: her grandfather was Kuro Hosho Shigehide, 17th head of the Hosho School of Noh; her father, Shigeru Yokoi, was a Noh stage director and choreographer; and both her grandmother and mother were ikebana artists of the Sogetsu school. A graduate of Musashino Art University, she inherited the family practice in 2000, and since 2001 has designed flowers for film sets, Noh stages, embassies, and public spaces across Japan and abroad. Widely known as a cherry blossom installation specialist, she is also a strong advocate of eco-conscious ikebana."
   ],
   "ledeParasJa": [
-   "Zenriseは、鎌倉とその周辺の街を舞台に、ゆっくりと考え抜かれたプライベート体験を企画しています。その最新作が、現役の華道家による、少人数だけのための生け花体験です。1名から6名までの少人数限定で、静けさを大切に選ばれた部屋にて行います。「一期一会」という言葉は、二度と同じようには訪れない、たった一度きりの出会いを表します。その日の朝に切られた花、生け花マスターの手で、この小さなグループのためだけに生けられる一枝。仕上がった作品はそのままお持ち帰りいただけます、二度と同じ形では訪れない出会いの記憶として。生け花マスター横井紅炎は、能楽宝生流17世宗家・宝生九郎重英を祖父に、舞踊演出家の横井茂を父に、そして祖母・母ともに草月流華道家という家に生まれた。武蔵野美術大学卒業後、2000年に家督を受け継ぎ、2001年より能舞台、現代劇、コンサート、公共空間、デモンストレーションなど、日本国内外のあらゆる空間に花を生けてきた——本人いわく「空間へチャレンジしていく」仕事である。「桜花いけ請負人」としても知られ、廃棄素材や採集した自然物を用いるエコ推進華道家としても活動している。"
+   "Zenriseは、鎌倉とその周辺の街を舞台に、ゆっくりと考え抜かれたプライベート体験を企画しています。",
+   "本体験は、現役の華道家による、少人数だけのための生け花体験です。1名から6名までの少人数限定で、静けさを大切に選ばれた部屋にて行います。",
+   "「一期一会」という言葉は、二度と同じようには訪れない、たった一度きりの出会いを表します。その日の朝に切られた花、生け花マスターの手で、この小さなグループのためだけに生けられる一枝。仕上がった作品はそのままお持ち帰りいただけます。二度と同じ形では訪れない出会いの記憶として。",
+   "生け花マスター横井紅炎は、能楽宝生流17世宗家・宝生九郎重英を祖父に、舞踊演出家の横井茂を父に、そして祖母・母ともに草月流華道家という家に生まれた。武蔵野美術大学卒業後、2000年に家督を受け継ぎ、2001年より能舞台、現代劇、コンサート、公共空間、デモンストレーションなど、日本国内外のあらゆる空間に花を生けてきた——本人いわく「空間へチャレンジしていく」仕事である。「桜花いけ請負人」としても知られ、廃棄素材や採集した自然物を用いるエコ推進華道家としても活動している。"
   ],
   "titleEn": "Kamakura：Ikebana — One Flower, One Encounter",
   "titleJa": "鎌倉：生け花体験・一花一会",
-  "subEn": "Private Ikebana Experience with Master Artist Koen Yokoi.",
-  "subJa": "華道家・横井紅炎による、プライベートいけばな体験。 鎌倉にて開催。",
+  "subEn": "A private, small-group ikebana experience with master florist Koen Yokoi. Enjoy the quiet serenity of Kamakura and a once-in-a-lifetime encounter with flowers.",
+  "subJa": "現役の華道家・横井紅炎による、少人数のプライベートいけばな体験です。 鎌倉の静けさと、お花との一期一会をお楽しみください。",
   "ledeEn": "ZENRISE designs slow, considered private experiences around Kamakura and its surrounding towns. This is a private audience with a working ikebana master, arranged for one to six guests at a time, in a room chosen for its quiet. The Japanese phrase ichigo ichie — one time, one meeting — describes a single encounter that will never occur in quite the same way again. A flower cut this morning, arranged by this ikebana master, for this small group of guests: the finished piece is yours to take home, a keepsake of a moment created only once. Koen Yokoi Koen Yokoi was born into three generations of performing and floral arts: her grandfather was Kuro Hosho Shigehide, 17th head of the Hosho School of Noh; her father, Shigeru Yokoi, was a Noh stage director and choreographer; and both her grandmother and mother were ikebana artists of the Sogetsu school. A graduate of Musashino Art University, she inherited the family practice in 2000, and since 2001 has designed flowers for film sets, Noh stages, embassies, and public spaces across Japan and abroad. Widely known as a cherry blossom installation specialist, she is also a strong advocate of eco-conscious ikebana.",
-  "ledeJa": "Zenriseは、鎌倉とその周辺の街を舞台に、ゆっくりと考え抜かれたプライベート体験を企画しています。その最新作が、現役の華道家による、少人数だけのための生け花体験です。1名から6名までの少人数限定で、静けさを大切に選ばれた部屋にて行います。「一期一会」という言葉は、二度と同じようには訪れない、たった一度きりの出会いを表します。その日の朝に切られた花、生け花マスターの手で、この小さなグループのためだけに生けられる一枝。仕上がった作品はそのままお持ち帰りいただけます、二度と同じ形では訪れない出会いの記憶として。生け花マスター横井紅炎は、能楽宝生流17世宗家・宝生九郎重英を祖父に、舞踊演出家の横井茂を父に、そして祖母・母ともに草月流華道家という家に生まれた。武蔵野美術大学卒業後、2000年に家督を受け継ぎ、2001年より能舞台、現代劇、コンサート、公共空間、デモンストレーションなど、日本国内外のあらゆる空間に花を生けてきた——本人いわく「空間へチャレンジしていく」仕事である。「桜花いけ請負人」としても知られ、廃棄素材や採集した自然物を用いるエコ推進華道家としても活動している。",
+  "ledeJa": "Zenriseは、鎌倉とその周辺の街を舞台に、ゆっくりと考え抜かれたプライベート体験を企画しています。 本体験は、現役の華道家による、少人数だけのための生け花体験です。1名から6名までの少人数限定で、静けさを大切に選ばれた部屋にて行います。 「一期一会」という言葉は、二度と同じようには訪れない、たった一度きりの出会いを表します。その日の朝に切られた花、生け花マスターの手で、この小さなグループのためだけに生けられる一枝。仕上がった作品はそのままお持ち帰りいただけます。二度と同じ形では訪れない出会いの記憶として。 生け花マスター横井紅炎は、能楽宝生流17世宗家・宝生九郎重英を祖父に、舞踊演出家の横井茂を父に、そして祖母・母ともに草月流華道家という家に生まれた。武蔵野美術大学卒業後、2000年に家督を受け継ぎ、2001年より能舞台、現代劇、コンサート、公共空間、デモンストレーションなど、日本国内外のあらゆる空間に花を生けてきた——本人いわく「空間へチャレンジしていく」仕事である。「桜花いけ請負人」としても知られ、廃棄素材や採集した自然物を用いるエコ推進華道家としても活動している。",
   "coverCaptionEn": "",
   "coverCaptionJa": ""
  },
  {
   "id": "kamakura-enoshima-yokohama-local",
   "bokunId": 1272725,
-  "number": "05",
+  "number": "01",
   "area": "Kamakura",
   "length": "Full / Half-day",
   "themes": [
@@ -615,7 +761,7 @@
   "ledeParasJa": [
    "鎌倉は、八百五十年にわたり寺院と匠の技、そしてその静けさを守り続けてきました。鎌倉五山からほど近い一軒の工房には、さらに稀なものが受け継がれています——日本三大刀匠の一人、正宗の系譜を継ぐ、24代にわたり途切れることのない刀鍛冶の血脈です。かつてその作は幕府自らの宝物帳にも記されました。本体験では、その炉端へお客様をご案内します。熱された鋼が打たれ、折り返され、形をなす様子をご覧いただき、刀を鑑賞する静かな作法を学び、最後にお茶と季節の菓子でひと息ついていただきます——株式会社Arteとの提携により、すべての手配はあらかじめ整えてありますので、あとはじっくりと見つめる心構えだけをお持ちください。本体験は2名から6名までのグループを対象に、通年でご案内しています。実際に稼働する鍛冶場でのご案内のため、熱や煙、槌の音がございます。歩きやすく、つま先の覆われた靴をおすすめします。"
   ],
-  "titleEn": "The Swordsmith's Flame",
+  "titleEn": "Kamakura: The Swordsmith's Flame",
   "titleJa": "鎌倉： 刀匠の炎 刀鍛冶体験",
   "subEn": "An authentic swordsmithing experience with a 24th-generation descendant of Masamune — one of Japan’s Three Great Swordsmiths — preserving an unbroken lineage of master craftsmanship.",
   "subJa": "日本三大刀匠の一人、正宗の系譜を継ぐ、24代にわたり途切れることの ない刀鍛冶の血脈による刀鍛冶体験。",
