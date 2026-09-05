@@ -794,8 +794,8 @@
   "priceJa": "¥25,400〜",
   "priceRows": [
    {
-    "category": "半日 鎌倉COCON -Lunch or Dinner",
-    "category_ja": "半日 鎌倉COCON -Lunch or Dinner",
+    "category": "Half-day Tour with COCON -Lunch or Dinner",
+    "category_ja": "Half-day Tour with COCON -Lunch or Dinner",
     "min": 2,
     "max": 6,
     "amount": 25400,
@@ -804,68 +804,69 @@
     "rate_title_ja": "半日　鎌倉COCON-Lunch or Dinner"
    },
    {
-    "category": "終日　鎌倉COCON-Lunch or Dinner",
-    "category_ja": "終日　鎌倉COCON-Lunch or Dinner",
+    "category": "Full-day Tour with COCON-Lunch or Dinner",
+    "category_ja": "Full-day Tour with COCON-Lunch or Dinner",
     "min": 2,
     "max": 6,
     "amount": 30400,
     "currency": "JPY",
-    "rate_title": "終日　鎌倉COCON-Lunch or Dinner",
+    "rate_title": "Full-Day Tour with Kamakura COCON Dining",
     "rate_title_ja": "終日　鎌倉COCON-Lunch or Dinner"
    }
   ],
   "widgets": {},
   "route": [
    {
-    "title": "ピックアップ",
-    "body": "鎌倉・藤沢市内無料送迎。 または指定の場所へ集合",
+    "title": "Pick-up",
+    "body": "Complimentary pickup within Kamakura and Fujisawa cities, or meet at a designated location.",
     "titleJa": "ピックアップ",
     "bodyJa": "鎌倉・藤沢市内無料送迎。 または指定の場所へ集合",
-    "photo": "",
-    "photoBase": ""
+    "photo": "https://imgcdn.bokun.tools/030a0908-ee1d-4150-8819-7d7662efe97e.jpeg?w=300&h=300",
+    "photoBase": "https://imgcdn.bokun.tools/030a0908-ee1d-4150-8819-7d7662efe97e.jpeg"
    },
    {
-    "title": "禅の旅ツアー",
-    "body": "4時間ツアーか8時間ツアーをお選びいただきます。",
-    "titleJa": "禅の旅ツアー",
-    "bodyJa": "4時間ツアーか8時間ツアーをお選びいただきます。",
-    "photo": "",
-    "photoBase": ""
+    "title": "Custom Private Guided Tour",
+    "body": "Select either a 4-hour or 8-hour tour option. We will design the itinerary based on your preferences and contact you after your booking is confirmed.",
+    "titleJa": "カスタムプライベートツアー",
+    "bodyJa": "4時間ツアーか8時間ツアーをお選びいただきます。 旅程はお客様とご相談しながらお好みに合わせ作成いたします。ご予約確定後にご連絡いたします。",
+    "photo": "https://imgcdn.bokun.tools/d91a4685-0b32-4e4a-a003-1bec8dff317f.jpeg?w=300&h=300",
+    "photoBase": "https://imgcdn.bokun.tools/d91a4685-0b32-4e4a-a003-1bec8dff317f.jpeg"
    },
    {
-    "title": "鎌倉古今（レストランCocon）にてランチかディナー",
-    "body": "ランチかディナーを選択します。",
+    "title": "Lunch or Dinner at Kamakura Cocon (Restaurant COCON)",
+    "body": "Select either lunch or dinner.",
     "titleJa": "鎌倉古今（レストランCocon）にてランチかディナー",
     "bodyJa": "ランチかディナーを選択します。",
-    "photo": "",
-    "photoBase": ""
+    "photo": "https://imgcdn.bokun.tools/8fd19687-e748-4d17-81b7-796cfacf9cc5.jpeg?w=300&h=300",
+    "photoBase": "https://imgcdn.bokun.tools/8fd19687-e748-4d17-81b7-796cfacf9cc5.jpeg"
    },
    {
-    "title": "ドロップオフ",
-    "body": "鎌倉・藤沢市内（無料送迎） または指定の場所で解散",
+    "title": "Drop-off",
+    "body": "Complimentary drop-off within Kamakura and Fujisawa cities, or conclude at a designated location.",
     "titleJa": "ドロップオフ",
     "bodyJa": "鎌倉・藤沢市内（無料送迎） または指定の場所で解散",
-    "photo": "",
-    "photoBase": ""
+    "photo": "https://imgcdn.bokun.tools/dd08ab11-0459-425c-ba6f-bc2228cc67db.jpeg?w=300&h=300",
+    "photoBase": "https://imgcdn.bokun.tools/dd08ab11-0459-425c-ba6f-bc2228cc67db.jpeg"
    }
   ],
   "includedEn": "Lunch or Dinner at Kamakura Cocon\nEnglish-speaking guide\nComplimentary Pickup and drop-off within Kamakura and Fujisawa cities",
-  "includedJa": "ランチまたはディナー\n英語ガイド付き\n鎌倉・藤沢市内の送迎",
-  "notIncludedEn": "レストランCocon以外の飲食代\n鎌倉・藤沢市以外の送迎及び交通費\n個人的なお土産代、買い物",
+  "includedJa": "ランチまたはディナー\n英語ガイド\n鎌倉・藤沢市内の送迎",
+  "notIncludedEn": "Meals and drinks other than at Restaurant COCON\nTransportation and pickup/drop-off fees outside Kamakura and Fujisawa cities\nPersonal expenses (souvenirs, shopping, etc.)",
   "notIncludedJa": "レストランCocon以外の飲食代\n鎌倉・藤沢市以外の送迎及び交通費\n個人的なお土産代、買い物",
   "bringEn": "Cash\nComfortable walking shoes (recommended)",
   "bringJa": "Cash\n歩きやすい靴（推奨）",
-  "knowEn": "Group Size: Up to 6 guests for restaurant dining. If you wish to book a stay for 3 or more guests, please contact ZENRISE in advance.\nParking: If you plan to arrive by car and require parking, please inform us in advance (maximum 3 vehicles).\nClosed Days: Restaurant COCON is closed on Wednesdays and Thursdays.\nDietary Restrictions: We cannot accommodate allergies or dietary restrictions to flour, onions, or garlic.\nGuide Fees: Tour prices include a guide fee (for groups of 1–6 guests) of ¥35,000 for half-day plans and ¥50,000 for full-day plans.",
-  "knowJa": "・団体対応：レストランのご利用最大6名。宿泊3名以上がご希望の場合は事前にZENRISEまでお問い合わせください。\n・お車でお越しの方：駐車場をご利用の場合は事前にご連絡お願いいたします。（最大3台）\n・定休日：レストランCOCONは水曜・木曜が定休日です。\n・アレルギー対応：小麦粉・玉ねぎ・ニンニクは対応不可。\n・このプランの料金にはガイド料（1〜6名のグループ）として半日プランは35,000円、終日プランは50,000円が含まれております。",
+  "knowEn": "Group Size: Up to 6 guests for restaurant dining. For overnight stays, please book via the accommodation plan page.\nParking: If you plan to arrive by car and require parking, please inform us in advance (maximum 3 vehicles).\nClosed Days: Restaurant COCON is closed on Wednesdays and Thursdays.\nDietary Restrictions: We cannot accommodate allergies or dietary restrictions to flour, onions, or garlic.\nGuide Fees: Tour prices include a guide fee (for groups of 1–6 guests) of ¥35,000 for half-day plans and ¥50,000 for full-day plans.",
+  "knowJa": "・団体対応：レストランのご利用最大6名。宿泊3名以上がご希望の場合は事前にZENRISEまでお問い合わせください。ご宿泊をご希望のお客様は宿泊商品ページからご予約ください。\n・お車でお越しの方：駐車場をご利用の場合は事前にご連絡お願いいたします。（最大3台）\n・定休日：レストランCOCONは水曜・木曜が定休日です。\n・アレルギー対応：小麦粉・玉ねぎ・ニンニクは対応不可。\n・このプランの料金にはガイド料（1〜6名のグループ）として半日プランは35,000円、終日プランは50,000円が含まれております。",
   "includedChipsEn": "",
   "includedChipsJa": "",
   "knowChipsEn": "",
   "knowChipsJa": "",
   "ledeParasEn": [
-   "An extraordinary fusion of luxury stay, private tour, and fine dining. Experience a seamless journey of elegance and tranquility in Kamakura through a tailored private tour and exquisite culinary art.",
+   "An extraordinary fusion of luxury stay, private tour, and fine dining.",
+   "Experience a seamless journey of elegance and tranquility in Kamakura through a tailored private tour and exquisite culinary art.",
    "Nestled in the quiet Yato valley of Nikaido, \"Kamakura Cocon\" is an exclusive all-suite auberge hosting only two groups per day, lovingly restored from a historic residence built in 1855 (Ansei 2). Surrounded by stone-paved pathways, lush moss gardens, and seasonal views through lattice windows, this sanctuary promises a peaceful escape for discerning guests.",
    "Experience Highlights",
-   "Custom Private Guided Tour: A knowledgeable local guide designs a personalized itinerary tailored to your pace and preferences, introducing you to Kamakura’s hidden gems, history, and rich culture.",
+   "Custom Private Guided Tour: A knowledgeable local guide designs a personalized itinerary tailored to your pace and preferences, introducing you to Kamakura’s hidden gems, history, and rich culture. Select either a Half-day (4-hour) or Full-day (8-hour) tour option.",
    "Exquisite Dining at \"Restaurant COCON\": Enjoy a multi-course ぅlunch or dinner (7 courses & 2 desserts) seated at the open kitchen counter. Savor dishes crafted with Italian culinary techniques using carefully selected seasonal ingredients from Kamakura, Shonan, and across Japan.",
    "Luxury Accommodation (When choosing a stay plan): Unwind in spacious, historic suite rooms (Maisonette Suite 101 or Kura Suite 102) equipped with micro-bubble baths and airweave mattresses for ultimate rejuvenation.",
    "Important Notes",
@@ -874,14 +875,24 @@
    "Group Size: Standard bookings accommodate up to 6 guests (please contact us in advance if you plan a stay for 3 or more guests)."
   ],
   "ledeParasJa": [
-   "究極の滞在、ツアー、そしてガストロノミーの共演。 静寂と気品が満ちる鎌倉で、お一人おひとりに合わせたプライベートツアーと至高の料理芸術が織りなす、極上のシームレスな体験をご堪能ください。静かな二階堂の谷戸に佇む「鎌倉古今」は、安政二年（1855年）に建てられた伝統建築をリノベーションした、1日わずか2組限定のオールスイートオーベルジュです。石畳の小道、青々と茂る苔庭、格子窓越しに覗く四季折々の景色に囲まれたこの隠れ家は、真の上質を知る大人に心安らぐひとときをお約束します。 本体験のハイライト。オーダーメイドのプライベートガイドツアー： 知識豊富なローカルガイドが、お客様のペースや好みに合わせて特別な行程をご提案。鎌倉の隠れた魅力、歴史、そして文化へとご案内いたします。 「Restaurant COCON」での極上のランチ/ディナー： オープンキッチンのカウンター席で、フルコース（7品＆デザート2品）をご堪能いただけます。イタリアンの匠の技に、鎌倉・湘南をはじめ日本全国から厳選した旬の食材を融合させたこだわりの料理をお楽しみください。 極上のご宿泊（ご宿泊プラン選択時）： 微細バブルバスやエアウィーヴのマットレスを完備した、歴史あるゆったりとしたスイートルーム（メゾネットスイート101、または蔵スイート102）で、心身ともに満たされる極上のリフレッシュタイムをお過ごしください。 注意事項。定休日： Restaurant COCONの定休日は水曜日および木曜日です。 アレルギー・食事制限： 小麦粉、玉ねぎ、にんにくのアレルギーにつきましては、食材の特性上ご対応いたしかねます。その他のアレルギーや食事制限につきましては、ご予約時にお知らせください。 受け入れ人数： 基本のお申し込みは最大6名様までとなります（宿泊が3名以上の場合は事前にご相談ください）"
+   "究極の滞在、ツアー、そしてガストロノミーの共演。",
+   "静寂と気品が満ちる鎌倉で、お一人おひとりに合わせたプライベートツアーと至高の料理芸術が織りなす、極上のシームレスな体験をご堪能ください。",
+   "静かな二階堂の谷戸に佇む「鎌倉古今」は、安政二年（1855年）に建てられた伝統建築をリノベーションした、1日わずか2組限定のオールスイートオーベルジュです。石畳の小道、青々と茂る苔庭、格子窓越しに覗く四季折々の景色に囲まれたこの隠れ家は、真の上質を知る大人に心安らぐひとときをお約束します。",
+   "本体験のハイライト",
+   "オーダーメイドのプライベートガイドツアー： 知識豊富なローカルガイドが、お客様のペースや好みに合わせて特別な行程をご提案。鎌倉の隠れた魅力、歴史、そして文化へとご案内いたします。半日ツアー(4時間) か終日ツアー(8時間) をお選びいただきます。",
+   "「Restaurant COCON」での極上のランチ/ディナー： オープンキッチンのカウンター席で、フルコース（7品＆デザート2品）をご堪能いただけます。イタリアンの匠の技に、鎌倉・湘南をはじめ日本全国から厳選した旬の食材を融合させたこだわりの料理をお楽しみください。",
+   "極上のご宿泊（ご宿泊プラン選択時）： 微細バブルバスやエアウィーヴのマットレスを完備した、歴史あるゆったりとしたスイートルーム（メゾネットスイート101、または蔵スイート102）で、心身ともに満たされる極上のリフレッシュタイムをお過ごしください。ご宿泊をご希望のお客様は宿泊商品ページからご予約ください。",
+   "注意事項",
+   "定休日： Restaurant COCONの定休日は水曜日および木曜日です。",
+   "アレルギー・食事制限： 小麦粉、玉ねぎ、にんにくのアレルギーにつきましては、食材の特性上ご対応いたしかねます。その他のアレルギーや食事制限につきましては、ご予約時にお知らせください。",
+   "受け入れ人数： 基本のお申し込みは最大6名様までとなります（宿泊が3名以上の場合は事前にご相談ください）"
   ],
   "titleEn": "ZENRISE × Kamakura Cocon",
   "titleJa": "ZENRISE × 鎌倉古今",
   "subEn": "A Collaboration of Luxury Stay, Private Tour, and Fine Dining with Kamakura Cocon",
-  "subJa": "鎌倉古今との宿泊・ツアー・美食コラボレーション",
-  "ledeEn": "An extraordinary fusion of luxury stay, private tour, and fine dining. Experience a seamless journey of elegance and tranquility in Kamakura through a tailored private tour and exquisite culinary art. Nestled in the quiet Yato valley of Nikaido, \"Kamakura Cocon\" is an exclusive all-suite auberge hosting only two groups per day, lovingly restored from a historic residence built in 1855 (Ansei 2). Surrounded by stone-paved pathways, lush moss gardens, and seasonal views through lattice windows, this sanctuary promises a peaceful escape for discerning guests. Experience Highlights Custom Private Guided Tour: A knowledgeable local guide designs a personalized itinerary tailored to your pace and preferences, introducing you to Kamakura’s hidden gems, history, and rich culture. Exquisite Dining at \"Restaurant COCON\": Enjoy a multi-course ぅlunch or dinner (7 courses & 2 desserts) seated at the open kitchen counter. Savor dishes crafted with Italian culinary techniques using carefully selected seasonal ingredients from Kamakura, Shonan, and across Japan. Luxury Accommodation (When choosing a stay plan): Unwind in spacious, historic suite rooms (Maisonette Suite 101 or Kura Suite 102) equipped with micro-bubble baths and airweave mattresses for ultimate rejuvenation. Important Notes Closed Days: Restaurant COCON is closed on Wednesdays and Thursdays. Dietary Restrictions & Allergies: Due to the nature of our ingredients, we are unable to accommodate allergies to flour, onions, or garlic. Please inform us of any other dietary requirements or allergies when booking. Group Size: Standard bookings accommodate up to 6 guests (please contact us in advance if you plan a stay for 3 or more guests).",
-  "ledeJa": "究極の滞在、ツアー、そしてガストロノミーの共演。 静寂と気品が満ちる鎌倉で、お一人おひとりに合わせたプライベートツアーと至高の料理芸術が織りなす、極上のシームレスな体験をご堪能ください。静かな二階堂の谷戸に佇む「鎌倉古今」は、安政二年（1855年）に建てられた伝統建築をリノベーションした、1日わずか2組限定のオールスイートオーベルジュです。石畳の小道、青々と茂る苔庭、格子窓越しに覗く四季折々の景色に囲まれたこの隠れ家は、真の上質を知る大人に心安らぐひとときをお約束します。 本体験のハイライト。オーダーメイドのプライベートガイドツアー： 知識豊富なローカルガイドが、お客様のペースや好みに合わせて特別な行程をご提案。鎌倉の隠れた魅力、歴史、そして文化へとご案内いたします。 「Restaurant COCON」での極上のランチ/ディナー： オープンキッチンのカウンター席で、フルコース（7品＆デザート2品）をご堪能いただけます。イタリアンの匠の技に、鎌倉・湘南をはじめ日本全国から厳選した旬の食材を融合させたこだわりの料理をお楽しみください。 極上のご宿泊（ご宿泊プラン選択時）： 微細バブルバスやエアウィーヴのマットレスを完備した、歴史あるゆったりとしたスイートルーム（メゾネットスイート101、または蔵スイート102）で、心身ともに満たされる極上のリフレッシュタイムをお過ごしください。 注意事項。定休日： Restaurant COCONの定休日は水曜日および木曜日です。 アレルギー・食事制限： 小麦粉、玉ねぎ、にんにくのアレルギーにつきましては、食材の特性上ご対応いたしかねます。その他のアレルギーや食事制限につきましては、ご予約時にお知らせください。 受け入れ人数： 基本のお申し込みは最大6名様までとなります（宿泊が3名以上の場合は事前にご相談ください）",
+  "subJa": "鎌倉古今 × ZENRISE・美食コラボレーションプライベートツアー",
+  "ledeEn": "An extraordinary fusion of luxury stay, private tour, and fine dining. Experience a seamless journey of elegance and tranquility in Kamakura through a tailored private tour and exquisite culinary art. Nestled in the quiet Yato valley of Nikaido, \"Kamakura Cocon\" is an exclusive all-suite auberge hosting only two groups per day, lovingly restored from a historic residence built in 1855 (Ansei 2). Surrounded by stone-paved pathways, lush moss gardens, and seasonal views through lattice windows, this sanctuary promises a peaceful escape for discerning guests. Experience Highlights Custom Private Guided Tour: A knowledgeable local guide designs a personalized itinerary tailored to your pace and preferences, introducing you to Kamakura’s hidden gems, history, and rich culture. Select either a Half-day (4-hour) or Full-day (8-hour) tour option. Exquisite Dining at \"Restaurant COCON\": Enjoy a multi-course ぅlunch or dinner (7 courses & 2 desserts) seated at the open kitchen counter. Savor dishes crafted with Italian culinary techniques using carefully selected seasonal ingredients from Kamakura, Shonan, and across Japan. Luxury Accommodation (When choosing a stay plan): Unwind in spacious, historic suite rooms (Maisonette Suite 101 or Kura Suite 102) equipped with micro-bubble baths and airweave mattresses for ultimate rejuvenation. Important Notes Closed Days: Restaurant COCON is closed on Wednesdays and Thursdays. Dietary Restrictions & Allergies: Due to the nature of our ingredients, we are unable to accommodate allergies to flour, onions, or garlic. Please inform us of any other dietary requirements or allergies when booking. Group Size: Standard bookings accommodate up to 6 guests (please contact us in advance if you plan a stay for 3 or more guests).",
+  "ledeJa": "究極の滞在、ツアー、そしてガストロノミーの共演。 静寂と気品が満ちる鎌倉で、お一人おひとりに合わせたプライベートツアーと至高の料理芸術が織りなす、極上のシームレスな体験をご堪能ください。 静かな二階堂の谷戸に佇む「鎌倉古今」は、安政二年（1855年）に建てられた伝統建築をリノベーションした、1日わずか2組限定のオールスイートオーベルジュです。石畳の小道、青々と茂る苔庭、格子窓越しに覗く四季折々の景色に囲まれたこの隠れ家は、真の上質を知る大人に心安らぐひとときをお約束します。 本体験のハイライト オーダーメイドのプライベートガイドツアー： 知識豊富なローカルガイドが、お客様のペースや好みに合わせて特別な行程をご提案。鎌倉の隠れた魅力、歴史、そして文化へとご案内いたします。半日ツアー(4時間) か終日ツアー(8時間) をお選びいただきます。 「Restaurant COCON」での極上のランチ/ディナー： オープンキッチンのカウンター席で、フルコース（7品＆デザート2品）をご堪能いただけます。イタリアンの匠の技に、鎌倉・湘南をはじめ日本全国から厳選した旬の食材を融合させたこだわりの料理をお楽しみください。 極上のご宿泊（ご宿泊プラン選択時）： 微細バブルバスやエアウィーヴのマットレスを完備した、歴史あるゆったりとしたスイートルーム（メゾネットスイート101、または蔵スイート102）で、心身ともに満たされる極上のリフレッシュタイムをお過ごしください。ご宿泊をご希望のお客様は宿泊商品ページからご予約ください。 注意事項 定休日： Restaurant COCONの定休日は水曜日および木曜日です。 アレルギー・食事制限： 小麦粉、玉ねぎ、にんにくのアレルギーにつきましては、食材の特性上ご対応いたしかねます。その他のアレルギーや食事制限につきましては、ご予約時にお知らせください。 受け入れ人数： 基本のお申し込みは最大6名様までとなります（宿泊が3名以上の場合は事前にご相談ください）",
   "coverCaptionEn": "",
   "coverCaptionJa": ""
  }
