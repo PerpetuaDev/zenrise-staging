@@ -5,12 +5,24 @@ import unittest
 
 from cms import tours_slug
 
-# The four live slugs. Changing any of these breaks a published URL.
+# Slugs the registry has minted for the catalogue. Changing any of these breaks
+# a published URL, so the registry must keep every one exactly as it is.
+#
+# This is a floor, not an inventory: the zero-touch catalogue (2026-08-26) adds
+# a tour whenever one joins the Bokun "Website" list, so asserting the registry
+# equals this map made the suite fail every time the client published a tour --
+# which is how it sat red from the first addition until 2026-09-16. Assert
+# containment instead, and add a line here when a slug goes live.
 SEEDED = {
+    '1272725': 'kamakura-enoshima-yokohama-local',
     '1273194': 'zen-journey',
     '1273232': 'ikebana-ichigo-ichie',
     '1273235': 'candle-making',
     '1275339': 'swordsmithing',
+    '1277203': 'zenrise-kamakura-cocon',
+    '1281293': 'tokyo-shibuya-harajuku-anime',
+    '1281308': 'yokohama-anime-gaming-kawaii',
+    '1281848': 'zenrise-kamakura-cocon-custom',
 }
 
 
@@ -143,7 +155,9 @@ class TestRegistryFile(unittest.TestCase):
         self.assertEqual(tours_slug.load_registry('/nonexistent/r.json'), {})
 
     def test_the_committed_registry_holds_the_live_slugs(self):
-        self.assertEqual(tours_slug.load_registry(), SEEDED)
+        registry = tours_slug.load_registry()
+        missing = {k: v for k, v in SEEDED.items() if registry.get(k) != v}
+        self.assertEqual(missing, {}, f'published slugs changed or lost: {missing}')
 
 
 if __name__ == '__main__':

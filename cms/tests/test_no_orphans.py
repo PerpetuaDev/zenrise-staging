@@ -13,7 +13,15 @@ class TestNoOrphans(unittest.TestCase):
     def setUp(self):
         with open(os.path.join(ROOT, 'cms', 'tours-config.json')) as f:
             cfg = json.load(f)
-        self.slugs = {entry['slug'] for entry in cfg['tours'].values()}
+        # config['tours'] holds pinned overrides only. Under the zero-touch
+        # catalogue most tours never get an entry -- their slug is minted by the
+        # build and recorded in the registry, which is the one file that knows
+        # every slug the site has ever published. Reading config alone made this
+        # test call four legitimately-published pages orphans.
+        with open(os.path.join(ROOT, 'cms', 'tours-slugs.json')) as f:
+            registry = json.load(f)
+        self.slugs = ({entry['slug'] for entry in cfg['tours'].values()}
+                      | set(registry.values()))
         # Staging-only invented samples generate a page each and are legitimate.
         self.sample_slugs = {s['id'] for s in (cfg.get('sampleTours') or [])}
 
