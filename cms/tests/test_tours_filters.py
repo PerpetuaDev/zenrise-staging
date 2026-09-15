@@ -76,9 +76,32 @@ class TestAreaRow(unittest.TestCase):
         self.assertEqual(chips(html, 'area'),
                          ['all', 'kamakura', 'enoshima', 'yokohama'])
 
+    def test_tokyo_sorts_after_the_kanagawa_areas(self):
+        html = bt.filter_rows([m(area='Tokyo'), m(area='Kamakura')])
+        self.assertEqual(chips(html, 'area'), ['all', 'kamakura', 'tokyo'])
+
     def test_an_area_with_no_i18n_key_is_rejected(self):
         with self.assertRaises(bt.BuildError):
             bt.filter_rows([m(area='Fujisawa'), m(area='Kamakura')])
+
+
+class TestAreaI18n(unittest.TestCase):
+    """Every area the build can emit needs a chip label in both lang.js dicts.
+    Tokyo arrived in the Bokun catalogue with no key of its own, and the tour
+    carrying it was held back from the site until someone read a build log."""
+
+    @classmethod
+    def setUpClass(cls):
+        with open(os.path.join(ROOT, 'lang.js'), encoding='utf-8') as f:
+            cls.lang = f.read()
+
+    def test_tokyo_is_a_recognised_area(self):
+        self.assertEqual(bt.area_key('Tokyo'), 'tours_area_tokyo')
+
+    def test_every_area_key_is_translated_in_both_languages(self):
+        # one definition in the EN dict, one in the JA dict
+        for area, key in bt.AREA_KEY.items():
+            self.assertGreaterEqual(self.lang.count(key + ':'), 2, area)
 
 
 class TestSectionLabel(unittest.TestCase):

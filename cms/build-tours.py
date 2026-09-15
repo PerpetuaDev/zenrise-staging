@@ -25,8 +25,9 @@ class BuildError(Exception):
     pass
 
 
-AREA_KEY = {'Kamakura': 'tours_area_kamakura', 'Enoshima': 'tours_area_enoshima', 'Yokohama': 'tours_area_yokohama'}
-AREA_JA = {'Kamakura': '鎌倉', 'Enoshima': '江ノ島', 'Yokohama': '横浜'}
+AREA_KEY = {'Kamakura': 'tours_area_kamakura', 'Enoshima': 'tours_area_enoshima',
+            'Yokohama': 'tours_area_yokohama', 'Tokyo': 'tours_area_tokyo'}
+AREA_JA = {'Kamakura': '鎌倉', 'Enoshima': '江ノ島', 'Yokohama': '横浜', 'Tokyo': '東京'}
 LEN_KEY = {'Half-day': 'tours_len_half', 'Full-day': 'tours_len_full',
            'Full / Half-day': 'tours_len_both'}
 
