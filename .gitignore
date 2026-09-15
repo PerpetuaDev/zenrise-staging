@@ -4,3 +4,9 @@ relay/.cf.env
 cms/__pycache__/
 .superpowers/
 __pycache__/
+
+# Credentials and local-only notes. Everything committed to this repo is served
+# on the client's domain, so a stray `git add -A` here publishes whatever it
+# picks up -- cms/.env carries the live microCMS key.
+cms/.env
+*.local.md
