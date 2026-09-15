@@ -5,8 +5,14 @@ name: Build tours from Bokun
 # dispatch: this repo is public, and pull_request_target would hand the
 # credentials to any fork.
 on:
-  schedule:
-    - cron: '0 * * * *'
+  # Dormant from 2026-09-16. zenrise.jp went live from this tree on 09-11 and
+  # the hourly rebuild now runs in PerpetuaDev/zenrise instead; leaving the
+  # schedule on here meant two repos polling the client's Bokun account every
+  # hour to build a site nobody reads. Manual dispatch still works, and
+  # uncommenting the cron is all it takes to wake staging for the next
+  # pre-live change.
+  # schedule:
+  #   - cron: '0 * * * *'
   workflow_dispatch:
 
 concurrency:
