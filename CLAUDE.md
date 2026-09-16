@@ -31,5 +31,6 @@ Both build scripts still work on manual dispatch while dormant.
 
 ## Tests
 
-`python3 -m pytest cms/tests` -- 467 tests, and no workflow runs them. Run them
-before touching `cms/`.
+`python3 -m pytest cms/tests` -- 482 tests. Both build workflows now run them
+(via `python3 -m unittest discover -s cms/tests -t .`, so the runner needs no
+install), after the build and before the commit.
