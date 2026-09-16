@@ -38,6 +38,12 @@ jobs:
         # published nothing. Here it fails instead.
         run: python3 cms/build-tours.py --source bokun --require-live
 
+      - name: Run the pipeline tests
+        # After the build, before the commit: this gates what is about to be
+        # published, not just the code that produced it. unittest rather than
+        # pytest so the runner needs no install.
+        run: python3 -m unittest discover -s cms/tests -t .
+
       - name: Commit and push if changed
         run: |
           git config user.name "github-actions[bot]"

@@ -21,10 +21,31 @@ import json, os, re, sys, urllib.request
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
 SITE = 'https://zenrise.jp'
-IMG_PAGE = '?fm=webp&q=82&w=1920'   # article hero
-IMG_FIG = '?fm=webp&q=82&w=1600'    # in-article figures, featured card
-IMG_CARD = '?fm=webp&q=82&w=1200'   # index grid cards
-IMG_OG = '?fm=jpg&w=1200'           # link previews: JPG for scraper compatibility
+# Every slot is a fixed-height box painted with `background: center / cover`,
+# so the rendition has to arrive in roughly the slot's shape. Asking for a
+# width alone leaves the height to the source: a 2334x3500 portrait hero came
+# back 1920x2879 and the 700px-tall slot centre-cropped it to a band across
+# the middle, slicing the hand off at the bottom edge (2026-09-16).
+#
+# fit=crop pins both dimensions. crop=faces,entropy chooses which band to
+# keep -- faces first for the people shots, then the busiest region -- which
+# is what stops the cut falling through the subject. The default, center,
+# is exactly what produced the sliced hand.
+#
+# Ratios follow the CSS boxes: the hero runs full-bleed at ~2:1 on a laptop,
+# the featured photo is 1088x612 and in-article figures 880x520 (both ~16:9),
+# the grid cards sit between 1.16 and 1.59 across breakpoints, and 1200x630
+# is the standard link-preview frame.
+CROP = 'fit=crop&crop=faces,entropy'
+IMG_PAGE = f'?fm=webp&q=82&w=1920&h=960&{CROP}'   # article hero, 2:1
+IMG_FIG = f'?fm=webp&q=82&w=1600&h=900&{CROP}'    # in-article figures, featured card
+# A portrait figure is promoted to `.fig .ph.tall` -- 880x720 desktop (1.22),
+# about 1.11 on mobile. Handing it the 16:9 frame above would cut the portrait
+# to a landscape band and then crop that band's sides to fit, which is worse
+# than not promoting it at all.
+IMG_FIG_TALL = f'?fm=webp&q=82&w=1200&h=1000&{CROP}'  # portrait figures, 1.2
+IMG_CARD = f'?fm=webp&q=82&w=1200&h=900&{CROP}'   # index grid cards, 4:3
+IMG_OG = f'?fm=jpg&w=1200&h=630&{CROP}'           # link previews: JPG for scraper compatibility
 
 STATIC_PAGES = ['', 'about.html', 'contact.html', 'terms.html', 'news.html']
 
@@ -43,14 +64,63 @@ def env(name):
     sys.exit(f'missing {name} (env var or cms/.env)')
 
 
-def fetch_articles():
-    service, key = env('MICROCMS_SERVICE_ID'), env('MICROCMS_API_KEY')
-    req = urllib.request.Request(
-        f'https://{service}.microcms.io/api/v1/news?limit=100&orders=-date',
-        headers={'X-MICROCMS-API-KEY': key})
+class BuildError(Exception):
+    pass
+
+
+PAGE = 100   # microCMS caps limit at 100 per request
+
+
+def _http_json(url, headers):
+    req = urllib.request.Request(url, headers=headers)
     with urllib.request.urlopen(req) as r:
-        data = json.load(r)
-    return data['contents']
+        return json.load(r)
+
+
+def fetch_articles(transport=None, service=None, key=None):
+    """Every published article, following microCMS's paging to the end.
+
+    The fetch used to ask for one page of 100 and stop. The stale sweep in
+    main() deletes any news-*.html the fetch did not return, so the 101st
+    article would not merely be missing -- publishing it would delete the
+    page of whichever article it displaced. The transport is injectable so
+    paging can be tested without credentials or network.
+    """
+    transport = transport or _http_json
+    service = service or env('MICROCMS_SERVICE_ID')
+    key = key or env('MICROCMS_API_KEY')
+    headers = {'X-MICROCMS-API-KEY': key}
+
+    out = []
+    while True:
+        data = transport(
+            f'https://{service}.microcms.io/api/v1/news'
+            f'?limit={PAGE}&offset={len(out)}&orders=-date', headers)
+        batch = data.get('contents') or []
+        out.extend(batch)
+        total = data.get('totalCount')
+        # No total: take the response at face value. No progress: stop rather
+        # than ask for the same offset forever.
+        if total is None or len(out) >= total or not batch:
+            return out
+
+
+def check_not_empty(articles, allow_empty=False):
+    """Refuse to publish a catalogue of nothing.
+
+    An empty `contents` arrives with a 200, so it is indistinguishable from a
+    real build: main() would write an empty index and the stale sweep would
+    delete every article page, which the workflow then commits and pushes. A
+    transport error raises and fails the job loudly, but this path was silent.
+    Since 2026-09-16 the build also runs hourly on a schedule, so nobody is
+    watching when it happens. --allow-empty is the deliberate override, for a
+    site that genuinely has no articles yet.
+    """
+    if not articles and not allow_empty:
+        raise BuildError(
+            'microCMS returned 0 published articles. Refusing to rebuild, '
+            'because doing so would delete every news page. Re-run with '
+            '--allow-empty if the news section is genuinely empty.')
 
 
 def esc(s):
@@ -147,6 +217,9 @@ def article_model(a):
     if not m['excerpt'][0]:
         m['excerpt'] = (first_sentence(m['lead'][0], 'en'),
                         first_sentence(m['lead'][1], 'ja'))
+    # Stamped into the page so the watchdog can tell a stale build from a
+    # current one. An edit changes this without changing any page name.
+    m['revised'] = a.get('revisedAt') or a.get('updatedAt') or ''
     m['hero'] = (a.get('hero') or {}).get('url', '')
     body_en = parse_body(a.get('bodyEn') or '')
     body_ja = parse_body(a.get('bodyJa') or '')
@@ -192,8 +265,9 @@ def render_article(m, num, tpl):
             if t == 'fig':
                 nf += 1
                 tall = ' tall' if b['h'] > b['w'] else ''
+                frame = IMG_FIG_TALL if tall else IMG_FIG
                 lines.append('          <figure class="fig">')
-                lines.append(f'''            <div class="ph{tall}" style="background-image: url('{esc(b["src"] + IMG_FIG)}')"></div>''')
+                lines.append(f'''            <div class="ph{tall}" style="background-image: url('{esc(b["src"] + frame)}')"></div>''')
                 if b['alt']:
                     alt_ja = figs_ja[nf - 1]['alt'] if nf - 1 < len(figs_ja) else ''
                     put(f'_s{i}_f{nf}_cap', (b['alt'], alt_ja or b['alt']))
@@ -262,6 +336,7 @@ def render_article(m, num, tpl):
         'OG_TITLE': esc(og_title),
         'OG_DESC': esc(m['excerpt'][0]),
         'OG_IMAGE': esc(og_image),
+        'CMS_REVISED': esc(m['revised']),
         'JSON_LD': json_ld,
         'K': K,
         'PAGE_TITLE': esc(en[K + '_page_title']),
@@ -365,8 +440,7 @@ def render_sitemap(models):
 
 def main():
     articles = fetch_articles()
-    if not articles:
-        print('WARNING: microCMS returned 0 published articles; writing empty index')
+    check_not_empty(articles, allow_empty='--allow-empty' in sys.argv)
     models = [article_model(a) for a in articles]
 
     art_tpl = load_template('article.html')
